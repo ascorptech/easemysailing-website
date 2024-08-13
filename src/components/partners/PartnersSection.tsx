@@ -52,11 +52,10 @@ const PartnersSection = () => {
         <div className="font-bold ml-[1rem] text-2xl">
           <h1>
             <span>Our</span> <span className="text-green-700">Partners</span>
-            
           </h1>
         </div>
         <div>
-          <button className="h-8 bg-green-600 text-white py-1 px-4 rounded-lg text-sm">
+          <button className="h-8 bg-green-600 text-white py-1 px-4 rounded-lg text-sm mb-2">
             View All
           </button>
         </div>

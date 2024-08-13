@@ -4,18 +4,6 @@ import "./globals.scss";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import { Sign } from "crypto";
-import SearchBar from "@/components/searchbar/Searchbar";
-import Signup from "@/components/signup/Signup";
-import Companies from "@/components/companies/Companies";
-import Status from "@/components/status/Status";
-import Recruiting from "@/components/recruiting/Recruiting";
-import Trending from "@/components/trending/Trending";
-import Career from "@/components/career/Career";
-import PartnersSection from "@/components/partners/PartnersSection";
-import ClientSection from "@/components/clients/ClientSection";
-import Applying from "@/components/applying/Applying";
-import Interview from "@/components/interview/Interview";
-import Articles from "@/components/articles/Articles";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,19 +21,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Header />
+
         {children}
-        <SearchBar />
-        <Signup />
-        <Companies />
-        <Status />
-        <Recruiting />
-        <Trending />
-        <Career />
-        <Applying />
-        <PartnersSection />
-        <ClientSection />
-        <Interview />
-        <Articles />
         <Footer />
       </body>
     </html>

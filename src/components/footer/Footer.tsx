@@ -1,22 +1,23 @@
 import React from "react";
+import Link from "next/link";
 const Footer = () => {
   return (
     <footer className="bg-gray-100 ">
       <div className="bg-green-600 py-10 place-items-center">
         <div className=" flex gap-4 text-center">
           <div className="w-[50%] ml-5 pl-[4%]">
-          <h2 className="text-white text-4xl font-normal mb-6">
-          Don't miss out! Subscribe to our newsletter for exclusive content.
-          </h2>
+            <h2 className="text-white text-4xl font-normal mb-6">
+              Don't miss out! Subscribe to our newsletter for exclusive content.
+            </h2>
           </div>
 
           <div className="items-center h-[5%] mt-2 ml-5 w-[35%]">
             <div>
-            <input
-              type="email"
-              placeholder="Enter your Email Address"
-              className="p-3 w-full h-8 rounded-md focus:outline-none"
-            />
+              <input
+                type="email"
+                placeholder="Enter your Email Address"
+                className="p-3 w-full h-8 rounded-md focus:outline-none"
+              />
             </div>
             <div className=" mt-2">
               <button className="w-[100%] h-8 bg-black text-white px-6 py-3 rounded-md flex justify-center items-center">
@@ -54,9 +55,9 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-600 text-sm">
+                <Link href="/about" className="text-gray-600 text-sm">
                   About
-                </a>
+                </Link>
               </li>
               <li>
                 <a href="#" className="text-gray-600 text-sm">

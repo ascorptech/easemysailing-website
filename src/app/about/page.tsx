@@ -1,9 +1,10 @@
-// import Career from "@/components/career/Career";
+import Talk from "./talk/Talk";
+import Wedo from "./wedo/Wedo";
 const page = () => {
   return (
     <div>
-      <div className="container">{/* <Career /> */}</div>
-      <div>about page</div>
+      <Talk/>
+     <Wedo/>
     </div>
   );
 };

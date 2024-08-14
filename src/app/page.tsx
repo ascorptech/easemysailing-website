@@ -12,7 +12,7 @@ import Interview from "@/components/interview/Interview";
 import Articles from "@/components/articles/Articles";
 export default function Home() {
   return (
-    <div>
+    <div className="flex flex-col">
       <SearchBar />
       <Signup />
       <Companies />

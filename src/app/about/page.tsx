@@ -1,8 +1,8 @@
-import Talk from "./talk/Talk";
-import Wedo from "./wedo/Wedo";
+import Talk from "../../components/about/talk/Talk";
+import Wedo from "../../components/about/wedo/Wedo";
 const page = () => {
   return (
-    <div>
+    <div className="flex flex-col">
       <Talk/>
      <Wedo/>
     </div>

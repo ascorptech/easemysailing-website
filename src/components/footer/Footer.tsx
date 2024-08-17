@@ -50,9 +50,9 @@ const Footer = () => {
             </h4>
             <ul>
               <li>
-                <a href="#" className="text-gray-600 text-sm">
+                <Link href="/" className="text-gray-600 text-sm">
                   Home
-                </a>
+                </Link>
               </li>
               <li>
                 <Link href="/about" className="text-gray-600 text-sm">

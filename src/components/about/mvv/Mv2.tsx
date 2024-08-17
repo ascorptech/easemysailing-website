@@ -1,18 +1,11 @@
 import Image from "next/image";
-const Wedo = () => {
+const Mv2 = () => {
   return (
-    <div className=" w-[100%]  h-[23rem] my-9 ">
-      {/* heading */}
-      <div className="flex flex-auto text-4xl  font-semibold justify-center text-center">
-        <h1 className="flex py-2">
-          What We&nbsp;<span className="text-green-700">Do</span>
-        </h1>
-      </div>
-
+    <div className=" w-[100%]  h-[21rem] my-9 ">
       <div className="flex flex-row relative mx-7 my-1  justify-center  items-center gap-16 ">
         {/* first div */}
         {/* <div className="flex h-[9rem] border-2 border-black"> */}
-        <div className="flex flex-col sm:md:w-1/2 w-full justify-center text-center items-center">
+        <div className="flex flex-col sm:md:w-1/2 w-full  justify-center text-center items-center p-3 border-2 shadow-dark rounded-3xl">
           <Image
             src="/aboutleft.png" // Replace with your image path
             alt="Left Image"
@@ -30,7 +23,7 @@ const Wedo = () => {
           </p>
         </div>
         {/* second div */}
-        <div className="flex flex-col sm:md:w-1/2 w-full justify-center text-center items-center">
+        <div className="flex flex-col sm:md:w-1/2 w-full justify-center text-center items-center  p-3 border-2 rounded-3xl">
           <Image
             src="/aboutleft.png" // Replace with your image path
             alt="Left Image"
@@ -48,7 +41,7 @@ const Wedo = () => {
           </p>{" "}
         </div>
         {/* Third div */}{" "}
-        <div className="flex flex-col sm:md:w-1/2 w-full justify-center text-center items-center">
+        <div className="flex flex-col sm:md:w-1/2 w-full justify-center text-center items-center  p-3 border-2 rounded-3xl">
           <Image
             src="/aboutleft.png" // Replace with your image path
             alt="Left Image"
@@ -69,4 +62,4 @@ const Wedo = () => {
     </div>
   );
 };
-export default Wedo;
+export default Mv2;

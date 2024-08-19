@@ -8,13 +8,13 @@ import Team2 from "@/components/about/team/team2";
 const page = () => {
   return (
     <div className="flex flex-col">
-      <Talk/>
-     <Wedo/>
-     <Crew/>
-     <Mv2/>
-     <Rating1/>
-     <Team/>
-     <Team2/>
+      <Talk />
+      <Wedo />
+      <Crew />
+      <Mv2 />
+      <Rating1 />
+      <Team />
+      <Team2 />
     </div>
   );
 };

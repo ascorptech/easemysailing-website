@@ -1,20 +1,19 @@
-"use client"
+"use client";
 import Image from "next/image";
 import react from "react";
 
-
 const Signup = () => {
-   const handleSubmit = () => {
+  const handleSubmit = () => {
     //  error.preventDefault();
-     // Handle form submission
-     alert("Form submitted!");
-   };
+    // Handle form submission
+    alert("Form submitted!");
+  };
   return (
     <div className=" flex items-center justify-between p-2 m-3 gap-5 bg-gray-100 border-2 border-grey ">
       {/* Left Image Container */}
       <div className="flex-1 flex items-center justify-center">
         <Image
-          src="/sign1.jpg" // Replace with your image path
+          src="/sign2.png" // Replace with your image path
           alt="Left Image"
           width={500} // Set to match the height
           height={500} // Ensure the aspect ratio is consistent
@@ -164,7 +163,7 @@ const Signup = () => {
         {" "}
         {/*border-2 border-red-500 w-full*/}
         <Image
-          src="/sign2.avif" // Replace with your image path
+          src="/sign1.png" // Replace with your image path
           alt="Right Image"
           width={500} // Set to match the height
           height={500} // Ensure the aspect ratio is consistent

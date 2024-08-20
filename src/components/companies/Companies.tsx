@@ -1,4 +1,4 @@
-import Slides from "./Slides";
+import Slide from "./Slide";
 const Companies = () => {
   return (
     <div className="mt-6">
@@ -8,7 +8,7 @@ const Companies = () => {
         </h1>
       </div>
 
-      <Slides />
+      <Slide />
     </div>
   );
 };

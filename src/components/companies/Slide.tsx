@@ -42,7 +42,7 @@ export default function Slide() {
               <IoMdArrowBack />
             </div>
           </div>
-          <div className="flex  overflow-hidden ">
+          <div className="flex  overflow-hidden   ">
             {categories.map((cat, index) => {
               return (
                 <div

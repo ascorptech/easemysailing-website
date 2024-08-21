@@ -4,6 +4,7 @@ import Slide2 from "./Slide2";
 import React, { useState, useEffect } from "react";
 import { IoMdArrowBack } from "react-icons/io";
 import { IoMdArrowForward } from "react-icons/io";
+import Link from "next/link";
 
 export default function Recruiting() {
   const [slide, setSlide] = useState(0);
@@ -39,9 +40,11 @@ export default function Recruiting() {
           </h1>
         </div>
         <div>
-          <button className="h-8 bg-green-600 text-white py-1 px-4 rounded-lg text-sm">
-            View All
-          </button>
+          <Link href="/toprecruiting">
+            <button className="h-8 bg-green-600 text-white py-1 px-4 rounded-lg text-sm">
+              View All
+            </button>
+          </Link>
         </div>
       </div>
 

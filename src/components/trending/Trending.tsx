@@ -1,4 +1,6 @@
 import Slides from "../companies/Slides";
+import Link from "next/link";
+
 const Trending = () => {
   return (
     <div className="mt-7">
@@ -9,9 +11,11 @@ const Trending = () => {
           </h1>
         </div>
         <div>
-          <button className="h-8 bg-green-600 text-white py-1 px-4 rounded-lg text-sm">
-            View All
-          </button>
+          <Link href="/trendingjob">
+            <button className="h-8 bg-green-600 text-white py-1 px-4 rounded-lg text-sm">
+              View All
+            </button>
+          </Link>
         </div>
       </div>
 

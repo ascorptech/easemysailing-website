@@ -1,17 +1,15 @@
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import { PiLineVertical } from "react-icons/pi";
 import { CiSearch } from "react-icons/ci";
+import Link from "next/link";
 
 const Header = () => {
   return (
     <div className="border-b border-gray-300  items-center sticky z-20 top-0">
       <nav className="bg-white border-white-200 dark:bg-white-900 dark:border-black-700">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <div>
-            <a
-              href="#"
-              className="flex items-center space-x-3 rtl:space-x-reverse"
-            >
+          <div className="flex items-center space-x-3 rtl:space-x-reverse">
+            <Link href="/">
               <p>
                 <span className="self-center text-xl font-bold whitespace-nowrap dark:text-black">
                   EaseMy
@@ -20,13 +18,8 @@ const Header = () => {
                   Sailing
                 </span>
               </p>
-            </a>
+            </Link>
           </div>
-
-          {/* <div
-            className="hidden w-full md:block md:w-auto"
-            id="navbar-multi-level"
-          > */}
 
           <div>
             <ul className="flex items-center flex-col font-medium  p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-white md:dark:bg-white dark:border-gray-700">
@@ -61,21 +54,35 @@ const Header = () => {
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                         role="menuitem"
                       >
-                        Software Engineer
+                        Jobs & Career Advise
                       </a>
                       <a
                         href="#"
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                         role="menuitem"
                       >
-                        Product Manager
+                        Resource
                       </a>
                       <a
                         href="#"
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                         role="menuitem"
                       >
-                        Designer
+                        Podcast & Interviews
+                      </a>
+                      <a
+                        href="#"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        role="menuitem"
+                      >
+                        About Us
+                      </a>
+                      <a
+                        href="#"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        role="menuitem"
+                      >
+                        Contact Us
                       </a>
                     </div>
                   </div>
@@ -111,21 +118,35 @@ const Header = () => {
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                         role="menuitem"
                       >
-                        Software Engineer
+                        Jobs & Career Advise
                       </a>
                       <a
                         href="#"
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                         role="menuitem"
                       >
-                        Product Manager
+                        Resource
                       </a>
                       <a
                         href="#"
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                         role="menuitem"
                       >
-                        Designer
+                        Podcast & Interviews
+                      </a>
+                      <a
+                        href="#"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        role="menuitem"
+                      >
+                        About Us
+                      </a>
+                      <a
+                        href="#"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        role="menuitem"
+                      >
+                        Contact Us
                       </a>
                     </div>
                   </div>

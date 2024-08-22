@@ -63,7 +63,7 @@ const Status = () => {
         <div className="relative pt-[56.25%] mt-4">
           <iframe
             className="absolute top-0 left-0 w-full h-full"
-            src="https://www.youtube.com/embed/your-video-id"
+            src="https://www.youtube.com/embed/lm6CLMLSZBc"
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

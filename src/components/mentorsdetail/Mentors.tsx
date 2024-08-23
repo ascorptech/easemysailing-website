@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-const Mentors: React.FC = () => {
+const Mentors = () => {
   const router = useRouter();
   const [id, setShippingId] = useState<string | string[] | undefined>();
 

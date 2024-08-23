@@ -90,9 +90,9 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-600 text-sm">
+                <Link href="/faq" className="text-gray-600 text-sm">
                   FAQ
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

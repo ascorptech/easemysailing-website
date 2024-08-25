@@ -1,9 +1,23 @@
+"use client";
+
+import React, { useState } from "react";
+import { FaBars } from "react-icons/fa";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import { PiLineVertical } from "react-icons/pi";
 import { CiSearch } from "react-icons/ci";
 import Link from "next/link";
 
-const Header = () => {
+const Header: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsOpen(false);
+  };
+
   return (
     <div className="border-b border-gray-300  items-center sticky z-20 top-0">
       <nav className="bg-white border-white-200 dark:bg-white-900 dark:border-black-700">
@@ -162,9 +176,70 @@ const Header = () => {
                 </li>
               </div>
               <div className=" flex items-center h-2">
-                <span className="text-[2.3rem]  border-1 border-red-950 flex justify-self-center text-center font-[1000] text-green-700  relative ">
-                  <HiOutlineDotsHorizontal />
-                </span>
+                <div
+                  className="relative inline-block text-left"
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  {/* Icon or button to trigger dropdown */}
+                  <button
+                    className="text-[3rem] flex justify-self-center text-center font-bold text-green-700  relative "
+                    type="button"
+                  >
+                    <HiOutlineDotsHorizontal className="w-15 h-10" />
+                  </button>
+
+                  {/* Dropdown menu */}
+                  {isOpen && (
+                    <div
+                      className="absolute  z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-48"
+                      id="dropdownHover"
+                    >
+                      <ul className="py-2 text-sm text-gray-700">
+                        <li>
+                          <a
+                            href="#"
+                            className="block px-4 py-1 hover:bg-white hover:text-green-800"
+                          >
+                            Jobs & Career Advise
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="#"
+                            className="block px-4 py-1 hover:bg-white hover:text-green-800"
+                          >
+                            Resource
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="#"
+                            className="block px-4 py-1 hover:bg-white hover:text-green-800"
+                          >
+                            Podcast & Interviews
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="#"
+                            className="block px-4 py-1 hover:bg-white hover:text-green-800"
+                          >
+                            About Us
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="#"
+                            className="block px-4 py-1 hover:bg-white hover:text-green-800"
+                          >
+                            Contact Us
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  )}
+                </div>
               </div>
 
               <div className="flex items-center justify-center">

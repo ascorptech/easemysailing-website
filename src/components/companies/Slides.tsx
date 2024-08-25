@@ -49,60 +49,60 @@ const Slides = () => {
         {/* Card 1 */}
         <div className="snap-center p-2">
           <div className="w-32 h-32 p-4 bg-white border rounded-lg shadow-md">
-            <img src="/images/maersk.png" alt="Maersk Line" />
+            <img src="/images/logo1.png" alt="Maersk Line" />
           </div>
         </div>
         {/* Card 2 */}
         <div className="snap-center p-2">
           <div className="w-32 h-32 p-4 bg-white border rounded-lg shadow-md">
-            <img src="/images/evergreen.png" alt="Evergreen" />
+            <img src="/images/logo2.png" alt="Evergreen" />
           </div>
         </div>
         {/* Repeat for other cards */}
         <div className="snap-center p-2">
           <div className="w-32 h-32 p-4 bg-white border rounded-lg shadow-md">
-            <img src="/images/msc.png" alt="MSC" />
+            <img src="/images/logo3.png" alt="MSC" />
           </div>
         </div>
         <div className="snap-center p-2">
           <div className="w-32 h-32 p-4 bg-white border rounded-lg shadow-md">
-            <img src="/images/cma-cgm.png" alt="CMA CGM" />
+            <img src="/images/logo4.png" alt="CMA CGM" />
           </div>
         </div>
         {/* Continue adding cards as needed */}
         {/* Repeat for other cards */}
         <div className="snap-center p-2">
           <div className="w-32 h-32 p-4 bg-white border rounded-lg shadow-md">
-            <img src="/images/msc.png" alt="MSC" />
+            <img src="/images/logo5.png" alt="MSC" />
           </div>
         </div>
         <div className="snap-center p-2">
           <div className="w-32 h-32 p-4 bg-white border rounded-lg shadow-md">
-            <img src="/images/cma-cgm.png" alt="CMA CGM" />
-          </div>
-        </div>
-        {/* Continue adding cards as needed */}
-        {/* Repeat for other cards */}
-        <div className="snap-center p-2">
-          <div className="w-32 h-32 p-4 bg-white border rounded-lg shadow-md">
-            <img src="/images/msc.png" alt="MSC" />
-          </div>
-        </div>
-        <div className="snap-center p-2">
-          <div className="w-32 h-32 p-4 bg-white border rounded-lg shadow-md">
-            <img src="/images/cma-cgm.png" alt="CMA CGM" />
+            <img src="/images/logo1.png" alt="CMA CGM" />
           </div>
         </div>
         {/* Continue adding cards as needed */}
         {/* Repeat for other cards */}
         <div className="snap-center p-2">
           <div className="w-32 h-32 p-4 bg-white border rounded-lg shadow-md">
-            <img src="/images/msc.png" alt="MSC" />
+            <img src="/images/logo2.png" alt="MSC" />
           </div>
         </div>
         <div className="snap-center p-2">
           <div className="w-32 h-32 p-4 bg-white border rounded-lg shadow-md">
-            <img src="/images/cma-cgm.png" alt="CMA CGM" />
+            <img src="/images/logo3.png" alt="CMA CGM" />
+          </div>
+        </div>
+        {/* Continue adding cards as needed */}
+        {/* Repeat for other cards */}
+        <div className="snap-center p-2">
+          <div className="w-32 h-32 p-4 bg-white border rounded-lg shadow-md">
+            <img src="/images/logo4.png" alt="MSC" />
+          </div>
+        </div>
+        <div className="snap-center p-2">
+          <div className="w-32 h-32 p-4 bg-white border rounded-lg shadow-md">
+            <img src="/images/logo5.png" alt="CMA CGM" />
           </div>
         </div>
         {/* Continue adding cards as needed */}

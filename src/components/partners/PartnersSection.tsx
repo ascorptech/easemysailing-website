@@ -1,6 +1,7 @@
 // components/PartnersSection.tsx
 import React from "react";
 import PartnerCard from "./PartnerCard";
+import Link from "next/link";
 
 const PartnersSection = () => {
   const partners = [
@@ -10,7 +11,7 @@ const PartnersSection = () => {
       rating: "4.8",
       contactPerson: "Sherry Smith",
       description: "Lorem Ipsum is simply dummy text of the printing",
-      logoSrc: "/path/to/logo1.png",
+      logoSrc: "/images/logo1.png",
     },
     {
       name: "CMA CGM Group",
@@ -18,7 +19,7 @@ const PartnersSection = () => {
       rating: "3.9",
       contactPerson: "Aline Smith",
       description: "Lorem Ipsum is simply dummy text of the printing",
-      logoSrc: "/path/to/logo2.png",
+      logoSrc: "/images/logo3.png",
     },
     {
       name: "Teekay Corporation",
@@ -26,7 +27,7 @@ const PartnersSection = () => {
       rating: "3.6",
       contactPerson: "Robin",
       description: "Lorem Ipsum is simply dummy text of the printing",
-      logoSrc: "/path/to/logo3.png",
+      logoSrc: "/images/logo2.png",
     },
     {
       name: "V. Ships",
@@ -34,7 +35,7 @@ const PartnersSection = () => {
       rating: "3.8",
       contactPerson: "John Smith",
       description: "Lorem Ipsum is simply dummy text of the printing",
-      logoSrc: "/path/to/logo4.png",
+      logoSrc: "/images/logo4.png",
     },
     {
       name: "COSCO Shipping",
@@ -42,7 +43,7 @@ const PartnersSection = () => {
       rating: "4.6",
       contactPerson: "John Smith",
       description: "Lorem Ipsum is simply dummy text of the printing",
-      logoSrc: "/path/to/logo5.png",
+      logoSrc: "/images/logo8.png",
     },
   ];
 
@@ -55,9 +56,11 @@ const PartnersSection = () => {
           </h1>
         </div>
         <div>
-          <button className="h-8 bg-green-600 text-white py-1 px-4 rounded-lg text-sm mb-2">
-            View All
-          </button>
+          <Link href="/p6partner">
+            <button className="h-8 bg-green-600 text-white py-1 px-4 rounded-lg text-sm mb-2">
+              View All
+            </button>
+          </Link>
         </div>
       </div>
 

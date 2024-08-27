@@ -1,8 +1,10 @@
-import Mentors from "@/components/mentorsdetail/Mentors";
+import Contact from "@/components/contect/Contect";
+
 const page = () => {
   return (
     <div className="flex flex-col">
-      <Mentors />
+      <Contact/>
+      
     </div>
   );
 };

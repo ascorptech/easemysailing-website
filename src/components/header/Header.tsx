@@ -197,13 +197,14 @@ const Header: React.FC = () => {
                     >
                       <ul className="py-2 text-sm text-gray-700">
                         <li>
-                          <a
-                            href="#"
+                          <Link
+                            href="/p4mentoring"
                             className="block px-4 py-1 hover:bg-white hover:text-green-800"
                           >
                             Jobs & Career Advise
-                          </a>
+                          </Link>
                         </li>
+
                         <li>
                           <a
                             href="#"
@@ -212,29 +213,31 @@ const Header: React.FC = () => {
                             Resource
                           </a>
                         </li>
+
                         <li>
-                          <a
-                            href="#"
+                          <Link
+                            href="/p5podcast"
                             className="block px-4 py-1 hover:bg-white hover:text-green-800"
                           >
                             Podcast & Interviews
-                          </a>
+                          </Link>
                         </li>
+
                         <li>
-                          <a
-                            href="#"
+                          <Link
+                            href="/about"
                             className="block px-4 py-1 hover:bg-white hover:text-green-800"
                           >
                             About Us
-                          </a>
+                          </Link>
                         </li>
                         <li>
-                          <a
-                            href="#"
+                          <Link
+                            href="/contact"
                             className="block px-4 py-1 hover:bg-white hover:text-green-800"
                           >
                             Contact Us
-                          </a>
+                          </Link>
                         </li>
                       </ul>
                     </div>

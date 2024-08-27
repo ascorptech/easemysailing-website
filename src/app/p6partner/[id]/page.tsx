@@ -33,7 +33,7 @@ const MentoringDetailPage: React.FC = () => {
           <h3 className="flex justify-between pt-8 items-center text-base font-semibold ">
             {item.name}
           </h3>
-          <div className=" text-green-700 font-base text-center">{item.description}</div>
+          <div className=" text-green-700 font-base">{item.description}</div>
           <div className="text-gray-700 font-base">{item.location}</div>
           <div className="text-sm mb-2">
             <span className="text-yellow-500">⭐ {item.experience}</span>

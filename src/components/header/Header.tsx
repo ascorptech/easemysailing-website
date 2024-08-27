@@ -206,12 +206,12 @@ const Header: React.FC = () => {
                         </li>
 
                         <li>
-                          <a
-                            href="#"
+                          <Link
+                            href="/p7resource"
                             className="block px-4 py-1 hover:bg-white hover:text-green-800"
                           >
                             Resource
-                          </a>
+                          </Link>
                         </li>
 
                         <li>

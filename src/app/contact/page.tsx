@@ -1,4 +1,4 @@
-import Contact from "@/components/contect/Contect";
+import Contact from "@/components/contact/Contact";
 
 const page = () => {
   return (

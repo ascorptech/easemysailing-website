@@ -26,7 +26,8 @@ export const Partner: PartnerCardProps[] = [
     location: "Hong Kong",
     experience: "5 year",
     director: "Marine Operation",
-    profile: " I am Akshat kumar sharma ",
+    profile:
+      "Lorem Ip sum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
   },
   {
     id: "2",
@@ -37,7 +38,8 @@ export const Partner: PartnerCardProps[] = [
     location: "MBA-IIM (A)",
     experience: "5k+",
     director: "4.8",
-    profile: " I am pankaj kumar gupta. ",
+    profile:
+      "Lorem Ip sum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
     description: "Lorem Ipsum is simply dummy text of the printing",
     logoSrc: "/images/logo3.png",
   },
@@ -52,7 +54,8 @@ export const Partner: PartnerCardProps[] = [
     contactPerson: "Robin",
     description: "Lorem Ipsum is simply dummy text of the printing",
     logoSrc: "/images/logo2.png",
-    profile: " Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
+    profile:
+      "Lorem Ip sum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
   },
   {
     id: "4",
@@ -65,7 +68,8 @@ export const Partner: PartnerCardProps[] = [
     location: "MBA-IIM (A)",
     experience: "5k+",
     director: "4.8",
-    profile: " Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
+    profile:
+      "Lorem Ip sum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
   },
   {
     id: "5",
@@ -78,7 +82,8 @@ export const Partner: PartnerCardProps[] = [
     experience: "5k+",
     director: "4.8",
     logoSrc: "/images/captain.png",
-    profile: " Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
+    profile:
+      "Lorem Ip sum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
   },
   {
     id: "6",
@@ -91,7 +96,8 @@ export const Partner: PartnerCardProps[] = [
     location: "Hong Kong",
     experience: "5 year",
     director: "Marine Operation",
-    profile: " I am Akshat kumar sharma ",
+    profile:
+      "Lorem Ip sum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
   },
   {
     id: "7",
@@ -102,7 +108,8 @@ export const Partner: PartnerCardProps[] = [
     location: "MBA-IIM (A)",
     experience: "5k+",
     director: "4.8",
-    profile: " I am pankaj kumar gupta. ",
+    profile:
+      "Lorem Ip sum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
     description: "Lorem Ipsum is simply dummy text of the printing",
     logoSrc: "/images/logo3.png",
   },
@@ -117,7 +124,8 @@ export const Partner: PartnerCardProps[] = [
     contactPerson: "Robin",
     description: "Lorem Ipsum is simply dummy text of the printing",
     logoSrc: "/images/logo2.png",
-    profile: " Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
+    profile:
+      "Lorem Ip sum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
   },
   {
     id: "9",
@@ -130,7 +138,8 @@ export const Partner: PartnerCardProps[] = [
     location: "MBA-IIM (A)",
     experience: "5k+",
     director: "4.8",
-    profile: " Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
+    profile:
+      "Lorem Ip sum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
   },
   {
     id: "10",
@@ -143,7 +152,8 @@ export const Partner: PartnerCardProps[] = [
     experience: "5k+",
     director: "4.8",
     logoSrc: "/images/captain.png",
-    profile: " Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
+    profile:
+      "Lorem Ip sum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
   },
 
   // ... more items

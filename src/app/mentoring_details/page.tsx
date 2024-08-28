@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { ShippingCardProps, CaptainData } from "../data/CaptainData";
-import Heading4 from "@/components/p4mentoring/heading4/Heading4";
+import Heading4 from "@/components/mentoring/heading4/Heading4";
 
 const MentoringList: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -64,7 +64,7 @@ const MentoringList: React.FC = () => {
                 <span className="text-gray-500"> | {item.reviews} reviews</span>
               </div>
 
-              <Link href={`/p4mentoring/${item.id}`}>
+              <Link href={`/mentoring_details/${item.id}`}>
                 <button className="h-7 bg-green-600 text-white px-4 rounded-lg text-sm">
                   View Details
                 </button>

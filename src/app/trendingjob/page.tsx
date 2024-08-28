@@ -1,11 +1,10 @@
-import Heading3 from "@/components/p3trendingjob/heading3/Heading3";
-import List from "@/components/p3trendingjob/list/List";
+import Heading3 from "@/components/trendingjob_page/heading3/Heading3";
+import List from "@/components/trendingjob_page/list/List";
 const page = () => {
   return (
     <div className="flex flex-col">
-      
-      <Heading3/>
-      <List/>
+      <Heading3 />
+      <List />
     </div>
   );
 };

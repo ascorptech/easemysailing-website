@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { PartnerCardProps, Partner } from "../data/Partner";
-import Heading5 from "@/components/p6partner/heading5/Heading5";
+import Heading5 from "@/components/our_partner/heading5/Heading5";
 const PartnerList: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 20; // Number of items per page
@@ -54,7 +54,7 @@ const PartnerList: React.FC = () => {
               <p className="text-gray-500 text-sm text-wrap">
                 {item.description}
               </p>
-              <Link href={`/p6partner/${item.id}`}>
+              <Link href={`/partner_details/${item.id}`}>
                 <button className="h-8 mt-2 bg-green-600 text-white py-1 px-4 rounded-lg text-sm">
                   View Profile
                 </button>

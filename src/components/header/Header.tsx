@@ -82,7 +82,7 @@ const Header: React.FC = () => {
                       <ul className="py-2 text-sm text-gray-700">
                         <li>
                           <Link
-                            href="/p4mentoring"
+                            href="/mentoring_details"
                             className="block px-4 py-1 hover:bg-white hover:text-green-800"
                           >
                             Jobs & Career Advise
@@ -91,7 +91,7 @@ const Header: React.FC = () => {
 
                         <li>
                           <Link
-                            href="/p7resource"
+                            href="/resource_details"
                             className="block px-4 py-1 hover:bg-white hover:text-green-800"
                           >
                             Resource
@@ -100,7 +100,7 @@ const Header: React.FC = () => {
 
                         <li>
                           <Link
-                            href="/p5podcast"
+                            href="/podcast_list"
                             className="block px-4 py-1 hover:bg-white hover:text-green-800"
                           >
                             Podcast & Interviews

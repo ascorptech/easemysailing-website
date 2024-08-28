@@ -21,7 +21,7 @@ const PartnerDetailPage: React.FC = () => {
   return (
     <div>
       <div className="flex pl-[10rem] bg-green-100 py-6 border">
-        <div className="flex border rounded-lg  bg-green-400 h-30 transform-gpu mr-4">
+        <div className="flex border rounded-lg  bg-green-700 h-30 transform-gpu mr-4">
           <div className="  w-36  ">
             <div className="   h-36 w-36 bg-white border -translate-y-3 translate-x-3">
               <img

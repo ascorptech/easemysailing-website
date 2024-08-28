@@ -1,5 +1,5 @@
-import Heading2 from "@/components/p2toprecruiting/heading2/Heading2";
-import List from "@/components/p2toprecruiting/list/List";
+import Heading2 from "@/components/toprecruiting_page/heading2/Heading2";
+import List from "@/components/toprecruiting_page/list/List";
 const page = () => {
   return (
     <div className="flex flex-col">

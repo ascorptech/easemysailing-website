@@ -56,7 +56,7 @@ const PartnersSection = () => {
           </h1>
         </div>
         <div>
-          <Link href="/p6partner">
+          <Link href="/partner_details">
             <button className="h-8 bg-green-600 text-white py-1 px-4 rounded-lg text-sm mb-2">
               View All
             </button>

@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { ResourceCardProps, Resource } from "../data/resources";
-import Heading7 from "@/components/p7resource/heading7/Heading7";
+import Heading7 from "@/components/resource_page/heading7/Heading7";
 
 const ResourceList: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -54,10 +54,10 @@ const ResourceList: React.FC = () => {
               </div>
               <div className="text-gray-500 text-sm text-justify">
                 {" "}
-                {item.discription}{" "}
+                {item.discription1}{" "}
               </div>
 
-              <Link href={`/p7resource/${item.id}`}>
+              <Link href={`/resource_details/${item.id}`}>
                 <button className="h-8 mt-2 bg-green-700 text-white py-1 px-4 rounded-lg text-sm">
                   Read more
                 </button>

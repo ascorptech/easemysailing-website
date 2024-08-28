@@ -3,9 +3,9 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <footer className="bg-gray-100 ">
-      <div className="bg-green-600 py-10 place-items-center">
+      <div className="bg-green-600 py-10 pl-[-4rem] place-items-center">
         <div className=" flex gap-4 text-center">
-          <div className="w-[50%] ml-5 pl-[4%]">
+          <div className="w-[48%] ml-5 pl-[4%]">
             <h2 className="text-white text-4xl font-normal mb-6">
               Don't miss out! Subscribe to our newsletter for exclusive content.
             </h2>
@@ -60,14 +60,14 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-600 text-sm">
+                <Link href="/toprecruiting" className="text-gray-600 text-sm">
                   Recruiter
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-600 text-sm">
+                <Link href="mentoring_details" className="text-gray-600 text-sm">
                   Careers
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -75,19 +75,19 @@ const Footer = () => {
             <h4 className="font-semibold text-lg text-black mb-2">Help</h4>
             <ul>
               <li>
-                <a href="#" className="text-gray-600 text-sm">
+                <Link href="/privacy_policy" className="text-gray-600 text-sm">
                   Privacy Policy
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-600 text-sm">
+                <Link href="/gdpr" className="text-gray-600 text-sm">
                   GDPR & Privacy Policy
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-600 text-sm">
+                <Link href="/t&c" className="text-gray-600 text-sm">
                   Terms and Conditions
-                </a>
+                </Link>
               </li>
               <li>
                 <Link href="/faq" className="text-gray-600 text-sm">

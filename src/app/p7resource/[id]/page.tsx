@@ -19,10 +19,11 @@ const ResourceDetailsPage: React.FC = () => {
   }
 
   return (
-    <div>
+    <div className="container h-[10rem]">
+      {/* right div */}
       <div className="flex justify-between mx-24 ">
         <div className=" border">
-          <div className="w-[800px] h-[300px]  ">
+          <div className="w-auto h-[10rem]  ">
             <div className=" ">
               <img
                 src={item.logoSrc}
@@ -40,6 +41,7 @@ const ResourceDetailsPage: React.FC = () => {
             </div>
           </div>
         </div>
+        {/* //left div */}
         <div className=" w-[44rem] bg-green-200 mt-8 col-span-2 w-[70%]">
           <h2>More Articals</h2>
           <div className=" ">
@@ -60,8 +62,6 @@ const ResourceDetailsPage: React.FC = () => {
             </div>
           </div>
         </div>
-
-      
       </div>
     </div>
   );

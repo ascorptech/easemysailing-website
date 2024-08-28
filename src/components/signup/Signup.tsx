@@ -24,22 +24,22 @@ const Signup = () => {
       {/* Middle Content Container */}
       <div className=" m-2  justify-center text-center w-[33%]">
         <div>
-          <p className="text-green-500 text-lg font-semibold mb-3">
+          <p className="text-green-700 text-lg font-semibold mb-3">
             Your smooth salling starts from here
           </p>
-          <p className="text-sm text-gray-600 mb-3 ">
+          <p className="text-sm text-gray-700 mb-3 ">
             <span className="mt-3">
               Create an account or sign in, By contiuing,you agree to our
             </span>{" "}
-            <span className="text-green-500">Terms of use</span> and acknowledge
-            Our <span className="text-green-500">Privacy Policy.</span>
+            <span className="text-green-700">Terms of use</span> and acknowledge
+            Our <span className="text-green-700">Privacy Policy.</span>
           </p>
         </div>
 
         <div>
           <button
             type="button"
-            className="text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 me-2 mb-2"
+            className="text-black bg-white border border-green-800 hover:bg-green-600 focus:ring-1 focus:outline-none focus:ring-green-8 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-green-800 me-2 mb-2"
           >
             <svg
               className="w-4 h-4 me-2"
@@ -59,7 +59,7 @@ const Signup = () => {
 
           <button
             type="button"
-            className="text-white bg-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#3b5998]/55 me-2 mb-2"
+            className="text-black bg-white hover:bg-green-600 focus:ring-1 focus:outline-none focus:ring-green-8 font-medium border border-green-800 rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-green-800 me-2 mb-2"
           >
             <svg
               className="w-4 h-4 me-2"
@@ -85,7 +85,7 @@ const Signup = () => {
           </div>
           {/* <span className="relative mb-9">or</span> */}
           <div>
-            <div className="w-full max-w-sm p-2 bg-white mt-2 mx-auto">
+            <div className="  p-1 bg-white mt-2 mx-auto">
               <form
                 className="flex items-center space-x-4"
                 onSubmit={handleSubmit}
@@ -93,65 +93,40 @@ const Signup = () => {
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="w-full px-4 py-3  mt-0 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className=" px-3 py-2  border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   required
                 />
                 <button
                   type="submit"
-                  className="px-4 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  className=" w-[11rem] h-[2.5rem] bg-green-700 text-white rounded-lg hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-blue-400"
                 >
-                  Search
+                  Continue with Email
                 </button>
               </form>
             </div>
 
-            <div className="flex space-x-4 justify-center mt-2">
+            <div className="flex space-x-4 justify-center mt-4">
               {/* Google Play Button */}
               <a
                 href="https://play.google.com/store/apps/details?id=YOUR_APP_ID"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center px-2 py-2 bg-gray-800 text-white rounded-lg shadow-md hover:bg-gray-900"
-              >
-                <svg
-                  className="w-6 h-6 mr-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M12 19V6l9 6-9 6z"
-                  ></path>
-                </svg>
-                <span>Google Play</span>
+                className="flex items-center  text-white rounded-lg shadow-md hover:bg-gray-900"
+              ><img src="./play.png" alt="image not found" className="w-40 h-[2rem]]"/>
+               
               </a>
 
               {/* App Store Button */}
               <a
                 href="https://apps.apple.com/us/app/your-app-id"
-                target="_blank"
+                target="/play.png"
                 rel="noopener noreferrer"
-                className="flex items-center mr-2 px-4 py-2 bg-black text-white rounded-lg shadow-md hover:bg-gray-800"
+                className="flex items-center mr-2  text-white rounded-lg shadow-md hover:bg-gray-800"
               >
-                <svg
-                  className="w-6 h-6 mr-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M13 16l4-4-4-4v8z"
-                  ></path>
-                </svg>
-                <span>App Store</span>
+                <img src="./apple.png" alt="image not found" className="w-40 h-[3rem]"/>
+                  
+                
+                
               </a>
             </div>
           </div>

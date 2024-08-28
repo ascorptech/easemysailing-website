@@ -60,7 +60,7 @@ export default function Recruiting() {
             </div>
           </div>
           <div className="flex overflow-hidden ">
-            {recuriting.map((d, i) => {
+            {recuriting?.map((d:any, i:number) => {
               return (
                 <div
                   style={{ transform: `translateX(-${slide * 100}%)` }}

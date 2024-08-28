@@ -43,7 +43,7 @@ export default function Slide() {
             </div>
           </div>
           <div className="flex  overflow-hidden   ">
-            {categories.map((cat, index) => {
+            {categories.map((cat:any, index:number) => {
               return (
                 <div
                   style={{ transform: `translateX(-${slide * 100}%)` }}
@@ -51,7 +51,7 @@ export default function Slide() {
                   className="flex justify-center items-center w-[124px] mx-1 rounded-2xl border-2 shrink-0 duration-500"
                 >
                   <img
-                    src={"http://localhost:3000/images/" + cat.image} // Replace with your image path
+                    src={"http://localhost:3000/images/" + cat?.image} // Replace with your image path
                     alt=""
                     width={100} // Set to match the height
                     height={100} // Ensure the aspect ratio is consistent

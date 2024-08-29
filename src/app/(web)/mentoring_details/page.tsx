@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { ShippingCardProps, CaptainData } from "../data/CaptainData";
+import { ShippingCardProps, CaptainData } from "../(web)/data/CaptainData";
 import Heading4 from "@/components/mentoring/heading4/Heading4";
 
 const MentoringList: React.FC = () => {

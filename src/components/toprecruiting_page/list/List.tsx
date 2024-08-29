@@ -1,4 +1,4 @@
-import ShippingList from "@/components/trendingjob_page/list/ShippingList";
+import ShippingList from "@/components/web/trendingjob_page/list/ShippingList";
 
 const List = () => {
   return (

@@ -1,11 +1,10 @@
 "use client";
-
+import Link from "next/link";
 import React, { useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import { PiLineVertical } from "react-icons/pi";
 import { CiSearch } from "react-icons/ci";
-import Link from "next/link";
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -154,15 +153,15 @@ const Header: React.FC = () => {
               </div>
 
               <div className="flex relative items-center h-2 mt-2 ">
-                <button
-                  type="button"
+                <Link
+                  href={'candidate'}
                   className="h-8 w-20.5 flex items-center py-2.5 px-5 me-2 mb-2 text-sm font-medium text-transparent focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-1 focus:ring-green-800 dark:focus:ring-green-800 dark:text-black dark:border-gray-600 dark:hover:text-white dark:hover:bg-green-700"
                 >
                   <span className="pr-2">
                     <CiSearch />
                   </span>
                   Seafarers Login
-                </button>
+                </Link>
                 <button
                   type="button"
                   className=" h-8 w-21  text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-1 focus:ring-green-800 font-medium rounded-full text-sm px-5 py-2.4 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"

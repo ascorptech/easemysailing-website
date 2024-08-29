@@ -1,4 +1,4 @@
-import Slides from "../companies/Slides";
+import Slides from "../../companies/Slides";
 import Link from "next/link";
 
 const Trending = () => {

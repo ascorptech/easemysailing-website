@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { ResourceCardProps, Resource } from "../data/resources";
+import { ResourceCardProps, Resource } from "../(web)/data/resources";
 import Heading7 from "@/components/resource_page/heading7/Heading7";
 
 const ResourceList: React.FC = () => {

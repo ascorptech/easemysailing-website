@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../globals.scss";
+import RecruiterHeader from "@/components/recruiter/RecruiterHeader/RecruiterHeader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +19,7 @@ export default function RecruiterLayout({
         <html lang="en">
       <body className={inter.className}>
         <div className="w-full h-screen flex flex-col">
+            <RecruiterHeader/>
             {children}
         </div>
         </body>

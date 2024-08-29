@@ -1,7 +1,7 @@
 // components/Articles.tsx
 "use client";
 import React from "react";
-import PartnerCard from "../partners/PartnerCard";
+import PartnerCard from "../web/partners/PartnerCard";
 
 const Articles = () => {
   const partners = [

@@ -2,9 +2,9 @@
 
 import React from "react";
 import { useParams } from "next/navigation"; // Use useParams instead of useRouter
-import { CaptainData, ShippingCardProps } from "../../(web)/data/CaptainData";
-// import Profile from "@/components/p4mentoring/profileSummary/Profile";
+
 import Image from "next/image";
+import { CaptainData } from "../../data/CaptainData";
 const MentoringDetailPage: React.FC = () => {
   const params = useParams(); // useParams hook to get route parameters
   const { id } = params;

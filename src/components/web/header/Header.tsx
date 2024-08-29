@@ -154,7 +154,7 @@ const Header: React.FC = () => {
 
               <div className="flex relative items-center h-2 mt-2 ">
                 <Link
-                  href={'candidate'}
+                  href={"candidate"}
                   className="h-8 w-20.5 flex items-center py-2.5 px-5 me-2 mb-2 text-sm font-medium text-transparent focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-1 focus:ring-green-800 dark:focus:ring-green-800 dark:text-black dark:border-gray-600 dark:hover:text-white dark:hover:bg-green-700"
                 >
                   <span className="pr-2">

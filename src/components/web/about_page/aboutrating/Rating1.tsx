@@ -16,7 +16,7 @@ const Rating1 = () => {
         {/* Third div */}{" "}
         <div className="flex flex-col sm:md:w-1/2 w-full justify-center text-center items-center  p-3 border-2 rounded-3xl">
           <h1 className="text-7xl font-bold">80</h1>{" "}
-          <p>reviews, salaries & imsights</p>{" "}
+          <p>reviews, salaries & insights</p>{" "}
         </div>
         {/*Forth div */}{" "}
         <div className="flex flex-col sm:md:w-1/2 w-full justify-center text-center items-center  p-3 border-2 rounded-3xl">

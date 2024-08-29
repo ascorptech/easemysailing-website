@@ -59,10 +59,10 @@ const Wedo = () => {
           />
           <h1 className="text-base font-semibold">For Manning Agents</h1>{" "}
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse
-            sapiente officiis veritatis obcaecati natus nobis laudantium ullam.
-            Ad dicta rem deserunt blanditiis esse, reprehenderit asperiores
-            perferendis, eveniet ducimus iusto ea.
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur
+            porro corrupti non explicabo repellat commodi temporibus error
+            expedita, distinctio aliquid ab consequatur necessitatibus iure,
+            minus ipsam? Minima provident quidem nihil?
           </p>{" "}
         </div>
       </div>

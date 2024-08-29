@@ -3,10 +3,7 @@
 import React from "react";
 import { useState } from "react";
 import { useParams } from "next/navigation"; // Use useParams instead of useRouter
-import { Resource } from "@/app/data/resources";
-
-// import Profile from "@/components/p4mentoring/profileSummary/Profile";
-import Image from "next/image";
+import { Resource } from "../../data/resources";
 const ResourceDetailsPage: React.FC = () => {
   const params = useParams(); // useParams hook to get route parameters
   const { id } = params;
@@ -48,7 +45,9 @@ const ResourceDetailsPage: React.FC = () => {
         </div>
         <div>
           <h2 className="font-bold text-xl mt-4">{item.title}</h2>
-          <p className=" text-sm text-justify text-left mt-4">{item.discription}</p>
+          <p className=" text-sm text-justify text-left mt-4">
+            {item.discription}
+          </p>
         </div>
 
         <h1 className=" my-4  font-bold text-xl">Drop Your comment</h1>
@@ -136,7 +135,9 @@ const ResourceDetailsPage: React.FC = () => {
                 <h2 className="font-bold text-sm">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 </h2>
-                <p className="text-green-600   mt-0">01/jan/2014 By gwen stacy</p>
+                <p className="text-green-600   mt-0">
+                  01/jan/2014 By gwen stacy
+                </p>
               </div>
             </div>
             <div className="flex gap-3 mb-2 p-2">
@@ -151,7 +152,9 @@ const ResourceDetailsPage: React.FC = () => {
                 <h2 className="font-bold text-sm">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 </h2>
-                <p className="text-green-600   mt-0">01/jan/2014 By gwen stacy</p>
+                <p className="text-green-600   mt-0">
+                  01/jan/2014 By gwen stacy
+                </p>
               </div>
             </div>
             <div className="flex gap-3  mb-2 p-2">
@@ -166,7 +169,9 @@ const ResourceDetailsPage: React.FC = () => {
                 <h2 className="font-bold text-sm">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 </h2>
-                <p className="text-green-600   mt-0">01/jan/2014 By gwen stacy</p>
+                <p className="text-green-600   mt-0">
+                  01/jan/2014 By gwen stacy
+                </p>
               </div>
             </div>
             <div className="flex gap-3 mb-2 p-2">
@@ -181,7 +186,9 @@ const ResourceDetailsPage: React.FC = () => {
                 <h2 className="font-bold text-sm">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 </h2>
-                <p className="text-green-600   mt-0">01/jan/2014 By gwen stacy</p>
+                <p className="text-green-600   mt-0">
+                  01/jan/2014 By gwen stacy
+                </p>
               </div>
             </div>
             <div className="flex gap-3  mb-2 p-2">
@@ -196,7 +203,9 @@ const ResourceDetailsPage: React.FC = () => {
                 <h2 className="font-bold text-sm">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 </h2>
-                <p className="text-green-600   mt-0">01/jan/2014 By gwen stacy</p>
+                <p className="text-green-600   mt-0">
+                  01/jan/2014 By gwen stacy
+                </p>
               </div>
             </div>
             <div className="flex gap-3   p-2">
@@ -211,7 +220,9 @@ const ResourceDetailsPage: React.FC = () => {
                 <h2 className="font-bold text-sm">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 </h2>
-                <p className="text-green-600   mt-0">01/jan/2014 By gwen stacy</p>
+                <p className="text-green-600   mt-0">
+                  01/jan/2014 By gwen stacy
+                </p>
               </div>
             </div>
           </div>

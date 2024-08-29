@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { PartnerCardProps, Partner } from "../(web)/data/Partner";
-import Heading5 from "@/components/our_partner/heading5/Heading5";
+import { PartnerCardProps, Partner } from "../data/Partner";
+import Heading5 from "@/components/web/our_partner/heading5/Heading5";
 const PartnerList: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 20; // Number of items per page

@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useParams } from "next/navigation"; // Use useParams instead of useRouter
-import { Partner } from "../../(web)/data/Partner";
+import { Partner } from "../../data/Partner";
 
 // import Profile from "@/components/p4mentoring/profileSummary/Profile";
 import Image from "next/image";

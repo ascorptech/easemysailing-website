@@ -1,5 +1,5 @@
-import Headingfaq from "@/components/faq/heading/Headingfaq" 
-import Categories from "@/components/faq/heading/Categories";
+import Headingfaq from "@/components/web/faq/heading/Headingfaq" 
+import Categories from "@/components/web/faq/heading/Categories";
 const page = () => {
   return (
     <div className="flex flex-col">

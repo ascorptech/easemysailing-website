@@ -9,9 +9,9 @@ const Signup = () => {
     alert("Form submitted!");
   };
   return (
-    <div className=" flex items-center justify-between p-2 m-3 gap-5 bg-gray-100 border-2 border-grey ">
+    <div className="flex flex-col md:flex-row items-center md:  justify-between p-2 m-3 gap-5 bg-gray-100 border-2 border-grey ">
       {/* Left Image Container */}
-      <div className="flex-1 flex items-center justify-center">
+      <div className="flex-1 flex items-center justify-center  md:mb-0">
         <Image
           src="/sign2.png" // Replace with your image path
           alt="Left Image"
@@ -22,7 +22,7 @@ const Signup = () => {
       </div>
 
       {/* Middle Content Container */}
-      <div className=" m-2  justify-center text-center w-[33%]">
+      <div className=" m-2  justify-center text-center w-[33%] md:text-left  ">
         <div>
           <p className="text-green-700 text-lg font-semibold mb-3">
             Your smooth salling starts from here
@@ -87,7 +87,7 @@ const Signup = () => {
           <div>
             <div className="  p-1 bg-white mt-2 mx-auto">
               <form
-                className="flex items-center space-x-4"
+                className="flex flex-col items-center  md:flex-row space-y-4 md:space-y-0 md:space-x-4"
                 onSubmit={handleSubmit}
               >
                 <input

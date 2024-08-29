@@ -1,10 +1,10 @@
-import Talk from "@/components/about_page/talk/Talk";
-import Wedo from "@/components/about_page/wedo/Wedo";
-import Crew from "@/components/about_page/crewpool/Crew";
-import Mv2 from "@/components/about_page/mvv/Mv2";
-import Rating1 from "@/components/about_page/aboutrating/Rating1";
-import Team from "@/components/about_page/team/Team";
-import Team2 from "@/components/about_page/team/team2";
+import Talk from "@/components/web/about_page/talk/Talk";
+import Wedo from "@/components/web/about_page/wedo/Wedo";
+import Crew from "@/components/web/about_page/crewpool/Crew";
+import Mv2 from "@/components/web/about_page/mvv/Mv2";
+import Rating1 from "@/components/web/about_page/aboutrating/Rating1";
+import Team from "@/components/web/about_page/team/Team";
+import Team2 from "@/components/web/about_page/team/team2";
 const page = () => {
   return (
     <div className="flex flex-col">

@@ -1,8 +1,9 @@
 import Slide from "./Slide";
+
 const Companies = () => {
   return (
     <div className="mt-6">
-      <div className="font-bold text-2xl ml-[11rem]">
+      <div className="font-bold text-2xl ml-4 sm:ml-[11px] lg:ml-[5rem] xl:ml-[11rem] text-center sm:text-left">
         <h1>
           <span className="text-green-700">Featured</span> Companies
         </h1>
@@ -12,4 +13,5 @@ const Companies = () => {
     </div>
   );
 };
+
 export default Companies;

@@ -18,8 +18,9 @@ const Header: React.FC = () => {
   };
 
   return (
-    <div className="border-b border-gray-300  items-center sticky z-20 top-0">
-      <nav className="bg-white border-white-200 dark:bg-white-900 dark:border-black-700">
+    <div className="border-b border-gray-300  items-center z-20 top-0 fixed w-full">
+  
+      <nav className="bg-white border-white-200 dark:bg-white-900 dark:border-black-700 sticky ">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <div className="flex items-center space-x-3 rtl:space-x-reverse">
             <Link href="/">
@@ -162,7 +163,7 @@ const Header: React.FC = () => {
                   </span>
                   Seafarers Login
                 </Link>
-                <Link href={'recruiter'}
+                <Link href="#"
                   
                   className=" h-8 w-21  text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-1 focus:ring-green-800 font-medium rounded-full text-sm px-5 py-2.4 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
                 >

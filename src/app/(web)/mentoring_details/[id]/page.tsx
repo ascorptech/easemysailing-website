@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useParams } from "next/navigation"; // Use useParams instead of useRouter
-import { CaptainData, ShippingCardProps } from "../../(web)/data/CaptainData";
+import { CaptainData, ShippingCardProps } from "../../data/CaptainData";
 // import Profile from "@/components/p4mentoring/profileSummary/Profile";
 import Image from "next/image";
 const MentoringDetailPage: React.FC = () => {

@@ -1,4 +1,4 @@
- "use client";
+"use client";
 
 import Link from "next/link";
 
@@ -6,20 +6,18 @@ import { IoCallOutline } from "react-icons/io5";
 import { GoEye } from "react-icons/go";
 import { MdOutlineLock } from "react-icons/md";
 
-
-import ForgotPassword from "@/components/candidate/ChangePassword/ForgotPassword";
-import VerificationCode from "@/components/candidate/ChangePassword/VerificationCode";
-import VerificationOpt from "@/components/candidate/ChangePassword/VerificationOpt";
-import Congratulations from "@/components/candidate/ChangePassword/Congratulations";
+import ForgotPassword from "@/components/candidate/changepassword/ForgotPassword";
+import VerificationCode from "@/components/candidate/changepassword/VerificationCode";
+import VerificationOpt from "@/components/candidate/changepassword/VerificationOpt";
+import Congratulations from "@/components/candidate/changepassword/Congratulations";
 
 import { useState } from "react";
 
-import LoginImg from "@/components/candidate/LoginImg";
-import ResetPassword from "@/components/candidate/ChangePassword/ResetPassword";
-import PasswordChange from "@/components/candidate/ChangePassword/PasswordChange";
+import LoginImg from "@/components/candidate/image/LoginImg";
+import ResetPassword from "@/components/candidate/changepassword/ResetPassword";
+import PasswordChange from "@/components/candidate/changepassword/PasswordChange";
 import LoginHeader from "@/app/Shared/LoginHeader/LoginHeader";
 import Footer from "@/app/Shared/Footer/Footer";
-
 
 const SignIn = () => {
   const [emailOrPhone, setEmailOrPhone] = useState("");
@@ -94,7 +92,6 @@ const SignIn = () => {
       <LoginHeader />
       <div className="flex items-center justify-center bg-gray-100 ">
         <div className="flex w-full h-auto overflow-hidden bg-white">
-        
           <LoginImg />
 
           {/* Sign-In Form Section */}
@@ -105,7 +102,10 @@ const SignIn = () => {
             <p className="mb-4 text-center text-gray-600">
               Enter your credential to access your account.
             </p>
-            <form onSubmit={handleSubmit} className="w-full max-w-lg p-6 ml-10 ">
+            <form
+              onSubmit={handleSubmit}
+              className="w-full max-w-lg p-6 ml-10 "
+            >
               <div className="mb-2">
                 <label
                   className="block mb-2 text-sm font-bold text-gray-700"
@@ -196,7 +196,7 @@ const SignIn = () => {
 
             <p className="mt-2 text-center">
               Don’t have an account?
-              <Link href="/signup" className="text-green-600 hover:underline">
+              <Link href={"signup"} className="text-green-600 hover:underline">
                 Sign Up
               </Link>
             </p>
@@ -229,7 +229,10 @@ const SignIn = () => {
           onClose={closeResetPassword}
           onSubmit={openPasswordChange}
         />
-        <PasswordChange isOpen={isPasswordChange} onClose={closePasswordChange} />
+        <PasswordChange
+          isOpen={isPasswordChange}
+          onClose={closePasswordChange}
+        />
       </div>
       <Footer />
     </div>
@@ -237,4 +240,3 @@ const SignIn = () => {
 };
 
 export default SignIn;
-

@@ -1,5 +1,5 @@
 // import { Link } from "react-router-dom";
-"use client"
+"use client";
 import Link from "next/link";
 import { MdOutlineEmail } from "react-icons/md";
 
@@ -11,7 +11,8 @@ import { FaPhone } from "react-icons/fa";
 
 import { useState } from "react";
 // import LoginImg from "../Login/LoginImg";
-import LoginImg from "../LoginImg";
+// import LoginImg from "../LoginImg";
+import LoginImg from "../image/LoginImg";
 // import LoginHeader from "@Shared/LoginHeader/LoginHeader";
 import LoginHeader from "@/app/Shared/LoginHeader/LoginHeader";
 // import Footer from "@Shared/Footer/Footer";
@@ -250,7 +251,7 @@ const SignUp: React.FC = () => {
                       className="ml-2 block  text-sm "
                     >
                       You agree to our
-                      <Link href="#" className="text-green-600">
+                      <Link href="/demo" className="text-green-600">
                         Teams & Conditions
                       </Link>
                       and{" "}

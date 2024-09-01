@@ -2,9 +2,9 @@ import Slides from "../companies/Slides";
 import Link from "next/link";
 const Career = () => {
   return (
-    <div className="mt-7">
-      <div className="flex items-center justify-between mt-4 pt-4 mr-[8.5%] ">
-        <div className="font-bold ml-[11rem] text-2xl">
+    <div className="mt-7  w-[99%] mx-7 lg:mx-1 md:mx-6">
+      <div className="flex items-center justify-between mt-4 pt-4 lg:mr-[10%] md:mx-[3rem]">
+        <div className="font-bold text-2xl lg:ml-[8rem]">
           <h1>
             <span className="text-green-700">Career</span> Advise & Mentoring
           </h1>

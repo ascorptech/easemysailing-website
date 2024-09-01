@@ -16,6 +16,9 @@ const Slide2: React.FC<SlideProps> = ({
 }) => {
   return (
     <div className="bg-white border-2 rounded-lg p-2  shadow-md flex-shrink-0 w-44 ">
+    {/* /<div className=" flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory lg:mx-[7rem] mx-[2rem] ml-[3rem] "> */}
+     {/* <div className="mt-7 border-2 border-red-500 w-[99%] mx-7 lg:mx-1 md:mx-6"> */}
+
       <div className="flex justify-center">
         <img
           src={"http://localhost:3000/images/" + image}

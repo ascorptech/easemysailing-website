@@ -9,7 +9,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex flex-col  lg:flex-row items-center justify-center xl:justify-between xl:p-2 xl:m-2 gap-5 bg-gray-100 border-2 border-grey sm:w-full sm:m-0 sm-p-0 ml-8  w-full m-0 mt-2">
+    <div className="flex flex-col  lg:flex-row items-center justify-center xl:justify-between  gap-5 bg-gray-100 border-2 border-grey sm:w-full sm:m-0 sm-p-0 ml-8  w-full m-0 mt-2">
       {/* Left Image Container */}
       <div className="flex-1 flex items-center justify-center mb-5 lg:mb-0 w-500 h-400   ">
         <img

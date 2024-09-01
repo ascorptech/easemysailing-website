@@ -45,12 +45,25 @@ const Articles = () => {
       description: "Lorem Ipsum is simply dummy text of the printing",
       logoSrc: "/path/to/logo5.png",
     },
+    {
+      name: "V. Ships",
+      reviews: "2k+",
+      rating: "3.8",
+      contactPerson: "John Smith",
+      description: "Lorem Ipsum is simply dummy text of the printing",
+      logoSrc: "/path/to/logo4.png",
+    },
   ];
 
   return (
-    <section className="mt-5 p-2 w-[81%] ml-[10rem]">
-      <div className="flex items-center justify-between  mr-3  ">
-        <div className="font-bold ml-[1rem] text-2xl">
+    // <section className="mt-5 p-2 w-[81%] ml-[10rem]">
+    <section className="mt-7  w-[99%] mx-7 lg:mx-1 md:mx-6">
+
+      {/* <div className="flex items-center justify-between  mr-3  "> */}
+      <div className="flex items-center justify-between mt-4 pt-4 lg:mr-[10%] md:mx-[3rem]">
+        {/* <div className="font-bold ml-[1rem] text-2xl"> */}
+        <div className="font-bold text-2xl lg:ml-[8rem]">
+
           <h1>
             <span className="text-green-700">Latest</span>{" "}
             <span>News & Articles</span>
@@ -63,7 +76,8 @@ const Articles = () => {
         </div>
       </div>
 
-      <div className="overflow-x-auto flex space-x-4 no-scrollbar">
+      {/* <div className="overflow-x-auto flex space-x-4 no-scrollbar"> */}
+      <div className=" overflow-x-auto flex space-x-4 no-scrollbarr lg:ml-[4rem] scroll-smooth snap-x snap-mandatory lg:mx-[1rem] mx-[2rem] ml-[3rem]  w-[90%]">
         {partners.map((partner, index) => (
           <PartnerCard
             key={index}

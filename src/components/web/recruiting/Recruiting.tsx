@@ -34,7 +34,7 @@ export default function Recruiting() {
   return (
     <div className="mt-5">
       <div className="flex items-center justify-between mt-4 pt-4 mr-[8.5%] ">
-        <div className="font-bold text-2xl ml-[11rem]">
+        <div className="font-bold ml-[2rem] text-2xl lg:ml-[11rem]">
           <h1>
             Top <span className="text-green-700">Recruiting</span> Companies
           </h1>
@@ -48,9 +48,9 @@ export default function Recruiting() {
         </div>
       </div>
 
-      <div className="max-w-[1150px] mx-auto mt-3 ">
-        <div className="flex flex-row  justify-between">
-          <div className="flex justify-between items-center">
+      <div className="w-full mx-7 md:mx-6 md:w-full max-w-[1150px] lg:mx-auto mt-3 ">
+        <div className="flex flex-row justify-between border-2 border-red-600 ">
+          <div className="flex justify-between items-center ">
             <div
               className="cursor-pointer
             flex justify-center items-center w-[30px] h-[30px] bg-[#e8e8f1] rounded-full mx-2 border-2"

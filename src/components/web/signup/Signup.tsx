@@ -9,15 +9,14 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row items-center justify-between p-2 m-3 gap-5 bg-gray-100 border-2 border-grey">
+    <div className="flex flex-col  lg:flex-row items-center justify-center xl:justify-between xl:p-2 xl:m-2 gap-5 bg-gray-100 border-2 border-grey sm:w-full sm:m-0 sm-p-0 ml-8  w-full m-0 mt-2">
       {/* Left Image Container */}
-      <div className="flex-1 flex items-center justify-center mb-5 lg:mb-0">
-        <Image
+      <div className="flex-1 flex items-center justify-center mb-5 lg:mb-0 w-500 h-400   ">
+        <img
           src="/sign2.png" // Replace with your image path
           alt="Left Image"
-          width={500} // Set to match the height
-          height={500} // Ensure the aspect ratio is consistent
-          className="object-cover w-full"
+          // Ensure the aspect ratio is consistent
+          className="object-cover w-500 h-400 "
         />
       </div>
 
@@ -122,13 +121,12 @@ const Signup = () => {
       </div>
 
       {/* Right Image Container */}
-      <div className="flex-1 flex items-center justify-center">
-        <Image
+      <div className="flex-1 flex items-center justify-center mb-5 lg:mb-0 w-500 h-400   ">
+        <img
           src="/sign1.png" // Replace with your image path
-          alt="Right Image"
-          width={500} // Set to match the height
-          height={500} // Ensure the aspect ratio is consistent
-          className="object-cover w-full"
+          alt="Left Image"
+          // Ensure the aspect ratio is consistent
+          className="object-cover w-500 h-400 "
         />
       </div>
     </div>

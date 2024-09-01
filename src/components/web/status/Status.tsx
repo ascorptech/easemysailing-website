@@ -5,14 +5,14 @@ import { BsFillPeopleFill } from "react-icons/bs";
 
 const Status = () => {
   return (
-    <div className="flex flex-col md:flex-row justify-between p-4 space-y-6 md:space-y-0 md:space-x-6 mx-4 md:mx-16 lg:w-[90%]">
+    <div className="flex flex-col lg:flex-col-2 md:flex-row sm:flex-col justify-between p-4 space-y-6 md:space-y-0 md:space-x-6  md:mx-6 lg:mx-16 lg:w-[90%] sm:mx-8 sm:mr-4  mt-4 mx-8 w-full">
       {/* Left Div */}
-      <div className="w-full md:w-1/2 bg-gray-50 p-5 rounded-lg shadow-md">
-        <h2 className="text-2xl md:text-3xl font-bold">
+      <div className="w-full md:w-1/2  bg-gray-50 p-5 rounded-lg shadow-md">
+        <h2 className="text-2xl md:text-center md:text-3xl font-bold">
           EaseMySailing by the <span className="text-green-600">numbers</span>
         </h2>
-        <ul className="md:flex md:flex-col list-none p-0 mt-5 space-y-10 ">
-          <li className="flex items-center gap-x-20 lg:gap-x-48">
+        <ul className="  list-none p-0 mt-8 space-y-10 ">
+          <li className="flex items-center sm:justify-around md:gap-x-32  lg:gap-x-48 sm:gap-x-10 justify-around">
             <div className="text-green-700 text-5xl md:text-6xl">
               <IoPersonAddSharp />
             </div>
@@ -23,7 +23,7 @@ const Status = () => {
               </span>
             </div>
           </li>
-          <li className="flex items-center gap-x-28 lg:gap-x-56">
+          <li className="flex items-center sm:justify-around  gap-x-20 lg:gap-x-56 md:gap-x-32 justify-around">
             <div className="text-green-700 text-5xl md:text-6xl">
               <FaSmile />
             </div>
@@ -34,7 +34,7 @@ const Status = () => {
               </span>
             </div>
           </li>
-          <li className="flex items-center gap-x-24 lg:gap-x-52">
+          <li className="flex items-center sm:justify-around gap-x-20 lg:gap-x-52 md:gap-x-32 justify-around">
             <div className="text-green-700 text-5xl md:text-6xl">
               <BsFillPeopleFill />
             </div>
@@ -46,9 +46,9 @@ const Status = () => {
             </div>
           </li>
         </ul>
-        <p className="mt-1 font-bold text-base lg:text-lg text-black">
+        <p className="mt-1 font-bold text-base lg:text-lg text-black text-center">
           Lorem Ipsum is simply dummy text
-          <button className="lg:ml-2  mt-3 lg:mt-6 bg-green-600 text-white py-1 px-3 rounded-md">
+          <button className="lg:ml-2  mt-3 lg:mt-6 bg-green-600 text-white sm:ml-5 py-1 px-3 rounded-md ">
             Contact Us
           </button>
         </p>
@@ -56,11 +56,11 @@ const Status = () => {
 
       {/* Right Div */}
       <div className="w-full md:w-1/2 p-5 bg-white rounded-lg shadow-md">
-        <h2 className="text-2xl md:text-3xl font-bold">
+        <h2 className="text-2xl md:text-3xl md:text-center font-bold">
           Find out what's new at{" "}
           <span className="text-green-600">EaseMySailing</span>
         </h2>
-        <div className="relative pt-[56.25%] mt-4">
+        <div className="relative pt-[56.25%] mt-6">
           <iframe
             className="absolute top-0 left-0 w-full h-full"
             src="https://www.youtube.com/embed/lm6CLMLSZBc"
@@ -70,7 +70,7 @@ const Status = () => {
             allowFullScreen
           ></iframe>
         </div>
-        <p className="mt-4 text-gray-500">
+        <p className="mt-6 text-gray-500 text-lg">
           Your career journey is serious, but should never be lonely or dull.
           With the new EaseMySailing, work communities are right at your
           fingertips.

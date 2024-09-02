@@ -5,7 +5,7 @@ import { BsFillPeopleFill } from "react-icons/bs";
 
 const Status = () => {
   return (
-    <div className="flex flex-col lg:flex-col-2 md:flex-row sm:flex-col justify-between py-4 px-1 border-2 border-red-800 space-y-6 md:space-y-0 md:space-x-6  md:mx-6    sm:mr-4  mt-4 mx-3 w-[94%] sm:mx-5 lg:w-full lg:mx-0">
+    <div className="flex flex-col lg:flex-col-2 md:flex-row sm:flex-col justify-between py-4 px-1 space-y-6 md:space-y-0 md:space-x-6  md:mx-6    sm:mr-4  mt-4 mx-3 w-[94%] sm:mx-5 lg:w-full lg:mx-0">
       {/* Left Div */}
       <div className="w-full md:w-1/2  bg-gray-50 p-5 rounded-lg shadow-md lg:mx-9">
         <h2 className="text-2xl md:text-center md:text-3xl font-bold">

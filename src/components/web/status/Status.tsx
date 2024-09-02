@@ -9,11 +9,11 @@ const Status = () => {
       {/* Left Div */}
       <div className="w-full md:w-1/2  bg-gray-50 p-5 rounded-lg shadow-md lg:mx-9">
         <h2 className="text-2xl md:text-center md:text-3xl font-bold">
-          EaseMySailing by the <span className="text-green-600">numbers</span>
+          EaseMySailing by the <span className="text-[#00A264]">numbers</span>
         </h2>
-        <ul className="  list-none p-0 mt-8 space-y-10 ">
-          <li className="flex items-center sm:justify-around md:gap-x-32  lg:gap-x-48 sm:gap-x-10 justify-around">
-            <div className="text-green-700 text-5xl md:text-6xl">
+        <ul className="  list-none p-0 mt-8 space-y-10 lg:space-x-">
+          {/* <li className="flex items-center sm:justify-around md:gap-x-32  lg:gap-x-48 sm:gap-x-10 justify-around ">
+            <div className="text-[#00A264] text-5xl md:text-6xl">
               <IoPersonAddSharp />
             </div>
             <div className="flex flex-col items-center text-center">
@@ -22,25 +22,36 @@ const Status = () => {
                 Registered Seafarers
               </span>
             </div>
+          </li> */}
+          <li className="flex items-center sm:justify-around  gap-x-20 lg:gap-x-56 md:gap-x-32 justify-around border-2 rounded-full lg:px-[3rem] lg:w-[90%] lg:ml-[2.5rem]">
+            <div className="text-[#00A264] text-5xl md:text-6xl ml-[5px]">
+            <IoPersonAddSharp />
+            </div>
+            <div className="flex flex-col items-center text-center">
+            <span className="text-4xl md:text-5xl font-extrabold">70</span>
+              <span className="text-gray-700 text-md md:text-xl ">
+                Registered Seafarers
+              </span>
+            </div>
           </li>
-          <li className="flex items-center sm:justify-around  gap-x-20 lg:gap-x-56 md:gap-x-32 justify-around">
-            <div className="text-green-700 text-5xl md:text-6xl">
+          <li className="flex items-center sm:justify-around border-2 rounded-full gap-x-20 lg:gap-x-56 md:gap-x-32 justify-around  lg:px-[3rem] lg:w-[90%] lg:ml-[2.5rem]">
+            <div className="text-[#00A264] text-5xl md:text-6xl mr-5">
               <FaSmile />
             </div>
             <div className="flex flex-col items-center text-center">
               <span className="text-4xl md:text-5xl font-extrabold">7k+</span>
-              <span className="text-gray-700 text-lg md:text-xl">
+              <span className="text-gray-700 text-md md:text-xl">
                 Smiling Faces
               </span>
             </div>
           </li>
-          <li className="flex items-center sm:justify-around gap-x-20 lg:gap-x-52 md:gap-x-32 justify-around">
-            <div className="text-green-700 text-5xl md:text-6xl">
+          <li className="flex items-center sm:justify-around gap-x-20 lg:gap-x-52 md:gap-x-32 justify-around border-2 rounded-full lg:px-[3rem] lg:w-[90%] lg:ml-[2.5rem]">
+            <div className="text-[#00A264] text-5xl md:text-6xl">
               <BsFillPeopleFill />
             </div>
             <div className="flex flex-col items-center text-center">
               <span className="text-4xl md:text-5xl font-extrabold">80</span>
-              <span className="text-gray-700 text-lg md:text-xl">
+              <span className="text-gray-700 text-md md:text-xl">
                 Recruiter Profiles
               </span>
             </div>
@@ -48,7 +59,7 @@ const Status = () => {
         </ul>
         <p className="mt-1 font-bold text-base lg:text-lg text-black text-center">
           Lorem Ipsum is simply dummy text
-          <button className="lg:ml-2  mt-3 lg:mt-6 bg-green-600 text-white sm:ml-5 py-1 px-3 rounded-md ">
+          <button className="lg:ml-2  mt-3 lg:mt-6 bg-[#00A264] text-white sm:ml-5 py-1 px-3 rounded-md ">
             Contact Us
           </button>
         </p>
@@ -58,7 +69,7 @@ const Status = () => {
       <div className="w-full md:w-1/2 p-5 bg-white rounded-lg shadow-md">
         <h2 className="text-2xl md:text-3xl md:text-center font-bold">
           Find out what's new at{" "}
-          <span className="text-green-600">EaseMySailing</span>
+          <span className="text-[#00A264]">EaseMySailing</span>
         </h2>
         <div className="relative pt-[56.25%] mt-6">
           <iframe

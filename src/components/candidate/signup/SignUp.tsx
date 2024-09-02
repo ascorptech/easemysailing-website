@@ -77,8 +77,8 @@ const SignUp: React.FC = () => {
               onSubmit={handleSubmit}
               className="items-center p-2 pr-2 pl-2 ml-20 w-full max-w-lg "
             >
-              <div className="mb-1">
-                <label
+              <div className="mb-1 flex"> 
+                <div > <label
                   className="block text-gray-700 text-sm font-bold mb-1"
                   htmlFor="userName"
                 >
@@ -97,29 +97,30 @@ const SignUp: React.FC = () => {
                   <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-green-600 text-white rounded-l-md">
                     <FaRegUser />
                   </span>
-                </div>
-              </div>
+                </div></div>
+               
 
-              <div className="mb-1">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-1"
-                  htmlFor="lastName"
-                >
-                  Last Name
-                </label>
-                <div className="relative flex items-center pl-8 ">
-                  <input
-                    id="lastName"
-                    type="text"
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                    className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    placeholder="Enter Last Name"
-                    required
-                  />
-                  <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-green-600 text-white rounded-l-md">
-                    <FaRegUser />
-                  </span>
+                <div className="mb-1 ml-2">
+                  <label
+                    className="block text-gray-700 text-sm font-bold mb-1"
+                    htmlFor="lastName"
+                  >
+                    Last Name
+                  </label>
+                  <div className="relative flex items-center pl-8 ">
+                    <input
+                      id="lastName"
+                      type="text"
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
+                      className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      placeholder="Enter Last Name"
+                      required
+                    />
+                    <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-green-600 text-white rounded-l-md">
+                      <FaRegUser />
+                    </span>
+                  </div>
                 </div>
               </div>
 

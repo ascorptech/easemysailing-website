@@ -5,7 +5,7 @@ const Applying = () => {
     <div className="flex flex-col md:flex-row md:mx-6 items-center justify-center h-auto lg:h-[40rem] w-[94%] mx-3    my-10 px-4 sm:mx-5 lg:w-full lg:mx-0  ">
       <div className="text-center md:text-left mb-6 md:mb-0  lg:ml-32 ">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold pb-2 mb-4  ">
-          <span className="text-green-700">Applying</span> For Jobs Made Easy
+          <span className="text-[#00A264]">Applying</span> For Jobs Made Easy
           For Sailors
         </h1>
         <div className="flex justify-center md:justify-start">

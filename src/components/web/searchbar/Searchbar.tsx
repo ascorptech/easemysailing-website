@@ -1,111 +1,154 @@
+// const Searchbar = () => {
+//   return (
+//     <form className=" mx-3  max-w-lg lg:mx-0 mt-24 mb-3 w-[94%] md:item centre  lg:ml-[32rem] lg:w-full justify-center px-1 sm:mx-14 md:mx-40">
+//       <div className="flex items-center sm:justify-center">
+//         <label
+//           htmlFor="search-dropdown"
+//           className="mb-2 text-sm font-medium text-transparent sr-only dark:text-black"
+//         >
+//           Your Email
+//         </label>
+//         <button
+//           id="dropdown-button"
+//           data-dropdown-toggle="dropdown"
+//           className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-transparent dark:hover:bg-[#00A264] dark:focus:ring-[#00A264] dark:text-black "
+//           type="button"
+//         >
+//           Rank Type{" "}
+//           <svg
+//             className="w-2.5 h-2.5 ms-2.5"
+//             aria-hidden="true"
+//             xmlns="http://www.w3.org/2000/svg"
+//             fill="none"
+//             viewBox="0 0 10 6"
+//           >
+//             <path
+//               stroke="currentColor"
+//               stroke-linecap="round"
+//               stroke-linejoin="round"
+//               stroke-width="2"
+//               d="m1 1 4 4 4-4"
+//             />
+//           </svg>
+//         </button>
+//         <div
+//           id="dropdown"
+//           className="z-10 hidden bg-[#FFFFFF] divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+//         >
+//           <ul
+//             className="py-2 text-sm text-gray-700 dark:text-gray-200"
+//             aria-labelledby="dropdown-button"
+//           >
+//             <li>
+//               <button
+//                 type="button"
+//                 className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+//               >
+//                 Mockups
+//               </button>
+//             </li>
+//             <li>
+//               <button
+//                 type="button"
+//                 className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+//               >
+//                 Templates
+//               </button>
+//             </li>
+//             <li>
+//               <button
+//                 type="button"
+//                 className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+//               >
+//                 Design
+//               </button>
+//             </li>
+//             <li>
+//               <button
+//                 type="button"
+//                 className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+//               >
+//                 Logos
+//               </button>
+//             </li>
+//           </ul>
+//         </div>
+//         <div className="relative w-full">
+//           <input
+//             type="search"
+//             id="search-dropdown"
+//             className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-transparent dark:border-s-gray-700   dark:placeholder-gray-400 dark:text-black dark:focus:border-blue-500"
+//             placeholder="Search Mockups, Logos, Design Templates..."
+//             required
+//           />
+//           <button
+//             type="submit"
+//             className="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-[#00A264] rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-[#00A264] dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+//           >
+//             <svg
+//               className="w-4 h-4"
+//               aria-hidden="true"
+//               xmlns="http://www.w3.org/2000/svg"
+//               fill="none"
+//               viewBox="0 0 20 20"
+//             >
+//               <path
+//                 stroke="currentColor"
+//                 stroke-linecap="round"
+//                 stroke-linejoin="round"
+//                 stroke-width="2"
+//                 d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+//               />
+//             </svg>
+//             <span className="sr-only">Search</span>
+//           </button>
+//         </div>
+//       </div>
+//     </form>
+//   );
+// };
+
+// export default Searchbar;
+
+import { FaSearch } from 'react-icons/fa';
+
 const Searchbar = () => {
   return (
-    <form className=" mx-3  max-w-lg lg:mx-0 mt-24 mb-3 w-[94%] md:item centre  lg:ml-[24rem] lg:w-full justify-center px-1 sm:mx-14 md:mx-40">
-      <div className="flex items-center sm:justify-center">
-        <label
-          htmlFor="search-dropdown"
-          className="mb-2 text-sm font-medium text-transparent sr-only dark:text-black"
-        >
-          Your Email
-        </label>
-        <button
-          id="dropdown-button"
-          data-dropdown-toggle="dropdown"
-          className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-transparent dark:hover:bg-green-700 dark:focus:ring-green-700 dark:text-black "
-          type="button"
-        >
-          Rank Type{" "}
-          <svg
-            className="w-2.5 h-2.5 ms-2.5"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 10 6"
-          >
-            <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="m1 1 4 4 4-4"
-            />
-          </svg>
+    <div className="flex items-center justify-center mt-[66px] mb-3   ">
+      <div className="flex border  rounded-full overflow-hidden shadow-md w-full max-w-xl">
+        {/* Search Icon */}
+        <div className="flex items-center justify-center px-4 ">
+          <FaSearch className="text-[#00A264]" />
+        </div>
+
+        {/* Input Field */}
+        <input
+          type="text"
+          placeholder="Enter Ship Type"
+          className="flex-grow py-2 px-4 text-sm text-gray-700 outline-none "
+        />
+
+        {/* Divider */}
+        <div className="w-1  h-full ">|</div>
+
+        {/* Dropdown */}
+        <div className="w-60  ">
+        <select className="px-4 text-sm ">
+          <option>Rank Type</option>
+          <option >Captain</option>
+          <option>Engineer</option>  
+          <option>Crew</option>
+        </select>
+        </div>
+
+        {/* Button */}
+        <button className="bg-[#00A264] text-white px-5 py-2 rounded-r-full text-sm">
+          Find Job
         </button>
-        <div
-          id="dropdown"
-          className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
-        >
-          <ul
-            className="py-2 text-sm text-gray-700 dark:text-gray-200"
-            aria-labelledby="dropdown-button"
-          >
-            <li>
-              <button
-                type="button"
-                className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >
-                Mockups
-              </button>
-            </li>
-            <li>
-              <button
-                type="button"
-                className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >
-                Templates
-              </button>
-            </li>
-            <li>
-              <button
-                type="button"
-                className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >
-                Design
-              </button>
-            </li>
-            <li>
-              <button
-                type="button"
-                className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >
-                Logos
-              </button>
-            </li>
-          </ul>
-        </div>
-        <div className="relative w-full">
-          <input
-            type="search"
-            id="search-dropdown"
-            className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-transparent dark:border-s-gray-700   dark:placeholder-gray-400 dark:text-black dark:focus:border-blue-500"
-            placeholder="Search Mockups, Logos, Design Templates..."
-            required
-          />
-          <button
-            type="submit"
-            className="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-green-800 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-green-800 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            <svg
-              className="w-4 h-4"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 20 20"
-            >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-              />
-            </svg>
-            <span className="sr-only">Search</span>
-          </button>
-        </div>
       </div>
-    </form>
+    </div>
   );
 };
 
 export default Searchbar;
+

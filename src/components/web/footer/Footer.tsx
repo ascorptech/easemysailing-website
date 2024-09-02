@@ -6,7 +6,7 @@ const Footer = () => {
     // <footer className=" md:w-full ">
     <footer className=" lg:mt-5 w-full md:m-0 lg:w-full">
       {/* {/ Newsletter Section /} */}
-      <div className="bg-green-800 py-10 px-2 md:px-10 lg:flex lg:items-center lg:justify-between lg:px-32 w-full">
+      <div className="bg-[#00A264] py-10 px-2 md:px-10 lg:flex lg:items-center lg:justify-between lg:px-32 w-full">
       
         <div className="lg:w-1/2 mb-6 lg:mb-0 ">
           <h2 className="text-white text-2xl md:text-4xl font-normal">
@@ -28,19 +28,19 @@ const Footer = () => {
       </div>
 
       {/* {/ Footer Content Section /} */}
-      <div className="bg-green-100 w-full">
+      <div className="bg-[#D1EFE4] w-full">
         <div className="max-w-6xl mx-auto py-9 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-4 md:px-6 lg:px-8">
           {/* {/ Company Info /} */}
           <div>
             <h3 className="text-xl font-bold text-black mb-2">
-              EaseMy<span className="text-green-800">Sailing</span>
+              EaseMy<span className="text-[#00A264]">Sailing</span>
             </h3>
             <p className="text-gray-600 text-sm">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard.
             </p>
             <p className="mt-4">
-              <a href="#" className="text-green-800 font-semibold">
+              <a href="#" className="text-[#00A264] font-semibold">
                 Are you a Vendor? Join Us
               </a>
             </p>

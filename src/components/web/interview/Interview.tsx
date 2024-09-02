@@ -9,12 +9,12 @@ const Interview = () => {
         {/* <div className="font-bold text-2xl ml-[11rem]"> */}
         <div className="font-bold text-2xl lg:ml-[8rem]">
           <h1>
-            Podcast &<span className="text-green-700"> Interviews</span>
+            Podcast &<span className="text-[#00A264]"> Interviews</span>
           </h1>
         </div>
         <div>
           <Link href="/podcast_list">
-            <button className="h-8 bg-green-600 text-white py-1 px-4 rounded-lg text-sm">
+            <button className="h-8 bg-[#00A264] text-white py-1 px-4 rounded-lg text-sm">
               View All
             </button>
           </Link>

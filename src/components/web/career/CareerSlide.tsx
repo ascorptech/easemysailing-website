@@ -6,84 +6,83 @@ import Image from "next/image";
 interface Card {
   id: number;
   logo: string;
-  company: string;
-  rating: number;
-  reviews: string;
+  name: string;
+  job:string;
+ 
 }
 
-const Slide2 = () => {
+const CareerSlide = () => {
   const card = useRef<HTMLDivElement>(null);
 
   const cards: Card[] = [
     {
       id: 1,
-      logo: "/images/requiter-img/logo1.png",
-      company: "Maersk Line",
-      rating: 4.8,
-      reviews: "5K+",
+      logo: "/images/career/captain.png",
+      name: "Maersk Line",
+      job:"captain",
+      
     },
     {
       id: 2,
-      logo: "/images/requiter-img/logo2.png",
-      company: "MSC",
-      rating: 4.8,
-      reviews: "5K+",
+      logo: "/images/career/captain1.png",
+      name: "MSC",
+      job:"captain",
+      
     },
     {
       id: 3,
-      logo: "/images/requiter-img/logo3.png",
-      company: "CMA CGM Group",
-      rating: 4.8,
-      reviews: "5K+",
+      logo: "/images/career/captain2.png",
+      name: "CMA CGM Group",
+      job:"captain",
+     
     },
     {
       id: 4,
-      logo: "/images/requiter-img/logo4.png",
-      company: "MEC",
-      rating: 4.8,
-      reviews: "5K+",
+      logo: "/images/career/captain3.png",
+      name: "MEC",
+      job:"captain",
+    
     },
     {
       id: 5,
-      logo: "/images/requiter-img/logo5.png",
-      company: "AP Moller-Maersk",
-      rating: 4.8,
-      reviews: "5K+",
+      logo: "/images/career/captain4.png",
+      name: "AP Moller-Maersk",
+      job:"captain",
+     
     },
     {
-      id: 1,
-      logo: "/images/requiter-img/logo1.png",
-      company: "Maersk Line",
-      rating: 4.8,
-      reviews: "5K+",
+      id: 6,
+      logo:"/images/career/captain2.png",
+      name: "Maersk Line",
+      job:"captain",
+    
     },
     {
-      id: 2,
-      logo: "/images/requiter-img/logo2.png",
-      company: "MSC",
-      rating: 4.8,
-      reviews: "5K+",
+      id: 7,
+      logo: "/images/career/captain3.png",
+      name: "MSC",
+      job:"captain",
+      
     },
     {
-      id: 3,
-      logo: "/images/requiter-img/logo3.png",
-      company: "CMA CGM Group",
-      rating: 4.8,
-      reviews: "5K+",
+      id: 8,
+      logo: "/images/career/captain4.png",
+      name: "CMA CGM Group",
+      job:"captain",
+      
     },
     {
-      id: 4,
-      logo: "/images/requiter-img/logo4.png",
-      company: "MEC",
-      rating: 4.8,
-      reviews: "5K+",
+      id: 9,
+      logo:"/images/career/captain1.png",
+      name: "MEC",
+      job:"captain",
+      
     },
     {
-      id: 5,
-      logo: "/images/requiter-img/logo5.png",
-      company: "AP Moller-Maersk",
-      rating: 4.8,
-      reviews: "5K+",
+      id: 10,
+      logo:"/images/career/captain4.png",
+     name: "AP Moller-Maersk",
+     job:"captain",
     },
   ];
 
@@ -131,19 +130,18 @@ const Slide2 = () => {
       >
        
         {cards.map((card) => (
-          <div key={card.id} className="flex-none w-full sm:w-1/5 p-4">
-            <div className="flex flex-col items-center bg-white rounded-lg shadow-md p-4">
-              <div className="mb-4 w-14 h-14">
+          <div key={card.id} className="flex-none w-full sm:w-1/5 p-3">
+            <div className="flex flex-col items-center justify-center bg-white rounded-lg shadow-md p-2">
+              <div className="mb-2 w-16 h-16">
                 <img
                   src={card.logo}
-                  alt={card.company}
-                  className="w-full h-full rounded-full"
+                  alt={card.name}
+                  className="w-full h-full "
                 />
               </div>
-              <h3 className="text-md font-semibold">{card.company}</h3>
+              <h3 className="text-md font-semibold">{card.name}</h3>
               <p className="text-sm text-gray-500">
-                <span className="text-yellow-500">★ <span className="text-black font-bold">{card.rating}</span></span> |{" "}
-                {card.reviews} reviews
+                {card.job}
               </p>
             </div>
           </div>
@@ -163,4 +161,4 @@ const Slide2 = () => {
   );
 };
 
-export default Slide2;
+export default CareerSlide;

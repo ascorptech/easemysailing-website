@@ -1,91 +1,102 @@
-
 "use client";
 import React, { useRef, useEffect } from "react";
-import Image from "next/image";
 
 interface Card {
-  id: number;
-  logo: string;
-  company: string;
-  rating: number;
-  reviews: string;
-}
+    id: number;
+    logo: string;
+    company: string;
+    rating: number;
+    reviews: string;
+    rank :string;
+  }
 
-const Slide2 = () => {
+
+const SlidesTrend = () => {
   const card = useRef<HTMLDivElement>(null);
 
   const cards: Card[] = [
     {
       id: 1,
-      logo: "/images/requiter-img/logo1.png",
+      logo: "/images/logo1.png",
       company: "Maersk Line",
       rating: 4.8,
       reviews: "5K+",
+      rank:"All Ranks"
     },
     {
       id: 2,
-      logo: "/images/requiter-img/logo2.png",
+      logo: "/images/logo2.png",
       company: "MSC",
       rating: 4.8,
       reviews: "5K+",
+      rank:"All Ranks"
     },
     {
       id: 3,
-      logo: "/images/requiter-img/logo3.png",
+      logo: "/images/logo3.png",
       company: "CMA CGM Group",
       rating: 4.8,
       reviews: "5K+",
+      rank:"All Ranks"
     },
     {
       id: 4,
-      logo: "/images/requiter-img/logo4.png",
+      logo: "/images/logo4.png",
       company: "MEC",
       rating: 4.8,
       reviews: "5K+",
+      rank:"All Ranks"
     },
     {
       id: 5,
-      logo: "/images/requiter-img/logo5.png",
+      logo: "/images/logo5.png",
       company: "AP Moller-Maersk",
       rating: 4.8,
       reviews: "5K+",
+      rank:"All Ranks"
     },
     {
       id: 1,
-      logo: "/images/requiter-img/logo1.png",
+      logo: "/images/logo1.png",
       company: "Maersk Line",
       rating: 4.8,
       reviews: "5K+",
+      rank:"All Ranks"
     },
     {
       id: 2,
-      logo: "/images/requiter-img/logo2.png",
+      logo: "/images/logo2.png",
       company: "MSC",
       rating: 4.8,
       reviews: "5K+",
+      rank:"All Ranks"
     },
     {
       id: 3,
-      logo: "/images/requiter-img/logo3.png",
+      logo: "/images/logo3.png",
       company: "CMA CGM Group",
       rating: 4.8,
       reviews: "5K+",
+      rank:"All Ranks"
     },
     {
       id: 4,
-      logo: "/images/requiter-img/logo4.png",
+      logo: "/images/logo4.png",
       company: "MEC",
       rating: 4.8,
       reviews: "5K+",
+      rank:"All Ranks"
     },
     {
       id: 5,
-      logo: "/images/requiter-img/logo5.png",
+      logo: "/images/logo5.png",
       company: "AP Moller-Maersk",
       rating: 4.8,
       reviews: "5K+",
+      rank:"All Ranks"
     },
   ];
+
 
   const scrollLeft = () => {
     if (card.current) {
@@ -116,7 +127,7 @@ const Slide2 = () => {
 
   return (
     <div className=" lg:ml-[4rem] relative flex items-center justify-center w-[90%]  ">
-      {/* Left Arrow */}
+      {/* {/ Left Arrow /} */}
       <button
         onClick={scrollLeft}
         className="absolute left-1 lg:left-10 z-10 p-2 bg-white border rounded-full shadow-md ml-1 lg:ml-2 mr-2"
@@ -124,35 +135,30 @@ const Slide2 = () => {
         &lt;
       </button>
 
-      {/* Carousel Wrapper */}
+      {/* {/ Carousel Wrapper /} */}
       <div
         ref={card}
         className=" flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory lg:mx-[7rem] mx-[2rem] ml-[3rem] "
       >
-       
-        {cards.map((card) => (
-          <div key={card.id} className="flex-none w-full sm:w-1/5 p-4">
-            <div className="flex flex-col items-center bg-white rounded-lg shadow-md p-4">
-              <div className="mb-4 w-14 h-14">
-                <img
-                  src={card.logo}
-                  alt={card.company}
-                  className="w-full h-full rounded-full"
-                />
-              </div>
-              <h3 className="text-md font-semibold">{card.company}</h3>
-              <p className="text-sm text-gray-500">
+        {/* {/ Card 1 /} */}
+        {cards.map((card) =>(
+        <div key={card.id} className="snap-center p-2">
+          <div className=" flex flex-col justify-center items-center w-44 h-40 p-4  lg:w-44  lg:h-40 bg-white border rounded-lg shadow-md">
+            <div className="w-16 h-16 border"><img src={card.logo} alt="Maersk Line"  className="w-full h-full object-cover"/></div>
+            
+            <p className="text-sm font-bold mt-2 lg:mt-2">{card.company}</p>
+            <p className="text-sm text-gray-500">
                 <span className="text-yellow-500">★ <span className="text-black font-bold">{card.rating}</span></span> |{" "}
                 {card.reviews} reviews
               </p>
-            </div>
+              <p>{card.rank}</p>
           </div>
-        ))}
-
-        {/* Continue adding cards as needed */}
+        </div>
+         ) )}
+    
       </div>
 
-      {/* Right Arrow */}
+      {/* {/ Right Arrow /} */}
       <button
         onClick={scrollRight}
         className="absolute right-1 lg:right-10 z-10 p-2 bg-white border rounded-full shadow-md -mr-7 lg:-mr-2"
@@ -163,4 +169,4 @@ const Slide2 = () => {
   );
 };
 
-export default Slide2;
+export default SlidesTrend;

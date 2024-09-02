@@ -17,9 +17,10 @@ export default function Home() {
       <Signup />
       <Companies />
       <Status />
-      <Recruiting />
+      <div className="bg-[#F1F1F1]">  <Recruiting />
       <Trending />
-      <Career />
+      <Career /></div>
+     
       <Applying />
       <PartnersSection />
       <ClientSection />

@@ -1,6 +1,6 @@
 const Crew = () => {
   return (
-    <div className="border-2 border-red-700 flex flex-col md:flex-row mb-5 ">
+    <div className=" mx-1 flex flex-col md:flex-row mb-5 w-[98%]">
       {/* Text Section */}
       <div className="flex flex-col px-2 m-1 w-full md:w-1/2">
         <h1 className="text-2xl md:text-4xl font-semibold">

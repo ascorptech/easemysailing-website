@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Trending = () => {
   return (
-    <div className="mt-7 w-[97%] mx-7 lg:mx-1 md:mx-6">
+    <div className="mt-7 w-[94%] mx-3 px-1   md:mx-6 lg:w-full lg:mx-0 sm:mx-5">
       <div className="flex items-center justify-between mt-4 pt-4 lg:mr-[10%] md:mx-[3rem]">
         <div className="font-bold text-2xl lg:ml-[8rem]">
           <h1>

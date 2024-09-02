@@ -4,9 +4,9 @@ import Link from "next/link";
 const Footer = () => {
   return (
     // <footer className=" md:w-full ">
-    <footer className=" ml-4  lg:w-full lg:ml-0  w-full md:m-0">
+    <footer className=" lg:mt-5 w-full md:m-0 lg:w-full">
       {/* {/ Newsletter Section /} */}
-      <div className="bg-green-800 py-10 px-2 md:px-10 lg:flex lg:items-center lg:justify-between lg:px-32 w-full ">
+      <div className="bg-green-800 py-10 px-2 md:px-10 lg:flex lg:items-center lg:justify-between lg:px-32 w-full">
       
         <div className="lg:w-1/2 mb-6 lg:mb-0 ">
           <h2 className="text-white text-2xl md:text-4xl font-normal">

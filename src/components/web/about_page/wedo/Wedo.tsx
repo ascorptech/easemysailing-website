@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Wedo = () => {
   return (
-    <div className="border-2 border-red-700 w-full my-9 px-4">
+    <div className=" mx-1 w-[98%] my-9 px-4 lg:mx-1 lg:w-[99.4%]">
       {/* Heading */}
       <div className="text-center">
         <h1 className="text-2xl md:text-4xl font-semibold">
@@ -11,7 +11,7 @@ const Wedo = () => {
       </div>
 
       {/* Content Section */}
-      <div className="flex flex-col md:flex-row justify-center items-start gap-8 md:gap-16 mt-6">
+      <div className="flex flex-col mx-1 md:flex-row justify-center items-start gap-7 md:gap-16 mt-6">
         {/* First Section */}
         <div className="flex flex-col w-full md:w-1/3 text-center items-center">
           <Image

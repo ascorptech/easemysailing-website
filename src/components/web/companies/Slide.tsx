@@ -31,7 +31,7 @@ export default function Slide() {
 
   return (
     <>
-      <div className="max-w-[1150px] ml-1  lg:ml-36 mt-3  ">
+      <div className="w-full  px-1  lg:ml-36 mt-3 border-2 border-blue-800 lg:w-[80%] ">
         <div className="flex flex-row  justify-between">
           <div className="flex justify-between items-center">
             <div
@@ -62,7 +62,7 @@ export default function Slide() {
             })}
           </div>
           <hr className="my-6 border-[1px]" />
-          <div className="flex justify-between items-center mr-[-2rem] ">
+          <div className="flex justify-between items-center  ">
             <div
               className="cursor-pointer
             flex justify-center items-center w-[30px] h-[30px] bg-[#e8e8f1] rounded-full  border-2"

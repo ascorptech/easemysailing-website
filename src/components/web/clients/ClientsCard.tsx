@@ -17,7 +17,7 @@ const ClientsCard: React.FC<ClientsCard> = ({
   imageSrc,
 }) => {
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md flex-shrink-0 w-80 mx-2">
+    <div className="bg-white p-6 rounded-lg shadow-md flex-shrink-0 w-80 mx-2 ">
       <p className="text-gray-700 mb-4">{text}</p>
       <div className="flex items-center mb-4">
         {[...Array(rating)].map((_, i) => (

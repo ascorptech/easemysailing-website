@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Talk = () => {
   return (
-    <div className="border-2 border-red-900 my-4 mt-14 flex flex-col items-center justify-center p-4 md:flex-row md:items-start md:space-x-8 lg:space-x-12">
+    <div className=" my-4 mx-1 mt-14 flex flex-col items-center justify-center p-4 md:flex-row md:items-start md:space-x-8 lg:space-x-12">
       <div className="flex justify-center">
         <Image
           src="/aboutleft.png" // Replace with your image path

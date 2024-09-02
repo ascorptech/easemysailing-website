@@ -3,7 +3,8 @@
 import React from "react";
 import { useState } from "react";
 import { useParams } from "next/navigation"; // Use useParams instead of useRouter
-import { Resource } from "@/app/data/resources";
+// import { Resource } from "@/app/data/resources";
+import { Resource } from "../../data/resources";
 
 // import Profile from "@/components/p4mentoring/profileSummary/Profile";
 import Image from "next/image";
@@ -48,7 +49,7 @@ const ResourceDetailsPage: React.FC = () => {
         </div>
         <div>
           <h2 className="font-bold text-xl mt-4">{item.title}</h2>
-          <p className=" text-sm text-justify text-left mt-4">{item.discription}</p>
+          <p className=" text-sm text-justify  mt-4">{item.discription}</p>
         </div>
 
         <h1 className=" my-4  font-bold text-xl">Drop Your comment</h1>

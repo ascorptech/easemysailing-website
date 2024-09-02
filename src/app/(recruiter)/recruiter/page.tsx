@@ -9,7 +9,7 @@ interface DashboardProps {
   setSidebarToggle: (toggle: boolean) => void;
 }
 
-const Home: React.FC<DashboardProps> = ({ sidebarToggle }) => {
+const page:React.FC<DashboardProps> = ({ sidebarToggle }) => {
   return (
     <div
       className={`${
@@ -25,4 +25,4 @@ const Home: React.FC<DashboardProps> = ({ sidebarToggle }) => {
   );
 };
 
-export default Home;
+export default page;

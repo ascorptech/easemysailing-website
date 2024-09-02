@@ -23,7 +23,7 @@ const Header: React.FC = () => {
   const handleMouseLeave = () => {
     setIsOpen(false);
   };
-
+ 
   return (
     <div className="  z-20 top-0 fixed w-full border-b">
       <nav className="bg-white border-white dark:bg-white dark:border-black-700  ">

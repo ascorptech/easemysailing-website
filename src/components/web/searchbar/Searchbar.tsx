@@ -1,6 +1,6 @@
 const Searchbar = () => {
   return (
-    <form className=" ml-10  max-w-lg mx-auto mt-20 w-full justify-center ">
+    <form className=" ml-10  max-w-lg mx-auto mt-20 w-[90%] justify-center ">
       <div className="flex items-center sm:justify-center">
         <label
           htmlFor="search-dropdown"

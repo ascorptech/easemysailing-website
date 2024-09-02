@@ -170,7 +170,8 @@ const Articles = () => {
         </div>
       </div>
 
-      <div className="overflow-x-auto flex space-x-4 no-scrollbar lg:ml-[4rem] scroll-smooth snap-x snap-mandatory lg:mx-[1rem] mx-[2rem] ml-[1rem] w-[90%]">
+      {/* <div className="overflow-x-auto flex space-x-4 no-scrollbar lg:ml-[4rem] scroll-smooth snap-x snap-mandatory lg:mx-[1rem] mx-[2rem] ml-[1rem] w-[90%]"> */}
+      <div className="overflow-x-auto flex space-x-4 no-scrollbar lg:ml-[10rem] scroll-smooth snap-x snap-mandatory  lg:w-[80%]  w-[97%]">
         {partners.map((partner, index) => (
           <PartnerCard
             key={index}

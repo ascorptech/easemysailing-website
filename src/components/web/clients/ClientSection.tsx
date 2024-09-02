@@ -28,7 +28,7 @@ const ClientSection: React.FC = () => {
   ];
 
   return (
-    <div className="bg-green-100">
+    <div className="bg-green-100 ml-6 w-[97%] mt-2">
       <section className="p-4 md:p-6 lg:p-10 mx-4 md:mx-10 lg:mx-20">
         <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-4 text-center md:text-left">
           Our <span className="text-green-600">Clients</span> Adore Us

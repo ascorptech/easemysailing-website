@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Applying = () => {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center h-auto lg:h-[40rem] w-full lg:w-[90%] ml-0 lg:ml-[5rem] my-10 px-4">
+    <div className="flex flex-col md:flex-row items-center justify-center h-auto lg:h-[40rem] w-full lg:w-[90%] ml-4 lg:ml-[5rem] my-10 px-4">
       <div className="text-center md:text-left mb-6 md:mb-0">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold pb-2 mb-4">
           <span className="text-green-700">Applying</span> For Jobs Made Easy

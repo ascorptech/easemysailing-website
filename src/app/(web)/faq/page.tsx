@@ -1,4 +1,4 @@
-import Headingfaq from "@/components/web/faq/heading/Headingfaq"; 
+import Headingfaq from "@/components/web/faq/heading/Headingfaq" 
 import Categories from "@/components/web/faq/heading/Categories";
 const page = () => {
   return (

@@ -20,9 +20,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <main className="w-full h-screen flex flex-col">
-        <Header />
-        {children}
-        <Footer />
+          <Header />
+          {children}
+          <Footer />
         </main>
       </body>
     </html>

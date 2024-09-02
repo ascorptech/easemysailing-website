@@ -32,19 +32,22 @@ const Islide = () => {
   }, []);
 
   return (
-    <div className="ml-[4rem] relative flex items-center justify-center w-[90%]">
+    
+    <div className=" lg:ml-[4rem] relative flex items-center justify-center w-[90%]  ">
       {/* Left Arrow */}
+     
       <button
         onClick={scrollLeft}
-        className="absolute left-10 z-10 p-2 bg-white border rounded-full shadow-md ml-2 mr-2"
+        className="absolute left-1 lg:left-10 z-10 p-2 bg-white border rounded-full shadow-md ml-1 lg:ml-2 mr-2"
       >
         &lt;
       </button>
 
       {/* Carousel Wrapper */}
-      <div
+     
+       <div
         ref={card}
-        className="flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory mx-[6rem]"
+        className=" flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory lg:mx-[7rem] mx-[2rem] ml-[3rem] "
       >
         {/* Video Card 1 */}
         <div className="snap-center p-2">
@@ -105,10 +108,10 @@ const Islide = () => {
         {/* Continue adding more video cards as needed */}
       </div>
 
-      {/* Right Arrow */}
-      <button
+     
+       <button
         onClick={scrollRight}
-        className="absolute right-10 z-10 p-2 bg-white border rounded-full shadow-md -mr-2"
+        className="absolute right-1 lg:right-10 z-10 p-2 bg-white border rounded-full shadow-md -mr-7 lg:-mr-2"
       >
         &gt;
       </button>

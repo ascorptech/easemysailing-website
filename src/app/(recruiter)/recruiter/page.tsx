@@ -1,14 +1,28 @@
-import Link from 'next/link'
-import React from 'react'
+"use client";
+import React from "react";
+import MaerskLine from "@/components/recruiter/Dashboard/MaerskLine/MaerskLine";
+import Trending from "@/components/recruiter/Dashboard/CandidateByEMS/Trending";
+import FreshTalent from "@/components/recruiter/Dashboard/FreshTalent/freshTalent";
 
-type Props = {}
-
-const page = (props: Props) => {
-  return (
-    <div>
-      <Link href={'/candidate'}>Go To candidate</Link>
-    </div>
-  )
+interface DashboardProps {
+  sidebarToggle: boolean;
+  setSidebarToggle: (toggle: boolean) => void;
 }
 
-export default page
+const Home: React.FC<DashboardProps> = ({ sidebarToggle }) => {
+  return (
+    <div
+      className={`${
+        sidebarToggle ? "  ml-64 " : ""
+      }  flex flex-col scrollbar-hide overflow-x-auto`}
+    >
+      
+      <MaerskLine />
+      <Trending />
+      <FreshTalent />
+      
+    </div>
+  );
+};
+
+export default Home;

@@ -1,7 +1,7 @@
-const Searchbar =()=>{
+const Searchbar = () => {
   return (
-    <form className="max-w-lg mx-auto mt-4 ">
-      <div className="flex">
+    <form className=" ml-10  max-w-lg mx-auto mt-20 w-full justify-center ">
+      <div className="flex items-center sm:justify-center">
         <label
           htmlFor="search-dropdown"
           className="mb-2 text-sm font-medium text-transparent sr-only dark:text-black"
@@ -108,4 +108,4 @@ const Searchbar =()=>{
   );
 };
 
-export default Searchbar
+export default Searchbar;

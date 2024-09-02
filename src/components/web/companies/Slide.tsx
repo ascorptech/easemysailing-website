@@ -31,12 +31,12 @@ export default function Slide() {
 
   return (
     <>
-      <div className="max-w-[1150px] ml-3 lg:ml-36 mt-3  ">
+      <div className="max-w-[1150px] ml-1  lg:ml-36 mt-3  ">
         <div className="flex flex-row  justify-between">
           <div className="flex justify-between items-center">
             <div
               className="cursor-pointer
-            flex justify-center items-center w-[30px] h-[30px] bg-[#e8e8f1] rounded-full mx-2 border-2"
+            flex justify-center items-center w-[30px] h-[30px] bg-[#e8e8f1] rounded-full lg:mx-2 border-2"
               onClick={prevSlide}
             >
               <IoMdArrowBack />
@@ -62,7 +62,7 @@ export default function Slide() {
             })}
           </div>
           <hr className="my-6 border-[1px]" />
-          <div className="flex justify-between items-center mr-[-6rem] md:mx-2">
+          <div className="flex justify-between items-center mr-[-2rem] ">
             <div
               className="cursor-pointer
             flex justify-center items-center w-[30px] h-[30px] bg-[#e8e8f1] rounded-full  border-2"

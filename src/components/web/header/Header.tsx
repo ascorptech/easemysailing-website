@@ -16,7 +16,7 @@ const Header: React.FC = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const handleMouseEnter = () => {
+  const handleMouseEnter = () => { 
     setIsOpen(true);
   };
 

@@ -1,66 +1,42 @@
 import Image from "next/image";
+
 const Talk = () => {
   return (
-    <div>
-      <div className="h-[18rem] my-4 flex items-center justify-center ">
-        <div>
-          <Image
-            src="/aboutleft.png" // Replace with your image path
-            alt="Left Image"
-            width={5000} // Set to match the height
-            height={5050} // Ensure the aspect ratio is consistent
-            className="w-[25rem] h-30 md:w-[23rem] md:h-[20rem] pt-2 mt-2 "
-          />
-        </div>
-        <div className="w-[45rem] justify-center  text-justify ml-[6rem]">
-          <h1 className="text-5xl font-semibold">
-            {" "}
-            Let's talk about{" "}
-            <span className="text-green-700 font-semibold">
-              EaseMy
-              <br />
-              Sailing
-            </span>
-          </h1>
-          <br />
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet,
-            iure fugiat labore eius vero ad quo velit voluptate dolores enim
-            odio dignissimos placeat tempora doloremque. Sit soluta omnis nobis
-            rerum.
-          </p>
-          <br />
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate,
-            impedit, mollitia deserunt aliquid incidunt reprehenderit quasi
-            eveniet voluptatibus cumque et voluptatum deleniti adipisci saepe
-            quae dignissimos totam aliquam assumenda exercitationem!
-          </p>
-        </div>
+    <div className="border-2 border-red-900 my-4 mt-14 flex flex-col items-center justify-center p-4 md:flex-row md:items-start md:space-x-8 lg:space-x-12">
+      <div className="flex justify-center">
+        <Image
+          src="/aboutleft.png" // Replace with your image path
+          alt="Left Image"
+          width={5000}
+          height={5050}
+          className="w-full max-w-[25rem] md:max-w-[23rem] pt-2 mt-2"
+        />
       </div>
-      
+      <div className="w-full max-w-[45rem] lg:text-justify text-center md:text-left mt-4 md:mt-0">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold">
+          Let's talk about{" "}
+          <span className="text-green-700 font-semibold">
+            EaseMy
+            <br />
+            Sailing
+          </span>
+        </h1>
+        <br />
+        <p className="text-base md:text-lg lg:text-xl">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, iure
+          fugiat labore eius vero ad quo velit voluptate dolores enim odio
+          dignissimos placeat tempora doloremque. Sit soluta omnis nobis rerum.
+        </p>
+        <br />
+        <p className="text-base md:text-lg lg:text-xl">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate,
+          impedit, mollitia deserunt aliquid incidunt reprehenderit quasi
+          eveniet voluptatibus cumque et voluptatum deleniti adipisci saepe quae
+          dignissimos totam aliquam assumenda exercitationem!
+        </p>
+      </div>
     </div>
-  // );
-  // return(
-  //   <div className="flex flex-col justify-center items-center">
-  //     <div className="container flex sm:md:flex-row flex-col">
-  //     <div className="flex sm:md:w-1/2 w-full">
-  //     <Image
-  //     src="/aboutleft.png" // Replace with your image path
-  //     alt="Left Image"
-  //     width={500} // Set to match the height
-  //     height={500} // Ensure the aspect ratio is consistent
-  //     className="w-full"
-  //     priority
-  //     />
-  //     </div>
-  //     <div className="flex sm:md:w-1/2 w-full">
-  //     <h1>Let’s Talk About <span>EaseMy
-  //     Sailing</span> </h1>
-  //     </div>
-  //     </div>
-  //   </div>
-  )
+  );
 };
 
 export default Talk;

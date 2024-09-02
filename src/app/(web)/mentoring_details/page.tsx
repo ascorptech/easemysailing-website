@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { ShippingCardProps, CaptainData } from "../(web)/data/CaptainData";
-import Heading4 from "@/components/mentoring/heading4/Heading4";
+import { ShippingCardProps, CaptainData } from "../data/CaptainData";
+import Heading4 from "@/components/web/mentoring/heading4/Heading4";
 
 const MentoringList: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);

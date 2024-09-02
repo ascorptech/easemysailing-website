@@ -57,7 +57,7 @@ const Articles = () => {
 
   return (
     // <section className="mt-5 p-2 w-[81%] ml-[10rem]">
-    <section className="mt-7  w-[99%] mx-7 lg:mx-1 md:mx-6">
+    <section className="mt-7  w-[97%] mx-7 lg:mx-1 md:mx-3">
 
       {/* <div className="flex items-center justify-between  mr-3  "> */}
       <div className="flex items-center justify-between mt-4 pt-4 lg:mr-[10%] md:mx-[3rem]">

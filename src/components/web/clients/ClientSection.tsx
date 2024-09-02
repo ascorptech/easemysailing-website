@@ -1,4 +1,3 @@
-
 import React from "react";
 import ClientsCard from "./ClientsCard";
 
@@ -30,11 +29,11 @@ const ClientSection: React.FC = () => {
 
   return (
     <div className="bg-green-100">
-      <section className="p-6 ml-[11rem]">
-        <h2 className="text-2xl font-bold mb-4">
+      <section className="p-4 md:p-6 lg:p-10 mx-4 md:mx-10 lg:mx-20">
+        <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-4 text-center md:text-left">
           Our <span className="text-green-600">Clients</span> Adore Us
         </h2>
-        <div className="overflow-x-auto flex space-x-4 no-scrollbar">
+        <div className="overflow-x-auto flex space-x-4 no-scrollbar pb-4">
           {clientcard.map((ccard, index) => (
             <ClientsCard
               key={index}
@@ -43,6 +42,7 @@ const ClientSection: React.FC = () => {
               role={ccard.role}
               rating={ccard.rating}
               imageSrc={ccard.imageSrc}
+              // className="min-w-[16rem] md:min-w-[20rem] lg:min-w-[24rem]"
             />
           ))}
         </div>

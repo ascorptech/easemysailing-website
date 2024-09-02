@@ -31,7 +31,7 @@ export default function Slide() {
 
   return (
     <>
-      <div className="w-full  px-1  lg:ml-36 mt-3 border-2 border-blue-800 lg:w-[80%] ">
+      <div className="w-full  px-1  lg:ml-36 mt-3  lg:w-[80%] ">
         <div className="flex flex-row  justify-between">
           <div className="flex justify-between items-center">
             <div

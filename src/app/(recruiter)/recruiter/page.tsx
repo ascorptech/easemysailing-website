@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import MaerskLine from "@/components/recruiter/Dashboard/MaerskLine/MaerskLine";
 import Trending from "@/components/recruiter/Dashboard/CandidateByEMS/Trending";

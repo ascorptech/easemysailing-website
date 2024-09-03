@@ -4,12 +4,12 @@ import MaerskLine from "@/components/recruiter/Dashboard/MaerskLine/MaerskLine";
 import Trending from "@/components/recruiter/Dashboard/CandidateByEMS/Trending";
 import FreshTalent from "@/components/recruiter/Dashboard/FreshTalent/freshTalent";
 
-interface DashboardProps {
-  sidebarToggle: boolean;
-  setSidebarToggle: (toggle: boolean) => void;
-}
+// type DashboardProps= {
+//   sidebarToggle?: boolean;
+//   setSidebarToggle?: () => void;
+// }
 
-const page:React.FC<DashboardProps> = ({ sidebarToggle }) => {
+const page = ({ sidebarToggle }:any) => {
   return (
     <div
       className={`${

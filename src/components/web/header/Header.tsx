@@ -162,15 +162,15 @@ const Header: React.FC = () => {
               <div className="flex relative items-center h-2 mt-2 ">
                 <Link
                   href={"candidate"}
-                  className="flex justify-center items-center mr-4 border border-[#00A264] text-[#00A264] p-2 rounded-full"
+                  className="flex justify-center items-center mr-4 border border-[#00A264] text-[#00A264] p-2 rounded-full text-sm"
                 >
                   <span className="pr-2">
                     {/* {/ <CiSearch /> /} */}
                     <Image
                       src={"/images/userlock.png"}
                       priority
-                      width={10}
-                      height={10}
+                      width={16}
+                      height={16}
                       alt="userlock"
                     />
                   </span>

@@ -81,7 +81,7 @@ const Signup = () => {
             />
             <button
               type="submit"
-              className="w-full lg:w-[40%] bg-[#00A264] text-white rounded-lg hover:bg-[#00A264] py-2 px-4 text-center"
+              className="w-full text-sm lg:w-[40%] bg-[#00A264] text-white rounded-lg hover:bg-[#00A264] py-2 px-1 text-center"
               style={{ minHeight: "2.5rem" }} // Ensures consistent height
             >
               Continue with Email

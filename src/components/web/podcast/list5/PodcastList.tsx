@@ -58,7 +58,7 @@ const PodcastList: React.FC = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-3 gap-5 py-4 ">
+      <div className="grid lg:grid-cols-3 lg:gap-5 lg:py-4 grid-cols-1  gap-5  sm:grid-cols-2 ">
         {currentItems.map((item, index) => (
           <div
             key={index}
@@ -73,7 +73,8 @@ const PodcastList: React.FC = () => {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             ></iframe>
-            <p className="flex justify-center my-1">
+            {/* <p className="flex justify-center my-1"> */}
+            <p className="text-center my-1">
               Cruise ship Interviews questions & answers !
             </p>
           </div>

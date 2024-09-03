@@ -2,8 +2,8 @@ import { FaSearch } from "react-icons/fa";
 
 const Searchbar = () => {
   return (
-    <div className="flex items-center justify-center mt-[80px] lg:mt-[67px] mb-3   ">
-      <div className="flex border  rounded-full overflow-hidden shadow-md w-full max-w-xl">
+    <div className="flex items-center justify-center mt-[80px] lg:mt-[80px] mb-3   ">
+      <div className=" flex border  rounded-full overflow-hidden shadow-md  w-full max-w-xl mx-2">
         {/* {/ Search Icon /} */}
         <div className="flex items-center justify-center px-4 ">
           <FaSearch className="text-[#00A264]" />
@@ -13,14 +13,14 @@ const Searchbar = () => {
         <input
           type="text"
           placeholder="Enter Ship Type"
-          className="flex-grow py-2 px-4 text-sm text-gray-700 outline-none "
+          className="flex-grow py-2 px-4 text-sm text-gray-700 outline-none w-[110px] "
         />
 
         {/* {/ Divider /} */}
-        <div className="w-1 pt-3 h-full lg:py-1 ">|</div>
+        <div className=" pt-1 h-full lg:py-1  ">|</div>
 
         {/* {/ Dropdown /} */}
-        <div className="w-60 pt-3 lg:py-1 h-full ">
+        <div className="lg:w-60 lg:pt-1 pt-1 lg:py-1 h-full ">
           <select className="px-4 text-sm ">
             <option>Rank Type</option>
             <option>Captain</option>
@@ -30,7 +30,7 @@ const Searchbar = () => {
         </div>
 
         {/* {/ Button /} */}
-        <button className="bg-[#00A264] text-white px-2 py-2 rounded-r-full text-sm">
+        <button className="bg-[#00A264] px-1 text-white lg:px-2 lg:py-2 rounded-r-full text-sm">
           Find Job
         </button>
       </div>

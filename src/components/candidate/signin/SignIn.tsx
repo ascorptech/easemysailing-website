@@ -6,18 +6,18 @@ import { IoCallOutline } from "react-icons/io5";
 import { GoEye } from "react-icons/go";
 import { MdOutlineLock } from "react-icons/md";
 
-import ForgotPassword from "@/components/candidate/changepassword/ForgotPassword";
-import VerificationCode from "@/components/candidate/changepassword/VerificationCode";
-import VerificationOpt from "@/components/candidate/changepassword/VerificationOpt";
-import Congratulations from "@/components/candidate/changepassword/Congratulations";
 
 import { useState } from "react";
 
 import LoginImg from "@/components/candidate/image/LoginImg";
-import ResetPassword from "@/components/candidate/changepassword/ResetPassword";
-import PasswordChange from "@/components/candidate/changepassword/PasswordChange";
 import LoginHeader from "@/app/Shared/LoginHeader/LoginHeader";
 import Footer from "@/app/Shared/Footer/Footer";
+import ForgotPassword from "../ChangePassword/ForgotPassword";
+import VerificationOpt from "../ChangePassword/VerificationOpt";
+import VerificationCode from "../ChangePassword/VerificationCode";
+import Congratulations from "../ChangePassword/Congratulations";
+import ResetPassword from "../ChangePassword/ResetPassword";
+import PasswordChange from "../ChangePassword/PasswordChange";
 
 const SignIn = () => {
   const [emailOrPhone, setEmailOrPhone] = useState("");

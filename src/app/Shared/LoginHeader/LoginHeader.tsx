@@ -6,10 +6,10 @@ const LoginHeader = () => {
     <header className="sticky top-0 z-50 flex items-center justify-between p-3 bg-white shadow-md">
       {/* Brand Name */}
       <div className="ml-16 mr-16 text-xl font-bold">
-        <h2>
+        <Link href="/">
           EaseMy
           <span className="text-green-600">Sailing</span>
-        </h2>
+        </Link>
       </div>
       {/* Button */}
       <Link

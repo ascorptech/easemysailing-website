@@ -26,8 +26,8 @@ const Header: React.FC = () => {
 
   return (
     <div className="  z-20 top-0 fixed w-full border-b">
-      <nav className="bg-white border-white dark:bg-white dark:border-black-700  ">
-        <div className="lg:w-full  flex flex-wrap lg:justify-between items-center justify-between mx-auto p-4">
+      <nav className="bg-white border-white dark:bg-white dark:border-black-700   ">
+        <div className="lg:w-full  flex flex-wrap items-center justify-between mx-auto p-4 ">
           <div className="flex items-center space-x-3 rtl:space-x-reverse">
             <Link href="/">
               <p>

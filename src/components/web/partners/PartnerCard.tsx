@@ -19,7 +19,9 @@ const PartnerCard: React.FC<PartnerCardProps> = ({
   logoSrc,
 }) => {
   return (
-    <div className="bg-white border rounded-lg p-4 shadow-md flex-shrink-0 w-64">
+    <div className="bg-white border-2 rounded-lg p-4 shadow-md flex-shrink-0 w-64  ">
+     
+
       <div className="flex justify-center mb-4">
         <img src={logoSrc} alt={`${name} logo`} className="h-12" />
       </div>
@@ -30,7 +32,7 @@ const PartnerCard: React.FC<PartnerCardProps> = ({
       </div>
       <div className="text-gray-700 mb-2 font-base">{contactPerson}</div>
       <p className="text-gray-500 text-sm">{description}</p>
-      <button className="h-8 mt-2 bg-green-600 text-white py-1 px-4 rounded-lg text-sm">
+      <button className="h-8 mt-2 bg-[#00A264] text-white py-1 px-4 rounded-lg text-sm">
         View Profile
       </button>
     </div>

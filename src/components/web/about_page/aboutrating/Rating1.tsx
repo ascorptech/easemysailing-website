@@ -1,26 +1,31 @@
 import Image from "next/image";
+
 const Rating1 = () => {
   return (
-    <div className=" w-[100%]  h-[8rem] my-9 ">
-      <div className="flex flex-row relative mx-7 my-1  justify-center  items-center gap-16 ">
-        {/* first div */}
-        {/* <div className="flex h-[9rem] border-2 border-black"> */}
-        <div className="flex flex-col sm:md:w-1/2 w-full  justify-center text-center items-center p-3 border-2 shadow-dark rounded-3xl">
-          <h1 className="text-7xl font-bold">40+</h1>{" "}
-          <p>Registered Seafarers</p>
+    <div className=" mx-1 lg:mx-1 lg:w-[99.4%] w-[98%] my-9">
+      <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16 mx-4 md:mx-7 my-1">
+        {/* First div */}
+        <div className="flex flex-col w-full md:w-1/4 justify-center text-center items-center p-3 border-2 shadow-lg rounded-3xl mb-4 md:mb-0">
+          <h1 className="text-5xl md:text-7xl font-bold">40+</h1>
+          <p className="text-sm md:text-base">Registered Seafarers</p>
         </div>
-        {/* second div */}
-        <div className="flex flex-col sm:md:w-1/2 w-full justify-center text-center items-center  p-3 border-2 rounded-3xl">
-          <h1 className="text-7xl font-bold">7k+</h1> <p>Smiling Faces</p>{" "}
+
+        {/* Second div */}
+        <div className="flex flex-col w-full md:w-1/4 justify-center text-center items-center p-3 border-2 shadow-lg rounded-3xl mb-4 md:mb-0">
+          <h1 className="text-5xl md:text-7xl font-bold">7k+</h1>
+          <p className="text-sm md:text-base">Smiling Faces</p>
         </div>
-        {/* Third div */}{" "}
-        <div className="flex flex-col sm:md:w-1/2 w-full justify-center text-center items-center  p-3 border-2 rounded-3xl">
-          <h1 className="text-7xl font-bold">80</h1>{" "}
-          <p>reviews, salaries & imsights</p>{" "}
+
+        {/* Third div */}
+        <div className="flex flex-col w-full md:w-1/4 justify-center text-center items-center p-3 border-2 shadow-lg rounded-3xl mb-4 md:mb-0">
+          <h1 className="text-5xl md:text-7xl font-bold">80</h1>
+          <p className="text-sm md:text-base">Reviews, Salaries & Insights</p>
         </div>
-        {/*Forth div */}{" "}
-        <div className="flex flex-col sm:md:w-1/2 w-full justify-center text-center items-center  p-3 border-2 rounded-3xl">
-          <h1 className="text-7xl font-bold">70+</h1> <p>Recruiter Profiles</p>{" "}
+
+        {/* Fourth div */}
+        <div className="flex flex-col w-full md:w-1/4 justify-center text-center items-center p-3 border-2 shadow-lg rounded-3xl">
+          <h1 className="text-5xl md:text-7xl font-bold">70+</h1>
+          <p className="text-sm md:text-base">Recruiter Profiles</p>
         </div>
       </div>
     </div>

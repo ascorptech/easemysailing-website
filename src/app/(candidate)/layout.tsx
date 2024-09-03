@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+// import ".../globals.scss";
 import "../globals.scss";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -17,9 +18,10 @@ export default function CandidateLayout({
     return (
         <html lang="en">
             <body className={inter.className}>
-        <div className="w-full h-screen flex flex-col">
+        <main className="w-full h-screen flex flex-col">
+            
             {children}
-        </div>
+        </main>
         </body>
         </html>
     );

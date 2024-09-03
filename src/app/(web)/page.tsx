@@ -12,14 +12,15 @@ import Interview from "@/components/web/interview/Interview";
 import Articles from "@/components/web/articles/Articles";
 export default function Home() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col  ">
       <SearchBar />
       <Signup />
       <Companies />
       <Status />
-      <Recruiting />
+      <div className="bg-[#F1F1F1]">  <Recruiting />
       <Trending />
-      <Career />
+      <Career /></div>
+     
       <Applying />
       <PartnersSection />
       <ClientSection />

@@ -32,7 +32,7 @@ const Card = () => {
   }, []);
 
   return (
-    <div className="ml-[8rem] relative flex items-center my-4 justify-center w-[80%] ">
+    <div className=" lg:ml-[6rem] ml-[2rem] relative flex items-center my-4 justify-center w-[85%] ">
       {/* Left Arrow */}
       <button
         onClick={scrollLeft}
@@ -44,7 +44,7 @@ const Card = () => {
       {/* Carousel Wrapper */}
       <div
         ref={card}
-        className="flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory mx-[6rem]"
+        className="flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory mx-[5rem]"
       >
         {/* Card 1 */}
         <div className="snap-center p-2">

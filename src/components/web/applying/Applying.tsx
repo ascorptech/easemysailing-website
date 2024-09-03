@@ -31,5 +31,4 @@ const Applying = () => {
     </div>
   );
 };
-
 export default Applying;

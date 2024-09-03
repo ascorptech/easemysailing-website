@@ -46,13 +46,13 @@ const Header: React.FC = () => {
               <div>
                 <div className="relative inline-block px-3 text-left group ">
                   <li className="block  text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
-                    Jobs
+                    <Link href="/jobs">Jobs</Link>
                   </li>
                 </div>
 
                 <div className="relative inline-block pr-4 text-left group">
                   <li className="relative inline-block pr-4 text-left group  text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
-                    Trainings
+                    <Link href="/trainings">Trainings</Link>
                   </li>
                 </div>
 
@@ -61,7 +61,7 @@ const Header: React.FC = () => {
                     href="#"
                     className="block text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                   >
-                    EMS Plus
+                    <Link href="/ems"> EMS Plus</Link>
                   </a>
                 </li>
               </div>
@@ -141,7 +141,7 @@ const Header: React.FC = () => {
                     href="#"
                     className="block text-sm py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#00A264] md:p-0 dark:text-black md:dark:hover:text-[#00A264] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                   >
-                    Recruiter Zone
+                    <Link href="/recruiting-zone">Recruiter Zone</Link>
                   </a>
                 </li>
 
@@ -154,7 +154,7 @@ const Header: React.FC = () => {
                     href="#"
                     className="block pt-6 px-4 text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#00A264] md:p-0 dark:text-black md:dark:hover:text-[#00A264] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                   >
-                    Manning Agent Zone
+                    <Link href="/agent-zone">Manning Agent Zone</Link>
                   </a>
                 </li>
               </div>

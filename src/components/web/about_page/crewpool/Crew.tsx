@@ -1,9 +1,9 @@
 const Crew = () => {
   return (
-    <div className=" mx-1 flex flex-col md:flex-row mb-5 w-[98%]">
+    <div className="lg:mt-10 mx-1 flex flex-col md:flex-row mb-5 w-[98%]">
       {/* Text Section */}
       <div className="flex flex-col px-2 m-1 w-full md:w-1/2">
-        <h1 className="text-2xl md:text-4xl font-semibold">
+        <h1 className="text-2xl md:text-4xl font-semibold lg:mt-6">
           Our Seafaring <span className="text-green-700">crew</span> pool
         </h1>
         <p className="flex text-justify mt-4 ">
@@ -25,5 +25,4 @@ const Crew = () => {
     </div>
   );
 };
-
 export default Crew;

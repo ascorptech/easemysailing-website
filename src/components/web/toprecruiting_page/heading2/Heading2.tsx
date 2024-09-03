@@ -1,6 +1,6 @@
 const Heading2 = () => {
   return (
-    <div className="flex justify-center items-center h-[6rem]  bg-green-100 ">
+    <div className="flex lg:mt-16 justify-center items-center h-[6rem]  bg-green-100 ">
       <h1 className="text-3xl text-green-600 font-bold">
         Top Reruiting Companies
       </h1>

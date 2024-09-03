@@ -31,7 +31,7 @@ const MentoringList: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="mt-16">
       <Heading4/>
       <div className="mt-6 w-[80%] grid grid-cols-1 mx-[8rem] sm:grid-cols-1 md:grid-cols-2 gap-10 py-3 ">
         {currentItems.map((item) => (

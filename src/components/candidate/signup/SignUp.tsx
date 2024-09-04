@@ -94,7 +94,7 @@ const SignUp: React.FC = () => {
                     placeholder="Enter First Name"
                     required
                   />
-                  <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-green-600 text-white rounded-l-md">
+                  <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-[#00A264] text-white rounded-l-md">
                     <FaRegUser />
                   </span>
                 </div></div>
@@ -117,7 +117,7 @@ const SignUp: React.FC = () => {
                       placeholder="Enter Last Name"
                       required
                     />
-                    <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-green-600 text-white rounded-l-md">
+                    <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-[#00A264] text-white rounded-l-md">
                       <FaRegUser />
                     </span>
                   </div>
@@ -142,7 +142,7 @@ const SignUp: React.FC = () => {
                     required
                   />
 
-                  <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-green-600 text-white rounded-l-md">
+                  <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-[#00A264] text-white rounded-l-md">
                     <MdOutlineEmail />
                   </span>
                 </div>
@@ -164,7 +164,7 @@ const SignUp: React.FC = () => {
                     placeholder="Enter Phone"
                     required
                   />
-                  <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-green-600 text-white rounded-l-md">
+                  <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-[#00A264] text-white rounded-l-md">
                     <FaPhone />
                   </span>
                 </div>
@@ -188,7 +188,7 @@ const SignUp: React.FC = () => {
                     required
                   />
 
-                  <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-green-600 text-white rounded-l-md">
+                  <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-[#00A264] text-white rounded-l-md">
                     <MdOutlineLock />
                   </span>
                   <span
@@ -218,7 +218,7 @@ const SignUp: React.FC = () => {
                     required
                   />
 
-                  <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-green-600 text-white rounded-l-md">
+                  <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-[#00A264] text-white rounded-l-md">
                     <MdOutlineLock />
                   </span>
                   <span
@@ -235,7 +235,7 @@ const SignUp: React.FC = () => {
 
                 <button
                   type="submit"
-                  className="w-full bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                  className="w-full bg-[#00A264] hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 >
                   Sign Up
                 </button>
@@ -245,18 +245,18 @@ const SignUp: React.FC = () => {
                     <input
                       id="rememberMe"
                       type="checkbox"
-                      className="h-4 w-4 text-green-500 focus:ring-green-800 border-gray-300 rounded"
+                      className="h-4 w-4 text-[#00A264] focus:ring-green-800 border-gray-300 rounded"
                     />
                     <label
                       htmlFor="You agree to our"
                       className="ml-2 block  text-sm "
                     >
                       You agree to our
-                      <Link href="/demo" className="text-green-600">
+                      <Link href="/demo" className="text-[#00A264]">
                         Teams & Conditions
                       </Link>
                       and{" "}
-                      <Link href="#" className="text-green-600">
+                      <Link href="#" className="text-[#00A264]">
                         Privacy Policy.
                       </Link>
                     </label>
@@ -267,7 +267,7 @@ const SignUp: React.FC = () => {
 
             <p className=" text-center font-semibold">
               Already have on account?
-              <Link href="/" className="text-green-600 ">
+              <Link href="/" className="text-[#00A264] ">
                 Sign In as Candidate
               </Link>
             </p>

@@ -255,13 +255,13 @@ const Header: React.FC = () => {
           >
             <ul className="flex flex-col font-medium p-4   mt-1 border border-gray-100 rounded-lg bg-gray-100 md:border-0   dark:border-gray-700">
               <li>
-                <a
+                <Link
                   href="#"
                   className="block py-2 px-3 text-[#FFFFFF]  rounded   dark:bg-[#00A264] text-xl"
                   aria-current="page"
                 >
                   Jobs
-                </a>
+                </Link>
               </li>
               <li>
                 <Link

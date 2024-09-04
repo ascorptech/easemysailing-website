@@ -1,11 +1,12 @@
-import React from 'react'
+import SignIn from "@/components/candidate/signin/SignIn";
+import React from "react";
 
-type Props = {}
-
-const page = (props: Props) => {
+export default function page() {
   return (
-    <div>page</div>
-  )
+    <div>
+    
+      <SignIn />
+      
+    </div>
+  );
 }
-
-export default page

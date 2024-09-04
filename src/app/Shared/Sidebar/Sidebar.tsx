@@ -31,95 +31,95 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
 
       <ul className="ml-3 mt-[1px] font-bold text-sm ">
         <li className="mb-2 rounded py-2 bg-green-600 text-white font-semibold">
-          <a href="#" className="">
+          <Link href="#" className="">
             <MdDashboard className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             Dashboard
-          </a>
+          </Link>
         </li>
         <li className="mb-1 rounded py-2  hover:bg-green-600 hover:text-white">
-          <a href="#">
+          <Link href="#">
             <IoBag className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />{" "}
             Company Profile
-          </a>
+          </Link>
         </li>
         <li className="mb-1 rounded py-2  hover:bg-green-600 hover:text-white">
-          <a href="#">
+          <Link href="#">
             <FaFileLines className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             Subscription
-          </a>
+          </Link>
         </li>
 
         <li className="mb-1 rounded py-2  hover:bg-green-600 hover:text-white">
-          <a href="#">
+          <Link href="#">
             <PiShoppingBagOpenFill className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             Job Posting
-          </a>
+          </Link>
         </li>
         <li className="mb-2 rounded py-2  hover:bg-green-600 hover:text-white">
-          <a href="#">
+          <Link href="#">
             <MdMenuBook className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             Ships
-          </a>
+          </Link>
         </li>
         <li className="mb-2 rounded py-2  hover:bg-green-600 hover:text-white">
-          <a href="#">
+          <Link href="#">
             <SiElementor className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             WSG
-          </a>
+          </Link>
         </li>
         <li className="mb-2 rounded py-2  hover:bg-green-600 hover:text-white">
-          <a href="#">
+          <Link href="#">
             <FaFileLines className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             Candidates Listing
-          </a>
+          </Link>
         </li>
         <li className="mb-2 rounded py-2  hover:bg-green-600 hover:text-white">
-          <a href="#">
+          <Link href="#">
             <MdMapsHomeWork className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             EMS Matches
-          </a>
+          </Link>
         </li>
         <li className="mb-2 rounded py-2  hover:bg-green-600 hover:text-white">
-          <a href="#">
+          <Link href="#">
             <MdOutlineCardGiftcard className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             EduEMS
-          </a>
+          </Link>
         </li>
         <li className="mb-2 rounded py-2  hover:bg-green-600 hover:text-white">
-          <a href="#">
+          <Link href="#">
             <FaFileLines className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             EduEMS
-          </a>
+          </Link>
         </li>
         <li className="mb-2 rounded py-2  hover:bg-green-600 hover:text-white">
-          <a href="#">
+          <Link href="#">
             <RiExchangeDollarLine className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             Downloadded CV
-          </a>
+          </Link>
         </li>
         <li className="mb-2 rounded py-2  hover:bg-green-600 hover:text-white">
-          <a href="#">
+          <Link href="#">
             <RiContactsBook3Line className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             EMSRecruit
-          </a>
+          </Link>
         </li>
         <li className="mb-2 rounded py-2  hover:bg-green-600 hover:text-white">
-          <a href="#">
+          <Link href="#">
             <FiLogOut className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             Transactions
-          </a>
+          </Link>
         </li>
         <li className="mb-2 rounded py-2  hover:bg-green-600 hover:text-white">
-          <a href="#">
+          <Link href="#">
             <RiContactsBook3Line className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             Contact Us
-          </a>
+          </Link>
         </li>
         <li className=" rounded py-2  hover:bg-green-600 hover:text-white">
-          <a href="#">
+          <Link href="#">
             <FiLogOut className="inline-block w-6 h-6 mr-1 ml-2 mt-[-5px] " />
             Logout
-          </a>
+          </Link>
         </li>
       </ul>
     </div>

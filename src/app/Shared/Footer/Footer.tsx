@@ -1,4 +1,5 @@
 import { FiPhone } from "react-icons/fi";
+import Link from "next/link";
 import { MdOutlineMail } from "react-icons/md";
 import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
 
@@ -18,7 +19,7 @@ const Footer = () => {
           </p>
           <p className="mt-4 font-semibold">
             Are You a vender?{" "}
-            <a className="text-green-600 underline">Join Us</a>
+            <Link href="#" className="text-green-600 underline">Join Us</Link>
           </p>
         </div>
 
@@ -28,24 +29,24 @@ const Footer = () => {
           <h3 className="text-lg text-green-600 font-semibold">Quick link</h3>
           <ul>
             <li className="mt-2">
-              <a href="#" className=" hover:text-green-600">
+              <Link href="#" className=" hover:text-green-600">
                 Home
-              </a>
+              </Link>
             </li>
             <li className="mt-2">
-              <a href="#" className="hover:text-green-600">
+              <Link href="#" className="hover:text-green-600">
                 About
-              </a>
+              </Link>
             </li>
             <li className="mt-2">
-              <a href="#" className="hover:text-green-600">
+              <Link href="#" className="hover:text-green-600">
                 Recruiter
-              </a>
+              </Link>
             </li>
             <li className="mt-2">
-              <a href="#" className="hover:text-green-600">
+              <Link href="#" className="hover:text-green-600">
                 Careers
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -55,24 +56,24 @@ const Footer = () => {
           <h3 className="text-lg text-green-600 font-semibold">Help</h3>
           <ul>
             <li className="mt-2">
-              <a href="#" className="hover:text-green-600">
+              <Link href="#" className="hover:text-green-600">
                 Privacy Policy
-              </a>
+              </Link>
             </li>
             <li className="mt-2">
-              <a href="#" className="hover:text-green-600">
+              <Link href="#" className="hover:text-green-600">
                 GDPR & Privacy Policy
-              </a>
+              </Link>
             </li>
             <li className="mt-2">
-              <a href="#" className="hover:text-green-600">
+              <Link href="#" className="hover:text-green-600">
                 Terms and conditions
-              </a>
+              </Link>
             </li>
             <li className="mt-2">
-              <a href="#" className="hover:text-green-600">
+              <Link href="#" className="hover:text-green-600">
                 FAQ
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -83,41 +84,41 @@ const Footer = () => {
           </h3>
           <ul>
             <li className="mt-2">
-              <a href="#" className="flex items-center hover:text-green-600">
+              <Link href="#" className="flex items-center hover:text-green-600">
                 <span className="text-green-600 mr-1">
                   <FiPhone />
                 </span>
                 (01) xxx xxx xxxx
-              </a>
+              </Link>
             </li>
             <li className="mt-2">
-              <a href="#" className="flex items-center hover:text-green-600">
+              <Link href="#" className="flex items-center hover:text-green-600">
                 <span className="text-green-600 mr-1">
                   <MdOutlineMail />
                 </span>
                 example@gmail.com
-              </a>
+              </Link>
             </li>
             <li className="mt-2">
-              <a href="#" className="flex items-center hover:text-green-600">
-                <a href="#" className="text-green-600">
+              <Link href="#" className="flex items-center hover:text-green-600">
+                <Link href="#" className="text-green-600">
                   🌐
-                </a>
+                </Link>
                 www.easemysailing.au
-              </a>
+              </Link>
             </li>
           </ul>
           <div className="mt-4 flex p-1 space-x-1 items-center">
             <h2 className="font-semibold">Follow Us :</h2>
-            <a href="#" className="text-green-600">
+            <Link href="#" className="text-green-600">
               <FaFacebook />
-            </a>
-            <a href="#" className="text-green-600">
+            </Link>
+            <Link href="#" className="text-green-600">
               <FaInstagram />
-            </a>
-            <a href="#" className="text-green-600">
+            </Link>
+            <Link href="#" className="text-green-600">
               <FaWhatsapp />
-            </a>
+            </Link>
           </div>
         </div>
       </div>

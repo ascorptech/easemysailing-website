@@ -124,7 +124,7 @@ const Slide: React.FC = () => {
               <h3 className="text-lg font-semibold truncate">
                 {vacancy.name}
               </h3>
-              <p className="text-xs text-green-600 w-[8.4rem]">
+              <p className="text-xs text-[#00A264] w-[8.4rem]">
                 {vacancy.roleType}
               </p>
               

@@ -31,7 +31,7 @@ export default function RecruiterLayout({
       <body className={inter.className}>
       
 
-        <div className="flex h-screen scrollbar-hide overflow-x-auto  ">
+        {/* <div className="flex h-screen scrollbar-hide overflow-x-auto  "> */}
           {/* <Sidebar sidebarToggle={sidebarToggle} /> */}
           
           {/* <div
@@ -43,12 +43,16 @@ export default function RecruiterLayout({
               sidebarToggle={sidebarToggle}
               setSidebarToggle={setSidebarToggle}
             /> */}
-            <div className="lg:h-[calc(100vh-4rem)] xxl:max-h-min overflow-auto scrollbar-hide overflow-x-auto">
+            {/* <div className="lg:h-[calc(100vh-4rem)] xxl:max-h-min overflow-auto scrollbar-hide overflow-x-auto">
              
               {children}
-            </div>
+            </div> */}
+            <main className="w-full h-screen flex flex-col">
+            
+            {children}
+        </main>
           {/* </div> */}
-        </div>
+        {/* </div> */}
       </body>
     </html>
   );

@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import react from "react";
+import Link from "next/link";
 
 const Signup = () => {
   const handleSubmit = () => {
@@ -91,7 +92,7 @@ const Signup = () => {
 
         <div className="flex lg:flex-row justify-evenly items-center mt-4 space-y-0 lg:space-y-0 lg:space-x-4">
           {/* Google Play Button */}
-          <a
+          <Link
             href="https://play.google.com/store/apps/details?id=YOUR_APP_ID"
             target="_blank"
             rel="noopener noreferrer"
@@ -102,10 +103,10 @@ const Signup = () => {
               alt="Google Play"
               className="w-auto lg:w-40 h-[3rem]"
             />
-          </a>
+          </Link>
 
           {/* App Store Button */}
-          <a
+          <Link
             href="https://apps.apple.com/us/app/your-app-id"
             target="_blank"
             rel="noopener noreferrer"
@@ -116,7 +117,7 @@ const Signup = () => {
               alt="App Store"
               className="w-auto lg:w-40 h-[3rem]"
             />
-          </a>
+          </Link>
         </div>
       </div>
 

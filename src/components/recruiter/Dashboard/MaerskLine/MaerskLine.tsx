@@ -109,9 +109,9 @@ const MaerskLine: React.FC = () => {
           <div className="flex items-center justify-around ml-2  pb-1">
             <div className=" relative  text-center h-[74px] w-[74px] ">
               <img
-                src="./Images/MaerskLine.jpeg"
+                src="../Images/MaerskLine.jpeg"
                 alt="Avatar"
-                className="w-full h-full rounded-full border-green-600 border-[2px] mt-[11px] ml-[11px]"
+                className="w-full h-full rounded-full border-[#00A264] border-[2px] mt-[11px] ml-[11px]"
               />
               <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center p-12">
                 <svg className=" absolute top-0 left-0 w-full h-full ">
@@ -136,7 +136,7 @@ const MaerskLine: React.FC = () => {
               </div>
 
               <div className=" w-32 mt-5   ">
-                <h3 className="text-green-600 underline font-semibold text-lg mr-6">
+                <h3 className="text-[#00A264] underline font-semibold text-lg mr-6">
                   Maersk Line
                 </h3>
               </div>
@@ -145,7 +145,7 @@ const MaerskLine: React.FC = () => {
             <div>
               <div className="w-[103px] h-[103px]">
                 <img
-                  src="./Images/Premium.png"
+                  src="../Images/Premium.png"
                   alt="Avatar"
                   className="w-full h-full rounded-full mt-[20px]"
                 />
@@ -155,10 +155,10 @@ const MaerskLine: React.FC = () => {
           </div>
 
           <div className=" flex   m-3 h-12 mt-12 ">
-            <button className="rounded-lg bg-green-200 text-green-700 border-2 border-green-600  w-36  font-bold mr-8">
+            <button className="rounded-lg bg-green-200 text-green-700 border-2 border-[#00A264]  w-36  font-bold mr-8">
               Upgrads
             </button>
-            <button className="rounded-lg bg-green-600 text-white border-2 border-green-600  w-36  font-bold">
+            <button className="rounded-lg bg-[#00A264] text-white border-2 border-[#00A264]  w-36  font-bold">
               Recharge CVs
             </button>
           </div>
@@ -168,10 +168,10 @@ const MaerskLine: React.FC = () => {
 
         <div className="grid row-span-1   mt-5 ">
           <div className=" bg-gray-100 shadow-slate-600 shadow-inner  rounded-[50px] p-4  ">
-            <div className="flex justify-between items-center text-white font-semibold text-lg bg-green-600 rounded-lg w-full p-2 mt-4">
+            <div className="flex justify-between items-center text-white font-semibold text-lg bg-[#00A264] rounded-lg w-full p-2 mt-4">
               <div className="flex items-center ">
                 <img
-                  src="./Images/artificial.png"
+                  src="../Images/artificial.png"
                   alt="image not found"
                   className="w-12 h-12 "
                 ></img>
@@ -183,13 +183,13 @@ const MaerskLine: React.FC = () => {
             <div className=" flex justify-between items-center  font-semibold text-lg bg-white rounded-lg w-full p-2 mt-5">
               <div className="flex items-center ">
                 <img
-                  src="./Images/Customer.png"
+                  src="../Images/Customer.png"
                   alt="image not found"
                   className="w-12 h-12 "
                 ></img>
                 <h3 className=" ml-2 text-red-600">
                   You are missing
-                  <p className="text-green-600 underline font-semibold mt-[-4px]">
+                  <p className="text-[#00A264] underline font-semibold mt-[-4px]">
                     Saving Potential
                   </p>
                 </h3>
@@ -207,11 +207,11 @@ const MaerskLine: React.FC = () => {
             <div className="flex justify-between items-center  bg-[#D3EAEA] p-[10px] rounded-lg">
               <div className="flex items-center space-x-2">
                 <img
-                  src="./Images/visitor.png"
+                  src="../Images/visitor.png"
                   alt="Salary Icon"
                   className="w-6 h-6"
                 />
-                <span className="font-semibold text-green-500 underline">
+                <span className="font-semibold text-[#00A264] underline">
                   Company Profile Visitor
                 </span>
               </div>
@@ -221,11 +221,11 @@ const MaerskLine: React.FC = () => {
             <div className="flex justify-between items-center   bg-[#D3EAEA] p-[10px] rounded-lg">
               <div className="flex items-center space-x-2 ">
                 <img
-                  src="./Images/jobOffer.png"
+                  src="../Images/jobOffer.png"
                   alt="Rank Icon"
                   className="w-6 h-6"
                 />
-                <span className="font-semibold underline text-green-500">
+                <span className="font-semibold underline text-[#00A264]">
                   Job Posted
                 </span>
               </div>
@@ -235,11 +235,11 @@ const MaerskLine: React.FC = () => {
             <div className="flex justify-between items-center   bg-[#D3EAEA] p-[10px] rounded-lg">
               <div className="flex items-center space-x-2 ">
                 <img
-                  src="./Images/Resume.png"
+                  src="../Images/Resume.png"
                   alt="Ship Type Icon"
                   className="w-6 h-6"
                 />
-                <span className="font-semibold underline text-green-600">
+                <span className="font-semibold underline text-[#00A264]">
                   Job Applications
                 </span>
               </div>
@@ -249,11 +249,11 @@ const MaerskLine: React.FC = () => {
             <div className="flex justify-between items-center   bg-[#D3EAEA]  p-[10px] rounded-lg">
               <div className="flex items-center space-x-2 ">
                 <img
-                  src="./Images/attachment.png"
+                  src="../Images/attachment.png"
                   alt="Rank Icon"
                   className="w-6 h-6"
                 />
-                <span className="font-semibold underline text-green-600">
+                <span className="font-semibold underline text-[#00A264]">
                   Downloaded CVs
                 </span>
               </div>
@@ -263,11 +263,11 @@ const MaerskLine: React.FC = () => {
             <div className="flex justify-between items-center  bg-[#D3EAEA]  p-[10px] rounded-lg">
               <div className="flex items-center space-x-2 ">
                 <img
-                  src="./Images/EDUEms.png"
+                  src="../Images/EDUEms.png"
                   alt="Rank Icon"
                   className="w-6 h-6"
                 />
-                <span className="font-semibold underline text-green-600">
+                <span className="font-semibold underline text-[#00A264]">
                   EduEMS Allocations
                 </span>
               </div>
@@ -277,7 +277,7 @@ const MaerskLine: React.FC = () => {
 
           <div className="flex justify-between items-center mt-5">
             <h3 className="text-md font-bold ">Recruitment Pipeline</h3>
-            <button className=" bg-green-600 text-white p-2 rounded-lg font-semibold">
+            <button className=" bg-[#00A264] text-white p-2 rounded-lg font-semibold">
               Interview Schedule
             </button>
           </div>
@@ -294,7 +294,7 @@ const MaerskLine: React.FC = () => {
             <div className="flex  mt-6 text-white text-end ">
               <div className="bg-green-900 w-[82px] h-6  pr-1">10</div>
               <div className="bg-green-700 w-[82px] h-6 pr-1">8</div>
-              <div className="bg-green-500 w-[82px] h-6 pr-1">20</div>
+              <div className="bg-[#00A264] w-[82px] h-6 pr-1">20</div>
               <div className="bg-green-300 w-[82px] h-6 pr-1">5</div>
             </div>
           </div>
@@ -306,14 +306,14 @@ const MaerskLine: React.FC = () => {
         <div className="max-w-md mx-auto bg-[#D3EAEA] shadow-inner shadow-black rounded-[40px] p-5 ">
           <div className=" flex items-center justify-between mt-2 mb-5">
             <h3 className="text-lg font-bold ">Repatriation Status</h3>
-            <button className="bg-green-600 text-white p-1  w-20 rounded-lg flex items-center justify-around ">
+            <button className="bg-[#00A264] text-white p-1  w-20 rounded-lg flex items-center justify-around ">
               All <ChevronDown />
             </button>
           </div>
 
           <div className="flex justify-between items-center mb-4  font-bold text-xs">
             <div className="flex items-center space-x-2">
-              <span className="w-3 h-3 bg-green-500 "></span>
+              <span className="w-3 h-3 bg-[#00A264] "></span>
               <span className=" text-gray-600 ">30 Days+</span>
             </div>
             <div className="flex items-center space-x-2">
@@ -335,13 +335,13 @@ const MaerskLine: React.FC = () => {
                     ? "border-red-500"
                     : ship.status === "lessThan30Days"
                     ? "border-yellow-500"
-                    : "border-green-500"
+                    : "border-[#00A264]"
                 }`}
               >
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
                   <img
                     src="./Images/ship-user.png"
-                    className=" text-green-500"
+                    className=" text-[#00A264]"
                   ></img>
                 </div>
                 <div className="ml-4">
@@ -371,7 +371,7 @@ const MaerskLine: React.FC = () => {
           <div className="flex justify-between items-center  font-bold text-xs gap-10 ">
             <h3 className="text-lg ">Status</h3>
             <div className="flex items-center space-x-2">
-              <span className="w-3 h-3 bg-green-500 "></span>
+              <span className="w-3 h-3 bg-[#00A264] "></span>
               <span className=" text-gray-600 ">30 Days+</span>
             </div>
             <div className="flex items-center space-x-2">
@@ -388,13 +388,13 @@ const MaerskLine: React.FC = () => {
         <div className=" text-white text-end  ">
           {ship.map((ship, index) => (
             <div key={index} className=" flex  justify-between mb-2">
-              <a className="underline text-green-600 font-semibold ml-11 mt-3">
+              <Link href="#" className="underline text-[#00A264] font-semibold ml-11 mt-3">
                 {ship.name}
-              </a>
+              </Link>
 
               <div className="flex ">
                 <div
-                  className="bg-green-600 pr-2 mt-3"
+                  className="bg-[#00A264] pr-2 mt-3"
                   style={{ width: `${ship.status.days30plus * 22}px` }}
                 >
                   <span className="text-white ">{ship.status.days30plus}</span>
@@ -424,7 +424,7 @@ const MaerskLine: React.FC = () => {
               <li>
                 <Link
                   href="#"
-                  className="px-3 py-2  text-green-600 rounded font-semibold hover:bg-green-600 hover:text-white"
+                  className="px-3 py-2  text-[#00A264] rounded font-semibold hover:bg-[#00A264] hover:text-white"
                 >
                   Prev
                 </Link>
@@ -435,7 +435,7 @@ const MaerskLine: React.FC = () => {
                     href="#"
                     className={`px-3 py-2 ${
                       index === 0
-                        ? "bg-green-600 text-white"
+                        ? "bg-[#00A264] text-white"
                         : "bg-gray-200 text-gray-700"
                     } rounded`}
                   >
@@ -446,7 +446,7 @@ const MaerskLine: React.FC = () => {
               <li>
                 <Link
                   href="#"
-                  className="px-3 py-2  text-green-600 rounded font-semibold  hover:bg-green-600 hover:text-white"
+                  className="px-3 py-2  text-[#00A264] rounded font-semibold  hover:bg-[#00A264] hover:text-white"
                 >
                   Next
                 </Link>

@@ -1,23 +1,18 @@
 "use client";
-
 import Link from "next/link";
-
 import { IoCallOutline } from "react-icons/io5";
 import { GoEye } from "react-icons/go";
 import { MdOutlineLock } from "react-icons/md";
-
-
 import { useState } from "react";
-
 import LoginImg from "@/components/candidate/image/LoginImg";
 import LoginHeader from "@/app/Shared/LoginHeader/LoginHeader";
 import Footer from "@/app/Shared/Footer/Footer";
-import ForgotPassword from "../ChangePassword/ForgotPassword";
-import VerificationOpt from "../ChangePassword/VerificationOpt";
-import VerificationCode from "../ChangePassword/VerificationCode";
-import Congratulations from "../ChangePassword/Congratulations";
-import ResetPassword from "../ChangePassword/ResetPassword";
-import PasswordChange from "../ChangePassword/PasswordChange";
+import ForgotPassword from "../changepassword/ForgotPassword";
+import VerificationOpt from "../changepassword/VerificationOpt";
+import VerificationCode from "../changepassword/VerificationCode";
+import Congratulations from "../changepassword/Congratulations";
+import ResetPassword from "../changepassword/ResetPassword";
+import PasswordChange from "../changepassword/PasswordChange";
 
 const SignIn = () => {
   const [emailOrPhone, setEmailOrPhone] = useState("");
@@ -124,7 +119,7 @@ const SignIn = () => {
                     placeholder="Email/Phone"
                     required
                   />
-                  <span className="absolute inset-y-0 left-0 flex items-center p-3 text-white bg-green-600 rounded-l-md">
+                  <span className="absolute inset-y-0 left-0 flex items-center p-3 text-white bg-[#00A264] rounded-l-md">
                     <IoCallOutline />
                   </span>
                 </div>
@@ -148,7 +143,7 @@ const SignIn = () => {
                     required
                   />
 
-                  <span className="absolute inset-y-0 left-0 flex items-center p-3 text-white bg-green-600 rounded-l-md">
+                  <span className="absolute inset-y-0 left-0 flex items-center p-3 text-white bg-[#00A264] rounded-l-md">
                     <MdOutlineLock />
                   </span>
                   <span
@@ -184,19 +179,20 @@ const SignIn = () => {
                 </Link>
               </div>
 
-              <div>
-                <button
-                  type="submit"
-                  className="w-full px-4 py-2 font-bold text-white bg-green-500 rounded hover:bg-green-700 focus:outline-none focus:shadow-outline"
+              <div className=" ">
+                <Link href="/recruiter/dashboard"
+                      className="block w-full px-4 py-2 text-white bg-[#00A264] text-center hover:bg-[#00A264] font-bold rounded focus:outline-none focus:shadow-outline"
+
+                  // className="w-full px-4 py-2 text-white  bg-[#00A264] text-center hover:bg-[#00A264] font-bold  rounded focus:outline-none focus:shadow-outline"
                 >
                   Sign in
-                </button>
+                </Link>
               </div>
             </form>
 
             <p className="mt-2 text-center">
               Don’t have an account?
-              <Link href={"signup"} className="text-green-600 hover:underline">
+              <Link href={"signup"} className="text-[#00A264] hover:underline">
                 Sign Up
               </Link>
             </p>

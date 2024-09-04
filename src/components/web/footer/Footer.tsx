@@ -40,9 +40,9 @@ const Footer = () => {
               industry. Lorem Ipsum has been the industry's standard.
             </p>
             <p className="mt-4">
-              <a href="#" className="text-[#00A264] font-semibold">
+              <Link href="#" className="text-[#00A264] font-semibold">
                 Are you a Vendor? Join Us
-              </a>
+              </Link>
             </p>
           </div>
 
@@ -118,15 +118,15 @@ const Footer = () => {
               </li>
             </ul>
             <div className="flex space-x-4 mt-4">
-              <a href="#" className="text-green-600">
+              <Link href="#" className="text-green-600">
                 🌐
-              </a>
-              <a href="#" className="text-green-600">
+              </Link>
+              <Link href="#" className="text-green-600">
                 🟢
-              </a>
-              <a href="#" className="text-green-600">
+              </Link>
+              <Link href="#" className="text-green-600">
                 📸
-              </a>
+              </Link>
             </div>
           </div>
         </div>

@@ -27,7 +27,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="contact">
+    <div className="contact mt-16">
       <div className="flex justify-center items-center h-[6rem]  bg-green-100">
         <h1 className="text-3xl text-green-600 font-bold">Get in touch</h1>
       </div>
@@ -141,21 +141,21 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className=" flex items-center bg-white shadow-lg border flex p-3 mt-3 rounded-xl">
+          <div className="  items-center bg-white shadow-lg border flex py-3 px-1 lg:px-3 mt-3 rounded-xl">
             <div className="w-16 h-16 flex items-center justify-center text-green-600 text-3xl">
               <FiPhoneCall />
             </div>
-            <div className="ml-6">
+            <div className="ml-3 lg:ml-6">
               <h2 className="font-bold text-lg">Call us on</h2>
               <p className="text-sm">+1(XXX) XXX-XXX</p>
             </div>
           </div>
 
-          <div className="flex items-center bg-white shadow-lg border flex p-3 mt-3 rounded-xl">
+          <div className=" items-center bg-white shadow-lg border flex lg:p-3 px-2 mt-3 rounded-xl">
             <div className="w-16 h-16 flex items-center justify-center text-green-600 text-3xl font-extrabold">
               <FiMail />
             </div>
-            <div className="ml-4">
+            <div className="ml-3">
               <h2 className="font-bold text-lg">Mail Us</h2>
               <p className="text-sm">example@gmail.com</p>
             </div>

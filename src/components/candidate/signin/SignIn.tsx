@@ -13,8 +13,10 @@ import VerificationCode from "../changepassword/VerificationCode";
 import Congratulations from "../changepassword/Congratulations";
 import ResetPassword from "../changepassword/ResetPassword";
 import PasswordChange from "../changepassword/PasswordChange";
-
-const SignIn = () => {
+type Props = {
+  route:string
+}
+const SignIn = ( {route} :Props) => {
   const [emailOrPhone, setEmailOrPhone] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -179,11 +181,11 @@ const SignIn = () => {
                 </Link>
               </div>
 
-              <div className=" ">
+              <div className="/recruiter/dashboard">
                 <Link href="/recruiter/dashboard"
                       className="block w-full px-4 py-2 text-white bg-[#00A264] text-center hover:bg-[#00A264] font-bold rounded focus:outline-none focus:shadow-outline"
 
-                  // className="w-full px-4 py-2 text-white  bg-[#00A264] text-center hover:bg-[#00A264] font-bold  rounded focus:outline-none focus:shadow-outline"
+                  
                 >
                   Sign in
                 </Link>

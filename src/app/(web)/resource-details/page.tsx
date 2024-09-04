@@ -31,7 +31,7 @@ const ResourceList: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="">
       <Heading7 />
       <div className="mt-6 lg:max-w-[90%] grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 gap-1 py-3 -black lg:ml-20  w-full ">
         {Resource.map((item) => (

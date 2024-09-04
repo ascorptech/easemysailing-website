@@ -31,5 +31,4 @@ const Rating1 = () => {
     </div>
   );
 };
-
 export default Rating1;

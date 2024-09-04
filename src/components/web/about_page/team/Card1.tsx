@@ -103,7 +103,7 @@ const Card1 = () => {
       {/* Carousel Wrapper */}
       <div
         ref={card}
-        className="flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory mx-[5rem]"
+        className="flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory mx-[4rem]"
       >
         {/* Card 1 */}
         {cards.map((card) => (

@@ -1,12 +1,15 @@
+
 import SignIn from "@/components/candidate/signin/SignIn";
 import React from "react";
 
-export default function page() {
+type Props = {};
+const page = (props: Props) => {
   return (
     <div>
     
-      <SignIn />
+      <SignIn route={'recruiter'} />
       
     </div>
   );
 }
+export default page

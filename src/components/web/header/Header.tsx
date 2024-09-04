@@ -46,19 +46,19 @@ const Header: React.FC = () => {
               <div>
                 <div className="relative inline-block px-3 text-left group ">
                   <li className="block  text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
-                    Jobs
+                    <Link href="/jobs">Jobs</Link>
                   </li>
                 </div>
 
                 <div className="relative inline-block pr-4 text-left group">
                   <li className="relative inline-block pr-4 text-left group  text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
-                    Trainings
+                    <Link href="/trainings">Trainings</Link>
                   </li>
                 </div>
 
                 <li className="relative inline-block text-left group ">
                   <Link
-                    href="#"
+                    href="/ems"
                     className="block text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                   >
                     EMS Plus
@@ -88,7 +88,7 @@ const Header: React.FC = () => {
                       <ul className="py-2 text-sm text-gray-700">
                         <li>
                           <Link
-                            href="/mentoring_details"
+                            href="/mentoring-details"
                             className="block px-4 py-1 hover:bg-white hover:text-green-800"
                           >
                             Jobs & Career Advise
@@ -97,7 +97,7 @@ const Header: React.FC = () => {
 
                         <li>
                           <Link
-                            href="/resource_details"
+                            href="/resource-details"
                             className="block px-4 py-1 hover:bg-white hover:text-green-800"
                           >
                             Resource
@@ -106,7 +106,7 @@ const Header: React.FC = () => {
 
                         <li>
                           <Link
-                            href="/podcast_list"
+                            href="/podcast-list"
                             className="block px-4 py-1 hover:bg-white hover:text-green-800"
                           >
                             Podcast & Interviews
@@ -256,7 +256,7 @@ const Header: React.FC = () => {
             <ul className="flex flex-col font-medium p-4   mt-1 border border-gray-100 rounded-lg bg-gray-100 md:border-0   dark:border-gray-700">
               <li>
                 <Link
-                  href="#"
+                  href="/jobs"
                   className="block py-2 px-3 text-[#FFFFFF]  rounded   dark:bg-[#00A264] text-xl"
                   aria-current="page"
                 >
@@ -265,7 +265,7 @@ const Header: React.FC = () => {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/trainings"
                   className="block py-2 px-3 text-[#00A264] rounded-lg hover:bg-[#00A264] mt-1  hover:text-[#FFFFFF] text-xl"
                 >
                   Trainnigs
@@ -273,7 +273,7 @@ const Header: React.FC = () => {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/ems"
                   className="block py-2 px-3 text-[#00A264] rounded-lg hover:bg-[#00A264] mt-1  hover:text-[#FFFFFF] text-xl"
                 >
                   EMS Plus
@@ -282,7 +282,7 @@ const Header: React.FC = () => {
 
               <li>
                 <Link
-                  href="#"
+                  href="/mentoring-details"
                   className="block py-2 px-3 text-[#00A264] rounded-lg hover:bg-[#00A264] mt-1  hover:text-[#FFFFFF] text-xl"
                 >
                   Jobs & Career Advise
@@ -290,7 +290,7 @@ const Header: React.FC = () => {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/resource-details"
                   className="block py-2 px-3 text-[#00A264] rounded-lg hover:bg-[#00A264] mt-1  hover:text-[#FFFFFF] text-xl"
                 >
                   Resource
@@ -298,7 +298,7 @@ const Header: React.FC = () => {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/podcast-list"
                   className="block py-2 px-3 text-[#00A264] rounded-lg hover:bg-[#00A264] mt-1  hover:text-[#FFFFFF] text-xl"
                 >
                   Podcast & Interviews
@@ -306,7 +306,7 @@ const Header: React.FC = () => {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/about"
                   className="block py-2 px-3 text-[#00A264] rounded-lg hover:bg-[#00A264] mt-1  hover:text-[#FFFFFF] text-xl"
                 >
                   About Us
@@ -314,7 +314,7 @@ const Header: React.FC = () => {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/contact"
                   className="block py-2 px-3 text-[#00A264] rounded-lg hover:bg-[#00A264] mt-1  hover:text-[#FFFFFF] text-xl"
                 >
                   Contact Us
@@ -323,7 +323,7 @@ const Header: React.FC = () => {
 
               <li className="">
                 <Link
-                  href="#"
+                  href="/recruiter"
                   className="block py-2 px-3 text-[#00A264] rounded-lg hover:bg-[#00A264] mt-1  hover:text-[#FFFFFF] text-xl"
                 >
                   Recruiter Zone
@@ -363,76 +363,6 @@ const Header: React.FC = () => {
                   Post a Job
                 </Link>
               </li>
-
-              {/* <div className=" flex items-center h-2 mt-8 ">
-                <div
-                  className="relative inline-block text-left"
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
-                > */}
-              {/* {/ Icon or button to trigger dropdown /} */}
-              {/* <button
-                    className="text-[3rem] flex justify-self-center text-center font-bold text-[#00A264]  relative "
-                    type="button"
-                  >
-                    <HiOutlineDotsHorizontal className="w-15 h-10" />
-                  </button> */}
-
-              {/* {/ Dropdown menu /} */}
-              {/* {isOpen && (
-                    <div
-                      className=" z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-48"
-                      id="dropdownHover"
-                    > */}
-              {/* <ul className="py-2  text-sm text-gray-700">
-                        <li>
-                          <Link
-                            href="/mentoring_details"
-                            className="block px-4 py-1 hover:bg-[#FFFFFF] hover:text-[#00A264]"
-                          >
-                            Jobs & Career Advise
-                          </Link>
-                        </li>
-
-                        <li>
-                          <Link
-                            href="/resource_details"
-                            className="block px-4 py-1 hover:bg-[#FFFFFF] hover:text-[#00A264]"
-                          >
-                            Resource
-                          </Link>
-                        </li>
-
-                        <li>
-                          <Link
-                            href="/podcast_list"
-                            className="block px-4 py-1 hover:bg-[#FFFFFF] hover:text-[#00A264]"
-                          >
-                            Podcast & Interviews
-                          </Link>
-                        </li>
-
-                        <li>
-                          <Link
-                            href="/about"
-                            className="block px-4 py-1 hover:bg-[#FFFFFF] hover:text-[#00A264]"
-                          >
-                            About Us
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/contact"
-                            className="block px-4 py-1 hover:bg-[#FFFFFF] hover:text-[#00A264]"
-                          >
-                            Contact Us
-                          </Link>
-                        </li>
-                      </ul> */}
-              {/* </div> */}
-              {/* )} */}
-              {/* </div> */}
-              {/* </div> */}
             </ul>
           </div>
         )}

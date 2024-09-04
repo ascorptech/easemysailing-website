@@ -15,7 +15,6 @@ const Slide: React.FC = () => {
       id: 1,
       name: "Rockey Smith",
       roleType: "Captain",
-      
     },
     {
       id: 2,
@@ -121,13 +120,10 @@ const Slide: React.FC = () => {
               />
             </div>
             <div className="flex flex-col items-center ">
-              <h3 className="text-lg font-semibold truncate">
-                {vacancy.name}
-              </h3>
+              <h3 className="text-lg font-semibold truncate">{vacancy.name}</h3>
               <p className="text-xs text-[#00A264] w-[8.4rem]">
                 {vacancy.roleType}
               </p>
-              
             </div>
           </div>
         ))}

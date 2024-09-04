@@ -29,29 +29,24 @@ export default function RecruiterLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-      
-
         {/* <div className="flex h-screen scrollbar-hide overflow-x-auto  "> */}
-          {/* <Sidebar sidebarToggle={sidebarToggle} /> */}
-          
-          {/* <div
+        {/* <Sidebar sidebarToggle={sidebarToggle} /> */}
+
+        {/* <div
             className={`${
               sidebarToggle ? "" : " ml-64 "
             } w-full scrollbar-hide overflow-x-auto`}
           > */}
-            {/* <Header
+        {/* <Header
               sidebarToggle={sidebarToggle}
               setSidebarToggle={setSidebarToggle}
             /> */}
-            {/* <div className="lg:h-[calc(100vh-4rem)] xxl:max-h-min overflow-auto scrollbar-hide overflow-x-auto">
+        {/* <div className="lg:h-[calc(100vh-4rem)] xxl:max-h-min overflow-auto scrollbar-hide overflow-x-auto">
              
               {children}
             </div> */}
-            <main className="w-full h-screen flex flex-col">
-            
-            {children}
-        </main>
-          {/* </div> */}
+        <main className="w-full h-screen flex flex-col">{children}</main>
+        {/* </div> */}
         {/* </div> */}
       </body>
     </html>

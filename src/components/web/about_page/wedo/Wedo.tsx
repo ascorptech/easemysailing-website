@@ -15,7 +15,7 @@ const Wedo = () => {
         {/* First Section */}
         <div className="flex flex-col w-full md:w-1/3 text-center items-center">
           <Image
-            src="/aboutleft.png" // Replace with your image path
+            src="/wedo1.png" // Replace with your image path
             alt="Left Image"
             width={5000}
             height={5050}
@@ -34,7 +34,7 @@ const Wedo = () => {
         {/* Second Section */}
         <div className="flex flex-col w-full md:w-1/3 text-center items-center">
           <Image
-            src="/aboutleft.png" // Replace with your image path
+            src="/wedo2.png" // Replace with your image path
             alt="Left Image"
             width={5000}
             height={5050}
@@ -53,7 +53,7 @@ const Wedo = () => {
         {/* Third Section */}
         <div className="flex flex-col w-full md:w-1/3 text-center items-center">
           <Image
-            src="/aboutleft.png" // Replace with your image path
+            src="/wedo1.png" // Replace with your image path
             alt="Left Image"
             width={5000}
             height={5050}
@@ -72,5 +72,4 @@ const Wedo = () => {
     </div>
   );
 };
-
 export default Wedo;

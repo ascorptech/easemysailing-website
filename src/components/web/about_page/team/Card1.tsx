@@ -7,7 +7,7 @@ interface Card {
   company: string;
 }
 
-const Card = () => {
+const Card1 = () => {
   const card = useRef<HTMLDivElement>(null);
 
   const cards: Card[] = [
@@ -108,13 +108,13 @@ const Card = () => {
         {/* Card 1 */}
         {cards.map((card) => (
           <div key={card.id} className="snap-center p-2">
-            <div className="w-32 h-32  bg-white  rounded-full shadow-md ml-11 ">
-              <img src={card.logo} alt="Maersk Line" className="w-full h-full rounded-full" />
+            <div className="w-32 h-32 bg-white  rounded-full shadow-md ml-11">
+              <img src={card.logo} alt="Maersk Line" className=" w-full h-full rounded-full " />
             </div>
             <h2
-              className="text-[#00A264] ml-11"
+              className="text-[#00A264] text-center ml-11"
             >
-              {card.company}<br/><span className="text-black">founder</span>
+              {card.company}<br/><span className="text-black text-center">founder</span>
             </h2>
           </div>
         ))}
@@ -133,4 +133,4 @@ const Card = () => {
   );
 };
 
-export default Card;
+export default Card1;

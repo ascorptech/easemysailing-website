@@ -33,10 +33,10 @@ const ResourceList: React.FC = () => {
   return (
     <div className="">
       <Heading7 />
-      <div className="mt-6 max-w-[90%] grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-1 py-3 -black ml-20 ">
+      <div className="mt-6 lg:max-w-[90%] grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 gap-1 py-3 -black lg:ml-20  w-full ">
         {Resource.map((item) => (
-          <div key={item.id} className="flex  bg-white p-4 flex-shrink-0 ">
-            <div className="relative bg-white border rounded-lg p-5  shadow-md  w-auto ">
+          <div key={item.id} className="flex  bg-white p-3 flex-shrink-0 ">
+            <div className="relative bg-white border rounded-lg md:p-5 p-2  shadow-md  w-auto ">
               <div className=" flex mb-2">
                 <img
                   src={item.logoSrc}
@@ -58,7 +58,7 @@ const ResourceList: React.FC = () => {
               </div>
 
               <Link href={`/resource_details/${item.id}`}>
-                <button className="h-8 mt-2 bg-green-700 text-white py-1 px-4 rounded-lg text-sm">
+                <button className="h-8 mt-2 bg-green-700 text-white py-1 px-4 rounded-lg text-sm ">
                   Read more
                 </button>
               </Link>

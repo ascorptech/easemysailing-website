@@ -31,7 +31,7 @@ const Contact = () => {
       <div className="flex justify-center items-center h-[6rem]  bg-green-100">
         <h1 className="text-3xl text-green-600 font-bold">Get in touch</h1>
       </div>
-      <div className="grid grid-cols-2 gap-24 mx-24 my-10">
+      <div className="grid lg:grid-cols-2  lg:gap-24 md:mx-24 mx-8 my-10">
         <div className="bg-gray-200  p-8 rounded-xl ">
           <h1 className="text-center mb-2">
             For questions and assistance, reach out to us.
@@ -129,7 +129,7 @@ const Contact = () => {
         </div>
 
         <div>
-          <div className="flex items-center bg-white shadow-lg border flex p-3 mt-3 rounded-xl">
+          <div className="flex items-center bg-white shadow-lg border  p-3 mt-3 rounded-xl">
             <div className="w-16 h-16 flex items-center justify-center text-green-600 text-3xl">
               <GrLocation />
             </div>
@@ -161,7 +161,7 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="flex items-center bg-white shadow-lg border flex p-3 mt-3 rounded-xl">
+          <div className=" items-center bg-white shadow-lg border flex p-3 mt-3 rounded-xl">
             <div className="w-16 h-16 flex items-center justify-center text-red-600 text-3xl">
               <FiMail />
             </div>

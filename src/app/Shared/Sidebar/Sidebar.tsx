@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { MdDashboard } from "react-icons/md";
 import { FaFileLines } from "react-icons/fa6";
 import { IoBag } from "react-icons/io5";
@@ -23,9 +24,9 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
     >
       {/* <div className={`fixed top-0 left-0 h-full bg-gray-800 text-white shadow-lg transition-transform duration-300 ${sidebarToggle ? 'translate-x-0' : '-translate-x-full'} w-64`}> */}
       <div className="bg-white  p-2 pl-5">
-        <h1 className="text-2xl font-extrabold">
+        <Link href="/" className="text-2xl font-extrabold">
           EaseMy<span className="text-green-700">Sailing</span>
-        </h1>
+        </Link>
       </div>
 
       <ul className="ml-3 mt-[1px] font-bold text-sm ">

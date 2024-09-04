@@ -12,7 +12,7 @@ const Career = () => {
           </h1>
         </div>
         <div>
-          <Link href="/mentoring_details">
+          <Link href="/mentoring-details">
             <button className="h-8 bg-[#00A264] text-white py-1 px-4 rounded-lg text-sm">
               View All
             </button>

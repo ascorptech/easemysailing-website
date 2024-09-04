@@ -69,7 +69,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/mentoring_details"
+                  href="/mentoring-details"
                   className="text-gray-600 text-sm"
                 >
                   Careers
@@ -83,7 +83,7 @@ const Footer = () => {
             <h4 className="font-semibold text-lg text-black mb-2">Help</h4>
             <ul>
               <li>
-                <Link href="/privacy_policy" className="text-gray-600 text-sm">
+                <Link href="/privacy-policy" className="text-gray-600 text-sm">
                   Privacy Policy
                 </Link>
               </li>

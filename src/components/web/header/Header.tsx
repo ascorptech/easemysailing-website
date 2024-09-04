@@ -57,12 +57,12 @@ const Header: React.FC = () => {
                 </div>
 
                 <li className="relative inline-block text-left group ">
-                  <a
+                  <Link
                     href="#"
                     className="block text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                   >
                     EMS Plus
-                  </a>
+                  </Link>
                 </li>
               </div>
               <div className=" flex items-center h-2">
@@ -137,12 +137,12 @@ const Header: React.FC = () => {
 
               <div className="flex items-center justify-center">
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    href="/recruiter"
                     className="block text-sm py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#00A264] md:p-0 dark:text-black md:dark:hover:text-[#00A264] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                   >
                     Recruiter Zone
-                  </a>
+                  </Link>
                 </li>
 
                 <span className="text-[1.3rem]  border-1 border-red-950 flex justify-self-center text-center font-[1000] text-green-700  relative ">
@@ -150,18 +150,18 @@ const Header: React.FC = () => {
                 </span>
 
                 <li>
-                  <a
+                  <Link
                     href="#"
                     className="block pt-6 px-4 text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#00A264] md:p-0 dark:text-black md:dark:hover:text-[#00A264] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                   >
                     Manning Agent Zone
-                  </a>
+                  </Link>
                 </li>
               </div>
 
               <div className="flex relative items-center h-2 mt-2 ">
                 <Link
-                  href={"candidate"}
+                  href={"/candidate"}
                   className="flex justify-center items-center mr-4 border border-[#00A264] text-[#00A264] p-2 rounded-full text-sm"
                 >
                   <span className="pr-2">

@@ -3,7 +3,9 @@ import React, { lazy, Suspense, useState } from "react";
 // import type { Metadata } from "next";
 
 import { Inter } from "next/font/google";
-import "../globals.scss";
+import "../../../../globals.scss";
+import Sidebar from "@/app/Shared/Sidebar/Sidebar";
+import Header from "@/app/Shared/Header/Header";
 // import RecruiterHeader from "@/components/recruiter/RecruiterHeader/RecruiterHeader";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -32,22 +34,22 @@ export default function RecruiterLayout({
       
 
         <div className="flex h-screen scrollbar-hide overflow-x-auto  ">
-          {/* <Sidebar sidebarToggle={sidebarToggle} /> */}
+          <Sidebar sidebarToggle={sidebarToggle} />
           
-          {/* <div
+          <div
             className={`${
               sidebarToggle ? "" : " ml-64 "
             } w-full scrollbar-hide overflow-x-auto`}
-          > */}
-            {/* <Header
+          >
+            <Header
               sidebarToggle={sidebarToggle}
               setSidebarToggle={setSidebarToggle}
-            /> */}
+            />
             <div className="lg:h-[calc(100vh-4rem)] xxl:max-h-min overflow-auto scrollbar-hide overflow-x-auto">
              
               {children}
             </div>
-          {/* </div> */}
+          </div>
         </div>
       </body>
     </html>

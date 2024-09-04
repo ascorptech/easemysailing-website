@@ -121,7 +121,7 @@ const Footer = () => {
             </ul>
             <div className="flex space-x-4 mt-4">
               <h5>Follow Us :</h5>
-              <a href="#" className="text-green-600 mt-1">
+              <Link href="#" className="text-green-600 mt-1">
                 {/* {/ <CiSearch /> /} */}
                 <Image
                   src={"/fb.png"}
@@ -130,8 +130,8 @@ const Footer = () => {
                   height={18}
                   alt="userlock"
                 />
-              </a>
-              <a href="#" className="text-green-600 mt-1">
+              </Link>
+              <Link href="#" className="text-green-600 mt-1">
                 <Image
                   src={"/insta.png"}
                   priority
@@ -139,8 +139,8 @@ const Footer = () => {
                   height={18}
                   alt="userlock"
                 />
-              </a>
-              <a href="#" className="text-green-600 mt-1">
+              </Link>
+              <Link href="#" className="text-green-600 mt-1">
                 <Image
                   src={"/xlogo.png"}
                   priority
@@ -148,7 +148,7 @@ const Footer = () => {
                   height={18}
                   alt="userlock"
                 />
-              </a>
+              </Link>
             </div>
           </div>
         </div>

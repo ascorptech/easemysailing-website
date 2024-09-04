@@ -7,12 +7,12 @@ import { useState } from "react";
 import LoginImg from "@/components/candidate/image/LoginImg";
 import LoginHeader from "@/app/Shared/LoginHeader/LoginHeader";
 import Footer from "@/app/Shared/Footer/Footer";
-import ForgotPassword from "../changepassword/ForgotPassword";
-import VerificationOpt from "../changepassword/VerificationOpt";
-import VerificationCode from "../changepassword/VerificationCode";
-import Congratulations from "../changepassword/Congratulations";
-import ResetPassword from "../changepassword/ResetPassword";
-import PasswordChange from "../changepassword/PasswordChange";
+import ForgotPassword from "../ChangePassword/ForgotPassword";
+import VerificationOpt from "../ChangePassword/VerificationOpt";
+import VerificationCode from "../ChangePassword/VerificationCode";
+import Congratulations from "../ChangePassword/Congratulations";
+import ResetPassword from "../ChangePassword/ResetPassword";
+import PasswordChange from "../ChangePassword/PasswordChange";
 type Props = {
   route:string
 }
@@ -94,7 +94,7 @@ const SignIn = ( {route} :Props) => {
           {/* Sign-In Form Section */}
           <div className="w-full md:w-1/2 p-7 bg-[#EAEAEA]  ">
             <h2 className="mt-8 mb-2 text-2xl font-bold text-center">
-              Sign In as Candidate
+              Sign In as {route=='candidate'?'Candidate':'Recruiter'}
             </h2>
             <p className="mb-4 text-center text-gray-600">
               Enter your credential to access your account.
@@ -181,23 +181,21 @@ const SignIn = ( {route} :Props) => {
                 </Link>
               </div>
 
-              <div className="/recruiter/dashboard">
-                <Link href="/recruiter/dashboard"
+                <Link href={route=='candidate'?"/candidate/dashboard":"/recruiter/dashboard"}
                       className="block w-full px-4 py-2 text-white bg-[#00A264] text-center hover:bg-[#00A264] font-bold rounded focus:outline-none focus:shadow-outline"
 
                   
                 >
                   Sign in
                 </Link>
-              </div>
             </form>
 
-            <p className="mt-2 text-center">
+           {route=='candidate'&& <p className="mt-2 text-center">
               Don’t have an account?
               <Link href={"signup"} className="text-[#00A264] hover:underline">
                 Sign Up
               </Link>
-            </p>
+            </p>}
           </div>
         </div>
 

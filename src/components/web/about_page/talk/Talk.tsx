@@ -13,9 +13,9 @@ const Talk = () => {
         />
       </div>
       <div className="w-full max-w-[45rem] lg:text-justify text-center md:text-left mt-4 md:mt-0">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold">
+        <h1 className="text-3xl md:text-4xl lg:text-[46px] leading-[62px] font-semibold">
           Let's talk about{" "}
-          <span className="text-green-700 font-semibold">
+          <span className="text-green-700 font-semibold leading-[62px]">
             EaseMy
             <br />
             Sailing

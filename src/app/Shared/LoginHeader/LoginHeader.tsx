@@ -13,7 +13,7 @@ const LoginHeader = () => {
       </div>
       {/* Button */}
       <Link
-        href={"recruiter"}
+        href={"/"}
         className="px-4 py-2 ml-16 mr-16 text-white bg-green-600 rounded-full"
       >
         Back to website

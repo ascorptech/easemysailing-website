@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "../globals.scss";
 import Header from "@/components/web/header/Header";
 import Footer from "@/components/web/footer/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: "400"
+});
 
 export const metadata: Metadata = {
   title: { default: "EaseMySailing", template: "%s | EaseMySailing" },
@@ -18,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className={poppins.className}>
         <main className="w-full h-screen flex flex-col">
           <Header />
           {children}

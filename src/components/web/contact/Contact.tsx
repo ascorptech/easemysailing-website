@@ -38,14 +38,14 @@ const Contact = () => {
             For questions and assistance, reach out to us.
           </h1>
           <form onSubmit={handleSubmit} className="   ">
-            <div className="mb-[7px]">
+            <div className="mb-[7px] ">
               <div className="relative flex items-center ">
                 <input
                   id="Name"
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
+                  className="border lg:h-10 rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
                   placeholder=" Name"
                   required
                 />
@@ -59,7 +59,7 @@ const Contact = () => {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
+                  className="border lg:h-10 rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
                   placeholder="Email"
                   required
                 />
@@ -72,7 +72,7 @@ const Contact = () => {
                   type="number"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
+                  className="border lg:h-10  rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
                   placeholder="Phone Number"
                   required
                 />
@@ -84,7 +84,7 @@ const Contact = () => {
                 <textarea
                   value={textarea}
                   onChange={(e) => setTextArea(e.target.value)}
-                  className="border rounded-lg w-full h-20 py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
+                  className="border rounded-lg w-full h-28 py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
                   placeholder="Message"
                   required
                 />
@@ -98,7 +98,7 @@ const Contact = () => {
                   type="text"
                   value={captcha}
                   onChange={(e) => setCaptcha(e.target.value)}
-                  className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
+                  className="border rounded-lg w-full lg:h-10  py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
                   placeholder="Captcha Code"
                   required
                 />
@@ -134,7 +134,7 @@ const Contact = () => {
             <div className="w-16 h-16 flex items-center justify-center text-[#00A264] text-3xl">
               <GrLocation />
             </div>
-            <div className="ml-6">
+            <div className="lg:ml-4 ml-6">
               <h2 className="font-bold text-lg">Address</h2>
               <p className="text-sm">
                 Lorem Ipsum is simply dummy text of the printing
@@ -146,7 +146,7 @@ const Contact = () => {
             <div className="w-16 h-16 flex items-center justify-center text-[#00A264] text-3xl">
               <FiPhoneCall />
             </div>
-            <div className="ml-3 lg:ml-6">
+            <div className="ml-3 lg:ml-4 ">
               <h2 className="font-bold text-lg">Call us on</h2>
               <p className="text-sm">+1(XXX) XXX-XXX</p>
             </div>

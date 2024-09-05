@@ -151,7 +151,7 @@ const SlidesTrend = () => {
                 <span className="text-yellow-500">★ <span className="text-black font-bold">{card.rating}</span></span> |{" "}
                 {card.reviews} reviews
               </p>
-              <p>{card.rank}</p>
+              <p className="font-semibold text-[13px]">{card.rank}</p>
           </div>
         </div>
          ) )}

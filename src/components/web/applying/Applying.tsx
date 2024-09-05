@@ -12,8 +12,8 @@ const Applying = () => {
           <Image
             src="/applying1.png" // Replace with your image path
             alt="Left Image"
-            width={500} // Ensure the size is the same for both images
-            height={500} // Equal height for both images
+            width={800} // Ensure the size is the same for both images
+            height={800} // Equal height for both images
             className="w-full lg:w-[44rem] h-auto lg:h-[32rem]"
           />
         </div>

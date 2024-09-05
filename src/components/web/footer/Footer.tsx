@@ -7,20 +7,23 @@ const Footer = () => {
     // <footer className=" md:w-full ">
     <footer className=" lg:mt-5 w-full md:m-0 lg:w-full">
       {/* {/ Newsletter Section /} */}
-      <div className="bg-[#00A264] py-10 px-2 md:px-10 lg:flex lg:items-center lg:justify-between lg:px-32 w-full">
-        <div className="lg:w-1/2 mb-6 lg:mb-0 ">
-          <h2 className="text-white text-2xl md:text-4xl font-normal">
-            Don't miss out! Subscribe to our newsletter for exclusive content.
+      <div className="bg-[#00A264] py-10 px-2 md:px-10 lg:flex lg:items-center lg:justify-between lg:px-32 w-full ">
+        <div className="lg:w-[661px] lg:h-[118]  mb-6 lg:mb-0 ">
+          <h2 className="text-white text-[20px] lg:mb-3 lg:text-4xl md:text-4xl font-[600]">
+            Don't miss out! Subscribe to our
+          </h2>
+          <h2 className="text-white text-[20px] lg:text-4xl md:text-4xl font-[600]">
+            newsletter for exclusive content.
           </h2>
         </div>
-        <div className="lg:w-2/5">
-          <div className="flex flex-col sm:flex-row gap-3">
+        <div className="lg:w-[470px]">
+          <div className="flex-row sm:flex-row gap-3">
             <input
               type="email"
               placeholder="Enter your Email Address"
-              className="p-3 w-full rounded-md focus:outline-none"
+              className="p-3 w-full lg:w-[85%] rounded-md lg:h-9 focus:outline-none mb-2"
             />
-            <button className="w-full sm:w-auto bg-black text-white px-6 py-3 rounded-md flex justify-center items-center">
+            <button className="w-full lg:w-[85%]  sm:w-auto bg-black text-white px-6 lg:h-9 py-3 rounded-md flex justify-center items-center">
               Subscribe <span className="ml-2">✈️</span>
             </button>
           </div>
@@ -29,7 +32,7 @@ const Footer = () => {
 
       {/* {/ Footer Content Section /} */}
       <div className="bg-[#D1EFE4] w-full">
-        <div className="max-w-6xl mx-auto py-9 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-4 md:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto py-9 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 px-4 md:px-6 lg:px-1">
           {/* {/ Company Info /} */}
           <div>
             <h3 className="text-xl font-bold text-black mb-2">
@@ -47,7 +50,7 @@ const Footer = () => {
           </div>
 
           {/* {/ Quick Links /} */}
-          <div>
+          <div className="lg:ml-5">
             <h4 className="font-semibold text-lg text-black mb-2">
               Quick Links
             </h4>
@@ -93,7 +96,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/t&c" className="text-gray-600 text-sm">
+                <Link href="/terms" className="text-gray-600 text-sm">
                   Terms and Conditions
                 </Link>
               </li>

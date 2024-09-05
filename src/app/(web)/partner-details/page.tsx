@@ -54,7 +54,7 @@ const PartnerList: React.FC = () => {
               <p className="text-gray-500 text-sm text-wrap">
                 {item.description}
               </p>
-              <Link href={`/partner_details/${item.id}`}>
+              <Link href={`/partner-details/${item.id}`}>
                 <button className="h-8 mt-2 bg-green-600 text-white py-1 px-4 rounded-lg text-sm">
                   View Profile
                 </button>

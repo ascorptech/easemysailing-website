@@ -1,7 +1,5 @@
 "use client";
 
-// import { Link } from "react-router-dom";
-
 import { useState } from "react";
 import Link from "next/link";
 import { TfiReload } from "react-icons/tfi";
@@ -17,8 +15,6 @@ const Contact = () => {
   const [textarea, setTextArea] = useState("");
   const [captcha, setCaptcha] = useState("");
 
-
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // if (!error) {
@@ -27,9 +23,14 @@ const Contact = () => {
   };
 
   return (
-    <div className="contact mt-16">
-      <div className="flex justify-center items-center h-[6rem]  bg-green-100">
+    <div className="contact mt-14">
+      {/* <div className="flex justify-center items-center h-[6rem]  bg-green-100">
         <h1 className="text-3xl text-green-600 font-bold">Get in touch</h1>
+      </div> */}
+      <div className="flex  justify-center items-center h-[8rem]  bg-green-100 bg-[url('/images/Rectangle1.png')] ">
+        <h1 className="text-[46px] leading-[69px] text-[#00A264] font-bold">
+          Get in touch
+        </h1>
       </div>
       <div className="grid lg:grid-cols-2  lg:gap-24 md:mx-24 mx-8 my-10">
         <div className="bg-gray-200  p-8 rounded-xl ">
@@ -109,7 +110,7 @@ const Contact = () => {
                     className="h-10 rounded-md"
                   ></img>
                 </div>
-                <span className="text-white p-2 bg-green-600 text-2xl font-extrabold rounded-md">
+                <span className="text-white p-2 bg-[#00A264] text-2xl font-extrabold rounded-md">
                   <TfiReload />
                 </span>
               </div>
@@ -120,7 +121,7 @@ const Contact = () => {
 
               <button
                 type="submit"
-                className="w-full bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                className="w-full bg-[#00A264] hover:bg-[#00A264] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               >
                 SUBMIT
               </button>
@@ -130,7 +131,7 @@ const Contact = () => {
 
         <div>
           <div className="flex items-center bg-white shadow-lg border  p-3 mt-3 rounded-xl">
-            <div className="w-16 h-16 flex items-center justify-center text-green-600 text-3xl">
+            <div className="w-16 h-16 flex items-center justify-center text-[#00A264] text-3xl">
               <GrLocation />
             </div>
             <div className="ml-6">
@@ -142,7 +143,7 @@ const Contact = () => {
           </div>
 
           <div className="  items-center bg-white shadow-lg border flex py-3 px-1 lg:px-3 mt-3 rounded-xl">
-            <div className="w-16 h-16 flex items-center justify-center text-green-600 text-3xl">
+            <div className="w-16 h-16 flex items-center justify-center text-[#00A264] text-3xl">
               <FiPhoneCall />
             </div>
             <div className="ml-3 lg:ml-6">
@@ -152,7 +153,7 @@ const Contact = () => {
           </div>
 
           <div className=" items-center bg-white shadow-lg border flex lg:p-3 px-2 mt-3 rounded-xl">
-            <div className="w-16 h-16 flex items-center justify-center text-green-600 text-3xl font-extrabold">
+            <div className="w-16 h-16 flex items-center justify-center text-[#00A264] text-3xl font-extrabold">
               <FiMail />
             </div>
             <div className="ml-3">

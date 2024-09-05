@@ -34,7 +34,7 @@ const ResourceDetailsPage: React.FC = () => {
   }
 
   return (
-    <div className="flex justify-around mx-14 my-11">
+    <div className="flex justify-around mx-14 my-11 mt-[80px]">
       <div className=" float-left w-[70%]  px-10">
         <div className="mr-5 w-[98%] h-[400px] border2 border-blue-600">
           <img

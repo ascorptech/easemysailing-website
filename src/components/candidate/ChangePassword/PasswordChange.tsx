@@ -1,5 +1,4 @@
 import { X } from "lucide-react";
-// import { BsArrowClockwise } from "react-icons/bs";
 import { PiArrowClockwiseLight } from "react-icons/pi";
 import { IoIosLock } from "react-icons/io";
 
@@ -9,7 +8,7 @@ import { IoIosLock } from "react-icons/io";
 interface PasswordChangeProps {
   isOpen: boolean;
   onClose: () => void;
-  // onSubmit: () => void;
+
 
 }
 
@@ -27,10 +26,7 @@ const PasswordChange: React.FC<PasswordChangeProps> = ({ isOpen, onClose }) => {
           <X size={15} />
         </button>
 
-        {/* <div className="flex justify-center items-center w-[100px] h-[100px]  rounded-full border border-green-500 text-green-600 rotate-[90deg]"> */}
-        {/* <div className="  w-52 text-8xl  text-center text-green-600">
-        <span className="relative mt-12"><PiArrowClockwiseLight className=" text-8xl rotate-[270deg] "/> <IoIosLock className=" mb-6 text-4xl"  /></span>
-              </div> */}
+     
         <div className="w-52 text-8xl text-center text-green-600">
           <span className=" inline-block mt-4">
             <PiArrowClockwiseLight className=" relative text-8xl rotate-[240deg] inset-0 z-10  text-center ml-[7rem] mt-[8px]" />
@@ -50,7 +46,7 @@ const PasswordChange: React.FC<PasswordChangeProps> = ({ isOpen, onClose }) => {
 
         <button
           className="bg-green-500 w-full text-white  rounded-lg px-4 py-2"
-        // onClick={onSubmit}
+       
         >
           OK
         </button>

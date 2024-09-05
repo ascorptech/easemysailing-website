@@ -19,7 +19,7 @@ const MentoringDetailPage: React.FC = () => {
 
   return (
     <div>
-      <div className="flex pl-[10rem] bg-green-100 py-6 border">
+      <div className="flex pl-[10rem] bg-green-100 py-6 border mt-[60px]">
         <div className="flex border rounded-lg  bg-green-400 h-40 transform-gpu mr-4">
           <div className="justify-center mb-4">
             <img

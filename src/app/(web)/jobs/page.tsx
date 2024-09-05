@@ -1,12 +1,18 @@
 const page = () => {
   return (
-    <div className="flex mt-16 justify-center items-center h-[6rem]  bg-green-100 ">
-      <div className="flex">
-        <h1 className="text-3xl text-green-600 font-bold">
-          JOBS
-        </h1>
-      </div>
+
+    <div>
+    <div className="flex mt-14 justify-center items-center h-[8rem]  bg-green-100 bg-[url('/images/Rectangle1.png')] ">
+      <h1 className="text-[46px] leading-[69px] text-[#00A264] font-bold">
+        JOBS
+      </h1>
+      
     </div>
+    <div className="h-[200px] flex items-center justify-center">
+      <h1 className="">write content here</h1>
+  
+  </div>
+  </div>
   );
 };
 

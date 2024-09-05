@@ -1,8 +1,8 @@
 const Heading5 = () => {
   return (
-    <div className="flex mt-16 justify-center items-center h-[6rem]  bg-green-100 ">
-      <h1 className="text-3xl text-green-600 font-bold">
-       Podcast & Interviews
+    <div className="flex mt-14 justify-center items-center h-[8rem]  bg-green-100 bg-[url('/images/Rectangle1.png')] ">
+      <h1 className="text-[46px] leading-[69px] text-[#00A264] font-bold">
+        Podcast & Interviews
       </h1>
     </div>
   );

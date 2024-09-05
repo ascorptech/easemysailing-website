@@ -33,7 +33,7 @@ const ResourceList: React.FC = () => {
   return (
     <div className="">
       <Heading7 />
-      <div className="mt-6 lg:max-w-[90%] grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 gap-1 py-3 -black lg:ml-20  w-full ">
+      <div className="mt-2 lg:max-w-[90%] grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 gap-1 py-3 -black lg:ml-20  w-full ">
         {Resource.map((item) => (
           <div key={item.id} className="flex  bg-white p-3 flex-shrink-0 ">
             <div className="relative bg-white border rounded-lg md:p-5 p-2  shadow-md  w-auto ">
@@ -57,7 +57,7 @@ const ResourceList: React.FC = () => {
                 {item.discription1}{" "}
               </div>
 
-              <Link href={`/resource_details/${item.id}`}>
+              <Link href={`/resource-details/${item.id}`}>
                 <button className="h-8 mt-2 bg-green-700 text-white py-1 px-4 rounded-lg text-sm ">
                   Read more
                 </button>

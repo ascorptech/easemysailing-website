@@ -140,7 +140,7 @@ const Slide2 = () => {
                   className="w-full h-full rounded-full"
                 />
               </div>
-              <h3 className="text-md font-semibold">{card.company}</h3>
+              <h3 className="text-sm font-semibold">{card.company}</h3>
               <p className="text-sm text-gray-500">
                 <span className="text-yellow-500">★ <span className="text-black font-bold">{card.rating}</span></span> |{" "}
                 {card.reviews} reviews

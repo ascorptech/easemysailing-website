@@ -27,7 +27,7 @@ const Header: React.FC = () => {
   return (
     <div className="  z-20 top-0 fixed w-full border-b">
       <nav className="bg-white border-white dark:bg-white dark:border-black-700   ">
-        <div className="lg:w-full  flex flex-wrap items-center justify-between mx-auto p-4 ">
+        <div className="lg:w-full w-full text-25px font-[700px] leading-[37.5px] flex flex-wrap items-center justify-between mx-auto  px-[1rem] sm:px-[3rem] lg:px-[4rem] py-3">
           <div className="flex items-center space-x-3 rtl:space-x-reverse">
             <Link href="/">
               <p>

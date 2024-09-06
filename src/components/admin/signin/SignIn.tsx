@@ -7,12 +7,12 @@ import { useState } from "react";
 import LoginImg from "@/components/candidate/image/LoginImg";
 import LoginHeader from "@/app/Shared/LoginHeader/LoginHeader";
 import Footer from "@/app/Shared/Footer/Footer";
-import ForgotPassword from "@/components/candidate/ChangePassword/ForgotPassword";
-import VerificationOpt from "@/components/candidate/ChangePassword/VerificationOpt";
-import VerificationCode from "@/components/candidate/ChangePassword/VerificationCode";
-import Congratulations from "@/components/candidate/ChangePassword/Congratulations";
-import ResetPassword from "@/components/candidate/ChangePassword/ResetPassword";
-import PasswordChange from "@/components/candidate/ChangePassword/PasswordChange";
+import ForgotPassword from "@/components/candidate/changepassword/ForgotPassword";
+import VerificationOpt from "@/components/candidate/changepassword/VerificationOpt";
+import Congratulations from "@/components/candidate/changepassword/Congratulations";
+import PasswordChange from "@/components/candidate/changepassword/PasswordChange";
+import ResetPassword from "@/components/candidate/changepassword/ResetPassword";
+import VerificationCode from "@/components/candidate/changepassword/VerificationCode";
 
 const SignIn = () => {
   const [emailOrPhone, setEmailOrPhone] = useState("");
@@ -146,12 +146,12 @@ const SignIn = () => {
                   <span className="absolute inset-y-0 left-0 flex items-center p-3 text-white bg-[#00A264] rounded-l-md">
                     <MdOutlineLock />
                   </span>
-                  <span
+                  {/* <span
                     className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
-                    onClick={() => setShowPassword(!showPassword)}
-                  >
-                    <GoEye />
-                  </span>
+                    
+                  > */}
+                    <GoEye className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer" onClick={() => setShowPassword(!showPassword)}/>
+                  {/* </span> */}
                 </div>
               </div>
 
@@ -181,8 +181,6 @@ const SignIn = () => {
 
                 <Link href={"/admin/dashboard"}
                       className="block w-full px-4 py-2 text-white bg-[#00A264] text-center hover:bg-[#00A264] font-bold rounded focus:outline-none focus:shadow-outline"
-
-                  
                 >
                   Sign in
                 </Link>

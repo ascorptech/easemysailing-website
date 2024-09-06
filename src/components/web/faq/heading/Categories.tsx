@@ -179,7 +179,7 @@ const Categories = () => {
       <div className="flex">
         {/* {/ Sidebar for Topics /} */}
         <div className="w-1/4 p-4 border-r">
-          <h2 className="text-xl text-white font-semibold mb-4 p-2 bg-green-700">
+          <h2 className="text-xl text-white font-semibold mb-4 p-2 bg-[#00A264]">
             Category Management
           </h2>
           {topics.map((topic) => (
@@ -192,11 +192,11 @@ const Categories = () => {
                 {selectedTopic === topic.id ? (
                   <IoIosArrowDown
                     style={{ color: "green", fontSize: "24px" }}
-                    className="w-4 h-4 text-green-100 text-base"
+                    className="w-4 h-4 text-[#D1EFE4] text-base"
                   />
                 ) : (
                   <IoIosArrowForward
-                    style={{ color: "green", fontSize: "24px" }}
+                    style={{ color: "[#D1EFE4]", fontSize: "24px" }}
                     className="w-4 h-4"
                   />
                 )}
@@ -208,13 +208,13 @@ const Categories = () => {
         {/* {/ Content Area for Topic Details /} */}
         <div className="w-3/4 p-4">
           {selectedTopic !== null && (
-            <div>
+            <div className="">
               {topics
                 .find((topic) => topic.id === selectedTopic)
                 ?.questions.map((question) => (
                   <div key={question.id}>
                     <button
-                      className="flex items-center justify-between w-full text-left p-2 bg-green-100 mb-5 border-1"
+                      className="flex items-center justify-between w-full text-left p-2 bg-[#D1EFE4] mb-5 border-1"
                       onClick={() => handleQuestionClick(question.id)}
                     >
                       <span className="text-black-600">
@@ -249,7 +249,7 @@ const Categories = () => {
 
       <div className="flex items-center justify-center ">
         <p className="mb-4 text-xl mr-2">Still have questions?</p>
-        <button className="p-2 mb-3 bg-green-700 text-white rounded hover:bg-green-500 transition ">
+        <button className="p-2 mb-3 bg-[#00A264] text-white rounded transition ">
           Contact Us
         </button>
       </div>

@@ -101,9 +101,9 @@ const Footer = () => {
             </li>
             <li className="mt-2">
               <Link href="#" className="flex items-center hover:text-green-600">
-                <Link href="#" className="text-green-600">
+                <span className="text-green-600">
                   🌐
-                </Link>
+                </span>
                 www.easemysailing.au
               </Link>
             </li>
@@ -122,15 +122,15 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      {/* <hr className=" border-spacing-1 border-green-400 ml-[-2.4rem] mr-[-1rem] mt-3  "></hr>
+      <hr className=" border-spacing-1 border-green-400 ml-[-2.4rem] mr-[-1rem] mt-3  "></hr>
       <div className="mt-4 flex justify-between items-center ">
-        <p>Copyright © 2023 | All Rights Reserved</p>
+        <span>Copyright © {new Date().getFullYear()} | All Rights Reserved</span>
 
-        <p className="font-semibold">
+        {/* <p className="font-semibold">
           Designed with <span className="text-red-500">❤</span>
           <span className="text-green-600 mr-10">by YES IT Labs LLC</span>
-        </p>
-      </div> */}
+        </p> */}
+      </div>
     </footer>
   );
 };

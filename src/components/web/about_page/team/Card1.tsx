@@ -91,7 +91,7 @@ const Card1 = () => {
   }, []);
 
   return (
-    <div className=" lg:ml-[6rem] ml-[2rem] relative flex items-center my-4 justify-center w-[85%] ">
+    <div className=" lg:ml-[4rem] ml-[2rem] relative flex items-center my-4 justify-center w-[90%]  ">
       {/* Left Arrow */}
       <button
         onClick={scrollLeft}
@@ -103,12 +103,12 @@ const Card1 = () => {
       {/* Carousel Wrapper */}
       <div
         ref={card}
-        className="flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory mx-[4rem]"
+        className="flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory mx-[3rem]"
       >
         {/* Card 1 */}
         {cards.map((card) => (
           <div key={card.id} className="snap-center p-2">
-            <div className="w-32 h-32 bg-white  rounded-full shadow-md ml-11">
+            <div className="w-[197px] h-[197px]  bg-white  rounded-full shadow-md ml-10 ">
               <img src={card.logo} alt="Maersk Line" className=" w-full h-full rounded-full " />
             </div>
             <h2

@@ -11,7 +11,7 @@ const Articles = () => {
       rating: "4.8",
       contactPerson: "Sherry Smith",
       description: "Lorem Ipsum is simply dummy text of the printing",
-      logoSrc: "/path/to/logo1.png",
+      logoSrc: "/images/logo1.png",
     },
     {
       name: "CMA CGM Group",
@@ -19,7 +19,7 @@ const Articles = () => {
       rating: "3.9",
       contactPerson: "Aline Smith",
       description: "Lorem Ipsum is simply dummy text of the printing",
-      logoSrc: "/path/to/logo2.png",
+      logoSrc: "/images/logo2.png",
     },
     {
       name: "Teekay Corporation",
@@ -27,7 +27,7 @@ const Articles = () => {
       rating: "3.6",
       contactPerson: "Robin",
       description: "Lorem Ipsum is simply dummy text of the printing",
-      logoSrc: "/path/to/logo3.png",
+      logoSrc: "/images/logo3.png",
     },
     {
       name: "V. Ships",
@@ -35,7 +35,7 @@ const Articles = () => {
       rating: "3.8",
       contactPerson: "John Smith",
       description: "Lorem Ipsum is simply dummy text of the printing",
-      logoSrc: "/path/to/logo4.png",
+      logoSrc: "/images/logo4.png",
     },
     {
       name: "COSCO Shipping",
@@ -43,7 +43,7 @@ const Articles = () => {
       rating: "4.6",
       contactPerson: "John Smith",
       description: "Lorem Ipsum is simply dummy text of the printing",
-      logoSrc: "/path/to/logo5.png",
+      logoSrc: "/images/logo5.png",
     },
     {
       name: "V. Ships",
@@ -51,7 +51,7 @@ const Articles = () => {
       rating: "3.8",
       contactPerson: "John Smith",
       description: "Lorem Ipsum is simply dummy text of the printing",
-      logoSrc: "/path/to/logo4.png",
+      logoSrc: "/images/logo6.png",
     },
   ];
 

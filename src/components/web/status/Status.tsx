@@ -1,7 +1,9 @@
 import React from "react";
-import { IoPersonAddSharp } from "react-icons/io5";
-import { FaSmile } from "react-icons/fa";
-import { BsFillPeopleFill } from "react-icons/bs";
+// import { IoPersonAddSharp } from "react-icons/io5";
+// import { FaSmile } from "react-icons/fa";
+// import { BsFillPeopleFill } from "react-icons/bs";
+import Image from "next/image";
+import Link from "next/link";
 
 const Status = () => {
   return (
@@ -12,44 +14,54 @@ const Status = () => {
           EaseMySailing by the <span className="text-[#00A264]">numbers</span>
         </h2>
         <ul className="  list-none p-0 mt-8 space-y-10 lg:space-x-">
-          {/* <li className="flex items-center sm:justify-around md:gap-x-32  lg:gap-x-48 sm:gap-x-10 justify-around ">
-            <div className="text-[#00A264] text-5xl md:text-6xl">
-              <IoPersonAddSharp />
+          <li className="flex items-center sm:justify-around  gap-x-20  md:gap-x-32 justify-around border-2 rounded-full lg:px-[3rem] lg:w-[90%] lg:ml-[2.5rem]">
+            <div className="  text-5xl md:text-6xl ml-3 lg:ml-[5px]">
+              {/* <IoPersonAddSharp /> */}
+              <Image
+                src="/people+.png"
+                alt="people Logo"
+                width={300}
+                height={300}
+                className="lg:w-20 w-28 "
+              />
             </div>
-            <div className="flex flex-col items-center text-center">
-              <span className="text-4xl md:text-5xl font-extrabold">70</span>
-              <span className="text-gray-700 text-lg md:text-xl">
-                Registered Seafarers
-              </span>
-            </div>
-          </li> */}
-          <li className="flex items-center sm:justify-around  gap-x-20 lg:gap-x-56 md:gap-x-32 justify-around border-2 rounded-full lg:px-[3rem] lg:w-[90%] lg:ml-[2.5rem]">
-            <div className="text-[#00A264] text-5xl md:text-6xl ml-[5px]">
-            <IoPersonAddSharp />
-            </div>
-            <div className="flex flex-col items-center text-center">
-            <span className="text-4xl md:text-5xl font-extrabold">70</span>
-              <span className="text-gray-700 text-md md:text-xl ">
+            <div className="flex flex-col items-center justify-between lg:w-[250px]   text-center">
+              <span className="text-[40px] md:text-5xl font-extrabold">70</span>
+              <span className="text-gray-700  text-[18px] md:text-xl ">
                 Registered Seafarers
               </span>
             </div>
           </li>
-          <li className="flex items-center sm:justify-around border-2 rounded-full gap-x-20 lg:gap-x-56 md:gap-x-32 justify-around  lg:px-[3rem] lg:w-[90%] lg:ml-[2.5rem]">
-            <div className="text-[#00A264] text-5xl md:text-6xl mr-5">
-              <FaSmile />
+          <li className="flex  items-center sm:justify-around  gap-x-20  md:gap-x-32 justify-around border-2 rounded-full lg:px-[3rem] lg:w-[90%] lg:ml-[2.5rem]">
+            <div className=" text-5xl  md:text-6xl ">
+              {/* <FaSmile /> */}
+              <Image
+                src="/smile.png"
+                alt="smile Logo"
+                width={800}
+                height={800}
+                className="w-[85px] "
+              />
             </div>
-            <div className="flex flex-col items-center text-center">
+            <div className="flex flex-col items-center   lg:w-[250px]  text-center">
               <span className="text-4xl md:text-5xl font-extrabold">7k+</span>
               <span className="text-gray-700 text-md md:text-xl">
                 Smiling Faces
               </span>
             </div>
           </li>
-          <li className="flex items-center sm:justify-around gap-x-20 lg:gap-x-52 md:gap-x-32 justify-around border-2 rounded-full lg:px-[3rem] lg:w-[90%] lg:ml-[2.5rem]">
-            <div className="text-[#00A264] text-5xl md:text-6xl">
-              <BsFillPeopleFill />
+          <li className="flex  items-center sm:justify-around  gap-x-20  md:gap-x-32 justify-around border-2 rounded-full lg:px-[3rem] lg:w-[90%] lg:ml-[2.5rem]">
+            <div className=" text-5xl  md:text-6xl ml-2">
+              {/* <BsFillPeopleFill /> */}
+              <Image
+                src="/people.png"
+                alt="people Logo"
+                width={800}
+                height={800}
+                className="w-20 "
+              />
             </div>
-            <div className="flex flex-col items-center text-center">
+            <div className="flex flex-col items-center  lg:w-[250px]  text-center">
               <span className="text-4xl md:text-5xl font-extrabold">80</span>
               <span className="text-gray-700 text-md md:text-xl">
                 Recruiter Profiles
@@ -59,9 +71,11 @@ const Status = () => {
         </ul>
         <p className="mt-1 font-bold text-base lg:text-lg text-black text-center">
           Lorem Ipsum is simply dummy text
-          <button className="lg:ml-2  mt-3 lg:mt-6 bg-[#00A264] text-white sm:ml-5 py-1 px-3 rounded-md ">
-            Contact Us
-          </button>
+          <Link href="/contact">
+            <button className="lg:ml-2  mt-3 lg:mt-6 bg-[#00A264] text-white sm:ml-5 py-1 px-3 rounded-md ">
+              Contact Us
+            </button>
+          </Link>
         </p>
       </div>
 

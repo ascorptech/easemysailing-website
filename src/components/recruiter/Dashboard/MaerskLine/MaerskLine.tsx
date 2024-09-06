@@ -156,7 +156,7 @@ const MaerskLine: React.FC = () => {
 
           <div className=" flex   m-3 h-12 mt-12 ">
             <button className="rounded-lg bg-green-200 text-green-700 border-2 border-[#00A264]  w-36  font-bold mr-8">
-              Upgrads
+              Upgrade
             </button>
             <button className="rounded-lg bg-[#00A264] text-white border-2 border-[#00A264]  w-36  font-bold">
               Recharge CVs
@@ -388,7 +388,10 @@ const MaerskLine: React.FC = () => {
         <div className=" text-white text-end  ">
           {ship.map((ship, index) => (
             <div key={index} className=" flex  justify-between mb-2">
-              <Link href="#" className="underline text-[#00A264] font-semibold ml-11 mt-3">
+              <Link
+                href="#"
+                className="underline text-[#00A264] font-semibold ml-11 mt-3"
+              >
                 {ship.name}
               </Link>
 

@@ -30,7 +30,7 @@ const Header: React.FC = () => {
         <div className="lg:w-full w-full text-25px font-[700px] leading-[37.5px] flex flex-wrap items-center justify-between mx-auto  px-[1rem] sm:px-[3rem] lg:px-[4rem] py-3">
           <div className="flex items-center space-x-3 rtl:space-x-reverse">
             <Link href="/">
-              <p>
+              <p className="cursor-pointer">
                 <span className="self-center text-xl font-bold whitespace-nowrap dark:text-black">
                   EaseMy
                 </span>

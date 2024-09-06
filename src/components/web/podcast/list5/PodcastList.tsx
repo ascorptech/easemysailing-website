@@ -91,13 +91,13 @@ const PodcastList: React.FC = () => {
           Previous
         </button>
 
-        <span className="text-green-700">
+        <span className="text-[#00A264]">
           Page {currentPage} of {totalPages}
         </span>
 
         <button
           onClick={handleNextPage}
-          className="px-2 py-1 ml-2 bg-green-600 text-white rounded-lg"
+          className="px-2 py-1 ml-2 bg-[#00A264] text-white rounded-lg"
           disabled={currentPage === totalPages}
         >
           Next

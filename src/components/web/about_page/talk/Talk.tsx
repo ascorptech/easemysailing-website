@@ -15,20 +15,20 @@ const Talk = () => {
       <div className="w-full max-w-[45rem] lg:text-justify text-center md:text-left mt-4 md:mt-0">
         <h1 className="text-3xl md:text-4xl lg:text-[46px] leading-[62px] font-semibold">
           Let's talk about{" "}
-          <span className="text-green-700 font-semibold leading-[62px]">
+          <span className="text-[#00A264] font-semibold leading-[62px]">
             EaseMy
             <br />
             Sailing
           </span>
         </h1>
         <br />
-        <p className="text-base md:text-lg lg:text-xl">
+        <p className="text-sm md:text-base mt-2 px-2 text-[#4E4E4E]">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, iure
           fugiat labore eius vero ad quo velit voluptate dolores enim odio
           dignissimos placeat tempora doloremque. Sit soluta omnis nobis rerum.
         </p>
         <br />
-        <p className="text-base md:text-lg lg:text-xl">
+        <p className="text-sm md:text-base mt-2 px-2 text-[#4E4E4E]">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate,
           impedit, mollitia deserunt aliquid incidunt reprehenderit quasi
           eveniet voluptatibus cumque et voluptatum deleniti adipisci saepe quae

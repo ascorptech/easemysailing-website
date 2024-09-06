@@ -31,7 +31,7 @@ const MentoringList: React.FC = () => {
   };
 
   return (
-    <div className="mt-16">
+    <div className="mt-14">
       <Heading4/>
       <div className="mt-6 w-[80%] grid grid-cols-1 mx-[8rem] sm:grid-cols-1 md:grid-cols-2 gap-10 py-3 ">
         {currentItems.map((item) => (
@@ -64,7 +64,7 @@ const MentoringList: React.FC = () => {
                 <span className="text-gray-500"> | {item.reviews} reviews</span>
               </div>
 
-              <Link href={`/mentoring_details/${item.id}`}>
+              <Link href={`/mentoring-details/${item.id}`}>
                 <button className="h-7 bg-green-600 text-white px-4 rounded-lg text-sm">
                   View Details
                 </button>

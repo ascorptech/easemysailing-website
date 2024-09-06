@@ -2,11 +2,12 @@ import Image from "next/image";
 
 const Wedo = () => {
   return (
-    <div className=" mx-1 w-[98%] my-9 px-4 lg:mx-1 lg:w-[99.4%]">
+    <div className=" mx-1 w-[98%] my-12 px-4 lg:mx-1 lg:w-[98%] bg-[url('/images/Rectangle.png')] ">
+     
       {/* Heading */}
       <div className="text-center">
-        <h1 className="text-2xl md:text-4xl font-semibold">
-          What We <span className="text-green-700">Do</span>
+        <h1 className="lg:text-[46px] lg:leading-[62px] md:text-4xl font-semibold">
+          What We <span className="text-[#00A264]">Do</span>
         </h1>
       </div>
 
@@ -22,8 +23,8 @@ const Wedo = () => {
             className="w-[5rem] h-[5rem] md:w-[6rem] md:h-[6rem] mt-2"
             priority
           />
-          <h2 className="text-lg font-semibold mt-4">For Seafarers</h2>
-          <p className="text-sm md:text-base mt-2 px-2">
+          <h2 className="text-2xl font-semibold mt-4">For Seafarers</h2>
+          <p className="text-sm md:text-base mt-2 px-2 text-[#4E4E4E]">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur
             porro corrupti non explicabo repellat commodi temporibus error
             expedita, distinctio aliquid ab consequatur necessitatibus iure,
@@ -41,8 +42,8 @@ const Wedo = () => {
             className="w-[5rem] h-[5rem] md:w-[6rem] md:h-[6rem] mt-2"
             priority
           />
-          <h2 className="text-lg font-semibold mt-4">For Recruiters</h2>
-          <p className="text-sm md:text-base mt-2 px-2">
+          <h2 className="text-2xl font-semibold mt-4">For Recruiters</h2>
+          <p className="text-sm md:text-base mt-2 px-2 text-[#4E4E4E]">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur
             porro corrupti non explicabo repellat commodi temporibus error
             expedita, distinctio aliquid ab consequatur necessitatibus iure,
@@ -60,8 +61,8 @@ const Wedo = () => {
             className="w-[5rem] h-[5rem] md:w-[6rem] md:h-[6rem] mt-2"
             priority
           />
-          <h2 className="text-lg font-semibold mt-4">For Manning Agents</h2>
-          <p className="text-sm md:text-base mt-2 px-2">
+          <h2 className="text-2xl font-semibold mt-4">For Manning Agents</h2>
+          <p className="text-sm md:text-base mt-2 px-2 text-[#4E4E4E]">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse
             sapiente officiis veritatis obcaecati natus nobis laudantium ullam.
             Ad dicta rem deserunt blanditiis esse, reprehenderit asperiores

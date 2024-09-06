@@ -91,7 +91,7 @@ const Card = () => {
   }, []);
 
   return (
-    <div className=" lg:ml-[6rem] ml-[2rem] relative flex items-center my-4 justify-center w-[85%] ">
+    <div className=" lg:ml-[4rem] ml-[2rem] relative flex items-center my-4 justify-center w-[90%] ">
       {/* Left Arrow */}
       <button
         onClick={scrollLeft}
@@ -103,24 +103,25 @@ const Card = () => {
       {/* Carousel Wrapper */}
       <div
         ref={card}
-        className="flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory mx-[4rem]"
+        className="flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory mx-[4.5rem]"
       >
         {/* Card 1 */}
         {cards.map((card) => (
           <div key={card.id} className="snap-center p-2">
-            <div className="w-32 h-32  bg-white  rounded-full shadow-md ml-11 ">
-              <img src={card.logo} alt="Maersk Line" className="w-full h-full rounded-full" />
+            <div className="w-[150px] h-[150px]  bg-white  rounded-full shadow-md ml-10 ">
+              <img
+                src={card.logo}
+                alt="Maersk Line"
+                className="w-full h-full rounded-full"
+              />
             </div>
-            <h2
-              className="text-[#00A264] ml-11"
-            >
-              {card.company}<br/><span className="text-black">founder</span>
+            <h2 className="text-[#00A264] ml-11">
+              {card.company}
+              <br />
+              <span className="text-black">founder</span>
             </h2>
           </div>
         ))}
-        {/* Card 2 */}
-
-        {/* Continue adding cards as needed */}
       </div>
       {/* Right Arrow */}
       <button

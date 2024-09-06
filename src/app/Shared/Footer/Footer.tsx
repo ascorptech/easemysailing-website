@@ -19,7 +19,9 @@ const Footer = () => {
           </p>
           <p className="mt-4 font-semibold">
             Are You a vender?{" "}
-            <Link href="#" className="text-green-600 underline">Join Us</Link>
+            <Link href="#" className="text-green-600 underline">
+              Join Us
+            </Link>
           </p>
         </div>
 
@@ -29,22 +31,22 @@ const Footer = () => {
           <h3 className="text-lg text-green-600 font-semibold">Quick link</h3>
           <ul>
             <li className="mt-2">
-              <Link href="#" className=" hover:text-green-600">
+              <Link href="/" className=" hover:text-green-600">
                 Home
               </Link>
             </li>
             <li className="mt-2">
-              <Link href="#" className="hover:text-green-600">
+              <Link href="/about" className="hover:text-green-600">
                 About
               </Link>
             </li>
             <li className="mt-2">
-              <Link href="#" className="hover:text-green-600">
+              <Link href="/toprecruiting" className="hover:text-green-600">
                 Recruiter
               </Link>
             </li>
             <li className="mt-2">
-            <Link href="/career" className="hover:text-green-600">
+              <Link href="/career" className="hover:text-green-600">
                 Careers
               </Link>
             </li>
@@ -56,22 +58,22 @@ const Footer = () => {
           <h3 className="text-lg text-green-600 font-semibold">Help</h3>
           <ul>
             <li className="mt-2">
-              <Link href="#" className="hover:text-green-600">
+              <Link href="/privacy-policy" className="hover:text-green-600">
                 Privacy Policy
               </Link>
             </li>
             <li className="mt-2">
-              <Link href="#" className="hover:text-green-600">
+              <Link href="/gdpr" className="hover:text-green-600">
                 GDPR & Privacy Policy
               </Link>
             </li>
             <li className="mt-2">
-              <Link href="#" className="hover:text-green-600">
+              <Link href="/terms" className="hover:text-green-600">
                 Terms and conditions
               </Link>
             </li>
             <li className="mt-2">
-              <Link href="#" className="hover:text-green-600">
+              <Link href="/faq" className="hover:text-green-600">
                 FAQ
               </Link>
             </li>
@@ -101,9 +103,7 @@ const Footer = () => {
             </li>
             <li className="mt-2">
               <Link href="#" className="flex items-center hover:text-green-600">
-                <span className="text-green-600">
-                  🌐
-                </span>
+                <span className="text-green-600">🌐</span>
                 www.easemysailing.au
               </Link>
             </li>
@@ -124,7 +124,9 @@ const Footer = () => {
       </div>
       <hr className=" border-spacing-1 border-green-400 ml-[-2.4rem] mr-[-1rem] mt-3  "></hr>
       <div className="mt-4 flex justify-between items-center ">
-        <span>Copyright © {new Date().getFullYear()} | All Rights Reserved</span>
+        <span>
+          Copyright © {new Date().getFullYear()} | All Rights Reserved
+        </span>
 
         {/* <p className="font-semibold">
           Designed with <span className="text-red-500">❤</span>

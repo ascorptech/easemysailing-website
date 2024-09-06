@@ -14,6 +14,7 @@ import Interview from "@/components/web/interview/Interview";
 import Articles from "@/components/web/articles/Articles";
 
 
+
 export default function Home() {
   return (
     <div className="flex flex-col  ">
@@ -22,6 +23,17 @@ export default function Home() {
       <Signup />
       <Companies />
       <Status />
+      {/* <div className="bg-[#F1F1F1]">
+        {" "}
+        <Recruiting />
+        <Trending />
+        <Career />
+      </div> */}
+
+      {/* <Applying />
+      <PartnersSection /> */}
+
+      <div className="w-full h-[800px] bg-white"> </div>
       <div className="bg-[#F1F1F1]">
         {" "}
         <Recruiting />

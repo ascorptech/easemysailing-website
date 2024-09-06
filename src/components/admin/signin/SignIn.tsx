@@ -7,17 +7,14 @@ import { useState } from "react";
 import LoginImg from "@/components/candidate/image/LoginImg";
 import LoginHeader from "@/app/Shared/LoginHeader/LoginHeader";
 import Footer from "@/app/Shared/Footer/Footer";
-import ForgotPassword from "../changepassword/ForgotPassword";
-import VerificationOpt from "../changepassword/VerificationOpt";
-import VerificationCode from "../changepassword/VerificationCode";
-import Congratulations from "../changepassword/Congratulations";
-import ResetPassword from "../changepassword/ResetPassword";
-import PasswordChange from "../changepassword/PasswordChange";
+import ForgotPassword from "@/components/candidate/changepassword/ForgotPassword";
+import VerificationOpt from "@/components/candidate/changepassword/VerificationOpt";
+import Congratulations from "@/components/candidate/changepassword/Congratulations";
+import PasswordChange from "@/components/candidate/changepassword/PasswordChange";
+import ResetPassword from "@/components/candidate/changepassword/ResetPassword";
+import VerificationCode from "@/components/candidate/changepassword/VerificationCode";
 
-type Props = {
-  route: string;
-};
-const SignIn = ({ route }: Props) => {
+const SignIn = () => {
   const [emailOrPhone, setEmailOrPhone] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -88,14 +85,14 @@ const SignIn = ({ route }: Props) => {
   return (
     <div className="flex flex-col">
       <LoginHeader />
-      <div className="flex items-center justify-center bg-gray-100   ">
+      <div className="flex items-center justify-center bg-gray-100 ">
         <div className="flex w-full h-auto overflow-hidden bg-white">
           <LoginImg />
 
           {/* Sign-In Form Section */}
           <div className="w-full md:w-1/2 p-7 bg-[#EAEAEA]  ">
-            <h2 className="mt-12 mb-2 text-2xl font-bold text-center">
-              Sign In as {route == "candidate" ? "Candidate" : "Recruiter"}
+            <h2 className="mt-8 mb-2 text-2xl font-bold text-center">
+              Sign In as {'Admin'}
             </h2>
             <p className="mb-4 text-center text-gray-600">
               Enter your credential to access your account.
@@ -112,6 +109,7 @@ const SignIn = ({ route }: Props) => {
                   Enter Registered Email/Phone
                 </label>
                 <div className="relative flex items-center pl-8 ">
+                  {/* <span className="p-2 bg-green-600 border-2"></span> */}
                   <input
                     id="emailOrPhone"
                     type="text"
@@ -148,12 +146,12 @@ const SignIn = ({ route }: Props) => {
                   <span className="absolute inset-y-0 left-0 flex items-center p-3 text-white bg-[#00A264] rounded-l-md">
                     <MdOutlineLock />
                   </span>
-                  <span
+                  {/* <span
                     className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
-                    onClick={() => setShowPassword(!showPassword)}
-                  >
-                    <GoEye />
-                  </span>
+                    
+                  > */}
+                    <GoEye className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer" onClick={() => setShowPassword(!showPassword)}/>
+                  {/* </span> */}
                 </div>
               </div>
 
@@ -181,29 +179,12 @@ const SignIn = ({ route }: Props) => {
                 </Link>
               </div>
 
-              <Link
-                href={
-                  route == "candidate"
-                    ? "/candidate/dashboard"
-                    : "/recruiter/dashboard"
-                }
-                className="block w-full px-4 py-2 text-white bg-[#00A264] text-center hover:bg-[#00A264] font-bold rounded focus:outline-none focus:shadow-outline "
-              >
-                Sign in
-              </Link>
-            </form>
-
-            {route == "candidate" && (
-              <p className="mt-2 text-center mb-16 ">
-                Don’t have an account?
-                <Link
-                  href={"signup"}
-                  className="text-[#00A264] hover:underline"
+                <Link href={"/admin/dashboard"}
+                      className="block w-full px-4 py-2 text-white bg-[#00A264] text-center hover:bg-[#00A264] font-bold rounded focus:outline-none focus:shadow-outline"
                 >
-                  Sign Up
+                  Sign in
                 </Link>
-              </p>
-            )}
+            </form>
           </div>
         </div>
 

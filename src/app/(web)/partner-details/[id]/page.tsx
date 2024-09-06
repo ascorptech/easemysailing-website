@@ -20,8 +20,8 @@ const PartnerDetailPage: React.FC = () => {
 
   return (
     <div>
-      <div className="flex pl-[10rem] bg-green-100 py-6 border">
-        <div className="flex border rounded-lg  bg-green-700 h-30 transform-gpu mr-4">
+      <div className="flex pl-[10rem] bg-green-100 py-6 border mt-14">
+        <div className="flex border rounded-lg  bg-[#00A264] h-30 transform-gpu mr-4">
           <div className="  w-36  ">
             <div className="   h-36 w-36 bg-white border -translate-y-3 translate-x-3">
               <img
@@ -42,7 +42,7 @@ const PartnerDetailPage: React.FC = () => {
             <span className="text-yellow-500">⭐ {item.experience}</span>
             <span className="text-gray-500"> | {item.reviews} reviews</span>
           </div>
-          <div className=" text-green-700 font-base">{item.description}</div>
+          <div className=" text-[#00A264] font-base">{item.description}</div>
         </div>
       </div>
       <div className="container w-[85%] h-auto flex justify-between gap-16 mx-auto my-4 ">

@@ -1,13 +1,26 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const LoginHeader = () => {
   return (
     <header className="sticky top-0 z-50 flex items-center justify-between p-3 bg-white shadow-md">
       <div className="ml-16 mr-16 text-xl font-bold">
-        <Link href="/">
+        {/* <Link href="/">
           EaseMy
           <span className="text-green-600">Sailing</span>
-        </Link>
+        </Link> */}
+
+        <div className="w-44 h-12 sm:w-52 sm:h-[53px] ">
+          <Link href="/">
+            <Image
+              src="/images/Transparent Logo.png"
+              alt="EaseMySailing Logo"
+              className="object-cover h-full w-full "
+              width={800}
+              height={800}
+            />
+          </Link>
+        </div>
       </div>
       <Link
         href={"/"}

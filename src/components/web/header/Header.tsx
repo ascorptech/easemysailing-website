@@ -27,9 +27,9 @@ const Header: React.FC = () => {
   return (
     <div className="  z-20 top-0 fixed w-full border-b">
       <nav className="bg-white border-white dark:bg-white dark:border-black-700   ">
-        <div className="lg:w-full w-full text-25px font-[700px] leading-[37.5px] flex flex-wrap items-center justify-between mx-auto  px-[1rem] sm:px-[3rem] lg:px-[4rem] py-3">
-          <div className="flex items-center space-x-3 rtl:space-x-reverse">
-            <Link href="/">
+        <div className="lg:w-full w-[98%] text-25px font-[700px] leading-[37.5px] flex flex-wrap items-center justify-between   px-[1rem] sm:px-[3rem] lg:px-[2rem] py-3">
+          {/* <div className="flex items-center space-x-3 rtl:space-x-reverse"> */}
+          {/* <Link href="/">
               <p className="cursor-pointer">
                 <span className="self-center text-xl font-bold whitespace-nowrap dark:text-black">
                   EaseMy
@@ -38,7 +38,22 @@ const Header: React.FC = () => {
                   Sailing
                 </span>
               </p>
-            </Link>
+            </Link> */}
+
+          
+
+          <div className="flex items-center space-x-3 rtl:space-x-reverse">
+            <div className="w-44 h-12 sm:w-52 sm:h-[53px] ">
+              <Link href="/">
+                <Image
+                  src="/images/Transparent Logo.png"
+                  alt="EaseMySailing Logo"
+                  className="object-cover h-full w-full "
+                  width={800}
+                  height={800}
+                />
+              </Link>
+            </div>
           </div>
 
           <div className=" ">

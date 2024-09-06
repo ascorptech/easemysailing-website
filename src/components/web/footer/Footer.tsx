@@ -1,8 +1,9 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+// import Footer from "@/app/Shared/Footer/Footer";
 
-const Footer = () => {
+const Footer1 = () => {
   return (
     // <footer className=" md:w-full ">
     <footer className=" lg:mt-5 w-full md:m-0 lg:w-full">
@@ -31,9 +32,9 @@ const Footer = () => {
       </div>
 
       {/* {/ Footer Content Section /} */}
-      <div className="bg-[#D1EFE4] w-full">
-        <div className="max-w-6xl mx-auto py-9 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 px-4 md:px-6 lg:px-1">
-          {/* {/ Company Info /} */}
+      {/* <div className="bg-[#D1EFE4] w-full">
+        <div className=" lg:w-full mx-auto  py-9 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-2 px-4 md:px-6 lg:px-8 lg:pl-24">
+         
           <div>
             <h3 className="text-xl font-bold text-black mb-2">
               EaseMy<span className="text-[#00A264]">Sailing</span>
@@ -49,7 +50,7 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* {/ Quick Links /} */}
+          
           <div className="lg:ml-5">
             <h4 className="font-semibold text-lg text-black mb-2">
               Quick Links
@@ -81,7 +82,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* {/ Help Section /} */}
+          
           <div>
             <h4 className="font-semibold text-lg text-black mb-2">Help</h4>
             <ul>
@@ -108,7 +109,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* {/ Contact Section /} */}
+         
           <div>
             <h4 className="font-semibold text-lg text-black mb-2">
               Connect With Us
@@ -125,7 +126,7 @@ const Footer = () => {
             <div className="flex space-x-4 mt-4">
               <h5>Follow Us :</h5>
               <Link href="#" className="text-green-600 mt-1">
-                {/* {/ <CiSearch /> /} */}
+                
                 <Image
                   src={"/fb.png"}
                   priority
@@ -155,9 +156,18 @@ const Footer = () => {
             </div>
           </div>
         </div>
+        <hr className=" border-spacing-1 border-green-400     "></hr>
+      <div className="  py-4 flex  items-center ml-24 ">
+        <span>Copyright © {new Date().getFullYear()} | All Rights Reserved</span>
+
+       
       </div>
+      </div> */}
+      {/* <Footer/> */}
+
+     
     </footer>
   );
 };
 
-export default Footer;
+export default Footer1;

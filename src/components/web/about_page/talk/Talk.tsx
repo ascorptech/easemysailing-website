@@ -23,16 +23,22 @@ const Talk = () => {
         </h1>
         <br />
         <p className="text-sm md:text-base mt-2 px-2 text-[#4E4E4E]">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, iure
-          fugiat labore eius vero ad quo velit voluptate dolores enim odio
-          dignissimos placeat tempora doloremque. Sit soluta omnis nobis rerum.
+          EaseMySailing is a platform created by seafarers, for seafarers, built
+          on empathy for life at sea and its unique challenges and joys. The
+          team behind it has navigated the seas from trainees to top ranks,
+          experiencing the sacrifices, dreams, and determination of those who
+          choose a life on the ocean.
         </p>
         <br />
         <p className="text-sm md:text-base mt-2 px-2 text-[#4E4E4E]">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate,
-          impedit, mollitia deserunt aliquid incidunt reprehenderit quasi
-          eveniet voluptatibus cumque et voluptatum deleniti adipisci saepe quae
-          dignissimos totam aliquam assumenda exercitationem!
+          EaseMySailing aims to bring the life of seafarers into the spotlight,
+          highlighting the vital role they play and the challenges they face.
+          The platform is dedicated to promoting sustainable practices,
+          enhancing the well-being of seafarers, and ensuring that their voices
+          are heard and respected. We also seek to foster better understanding
+          and collaboration among all maritime stakeholders, including
+          shipowners and recruiters, to create a more supportive and efficient
+          industry environment.
         </p>
       </div>
     </div>

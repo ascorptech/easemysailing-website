@@ -7,10 +7,7 @@ const Crew = () => {
           Our Seafaring <span className="text-[#00A264]">crew</span> pool
         </h1>
         <p className="flex text-justify mt-4 text-[#4E4E4E] text-[16px] leading-[28px]">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi
-          eligendi suscipit animi. Sequi quos error repellendus explicabo labore
-          eum nesciunt modi consectetur accusamus. Nam perferendis voluptas
-          libero laboriosam odit labore.
+        The maritime industry faces critical officer shortages, as detailed in the New BIMCO/ICS Seafarer Workforce Report. This issue is worsened by a lack of training and rapid technological advancements. The shift towards digital and green technologies heightens the need for updated skills. Addressing these challenges requires promoting gender diversity and expanding the crew pool in emerging nations. Building a diverse and skilled workforce is crucial for meeting future demands and supporting industry growth. EaseMySailing promotes the global engagement of E2E stakeholders, facilitating the seamless recruitment of talent without boundaries.
         </p>
       </div>
 

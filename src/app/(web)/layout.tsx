@@ -5,7 +5,9 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "../globals.scss";
 import Header from "@/components/web/header/Header";
-import Footer from "@/components/web/footer/Footer";
+import Footer1 from "@/components/web/footer/Footer";
+import Footer from "../Shared/Footer/Footer";
+// import Footer from "@/components/web/footer/Footer";
 import PinPopup from "@/components/secruity_code/Pinpopup";
 
 // export const metadata: Metadata = {
@@ -16,7 +18,6 @@ const poppins = Poppins({
   subsets: ["latin"],
   weight: "400",
 });
-
 
 export default function RootLayout({
   children,
@@ -31,7 +32,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={poppins.className}>
-       
         <main className="w-full h-screen flex flex-col">
           {showPopup ? (
             <PinPopup closeModal={closeModal} />
@@ -40,6 +40,7 @@ export default function RootLayout({
               <Header />
 
               {children}
+              <Footer1 />
               <Footer />
             </>
           )}

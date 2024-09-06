@@ -88,13 +88,13 @@ const SignIn = ({ route }: Props) => {
   return (
     <div className="flex flex-col">
       <LoginHeader />
-      <div className="flex items-center justify-center bg-gray-100 ">
+      <div className="flex items-center justify-center bg-gray-100   ">
         <div className="flex w-full h-auto overflow-hidden bg-white">
           <LoginImg />
 
           {/* Sign-In Form Section */}
           <div className="w-full md:w-1/2 p-7 bg-[#EAEAEA]  ">
-            <h2 className="mt-8 mb-2 text-2xl font-bold text-center">
+            <h2 className="mt-12 mb-2 text-2xl font-bold text-center">
               Sign In as {route == "candidate" ? "Candidate" : "Recruiter"}
             </h2>
             <p className="mb-4 text-center text-gray-600">
@@ -112,7 +112,6 @@ const SignIn = ({ route }: Props) => {
                   Enter Registered Email/Phone
                 </label>
                 <div className="relative flex items-center pl-8 ">
-                 
                   <input
                     id="emailOrPhone"
                     type="text"
@@ -188,14 +187,14 @@ const SignIn = ({ route }: Props) => {
                     ? "/candidate/dashboard"
                     : "/recruiter/dashboard"
                 }
-                className="block w-full px-4 py-2 text-white bg-[#00A264] text-center hover:bg-[#00A264] font-bold rounded focus:outline-none focus:shadow-outline"
+                className="block w-full px-4 py-2 text-white bg-[#00A264] text-center hover:bg-[#00A264] font-bold rounded focus:outline-none focus:shadow-outline "
               >
                 Sign in
               </Link>
             </form>
 
             {route == "candidate" && (
-              <p className="mt-2 text-center">
+              <p className="mt-2 text-center mb-16 ">
                 Don’t have an account?
                 <Link
                   href={"signup"}

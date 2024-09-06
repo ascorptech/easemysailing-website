@@ -85,7 +85,7 @@ const PodcastList: React.FC = () => {
       <div className="flex justify-center items-center text-sm mt-4 mb-4">
         <button
           onClick={handlePreviousPage}
-          className="px-2 py-1 mr-2 bg-green-600 text-white rounded-lg"
+          className="px-2 py-1 mr-2 bg-[#00A264] text-white rounded-lg"
           disabled={currentPage === 1}
         >
           Previous

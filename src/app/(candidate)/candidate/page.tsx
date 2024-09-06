@@ -5,7 +5,7 @@ export default function page() {
   return (
     <div>
     
-      <SignIn route={'candidate'} />
+      <SignIn route={'candidate'}/>
       
     </div>
   );

@@ -8,7 +8,7 @@ import Header from "@/components/web/header/Header";
 import Footer1 from "@/components/web/footer/Footer";
 import Footer from "../Shared/Footer/Footer";
 // import Footer from "@/components/web/footer/Footer";
-import PinPopup from "@/components/secruity_code/Pinpopup";
+import PinPopup from "@/components/web/secruity_code/Pinpopup";
 
 // export const metadata: Metadata = {
 //   title: { default: "EaseMySailing", template: "%s | EaseMySailing" },

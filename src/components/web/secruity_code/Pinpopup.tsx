@@ -10,7 +10,7 @@ const PinPopup = ({ closeModal }: { closeModal: () => void }) => {
   const [error, setError] = useState("");
   const router = useRouter();
 
-  const correctPin = "8969"; // The correct 4-digit PIN
+  const correctPin = "4321"; // The correct 4-digit PIN
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

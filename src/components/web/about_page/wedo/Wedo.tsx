@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Wedo = () => {
   return (
-    <div className=" mx-1 w-[98%] my-12 px-4 lg:mx-1 lg:w-full bg-[url('/images/Rectangle.png')] ">
+    <div className=" mx-1 w-[98%] my-12 px-4 lg:mx-1 lg:w-[98%] bg-[url('/images/Rectangle.png')] ">
      
       {/* Heading */}
       <div className="text-center">
@@ -23,12 +23,9 @@ const Wedo = () => {
             className="w-[5rem] h-[5rem] md:w-[6rem] md:h-[6rem] mt-2"
             priority
           />
-          <h2 className="text-2xl font-semibold mt-4">For Seafarers</h2>
+          <h2 className="text-2xl font-semibold mt-4">Recruitment</h2>
           <p className="text-sm md:text-base mt-2 px-2 text-[#4E4E4E]">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur
-            porro corrupti non explicabo repellat commodi temporibus error
-            expedita, distinctio aliquid ab consequatur necessitatibus iure,
-            minus ipsam? Minima provident quidem nihil?
+          EaseMySailing envisions transforming recruitment with AI and technology. We focus on fair, efficient practices, connecting seafarers and shipowners with optimal opportunities to drive maritime industry growth and sustainability
           </p>
         </div>
 
@@ -42,12 +39,9 @@ const Wedo = () => {
             className="w-[5rem] h-[5rem] md:w-[6rem] md:h-[6rem] mt-2"
             priority
           />
-          <h2 className="text-2xl font-semibold mt-4">For Recruiters</h2>
+          <h2 className="text-2xl font-semibold mt-4">For Seafarer Wellbeing</h2>
           <p className="text-sm md:text-base mt-2 px-2 text-[#4E4E4E]">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur
-            porro corrupti non explicabo repellat commodi temporibus error
-            expedita, distinctio aliquid ab consequatur necessitatibus iure,
-            minus ipsam? Minima provident quidem nihil?
+          At EaseMySailing, we connect seafarers with recruiters, ensuring they feel valued and engaged. We aim to keep seafarers motivated and connected with management while creating a supportive environment that celebrates their contributions and prioritizes their well-being.
           </p>
         </div>
 
@@ -61,12 +55,9 @@ const Wedo = () => {
             className="w-[5rem] h-[5rem] md:w-[6rem] md:h-[6rem] mt-2"
             priority
           />
-          <h2 className="text-2xl font-semibold mt-4">For Manning Agents</h2>
+          <h2 className="text-2xl font-semibold mt-4">For Career Progression</h2>
           <p className="text-sm md:text-base mt-2 px-2 text-[#4E4E4E]">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse
-            sapiente officiis veritatis obcaecati natus nobis laudantium ullam.
-            Ad dicta rem deserunt blanditiis esse, reprehenderit asperiores
-            perferendis, eveniet ducimus iusto ea.
+          EaseMySailing supports seafarers navigating career changes, from rank advancement to transitions between ship and shore. Our platform helps them achieve career goals and explore new opportunities in the maritime industry.
           </p>
         </div>
       </div>

@@ -18,15 +18,17 @@ export default function Home() {
       <Signup />
       <Companies />
       <Status />
-      <div className="bg-[#F1F1F1]">
+      {/* <div className="bg-[#F1F1F1]">
         {" "}
         <Recruiting />
         <Trending />
         <Career />
-      </div>
+      </div> */}
 
-      <Applying />
-      <PartnersSection />
+      {/* <Applying />
+      <PartnersSection /> */}
+
+      <div className="w-full h-[800px] bg-white"> </div>
       <ClientSection />
       <Interview />
       <Articles />

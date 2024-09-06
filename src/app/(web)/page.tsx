@@ -33,15 +33,8 @@ export default function Home() {
       {/* <Applying />
       <PartnersSection /> */}
 
+      {/* <div className="w-full h-[800px] bg-white"> </div> */}
       <div className="w-full h-[800px] bg-white"> </div>
-      <div className="bg-[#F1F1F1]">
-        {" "}
-        <Recruiting />
-        <Trending />
-        <Career />
-      </div>
-      <Applying />
-      <PartnersSection />
       <ClientSection />
       <Interview />
       <Articles />

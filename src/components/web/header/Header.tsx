@@ -40,8 +40,6 @@ const Header: React.FC = () => {
               </p>
             </Link> */}
 
-          
-
           <div className="flex items-center space-x-3 rtl:space-x-reverse">
             <div className="w-44 h-12 sm:w-52 sm:h-[53px] ">
               <Link href="/">

@@ -19,7 +19,7 @@ const PinPopup = ({ closeModal }: { closeModal: () => void }) => {
       router.push(`/`); // Redirect to the dashboard with the PIN
     } else {
       // setError("Invalid PIN. Please try again.");
-      setError("Invalid PIN. Please SEND SALARY 😓");
+      setError("Invalid PIN. Please Try Again ");
     }
   };
 

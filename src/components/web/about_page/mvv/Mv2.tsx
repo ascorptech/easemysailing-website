@@ -15,11 +15,8 @@ const Mv2 = () => {
             priority
           />
           <h1 className="text-2xl lg:text-[36px] lg:leading-[54px] font-semibold mt-2">Mission</h1>
-          <p className="mt-2 text-sm lg:text-[16px] lg:leading-[28px]  text-[#4E4E4E] ">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur
-            porro corrupti non explicabo repellat commodi temporibus error
-            expedita, distinctio aliquid ab consequatur necessitatibus iure,
-            minus ipsam? Minima provident quidem nihil?
+          <p className="mt-2 text-sm lg:text-[16px] lg:leading-[28px]  text-[#4E4E4E] pl-4 text-left pb-4 ">
+          Our mission is to create a transparent, open forum for the maritime community where critical issues can be discussed and resolved. We are dedicated to supporting Employee Social Governance (ESG) in the shipping industry, ensuring fair treatment and welfare for seafarers, and actively contributing to global environmental protection efforts by aligning with initiatives to reduce the industry’s carbon footprint.
           </p>
         </div>
 
@@ -34,11 +31,8 @@ const Mv2 = () => {
             priority
           />
           <h1 className="text-2xl font-semibold mt-2 lg:text-[36px] lg:leading-[54px]">Vision</h1>
-          <p className="mt-2 text-sm lg:text-[16px] lg:leading-[28px]  text-[#4E4E4E]">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur
-            porro corrupti non explicabo repellat commodi temporibus error
-            expedita, distinctio aliquid ab consequatur necessitatibus iure,
-            minus ipsam? Minima provident quidem nihil?
+          <p className="mt-2 text-sm lg:text-[16px] lg:leading-[28px]  text-[#4E4E4E] text-left pl-4 pb-4">
+          We envision a maritime industry where open communication bridges the gaps between seafarers, shipowners, and recruiters, leading to a more inclusive and sustainable future. We aim to promote dialogue that brings to light the difficulties and complexities each group faces, fostering solutions that enhance both social and environmental responsibility within the maritime industry.
           </p>
         </div>
 
@@ -53,12 +47,19 @@ const Mv2 = () => {
             priority
           />
           <h1 className="text-2xl font-semibold mt-2 lg:text-[36px] lg:leading-[54px]">Values</h1>
-          <p className="mt-2 text-sm  lg:text-[16px] lg:leading-[28px]  text-[#4E4E4E]">
+          <ul className="list-disc list-inside  font-bold lg:text-[16px] lg:leading-[28px] text-left pb-4 pl-4">
+            <li className="  ">Transparency : <span className="text-[#4E4E4E] font-normal">Open processes and fair dealings in all operations</span></li>
+            <li>Transparency : <span className="text-[#4E4E4E] font-normal">Equal respect for all voices, from crew members to shipowners</span></li>
+            <li>Transparency : <span className="text-[#4E4E4E] font-normal">Reducing the environmental impact and promoting greener initiatives.</span></li>
+            <li>Transparency : <span className="text-[#4E4E4E] font-normal">Fostering collaboration and understanding through diverse perspectives.</span></li>
+           
+          </ul>
+          {/* <p className="mt-2 text-sm  lg:text-[16px] lg:leading-[28px]  text-[#4E4E4E]">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse
             sapiente officiis veritatis obcaecati natus nobis laudantium ullam.
             Ad dicta rem deserunt blanditiis esse, reprehenderit asperiores
             perferendis, eveniet ducimus iusto ea.
-          </p>
+          </p> */}
         </div>
       </div>
     </div>

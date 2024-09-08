@@ -18,11 +18,11 @@ export default function CandidateLayout({
     return (
         <html lang="en">
             <body className={inter.className}>
-        <main className="w-full h-screen flex flex-col">
-            
-            {children}
-        </main>
-        </body>
+                <main className="w-full h-screen flex flex-col">
+
+                    {children}
+                </main>
+            </body>
         </html>
     );
 }

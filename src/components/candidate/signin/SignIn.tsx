@@ -7,12 +7,12 @@ import { useState } from "react";
 import LoginImg from "@/components/candidate/image/LoginImg";
 import LoginHeader from "@/app/Shared/LoginHeader/LoginHeader";
 import Footer from "@/app/Shared/Footer/Footer";
-import ForgotPassword from "../changepassword/ForgotPassword";
-import VerificationOpt from "../changepassword/VerificationOpt";
-import VerificationCode from "../changepassword/VerificationCode";
-import Congratulations from "../changepassword/Congratulations";
-import ResetPassword from "../changepassword/ResetPassword";
-import PasswordChange from "../changepassword/PasswordChange";
+import ForgotPassword from "../ChangePassword/ForgotPassword";
+import VerificationOpt from "../ChangePassword/VerificationOpt";
+import VerificationCode from "../ChangePassword/VerificationCode";
+import Congratulations from "../ChangePassword/Congratulations";
+import ResetPassword from "../ChangePassword/ResetPassword";
+import PasswordChange from "../ChangePassword/PasswordChange";
 
 type Props = {
   route: string;

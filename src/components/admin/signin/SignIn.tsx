@@ -7,12 +7,12 @@ import { useState } from "react";
 import LoginImg from "@/components/candidate/image/LoginImg";
 import LoginHeader from "@/app/Shared/LoginHeader/LoginHeader";
 import Footer from "@/app/Shared/Footer/Footer";
-import ForgotPassword from "@/components/candidate/changepassword/ForgotPassword";
-import VerificationOpt from "@/components/candidate/changepassword/VerificationOpt";
-import Congratulations from "@/components/candidate/changepassword/Congratulations";
-import PasswordChange from "@/components/candidate/changepassword/PasswordChange";
-import ResetPassword from "@/components/candidate/changepassword/ResetPassword";
-import VerificationCode from "@/components/candidate/changepassword/VerificationCode";
+import ForgotPassword from "@/components/candidate/ChangePassword/ForgotPassword";
+import VerificationOpt from "@/components/candidate/ChangePassword/VerificationOpt";
+import VerificationCode from "@/components/candidate/ChangePassword/VerificationCode";
+import Congratulations from "@/components/candidate/ChangePassword/Congratulations";
+import ResetPassword from "@/components/candidate/ChangePassword/ResetPassword";
+import PasswordChange from "@/components/candidate/ChangePassword/PasswordChange";
 
 const SignIn = () => {
   const [emailOrPhone, setEmailOrPhone] = useState("");

@@ -64,7 +64,7 @@ const MentoringList: React.FC = () => {
                 <span className="text-gray-500"> | {item.reviews} reviews</span>
               </div>
 
-              <Link href={`/mentoring-details/${item.id}`}>
+              <Link href={`/career/${item.id}`}>
                 <button className="h-7 bg-green-600 text-white px-4 rounded-lg text-sm">
                   View Details
                 </button>

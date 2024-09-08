@@ -73,7 +73,7 @@ const Footer1 = () => {
               </li>
               <li>
                 <Link
-                  href="/mentoring-details"
+                  href="/career"
                   className="text-gray-600 text-sm"
                 >
                   Careers

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Rating1 = () => {
   return (
-    <div className=" mx-1 lg:mx-0  w-[98%] lg:w-full my-9  bg-[#EAEAEA] py-2">
+    <div className=" mx-1 lg:mx-0  w-[98%] lg:w-[98%] my-9  bg-[#EAEAEA] py-2">
       <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16 mx-4 md:mx-7 my-1">
         {/* First div */}
         <div className="flex flex-col w-full md:w-1/4 justify-center text-center items-center   mb-4 md:mb-0">

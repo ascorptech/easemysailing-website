@@ -103,12 +103,12 @@ const Card = () => {
       {/* Carousel Wrapper */}
       <div
         ref={card}
-        className="flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory mx-[3rem]"
+        className="flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory mx-[4.5rem]"
       >
         {/* Card 1 */}
         {cards.map((card) => (
           <div key={card.id} className="snap-center p-2">
-            <div className="w-[197px] h-[197px]  bg-white  rounded-full shadow-md ml-10 ">
+            <div className="w-[150px] h-[150px]  bg-white  rounded-full shadow-md ml-10 ">
               <img
                 src={card.logo}
                 alt="Maersk Line"

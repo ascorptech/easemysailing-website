@@ -27,7 +27,7 @@ const Header: React.FC = () => {
   return (
     <div className="  z-20 top-0 fixed w-full border-b">
       <nav className="bg-white border-white dark:bg-white dark:border-black-700   ">
-        <div className="lg:w-full w-full text-25px font-[700px] leading-[37.5px] flex flex-wrap items-center justify-between mx-auto  px-[1rem] sm:px-[3rem] lg:px-[4rem] py-3">
+        <div className="lg:w-full w-[98%] text-25px font-[700px] leading-[37.5px] flex flex-wrap items-center justify-between   px-[1rem] sm:px-[3rem] lg:px-[2rem] py-3">
           {/* <div className="flex items-center space-x-3 rtl:space-x-reverse"> */}
           {/* <Link href="/">
               <p className="cursor-pointer">
@@ -164,7 +164,7 @@ const Header: React.FC = () => {
 
                 <li>
                   <Link
-                    href="#"
+                    href="/agent-zone"
                     className="block pt-6 px-4 text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#00A264] md:p-0 dark:text-black md:dark:hover:text-[#00A264] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                   >
                     Manning Agent Zone
@@ -224,16 +224,16 @@ const Header: React.FC = () => {
                     <path
                       d="M3 21.32L21 3.32001"
                       stroke="currentColor"
-                      stroke-width="3"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
                     <path
                       d="M3 3.32001L21 21.32"
                       stroke="currentColor"
-                      stroke-width="3"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
                   </svg>
                 ) : (
@@ -344,7 +344,7 @@ const Header: React.FC = () => {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/agent-zone"
                   className="block py-2 px-3 text-[#00A264] rounded-lg hover:bg-[#00A264] mt-1  hover:text-[#FFFFFF] text-xl"
                 >
                   Manning Agent Zone
@@ -370,7 +370,7 @@ const Header: React.FC = () => {
                   Seafarers Login
                 </Link>
                 <Link
-                  href="#"
+                  href="recruiter"
                   className=" h-9 w-21  text-white bg-[#00A264] hover:bg-[#00A264] focus:outline-none focus:ring-1 focus:ring-[#00A264] font-medium rounded-full text-sm px-5 py-5 text-center me-2  dark:bg-[#00A264] dark:hover:bg-[#00A264] dark:focus:ring-[#00A264] flex justify-center items-center"
                 >
                   Post a Job

@@ -1,7 +1,8 @@
 import { FiPhone } from "react-icons/fi";
 import Link from "next/link";
 import { MdOutlineMail } from "react-icons/md";
-import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaWhatsapp, FaTwitter, FaXingSquare } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   return (
@@ -103,7 +104,7 @@ const Footer = () => {
             </li>
             <li className="mt-2">
               <Link href="#" className="flex items-center hover:text-green-600">
-                <span className="text-green-600">🌐</span>
+                <span className="text-green-600 mr-1">🌐</span>
                 www.easemysailing.au
               </Link>
             </li>
@@ -117,7 +118,7 @@ const Footer = () => {
               <FaInstagram />
             </Link>
             <Link href="#" className="text-green-600">
-              <FaWhatsapp />
+              <FaXTwitter />
             </Link>
           </div>
         </div>

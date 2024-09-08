@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 // import Footer from "@/app/Shared/Footer/Footer";
+import { FiSend } from "react-icons/fi";
 
 const Footer1 = () => {
   return (
@@ -25,7 +26,7 @@ const Footer1 = () => {
               className="p-3 w-full lg:w-[85%] rounded-md lg:h-9 focus:outline-none mb-2"
             />
             <button className="w-full lg:w-[85%]  sm:w-auto bg-black text-white px-6 lg:h-9 py-3 rounded-md flex justify-center items-center">
-              Subscribe <span className="ml-2">✈️</span>
+              Subscribe <span className="ml-2"><FiSend /></span>
             </button>
           </div>
         </div>

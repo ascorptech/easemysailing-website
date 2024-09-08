@@ -2,8 +2,8 @@ import { FaSearch } from "react-icons/fa";
 
 const Searchbar = () => {
   return (
-    <div className="flex items-center justify-center mt-[80px] lg:mt-[80px] ml-3 lg:ml-0 mb-3 w-[94%] lg:w-full ">
-      <div className=" flex border  rounded-full overflow-hidden shadow-md  w-full max-w-xl mx-2">
+    <div className="flex items-center justify-center  lg:mt-[80px] ml-3 lg:ml-0 mb-3 w-[94%] lg:w-full ">
+      <div className=" flex border  rounded-full overflow-hidden shadow-md  w-full max-w-xl mx-2 mt-5">
         {/* {/ Search Icon /} */}
         <div className="flex items-center justify-center px-4 ">
           <FaSearch className="text-[#00A264]" />

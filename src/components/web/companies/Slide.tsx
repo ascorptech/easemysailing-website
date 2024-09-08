@@ -1,5 +1,6 @@
 "use client";
 import React, { useRef, useEffect } from "react";
+import Image from "next/image";
 
 interface Card {
   id: number;
@@ -98,11 +99,12 @@ const Slide = () => {
           <div key={card.id} className="flex-none w-full  sm:w-[16.9%] p-4">
             <div className="flex flex-col items-center bg-white rounded-lg border-2  shadow-md p-4">
               <div className="my-2 w-16 h-16">
-                <img
+                {/* <img
                   src={card.logo}
                   alt="images not find"
                   className="w-full h-full "
-                />
+                /> */}
+                <Image src={card.logo} width={150} height={150} priority alt="images not find"/>
               </div>
             </div>
           </div>

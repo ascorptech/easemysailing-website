@@ -1,13 +1,13 @@
 "use client";
 
 import React from "react";
+import Image  from "next/image";
 import { useState } from "react";
 import { useParams } from "next/navigation"; // Use useParams instead of useRouter
 // import { Resource } from "@/app/data/resources";
 import { Resource } from "../../data/resources";
 
 // import Profile from "@/components/p4mentoring/profileSummary/Profile";
-import Image from "next/image";
 const ResourceDetailsPage: React.FC = () => {
   const params = useParams(); // useParams hook to get route parameters
   const { id } = params;
@@ -34,14 +34,16 @@ const ResourceDetailsPage: React.FC = () => {
   }
 
   return (
-    <div className="flex justify-around mx-14 my-11 mt-[80px]">
+    <div className="flex justify-around mx-14 my-11 mt-[100px]">
       <div className=" float-left w-[70%]  px-10">
-        <div className="mr-5 w-[98%] h-[400px] border2 border-blue-600">
-          <img
+        <div className="mr-5 w-[787px] h-[417px] border2 border-blue-600">
+          <Image
             src={item.logoSrc}
-            alt=""
+            alt="image not found"
+            width={1000}
+            height={1000}
             className="w-full h-full object-cover"
-          ></img>
+          ></Image>
         </div>
         <div className="flex gap-4   mt-0 ">
           <p className="text-green-600">{item.date}</p>

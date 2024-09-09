@@ -8,7 +8,7 @@ import Header from "@/components/web/header/Header";
 import Footer1 from "@/components/web/footer/Footer";
 import Footer from "../Shared/Footer/Footer";
 // import Footer from "@/components/web/footer/Footer";
-import PinPopup from "@/components/web/secruity_code/Pinpopup";
+// import PinPopup from "@/components/web/secruity_code/Pinpopup";
 
 // export const metadata: Metadata = {
 //   title: { default: "EaseMySailing", template: "%s | EaseMySailing" },
@@ -33,9 +33,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={poppins.className}>
         <main className="w-full h-screen flex flex-col">
-          {showPopup ? (
+          {/* {showPopup ? (
             <PinPopup closeModal={closeModal} />
-          ) : (
+          ) : ( */}
             <>
               <Header />
 
@@ -43,7 +43,7 @@ export default function RootLayout({
               <Footer1 />
               <Footer />
             </>
-          )}
+          {/* )} */}
         </main>
       </body>
     </html>

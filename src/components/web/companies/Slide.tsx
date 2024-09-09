@@ -81,11 +81,11 @@ const Slide = () => {
   }, []);
 
   return (
-    <div className=" lg:ml-[4rem] relative flex items-center justify-center w-[90%]  ">
+    <div className=" lg:ml-[5.5rem]  relative flex items-center justify-center w-[90%] lg:w-[1328px] lg:h-[84px] lg:mt-4 ">
       {/* Left Arrow */}
       <button
         onClick={scrollLeft}
-        className="absolute left-1 lg:left-10 z-10 p-2 bg-white border rounded-full shadow-md ml-1 lg:ml-2 mr-2"
+        className="absolute left-1 z-10 bg-[#D9D9D9] w-[23.6px] h-[23.6px]  rounded-full shadow-md ml-1  mr-2"
       >
         &lt;
       </button>
@@ -93,18 +93,18 @@ const Slide = () => {
       {/* Carousel Wrapper */}
       <div
         ref={card}
-        className=" flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory lg:mx-[7rem] mx-[2rem] ml-[3rem] "
+        className=" lg:mr-12 flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory ml-[2.4rem] lg:w-[1266px] lg:h-[84px]"
       >
         {cards.map((card) => (
-          <div key={card.id} className="flex-none w-full  sm:w-[16.9%] p-4">
-            <div className="flex flex-col items-center bg-white rounded-lg border-2  shadow-md p-4">
-              <div className="my-2 w-16 h-16">
+          <div key={card.id} className="flex lg:mb-2 lg:px-1 lg:w-[250px] lg:h-[84px] sm:w-[16.9%] ">
+            <div className="flex flex-col items-center justify-center bg-white rounded-lg border-2 shadow-md p-6 w-[129.8px] ">
+              <div className="   px-2 ">
                 {/* <img
                   src={card.logo}
                   alt="images not find"
                   className="w-full h-full "
                 /> */}
-                <Image src={card.logo} width={150} height={150} priority alt="images not find"/>
+                <Image src={card.logo} width={150} height={150} priority alt="images not find" />
               </div>
             </div>
           </div>
@@ -116,7 +116,7 @@ const Slide = () => {
       {/* Right Arrow */}
       <button
         onClick={scrollRight}
-        className="absolute right-1 lg:right-10 z-10 p-2 bg-white border rounded-full shadow-md -mr-7 lg:-mr-2"
+        className="absolute right-1 mr-3 z-10 bg-[#D9D9D9] w-[23.6px] h-[23.6px] rounded-full shadow-md  "
       >
         &gt;
       </button>

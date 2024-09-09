@@ -1,5 +1,6 @@
 "use client";
 import React, { useRef, useEffect } from "react";
+import { PiCaretRightThin, PiCaretLeftThin } from "react-icons/pi";
 
 interface Card {
   id: number;
@@ -91,28 +92,29 @@ const Card1 = () => {
   }, []);
 
   return (
-    <div className=" lg:ml-[4rem] ml-[2rem] relative flex items-center my-4 justify-center w-[90%]  ">
+    <div className=" lg:ml-[4rem] ml-[2rem] relative flex items-center my-4 justify-center w-[1362px] h-[261px]  ">
       {/* Left Arrow */}
       <button
         onClick={scrollLeft}
-        className="absolute left-10 z-10 p-2 bg-white border rounded-full shadow-md ml-2 mr-2"
+        className="absolute left-10 z-10 font-thin text-5xl ml-2 w-[300] mr-2 text-gray-500"
       >
-        &lt;
+        <PiCaretLeftThin />
+
       </button>
 
       {/* Carousel Wrapper */}
       <div
         ref={card}
-        className="flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory mx-[4.5rem]"
+        className="flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory mx-[6.5rem]  w-[1277px] h-[261px] gap-10"
       >
         {/* Card 1 */}
         {cards.map((card) => (
-          <div key={card.id} className="snap-center p-2">
-            <div className="w-[150px] h-[150px]  bg-white  rounded-full shadow-md ml-10 ">
+          <div key={card.id} className="snap-center w-[197.58px] h-[259.77px]">
+            <div className="w-[197.58px] h-[197.98px]  bg-white  rounded-full shadow-md   ">
               <img src={card.logo} alt="Maersk Line" className=" w-full h-full rounded-full " />
             </div>
             <h2
-              className="text-[#00A264] text-center ml-11"
+              className="text-[#00A264] text-center "
             >
               {card.company}<br/><span className="text-black text-center">founder</span>
             </h2>
@@ -125,9 +127,10 @@ const Card1 = () => {
       {/* Right Arrow */}
       <button
         onClick={scrollRight}
-        className="absolute right-10 z-10 p-2 bg-white border rounded-full shadow-md -mr-2"
+        className="absolute right-10 z-10 p-2 text-5xl -mr-2 text-gray-500 "
       >
-        &gt;
+        <PiCaretRightThin />
+
       </button>
     </div>
   );

@@ -15,12 +15,11 @@ const Footer = () => {
             EaseMy<span className="text-green-600">Sailing</span>
           </h2>
           <p className="mt-4 mr-14">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard.
-          </p>
+          EaseMySailing is a platform created by seafarers, for seafarers, built on empathy for life at sea and its unique challenges and joys.
+           <Link href="#" className="text-[#00A264] font-semibold"> Read More</Link></p>
           <p className="mt-4 font-semibold">
             Are You a vender?{" "}
-            <Link href="#" className="text-green-600 underline">
+            <Link href="#" className="font-bold text-[#00A264] underline">
               Join Us
             </Link>
           </p>

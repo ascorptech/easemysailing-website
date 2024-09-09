@@ -27,7 +27,7 @@ const Header: React.FC = () => {
   return (
     <div className="  z-20 top-0 fixed w-full border-b">
       <nav className="bg-white border-white dark:bg-white dark:border-black-700   ">
-        <div className="lg:w-full w-[98%] text-25px font-[700px] leading-[37.5px] flex flex-wrap items-center justify-between   px-[1rem] sm:px-[3rem] lg:px-[2rem] py-3">
+        <div className="lg:w-full w-[98%] text-25px font-[700px] leading-[37.5px] flex flex-wrap items-center justify-between  py-1 px-[1rem] sm:px-[3rem] lg:px-[2rem]   ">
           {/* <div className="flex items-center space-x-3 rtl:space-x-reverse"> */}
           {/* <Link href="/">
               <p className="cursor-pointer">
@@ -41,10 +41,10 @@ const Header: React.FC = () => {
             </Link> */}
 
           <div className="flex items-center space-x-3 rtl:space-x-reverse">
-            <div className="w-44 h-12 sm:w-52 sm:h-[53px] ">
+            <div className="w-44 h-12   sm:w-[230px] sm:h-[55px] ">
               <Link href="/">
                 <Image
-                  src="/images/Transparent Logo.png"
+                  src="/logo.png"
                   alt="EaseMySailing Logo"
                   className="object-cover h-full w-full "
                   width={800}
@@ -56,31 +56,31 @@ const Header: React.FC = () => {
 
           <div className=" ">
             <ul className="hidden  lg:flex lg:items-center flex-col font-medium  p-3 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-white lg:dark:bg-white dark:border-gray-700">
-              <div>
+              <div className="">
                 <div className="relative inline-block px-3 text-left group ">
-                  <li className="block  text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
-                    <Link href="/jobs">Jobs</Link>
+                  <li className="block  text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white  md:dark:hover:bg-transparent">
+                    <Link href="/jobs" className="text-[16px]">Jobs</Link>
                   </li>
                 </div>
 
                 <div className="relative inline-block pr-4 text-left group">
                   <li className="relative inline-block pr-4 text-left group  text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
-                    <Link href="/trainings">Trainings</Link>
+                    <Link href="/trainings" className="text-[16px]">Trainings</Link>
                   </li>
                 </div>
 
                 <li className="relative inline-block text-left group ">
                   <Link
                     href="/ems"
-                    className="block text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                    className="block text-[16px] text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:dark:hover:text-green-700 "
                   >
                     EMS Plus
                   </Link>
                 </li>
               </div>
-              <div className=" flex items-center h-2">
+              <div className=" flex items-center  h-2">
                 <div
-                  className="relative inline-block text-left"
+                  className="relative lg:mr-[350px] inline-block text-left"
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
                 >
@@ -150,18 +150,18 @@ const Header: React.FC = () => {
 
               <div className="flex items-center justify-center">
                 <li>
-                  <Link
+                  {/* <Link
                     href="/recruiter"
                     className="block text-sm py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#00A264] md:p-0 dark:text-black md:dark:hover:text-[#00A264] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                   >
                     Recruiter Zone
-                  </Link>
+                  </Link> */}
                 </li>
 
-                <span className="text-[1.3rem]  border-1 border-red-950 flex justify-self-center text-center font-[1000] text-green-700  relative ">
+                {/* <span className="text-[1.3rem]  border-1 border-red-950 flex justify-self-center text-center font-[1000] text-green-700  relative ">
                   <PiLineVertical />
-                </span>
-
+                </span> */}
+{/* 
                 <li>
                   <Link
                     href="/agent-zone"
@@ -169,7 +169,7 @@ const Header: React.FC = () => {
                   >
                     Manning Agent Zone
                   </Link>
-                </li>
+                </li> */}
               </div>
 
               <div className="flex relative items-center h-2 mt-2 ">
@@ -189,12 +189,12 @@ const Header: React.FC = () => {
                   </span>
                   Seafarers Login
                 </Link>
-                <Link
+                {/* <Link
                   href="recruiter"
                   className=" h-8 w-21  text-[#FFFFFF] bg-[#00A264] hover:bg-[#00A264] focus:outline-none focus:ring-1 focus:ring-[#00A264] font-medium rounded-full text-sm px-5 py-5 text-center me-2  dark:bg-[#00A264]   flex justify-center items-center"
                 >
                   Post a Job
-                </Link>
+                </Link> */}
               </div>
             </ul>
           </div>

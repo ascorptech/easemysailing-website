@@ -19,9 +19,9 @@ export default function Home() {
   return (
     <div className="flex flex-col  ">
       
-      <SearchBar />
+      {/* <SearchBar /> */}
       <Signup />
-      <Companies />
+      {/* <Companies /> */}
       <Status />
       {/* <div className="bg-[#F1F1F1]">
         {" "}

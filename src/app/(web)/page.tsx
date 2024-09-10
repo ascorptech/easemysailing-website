@@ -22,7 +22,7 @@ export default function Home() {
       {/* <SearchBar /> */}
       <Signup />
       {/* <Companies /> */}
-      <Status />
+      <Status/>
       {/* <div className="bg-[#F1F1F1]">
         {" "}
         <Recruiting />

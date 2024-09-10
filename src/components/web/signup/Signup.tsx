@@ -12,7 +12,7 @@ const Signup = () => {
   return (
     <div className="flex flex-col md:mx-6 md:w-[94%] lg:flex-row items-center justify-center xl:justify-between  gap-2  sm:w-full sm:m-0 sm-p-0 mx-3   w-[94%] m-0 lg:mt-24  lg:w-[100%] lg:mx-0">
       {/* Left Image Container */}
-      <div className="flex-1 flex items-center lg:ml-0 justify-center mb-3 lg:mb-0 w-[553px] h-[366px]   sm:mx-5">
+      <div className="flex-1 flex items-center lg:ml-0 justify-center mb-3 lg:mb-0 lg:w-[553px] h-lg:[366px]   sm:mx-5">
         <Image
           src="/left.png" // Replace with your image path
           alt="Left Image"
@@ -73,7 +73,7 @@ const Signup = () => {
 
         <div className="flex flex-row items-center justify-center">
           <hr className="border-1 border-black mb-3 w-[209px]" data-content="OR" /><span className="text-[14px] w-[17px] h-[21px] pb-8">Or</span>
-          <hr className="border-1 border-black mb-3 w-[209px]" data-content="OR" />
+          <hr className=" w-full border-1 border-black mb-3 " data-content="OR" />
 
         </div>
 
@@ -131,7 +131,7 @@ const Signup = () => {
       </div>
 
       {/* Right Image Container */}
-      <div className="flex-1  flex items-center justify-center mb-5 lg:mb-0 w-[510px] h-[371px]   ">
+      <div className="flex-1  flex items-center justify-center mb-5 lg:mb-0 lg:w-[510px] lg:h-[371px]   ">
         <Image
           src="/right.png" // Replace with your image path
           alt="Left Image"

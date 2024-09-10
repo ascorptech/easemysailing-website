@@ -129,92 +129,116 @@ const ResourceDetailsPage: React.FC = () => {
           <div className="absolute">
             <div className=" flex gap-3  mb-2 p-2">
               <div className="w-24 h-14 border-2 border-green-500">
-                <img
-                  src=""
+                <Image
+                  src="/images/article1.png"
                   alt="image not found"
+                  width={50}
+                  height={50}
                   className="w-full h-full"
-                ></img>
+                />
               </div>
               <div className="text-xs">
                 <h2 className="font-bold text-sm">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 </h2>
-                <p className="text-green-600   mt-0">01/jan/2014 By gwen stacy</p>
+                <p className="text-green-600   mt-0">
+                  01/jan/2014 By gwen stacy
+                </p>
               </div>
             </div>
             <div className="flex gap-3 mb-2 p-2">
               <div className="w-24 h-14 border-2 border-green-500">
-                <img
-                  src=""
+                <Image
+                  src="/images/article4.png"
                   alt="image not found"
+                  width={50}
+                  height={50}
                   className="w-full h-full"
-                ></img>
+                />
               </div>
               <div className="text-xs">
                 <h2 className="font-bold text-sm">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 </h2>
-                <p className="text-green-600   mt-0">01/jan/2014 By gwen stacy</p>
+                <p className="text-green-600   mt-0">
+                  01/jan/2014 By gwen stacy
+                </p>
               </div>
             </div>
             <div className="flex gap-3  mb-2 p-2">
               <div className="w-24 h-14 border-2 border-green-500">
-                <img
-                  src=""
+                <Image
+                  src="/images/article3.png"
                   alt="image not found"
+                  width={50}
+                  height={50}
                   className="w-full h-full"
-                ></img>
+                />
               </div>
               <div className="text-xs">
                 <h2 className="font-bold text-sm">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 </h2>
-                <p className="text-green-600   mt-0">01/jan/2014 By gwen stacy</p>
+                <p className="text-green-600   mt-0">
+                  01/jan/2014 By gwen stacy
+                </p>
               </div>
             </div>
             <div className="flex gap-3 mb-2 p-2">
               <div className="w-24 h-14 border-2 border-green-500">
-                <img
-                  src=""
+                <Image
+                  src="/images/article4.png"
                   alt="image not found"
+                  width={50}
+                  height={50}
                   className="w-full h-full"
-                ></img>
+                />
               </div>
               <div className="text-xs">
                 <h2 className="font-bold text-sm">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 </h2>
-                <p className="text-green-600   mt-0">01/jan/2014 By gwen stacy</p>
+                <p className="text-green-600   mt-0">
+                  01/jan/2014 By gwen stacy
+                </p>
               </div>
             </div>
             <div className="flex gap-3  mb-2 p-2">
               <div className="w-24 h-14 border-2 border-green-500">
-                <img
-                  src=""
+                <Image
+                  src="/images/article1.png"
                   alt="image not found"
+                  width={50}
+                  height={50}
                   className="w-full h-full"
-                ></img>
+                />
               </div>
               <div className="text-xs">
                 <h2 className="font-bold text-sm">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 </h2>
-                <p className="text-green-600   mt-0">01/jan/2014 By gwen stacy</p>
+                <p className="text-green-600   mt-0">
+                  01/jan/2014 By gwen stacy
+                </p>
               </div>
             </div>
             <div className="flex gap-3   p-2">
               <div className="w-24 h-14 border-2 border-green-500">
-                <img
-                  src=""
+                <Image
+                  src="/images/article4.png"
                   alt="image not found"
+                  width={50}
+                  height={50}
                   className="w-full h-full"
-                ></img>
+                />
               </div>
               <div className="text-xs">
                 <h2 className="font-bold text-sm">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 </h2>
-                <p className="text-green-600   mt-0">01/jan/2014 By gwen stacy</p>
+                <p className="text-green-600   mt-0">
+                  01/jan/2014 By gwen stacy
+                </p>
               </div>
             </div>
           </div>

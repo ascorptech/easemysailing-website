@@ -12,19 +12,19 @@ const Signup = () => {
   return (
     <div className="flex flex-col md:mx-6 md:w-[94%] lg:flex-row items-center justify-center xl:justify-between  gap-2  sm:w-full sm:m-0 sm-p-0 mx-3   w-[94%] m-0 lg:mt-24  lg:w-[100%] lg:mx-0">
       {/* Left Image Container */}
-      <div className="flex-1 flex items-center lg:ml-0 justify-center mb-3 lg:mb-0 w-400 h-500   sm:mx-5">
+      <div className="flex-1 flex items-center lg:ml-0 justify-center mb-3 lg:mb-0 w-[553px] h-[366px]   sm:mx-5">
         <Image
           src="/left.png" // Replace with your image path
           alt="Left Image"
           width={800}
           height={800}
           // Ensure the aspect ratio is consistent
-          className="object-cover w-400 h-500 "
+          className="object-cover w-full h-full "
         />
       </div>
 
       {/* Middle Content Container */}
-      <div className="w-full  lg:w-[35%] text-center px-4 lg:mb-7 lg:px-4  ">
+      <div className="w-full  lg:w-[35%] text-center px-4 lg:mb-7 lg:px-4 flex flex-col items-center justify-center  ">
         <div className="flex flex-col justify-center items-center ">
           <h2 className="text-[#00A264] text-[24px] leading-[36px] font-[600] mb-1">
             Your smooth sailing starts from here
@@ -41,7 +41,7 @@ const Signup = () => {
           </p>
         </div>
 
-        <div className="-mb-2 flex justify-evenly items-center lg:mt-2 lg:w-[444px] lg:h-[75px] lg:ml-7 lg:gap-2 ">
+        <div className="-mb-2 flex justify-evenly items-center lg:mt-2 lg:w-[444px] lg:h-[75px]  lg:gap-2 ">
           <button
             type="button"
             className="text-black bg-white border border-[#181919]  focus:ring-1 focus:outline-none focus:ring-[#181c1a] font-medium rounded-lg text-[13px] px-2 py-2.5 inline-flex items-center mb-2 w-full lg:w-[220px] lg:h-[45px]"
@@ -72,12 +72,18 @@ const Signup = () => {
         </div>
 
         <div className="flex flex-row items-center justify-center">
-          <hr className="border-1 border-black mb-3 w-[209px]" data-content="OR" /><span className="text-[14px] w-[17px] h-[21px] pb-8">Or</span>
-          <hr className="border-1 border-black mb-3 w-[209px]" data-content="OR" />
-
+          <hr
+            className="border-1 border-black mb-3 w-[209px]"
+            data-content="OR"
+          />
+          <span className="text-[14px] w-[17px] h-[21px] pb-8">Or</span>
+          <hr
+            className="border-1 border-black mb-3 w-[209px]"
+            data-content="OR"
+          />
         </div>
 
-        <div className=" lg:w-[444px] lg:h-[50px] flex flex-row items-center justify-center lg:ml-7 lg:mb-5">
+        <div className=" lg:w-[444px] lg:h-[50px] flex flex-row items-center justify-center lg:mb-5">
           <form
             className="flex flex-col lg:flex-row justify-evenly items-center space-y-4 lg:space-y-0 lg:space-x-4"
             onSubmit={handleSubmit}
@@ -99,7 +105,7 @@ const Signup = () => {
           </form>
         </div>
 
-        <div className="flex lg:flex-row lg:w-[364px] lg:[53px] justify-center lg:ml-16 items-center mt-4 lg:mt-1 space-y-0 lg:space-y-0 lg:space-x-1">
+        <div className="flex lg:flex-row lg:w-[364px] lg:[53px] justify-center  items-center mt-4 lg:mt-1 space-y-0 lg:space-y-0 lg:space-x-1">
           {/* Google Play Button */}
           <Link
             href="https://play.google.com/store/apps/details?id=YOUR_APP_ID"
@@ -131,14 +137,14 @@ const Signup = () => {
       </div>
 
       {/* Right Image Container */}
-      <div className="flex-1  flex items-center justify-center mb-5 lg:mb-0 w-400 h-500   ">
+      <div className="flex-1  flex items-center justify-center mb-5 lg:mb-0 w-[510px] h-[371px]   ">
         <Image
           src="/right.png" // Replace with your image path
           alt="Left Image"
           width={800}
           height={800}
           // Ensure the aspect ratio is consistent
-          className="object-cover w-400 h-500 "
+          className="object-cover w-full h-full "
         />
       </div>
     </div>

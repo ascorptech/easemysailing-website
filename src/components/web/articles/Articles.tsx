@@ -75,11 +75,11 @@ const Articles = () => {
             <span>News & Articles</span>
           </h1>
         </div>
-        <div>
+        <Link href="/resources">
           <button className="h-8 bg-[#00A264] text-white mb-2 py-1 px-4 rounded-lg text-sm lg:mr-6">
             View All
           </button>
-        </div>
+        </Link>
       </div>
 
      

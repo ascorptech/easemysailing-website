@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Heading7 from "@/components/web/resource_page/heading7/Heading7";
 import { Resource } from "../data/resources";
+import Image from "next/image";
 
 const ResourceList: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -38,9 +39,11 @@ const ResourceList: React.FC = () => {
           <div key={item.id} className="flex  bg-white p-3 flex-shrink-0 ">
             <div className="relative bg-white border rounded-lg md:p-5 p-2  shadow-md  w-auto ">
               <div className=" flex mb-2">
-                <img
+                <Image
                   src={item.logoSrc}
                   alt={`${item.title} logo`}
+                  width={500}
+                  height={500}
                   className="w-full h-auto"
                 />
                 
@@ -57,7 +60,7 @@ const ResourceList: React.FC = () => {
                 {item.discription1}{" "}
               </div>
 
-              <Link href={`/resource-details/${item.id}`}>
+              <Link href={`/resources/${item.id}`}>
                 <button className="h-8 mt-2 bg-green-700 text-white py-1 px-4 rounded-lg text-sm ">
                   Read more
                 </button>

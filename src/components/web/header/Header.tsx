@@ -44,7 +44,7 @@ const Header: React.FC = () => {
             <div className="w-44 h-12   sm:w-[230px] sm:h-[55px] ">
               <Link href="/">
                 <Image
-                  src="/logo.png"
+                  src="/images/logo_1.png"
                   alt="EaseMySailing Logo"
                   className="object-contain h-full w-full "
                   width={800}
@@ -99,18 +99,18 @@ const Header: React.FC = () => {
                       id="dropdownHover"
                     >
                       <ul className="py-2 text-sm text-gray-700">
-                        <li>
+                        {/* <li>
                           <Link
                             href="/career"
                             className="block px-4 py-1 hover:bg-white hover:text-green-800"
                           >
                             Jobs & Career Advise
                           </Link>
-                        </li>
+                        </li> */}
 
                         <li>
                           <Link
-                            href="/resource-details"
+                            href="/resources"
                             className="block px-4 py-1 hover:bg-white hover:text-green-800"
                           >
                             Resource

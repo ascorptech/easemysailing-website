@@ -14,9 +14,9 @@ const Footer = () => {
           <h2 className="text-2xl font-bold">
             EaseMy<span className="text-green-600">Sailing</span>
           </h2>
-          <p className="mt-4 mr-14">
+          <p className="mt-4 text-justify mr-14">
           EaseMySailing is a platform created by seafarers, for seafarers, built on empathy for life at sea and its unique challenges and joys.
-           <Link href="#" className="text-[#00A264] font-semibold"> Read More</Link></p>
+           <Link href="/about" className="text-[#00A264] font-semibold"> Read More</Link></p>
           <p className="mt-4 font-semibold">
             Are You a vender?{" "}
             <Link href="#" className="font-bold text-[#00A264] underline">
@@ -62,11 +62,11 @@ const Footer = () => {
                 Privacy Policy
               </Link>
             </li>
-            <li className="mt-2">
+            {/* <li className="mt-2">
               <Link href="/gdpr" className="hover:text-green-600">
                 GDPR & Privacy Policy
               </Link>
-            </li>
+            </li> */}
             <li className="mt-2">
               <Link href="/terms" className="hover:text-green-600">
                 Terms and conditions
@@ -104,7 +104,7 @@ const Footer = () => {
             <li className="mt-2">
               <Link href="#" className="flex items-center hover:text-green-600">
                 <span className="text-green-600 mr-1">🌐</span>
-                www.easemysailing.au
+                www.easemysailing.com
               </Link>
             </li>
           </ul>

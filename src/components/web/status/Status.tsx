@@ -9,7 +9,7 @@ const Status = () => {
   return (
     <div className="flex flex-col lg:flex-col-2 md:flex-row sm:flex-col justify-between py-4 px-1 space-y-6 md:space-y-0 md:space-x-6  md:mx-6    sm:mr-4  mt-4 mx-3 w-[94%] sm:mx-5 lg:w-full lg:mx-0 ">
       {/* Left Div */}
-      <div className="w-full md:w-1/2   p-5 rounded-lg  lg:mx-9 ">
+      <div className="w-full md:w-1/2   p-5 rounded-lg  lg:mx-0 ">
         <h2 className="text-2xl flex justify-center items-center lg:ml-[50px] md:text-center md:text-[34px] font-bold w-[604px] lg:h-[51px]">
            <span className="text-[#00A264]">Seafarers</span>: Global Impact in Figures
         </h2>

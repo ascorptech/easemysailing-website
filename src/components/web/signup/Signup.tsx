@@ -13,9 +13,11 @@ const Signup = () => {
     <div className="flex flex-col md:mx-6 md:w-[94%] lg:flex-row items-center justify-center xl:justify-between  gap-2  sm:w-full sm:m-0 sm-p-0 mx-3   w-[94%] m-0 lg:mt-24  lg:w-[100%] lg:mx-0">
       {/* Left Image Container */}
       <div className="flex-1 flex items-center lg:ml-0 justify-center mb-3 lg:mb-0 w-400 h-500   sm:mx-5">
-        <img
-          src="/sign2.png" // Replace with your image path
+        <Image
+          src="/left.png" // Replace with your image path
           alt="Left Image"
+          width={800}
+          height={800}
           // Ensure the aspect ratio is consistent
           className="object-cover w-400 h-500 "
         />
@@ -130,9 +132,11 @@ const Signup = () => {
 
       {/* Right Image Container */}
       <div className="flex-1  flex items-center justify-center mb-5 lg:mb-0 w-400 h-500   ">
-        <img
-          src="/sign1.png" // Replace with your image path
+        <Image
+          src="/right.png" // Replace with your image path
           alt="Left Image"
+          width={800}
+          height={800}
           // Ensure the aspect ratio is consistent
           className="object-cover w-400 h-500 "
         />

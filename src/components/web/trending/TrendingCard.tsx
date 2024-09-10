@@ -126,7 +126,7 @@ const SlidesTrend = () => {
   }, []);
 
   return (
-    <div className=" lg:ml-[4rem] relative flex items-center justify-center w-[90%]  ">
+    <div className=" lg:ml-[4rem] relative flex items-center justify-center w-[90%] border-2 border-red-600  ">
       {/* {/ Left Arrow /} */}
       <button
         onClick={scrollLeft}
@@ -138,7 +138,7 @@ const SlidesTrend = () => {
       {/* {/ Carousel Wrapper /} */}
       <div
         ref={card}
-        className=" flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory lg:mx-[7rem] mx-[2rem] ml-[3rem] "
+        className=" flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory lg:mx-[5rem] mx-[2rem] ml-[3rem] "
       >
         {/* {/ Card 1 /} */}
         {cards.map((card) =>(

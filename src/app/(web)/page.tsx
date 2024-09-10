@@ -30,8 +30,8 @@ export default function Home() {
         <Career />
       </div> */}
 
-      {/* <Applying />
-      <PartnersSection /> */}
+      {/* <Applying /> */}
+      {/* <PartnersSection /> */}
       <ClientSection />
       <Interview />
       <Articles />

@@ -81,7 +81,7 @@ const Slide = () => {
   }, []);
 
   return (
-    <div className=" lg:ml-[5.5rem]  relative flex items-center justify-center w-[90%] lg:w-[1328px] lg:h-[84px] lg:mt-4 ">
+    <div className=" lg:ml-[0rem]  relative flex items-center justify-center w-[90%] lg:w-[1328px] lg:h-[84px] lg:mt-4 ">
       {/* Left Arrow */}
       <button
         onClick={scrollLeft}

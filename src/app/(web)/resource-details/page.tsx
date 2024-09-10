@@ -1,5 +1,5 @@
 "use client";
-
+import Image from "next/image";
 import React, { useState } from "react";
 import Link from "next/link";
 import Heading7 from "@/components/web/resource_page/heading7/Heading7";
@@ -33,6 +33,10 @@ const ResourceList: React.FC = () => {
   return (
     <div className="">
       <Heading7 />
+      <div className="lg:max-w-[88%] lg:h-[500px] lg:ml-24">
+        <Image src="/images/captain4.jpeg" alt="image not found" width={900} height={900}
+        className="w-full h-full" />
+      </div>
       <div className="mt-2 lg:max-w-[90%] grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 gap-1 py-3 -black lg:ml-20  w-full ">
         {Resource.map((item) => (
           <div key={item.id} className="flex  bg-white p-3 flex-shrink-0 ">
@@ -43,14 +47,16 @@ const ResourceList: React.FC = () => {
                   alt={`${item.title} logo`}
                   className="w-full h-auto"
                 />
-                
               </div>
               <div className="absolute mt-[-2rem] bg-green-700 text-white font-semibold ">
-                  <h3>{item.date}</h3>
-                </div>
+                <h3>{item.date}</h3>
+              </div>
 
               <div className="text-sm mb-2">
-                <span className="text-black-500 font-semibold"> {item.title}</span>
+                <span className="text-black-500 font-semibold">
+                  {" "}
+                  {item.title}
+                </span>
               </div>
               <div className="text-gray-500 text-sm text-justify">
                 {" "}
@@ -79,7 +85,7 @@ const ResourceList: React.FC = () => {
         <span className="text-green-700">
           Page {currentPage} of {totalPages}
         </span>
-         
+
         <button
           onClick={handleNextPage}
           className="px-2 py-1 ml-2 bg-green-600 text-white rounded-lg"
@@ -87,7 +93,6 @@ const ResourceList: React.FC = () => {
         >
           Next
         </button>
-       
       </div>
     </div>
   );

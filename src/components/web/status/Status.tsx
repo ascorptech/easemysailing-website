@@ -10,7 +10,7 @@ const Status = () => {
     <div className="flex flex-col lg:flex-col-2 md:flex-row sm:flex-col justify-between py-4 px-1 space-y-6 md:space-y-0 md:space-x-6  md:mx-6    sm:mr-4  mt-4 mx-3 w-[94%] sm:mx-5 lg:w-full lg:mx-0 ">
       {/* Left Div */}
       <div className="w-full md:w-1/2   p-5 rounded-lg  lg:mx-0 ">
-        <h2 className="text-2xl flex justify-center items-center lg:ml-[50px] md:text-center md:text-[34px] font-bold w-[604px] lg:h-[51px]">
+        <h2 className="text-sm sm:md:text-2xl flex justify-center items-center sm:md:ml-[50px] md:text-center md:text-[34px] font-bold w-full sm:md:h-[51px]">
            <span className="text-[#00A264]">Seafarers</span>: Global Impact in Figures
         </h2>
         <ul className="  list-none p-0 mt-8 space-y-6 lg:space-x-">
@@ -22,7 +22,7 @@ const Status = () => {
                 alt="people Logo"
                 width={300}
                 height={300}
-                className="lg:w-[93px] lg:h-[93px] "
+                className="w-20 h-20 sm:md:w-[93px] sm:md:h-[93px] "
               />
             </div>
             <div className="flex flex-col items-center justify-between lg:w-[399px] lg:h-[82.19px] lg:ml-12  text-center ">
@@ -40,10 +40,10 @@ const Status = () => {
                 alt="smile Logo"
                 width={800}
                 height={800}
-                className="lg:w-[93px] lg:h-[93px] "
+                className="w-20 h-20 sm:md:w-[93px] sm:md:h-[93px] "
               />
             </div>
-            <div className="flex flex-col items-center justify-between lg:ml-16  text-center lg:w-[399px] lg:h-[82.19px]">
+            <div className="flex flex-col items-center justify-between ml-4 sm:md:ml-16  text-center sm:md:w-[399px] sm:md:h-[82.19px]">
               <span className="text-4xl md:text-5xl font-extrabold">50,000+</span>
               <span className="text-gray-700 text-md md:text-xl">
               Ships operated by seafarers
@@ -58,7 +58,7 @@ const Status = () => {
                 alt="people Logo"
                 width={800}
                 height={800}
-                className="lg:w-[93px] lg:h-[93px] "
+                className="w-20 h-20 sm:md:w-[93px] sm:md:h-[93px]"
               />
             </div>
             <div className="flex flex-col items-center justify-between lg:w-[319px] lg:h-[82.19px] lg:ml-12  text-center ">

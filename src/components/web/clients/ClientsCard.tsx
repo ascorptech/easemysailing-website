@@ -9,7 +9,7 @@ interface ClientsCard {
   rating: number;
   imageSrc: string;
   image1:string,
-
+  // className:string
 }
 
 const ClientsCard: React.FC<ClientsCard> = ({

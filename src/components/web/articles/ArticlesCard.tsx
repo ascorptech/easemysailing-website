@@ -9,8 +9,6 @@ interface ArticleProps {
 }
 
 const ArticlesCard = () => {
-  // const card = useRef<HTMLDivElement>(null);
-
   const article: ArticleProps[] = [
     {
       id: "1",
@@ -36,19 +34,17 @@ const ArticlesCard = () => {
       date: "27-01-2024",
       title: "Lorem Ip sum is simply dummy text of the printing.",
     },
-  
   ];
   return (
     <>
-      {/* <div className="overflow-x-auto flex space-x-4 no-scrollbar justify-center lg:ml-[8rem] scroll-smooth snap-x snap-mandatory  lg:w-[1278px] gap-4 w-[97%] border-2 border-red-600  "> */}
-      <div className="flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory  space-x-9     lg:ml-[4rem]  relative items-center justify-center w-[90%] border-2 border-red-600  ">
+      <div className="w-full overflow-x-scroll no-scrollbar scroll-smooth snap-mandatory  space-x-9  lg:ml-[4rem] relative flex items-center justify-center md:lg:w-[90%]    pl-8 ">
         {article.map((card) => (
           <div
             key={card.id}
-            className="flex  bg-white   flex-shrink-0 lg:w-[292px]  lg:h-[265px] lg:mt-4 shadow-lg border rounded-md lg:ml-3 "
+            className="flex justify-center  bg-white ml-0   md:lg:w-[292px]  md:lg:h-[265px] lg:mt-4 shadow-lg border rounded-md lg:ml-3 mb-3"
           >
-            <div className="relative bg-white    w-auto lg:w-[292px] lg:h-[202px]">
-              <div className=" flex mb-2">
+            <div className="w-full relative bg-white lg:w-[292px] lg:h-[202px] ">
+              <div className=" flex ">
                 <Image
                   src={card.logoSrc}
                   alt={`${card.title} logo`}
@@ -73,7 +69,6 @@ const ArticlesCard = () => {
             </div>
           </div>
         ))}
-        
       </div>
     </>
   );

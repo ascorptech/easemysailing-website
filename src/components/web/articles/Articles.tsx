@@ -14,9 +14,9 @@ const Articles  =() => {
     // <div className="mt-7 w-[94%] mx-3 px-1   md:mx-6 lg:w-full lg:mx-0 sm:mx-5">
     //   <div className="flex items-center justify-between mt-3 pt-4 lg:mr-[8%] md:mx-[3rem] ">
     //     <div className="font-bold text-2xl lg:ml-[5rem] ">
-    <div className="mt-7 w-[94%] mx-3 px-1   md:mx-6 lg:w-full lg:mx-0 sm:mx-5">
-    <div className="flex items-center justify-between mt-4 pt-4 lg:mr-[8%] md:mx-[3rem]">
-        <div className="font-bold text-2xl lg:ml-[4rem]">
+    <div className="mt-7 w-[94%] mx-2 px-1   md:mx-6 lg:w-full lg:mx-0 sm:mx-5">
+    <div className="flex items-center justify-between mt-4 pt-4  lg:mr-[9%] md:mx-[6.8rem]">
+        <div className="text-[21px] leading-[28px] font-bold sm:md:text-2xl   lg:ml-[0rem]">
           <h1>
             <span className="text-[#00A264]">Latest</span>{" "}
             <span>News & Articles</span>

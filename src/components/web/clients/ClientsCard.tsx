@@ -21,7 +21,8 @@ const ClientsCard: React.FC<ClientsCard> = ({
   image1,
 }) => {
   return (
-    <div className=" py- flex-shrink-0 w-80 lg:w-[375px] lg:h-[320px] p-4">
+    
+    <div className=" py- flex-shrink-0 w-80 lg:w-[375px] lg:h-[320px] p-4  ">
       <p className="flex"><Image
           src={image1}
           alt={name}

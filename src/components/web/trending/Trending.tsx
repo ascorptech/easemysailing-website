@@ -5,8 +5,8 @@ import SlidesTrend from "./TrendingCard";
 const Trending = () => {
   return (
     <div className="mt-7 w-[94%] mx-3 px-1   md:mx-6 lg:w-full lg:mx-0 sm:mx-5">
-      <div className="flex items-center justify-between mt-4 pt-4 lg:mr-[10%] md:mx-[3rem]">
-        <div className="font-bold text-2xl lg:ml-[8rem]">
+      <div className="flex items-center justify-between mt-4 pt-4 lg:mr-[8%] md:mx-[3rem]">
+        <div className="font-bold text-2xl lg:ml-[4rem]">
           <h1>
             <span className="text-[#00A264]">Trending</span> Jobs
           </h1>

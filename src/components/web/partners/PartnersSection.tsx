@@ -86,9 +86,13 @@ const PartnersSection = () => {
   };
 
   return (
-    <section className="w-[94%]  ml-1 md:mx-6 px-1 sm:mx-5 lg:w-[98%] lg:mx-0">
-      <div className="flex items-center  justify-between pt-4 lg:mr-[10%] md:mx-[3rem]">
-        <div className="font-bold text-2xl  lg:ml-[8rem]">
+    // <section className="w-[94%]  ml-1 md:mx-6 px-1 sm:mx-5 lg:w-[98%] lg:mx-0">
+    <div className="mt-7 w-[94%] mx-3 px-1   md:mx-6 lg:w-full lg:mx-0 sm:mx-5">
+      {/* <div className="flex items-center  justify-between pt-4 lg:mr-[8%] md:mx-[3rem]"> 
+      */}
+      <div className="flex items-center justify-between mt-4 pt-4 lg:mr-[8%] md:mx-[3rem]">
+        {/* <div className="font-bold text-2xl  lg:ml-[4rem]"> */}
+        <div className="font-bold text-2xl lg:ml-[4rem]">
           <h1>
             <span>Our</span> <span className="text-green-700">Partners</span>
           </h1>
@@ -102,19 +106,26 @@ const PartnersSection = () => {
         </div>
       </div>
 
-      <div className=" lg:ml-[2rem] relative flex items-center justify-center w-[97%]  ">
+      {/* <div className=" lg:ml-[2rem] relative flex items-center justify-center w-[97%]  "> */}
+      <div className=" lg:ml-[4rem] relative flex items-center justify-center w-[90%]  border-2 border-red-600">
         {/* {/ Left Arrow /} */}
-        <button
+        {/* <button
           onClick={scrollLeft}
           className="absolute left-1 lg:left-10 z-10 p-2 bg-white border rounded-full shadow-md ml-1 lg:ml-2 mr-2"
         >
           &lt;
-        </button>
+        </button> */}
+         <button
+        onClick={scrollLeft}
+        className="absolute left-1  z-10 bg-[#D9D9D9] w-[23.6px] h-[23.6px] rounded-full shadow-md ml-1 lg:ml-2 mr-2"
+      >
+        &lt;
+      </button>
 
         {/* {/ Partner Cards Scroll Container /} */}
         <div
           ref={scrollRef}
-          className="overflow-x-auto flex space-x-4 lg:mx-[4rem] no-scrollbar mx-[5rem] scroll-smooth snap-x snap-mandatory lg:w-[80%] w-[97%]"
+          className="overflow-x-auto flex space-x-4 lg:mx-[4rem] no-scrollbar mx-[5rem] scroll-smooth snap-x snap-mandatory lg:w-[90%] w-[97%] border-2 border-red-400"
         >
           {partners.map((partner, index) => (
             <PartnerCard
@@ -130,14 +141,20 @@ const PartnersSection = () => {
         </div>
 
         {/* {/ Right Arrow /} */}
-        <button
+        {/* <button
           onClick={scrollRight}
           className="absolute right-1 lg:right-20  z-10 p-2 bg-white border rounded-full shadow-md  lg:-mr-1"
         >
           &gt;
-        </button>
+        </button> */}
+        <button
+        onClick={scrollRight}
+        className="absolute right-1 mr-3 z-10 bg-[#D9D9D9] w-[23.6px] h-[23.6px] rounded-full shadow-md  "
+      >
+        &gt;
+      </button>
       </div>
-    </section>
+    </div>
   );
 };
 

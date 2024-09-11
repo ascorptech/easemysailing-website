@@ -7,14 +7,14 @@ import Link from "next/link";
 
 const Status = () => {
   return (
-    <div className="flex flex-col lg:flex-col-2 md:flex-row sm:flex-col justify-between py-4 px-1 space-y-6 md:space-y-0 md:space-x-6  md:mx-6    sm:mr-4  mt-4 mx-3 w-[94%] sm:mx-5 lg:w-full lg:mx-0 ">
+    <div className="flex flex-col lg:flex-row sm:flex-col justify-center items-center py-4 px-1 space-y-6 md:space-y-0 md:space-x-6 lg:space-x-0  md:mx-0    sm:mr-0  mt-4 mx-0 w-full sm:mx-5    border-2 border-red-400 lg:py-0 lg:ml-0 lg:mr-0 lg:px-0">
       {/* Left Div */}
-      <div className="w-full md:w-1/2   p-5 rounded-lg  lg:mx-0 ">
-        <h2 className="text-sm sm:md:text-2xl flex justify-center items-center sm:md:ml-[50px] md:text-center md:text-[34px] font-bold w-full sm:md:h-[51px]">
+      <div className="flex flex-col justify-center items-center w-full lg:w-1/2   p-5 rounded-lg  lg:mx-0  border-2 border-red-400">
+        <h2 className="text-sm sm:md:text-2xl flex justify-center items-center sm:md:ml-[50px] md:text-center md:text-[34px] font-bold  sm:md:h-[51px]">
            <span className="text-[#00A264]">Seafarers</span>: Global Impact in Figures
         </h2>
         <ul className="  list-none p-0 mt-8 space-y-6 lg:space-x-">
-          <li className="relative  justify-center  flex items-center sm:justify-around  gap-x-20  md:gap-x-32  border-2 rounded-r-full lg:px-[3rem] lg:w-[500px] lg:h-[106px] lg:ml-[8rem] shadow-sm ">
+          <li className="relative  justify-center  flex items-center sm:justify-around  gap-x-20  md:gap-x-32  border-2 rounded-r-full md:px-[3rem] md:w-[500px] md:h-[106px] lg:ml-[0rem] shadow-sm ">
             <div className=" absolute text-5xl -left-12 md:text-6xl ml-3 lg:ml-[5px]">
               {/* <IoPersonAddSharp /> */}
               <Image
@@ -25,14 +25,14 @@ const Status = () => {
                 className="w-20 h-20 sm:md:w-[93px] sm:md:h-[93px] "
               />
             </div>
-            <div className="flex flex-col items-center justify-between lg:w-[399px] lg:h-[82.19px] lg:ml-12  text-center ">
+            <div className="flex flex-col items-center justify-between md:w-[399px] md:h-[82.19px] lg:ml-12  text-center ">
               <span className="text-[40px] md:text-5xl font-extrabold">$ 14 Trillion</span>
               <span className="text-gray-700  text-[18px] md:text-xl ">
                 90% of Global Trade
               </span>
             </div>
           </li>
-          <li className="relative  justify-center flex items-center sm:justify-around  gap-x-20  md:gap-x-32  border-2 rounded-r-full lg:px-[3rem] lg:w-[500px] lg:h-[106px] lg:ml-[8rem] shadow-sm">
+          <li className="relative  justify-center flex items-center sm:justify-around  gap-x-20  md:gap-x-32  border-2 rounded-r-full lg:px-[3rem] lg:w-[500px] lg:h-[106px] lg:ml-[0rem] shadow-sm">
             <div className="absolute text-5xl -left-12 md:text-6xl ml-3 lg:ml-[5px]">
               {/* <FaSmile /> */}
               <Image
@@ -50,7 +50,7 @@ const Status = () => {
               </span>
             </div>
           </li>
-          <li className="relative  justify-center flex items-center sm:justify-around  gap-x-20  md:gap-x-32  border-2 rounded-r-full lg:px-[3rem] lg:w-[500px] lg:h-[106px] lg:ml-[8rem] shadow-sm">
+          <li className="relative  justify-center flex items-center sm:justify-around  gap-x-20  md:gap-x-32  border-2 rounded-r-full lg:px-[3rem] lg:w-[500px] lg:h-[106px] lg:ml-[0rem] shadow-sm">
             <div className=" absolute text-5xl -left-12 md:text-6xl ml-3 lg:ml-[5px]">
               {/* <BsFillPeopleFill /> */}
               <Image
@@ -69,10 +69,10 @@ const Status = () => {
             </div>
           </li>
         </ul>
-        <div className="flex items-center font-bold text-base lg:text-[20px] text-black text-centern lg:w-[533px] lg:h-[62px] lg:ml-[80px] mt-7">
+        <div className="flex items-center font-bold text-base lg:text-[20px] text-black text-centern lg:ml-[0px] mt-7">
         <p className="w-[372px] h-[62px] text-center text-[24px] leading-[36px]">Explore Seafarers’ Global  Impact and Influence</p>
           <Link href="/contact">
-            <button className="  bg-[#00A264] text-white sm:ml-5 py-1 px-3 rounded-md lg:w-[161px] lg:h-[50px] text-[16px]">
+            <button className="  bg-[#00A264] text-white sm:ml-5 py-1 px-3 rounded-md  text-[16px]">
               Know More
             </button>
           </Link>
@@ -80,14 +80,14 @@ const Status = () => {
       </div>
 
       {/* Right Div */}
-      <div className="w-full md:w-1/2 p-5 bg-white rounded-lg ">
-        <h2 className="text-2xl md:text-3xl md:text-center font-bold lg:text-[34px] lg:h-[56.98px] lg:w-[593px]">
-        “Impact, Challenges And {" "}
-          <span className="text-[#00A264]">Vision</span>"
+      <div className="flex flex-col justify-end w-full md:w-1/2 p-0 bg-white rounded-lg lg:w-[698px] lg:h[528px] border-red-600 border-2  lg:py-0 lg:px-0">
+        <h2 className="text-2xl md:text-3xl md:text-center font-bold lg:text-[34px] ">
+          “Impact, Challenges And <span className="text-[#00A264]">Vision</span>
+          "
         </h2>
-        <div className="relative pt-[56.25%] mt-6 shadow-lg rounded-lg bg-black lg:w-[662px] lg:h-[388px]">
+        <div className="relative pt-[56.25%] mt-6 shadow-lg rounded-lg bg-black ">
           <iframe
-            className="absolute top-0 left-0 w-full h-full p-2 "
+            className="absolute top-0 left-0 w-full h-full   "
             src="https://www.youtube.com/embed/lm6CLMLSZBc"
             title="YouTube video player"
             frameBorder="0"
@@ -95,7 +95,6 @@ const Status = () => {
             allowFullScreen
           ></iframe>
         </div>
-        
       </div>
     </div>
   );

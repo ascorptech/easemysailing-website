@@ -32,7 +32,7 @@ const Islide = () => {
   }, []);
 
   return (
-    <div className=" lg:ml-[4rem] relative flex items-center justify-center md:lg:w-[90%]  ">
+    <div className=" lg:ml-[4rem] relative flex items-center justify-center md:lg:w-[89%]  mt-4 ">
       {/* Left Arrow */}
 
       <button

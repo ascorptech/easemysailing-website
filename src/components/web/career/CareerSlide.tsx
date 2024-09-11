@@ -114,7 +114,7 @@ const CareerSlide = () => {
   }, []);
 
   return (
-    <div className=" lg:ml-[4rem] relative flex items-center justify-center w-[90%]  ">
+    <div className=" lg:ml-[4rem] relative flex items-center justify-center w-[90%] border-2 border-red-500 ">
       {/* Left Arrow */}
       <button
         onClick={scrollLeft}

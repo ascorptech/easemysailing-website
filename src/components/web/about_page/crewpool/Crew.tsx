@@ -1,11 +1,11 @@
 import Image from "next/image";
 const Crew = () => {
   return (
-    <div className="lg:mt-24 mx-24 flex flex-col md:flex-row mb-5 w-[1309px] h-[361.21px]  justify-center items-center  ">
+    <div className="lg:mt-24 lg:mx-24 flex flex-col md:flex-row mb-5 lg:w-[1309px] lg:h-[361.21px]  justify-center items-center border-2 border-red-400 ">
      
       {/* Text Section */}
-      <div className="flex flex-col px-2 m-1 h-[272px] w-[817px]  ">
-        <h1 className="text-2xl lg:[46px] lg:leading-[62px] md:text-4xl font-semibold ">
+      <div className="flex flex-col px-2 m-1 lg:h-[272px] lg:w-[817px]  ">
+        <h1 className="text-2xl lg:text-[46px] lg:leading-[62px] md:text-4xl font-semibold ">
         Navigating Future Challenges:
         </h1>
         <h3 className="text-[28px] leading-[62px] font-semibold">Ensuring a Skilled and Diverse <span className="text-[#00A264]"> Maritime Workforce</span></h3>
@@ -15,7 +15,7 @@ const Crew = () => {
       </div>
 
       {/* Map Section */}
-      <div className="w-[502px] h-[333.86px]    md:h-80  mt-4 md:mt-0 ">
+      <div className="lg:w-[502px] lg:h-[333.86px]    md:h-80  mt-4 md:mt-0 ">
         <Image
           src="/images/location.png"
           alt="image not found"

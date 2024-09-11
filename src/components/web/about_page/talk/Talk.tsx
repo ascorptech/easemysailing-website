@@ -2,8 +2,8 @@ import Image from "next/image";
 
 const Talk = () => {
   return (
-    <div className=" w-full mt-32 flex justify-center items-center">
-      <div className=" my-4 mx-1 flex flex-col items-center justify-center p-4 md:flex-row md:items-start md:space-x-8 lg:space-x-4  lg:w-[1267px] lg:h-[495px]">
+    <div className="  mt-11 lg:mt-32 flex justify-center items-center">
+      <div className="w-full ml-4 my-4 md:mx-1 flex flex-col items-center justify-center md:p-4 md:flex-row md:items-start md:space-x-8 lg:space-x-4  lg:w-[1267px] lg:h-[495px] border-2 border-red-400">
         <div className="flex justify-center   lg:w-[486px] lg:h-[459px]">
           <Image
             src="/aboutleft.png" // Replace with your image path
@@ -13,12 +13,12 @@ const Talk = () => {
             className=" md:max-w-[23rem] pt-2 mt-2 "
           />
         </div>
-        <div className="w-full max-w-[45rem] lg:text-justify text-center md:text-left mt-4 md:mt-0 lg:w-[681px] lg:h-[386px] ">
-          <h1 className="text-3xl md:text-4xl lg:text-[46px] leading-[62px] font-semibold">
-            Let's talk about{" "}
+        <div className="w-full  md:max-w-[45rem] lg:text-justify text-center md:text-left mt-4 md:mt-0 lg:w-[681px] lg:h-[386px] ">
+          <h1 className="text-[28px] md:text-4xl lg:text-[46px] leading-[62px] font-semibold">
+            Let's talk about
             <span className="text-[#00A264] font-semibold leading-[62px]">
               EaseMy
-              <br />
+             
               Sailing
             </span>
           </h1>

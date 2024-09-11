@@ -3,17 +3,29 @@ import Link from "next/link";
 import { MdOutlineMail } from "react-icons/md";
 import { FaFacebook, FaInstagram, FaWhatsapp, FaTwitter, FaXingSquare } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="bg-teal-100 p-4 text-sm pl-10 text-gray-700  ">
-      <div className="container mx-auto  grid grid-cols-1 md:grid-cols-4 gap-16">
+    <footer className="bg-teal-100 p-4 text-sm md:pl-10 text-gray-700  ">
+      <div className="container mx-auto  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
         {/* Brand and Description */}
 
         <div>
-          <h2 className="text-2xl font-bold">
+          {/* <h2 className="text-2xl font-bold">
             EaseMy<span className="text-green-600">Sailing</span>
-          </h2>
+          </h2> */}
+           <div className="w-[70%] md:w-[240px] h-12 md:h-[65px]  ">
+              <Link href="/">
+                <Image
+                  src="/images/Transparent Logo.png"
+                  alt="EaseMySailing Logo"
+                  className="object-cover h-full w-full -ml-5 "
+                  width={800}
+                  height={800}
+                />
+              </Link>
+            </div>
           <p className="mt-4 mr-14">
           EaseMySailing is a platform created by seafarers, for seafarers, built on empathy for life at sea and its unique challenges and joys.
            <Link href="#" className="text-[#00A264] font-semibold"> Read More</Link></p>
@@ -27,7 +39,7 @@ const Footer = () => {
 
         {/* Quick link */}
 
-        <div className="ml-12">
+        <div className=" md:ml-12">
           <h3 className="text-lg text-green-600 font-semibold">Quick link</h3>
           <ul>
             <li className="mt-2">
@@ -54,7 +66,7 @@ const Footer = () => {
         </div>
         {/* Help */}
 
-        <div className="ml-12">
+        <div className="md:ml-12">
           <h3 className="text-lg text-green-600 font-semibold">Help</h3>
           <ul>
             <li className="mt-2">
@@ -80,7 +92,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        <div className="ml-10">
+        <div className="md:ml-10">
           <h3 className="text-lg text-green-600 font-semibold">
             Connect with Us
           </h3>
@@ -122,16 +134,13 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <hr className=" border-spacing-1 border-green-400 ml-[-2.4rem] mr-[-1rem] mt-3  "></hr>
+      <hr className="w-full  border-spacing-1 border-green-400 md:ml-[-2.4rem] md:mr-[-1rem] mt-3  "></hr>
       <div className="mt-4 flex justify-between items-center ">
         <span>
           Copyright © {new Date().getFullYear()} | All Rights Reserved
         </span>
 
-        {/* <p className="font-semibold">
-          Designed with <span className="text-red-500">❤</span>
-          <span className="text-green-600 mr-10">by YES IT Labs LLC</span>
-        </p> */}
+        
       </div>
     </footer>
   );

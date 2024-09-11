@@ -60,7 +60,7 @@ const PodcastList: React.FC = () => {
   return (
     <div>
      
-      <div  className=" lg:h-[500px] ">
+      <div  className=" lg:h-[500px] mb-8">
         <iframe
               width="100%"
               height="100%"

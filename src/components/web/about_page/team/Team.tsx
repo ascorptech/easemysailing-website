@@ -6,7 +6,7 @@ const Team = () => {
       <div>
         <h1 className="text-[46px] leading-[69px] font-semibold">Our Team</h1>
       </div>
-      <Card />
+      {/* <Card /> */}
     </div>
   );
 };

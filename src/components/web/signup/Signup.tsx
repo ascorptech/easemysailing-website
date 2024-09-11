@@ -10,9 +10,9 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex flex-col md:mx-6 md:w-[94%] lg:flex-row items-center justify-center xl:justify-between  gap-2  sm:w-full sm:m-0 sm-p-0 mx-3   w-[94%] m-0 lg:mt-24  lg:w-[100%] lg:mx-0">
+    <div className=" flex flex-col  w-full lg:flex-row items-center justify-center   lg:mt-16  mt-[57px] px-2 lg:px-0  ">
       {/* Left Image Container */}
-      <div className="flex-1 flex items-center lg:ml-0 justify-center mb-3 lg:mb-0 lg:w-[553px] h-lg:[366px]   sm:mx-5">
+      <div className="flex-1 flex items-center lg:ml-0 justify-center mb-3 lg:mb-0 w-full lg:w-[553px] lg:h-[366px]  ">
         <Image
           src="/left.png" // Replace with your image path
           alt="Left Image"
@@ -24,26 +24,26 @@ const Signup = () => {
       </div>
 
       {/* Middle Content Container */}
-      <div className="w-full  lg:w-[35%] text-center px-4 lg:mb-7 lg:px-4 flex flex-col items-center justify-center  ">
+      <div className="w-full  lg:w-[35%] text-center px-4 lg:mb-7  flex flex-col items-center justify-center  ">
         <div className="flex flex-col justify-center items-center ">
           <h2 className="text-[#00A264] text-[24px] leading-[36px] font-[600] mb-1">
             Your smooth sailing starts from here
           </h2>
-          <p className="text-[13px] leading-[19.5px] font-[400px] text-gray-700 lg:w-[440px] lg:text-center">
-            Create an account or sign in. By continuing, you agree to our{" "}
+          <p className="text-[13px] leading-[19.5px] font-[400px] text-gray-700 lg:text-center ">
+            Create an account or sign in. By continuing, you agree to our
             <Link href="/terms">
               <span className="text-[#00A264]">Terms of Use</span>
-            </Link>{" "}
-            and acknowledge our{" "}
+            </Link>
+            and acknowledge our
             <Link href="/privacy-policy">
               <span className="text-[#00A264]">Privacy Policy.</span>
             </Link>
           </p>
         </div>
 
-        <div className="-mb-2 flex justify-evenly items-center lg:mt-2 lg:w-[444px] lg:h-[75px]  lg:gap-2 ">
-          <button
-            type="button"
+        <div className="-mb-2 flex justify-center items-center lg:mt-2  md:lg:h-[75px]  gap-2 w-full  ">
+          <Link
+            href="#"
             className="text-black bg-white border border-[#181919]  focus:ring-1 focus:outline-none focus:ring-[#181c1a] font-medium rounded-lg text-[13px] px-2 py-2.5 inline-flex items-center mb-2 w-full lg:w-[220px] lg:h-[45px]"
           >
             <Image
@@ -54,10 +54,10 @@ const Signup = () => {
               className="w-[33px] h-[32.8px] me-2"
             />
             Continue with Google
-          </button>
+          </Link>
 
-          <button
-            type="button"
+          <Link
+            href="#"
             className="text-black bg-white  focus:ring-1 focus:outline-none focus:ring-[#111312] font-medium border border-[#08100d] rounded-lg text-[13px] px-2 py-2.5 inline-flex items-center mb-2 w-full lg:w-[220px] lg:h-[45px] "
           >
             <Image
@@ -68,34 +68,41 @@ const Signup = () => {
               className="w-[33px] h-[32.8px] me-2"
             />
             Continue with Facebook
-          </button>
+          </Link>
         </div>
 
-        <div className="flex flex-row items-center justify-center">
-          <hr className="border-1 border-black mb-3 w-[170px] lg:w-[209px]" data-content="OR" /><span className="text-[14px] w-[17px] h-[21px] pb-8">Or</span>
-          <hr className="border-1 border-black mb-3 w-[170px] lg:w-[209px]" data-content="OR" />
+        <div className="w-full flex flex-row items-center flex-shrink-0 justify-center mt-4">
+          <hr
+            className="border-1 border-black mb-3 w-[150px] sm:w-[280px] lg:w-[209px]"
+            data-content="OR"
+          />
 
+          <span className="text-[14px] w-[17px] h-[21px] pb-8 mx-1">Or</span>
+          <hr
+            className="border-1 border-black mb-3 w-[150px] sm:w-[280px] lg:w-[209px]"
+            data-content="OR"
+          />
         </div>
 
-        <div className=" lg:w-[444px] lg:h-[50px] flex flex-row items-center justify-center lg:mb-5">
+        <div className="w-full lg:w-[94%] flex flex-row items-center  lg:mb-5 ">
           <form
-            className="flex flex-col lg:flex-row justify-evenly items-center space-y-4 lg:space-y-0 lg:space-x-4"
+            className="w-full  flex flex-col lg:flex-row justify-evenly items-center space-y-4 lg:space-y-0 md:lg:space-x-4"
             onSubmit={handleSubmit}
           >
             <input
               type="email"
               placeholder="Enter your email"
-              className="w-full lg:w-[268px] px-3 lg:h-[50px] border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className=" w-full px-3  border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
               style={{ minHeight: "2.5rem" }} // Ensures consistent height
             />
-            <button
-              type="submit"
-              className="w-full text-sm lg:w-[165px] lg:h-[50px] bg-[#00A264] text-white rounded-lg hover:bg-[#00A264] px-1 text-center"
+            <Link
+              href="#"
+              className="block w-full text-sm  bg-[#00A264] text-white rounded-lg hover:bg-[#00A264] px-1 py-3  text-center"
               style={{ minHeight: "2.5rem" }} // Ensures consistent height
             >
               Continue with Email
-            </button>
+            </Link>
           </form>
         </div>
 
@@ -131,7 +138,7 @@ const Signup = () => {
       </div>
 
       {/* Right Image Container */}
-      <div className="flex-1  flex items-center justify-center mb-5 lg:mb-0 lg:w-[510px] lg:h-[371px]   ">
+      <div className="flex-1 flex items-center lg:ml-0 justify-center mt-3 md:lg:mt-0 lg:mb-0 w-full lg:w-[553px] lg:h-[366px]">
         <Image
           src="/right.png" // Replace with your image path
           alt="Left Image"

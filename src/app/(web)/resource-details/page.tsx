@@ -31,13 +31,13 @@ const ResourceList: React.FC = () => {
   };
 
   return (
-    <div className="">
+    <div className=" border-2 border-red-400 ">
       <Heading7 />
-      <div className="lg:max-w-[88%] lg:h-[500px] lg:ml-24">
-        <Image src="/images/captain4.jpeg" alt="image not found" width={900} height={900}
+      <div className="w-[95%] ml-2  lg:max-w-[88%] lg:h-[500px] lg:ml-24">
+        <Image src="/images/captain4.jpeg" alt="image not found" width={500} height={900}
         className="w-full h-full" />
       </div>
-      <div className="mt-2 lg:max-w-[90%] grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 gap-1 py-3 -black lg:ml-20  w-full ">
+      <div className="mt-2 lg:max-w-[90%] grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 gap-1 py-3 -black lg:ml-20   ">
         {Resource.map((item) => (
           <div key={item.id} className="flex  bg-white p-3 flex-shrink-0 ">
             <div className="relative bg-white border rounded-lg md:p-5 p-2  shadow-md  w-auto ">

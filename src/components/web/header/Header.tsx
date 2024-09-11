@@ -28,25 +28,15 @@ const Header: React.FC = () => {
     <div className="  z-20 top-0 fixed w-full border-b">
       <nav className="bg-white border-white dark:bg-white dark:border-black-700   ">
         <div className="lg:w-full w-[98%] text-25px font-[700px] leading-[37.5px] flex flex-wrap items-center justify-between  py-1 px-[1rem] sm:px-[3rem] lg:px-[2rem]   ">
-          {/* <div className="flex items-center space-x-3 rtl:space-x-reverse"> */}
-          {/* <Link href="/">
-              <p className="cursor-pointer">
-                <span className="self-center text-xl font-bold whitespace-nowrap dark:text-black">
-                  EaseMy
-                </span>
-                <span className="text-[#00A264] font-bold text-xl">
-                  Sailing
-                </span>
-              </p>
-            </Link> */}
+        
 
           <div className="flex items-center space-x-3 rtl:space-x-reverse">
             <div className="w-44 h-12   sm:w-[230px] sm:h-[55px] ">
               <Link href="/">
                 <Image
-                  src="/logo.png"
+                  src="/images/Transparent Logo.png"
                   alt="EaseMySailing Logo"
-                  className="object-contain h-full w-full "
+                  className="object-cover h-full w-full "
                   width={800}
                   height={800}
                 />
@@ -295,7 +285,7 @@ const Header: React.FC = () => {
 
               <li>
                 <Link
-                  href="/mentoring-details"
+                  href="/career"
                   className="block py-2 px-3 text-[#00A264] rounded-lg hover:bg-[#00A264] mt-1  hover:text-[#FFFFFF] text-xl"
                 >
                   Jobs & Career Advise
@@ -352,7 +342,7 @@ const Header: React.FC = () => {
               </li>
               <hr className="border border-[#00A264] "></hr>
 
-              <li className="flex relative items-center gap-4 h-2 mt-7 ">
+              <li className="flex relative items-center gap-4 h-2 mt-7 mb-5">
                 <Link
                   href={"candidate"}
                   className="flex justify-center items-center mr-4 border border-[#00A264] text-[#00A264] p-2 rounded-full hover:bg-[#00A264] hover:text-[#FFFFFF]"

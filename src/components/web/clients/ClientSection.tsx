@@ -54,12 +54,10 @@ const ClientSection: React.FC = () => {
     // Add more clientcard as needed
   ];
 
- 
   return (
-    <div className="flex bg-[#F1F1F1] flex-col  mt-5">
-      {/* <div className="flex justify-center items-center border-2 border-red-500 mt-5"> */}
-      <div className="flex items-center justify-center mt-4 pt-4  lg:mr-[9%] md:mx-[7rem] px-1">
-        <h2 className=" text-[15px] leading-[20px]  sm:md:text-3xl font-bold  text-center ">
+    <div className="flex bg-[#F1F1F1] flex-col  mt-5 ">
+      <div className="text-[21px] leading-[28px] font-bold sm:md:text-2xl   lg:ml-[0rem] ">
+        <h2 className=" text-[15px] leading-[20px]  sm:text-[28px]  lg:text-[36px] sm:leading-[54px] font-bold  text-center ">
           Seafarer Stories: Why They{" "}
           <span className="text-[#00A264]">Trust</span> Us Adore Us
         </h2>
@@ -74,7 +72,7 @@ const ClientSection: React.FC = () => {
             rating={ccard.rating}
             imageSrc={ccard.imageSrc}
             image1={ccard.image1}
-            // className="min-w-[16rem] md:min-w-[20rem] lg:min-w-[24rem]"
+            
           />
         ))}
       </div>

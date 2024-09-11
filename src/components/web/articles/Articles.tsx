@@ -1,44 +1,30 @@
-
 "use client";
-// import { Images } from "lucide-react";
-// import Image from "next/image";
 import React from "react";
 import Link from "next/link";
 import ArticlesCard from "./ArticlesCard";
 
-
-const Articles  =() => {
-
+const Articles = () => {
   return (
-    // <section className="mt-7 w-[94%] sm:mx-5  md:mx-6 lg:w-full lg:mx-0 border-2 border-red-500 ">
-    // <div className="mt-7 w-[94%] mx-3 px-1   md:mx-6 lg:w-full lg:mx-0 sm:mx-5">
-    //   <div className="flex items-center justify-between mt-3 pt-4 lg:mr-[8%] md:mx-[3rem] ">
-    //     <div className="font-bold text-2xl lg:ml-[5rem] ">
-    <div className="mt-7 w-[94%] mx-2 px-1   md:mx-6 lg:w-full lg:mx-0 sm:mx-5">
-    <div className="flex items-center justify-between mt-4 pt-4  lg:mr-[9%] md:mx-[6.8rem]">
+    <div className="mt-7 w-[94%] mx-2 px-1   md:mx-6 lg:w-full lg:mx-0 sm:mx-5 ">
+      <div className="flex items-center justify-between mt-4 pt-4  lg:mr-[9%] md:mx-[6.8rem]">
         <div className="text-[21px] leading-[28px] font-bold sm:md:text-2xl   lg:ml-[0rem]">
           <h1>
             <span className="text-[#00A264]">Latest</span>{" "}
             <span>News & Articles</span>
           </h1>
         </div>
-        {/* <div>
-          <button className="h-8 bg-[#00A264] text-white py-1 px-4 rounded-lg text-sm">
+
+        <div>
+          <Link
+            href="/trendingjob"
+            className="h-8 bg-[#00A264] text-white py-2 px-4 rounded-lg text-sm "
+          >
             View All
-          </button>
-        </div> */}
-         <div>
-          <Link href="/trendingjob">
-            <button className="h-8 bg-[#00A264] text-white py-1 px-4 rounded-lg text-sm ">
-              View All
-            </button>
           </Link>
         </div>
       </div>
 
-     <ArticlesCard/>
-      
-      
+      <ArticlesCard />
     </div>
   );
 };

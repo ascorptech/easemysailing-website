@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Heading4 from "@/components/web/mentoring/heading4/Heading4";
 import { CaptainData } from "../data/CaptainData";
+import { GrLocation } from "react-icons/gr";
 
 const MentoringList: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -33,18 +34,18 @@ const MentoringList: React.FC = () => {
   return (
     <div className="mt-14">
       <Heading4/>
-      <div className="mt-6 w-[80%] grid grid-cols-1 mx-[8rem] sm:grid-cols-1 md:grid-cols-2 gap-10 py-3 ">
+      <div className="mt-6 mx-[0rem] sm:mx-[12px] lg:w-[80%] grid grid-cols-1 lg:mx-[8rem]  md:grid-cols-2 gap-5 md:gap-2 lg:gap-10 sm:py-3 px-2 sm:px-0 ">
         {currentItems.map((item) => (
           <div
             key={item.id}
-            className="flex  bg-white border h-[11rem] rounded-lg p-2 mx-[1rem] shadow-md flex-shrink-0 w-auto "
+            className="flex items-center ju bg-white border  h-[12rem] sm:h-[11rem] rounded-lg  p-1 sm:mx-[1rem] shadow-md flex-shrink-0 w-auto  py-5 "
           >
-            <div className="flex border rounded-lg  bg-green-100 h-40 transform-gpu mr-4">
-              <div className="justify-center mb-4">
+            <div className="flex border rounded-lg  bg-green-100 w-32 h-32 transform-gpu mr-5 sm:mr-6 ">
+              <div className="flex justify-center  w-32 h-[125px] ">
                 <img
                   src={item.logoSrc}
                   alt={`${item.name} logo`}
-                  className="h-36 ml-4 mb-5 border rounded-md"
+                  className="w-full h-full  -translate-y-2 translate-x-3   border rounded-md"
                 />
               </div>
             </div>
@@ -59,9 +60,10 @@ const MentoringList: React.FC = () => {
               <div className="text-gray-700 font-base">
                 {item.contactPerson}
               </div>
-              <div className="text-sm mb-2">
+              <div className="text-sm mb-2 ">
                 <span className="text-yellow-500">⭐ {item.rating}</span>
                 <span className="text-gray-500"> | {item.reviews} reviews</span>
+                <span className="text-black  ml-8 ">  {item.location}</span>
               </div>
 
               <Link href={`/career/${item.id}`}>

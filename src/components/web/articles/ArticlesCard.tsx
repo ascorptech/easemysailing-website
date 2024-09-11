@@ -37,13 +37,13 @@ const ArticlesCard = () => {
   ];
   return (
     <>
-      <div className="w-full overflow-x-scroll no-scrollbar scroll-smooth snap-mandatory  space-x-9  lg:ml-[4rem] relative flex items-center justify-center md:lg:w-[90%]    pl-8 ">
+      <div className=" overflow-x-scroll no-scrollbar scroll-smooth snap-mandatory  space-x-9  lg:ml-[4rem] relative flex items-center sm:md:justify-center w-[90%]  lg:pl-0  ml-6  mt-3 ">
         {article.map((card) => (
           <div
             key={card.id}
-            className="flex justify-center  bg-white ml-0   md:lg:w-[292px]  md:lg:h-[265px] lg:mt-4 shadow-lg border rounded-md lg:ml-3 mb-3"
+            className="flex justify-center  bg-white ml-0   w-[292px]  h-[265px] lg:mt-4 shadow-lg border rounded-md lg:ml-3 mb-3"
           >
-            <div className="w-full relative bg-white lg:w-[292px] lg:h-[202px] ">
+            <div className=" relative bg-white w-[292px] h-[202px] ">
               <div className=" flex ">
                 <Image
                   src={card.logoSrc}
@@ -53,7 +53,7 @@ const ArticlesCard = () => {
                   className="w-full h-full"
                 />
               </div>
-              <div className="absolute mt-[-3rem] bg-green-700 text-white font-semibold lg:px-3 lg:py-2 ">
+              <div className="absolute mt-[-2.5rem] bg-green-700 text-white font-semibold px-3 py-2 ">
                 <h3>{card.date}</h3>
               </div>
 

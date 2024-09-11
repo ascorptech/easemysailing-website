@@ -38,7 +38,7 @@ export default function RootLayout({
             <PinPopup closeModal={closeModal} />
           ) : ( */}
           <>
-            <DisableRightClick />
+            {/* <DisableRightClick /> */}
 
             <Header />
 

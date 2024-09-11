@@ -7,4 +7,5 @@ const Heading5 = () => {
     </div>
   );
 };
+
 export default Heading5;

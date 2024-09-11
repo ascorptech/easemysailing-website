@@ -37,7 +37,7 @@ export default function AdminInnerLayout({
               {children}
             </div>
           </div>
-            {children}
+            
         </div>
     );
 }

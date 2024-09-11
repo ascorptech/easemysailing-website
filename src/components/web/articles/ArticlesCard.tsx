@@ -36,7 +36,7 @@ const ArticlesCard = () => {
     },
   ];
   return (
-    <>
+    
       <div className=" overflow-x-scroll no-scrollbar scroll-smooth snap-mandatory  space-x-9  lg:ml-[4rem] relative flex items-center sm:md:justify-center w-[90%]  lg:pl-0  ml-6  mt-3 ">
         {article.map((card) => (
           <div
@@ -50,14 +50,15 @@ const ArticlesCard = () => {
                   alt={`${card.title} logo`}
                   width={500}
                   height={500}
-                  className="w-full h-full"
+                  priority
+                  className="w-full h-full object-contain"
                 />
               </div>
-              <div className="absolute mt-[-2.5rem] bg-green-700 text-white font-semibold px-3 py-2 ">
+              <div className="absolute mt-[-3rem] bg-green-700 text-white font-semibold lg:px-3 lg:py-2 ">
                 <h3>{card.date}</h3>
               </div>
 
-              <div className="text-left w-[252px] h-[44px] flex justify-center items-center lg:ml-4 pt-2">
+              <div className="text-left w-40 sm:md:w-[252px] sm:md:h-[44px] flex justify-center items-center sm:md:ml-4 pt-2 mx-2">
                 <p className="text-black-500 font-semibold text-[16px] leading-[24px]">
                   {" "}
                   {card.title}{" "}
@@ -70,7 +71,6 @@ const ArticlesCard = () => {
           </div>
         ))}
       </div>
-    </>
   );
 };
 

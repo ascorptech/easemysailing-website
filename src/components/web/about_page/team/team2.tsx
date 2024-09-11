@@ -6,7 +6,7 @@ const Team2 = () => {
     <div className="mt-4 mx-0 flex flex-col text-center justify-center">
       <div>{/* <h1 className="text-2xl font-semibold">Our Team</h1> */}</div>
       
-      {/* <Card1/> */}
+      <Card1/>
     </div>
   );
 };

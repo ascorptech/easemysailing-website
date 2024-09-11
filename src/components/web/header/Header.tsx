@@ -89,18 +89,18 @@ const Header: React.FC = () => {
                       id="dropdownHover"
                     >
                       <ul className="py-2 text-sm text-gray-700">
-                        <li>
+                        {/* <li>
                           <Link
                             href="/career"
                             className="block px-4 py-1 hover:bg-white hover:text-green-800"
                           >
                             Jobs & Career Advise
                           </Link>
-                        </li>
+                        </li> */}
 
                         <li>
                           <Link
-                            href="/resource-details"
+                            href="/resources"
                             className="block px-4 py-1 hover:bg-white hover:text-green-800"
                           >
                             Resource

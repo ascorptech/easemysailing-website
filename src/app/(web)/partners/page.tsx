@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Heading5 from "@/components/web/our_partner/heading5/Heading5";
 import { Partner } from "../data/Partner";
+import Image from "next/image";
 const PartnerList: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 20; // Number of items per page
@@ -37,9 +38,11 @@ const PartnerList: React.FC = () => {
           <div key={item.id} className="flex  bg-white p-4 flex-shrink-0  ">
             <div className="bg-white border rounded-lg py-4 px-2 shadow-md  w-auto ">
               <div className="flex justify-center mb-2">
-                <img
+                <Image
                   src={item.logoSrc}
                   alt={`${item.name} logo`}
+                  width={500} // You can set a specific width
+                  height={400}
                   className="h-12"
                 />
               </div>
@@ -54,7 +57,7 @@ const PartnerList: React.FC = () => {
               <p className="text-gray-500 text-sm text-wrap">
                 {item.description}
               </p>
-              <Link href={`/partner-details/${item.id}`}>
+              <Link href={`/partners/${item.id}`}>
                 <button className="h-8 mt-2 bg-green-600 text-white py-1 px-4 rounded-lg text-sm">
                   View Profile
                 </button>

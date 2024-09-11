@@ -24,9 +24,11 @@ const PartnerDetailPage: React.FC = () => {
         <div className="flex border rounded-lg  bg-[#00A264] h-30 transform-gpu mr-4">
           <div className="  w-36  ">
             <div className="   h-36 w-36 bg-white border -translate-y-3 translate-x-3">
-              <img
-                src={item.logoSrc}
+              <Image
+                src={"item.logoSrc"}
                 alt={`${item.name} logo`}
+                width={500} 
+                height={500}
                 className="  h-20 w-20 mx-7 my-7  bg-white "
               />
             </div>

@@ -62,21 +62,21 @@ const PodcastList: React.FC = () => {
      
       <div  className=" lg:h-[500px] mb-8">
         <iframe
-              width="100%"
-              height="100%"
-              src={`https://www.youtube.com/embed/lm6CLMLSZBc`}
-              title={`YouTube video`}
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
+          width="100%"
+          height="100%"
+          src={`https://www.youtube.com/embed/lm6CLMLSZBc`}
+          title={`YouTube video`}
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
       </div>
-     
-      <div className="grid lg:grid-cols-3 lg:gap-5 lg:py-4 grid-cols-1  gap-5  sm:grid-cols-2 ">
+
+      <div className="grid lg:grid-cols-3 lg:gap-5 lg:py-4 grid-cols-1  gap-5 lg:mt-5 mt-3 sm:grid-cols-2 ">
         {currentItems.map((item, index) => (
           <div
             key={index}
-            className="w-full border-4 rounded-lg border-black mb-8 h-[200px]"
+            className="w-full border-4 rounded-lg border-black mb-8  h-[200px]"
           >
             <iframe
               width="100%"

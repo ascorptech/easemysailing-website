@@ -7,8 +7,9 @@ import "../globals.scss";
 import Header from "@/components/web/header/Header";
 import Footer1 from "@/components/web/footer/Footer";
 import Footer from "../Shared/Footer/Footer";
+import DisableRightClick from "@/components/web/disablerightclick/DisableRightClick";
 // import Footer from "@/components/web/footer/Footer";
-// import PinPopup from "@/components/web/secruity_code/Pinpopup";
+import PinPopup from "@/components/web/secruity_code/Pinpopup";
 
 // export const metadata: Metadata = {
 //   title: { default: "EaseMySailing", template: "%s | EaseMySailing" },
@@ -36,14 +37,16 @@ export default function RootLayout({
           {/* {showPopup ? (
             <PinPopup closeModal={closeModal} />
           ) : ( */}
-            <>
-              <Header />
+          <>
+            {/* <DisableRightClick /> */}
 
-              {children}
-              <Footer1 />
-              <Footer />
-            </>
-          {/* )} */}
+            <Header />
+
+            {children}
+            <Footer1 />
+            <Footer />
+          </>
+          {/* )}  */}
         </main>
       </body>
     </html>

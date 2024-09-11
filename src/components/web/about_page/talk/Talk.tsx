@@ -42,7 +42,7 @@ import Image from "next/image";
 
 const Talk = () => {
   return (
-    <div className="w-full mt-32 flex justify-center items-center">
+    <div className="w-full mt-14 flex justify-center items-center">
       <div className="my-4 mx-2 flex flex-col items-center justify-center p-4 md:flex-row md:items-start md:space-x-8 lg:space-x-4 lg:w-[1267px] lg:h-[495px]">
         {/* Image Section */}
         <div className="flex justify-center w-full lg:w-[486px] lg:h-[459px]">

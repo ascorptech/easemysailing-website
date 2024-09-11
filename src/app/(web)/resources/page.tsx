@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const ResourceList: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12; // Number of items per page
+  const itemsPerPage = 6; // Number of items per page
 
   // Calculate total pages
   const totalPages = Math.ceil(Resource.length / itemsPerPage);
@@ -33,9 +33,30 @@ const ResourceList: React.FC = () => {
   return (
     <div className="">
       <Heading7 />
-      <div className="lg:max-w-[88%] lg:h-[500px] lg:ml-24">
-        <Image src="/images/captain4.jpeg" alt="image not found" width={900} height={900}
-        className="w-full h-full" />
+      <div className="lg:max-w-[85%] border lg:mx-[15rem]">
+        <Image
+          src="/images/captain4.jpeg"
+          alt="image not found"
+          width={900}
+          height={900}
+          className="w-[100%] h-[15%] "
+        />
+        <h2 className="text-black-500  font-semibold">
+          Lorem Ip sum is simply dummy text of the printing and typesetting
+          industry.
+        </h2>
+        <p className=" ">
+          Lorem Ip sum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s, when an unknown printer took a galley of type and
+          scrambled it to make a type specimen book.
+        </p>
+        <Link
+          href={`/resources`}
+          className="h-8 mt-2 bg-green-700 text-white py-1 px-4 rounded-lg text-sm "
+        >
+          Read more
+        </Link>
       </div>
       <div className="mt-2 lg:max-w-[90%] grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 gap-1 py-3 -black lg:ml-20  w-full ">
         {Resource.map((item) => (
@@ -65,10 +86,11 @@ const ResourceList: React.FC = () => {
                 {item.discription1}{" "}
               </div>
 
-              <Link href={`/resources/${item.id}`}>
-                <button className="h-8 mt-2 bg-green-700 text-white py-1 px-4 rounded-lg text-sm ">
-                  Read more
-                </button>
+              <Link
+                href={`/resources/${item.id}`}
+                className="h-8 mt-2 bg-green-700 text-white py-1 px-4 rounded-lg text-sm "
+              >
+                Read more
               </Link>
             </div>
           </div>
@@ -83,6 +105,19 @@ const ResourceList: React.FC = () => {
         >
           Previous
         </button>
+        {/* <Link
+          href="#"
+          onClick={
+            currentPage === 1 ? (e) => e.preventDefault() : handlePreviousPage
+          }
+          className={`px-2 py-1 mr-2 bg-green-600 rounded-lg ${
+            currentPage === 1
+              ? "cursor-not-allowed"
+              : "bg-green-600 text-white"
+          }`}
+        >
+          Previous
+        </Link> */}
 
         <span className="text-green-700">
           Page {currentPage} of {totalPages}
@@ -95,6 +130,21 @@ const ResourceList: React.FC = () => {
         >
           Next
         </button>
+        {/* <Link
+          href="#"
+          onClick={
+            currentPage === totalPages
+              ? (e) => e.preventDefault()
+              : handleNextPage
+          }
+          className={`px-2 py-1 ml-2 bg-green-600 text-white rounded-lg ${
+            currentPage === totalPages
+              ? " "
+              : "bg-green-600 text-white"
+          }`}
+        >
+          Next
+        </Link> */}
       </div>
     </div>
   );

@@ -74,7 +74,7 @@ const page = (props: Props) => {
         <thead>
           <tr>
             <th className="py-2 px-4 border-b">Title</th>
-            <th className="py-2 px-4 border-b">Description</th>
+            <th className="py-2 px-4 border-b">Video Link</th>
             <th className="py-2 px-4 border-b">Date</th>
             <th className="py-2 px-4 border-b">Actions</th>
           </tr>

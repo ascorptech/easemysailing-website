@@ -74,10 +74,9 @@ const page = (props: Props) => {
       <table className="min-w-full bg-white border border-gray-300">
         <thead>
           <tr>
-            <th className="py-2 px-4 border-b">Name</th>
-            <th className="py-2 px-4 border-b">About</th>
+            <th className="py-2 px-4 border-b">Title</th>
+            <th className="py-2 px-4 border-b">Description</th>
             <th className="py-2 px-4 border-b">Date</th>
-            <th className="py-2 px-4 border-b">Form</th>
             <th className="py-2 px-4 border-b">Actions</th>
           </tr>
         </thead>
@@ -96,14 +95,6 @@ const page = (props: Props) => {
               </td>
               <td className="py-2 px-4 border-b">{item.about}</td>
               <td className="py-2 px-4 border-b">{item.date}</td>
-              <td className="py-2 px-4 border-b ">
-                <Link
-                  href="#"
-                  className="text-blue-500 flex justify-center space-x-4 hover:text-blue-700"
-                >
-                  <FaEye />
-                </Link>
-              </td>{" "}
               {/* New Form Column */}
               <td className="py-2 px-4 border-b flex justify-center space-x-4">
                 <Link

@@ -119,7 +119,7 @@ const Mv2 = () => {
         {/* First div */}
         <div className="flex flex-col justify-center items-center text-center border-2 shadow-lg rounded-tl-[2rem] rounded-br-[3rem] w-full md:w-[400px] h-[496px] pt-12">
           <Image
-            src="/centre.png"
+            src="/images/mission.jpg"
             alt="Left Image"
             width={5000}
             height={5050}
@@ -129,7 +129,7 @@ const Mv2 = () => {
           <h1 className="text-xl md:text-2xl lg:text-[36px] lg:leading-[54px] font-semibold mt-2">
             Mission
           </h1>
-          <p className="mt-2 text-xs sm:text-sm md:text-base lg:text-[16px] lg:leading-[28px] text-justify text-[#4E4E4E] px-4 pb-4">
+          <p className="mt-2 text-xs sm:text-sm md:text-base lg:text-[16px] lg:leading-[28px] text-justify text-[#4E4E4E] px-4 pb-6">
             Our mission is to create a transparent, open forum for the maritime
             community where critical issues can be discussed and resolved. We
             are dedicated to supporting Employee Social Governance (ESG) in the
@@ -143,7 +143,7 @@ const Mv2 = () => {
         {/* Second div */}
         <div className="flex flex-col justify-center items-center text-center border-2 shadow-lg rounded-tl-[2rem] rounded-br-[3rem] w-full md:w-[400px] h-[496px] pt-12">
           <Image
-            src="/eye.png"
+            src="/images/vision.jpg"
             alt="Left Image"
             width={5000}
             height={5050}
@@ -153,7 +153,7 @@ const Mv2 = () => {
           <h1 className="text-xl md:text-2xl lg:text-[36px] lg:leading-[54px] font-semibold mt-2">
             Vision
           </h1>
-          <p className="mt-2 text-xs sm:text-sm md:text-base lg:text-[16px] lg:leading-[28px] text-justify text-[#4E4E4E] px-4 pb-4">
+          <p className="mt-2 text-xs sm:text-sm md:text-base lg:text-[16px] lg:leading-[28px] text-justify text-[#4E4E4E] px-4 pb-6">
             We envision a maritime industry where open communication bridges the
             gaps between seafarers, shipowners, and recruiters, leading to a
             more inclusive and sustainable future. We aim to promote dialogue
@@ -176,7 +176,7 @@ const Mv2 = () => {
           <h1 className="text-xl md:text-2xl lg:text-[36px] lg:leading-[54px] font-semibold mt-2">
             Values
           </h1>
-          <ul className="list-disc list-inside font-bold text-xs sm:text-sm md:text-base lg:text-[16px] lg:leading-[28px] text-left text-[#4E4E4E] px-4 pb-4">
+          <ul className="list-disc list-inside font-bold text-xs sm:text-sm md:text-base lg:text-[16px] lg:leading-[28px] text-left text-[#4E4E4E] px-4 pb-6">
             <li>
               Transparency:{" "}
               <span className="font-normal">

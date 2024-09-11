@@ -41,7 +41,7 @@ const Header: React.FC = () => {
             </Link> */}
 
           <div className="flex items-center space-x-3 rtl:space-x-reverse">
-            <div className="w-44 h-12   sm:w-[230px] sm:h-[55px] ">
+            <div className="w- h-12   sm:w-[230px] sm:h-[55px] ">
               <Link href="/">
                 <Image
                   src="/images/logo_1.png"

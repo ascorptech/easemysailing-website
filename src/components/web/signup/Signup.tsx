@@ -72,8 +72,8 @@ const Signup = () => {
         </div>
 
         <div className="flex flex-row items-center justify-center">
-          <hr className="border-1 border-black mb-3 w-[209px]" data-content="OR" /><span className="text-[14px] w-[17px] h-[21px] pb-8">Or</span>
-          <hr className=" w-full border-1 border-black mb-3 " data-content="OR" />
+          <hr className="border-1 border-black mb-3 w-[170px] lg:w-[209px]" data-content="OR" /><span className="text-[14px] w-[17px] h-[21px] pb-8">Or</span>
+          <hr className="border-1 border-black mb-3 w-[170px] lg:w-[209px]" data-content="OR" />
 
         </div>
 

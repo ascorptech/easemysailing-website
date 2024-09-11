@@ -20,7 +20,7 @@ const Trending = () => {
         </div>
       </div>
 
-      <SlidesTrend/>
+      <SlidesTrend />
     </div>
   );
 };

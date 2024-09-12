@@ -29,16 +29,17 @@ const Header: React.FC = () => {
       <nav className="bg-white border-white dark:bg-white dark:border-black-700  ">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <div className="flex items-center space-x-3 rtl:space-x-reverse">
-            <Link href="/">
-              <p>
-                <span className="self-center text-xl font-bold whitespace-nowrap dark:text-black">
-                  EaseMy
-                </span>
-                <span className="text-green-600 font-bold text-xl">
-                  Sailing
-                </span>
-              </p>
-            </Link>
+            <div className="w-44 h-12 sm:w-[230px] sm:h-[55px] ">
+              <Link href="/">
+                <Image
+                  src="/images/logo_1.png"
+                  alt="EaseMySailing Logo"
+                  className="object-contain h-full w-full "
+                  width={800}
+                  height={800}
+                />
+              </Link>
+            </div>
           </div>
 
           <div className="">

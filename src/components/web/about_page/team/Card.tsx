@@ -120,7 +120,7 @@ const Card = () => {
         className="absolute right-10 z-10 p-2 bg-white border rounded-full shadow-md -mr-2"
       >
         &gt;
-      </button>
+      <button/>
     </div>
   );
 };

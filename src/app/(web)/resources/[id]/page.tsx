@@ -4,14 +4,10 @@ import React from "react";
 import Image  from "next/image";
 import { useState } from "react";
 import { useParams } from "next/navigation"; // Use useParams instead of useRouter
-<<<<<<< HEAD:src/app/(web)/resource_details/[id]/page.tsx
-import { Resource } from "../../data/resources";
-=======
 // import { Resource } from "@/app/data/resources";
 import { Resource } from "../../data/resources";
 
 // import Profile from "@/components/p4mentoring/profileSummary/Profile";
->>>>>>> cd6c802d9a6c9b483f46ba23823d425965596764:src/app/(web)/resources/[id]/page.tsx
 const ResourceDetailsPage: React.FC = () => {
   const params = useParams(); // useParams hook to get route parameters
   const { id } = params;
@@ -55,13 +51,7 @@ const ResourceDetailsPage: React.FC = () => {
         </div>
         <div>
           <h2 className="font-bold text-xl mt-4">{item.title}</h2>
-<<<<<<< HEAD:src/app/(web)/resource_details/[id]/page.tsx
-          <p className=" text-sm text-justify text-left mt-4">
-            {item.discription}
-          </p>
-=======
           <p className=" text-sm text-justify  mt-4">{item.discription}</p>
->>>>>>> cd6c802d9a6c9b483f46ba23823d425965596764:src/app/(web)/resources/[id]/page.tsx
         </div>
 
         <h1 className=" my-4  font-bold text-xl">Drop Your comment</h1>

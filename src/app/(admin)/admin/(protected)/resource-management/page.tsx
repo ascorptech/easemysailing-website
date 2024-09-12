@@ -128,22 +128,14 @@
 
 // export default page;
 "use client";
+import QuillEditor from "@/components/admin/ckeditor/QuillEditor";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import { FaEdit, FaEye, FaTrash } from "react-icons/fa";
 
-// import dynamic from "next/dynamic";
-// import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
-// const CKEditor = dynamic(
-//   () => import("@ckeditor/ckeditor5-react").then((mod) => mod.CKEditor),
-//   { ssr: false }
-// );
-// const ClassicEditor = dynamic(
-//   () => import("@ckeditor/ckeditor5-build-classic"),
-//   { ssr: false }
-// );
+
 
 type Props = {};
 
@@ -172,14 +164,6 @@ const page = (props: Props) => {
     });
   };
 
-  const handleEditorChange = (event: any, editor: any) => {
-    const data = editor.getData();
-    setFormData((prevData) => ({
-      ...prevData,
-      description: data,
-    }));
-  };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission logic here (e.g., update state or send to backend)
@@ -195,7 +179,20 @@ const page = (props: Props) => {
       image: "/images/captain.png",
       date: "2020-01-01",
     },
-    // ... other items
+    {
+      id: 2,
+      title: "Gwen Stacy",
+      about: "Lorem Ipsum is simply dummy text of the printing.",
+      image: "/images/captain.png",
+      date: "2020-01-01",
+    },
+    {
+      id: 3,
+      title: "Gwen Stacy",
+      about: "Lorem Ipsum is simply dummy text of the printing.",
+      image: "/images/captain.png",
+      date: "2020-01-01",
+    },
   ];
 
   return (
@@ -214,16 +211,16 @@ const page = (props: Props) => {
         <table className="min-w-full bg-white border border-gray-300">
           <thead>
             <tr>
-              <th className="py-2 px-4 border-b">Title</th>
-              <th className="py-2 px-4 border-b">Description</th>
-              <th className="py-2 px-4 border-b">Date</th>
-              <th className="py-2 px-4 border-b">Actions</th>
+              <th className="py-2 px-4 ">Title</th>
+              <th className="py-2 px-4 ">Description</th>
+              <th className="py-2 px-4">Date</th>
+              <th className="py-2 px-4 ">Actions</th>
             </tr>
           </thead>
           <tbody>
             {data.map((item) => (
               <tr key={item.id} className="text-center">
-                <td className="py-2 px-4 border-b flex items-center justify-center">
+                <td className="py-2 px-4  flex items-center justify-center">
                   <Image
                     src={item.image}
                     alt={item.title}
@@ -233,9 +230,9 @@ const page = (props: Props) => {
                   />
                   <span>{item.title}</span>
                 </td>
-                <td className="py-2 px-4 border-b">{item.about}</td>
-                <td className="py-2 px-4 border-b">{item.date}</td>
-                <td className="py-2 px-4 border-b flex justify-center space-x-4">
+                <td className="py-2 px-4 ">{item.about}</td>
+                <td className="py-2 px-4 ">{item.date}</td>
+                <td className="py-2 px-4 flex justify-center space-x-4">
                   <Link
                     href="#"
                     className="text-blue-500 pb-2 hover:text-blue-700"
@@ -261,21 +258,18 @@ const page = (props: Props) => {
       {/* Popup Form */}
       {isPopupOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-96">
-            <h2 className="text-xl font-bold mb-4">Add New </h2>
+          <div className="bg-white p-6 rounded-lg shadow-lg w-[450px] h-[500px]">
+            <h2 className="text-xl font-bold mb-4">Add Resource</h2>
             <form onSubmit={handleSubmit}>
-              <div className="mb-4">
+              <div className="mb-4 ">
                 <label htmlFor="image" className="block text-gray-700 mb-2">
-                  Image URL
+                  Choose Image
                 </label>
                 <input
-                  type="text"
+                  type="file"
                   id="image"
                   name="image"
-                  value={formData.image}
-                  onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded"
-                  placeholder="Enter image URL"
+                  className="block w-full border rounded-lg h-12 text-sm text-gray-500 file:mr-4 file:py-[15px] file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-gray-200 file:text-gray-700 hover:file:bg-gray-100"
                 />
               </div>
               <div className="mb-4">
@@ -288,7 +282,7 @@ const page = (props: Props) => {
                   name="title"
                   value={formData.title}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded"
+                  className="w-full px-3 py-2 border h-12 border-gray-300 rounded"
                   placeholder="Enter title"
                 />
               </div>
@@ -299,35 +293,33 @@ const page = (props: Props) => {
                 >
                   Description
                 </label>
-                <textarea
+                {/* <input
+                  type="text"
                   id="description"
                   name="description"
                   value={formData.description}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded"
+                  className="w-full px-3 py-2 border h-32 border-gray-300 rounded"
                   placeholder="Enter description"
-                />
-              </div>
-
-              {/* <CKEditor
-                  editor={ClassicEditor}
-                  data={formData.description || "<p>Type your description here...</p>"}
-                  onChange={handleEditorChange}
                 /> */}
+                <QuillEditor/>
+              </div>
               <div className="flex justify-end space-x-4">
-                <button
+                <Link
+                  href={"#"}
                   type="button"
                   onClick={handleClosePopup}
                   className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700"
                 >
                   Cancel
-                </button>
-                <button
+                </Link>
+                <Link
+                  href={"#"}
                   type="submit"
                   className="px-4 py-2 bg-green-600 text-white rounded "
                 >
                   Submit
-                </button>
+                </Link>
               </div>
             </form>
           </div>

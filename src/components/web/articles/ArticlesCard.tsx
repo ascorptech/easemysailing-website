@@ -37,7 +37,7 @@ const ArticlesCard = () => {
   ];
   return (
 
-    <div className=" overflow-x-scroll no-scrollbar scroll-smooth snap-mandatory  sm:md:space-x-12  mt-3 flex sm:md:flex-row flex-col sm:md:w-[90%] mx-auto sm:md:px-9">
+    <div className="overflow-x-scroll no-scrollbar scroll-smooth snap-mandatory sm:md:space-x-12 2xl:space-x-8  mt-3 flex sm:md:flex-row flex-col sm:md:w-[90%] 2xl:w-[90%]  sm:md:px-[2.26rem] 2xl:px-[1.74rem] mx-auto">
       {/* {article.map((card) => (
           <div
             key={card.id}
@@ -71,7 +71,7 @@ const ArticlesCard = () => {
           </div>
         ))} */}
       {article.map((card) => (
-        <div className="sm:md:w-[16.5rem] w-full rounded shadow-lg mb-5" key={card?.id}>
+        <div className="sm:md:w-[16.4rem] 2xl:w-[19.5rem] w-full rounded shadow-lg mb-5" key={card?.id}>
           <div className="relative">
             <img className="w-full" src={card.logoSrc} alt="Sunset in the mountains" />
             <div className="absolute mt-[-1.5rem] sm:md:mt-[-2.5rem] bg-green-700 text-white font-semibold lg:px-3 lg:py-2 ">

@@ -45,6 +45,13 @@ const Header: React.FC = () => {
           <div className=" ">
             <ul className="hidden  lg:flex lg:items-center flex-col font-medium  p-3 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-white lg:dark:bg-white dark:border-gray-700">
               <div className="">
+              <div className=" relative inline-block px-3 text-left group ">
+                  <li className="block  text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white  md:dark:hover:bg-transparent">
+                    <Link href="/about" className="text-[16px]">
+                      About Us
+                    </Link>
+                  </li>
+                </div>
                 <div className=" relative inline-block px-3 text-left group ">
                   <li className="block  text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white  md:dark:hover:bg-transparent">
                     <Link href="/resources" className="text-[16px]">
@@ -56,13 +63,6 @@ const Header: React.FC = () => {
                   <li className="block  text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white  md:dark:hover:bg-transparent">
                     <Link href="/podcast-list" className="text-[16px]">
                       Podcast & Interviews
-                    </Link>
-                  </li>
-                </div>
-                <div className=" relative inline-block px-3 text-left group ">
-                  <li className="block  text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white  md:dark:hover:bg-transparent">
-                    <Link href="/about" className="text-[16px]">
-                      About Us
                     </Link>
                   </li>
                 </div>

@@ -158,11 +158,11 @@ const Contact = () => {
             </div>
             <div className="ml-3">
               <h2 className="font-bold text-lg">Mail Us</h2>
-              <p className="text-sm">example@gmail.com</p>
+              <p className="text-sm">business@EaseMySailing.com</p>
             </div>
           </div>
 
-          <div className=" items-center bg-white shadow-lg border flex p-3 mt-3 rounded-xl">
+          {/* <div className=" items-center bg-white shadow-lg border flex p-3 mt-3 rounded-xl">
             <div className="w-16 h-16 flex items-center justify-center text-red-600 text-3xl">
               <FiMail />
             </div>
@@ -172,7 +172,7 @@ const Contact = () => {
               </h2>
               <p className="text-sm">sos@gmail.com</p>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

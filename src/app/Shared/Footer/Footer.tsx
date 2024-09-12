@@ -17,7 +17,7 @@ const Footer = () => {
                 <Image
                   src="/images/logo_1.png"
                   alt="EaseMySailing Logo"
-                  className="object-contain h-full w-[80%] mb-2"
+                  className="object-contain h-full w-[80%] mb-2 -ml-1"
                   width={800}
                   height={800}
                 />
@@ -27,7 +27,7 @@ const Footer = () => {
           EaseMySailing is a platform created by seafarers, for seafarers, built on empathy for life at sea and its unique challenges and joys.
            <Link href="/about" className="text-[#00A264] font-semibold"> Read More</Link></p>
           <p className="mt-4 font-semibold">
-            Are You a vender?{" "}
+            Are You a Vendor?{" "}
             <Link href="#" className="font-bold text-[#00A264] underline">
               Join Us
             </Link>
@@ -78,7 +78,7 @@ const Footer = () => {
             </li> */}
             <li className="mt-2">
               <Link href="/terms" className="hover:text-green-600">
-                Terms and conditions
+                Terms and Conditions
               </Link>
             </li>
             <li className="mt-2">
@@ -103,11 +103,11 @@ const Footer = () => {
               </Link>
             </li>
             <li className="mt-2">
-              <Link href="#" className="flex items-center hover:text-green-600">
+              <Link href="mailto:business@EaseMySailing.com" className="flex items-center hover:text-green-600">
                 <span className="text-green-600 mr-1">
                   <MdOutlineMail />
                 </span>
-                example@gmail.com
+                business@EaseMySailing.com
               </Link>
             </li>
             <li className="mt-2">

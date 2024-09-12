@@ -5,7 +5,7 @@ const LoginImg = () => {
           <img
             src="./Images/user.jpg"
             alt="Sign In Illustration"
-            className="w-[491px] h-[470px] object-cover"
+            className="w-[491px] h-[470px] object-contain"
           />
         </div>
     )

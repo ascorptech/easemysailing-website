@@ -69,8 +69,13 @@ const page = (props: Props) => {
   ];
 
   return (
-    <div className="overflow-x-auto mt-16 sm:md:ml-[1rem] flex flex-row justify-center items-center sm:md:w-[80%]">
-      <table className="min-w-full bg-white border border-gray-300">
+    
+      
+    <div className="absolute overflow-x-auto mt-16 sm:md:ml-[1rem] flex flex-row justify-center  sm:md:w-[80%] ">
+    
+
+      <table className="min-w-full bg-white border border-gray-300 mt-8 ">
+        
         <thead>
           <tr>
             <th className="py-2 px-4 border-b">Title</th>
@@ -113,6 +118,7 @@ const page = (props: Props) => {
         </tbody>
       </table>
     </div>
+   
   );
 }
 

@@ -133,15 +133,15 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { FaEdit, FaEye, FaTrash } from "react-icons/fa";
 
-import dynamic from "next/dynamic";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+// import dynamic from "next/dynamic";
+// import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 
 
-const CKEditor = dynamic(
-  () => import("@ckeditor/ckeditor5-react").then((mod) => mod.CKEditor),
-  { ssr: false }
-);
+// const CKEditor = dynamic(
+//   () => import("@ckeditor/ckeditor5-react").then((mod) => mod.CKEditor),
+//   { ssr: false }
+// );
 // const ClassicEditor = dynamic(
 //   () => import("@ckeditor/ckeditor5-build-classic"),
 //   { ssr: false }
@@ -265,7 +265,7 @@ const page = (props: Props) => {
       {isPopupOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
           <div className="bg-white p-6 rounded-lg shadow-lg w-96">
-            <h2 className="text-xl font-bold mb-4">Add New Item</h2>
+            <h2 className="text-xl font-bold mb-4">Add New </h2>
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label htmlFor="image" className="block text-gray-700 mb-2">
@@ -302,21 +302,21 @@ const page = (props: Props) => {
                 >
                   Description
                 </label>
-                {/* <textarea
+                <textarea
                   id="description"
                   name="description"
                   value={formData.description}
                   onChange={handleInputChange}
                   className="w-full px-3 py-2 border border-gray-300 rounded"
                   placeholder="Enter description"
-                /> */}
+                />
               </div>
 
-                <CKEditor
+                {/* <CKEditor
                   editor={ClassicEditor}
                   data={formData.description || "<p>Type your description here...</p>"}
                   onChange={handleEditorChange}
-                />
+                /> */}
               <div className="flex justify-end space-x-4">
                 <button
                   type="button"

@@ -127,11 +127,25 @@
 // };
 
 // export default page;
-"use client";
+"use client"
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import { FaEdit, FaEye, FaTrash } from "react-icons/fa";
+
+import dynamic from "next/dynamic";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+
+
+
+const CKEditor = dynamic(
+  () => import("@ckeditor/ckeditor5-react").then((mod) => mod.CKEditor),
+  { ssr: false }
+);
+// const ClassicEditor = dynamic(
+//   () => import("@ckeditor/ckeditor5-build-classic"),
+//   { ssr: false }
+// );
 
 type Props = {};
 
@@ -160,6 +174,14 @@ const page = (props: Props) => {
     });
   };
 
+  const handleEditorChange = (event: any, editor: any) => {
+    const data = editor.getData();
+    setFormData((prevData) => ({
+      ...prevData,
+      description: data,
+    }));
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission logic here (e.g., update state or send to backend)
@@ -180,6 +202,7 @@ const page = (props: Props) => {
 
   return (
     <div className="mt-4 mx-auto flex w-[90%] flex-col">
+      
       <div className=" flex justify-end ">
         <Link
           href={"#"}
@@ -279,15 +302,21 @@ const page = (props: Props) => {
                 >
                   Description
                 </label>
-                <textarea
+                {/* <textarea
                   id="description"
                   name="description"
                   value={formData.description}
                   onChange={handleInputChange}
                   className="w-full px-3 py-2 border border-gray-300 rounded"
                   placeholder="Enter description"
-                />
+                /> */}
               </div>
+
+                <CKEditor
+                  editor={ClassicEditor}
+                  data={formData.description || "<p>Type your description here...</p>"}
+                  onChange={handleEditorChange}
+                />
               <div className="flex justify-end space-x-4">
                 <button
                   type="button"

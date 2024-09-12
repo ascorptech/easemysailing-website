@@ -118,6 +118,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { Input } from "postcss";
 import React, { useState } from "react";
 import { FaEdit, FaEye, FaTrash } from "react-icons/fa";
 
@@ -163,7 +164,20 @@ const page = (props: Props) => {
       image: "/images/captain.png",
       date: "2020-01-01",
     },
-    // ... other items
+    {
+      id: 2,
+      title: "Gwen Stacy",
+      about: "Lorem Ipsum is simply dummy text of the printing.",
+      image: "/images/captain.png",
+      date: "2020-01-01",
+    },
+    {
+      id: 3,
+      title: "Gwen Stacy",
+      about: "Lorem Ipsum is simply dummy text of the printing.",
+      image: "/images/captain.png",
+      date: "2020-01-01",
+    },
   ];
 
   return (
@@ -182,16 +196,16 @@ const page = (props: Props) => {
         <table className="min-w-full bg-white border border-gray-300">
           <thead>
             <tr>
-              <th className="py-2 px-4 border-b">Title</th>
-              <th className="py-2 px-4 border-b">video link</th>
-              <th className="py-2 px-4 border-b">Date</th>
-              <th className="py-2 px-4 border-b">Actions</th>
+              <th className="py-2 px-4">Title</th>
+              <th className="py-2 px-4 ">video link</th>
+              <th className="py-2 px-4 ">Date</th>
+              <th className="py-2 px-4">Actions</th>
             </tr>
           </thead>
           <tbody>
             {data.map((item) => (
               <tr key={item.id} className="text-center">
-                <td className="py-2 px-4 border-b flex items-center justify-center">
+                <td className="py-2 px-4 flex items-center justify-center">
                   {/* <Image
                     src={item.image}
                     alt={item.title}
@@ -201,13 +215,10 @@ const page = (props: Props) => {
                   /> */}
                   <span>{item.title}</span>
                 </td>
-                <td className="py-2 px-4 border-b">{item.about}</td>
-                <td className="py-2 px-4 border-b">{item.date}</td>
-                <td className="py-2 px-4 border-b flex justify-center space-x-4">
-                  <Link
-                    href="#"
-                    className="text-blue-500 pb-2 hover:text-blue-700"
-                  >
+                <td className="py-2 px-4 ">{item.about}</td>
+                <td className="py-2 px-4 ">{item.date}</td>
+                <td className="py-2 px-4  flex justify-center space-x-4">
+                  <Link href="#" className="text-blue-500  hover:text-blue-700">
                     <FaEye />
                   </Link>
                   <Link
@@ -229,8 +240,8 @@ const page = (props: Props) => {
       {/* Popup Form */}
       {isPopupOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-96">
-            <h2 className="text-xl font-bold mb-4">Add New Item</h2>
+          <div className="bg-white p-6 rounded-lg shadow-lg w-[450px] h-[500px]">
+            <h2 className="text-xl font-bold mt-6 mb-4">Add Podcast</h2>
             <form onSubmit={handleSubmit}>
               {/* <div className="mb-4">
                 <label htmlFor="image" className="block text-gray-700 mb-2">
@@ -246,7 +257,7 @@ const page = (props: Props) => {
                   placeholder="Enter image URL"
                 />
               </div> */}
-              <div className="mb-4">
+              <div className="mb-4 ">
                 <label htmlFor="title" className="block text-gray-700 mb-2">
                   Title
                 </label>
@@ -256,7 +267,7 @@ const page = (props: Props) => {
                   name="title"
                   value={formData.title}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded"
+                  className="w-full px-3 py-2 border h-12 border-gray-300 rounded"
                   placeholder="Enter title"
                 />
               </div>
@@ -267,29 +278,32 @@ const page = (props: Props) => {
                 >
                   Video link
                 </label>
-                <textarea
+                <input
+                  type="text"
                   id="description"
                   name="description"
                   value={formData.description}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded"
+                  className="w-full px-3 py-2 h-36 border border-gray-300 rounded"
                   placeholder="Enter video link"
                 />
               </div>
               <div className="flex justify-end space-x-4">
-                <button
+                <Link
+                  href={"#"}
                   type="button"
                   onClick={handleClosePopup}
                   className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700"
                 >
                   Cancel
-                </button>
-                <button
+                </Link>
+                <Link
+                  href={"#"}
                   type="submit"
                   className="px-4 py-2 bg-green-600 text-white rounded "
                 >
                   Submit
-                </button>
+                </Link>
               </div>
             </form>
           </div>

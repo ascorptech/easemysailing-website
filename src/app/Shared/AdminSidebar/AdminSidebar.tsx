@@ -29,7 +29,7 @@ const AdminSidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
         >
           {/* <div className={`fixed top-0 left-0 h-full bg-gray-800 text-white shadow-lg transition-transform duration-300 ${sidebarToggle ? 'translate-x-0' : '-translate-x-full'} w-64`}> */}
           <div className="bg-white  p-2 pl-5">
-            <Link href="/" className="h-8 border">
+            <Link href="/" className="">
               {/* EaseMy<span className="text-green-700">Sailing</span> */}
               <Image src={'/images/logo_1.png'} width={100} height={100} className="w-full object-contain" alt="logo" priority/>
             </Link>

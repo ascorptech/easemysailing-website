@@ -11,19 +11,19 @@ const Footer = () => {
       <div className="container mx-auto  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
         {/* Brand and Description */}
 
-        <div className="flex flex-col justify-start -mt-10">
+        <div className="flex flex-col justify-start">
            {/* <div className="w-[70%] md:w-[240px] h-12 md:h-[65px]"> */}
               <Link href="/" className="">
                 <Image
                   src="/images/logo_1.png"
                   alt="EaseMySailing Logo"
-                  className="object-contain h-full w-full sm:md-ml-9 -ml-12"
+                  className="object-contain h-full w-[80%] mb-2"
                   width={800}
                   height={800}
                 />
               </Link>
             {/* </div> */}
-          <p className="-mt-5 mr-14 text-justify">
+          <p className=" mr-14 text-justify">
           EaseMySailing is a platform created by seafarers, for seafarers, built on empathy for life at sea and its unique challenges and joys.
            <Link href="/about" className="text-[#00A264] font-semibold"> Read More</Link></p>
           <p className="mt-4 font-semibold">

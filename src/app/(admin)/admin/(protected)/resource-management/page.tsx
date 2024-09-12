@@ -127,7 +127,7 @@
 // };
 
 // export default page;
-"use client"
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -192,17 +192,8 @@ const page = (props: Props) => {
   ];
 
   return (
-    <div className="mt-16 mx-auto flex w-[90%] flex-col">
-      {/* Add Button */}
-      {/* <div className="absolute top-0 right-0 mb-4">
-        <button
-          onClick={handleAddClick}
-          className="px-4 py-2 bg-green-600 text-white rounded  transition duration-300"
-        >
-          Add
-        </button>
-      </div> */}
-      <div className=" flex justify-end mb-2">
+    <div className="mt-4 mx-auto flex w-[90%] flex-col">
+      <div className=" flex justify-end ">
         <Link
           href={"#"}
           className="px-4 py-2 bg-green-600 text-white rounded transition duration-300"
@@ -212,7 +203,7 @@ const page = (props: Props) => {
         </Link>
       </div>
       {/* Table */}
-      <div className="overflow-x-auto w-full mt-10 -z-10">
+      <div className="overflow-x-auto w-full mt-2 -z-10">
         <table className="min-w-full bg-white border border-gray-300">
           <thead>
             <tr>

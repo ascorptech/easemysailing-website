@@ -4,6 +4,7 @@ import { Poppins } from "next/font/google";
 // import ".../globals.scss";
 import "../../../globals.scss";
 import AdminSidebar from "@/app/Shared/AdminSidebar/AdminSidebar";
+import AdminHeader from "@/app/Shared/AdminHeader/AdminHeader"
 import { useState } from "react";
 
 const poppins = Poppins({
@@ -33,6 +34,8 @@ export default function AdminInnerLayout({
               sidebarToggle={sidebarToggle}
               setSidebarToggle={setSidebarToggle}
             /> */}
+
+            <AdminHeader/>
           <div className="lg:h-[calc(100vh-4rem)] xxl:max-h-min scrollbar-hide overflow-auto">
             {" "}
             {children}

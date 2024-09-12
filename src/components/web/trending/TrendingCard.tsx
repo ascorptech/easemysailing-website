@@ -1,11 +1,11 @@
 "use client";
 import React, { useRef, useEffect } from "react";
 
-<<<<<<< HEAD
-const SlidesTrend = () => {
-  const card = useRef<HTMLDivElement>(null);
+// <<<<<<< HEAD
+// const SlidesTrend = () => {
+//   const card = useRef<HTMLDivElement>(null);
 
-=======
+
 interface Card {
     id: number;
     logo: string;
@@ -103,7 +103,7 @@ const SlidesTrend = () => {
   ];
 
 
->>>>>>> cd6c802d9a6c9b483f46ba23823d425965596764
+// >>>>>>> cd6c802d9a6c9b483f46ba23823d425965596764
   const scrollLeft = () => {
     if (card.current) {
       card.current.scrollBy({ left: -200, behavior: "smooth" });
@@ -132,13 +132,13 @@ const SlidesTrend = () => {
   }, []);
 
   return (
-<<<<<<< HEAD
+// <<<<<<< HEAD
     <div className=" lg:ml-[4rem] relative flex items-center justify-center w-[90%]  ">
       {/* Left Arrow */}
-=======
+
     <div className=" lg:ml-[4rem] relative flex items-center justify-center w-[90%] border-2 border-red-600  ">
       {/* {/ Left Arrow /} */}
->>>>>>> cd6c802d9a6c9b483f46ba23823d425965596764
+{/* >>>>>>> cd6c802d9a6c9b483f46ba23823d425965596764 */}
       <button
         onClick={scrollLeft}
         className="absolute left-1 lg:left-10 z-10 p-2 bg-white border rounded-full shadow-md ml-1 lg:ml-2 mr-2"
@@ -146,7 +146,7 @@ const SlidesTrend = () => {
         &lt;
       </button>
 
-<<<<<<< HEAD
+{/* <<<<<<< HEAD */}
       {/* Carousel Wrapper */}
       <div
         ref={card}
@@ -270,7 +270,7 @@ const SlidesTrend = () => {
       </div>
 
       {/* {/ Right Arrow /} */}
->>>>>>> cd6c802d9a6c9b483f46ba23823d425965596764
+
       <button
         onClick={scrollRight}
         className="absolute right-1 lg:right-10 z-10 p-2 bg-white border rounded-full shadow-md -mr-7 lg:-mr-2"
@@ -278,7 +278,8 @@ const SlidesTrend = () => {
         &gt;
       </button>
     </div>
+    </div>
   );
 };
 
-export default SlidesTrend;
+export default SlidesTrend

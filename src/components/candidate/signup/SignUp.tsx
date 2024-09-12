@@ -52,8 +52,8 @@ const SignUp: React.FC = () => {
           <LoginImg />
 
           {/* Sign-Up Form Section */}
-          <div className="w-full md:w-1/2 p-1 pr-3 pl-6 bg-[#EAEAEA]  ">
-            <h2 className="text-xl font-bold  text-center">
+          <div className="w-full md:w-1/2 p-1  pr-3 pl-6 bg-[#EAEAEA]  ">
+            <h2 className="text-xl font-bold  text-center mt-4">
               Sign In as Candidate
             </h2>
             <p className="text-gray-600  text-center">
@@ -63,7 +63,7 @@ const SignUp: React.FC = () => {
               onSubmit={handleSubmit}
               className="items-center p-2 pr-2 pl-2 ml-20 w-full max-w-lg "
             >
-              <div className="mb-1 flex">
+              <div className="mb-2 mt-2 flex">
                 <div>
                   {" "}
                   <label
@@ -88,7 +88,7 @@ const SignUp: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="mb-1 ml-2">
+                <div className="mb-2 ml-2">
                   <label
                     className="block text-gray-700 text-sm font-bold mb-1"
                     htmlFor="lastName"
@@ -112,7 +112,7 @@ const SignUp: React.FC = () => {
                 </div>
               </div>
 
-              <div className="mb-1">
+              <div className="mb-2">
                 <label
                   className="block text-gray-700 text-sm font-bold mb-1"
                   htmlFor="email"
@@ -135,7 +135,7 @@ const SignUp: React.FC = () => {
                   </span>
                 </div>
               </div>
-              <div className="mb-1">
+              <div className="mb-2">
                 <label
                   className="block text-gray-700 text-sm font-bold mb-1"
                   htmlFor="phone"
@@ -158,7 +158,7 @@ const SignUp: React.FC = () => {
                 </div>
               </div>
 
-              <div className="mb-1">
+              <div className="mb-2">
                 <label
                   className="block text-gray-700 text-sm font-bold mb-1"
                   htmlFor="password"
@@ -188,7 +188,7 @@ const SignUp: React.FC = () => {
                 </div>
               </div>
 
-              <div className="mb-[6px]">
+              <div className="mb-[1rem]">
                 <label
                   className="block text-gray-700 text-sm font-bold mb-1"
                   htmlFor="Password"
@@ -253,7 +253,7 @@ const SignUp: React.FC = () => {
               </div>
             </form>
 
-            <p className=" text-center font-semibold mb-16">
+            <p className=" text-center font-semibold mb-6">
               Already have on account?
               <Link href="/" className="text-[#00A264] ">
                 Sign In as Candidate

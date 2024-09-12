@@ -12,6 +12,7 @@ import { FiLogOut } from "react-icons/fi";
 import { RiContactsBook3Line } from "react-icons/ri";
 import { RiExchangeDollarLine } from "react-icons/ri";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 interface sidebarProps {
     sidebarToggle?: boolean;
@@ -28,8 +29,9 @@ const AdminSidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
         >
           {/* <div className={`fixed top-0 left-0 h-full bg-gray-800 text-white shadow-lg transition-transform duration-300 ${sidebarToggle ? 'translate-x-0' : '-translate-x-full'} w-64`}> */}
           <div className="bg-white  p-2 pl-5">
-            <Link href="/" className="text-2xl font-extrabold">
-              EaseMy<span className="text-green-700">Sailing</span>
+            <Link href="/" className="h-8 border">
+              {/* EaseMy<span className="text-green-700">Sailing</span> */}
+              <Image src={'/images/logo_1.png'} width={100} height={100} className="w-full object-contain" alt="logo" priority/>
             </Link>
           </div>
     

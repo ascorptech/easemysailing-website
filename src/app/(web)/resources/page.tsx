@@ -45,7 +45,7 @@ const ResourceList: React.FC = () => {
               className="w-[100%] h-[100%] object-contain"
               priority
             />
-            <div className="absolute sm:md:mt-[-3.3rem] mt-[-1.5rem] bg-green-700 text-white font-semibold ">
+            <div className="absolute sm:md:mt-[-2.9rem] mt-[-1.5rem] bg-green-700 text-white font-semibold ">
               <h3>{Resource[0].date}</h3>
             </div>
           </div>

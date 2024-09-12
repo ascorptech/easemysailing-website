@@ -11,6 +11,13 @@ const poppins = Poppins({
 export const metadata: Metadata = {
     title: "Admin",
     description: "This is Admin page",
+    icons: {
+        icon: {
+          url: "/Favicon.ico",
+          type: "image/png",
+        },
+        shortcut: { url: "/Favicon.ico", type: "image/png" },
+      },
 };
 
 export default function AdminLayout({

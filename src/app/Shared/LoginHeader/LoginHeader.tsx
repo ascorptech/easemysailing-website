@@ -13,7 +13,7 @@ const LoginHeader = () => {
         <div className="w-44 h-12 sm:w-52 sm:h-[53px] ">
           <Link href="/">
             <Image
-              src="/images/Transparent Logo.png"
+              src="/images/logo_1.png"
               alt="EaseMySailing Logo"
               className="object-cover h-full w-full "
               width={800}

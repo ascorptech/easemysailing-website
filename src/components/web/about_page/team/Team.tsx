@@ -21,7 +21,7 @@ const Team = () => {
           Our Team
         </h1>
       </div>
-      {/* <Card /> */}
+      <Card />
     </div>
   );
 };

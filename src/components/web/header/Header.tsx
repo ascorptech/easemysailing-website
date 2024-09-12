@@ -25,9 +25,9 @@ const Header: React.FC = () => {
   };
 
   return (
-    <div className="border-b border-gray-300   z-20 top-0 fixed w-full">
-      <nav className="bg-white border-white dark:bg-white dark:border-black-700  ">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <div className="  z-20 top-0 fixed w-full">
+      <nav className="bg-white border-white dark:bg-white dark:border-black-700   ">
+        <div className="lg:w-full w-[98%] text-25px font-[700px] leading-[37.5px] flex flex-wrap items-center justify-between  py-1 px-[1rem] sm:px-[3rem] lg:px-[2rem]   ">
           <div className="flex items-center space-x-3 rtl:space-x-reverse">
             <div className="w-44 h-12 sm:w-[230px] sm:h-[55px] ">
               <Link href="/">
@@ -42,33 +42,65 @@ const Header: React.FC = () => {
             </div>
           </div>
 
-          <div className="">
+          <div className=" ">
             <ul className="hidden  lg:flex lg:items-center flex-col font-medium  p-3 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-white lg:dark:bg-white dark:border-gray-700">
-              <div>
-                <div className="relative inline-block px-3 text-left group ">
-                  <li className="block  text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
-                    Jobs
+              <div className="">
+                <div className=" relative inline-block px-3 text-left group ">
+                  <li className="block  text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white  md:dark:hover:bg-transparent">
+                    <Link href="/resources" className="text-[16px]">
+                      Resources
+                    </Link>
+                  </li>
+                </div>
+                <div className=" relative inline-block px-3 text-left group ">
+                  <li className="block  text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white  md:dark:hover:bg-transparent">
+                    <Link href="/podcast-list" className="text-[16px]">
+                      Podcast & Interviews
+                    </Link>
+                  </li>
+                </div>
+                <div className=" relative inline-block px-3 text-left group ">
+                  <li className="block  text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white  md:dark:hover:bg-transparent">
+                    <Link href="/about" className="text-[16px]">
+                      About Us
+                    </Link>
+                  </li>
+                </div>
+                <div className=" relative inline-block px-3 text-left group ">
+                  <li className="block  text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white  md:dark:hover:bg-transparent">
+                    <Link href="/contact" className="text-[16px]">
+                      Contact Us
+                    </Link>
+                  </li>
+                </div>
+                <div className="hidden relative inline-block px-3 text-left group ">
+                  <li className="block  text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white  md:dark:hover:bg-transparent">
+                    <Link href="/jobs" className="text-[16px]">
+                      Jobs
+                    </Link>
                   </li>
                 </div>
 
-                <div className="relative inline-block pr-4 text-left group">
+                <div className="hidden relative inline-block pr-4 text-left group">
                   <li className="relative inline-block pr-4 text-left group  text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
-                    Trainings
+                    <Link href="/trainings" className="text-[16px]">
+                      Trainings
+                    </Link>
                   </li>
                 </div>
 
-                <li className="relative inline-block text-left group ">
-                  <a
-                    href="#"
-                    className="block text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                <li className="hidden relative inline-block text-left group ">
+                  <Link
+                    href="/ems"
+                    className="block text-[16px] text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:dark:hover:text-green-700 "
                   >
                     EMS Plus
-                  </a>
+                  </Link>
                 </li>
               </div>
-              <div className=" flex items-center h-2">
+              <div className="hidden flex items-center  h-2">
                 <div
-                  className="relative inline-block text-left"
+                  className="relative lg:mr-[350px] inline-block text-left"
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
                 >
@@ -87,18 +119,18 @@ const Header: React.FC = () => {
                       id="dropdownHover"
                     >
                       <ul className="py-2 text-sm text-gray-700">
-                        <li>
+                        {/* <li>
                           <Link
-                            href="/mentoring_details"
+                            href="/career"
                             className="block px-4 py-1 hover:bg-white hover:text-green-800"
                           >
                             Jobs & Career Advise
                           </Link>
-                        </li>
+                        </li> */}
 
                         <li>
                           <Link
-                            href="/resource_details"
+                            href="/resources"
                             className="block px-4 py-1 hover:bg-white hover:text-green-800"
                           >
                             Resource
@@ -107,7 +139,7 @@ const Header: React.FC = () => {
 
                         <li>
                           <Link
-                            href="/podcast_list"
+                            href="/podcast-list"
                             className="block px-4 py-1 hover:bg-white hover:text-green-800"
                           >
                             Podcast & Interviews
@@ -125,7 +157,7 @@ const Header: React.FC = () => {
                         <li>
                           <Link
                             href="/contact"
-                            className="block px-4 py-1 hover:bg-white hover:text-green-800"
+                            className="block px-4 py-1 hover:bg-[#FFFFFF] hover:text-[#00A264]"
                           >
                             Contact Us
                           </Link>
@@ -138,67 +170,69 @@ const Header: React.FC = () => {
 
               <div className="flex items-center justify-center">
                 <li>
-                  <a
-                    href="#"
-                    className="block text-sm py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  {/* <Link
+                    href="/recruiter"
+                    className="block text-sm py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#00A264] md:p-0 dark:text-black md:dark:hover:text-[#00A264] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                   >
                     Recruiter Zone
-                  </a>
+                  </Link> */}
                 </li>
 
-                <span className="text-[1.3rem]  border-1 border-red-950 flex justify-self-center text-center font-[1000] text-green-700  relative ">
+                {/* <span className="text-[1.3rem]  border-1 border-red-950 flex justify-self-center text-center font-[1000] text-green-700  relative ">
                   <PiLineVertical />
-                </span>
-
+                </span> */}
+                {/* 
                 <li>
-                  <a
-                    href="#"
-                    className="block pt-6 px-4 text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  <Link
+                    href="/agent-zone"
+                    className="block pt-6 px-4 text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#00A264] md:p-0 dark:text-black md:dark:hover:text-[#00A264] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                   >
                     Manning Agent Zone
-                  </a>
-                </li>
+                  </Link>
+                </li> */}
               </div>
 
               <div className="flex relative items-center h-2 mt-2 ">
                 <Link
-                  href={"page"}
-                  className="flex justify-center items-center mr-4 border border-[#00A264] text-[#00A264] p-2 rounded-full"
+                  href={"/candidate"}
+                  className="flex justify-center items-center mr-4 border border-[#00A264] text-[#00A264] p-2 rounded-full text-sm"
                 >
                   <span className="pr-2">
+                    {/* {/ <CiSearch /> /} */}
                     <Image
                       src={"/images/userlock.png"}
                       priority
-                      width={10}
-                      height={10}
+                      width={16}
+                      height={16}
                       alt="userlock"
                     />
                   </span>
                   Seafarers Login
                 </Link>
-                <Link
+                {/* <Link
                   href="recruiter"
-                  className=" h-8 w-21  text-white bg-[#00A264] hover:bg-green-800 focus:outline-none focus:ring-1 focus:ring-green-800 font-medium rounded-full text-sm px-5 py-5 text-center me-2  dark:bg-green-600   flex justify-center items-center "
+                  className=" h-8 w-21  text-[#FFFFFF] bg-[#00A264] hover:bg-[#00A264] focus:outline-none focus:ring-1 focus:ring-[#00A264] font-medium rounded-full text-sm px-5 py-5 text-center me-2  dark:bg-[#00A264]   flex justify-center items-center"
                 >
                   Post a Job
-                </Link>
+                </Link> */}
               </div>
             </ul>
           </div>
-          <div>
-            {/* {/ mobile navbar  /}
 
-            {/ <!-- Dropdown menu --> /} */}
+          {/* mobile navbar   */}
 
-            <div className="top-0 ">
+          {/* Dropdown menu */}
+          <div className="lg:hidden lg:max-w-screen-xl flex flex-wrap items-center justify-between ">
+            <div className=" top-0 ">
               <button
                 data-collapse-toggle="navbar-dropdown"
                 type="button"
-                className="flex items-center p-2 w-10 h-10 justify-center text-xl text-green-700 rounded-lg lg:hidden  focus:outline-none focus:ring-1 focus:ring-white hover:text-white hover:bg-green-700 "
+                className="flex items-center p-2 w-10 h-10 justify-center text-xl text-[#00A264] rounded-lg lg:hidden  focus:outline-none focus:ring-1 focus:ring-white hover:text-white hover:bg-[#00A264] "
                 aria-controls="navbar-dropdown"
                 aria-expanded={isMenuOpen}
                 onClick={toggleMenu} // Toggle menu on button click
               >
+                {/* {/ <span className="">Open main menu</span> /} */}
                 {isMenuOpen ? (
                   <svg
                     width="800px"
@@ -210,16 +244,16 @@ const Header: React.FC = () => {
                     <path
                       d="M3 21.32L21 3.32001"
                       stroke="currentColor"
-                      stroke-width="3"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
                     <path
                       d="M3 3.32001L21 21.32"
                       stroke="currentColor"
-                      stroke-width="3"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
                   </svg>
                 ) : (
@@ -252,58 +286,99 @@ const Header: React.FC = () => {
             }`}
             id="navbar-dropdown"
           >
-            <ul className="flex flex-col font-medium p-4   mt-1 border border-gray-100 rounded-lg bg-gray-100 md:border-0    dark:border-gray-700">
-              <li>
-                <a
-                  href="#"
-                  className="block py-2 px-3 text-white  rounded   dark:bg-green-600 text-xl"
+            <ul className="flex flex-col font-medium p-4   mt-1 border border-gray-100 rounded-lg bg-gray-100 md:border-0   dark:border-gray-700">
+              {/* <li>
+                <Link
+                  href="/jobs"
+                  className="block py-2 px-3 text-[#FFFFFF]  rounded   dark:bg-[#00A264] text-xl"
                   aria-current="page"
                 >
                   Jobs
-                </a>
-              </li>
-              <li>
+                </Link>
+              </li> */}
+              {/* <li>
                 <Link
-                  href="#"
-                  className="block py-2 px-3 text-green-700 rounded-lg hover:bg-green-500 mt-1  hover:text-white text-xl"
+                  href="/trainings"
+                  className="block py-2 px-3 text-[#00A264] rounded-lg hover:bg-[#00A264] mt-1  hover:text-[#FFFFFF] text-xl"
                 >
                   Trainnigs
                 </Link>
-              </li>
-              <li>
+              </li> */}
+              {/* <li>
                 <Link
-                  href="#"
-                  className="block py-2 px-3 text-green-700 rounded-lg hover:bg-green-500 mt-1  hover:text-white text-xl"
+                  href="/ems"
+                  className="block py-2 px-3 text-[#00A264] rounded-lg hover:bg-[#00A264] mt-1  hover:text-[#FFFFFF] text-xl"
                 >
                   EMS Plus
                 </Link>
-              </li>
+              </li> */}
 
+              {/* <li>
+                <Link
+                  href="/career"
+                  className="block py-2 px-3 text-[#00A264] rounded-lg hover:bg-[#00A264] mt-1  hover:text-[#FFFFFF] text-xl"
+                >
+                  Jobs & Career Advise
+                </Link>
+              </li> */}
               <li>
                 <Link
-                  href="#"
-                  className="block py-2 px-3 text-green-700 rounded-lg hover:bg-green-500 mt-1  hover:text-white text-xl"
+                  href="/resource-details"
+                  className="block py-2 px-3 text-[#00A264] rounded-lg hover:bg-[#00A264] mt-1  hover:text-[#FFFFFF] text-xl"
+                >
+                  Resource
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/podcast-list"
+                  className="block py-2 px-3 text-[#00A264] rounded-lg hover:bg-[#00A264] mt-1  hover:text-[#FFFFFF] text-xl"
+                >
+                  Podcast & Interviews
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/about"
+                  className="block py-2 px-3 text-[#00A264] rounded-lg hover:bg-[#00A264] mt-1  hover:text-[#FFFFFF] text-xl"
+                >
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contact"
+                  className="block py-2 px-3 text-[#00A264] rounded-lg hover:bg-[#00A264] mt-1  hover:text-[#FFFFFF] text-xl"
+                >
+                  Contact Us
+                </Link>
+              </li>
+
+              {/* <li className="">
+                <Link
+                  href="/recruiter"
+                  className="block py-2 px-3 text-[#00A264] rounded-lg hover:bg-[#00A264] mt-1  hover:text-[#FFFFFF] text-xl"
                 >
                   Recruiter Zone
                 </Link>
-              </li>
-              <li>
+              </li> */}
+              {/* <li>
                 <Link
-                  href="#"
-                  className="block py-2 px-3 text-green-700 rounded-lg hover:bg-green-500 mt-1  hover:text-white text-xl"
+                  href="/agent-zone"
+                  className="block py-2 px-3 text-[#00A264] rounded-lg hover:bg-[#00A264] mt-1  hover:text-[#FFFFFF] text-xl"
                 >
                   Manning Agent Zone
                 </Link>
-              </li>
-              <hr className="border border-green-500 "></hr>
+              </li> */}
+              <hr className="border border-[#00A264] "></hr>
 
-              <li className="flex relative items-center gap-14 h-2 mt-7 ">
+              <li className="flex relative items-center gap-4 h-2 mt-7 mb-5">
                 <Link
                   href={"candidate"}
-                  className="flex justify-center items-center mr-4 border border-[#00A264] text-[#00A264] p-2 rounded-full hover:bg-green-500 hover:text-white"
+                  className="flex justify-center items-center mr-4 border border-[#00A264] text-[#00A264] p-2 rounded-full hover:bg-[#00A264] hover:text-[#FFFFFF]"
                 >
                   <span className="pr-2">
-                  
+                    {/* {/ <CiSearch /> /} */}
                     <Image
                       src={"/images/userlock.png"}
                       priority
@@ -315,82 +390,12 @@ const Header: React.FC = () => {
                   Seafarers Login
                 </Link>
                 <Link
-                  href="#"
-                  className=" h-9 w-21  text-white bg-[#00A264] hover:bg-green-800 focus:outline-none focus:ring-1 focus:ring-green-800 font-medium rounded-full text-sm px-5 py-5 text-center me-2  dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 flex justify-center items-center"
+                  href="recruiter"
+                  className=" h-9 w-21  text-white bg-[#00A264] hover:bg-[#00A264] focus:outline-none focus:ring-1 focus:ring-[#00A264] font-medium rounded-full text-sm px-5 py-5 text-center me-2  dark:bg-[#00A264] dark:hover:bg-[#00A264] dark:focus:ring-[#00A264] flex justify-center items-center"
                 >
                   Post a Job
                 </Link>
               </li>
-
-              <div className=" flex items-center h-2 mt-8 ">
-                <div
-                  className="relative inline-block text-left"
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  {/* {/ Icon or button to trigger dropdown /} */}
-                  <button
-                    className="text-[3rem] flex justify-self-center text-center font-bold text-green-700  relative "
-                    type="button"
-                  >
-                    <HiOutlineDotsHorizontal className="w-15 h-10" />
-                  </button>
-
-                  {/* {/ Dropdown menu /} */}
-                  {isOpen && (
-                    <div
-                      className=" z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-48"
-                      id="dropdownHover"
-                    >
-                      <ul className="py-2  text-sm text-gray-700">
-                        <li>
-                          <Link
-                            href="/mentoring_details"
-                            className="block px-4 py-1 hover:bg-white hover:text-green-800"
-                          >
-                            Jobs & Career Advise
-                          </Link>
-                        </li>
-
-                        <li>
-                          <Link
-                            href="/resource_details"
-                            className="block px-4 py-1 hover:bg-white hover:text-green-800"
-                          >
-                            Resource
-                          </Link>
-                        </li>
-
-                        <li>
-                          <Link
-                            href="/podcast_list"
-                            className="block px-4 py-1 hover:bg-white hover:text-green-800"
-                          >
-                            Podcast & Interviews
-                          </Link>
-                        </li>
-
-                        <li>
-                          <Link
-                            href="/about"
-                            className="block px-4 py-1 hover:bg-white hover:text-green-800"
-                          >
-                            About Us
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/contact"
-                            className="block px-4 py-1 hover:bg-white hover:text-green-800"
-                          >
-                            Contact Us
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
-                  )}
-                </div>
-              </div>
             </ul>
           </div>
         )}

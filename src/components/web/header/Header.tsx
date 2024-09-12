@@ -25,12 +25,9 @@ const Header: React.FC = () => {
   };
 
   return (
-    
     <div className="  z-20 top-0 fixed w-full">
       <nav className="bg-white border-white dark:bg-white dark:border-black-700   ">
         <div className="lg:w-full w-[98%] text-25px font-[700px] leading-[37.5px] flex flex-wrap items-center justify-between  py-1 px-[1rem] sm:px-[3rem] lg:px-[2rem]   ">
-        
-
           <div className="flex items-center space-x-3 rtl:space-x-reverse">
             <div className="w-44 h-12 sm:w-[230px] sm:h-[55px] ">
               <Link href="/">
@@ -50,33 +47,45 @@ const Header: React.FC = () => {
               <div className="">
                 <div className=" relative inline-block px-3 text-left group ">
                   <li className="block  text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white  md:dark:hover:bg-transparent">
-                    <Link href="/resources" className="text-[16px]">Resources</Link>
+                    <Link href="/resources" className="text-[16px]">
+                      Resources
+                    </Link>
                   </li>
                 </div>
                 <div className=" relative inline-block px-3 text-left group ">
                   <li className="block  text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white  md:dark:hover:bg-transparent">
-                    <Link href="/podcast-list" className="text-[16px]">Podcast & Interviews</Link>
+                    <Link href="/podcast-list" className="text-[16px]">
+                      Podcast & Interviews
+                    </Link>
                   </li>
                 </div>
                 <div className=" relative inline-block px-3 text-left group ">
                   <li className="block  text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white  md:dark:hover:bg-transparent">
-                    <Link href="/about" className="text-[16px]">About Us</Link>
+                    <Link href="/about" className="text-[16px]">
+                      About Us
+                    </Link>
                   </li>
                 </div>
                 <div className=" relative inline-block px-3 text-left group ">
                   <li className="block  text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white  md:dark:hover:bg-transparent">
-                    <Link href="/contact" className="text-[16px]">Contact Us</Link>
+                    <Link href="/contact" className="text-[16px]">
+                      Contact Us
+                    </Link>
                   </li>
                 </div>
                 <div className="hidden relative inline-block px-3 text-left group ">
                   <li className="block  text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white  md:dark:hover:bg-transparent">
-                    <Link href="/jobs" className="text-[16px]">Jobs</Link>
+                    <Link href="/jobs" className="text-[16px]">
+                      Jobs
+                    </Link>
                   </li>
                 </div>
 
                 <div className="hidden relative inline-block pr-4 text-left group">
                   <li className="relative inline-block pr-4 text-left group  text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
-                    <Link href="/trainings" className="text-[16px]">Trainings</Link>
+                    <Link href="/trainings" className="text-[16px]">
+                      Trainings
+                    </Link>
                   </li>
                 </div>
 
@@ -172,7 +181,7 @@ const Header: React.FC = () => {
                 {/* <span className="text-[1.3rem]  border-1 border-red-950 flex justify-self-center text-center font-[1000] text-green-700  relative ">
                   <PiLineVertical />
                 </span> */}
-{/* 
+                {/* 
                 <li>
                   <Link
                     href="/agent-zone"

@@ -1,5 +1,3 @@
-
-
 import SearchBar from "@/components/web/searchbar/Searchbar";
 import Signup from "@/components/web/signup/Signup";
 import Companies from "@/components/web/companies/Companies";
@@ -17,9 +15,11 @@ import Articles from "@/components/web/articles/Articles";
 
 export default function Home() {
   return (
+
     <div className="flex flex-col  ">
       
       {/* <SearchBar /> */}
+
       <Signup />
       {/* <Companies /> */}
       <Status/>

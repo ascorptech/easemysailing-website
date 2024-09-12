@@ -2,9 +2,9 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import Heading5 from "@/components/web/our_partner/heading5/Heading5";
-import { Partner } from "../data/Partner";
 import Image from "next/image";
+import { PartnerCardProps, Partner } from "../data/Partner";
+import Heading5 from "@/components/web/our_partner/heading5/Heading5";
 const PartnerList: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 20; // Number of items per page
@@ -43,7 +43,7 @@ const PartnerList: React.FC = () => {
                   alt={`${item.name} logo`}
                   width={500} // You can set a specific width
                   height={400}
-                  className="h-12"
+                  className="h-12 "
                 />
               </div>
               <h3 className="text-base font-semibold mb-2">{item.name}</h3>

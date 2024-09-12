@@ -1,28 +1,15 @@
-"use client";
+
+import SignIn from "@/components/candidate/signin/SignIn";
 import React from "react";
-import MaerskLine from "@/components/recruiter/Dashboard/MaerskLine/MaerskLine";
-import Trending from "@/components/recruiter/Dashboard/CandidateByEMS/Trending";
-import FreshTalent from "@/components/recruiter/Dashboard/FreshTalent/freshTalent";
 
-interface DashboardProps {
-  sidebarToggle: boolean;
-  setSidebarToggle: (toggle: boolean) => void;
-}
-
-const Home: React.FC<DashboardProps> = ({ sidebarToggle }) => {
+type Props = {};
+const page = (props: Props) => {
   return (
-    <div
-      className={`${
-        sidebarToggle ? "  ml-64 " : ""
-      }  flex flex-col scrollbar-hide overflow-x-auto`}
-    >
-      
-      <MaerskLine />
-      <Trending />
-      <FreshTalent />
+    <div>
+    
+      <SignIn route={'recruiter'} />
       
     </div>
   );
-};
-
-export default Home;
+}
+export default page

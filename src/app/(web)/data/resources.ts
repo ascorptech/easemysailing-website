@@ -11,7 +11,7 @@ export interface ResourceCardProps {
 export const Resource: ResourceCardProps[] = [
   {
     id: "1",
-    logoSrc: "/images/r1.png",
+    logoSrc: "/images/details.png",
     date: "2020-01-01",
     title:
       "Lorem Ip sum is simply dummy text of the printing and typesetting industry.",
@@ -22,7 +22,7 @@ export const Resource: ResourceCardProps[] = [
   },
   {
     id: "2",
-    logoSrc: "/images/r2.png",
+    logoSrc: "/images/details.png",
     date: "2020-01-01",
     title:
       "Lorem Ip sum is simply dummy text of the printing and typesetting industry.",

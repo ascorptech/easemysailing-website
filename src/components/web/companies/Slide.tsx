@@ -1,78 +1,127 @@
 "use client";
+import React, { useRef, useEffect } from "react";
 import Image from "next/image";
-import React, { useState, useEffect } from "react";
-import { IoMdArrowBack } from "react-icons/io";
-import { IoMdArrowForward } from "react-icons/io";
 
-export default function Slide() {
-  const [slide, setSlide] = useState(0);
-  const [categories, setCategory] = useState([]);
+interface Card {
+  id: number;
+  logo: string;
+}
 
-  const fetchCategory = async () => {
-    const response = await fetch("http://localhost:3000/api/product");
-    const data = await response.json();
-    setCategory(data);
+const Slide = () => {
+  const card = useRef<HTMLDivElement>(null);
+
+  const cards: Card[] = [
+    {
+      id: 1,
+      logo: "/images/logo1.png",
+    },
+    {
+      id: 2,
+      logo: "/images/logo3.png",
+    },
+    {
+      id: 3,
+      logo: "/images/logo4.png",
+    },
+    {
+      id: 4,
+      logo: "/images/logo5.png",
+    },
+    {
+      id: 5,
+      logo: "/images/logo8.png",
+    },
+    {
+      id: 1,
+      logo: "/images/logo9.png",
+    },
+    {
+      id: 2,
+      logo: "/images/logo3.png",
+    },
+    {
+      id: 3,
+      logo: "/images/logo5.png",
+    },
+    {
+      id: 4,
+      logo: "/images/logo8.png",
+    },
+    {
+      id: 5,
+      logo: "/images/logo9.png",
+    },
+  ];
+
+  const scrollLeft = () => {
+    if (card.current) {
+      card.current.scrollBy({ left: -200, behavior: "smooth" });
+    }
+  };
+
+  const scrollRight = () => {
+    if (card.current) {
+      card.current.scrollBy({ left: 200, behavior: "smooth" });
+    }
+  };
+
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === "ArrowLeft") {
+      scrollLeft();
+    } else if (event.key === "ArrowRight") {
+      scrollRight();
+    }
   };
 
   useEffect(() => {
-    fetchCategory();
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, []);
 
-  const nextSlide = () => {
-    console.log(categories.length);
-    if (categories.length - 8 === slide) return false;
-    setSlide(slide + 2);
-  };
-
-  const prevSlide = () => {
-    if (slide === 0) return false;
-    setSlide(slide - 2);
-  };
-
   return (
-    <>
-      <div className="max-w-[1150px] mx-auto mt-3 ">
-        <div className="flex flex-row  justify-between">
-          <div className="flex justify-between items-center">
-            <div
-              className="cursor-pointer
-            flex justify-center items-center w-[30px] h-[30px] bg-[#e8e8f1] rounded-full mx-2 border-2"
-              onClick={prevSlide}
-            >
-              <IoMdArrowBack />
+    <div className=" lg:ml-[0rem]  relative flex items-center justify-center w-[90%] lg:w-[1328px] lg:h-[84px] lg:mt-4 ">
+      {/* Left Arrow */}
+      <button
+        onClick={scrollLeft}
+        className="absolute left-1 z-10 bg-[#D9D9D9] w-[23.6px] h-[23.6px]  rounded-full shadow-md ml-1  mr-2"
+      >
+        &lt;
+      </button>
+
+      {/* Carousel Wrapper */}
+      <div
+        ref={card}
+        className=" lg:mr-12 flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory ml-[2.4rem] lg:w-[1266px] lg:h-[84px]"
+      >
+        {cards.map((card) => (
+          <div key={card.id} className="flex lg:mb-2 lg:px-1 lg:w-[250px] lg:h-[84px] sm:w-[16.9%] ">
+            <div className="flex flex-col items-center justify-center bg-white rounded-lg border-2 shadow-md p-6 w-[129.8px] ">
+              <div className="   px-2 ">
+                {/* <img
+                  src={card.logo}
+                  alt="images not find"
+                  className="w-full h-full "
+                /> */}
+                <Image src={card.logo} width={150} height={150} priority alt="images not find" />
+              </div>
             </div>
           </div>
-          <div className="flex  overflow-hidden   ">
-            {categories.map((cat:any, index:number) => {
-              return (
-                <div
-                  style={{ transform: `translateX(-${slide * 100}%)` }}
-                  key={index}
-                  className="flex justify-center items-center w-[124px] mx-1 rounded-2xl border-2 shrink-0 duration-500"
-                >
-                  <img
-                    src={"http://localhost:3000/images/" + cat?.image} // Replace with your image path
-                    alt=""
-                    width={100} // Set to match the height
-                    height={100} // Ensure the aspect ratio is consistent
-                    className=""
-                  />
-                </div>
-              );
-            })}
-          </div>
-          <hr className="my-6 border-[1px]" />
-          <div className="flex justify-between items-center">
-            <div
-              className="cursor-pointer
-            flex justify-center items-center w-[30px] h-[30px] bg-[#e8e8f1] rounded-full mx-2 border-2"
-              onClick={nextSlide}
-            >
-              <IoMdArrowForward />
-            </div>
-          </div>
-        </div>
+        ))}
+
+        {/* Continue adding cards as needed */}
       </div>
-    </>
+
+      {/* Right Arrow */}
+      <button
+        onClick={scrollRight}
+        className="absolute right-1 mr-3 z-10 bg-[#D9D9D9] w-[23.6px] h-[23.6px] rounded-full shadow-md  "
+      >
+        &gt;
+      </button>
+    </div>
   );
-}
+};
+
+export default Slide;

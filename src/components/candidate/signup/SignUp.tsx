@@ -1,4 +1,3 @@
-// import { Link } from "react-router-dom";
 "use client";
 import Link from "next/link";
 import { MdOutlineEmail } from "react-icons/md";
@@ -10,12 +9,8 @@ import { FaRegUser } from "react-icons/fa";
 import { FaPhone } from "react-icons/fa";
 
 import { useState } from "react";
-// import LoginImg from "../Login/LoginImg";
-// import LoginImg from "../LoginImg";
 import LoginImg from "../image/LoginImg";
-// import LoginHeader from "@Shared/LoginHeader/LoginHeader";
 import LoginHeader from "@/app/Shared/LoginHeader/LoginHeader";
-// import Footer from "@Shared/Footer/Footer";
 import Footer from "@/app/Shared/Footer/Footer";
 
 const SignUp: React.FC = () => {
@@ -54,15 +49,6 @@ const SignUp: React.FC = () => {
       <LoginHeader />
       <div className=" flex items-center justify-center bg-[#EAEAEA]">
         <div className="bg-white overflow-hidden flex w-full h-auto">
-          {/* Illustration Section */}
-          {/* <div className="w-1/2 hidden md:flex items-center justify-center  bg-gray-100">
-          <img
-            src="./Images/user.jpg"
-            alt="Sign In Illustration"
-            className="w-full h-[517px] object-cover"
-          />
-        </div> */}
-
           <LoginImg />
 
           {/* Sign-Up Form Section */}
@@ -77,49 +63,52 @@ const SignUp: React.FC = () => {
               onSubmit={handleSubmit}
               className="items-center p-2 pr-2 pl-2 ml-20 w-full max-w-lg "
             >
-              <div className="mb-1">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-1"
-                  htmlFor="userName"
-                >
-                  First Name
-                </label>
-                <div className="relative flex items-center pl-8 ">
-                  <input
-                    id="userName"
-                    type="text"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                    className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    placeholder="Enter First Name"
-                    required
-                  />
-                  <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-green-600 text-white rounded-l-md">
-                    <FaRegUser />
-                  </span>
+              <div className="mb-1 flex">
+                <div>
+                  {" "}
+                  <label
+                    className="block text-gray-700 text-sm font-bold mb-1"
+                    htmlFor="userName"
+                  >
+                    First Name
+                  </label>
+                  <div className="relative flex items-center pl-8 ">
+                    <input
+                      id="userName"
+                      type="text"
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
+                      className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      placeholder="Enter First Name"
+                      required
+                    />
+                    <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-[#00A264] text-white rounded-l-md">
+                      <FaRegUser />
+                    </span>
+                  </div>
                 </div>
-              </div>
 
-              <div className="mb-1">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-1"
-                  htmlFor="lastName"
-                >
-                  Last Name
-                </label>
-                <div className="relative flex items-center pl-8 ">
-                  <input
-                    id="lastName"
-                    type="text"
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                    className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    placeholder="Enter Last Name"
-                    required
-                  />
-                  <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-green-600 text-white rounded-l-md">
-                    <FaRegUser />
-                  </span>
+                <div className="mb-1 ml-2">
+                  <label
+                    className="block text-gray-700 text-sm font-bold mb-1"
+                    htmlFor="lastName"
+                  >
+                    Last Name
+                  </label>
+                  <div className="relative flex items-center pl-8 ">
+                    <input
+                      id="lastName"
+                      type="text"
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
+                      className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      placeholder="Enter Last Name"
+                      required
+                    />
+                    <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-[#00A264] text-white rounded-l-md">
+                      <FaRegUser />
+                    </span>
+                  </div>
                 </div>
               </div>
 
@@ -141,7 +130,7 @@ const SignUp: React.FC = () => {
                     required
                   />
 
-                  <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-green-600 text-white rounded-l-md">
+                  <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-[#00A264] text-white rounded-l-md">
                     <MdOutlineEmail />
                   </span>
                 </div>
@@ -163,7 +152,7 @@ const SignUp: React.FC = () => {
                     placeholder="Enter Phone"
                     required
                   />
-                  <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-green-600 text-white rounded-l-md">
+                  <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-[#00A264] text-white rounded-l-md">
                     <FaPhone />
                   </span>
                 </div>
@@ -187,7 +176,7 @@ const SignUp: React.FC = () => {
                     required
                   />
 
-                  <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-green-600 text-white rounded-l-md">
+                  <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-[#00A264] text-white rounded-l-md">
                     <MdOutlineLock />
                   </span>
                   <span
@@ -217,7 +206,7 @@ const SignUp: React.FC = () => {
                     required
                   />
 
-                  <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-green-600 text-white rounded-l-md">
+                  <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-[#00A264] text-white rounded-l-md">
                     <MdOutlineLock />
                   </span>
                   <span
@@ -234,7 +223,7 @@ const SignUp: React.FC = () => {
 
                 <button
                   type="submit"
-                  className="w-full bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                  className="w-full bg-[#00A264] hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 >
                   Sign Up
                 </button>
@@ -244,18 +233,18 @@ const SignUp: React.FC = () => {
                     <input
                       id="rememberMe"
                       type="checkbox"
-                      className="h-4 w-4 text-green-500 focus:ring-green-800 border-gray-300 rounded"
+                      className="h-4 w-4 text-[#00A264] focus:ring-green-800 border-gray-300 rounded"
                     />
                     <label
                       htmlFor="You agree to our"
                       className="ml-2 block  text-sm "
                     >
                       You agree to our
-                      <Link href="/demo" className="text-green-600">
+                      <Link href="" className="text-[#00A264]">
                         Teams & Conditions
                       </Link>
                       and{" "}
-                      <Link href="#" className="text-green-600">
+                      <Link href="#" className="text-[#00A264]">
                         Privacy Policy.
                       </Link>
                     </label>
@@ -264,9 +253,9 @@ const SignUp: React.FC = () => {
               </div>
             </form>
 
-            <p className=" text-center font-semibold">
+            <p className=" text-center font-semibold mb-16">
               Already have on account?
-              <Link href="/" className="text-green-600 ">
+              <Link href="/" className="text-[#00A264] ">
                 Sign In as Candidate
               </Link>
             </p>

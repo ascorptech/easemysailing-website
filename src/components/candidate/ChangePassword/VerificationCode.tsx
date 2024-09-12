@@ -121,7 +121,7 @@ const VerificationCode: React.FC<VerificationCodeProps> = ({
         <div className="flex justify-center mb-6 mt-6">
           {emptyArr.map((_, i) => (
             <input
-              ref={(el) => (refs.current[i] = el)}
+              ref={(el:any) => (refs.current[i] = el)}
               type="text"
               key={i}
               value={inputs[i]}

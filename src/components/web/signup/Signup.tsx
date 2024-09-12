@@ -1,148 +1,151 @@
 "use client";
 import Image from "next/image";
 import react from "react";
+import Link from "next/link";
 
 const Signup = () => {
   const handleSubmit = () => {
-    //  error.preventDefault();
     // Handle form submission
     alert("Form submitted!");
   };
+
   return (
-    <div className=" flex items-center justify-between p-2 m-3 gap-5 bg-gray-100 border-2 border-grey ">
+    <div className=" flex flex-col  w-full lg:flex-row items-center justify-center   lg:mt-16  mt-[57px] px-2 lg:px-0  ">
       {/* Left Image Container */}
-      <div className="flex-1 flex items-center justify-center">
+      <div className="flex-1 flex items-center lg:ml-0 justify-center mb-3 lg:mb-0 w-full lg:w-[553px] lg:h-[366px]  ">
         <Image
-          src="/sign2.png" // Replace with your image path
+          src="/left.png" // Replace with your image path
           alt="Left Image"
-          width={500} // Set to match the height
-          height={500} // Ensure the aspect ratio is consistent
-          className="object-cover w-full"
+          width={800}
+          height={800}
+          // Ensure the aspect ratio is consistent
+          className="object-cover w-full h-full "
         />
       </div>
 
       {/* Middle Content Container */}
-      <div className=" m-2  justify-center text-center w-[33%]">
-        <div>
-          <p className="text-green-700 text-lg font-semibold mb-3">
-            Your smooth salling starts from here
-          </p>
-          <p className="text-sm text-gray-700 mb-3 ">
-            <span className="mt-3">
-              Create an account or sign in, By contiuing,you agree to our
-            </span>{" "}
-            <span className="text-green-700">Terms of use</span> and acknowledge
-            Our <span className="text-green-700">Privacy Policy.</span>
+      <div className="w-full  lg:w-[35%] text-center px-4 lg:mb-7  flex flex-col items-center justify-center  ">
+        <div className="flex flex-col justify-center items-center ">
+          <h2 className="text-[#00A264] text-[24px] leading-[36px] font-[600] mb-1">
+            Your smooth sailing starts from here
+          </h2>
+          <p className="text-[13px] leading-[19.5px] font-[400px] text-gray-700 lg:text-center ">
+            Create an account or sign in. By continuing, you agree to our
+            <Link href="/terms">
+              <span className="text-[#00A264]"> Terms of Use </span>
+            </Link>
+             and acknowledge our 
+            <Link href="/privacy-policy">
+              <span className="text-[#00A264]"> Privacy Policy.</span>
+            </Link>
           </p>
         </div>
 
-        <div>
-          <button
-            type="button"
-            className="text-black bg-white border border-green-800 hover:bg-green-600 focus:ring-1 focus:outline-none focus:ring-green-8 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-green-800 me-2 mb-2"
+        <div className="-mb-2 flex justify-center items-center lg:mt-2  md:lg:h-[75px]  gap-2 w-full  ">
+          <Link
+            href="#"
+            className="text-black bg-white border border-[#181919]  focus:ring-1 focus:outline-none focus:ring-[#181c1a] font-medium rounded-lg text-[13px] px-2 py-2.5 inline-flex items-center mb-2 w-full lg:w-[220px] lg:h-[45px]"
           >
-            <svg
-              className="w-4 h-4 me-2"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 18 19"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M8.842 18.083a8.8 8.8 0 0 1-8.65-8.948 8.841 8.841 0 0 1 8.8-8.652h.153a8.464 8.464 0 0 1 5.7 2.257l-2.193 2.038A5.27 5.27 0 0 0 9.09 3.4a5.882 5.882 0 0 0-.2 11.76h.124a5.091 5.091 0 0 0 5.248-4.057L14.3 11H9V8h8.34c.066.543.095 1.09.088 1.636-.086 5.053-3.463 8.449-8.4 8.449l-.186-.002Z"
-                clip-rule="evenodd"
-              />
-            </svg>
-            Sign in with Google
-          </button>
-
-          <button
-            type="button"
-            className="text-black bg-white hover:bg-green-600 focus:ring-1 focus:outline-none focus:ring-green-8 font-medium border border-green-800 rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-green-800 me-2 mb-2"
-          >
-            <svg
-              className="w-4 h-4 me-2"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 8 19"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z"
-                clip-rule="evenodd"
-              />
-            </svg>
-            Sign in with Facebook
-          </button>
-
-          <div className="">
-            <hr
-              className=" border-1 mt-2 border-black mb-3 flex text-center items-center w-[95%] ml-1.5"
-              data-content="OR"
+            <Image
+              src="/google.png"
+              alt="Google Logo"
+              width={20}
+              height={20}
+              className="w-[33px] h-[32.8px] me-2"
             />
-          </div>
-          {/* <span className="relative mb-9">or</span> */}
-          <div>
-            <div className="  p-1 bg-white mt-2 mx-auto">
-              <form
-                className="flex items-center space-x-4"
-                onSubmit={handleSubmit}
-              >
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className=" px-3 py-2  border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  required
-                />
-                <button
-                  type="submit"
-                  className=" w-[11rem] h-[2.5rem] bg-green-700 text-white rounded-lg hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                >
-                  Continue with Email
-                </button>
-              </form>
-            </div>
+            Continue with Google
+          </Link>
 
-            <div className="flex space-x-4 justify-center mt-4">
-              {/* Google Play Button */}
-              <a
-                href="https://play.google.com/store/apps/details?id=YOUR_APP_ID"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center  text-white rounded-lg shadow-md hover:bg-gray-900"
-              ><img src="./play.png" alt="image not found" className="w-40 h-[2rem]]"/>
-               
-              </a>
+          <Link
+            href="#"
+            className="text-black bg-white  focus:ring-1 focus:outline-none focus:ring-[#111312] font-medium border border-[#08100d] rounded-lg text-[13px] px-2 py-2.5 inline-flex items-center mb-2 w-full lg:w-[220px] lg:h-[45px] "
+          >
+            <Image
+              src="/facebook.png"
+              alt="Facebook Logo"
+              width={20}
+              height={20}
+              className="w-[33px] h-[32.8px] me-2"
+            />
+            Continue with Facebook
+          </Link>
+        </div>
 
-              {/* App Store Button */}
-              <a
-                href="https://apps.apple.com/us/app/your-app-id"
-                target="/play.png"
-                rel="noopener noreferrer"
-                className="flex items-center mr-2  text-white rounded-lg shadow-md hover:bg-gray-800"
-              >
-                <img src="./apple.png" alt="image not found" className="w-40 h-[3rem]"/>
-                  
-                
-                
-              </a>
-            </div>
-          </div>
+        <div className="w-full flex flex-row items-center flex-shrink-0 justify-center mt-4">
+          <hr
+            className="border-1 border-black mb-3 w-[150px] sm:w-[280px] lg:w-[209px]"
+            data-content="OR"
+          />
+
+          <span className="text-[14px] w-[17px] h-[21px] pb-8 mx-1">Or</span>
+          <hr
+            className="border-1 border-black mb-3 w-[150px] sm:w-[280px] lg:w-[209px]"
+            data-content="OR"
+          />
+        </div>
+
+        <div className="w-full lg:w-[94%] flex flex-row items-center  lg:mb-5 ">
+          <form
+            className="w-full  flex flex-col lg:flex-row justify-evenly items-center space-y-4 lg:space-y-0 md:lg:space-x-4"
+            onSubmit={handleSubmit}
+          >
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className=" w-full px-3  border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+              style={{ minHeight: "2.5rem" }} // Ensures consistent height
+            />
+            <Link
+              href="#"
+              className="block w-full text-sm  bg-[#00A264] text-white rounded-lg hover:bg-[#00A264] px-1 py-3  text-center"
+              style={{ minHeight: "2.5rem" }} // Ensures consistent height
+            >
+              Continue with Email
+            </Link>
+          </form>
+        </div>
+
+        <div className="flex lg:flex-row lg:w-[364px] lg:[53px] justify-center  items-center mt-4 lg:mt-1 space-y-0 lg:space-y-0 lg:space-x-1">
+          {/* Google Play Button */}
+          <Link
+            href="https://play.google.com/store/apps/details?id=YOUR_APP_ID"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center text-white w-full lg:w-auto"
+          >
+            <img
+              src="./play.png"
+              alt="Google Play"
+              className="w-auto lg:w-[178px] h-[53px]"
+            />
+          </Link>
+
+          {/* App Store Button */}
+          <Link
+            href="https://apps.apple.com/us/app/your-app-id"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center text-white  w-full lg:w-auto"
+          >
+            <img
+              src="./apple.png"
+              alt="App Store"
+              className="w-[178px] h-[53px]"
+            />
+          </Link>
         </div>
       </div>
 
       {/* Right Image Container */}
-      <div className="flex-1 flex items-center justify-center ">
-        {" "}
-        {/*border-2 border-red-500 w-full*/}
+      <div className="flex-1 flex items-center lg:ml-0 justify-center mt-3 md:lg:mt-0 lg:mb-0 w-full lg:w-[553px] lg:h-[366px]">
         <Image
-          src="/sign1.png" // Replace with your image path
-          alt="Right Image"
-          width={500} // Set to match the height
-          height={500} // Ensure the aspect ratio is consistent
-          className="object-cover w-full"
+          src="/workerhome.png" // Replace with your image path
+          alt="worker Image"
+          width={800}
+          height={800}
+          // Ensure the aspect ratio is consistent
+          className="object-cover w-full h-full "
         />
       </div>
     </div>

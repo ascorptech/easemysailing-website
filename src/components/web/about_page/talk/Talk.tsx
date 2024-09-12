@@ -1,66 +1,90 @@
+// import Image from "next/image";
+
+// const Talk = () => {
+//   return (
+//     <div className=" w-full mt-32 flex justify-center items-center">
+//       <div className=" my-4 mx-1 flex flex-col items-center justify-center p-4 md:flex-row md:items-start md:space-x-8 lg:space-x-4  lg:w-[1267px] lg:h-[495px]">
+//         <div className="flex justify-center   lg:w-[486px] lg:h-[459px]">
+//           <Image
+//             src="/aboutleft.png" // Replace with your image path
+//             alt="Left Image"
+//             width={5000}
+//             height={5050}
+//             className=" md:max-w-[23rem] pt-2 mt-2 "
+//           />
+//         </div>
+//         <div className="w-full max-w-[45rem] lg:text-justify text-center md:text-left mt-4 md:mt-0 lg:w-[681px] lg:h-[386px] ">
+//           <h1 className="text-3xl md:text-4xl lg:text-[46px] leading-[62px] font-semibold">
+//             Let's talk about{" "}
+//             <span className="text-[#00A264] font-semibold leading-[62px]">
+//               EaseMy
+//               <br />
+//               Sailing
+//             </span>
+//           </h1>
+//           <br />
+//           <p className="text-[16px] leading-[28px] md:text-base lg:text-[18px] lg:leading-[28px] mt-2 px-2 text-[#4E4E4E]">
+//           EaseMySailing is a platform created by seafarers, for seafarers, built on empathy for life at sea and its unique challenges and joys. The team behind it has navigated the seas from trainees to top ranks, experiencing the sacrifices, dreams, and determination of those who choose a life on the ocean.
+
+//           </p>
+         
+//           <p className="text-sm md:text-base  px-2 text-[#4E4E4E] mt-4 lg:text-[18px] lg:leading-[28px]">
+//           EaseMySailing aims to bring the life of seafarers into the spotlight, highlighting the vital role they play and the challenges they face. The platform is dedicated to promoting sustainable practices, enhancing the well-being of seafarers, and ensuring that their voices are heard and respected. We also seek to foster better understanding and collaboration among all maritime stakeholders, including shipowners and recruiters, to create a more supportive and efficient industry environment.
+//           </p>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Talk;
 import Image from "next/image";
+
 const Talk = () => {
   return (
-    <div>
-      <div className="h-[18rem] my-4 flex items-center justify-center ">
-        <div>
+    <div className="  mt-11 lg:mt-32 flex justify-center items-center">
+      <div className="w-full ml-4 my-4 md:mx-1 flex flex-col items-center justify-center md:p-4 md:flex-row md:items-start md:space-x-8 lg:space-x-4  lg:w-[1267px] lg:h-[495px]">
+        <div className="flex justify-center   lg:w-[486px] lg:h-[459px]">
           <Image
             src="/aboutleft.png" // Replace with your image path
             alt="Left Image"
-            width={5000} // Set to match the height
-            height={5050} // Ensure the aspect ratio is consistent
-            className="w-[25rem] h-30 md:w-[23rem] md:h-[20rem] pt-2 mt-2 "
+            width={5000}
+            height={5050}
+            className="w-[23rem] md:max-w-[23rem] pt-2 mt-2"
           />
         </div>
-        <div className="w-[45rem] justify-center  text-justify ml-[6rem]">
-          <h1 className="text-5xl font-semibold">
-            {" "}
-            Let's talk about{" "}
-            <span className="text-green-700 font-semibold">
+        <div className="w-full  md:max-w-[45rem] lg:text-justify text-center md:text-left mt-4 md:mt-0 lg:w-[681px] lg:h-[386px] ">
+          <h1 className="text-[28px] md:text-4xl lg:text-[46px] leading-[62px] font-semibold">
+            Let's talk about
+            <span className="text-[#00A264] font-semibold leading-[62px]">
               EaseMy
-              <br />
+             
               Sailing
             </span>
           </h1>
           <br />
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet,
-            iure fugiat labore eius vero ad quo velit voluptate dolores enim
-            odio dignissimos placeat tempora doloremque. Sit soluta omnis nobis
-            rerum.
+          <p className="text-[16px] leading-[28px] md:text-base lg:text-[18px] lg:leading-[28px] mt-2 px-2 text-[#4E4E4E]">
+            EaseMySailing is a platform created by seafarers, for seafarers,
+            built on empathy for life at sea and its unique challenges and joys.
+            The team behind it has navigated the seas from trainees to top
+            ranks, experiencing the sacrifices, dreams, and determination of
+            those who choose a life on the ocean.
           </p>
-          <br />
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate,
-            impedit, mollitia deserunt aliquid incidunt reprehenderit quasi
-            eveniet voluptatibus cumque et voluptatum deleniti adipisci saepe
-            quae dignissimos totam aliquam assumenda exercitationem!
+
+          <p className="text-sm md:text-base px-2 text-[#4E4E4E] mt-4 lg:text-[18px] lg:leading-[28px]">
+            EaseMySailing aims to bring the life of seafarers into the
+            spotlight, highlighting the vital role they play and the challenges
+            they face. The platform is dedicated to promoting sustainable
+            practices, enhancing the well-being of seafarers, and ensuring that
+            their voices are heard and respected. We also seek to foster better
+            understanding and collaboration among all maritime stakeholders,
+            including shipowners and recruiters, to create a more supportive and
+            efficient industry environment.
           </p>
         </div>
       </div>
-      
     </div>
-  // );
-  // return(
-  //   <div className="flex flex-col justify-center items-center">
-  //     <div className="container flex sm:md:flex-row flex-col">
-  //     <div className="flex sm:md:w-1/2 w-full">
-  //     <Image
-  //     src="/aboutleft.png" // Replace with your image path
-  //     alt="Left Image"
-  //     width={500} // Set to match the height
-  //     height={500} // Ensure the aspect ratio is consistent
-  //     className="w-full"
-  //     priority
-  //     />
-  //     </div>
-  //     <div className="flex sm:md:w-1/2 w-full">
-  //     <h1>Let’s Talk About <span>EaseMy
-  //     Sailing</span> </h1>
-  //     </div>
-  //     </div>
-  //   </div>
-  )
+  );
 };
 
 export default Talk;

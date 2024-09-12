@@ -1,7 +1,9 @@
-// components/PartnersSection.tsx
-import React from "react";
+"use client";
+import React, { useRef } from "react";
 import PartnerCard from "./PartnerCard";
 import Link from "next/link";
+import { IoMdArrowBack } from "react-icons/io";
+import { IoMdArrowForward } from "react-icons/io";
 
 const PartnersSection = () => {
   const partners = [
@@ -63,16 +65,40 @@ const PartnersSection = () => {
     },
   ];
 
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollLeft = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({
+        left: -200, // Adjust the value for smooth scrolling
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({
+        left: 200, // Adjust the value for smooth scrolling
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
-    <section className="mt-7 w-[97%] mx-7 lg:mx-1 md:mx-6 ">
-      <div className="flex items-center justify-between mt-4 pt-4 lg:mr-[10%] md:mx-[3rem] ">
-        <div className="font-bold text-2xl lg:ml-[8rem] ">
+    // <section className="w-[94%]  ml-1 md:mx-6 px-1 sm:mx-5 lg:w-[98%] lg:mx-0">
+    <div className="mt-7 w-[94%] mx-3 px-1   md:mx-6 lg:w-full lg:mx-0 sm:mx-5">
+      {/* <div className="flex items-center  justify-between pt-4 lg:mr-[8%] md:mx-[3rem]"> 
+      */}
+      <div className="flex items-center justify-between mt-4 pt-4 lg:mr-[8%] md:mx-[3rem]">
+        {/* <div className="font-bold text-2xl  lg:ml-[4rem]"> */}
+        <div className="font-bold text-2xl lg:ml-[4rem]">
           <h1>
             <span>Our</span> <span className="text-green-700">Partners</span>
           </h1>
         </div>
         <div>
-          <Link href="/partner_details">
+          <Link href="/partner-details">
             <button className="h-8 bg-green-600 text-white py-1 px-4 rounded-lg text-sm mb-2">
               View All
             </button>
@@ -80,22 +106,55 @@ const PartnersSection = () => {
         </div>
       </div>
 
-      {/* new code resposive */}
+      {/* <div className=" lg:ml-[2rem] relative flex items-center justify-center w-[97%]  "> */}
+      <div className=" lg:ml-[4rem] relative flex items-center justify-center w-[90%]  border-2 border-red-600">
+        {/* {/ Left Arrow /} */}
+        {/* <button
+          onClick={scrollLeft}
+          className="absolute left-1 lg:left-10 z-10 p-2 bg-white border rounded-full shadow-md ml-1 lg:ml-2 mr-2"
+        >
+          &lt;
+        </button> */}
+         <button
+        onClick={scrollLeft}
+        className="absolute left-1  z-10 bg-[#D9D9D9] w-[23.6px] h-[23.6px] rounded-full shadow-md ml-1 lg:ml-2 mr-2"
+      >
+        &lt;
+      </button>
 
-      <div className=" overflow-x-auto flex space-x-4 no-scrollbarr lg:ml-[4rem] scroll-smooth snap-x snap-mandatory lg:mx-[1rem] mx-[2rem] ml-[3rem]  w-[90%]">
-        {partners.map((partner, index) => (
-          <PartnerCard
-            key={index}
-            name={partner.name}
-            reviews={partner.reviews}
-            rating={partner.rating}
-            contactPerson={partner.contactPerson}
-            description={partner.description}
-            logoSrc={partner.logoSrc}
-          />
-        ))}
+        {/* {/ Partner Cards Scroll Container /} */}
+        <div
+          ref={scrollRef}
+          className="overflow-x-auto flex space-x-4 lg:mx-[4rem] no-scrollbar mx-[5rem] scroll-smooth snap-x snap-mandatory lg:w-[90%] w-[97%] border-2 border-red-400"
+        >
+          {partners.map((partner, index) => (
+            <PartnerCard
+              key={index}
+              name={partner.name}
+              reviews={partner.reviews}
+              rating={partner.rating}
+              contactPerson={partner.contactPerson}
+              description={partner.description}
+              logoSrc={partner.logoSrc}
+            />
+          ))}
+        </div>
+
+        {/* {/ Right Arrow /} */}
+        {/* <button
+          onClick={scrollRight}
+          className="absolute right-1 lg:right-20  z-10 p-2 bg-white border rounded-full shadow-md  lg:-mr-1"
+        >
+          &gt;
+        </button> */}
+        <button
+        onClick={scrollRight}
+        className="absolute right-1 mr-3 z-10 bg-[#D9D9D9] w-[23.6px] h-[23.6px] rounded-full shadow-md  "
+      >
+        &gt;
+      </button>
       </div>
-    </section>
+    </div>
   );
 };
 

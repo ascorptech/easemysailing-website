@@ -1,6 +1,7 @@
 "use client"
 
 import { FaBars } from "react-icons/fa6";
+import Link from "next/link";
 // import { SiApollographql } from "react-icons/si";
 import { RiExchangeDollarLine } from "react-icons/ri";
 // import { MdNotificationAdd } from "react-icons/md";
@@ -25,15 +26,15 @@ const Header: React.FC<HeaderProps> = ({ sidebarToggle, setSidebarToggle }) => {
         <div className="flex items-center gap-2 mr-9 font-semibold text-md">
           <div className="flex items-center gap-2 cursor-pointer">
             <RiExchangeDollarLine className="text-xl text-green-500 " />
-            <a href="#" className=" underline ">
+            <Link href="#" className=" underline ">
               Subscription
-            </a>
+            </Link>
           </div>
           <div className="flex items-center gap-2 cursor-pointer ">
             <RiExchangeDollarLine className="text-xl text-green-500 " />
-            <a href="#" className=" underline ">
+            <Link href="#" className=" underline ">
               Rating By sailors
-            </a>
+            </Link>
           </div>
         </div>
       </div>

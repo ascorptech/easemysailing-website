@@ -145,7 +145,7 @@ const Slides2: React.FC = () => {
               <h3 className="text-lg font-semibold truncate">
                 {vacancy.companyName}
               </h3>
-              <p className="text-sm text-green-600 truncate">
+              <p className="text-sm text-[#00A264] truncate">
                 {vacancy.roleType}
               </p>
               <p className="text-sm truncate">{vacancy.ship}</p>

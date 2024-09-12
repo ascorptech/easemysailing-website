@@ -1,5 +1,6 @@
 "use client";
 // /components/MentoringList.tsx
+import Image from "next/image";
 import React, { useState } from "react";
 
 interface VideoProps {
@@ -58,11 +59,25 @@ const PodcastList: React.FC = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-3 gap-5 py-4 ">
+     
+      <div  className=" lg:h-[500px] mb-8">
+        <iframe
+          width="100%"
+          height="100%"
+          src={`https://www.youtube.com/embed/lm6CLMLSZBc`}
+          title={`YouTube video`}
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          
+        ></iframe>
+      </div>
+
+      <div className="grid lg:grid-cols-3 lg:gap-5 lg:py-4 grid-cols-1  gap-5 lg:mt-5 mt-3 sm:grid-cols-2 ">
         {currentItems.map((item, index) => (
           <div
             key={index}
-            className="w-full border-4 rounded-lg border-black mb-8 h-[200px]"
+            className="w-full border-4 rounded-lg border-black mb-8  h-[200px]"
           >
             <iframe
               width="100%"
@@ -73,7 +88,8 @@ const PodcastList: React.FC = () => {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             ></iframe>
-            <p className="flex justify-center my-1">
+            {/* <p className="flex justify-center my-1"> */}
+            <p className="text-center my-1">
               Cruise ship Interviews questions & answers !
             </p>
           </div>
@@ -84,19 +100,19 @@ const PodcastList: React.FC = () => {
       <div className="flex justify-center items-center text-sm mt-4 mb-4">
         <button
           onClick={handlePreviousPage}
-          className="px-2 py-1 mr-2 bg-green-600 text-white rounded-lg"
+          className="px-2 py-1 mr-2 bg-[#00A264] text-white rounded-lg"
           disabled={currentPage === 1}
         >
           Previous
         </button>
 
-        <span className="text-green-700">
+        <span className="text-[#00A264]">
           Page {currentPage} of {totalPages}
         </span>
 
         <button
           onClick={handleNextPage}
-          className="px-2 py-1 ml-2 bg-green-600 text-white rounded-lg"
+          className="px-2 py-1 ml-2 bg-[#00A264] text-white rounded-lg"
           disabled={currentPage === totalPages}
         >
           Next

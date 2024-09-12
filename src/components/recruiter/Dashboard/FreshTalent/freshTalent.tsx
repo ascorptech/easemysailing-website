@@ -10,7 +10,7 @@ const FreshTalent = () => {
         </div>
         {/* <div> */}
         {/* <Link href="/trendingjob"> */}
-        <button  type="button" className="h-8 bg-green-600 text-white py-1 px-4 rounded-lg text-sm ">
+        <button  type="button" className="h-8 bg-[#00A264] text-white py-1 px-4 rounded-lg text-sm ">
           View All
         </button>
         {/* </Link> */}

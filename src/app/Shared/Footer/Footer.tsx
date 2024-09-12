@@ -1,135 +1,144 @@
 import { FiPhone } from "react-icons/fi";
+import Link from "next/link";
 import { MdOutlineMail } from "react-icons/md";
-import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaWhatsapp, FaTwitter, FaXingSquare } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="bg-teal-100 p-4 text-sm pl-10 text-gray-700  ">
-      <div className="container mx-auto  grid grid-cols-1 md:grid-cols-4 gap-16">
+    <footer className="bg-teal-100 p-4 text-sm md:pl-10 text-gray-700 w-full ">
+      <div className="container mx-auto  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
         {/* Brand and Description */}
 
-        <div>
-          <h2 className="text-2xl font-bold">
-            EaseMy<span className="text-green-600">Sailing</span>
-          </h2>
-          <p className="mt-4 mr-14">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard.
-          </p>
+        <div className="flex flex-col justify-start -mt-10">
+           {/* <div className="w-[70%] md:w-[240px] h-12 md:h-[65px]"> */}
+              <Link href="/" className="">
+                <Image
+                  src="/images/logo_1.png"
+                  alt="EaseMySailing Logo"
+                  className="object-contain h-full w-full sm:md-ml-9 -ml-12"
+                  width={800}
+                  height={800}
+                />
+              </Link>
+            {/* </div> */}
+          <p className="-mt-5 mr-14 text-justify">
+          EaseMySailing is a platform created by seafarers, for seafarers, built on empathy for life at sea and its unique challenges and joys.
+           <Link href="/about" className="text-[#00A264] font-semibold"> Read More</Link></p>
           <p className="mt-4 font-semibold">
             Are You a vender?{" "}
-            <a className="text-green-600 underline">Join Us</a>
+            <Link href="#" className="font-bold text-[#00A264] underline">
+              Join Us
+            </Link>
           </p>
         </div>
 
         {/* Quick link */}
 
-        <div className="ml-12">
+        <div className=" md:ml-12">
           <h3 className="text-lg text-green-600 font-semibold">Quick link</h3>
           <ul>
             <li className="mt-2">
-              <a href="#" className=" hover:text-green-600">
+              <Link href="/" className=" hover:text-green-600">
                 Home
-              </a>
+              </Link>
             </li>
             <li className="mt-2">
-              <a href="#" className="hover:text-green-600">
+              <Link href="/about" className="hover:text-green-600">
                 About
-              </a>
+              </Link>
             </li>
             <li className="mt-2">
-              <a href="#" className="hover:text-green-600">
+              <Link href="/toprecruiting" className="hover:text-green-600">
                 Recruiter
-              </a>
+              </Link>
             </li>
             <li className="mt-2">
-              <a href="#" className="hover:text-green-600">
+              <Link href="/career" className="hover:text-green-600">
                 Careers
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
         {/* Help */}
 
-        <div className="ml-12">
+        <div className="md:ml-12">
           <h3 className="text-lg text-green-600 font-semibold">Help</h3>
           <ul>
             <li className="mt-2">
-              <a href="#" className="hover:text-green-600">
+              <Link href="/privacy-policy" className="hover:text-green-600">
                 Privacy Policy
-              </a>
+              </Link>
             </li>
-            <li className="mt-2">
-              <a href="#" className="hover:text-green-600">
+            {/* <li className="mt-2">
+              <Link href="/gdpr" className="hover:text-green-600">
                 GDPR & Privacy Policy
-              </a>
-            </li>
+              </Link>
+            </li> */}
             <li className="mt-2">
-              <a href="#" className="hover:text-green-600">
+              <Link href="/terms" className="hover:text-green-600">
                 Terms and conditions
-              </a>
+              </Link>
             </li>
             <li className="mt-2">
-              <a href="#" className="hover:text-green-600">
+              <Link href="/faq" className="hover:text-green-600">
                 FAQ
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
 
-        <div className="ml-10">
+        <div className="md:ml-10">
           <h3 className="text-lg text-green-600 font-semibold">
             Connect with Us
           </h3>
           <ul>
             <li className="mt-2">
-              <a href="#" className="flex items-center hover:text-green-600">
+              <Link href="#" className="flex items-center hover:text-green-600">
                 <span className="text-green-600 mr-1">
                   <FiPhone />
                 </span>
                 (01) xxx xxx xxxx
-              </a>
+              </Link>
             </li>
             <li className="mt-2">
-              <a href="#" className="flex items-center hover:text-green-600">
+              <Link href="#" className="flex items-center hover:text-green-600">
                 <span className="text-green-600 mr-1">
                   <MdOutlineMail />
                 </span>
                 example@gmail.com
-              </a>
+              </Link>
             </li>
             <li className="mt-2">
-              <a href="#" className="flex items-center hover:text-green-600">
-                <a href="#" className="text-green-600">
-                  🌐
-                </a>
-                www.easemysailing.au
-              </a>
+              <Link href="#" className="flex items-center hover:text-green-600">
+                <span className="text-green-600 mr-1">🌐</span>
+                www.easemysailing.com
+              </Link>
             </li>
           </ul>
           <div className="mt-4 flex p-1 space-x-1 items-center">
             <h2 className="font-semibold">Follow Us :</h2>
-            <a href="#" className="text-green-600">
+            <Link href="#" className="text-green-600">
               <FaFacebook />
-            </a>
-            <a href="#" className="text-green-600">
+            </Link>
+            <Link href="#" className="text-green-600">
               <FaInstagram />
-            </a>
-            <a href="#" className="text-green-600">
-              <FaWhatsapp />
-            </a>
+            </Link>
+            <Link href="#" className="text-green-600">
+              <FaXTwitter />
+            </Link>
           </div>
         </div>
       </div>
-      {/* <hr className=" border-spacing-1 border-green-400 ml-[-2.4rem] mr-[-1rem] mt-3  "></hr>
-      <div className="mt-4 flex justify-between items-center ">
-        <p>Copyright © 2023 | All Rights Reserved</p>
+      <div className="w-full  border-spacing-1 border-green-400 mt-3 border "></div>
+      <div className="mt-4 flex justify-center items-center ">
+        <span>
+          Copyright © {new Date().getFullYear()} | All Rights Reserved
+        </span>
 
-        <p className="font-semibold">
-          Designed with <span className="text-red-500">❤</span>
-          <span className="text-green-600 mr-10">by YES IT Labs LLC</span>
-        </p>
-      </div> */}
+        
+      </div>
     </footer>
   );
 };

@@ -1,25 +1,23 @@
 "use client";
-
 import Link from "next/link";
-
 import { IoCallOutline } from "react-icons/io5";
 import { GoEye } from "react-icons/go";
 import { MdOutlineLock } from "react-icons/md";
-
-import ForgotPassword from "@/components/candidate/changepassword/ForgotPassword";
-import VerificationCode from "@/components/candidate/changepassword/VerificationCode";
-import VerificationOpt from "@/components/candidate/changepassword/VerificationOpt";
-import Congratulations from "@/components/candidate/changepassword/Congratulations";
-
 import { useState } from "react";
-
 import LoginImg from "@/components/candidate/image/LoginImg";
-import ResetPassword from "@/components/candidate/changepassword/ResetPassword";
-import PasswordChange from "@/components/candidate/changepassword/PasswordChange";
 import LoginHeader from "@/app/Shared/LoginHeader/LoginHeader";
 import Footer from "@/app/Shared/Footer/Footer";
+import ForgotPassword from "../ChangePassword/ForgotPassword";
+import VerificationOpt from "../ChangePassword/VerificationOpt";
+import VerificationCode from "../ChangePassword/VerificationCode";
+import Congratulations from "../ChangePassword/Congratulations";
+import ResetPassword from "../ChangePassword/ResetPassword";
+import PasswordChange from "../ChangePassword/PasswordChange";
 
-const SignIn = () => {
+type Props = {
+  route: string;
+};
+const SignIn = ({ route }: Props) => {
   const [emailOrPhone, setEmailOrPhone] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -90,14 +88,14 @@ const SignIn = () => {
   return (
     <div className="flex flex-col">
       <LoginHeader />
-      <div className="flex items-center justify-center bg-gray-100 ">
+      <div className="flex items-center justify-center bg-gray-100   ">
         <div className="flex w-full h-auto overflow-hidden bg-white">
           <LoginImg />
 
           {/* Sign-In Form Section */}
           <div className="w-full md:w-1/2 p-7 bg-[#EAEAEA]  ">
-            <h2 className="mt-8 mb-2 text-2xl font-bold text-center">
-              Sign In as Candidate
+            <h2 className="mt-12 mb-2 text-2xl font-bold text-center">
+              Sign In as {route == "candidate" ? "Candidate" : "Recruiter"}
             </h2>
             <p className="mb-4 text-center text-gray-600">
               Enter your credential to access your account.
@@ -114,7 +112,6 @@ const SignIn = () => {
                   Enter Registered Email/Phone
                 </label>
                 <div className="relative flex items-center pl-8 ">
-                  {/* <span className="p-2 bg-green-600 border-2"></span> */}
                   <input
                     id="emailOrPhone"
                     type="text"
@@ -124,7 +121,7 @@ const SignIn = () => {
                     placeholder="Email/Phone"
                     required
                   />
-                  <span className="absolute inset-y-0 left-0 flex items-center p-3 text-white bg-green-600 rounded-l-md">
+                  <span className="absolute inset-y-0 left-0 flex items-center p-3 text-white bg-[#00A264] rounded-l-md">
                     <IoCallOutline />
                   </span>
                 </div>
@@ -148,7 +145,7 @@ const SignIn = () => {
                     required
                   />
 
-                  <span className="absolute inset-y-0 left-0 flex items-center p-3 text-white bg-green-600 rounded-l-md">
+                  <span className="absolute inset-y-0 left-0 flex items-center p-3 text-white bg-[#00A264] rounded-l-md">
                     <MdOutlineLock />
                   </span>
                   <span
@@ -184,22 +181,29 @@ const SignIn = () => {
                 </Link>
               </div>
 
-              <div>
-                <button
-                  type="submit"
-                  className="w-full px-4 py-2 font-bold text-white bg-green-500 rounded hover:bg-green-700 focus:outline-none focus:shadow-outline"
-                >
-                  Sign in
-                </button>
-              </div>
+              <Link
+                href={
+                  route == "candidate"
+                    ? "/candidate/dashboard"
+                    : "/recruiter/dashboard"
+                }
+                className="block w-full px-4 py-2 text-white bg-[#00A264] text-center hover:bg-[#00A264] font-bold rounded focus:outline-none focus:shadow-outline "
+              >
+                Sign in
+              </Link>
             </form>
 
-            <p className="mt-2 text-center">
-              Don’t have an account?
-              <Link href={"signup"} className="text-green-600 hover:underline">
-                Sign Up
-              </Link>
-            </p>
+            {route == "candidate" && (
+              <p className="mt-2 text-center mb-16 ">
+                Don’t have an account?
+                <Link
+                  href={"signup"}
+                  className="text-[#00A264] hover:underline"
+                >
+                  Sign Up
+                </Link>
+              </p>
+            )}
           </div>
         </div>
 

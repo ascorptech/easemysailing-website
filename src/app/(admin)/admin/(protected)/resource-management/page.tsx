@@ -127,7 +127,7 @@
 // };
 
 // export default page;
-"use client"
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -135,8 +135,6 @@ import { FaEdit, FaEye, FaTrash } from "react-icons/fa";
 
 // import dynamic from "next/dynamic";
 // import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-
-
 
 // const CKEditor = dynamic(
 //   () => import("@ckeditor/ckeditor5-react").then((mod) => mod.CKEditor),
@@ -202,7 +200,6 @@ const page = (props: Props) => {
 
   return (
     <div className="mt-4 mx-auto flex w-[90%] flex-col">
-      
       <div className=" flex justify-end ">
         <Link
           href={"#"}
@@ -312,7 +309,7 @@ const page = (props: Props) => {
                 />
               </div>
 
-                {/* <CKEditor
+              {/* <CKEditor
                   editor={ClassicEditor}
                   data={formData.description || "<p>Type your description here...</p>"}
                   onChange={handleEditorChange}

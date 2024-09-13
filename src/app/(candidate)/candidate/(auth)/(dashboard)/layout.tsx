@@ -23,10 +23,6 @@ export default function RecruiterLayout({
 }>) {
   const [sidebarToggle, setSidebarToggle] = useState(false);
   return (
-    <html lang="en">
-      <body className={inter.className}>
-      
-
         <div className="flex h-screen scrollbar-hide overflow-x-auto  ">
           <CandidateSidebar sidebarToggle={sidebarToggle} />
           
@@ -45,7 +41,5 @@ export default function RecruiterLayout({
             </div>
           </div>
         </div>
-      </body>
-    </html>
   );
 }

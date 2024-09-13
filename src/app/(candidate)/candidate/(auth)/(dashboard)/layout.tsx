@@ -3,7 +3,7 @@ import React, {  useState } from "react";
 
 import { Inter } from "next/font/google";
 import "../../../../globals.scss";
-import CandidateSidebar from "@/app/Shared/CandidateSidebar/CandidateSidebar"
+import CandidateSidebar from "@/app/Shared/CandidateSidebar/CandidateSidebar";
 import CandidateHeader from "@/app/Shared/CandidateHeader/CandidateHeader";
 
 const inter = Inter({ subsets: ["latin"] });

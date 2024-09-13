@@ -32,6 +32,7 @@ const QuillEditor: React.FC<QuillEditorProps> = ({ content, setContent }) => {
 
   return (
     <CKEditor
+    
       editor={ ClassicEditor }
       data={content}
       config={ {

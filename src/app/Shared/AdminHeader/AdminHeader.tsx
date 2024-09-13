@@ -12,7 +12,7 @@ import Image from "next/image";
 
 const Header = () => {
   return (
-    <div className="bg-gray-200 flex items-center justify-end sticky top-0 z-50">
+    <div className="bg-gray-100 flex items-center justify-end sticky top-0 ">
       {/* <div className="ml-4">
          <FaBars className="text-green-700 text-2xl cursor-pointer" /> */}
       {/* </div> */}

@@ -134,8 +134,6 @@ const SlidesTrend = () => {
       >
         &lt;
       </button>
-
-=======
       {/* {/ Carousel Wrapper /} */}
       <div
         ref={card}

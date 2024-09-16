@@ -322,11 +322,11 @@ const MaerskLine: React.FC = () => {
               <span className=" text-gray-600 ">30 Days+</span>
             </div>
             <div className="flex items-center space-x-2">
-              <span className="w-3 h-3 bg-yellow-500 "></span>
+              <span className="w-3 h-3 bg-[#FF9900] "></span>
               <span className=" text-gray-600">Less than 30 days</span>
             </div>
             <div className="flex items-center space-x-2">
-              <span className="w-3 h-3 bg-red-500 "></span>
+              <span className="w-3 h-3 bg-[#FF0000] "></span>
               <span className=" text-gray-600">Overdue</span>
             </div>
           </div>
@@ -337,9 +337,9 @@ const MaerskLine: React.FC = () => {
                 key={ship.id}
                 className={`flex items-center p-3 bg-white rounded-lg shadow-md border-r-4  ${
                   ship.status === "overdue"
-                    ? "border-red-500"
+                    ? "border-[#FF0000]"
                     : ship.status === "lessThan30Days"
-                    ? "border-yellow-500"
+                    ? "border-[#FF9900]"
                     : "border-[#00A264]"
                 }`}
               >

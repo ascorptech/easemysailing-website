@@ -11,23 +11,24 @@ import { RiContactsBook3Line } from "react-icons/ri";
 import { RiExchangeDollarLine } from "react-icons/ri";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+
 
 interface sidebarProps {
   sidebarToggle: boolean;
 }
 
 const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
+
+  const pathname = usePathname();
+  console.log("path", pathname);
   return (
     <div
       className={`${
         sidebarToggle ? "hidden" : "block "
       } w-64 bg-gray-100 fixed h-full`}
     >
-      {/* <div className="bg-white  p-2 pl-5">
-          <h1 className="text-2xl font-extrabold">
-            EaseMy<span className="text-green-700">Sailing</span>
-          </h1>
-        </div> */}
+    
       <div className="w-44 h-12 sm:w-52 sm:h-[53px] ml-3 ">
         <Link href="#">
           <Image
@@ -41,37 +42,61 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
       </div>
 
       <ul className="m-6 font-bold text-sm">
-        <li className="mb-3 rounded py-2 bg-green-600 text-white font-semibold">
-          <Link href="#" className="">
-            <MdDashboard className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
+        <li    className={
+            pathname === "/candidate/dashboard"
+              ? "mb-2 rounded py-2 bg-green-600 text-white font-semibold"
+              : "mb-1 rounded py-2  hover:bg-green-600 hover:text-white"
+          }>
+          <Link href="/candidate/dashboard" className="">
+            <MdDashboard className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px]  " />
             My Dashboard
           </Link>
         </li>
-        <li className="mb-3 rounded py-2">
-          <Link href="#">
+        <li  className={
+            pathname === "/candidate/profilecv"
+              ? "mb-2 rounded py-2 bg-green-600  text-white font-semibold"
+              : "mb-1 rounded py-2  hover:bg-green-600 hover:text-white"
+          }>
+          <Link href="/candidate/profilecv">
             <FaFileLines className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             Profile/CV
           </Link>
         </li>
-        <li className="mb-3 rounded py-2">
+        <li  className={
+            pathname === "/admin/resource-management"
+              ? "mb-2 rounded py-2 bg-green-600 text-white font-semibold"
+              : "mb-1 rounded py-2  hover:bg-green-600 hover:text-white"
+          }>
           <Link href="#">
             <IoBag className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " /> Jobs
             By EMS
           </Link>
         </li>
-        <li className="mb-3 rounded py-2">
+        <li  className={
+            pathname === "/admin/resource-management"
+              ? "mb-2 rounded py-2 bg-green-600 text-white font-semibold"
+              : "mb-1 rounded py-2  hover:bg-green-600 hover:text-white"
+          }>
           <Link href="#">
             <PiShoppingBagOpenFill className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             My Job Applicatins
           </Link>
         </li>
-        <li className="mb-3 rounded py-2">
+        <li  className={
+            pathname === "/admin/resource-management"
+              ? "mb-2 rounded py-2 bg-green-600 text-white font-semibold"
+              : "mb-1 rounded py-2  hover:bg-green-600 hover:text-white"
+          }>
           <Link href="#">
             <MdMenuBook className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             EduEMS
           </Link>
         </li>
-        <li className="mb-3 rounded py-2">
+        <li  className={
+            pathname === "/admin/resource-management"
+              ? "mb-2 rounded py-2 bg-green-600 text-white font-semibold"
+              : "mb-1 rounded py-2  hover:bg-green-600 hover:text-white"
+          }>
           <Link href="#">
             <SiElementor className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             Mentoring

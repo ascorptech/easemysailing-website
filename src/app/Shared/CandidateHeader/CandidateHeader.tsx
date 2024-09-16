@@ -25,34 +25,60 @@ const Header: React.FC<HeaderProps> = ({ sidebarToggle, setSidebarToggle }) => {
         <div className="border-4 w-24  rounded-lg mr-6">
           <Link
             href="#"
-            className="bg-white flex items-center justify-center p-1 rounded-2xl font-bold gap-1 text-xl"
+            className="bg-white flex items-center justify-center  rounded-2xl font-bold gap-1 text-xl"
           >
-            <SiApollographql className="text-orange-500" />
+            <Image
+              src="/images/candidate/coin.png"
+              alt="image not found"
+              width={40}
+              height={40}
+              className="text-green-600 text-xl p-1 "
+            />
             50
           </Link>
         </div>
 
         <ul className="flex items-center gap-2">
           <li className="flex items-center gap-2 cursor-pointer">
-            <RiExchangeDollarLine className="text-green-500 text-xl " />
+            <Link href="#" className="">
+              <Image
+                src="/images/candidate/doller.png"
+                alt="image not found"
+                width={30}
+                height={30}
+                className="text-green-600 text-xl py-2 "
+              />
+            </Link>
             <Link href="#" className=" underline text-lg">
               Subscription
             </Link>
           </li>
           <li>
-            <Link href="#">
-              <MdNotificationAdd className="text-green-600 text-xl" />
+            <Link href="#" className="w-36 h-36">
+              <Image
+                src="/images/candidate/notification.png"
+                alt="image not found"
+                width={40}
+                height={40}
+                className="text-green-600 text-xl p-2 "
+              />
             </Link>
           </li>
           <li>
-            <Link href="#">
-              <IoCart className="text-green-600 text-xl" />
+            <Link href="#" className="w-36 h-36">
+              <Image
+                src="/images/candidate/card.png"
+                alt="image not found"
+                width={40}
+                height={40}
+                className="text-green-600 text-xl p-2 "
+              />
             </Link>
           </li>
         </ul>
         <div className="ml-[5px] mr-11 cursor-pointer flex items-center">
           <Image
-            src="/Images/user.webp"
+            src="/Images/candidate/Profile-icon.png"
             alt="image not found"
             width={500}
             height={500}

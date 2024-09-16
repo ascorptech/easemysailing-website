@@ -27,7 +27,7 @@ const Footer = () => {
           EaseMySailing is a platform created by seafarers, for seafarers, built on empathy for life at sea and its unique challenges and joys.
            <Link href="/about" className="text-[#00A264] font-semibold"> Read More</Link></p>
           <p className="mt-4 font-semibold">
-            Are You a vendor?{" "}
+            Are You a Vendor?{" "}
             <Link href="#" className="font-bold text-[#00A264] underline">
               Join Us
             </Link>
@@ -78,7 +78,7 @@ const Footer = () => {
             </li> */}
             <li className="mt-2">
               <Link href="/terms" className="hover:text-green-600">
-                Terms and conditions
+                Terms and Conditions
               </Link>
             </li>
             <li className="mt-2">

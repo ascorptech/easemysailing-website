@@ -1,13 +1,12 @@
 "use client";
-import React, {  useState } from "react";
+import React, { useState } from "react";
 
 import { Inter } from "next/font/google";
 import "../../../../globals.scss";
-import CandidateSidebar from "@/app/Shared/CandidateSidebar/CandidateSidebar"
+import CandidateSidebar from "@/app/Shared/CandidateSidebar/CandidateSidebar";
 import CandidateHeader from "@/app/Shared/CandidateHeader/CandidateHeader";
 
 const inter = Inter({ subsets: ["latin"] });
-
 
 type Props = {
   // sidebarToggle:any,
@@ -23,29 +22,24 @@ export default function RecruiterLayout({
 }>) {
   const [sidebarToggle, setSidebarToggle] = useState(false);
   return (
-    <html lang="en">
-      <body className={inter.className}>
-      
+    <div className="flex h-screen scrollbar-hide overflow-x-auto  ">
+      <aside>
+        <CandidateSidebar sidebarToggle={sidebarToggle} />
+      </aside>
 
-        <div className="flex h-screen scrollbar-hide overflow-x-auto  ">
-          <CandidateSidebar sidebarToggle={sidebarToggle} />
-          
-          <div
-            className={`${
-              sidebarToggle ? "" : " ml-64 "
-            } w-full scrollbar-hide overflow-x-auto`}
-          >
-            <CandidateHeader
-              sidebarToggle={sidebarToggle}
-              setSidebarToggle={setSidebarToggle}
-            />
-            <div className="lg:h-[calc(100vh-4rem)] xxl:max-h-min overflow-auto scrollbar-hide overflow-x-auto">
-             
-              {children}
-            </div>
-          </div>
+      <div
+        className={`${
+          sidebarToggle ? "" : " ml-64 "
+        } w-full scrollbar-hide overflow-x-auto`}
+      >
+        <CandidateHeader
+          sidebarToggle={sidebarToggle}
+          setSidebarToggle={setSidebarToggle}
+        />
+        <div className="lg:h-[calc(100vh-4rem)] xxl:max-h-min overflow-auto scrollbar-hide overflow-x-auto">
+          {children}
         </div>
-      </body>
-    </html>
+      </div>
+    </div>
   );
 }

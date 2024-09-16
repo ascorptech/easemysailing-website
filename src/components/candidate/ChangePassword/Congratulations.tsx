@@ -21,15 +21,18 @@ const Congratulations: React.FC<CongratulationsProps> = ({
         >
           <X size={15} />
         </button>
-     
-        
 
         <div className="flex justify-center items-center w-[60px] h-[60px]  rounded-full border-2 border-green-500 text-green-600 ml-32">
-        <img className="w-[40px] h-[40px] " src="./Images/Congratulations.png" alt=""> 
-        </img> 
+          <img
+            className="w-[40px] h-[40px] "
+            src="./Images/Congratulations.png"
+            alt=""
+          ></img>
         </div>
         <h2 className="font-bold text-2xl mb-2">Congratulations</h2>
-        <p  className="text-sm mb-8">Your account has been created successfully.</p>
+        <p className="text-sm mb-8">
+          Your account has been created successfully.
+        </p>
 
         <button
           className="bg-green-500 w-full text-white  rounded-lg px-4 py-2"

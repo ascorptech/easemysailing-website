@@ -4,14 +4,8 @@ import React from "react";
 import Image  from "next/image";
 import { useState } from "react";
 import { useParams } from "next/navigation"; // Use useParams instead of useRouter
-//  HEAD:src/app/(web)/resource_details/[id]/page.tsx
 import { Resource } from "../../data/resources";
 
-// import { Resource } from "@/app/data/resources";
-// import { Resource } from "../../data/resources";
-
-// import Profile from "@/components/p4mentoring/profileSummary/Profile";
-// >>>>>>> cd6c802d9a6c9b483f46ba23823d425965596764:src/app/(web)/resources/[id]/page.tsx
 const ResourceDetailsPage: React.FC = () => {
   const params = useParams(); // useParams hook to get route parameters
   const { id } = params;
@@ -24,9 +18,7 @@ const ResourceDetailsPage: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // if (!error) {
-    //   console.log("Form submitted successfully");
-    // }
+    
   };
 
   // Find the item with the matching ID from the shippingData array
@@ -51,19 +43,14 @@ const ResourceDetailsPage: React.FC = () => {
         </div>
         <div className="flex gap-4   mt-0 ">
           <p className="text-green-600">{item.date}</p>
-          <p className="font-semibold">By Gwen stacy</p>
+          <p className="font-semibold">By Gwen Stacy</p>
         </div>
         <div>
           <h2 className="font-bold text-xl mt-4">{item.title}</h2>
-          <p className=" text-sm text-justify  mt-4">
-            {item.discription}
-          </p>
-
           <p className=" text-sm text-justify  mt-4">{item.discription}</p>
-
         </div>
 
-        <h1 className=" my-4  font-bold text-xl">Drop Your comment</h1>
+        <h1 className=" my-4  font-bold text-xl">Drop Your Comment</h1>
 
         <div className="bg-gray-200  p-8 rounded-xl ">
           <form onSubmit={handleSubmit} className="   ">
@@ -125,7 +112,7 @@ const ResourceDetailsPage: React.FC = () => {
                 type="submit"
                 className="p-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               >
-                Post Your comment
+                Post Your Comment
               </button>
             </div>
           </form>

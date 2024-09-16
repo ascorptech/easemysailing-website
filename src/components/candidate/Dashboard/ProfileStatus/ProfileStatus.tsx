@@ -55,7 +55,8 @@ const ProfileStatus: React.FC = () => {
           {/* first di cucle  */}
           <div className="text-center  ">
             <div className="relative text-center h-16 w-16 ml-5 ">
-              <p className="  p-4 ">100%</p>
+              <Image src="/images/candidate/group-coin.png" alt="image not found" width={50}
+              height={50} className="absolute mt-2 ml-1 pt-2 pl-1" />
 
               <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center p-3">
                 <svg className=" absolute top-0 left-0 w-full h-full ">
@@ -161,11 +162,11 @@ const ProfileStatus: React.FC = () => {
             <div className="flex justify-between items-center bg-white text-black p-[10px] rounded-lg">
               <div className="flex items-center space-x-2">
                 <Image
-                  src="/Images/Salery.png"
+                  src="/Images/candidate/Salary.png"
                   alt="Salary Icon"
                   width={500}
                   height={500}
-                  className="w-6 h-6"
+                  className="w-7 h-7"
                 />
                 <span className="font-semibold ">Salary</span>
               </div>
@@ -175,7 +176,7 @@ const ProfileStatus: React.FC = () => {
             <div className="flex justify-between items-center  bg-white text-black p-[10px] rounded-lg">
               <div className="flex items-center space-x-2 ">
                 <Image
-                  src="/Images/user2.jpeg"
+                  src="/Images/candidate/rank.png"
                   alt="Rank Icon"
                   width={500}
                   height={500}
@@ -189,7 +190,7 @@ const ProfileStatus: React.FC = () => {
             <div className="flex justify-between items-center  bg-white text-black p-[10px] rounded-lg">
               <div className="flex items-center space-x-2 ">
                 <Image
-                  src="/Images/ship1.jpeg"
+                  src="/Images/candidate/ship-boat.png"
                   alt="Ship Type Icon"
                   width={500}
                   height={500}
@@ -210,8 +211,8 @@ const ProfileStatus: React.FC = () => {
           <h3 className="text-xl font-bold mb-6">Recent Activities</h3>
           <div className="space-y-3">
             <div className="flex justify-between items-center border  rounded-tl-2xl rounded-br-3xl">
-              <div className=" bg-green-300 flex items-center justify-center  rounded-tl-2xl rounded-br-2xl h-12 w-14">
-                <BiSolidContact className="text-green-600 text-4xl" />
+              <div className=" bg-[#D8F2EA] flex items-center justify-center  rounded-tl-2xl rounded-br-2xl h-12 w-14">
+                <Image src="/images/candidate/user.png" alt="image not found" width={500} height={500} className="p-2"/>
               </div>
               <div className=" flex items-center  flex-col space-x-2 rounded-l-xl  mr-7 ">
                 <span className="text-xl font-bold ml-12 ">70</span>
@@ -220,9 +221,8 @@ const ProfileStatus: React.FC = () => {
             </div>
 
             <div className="flex justify-between items-center border  rounded-tl-2xl rounded-br-3xl">
-              <div className=" bg-green-300 flex items-center justify-center  rounded-tl-2xl rounded-br-2xl h-12 w-14">
-                <IoBagHandleSharp className="text-green-600 text-4xl" />
-              </div>
+              <div className=" bg-[#D8F2EA] flex items-center justify-center  rounded-tl-2xl rounded-br-2xl h-12 w-14">
+              <Image src="/images/candidate/bag.png" alt="image not found" width={500} height={500} className="p-2"/>              </div>
               <div className=" flex items-center  flex-col space-x-2 rounded-l-xl  mr-7 ">
                 <span className="text-xl font-bold ml-20">75</span>
                 <span>Recommended Jobs</span>

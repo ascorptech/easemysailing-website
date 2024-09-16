@@ -116,6 +116,7 @@
 
 // export default page
 "use client";
+import QuillEditor from "@/components/admin/ckeditor/QuillEditor";
 import Image from "next/image";
 import Link from "next/link";
 import { Input } from "postcss";
@@ -239,8 +240,8 @@ const page = (props: Props) => {
 
       {/* Popup Form */}
       {isPopupOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-[450px] h-[500px]">
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center  lg:h-auto h-[500px] items-center">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-[600px] h-[500px]">
             <h2 className="text-xl font-bold mt-6 mb-4">Add Podcast</h2>
             <form onSubmit={handleSubmit}>
               {/* <div className="mb-4">
@@ -278,15 +279,7 @@ const page = (props: Props) => {
                 >
                   Video link
                 </label>
-                <input
-                  type="text"
-                  id="description"
-                  name="description"
-                  value={formData.description}
-                  onChange={handleInputChange}
-                  className="w-full px-3 py-2 h-36 border border-gray-300 rounded"
-                  placeholder="Enter video link"
-                />
+                <QuillEditor />
               </div>
               <div className="flex justify-end space-x-4">
                 <Link

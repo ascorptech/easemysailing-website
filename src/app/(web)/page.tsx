@@ -23,6 +23,7 @@ export default function Home() {
       <Signup />
       {/* <Companies /> */}
       <Status/>
+      
       {/* <div className="bg-[#F1F1F1]">
         {" "}
         <Recruiting />

@@ -354,9 +354,11 @@ const page = (props: Props) => {
                 />
                 {selectedImage && (
                   <div className=" relative mt-4 h-20 w-20 ">
-                    <img
+                    <Image
                       src={selectedImage}
                       alt="Selected"
+                      width={20}
+                      height={20}
                       className="relative h-full w-full object-cover rounded-lg border"
                     />
                     {/* Close button for removing the image */}

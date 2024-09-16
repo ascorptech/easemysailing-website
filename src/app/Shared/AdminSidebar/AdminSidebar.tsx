@@ -3,14 +3,9 @@ import Link from "next/link";
 import { MdDashboard } from "react-icons/md";
 import { FaFileLines } from "react-icons/fa6";
 import { IoBag } from "react-icons/io5";
-import { PiShoppingBagOpenFill } from "react-icons/pi";
-import { MdMenuBook } from "react-icons/md";
-import { SiElementor } from "react-icons/si";
-import { MdMapsHomeWork } from "react-icons/md";
-import { MdOutlineCardGiftcard } from "react-icons/md";
+
 import { FiLogOut } from "react-icons/fi";
-import { RiContactsBook3Line } from "react-icons/ri";
-import { RiExchangeDollarLine } from "react-icons/ri";
+
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 
@@ -62,24 +57,24 @@ const AdminSidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
         </li>
         <li
           className={
-            pathname === "/admin/resource-management"
+            pathname === "/admin/resourcemanagement"
               ? "mb-2 rounded py-2 bg-green-600 text-white font-semibold"
               : "mb-1 rounded py-2  hover:bg-green-600 hover:text-white"
           }
         >
-          <Link href="/admin/resource-management">
+          <Link href="/admin/resourcemanagement">
             <IoBag className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />{" "}
             Resources Management
           </Link>
         </li>
         <li
           className={
-            pathname === "/admin/podcast-management"
+            pathname === "/admin/podcastmanagement"
               ? "mb-2 rounded py-2 bg-green-600 text-white font-semibold"
               : "mb-1 rounded py-2  hover:bg-green-600 hover:text-white"
           }
         >
-          <Link href="/admin/podcast-management">
+          <Link href="/admin/podcastmanagement">
             <FaFileLines className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             Podcast Management
           </Link>

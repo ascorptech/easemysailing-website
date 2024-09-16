@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { RiArrowDownSLine } from "react-icons/ri";
+import { X } from "lucide-react";
 
 const ProfileCV = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +15,6 @@ const ProfileCV = () => {
     title: "",
     description: "",
   });
-
 
   const handleClosePopup = () => {
     setIsPopupOpen(false);
@@ -39,8 +39,6 @@ const ProfileCV = () => {
     console.log("Form Submitted:", formData);
     setIsPopupOpen(false); // Close the popup after submission
   };
-
-
 
   const handletoggle = () => {
     setIsOpen(!isOpen);
@@ -229,22 +227,25 @@ const ProfileCV = () => {
             Import CV
           </Link>
 
-          <Link href="#"
-            
+          <Link
+            href="#"
             className="rounded-lg p-2 text-white bg-[#00A264] mt-2"
-          onClick={handleAddClick} >
+            onClick={handleAddClick}
+          >
             Rate Employer
           </Link>
         </div>
       </div>
 
-
-
-       {/* Popup Form */}
-       {isPopupOpen && (
+      {/* Popup Form */}
+      {isPopupOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-[450px] h-[500px]">
-            <h2 className="text-xl font-bold mt-6 mb-4">Add Podcast</h2>
+         
+          <div className="relative bg-white p-6 rounded-lg shadow-lg w-[450px] h-[500px]">
+          <button className="absolute top-2 right-2 bg-[#00A264] text-white  rounded-full">
+            <X size={20} onClick={handleClosePopup} />
+          </button>
+            <h2 className="text-center text-[24px] leading-[36px] font-bold mt-2 mb-4">Rate your previous employer</h2>
             <form onSubmit={handleSubmit}>
               {/* <div className="mb-4">
                 <label htmlFor="image" className="block text-gray-700 mb-2">
@@ -291,14 +292,14 @@ const ProfileCV = () => {
                 /> */}
               </div>
               <div className="flex justify-end space-x-4">
-                <Link
+                {/* <Link
                   href={"#"}
                   type="button"
                   onClick={handleClosePopup}
                   className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700"
                 >
                   Cancel
-                </Link>
+                </Link> */}
                 <Link
                   href={"#"}
                   type="submit"

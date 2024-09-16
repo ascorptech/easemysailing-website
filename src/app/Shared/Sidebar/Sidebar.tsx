@@ -11,6 +11,8 @@ import { FiLogOut } from "react-icons/fi";
 import { RiContactsBook3Line } from "react-icons/ri";
 import { RiExchangeDollarLine } from "react-icons/ri";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+
 
 
 interface sidebarProps {
@@ -18,6 +20,8 @@ interface sidebarProps {
 }
 
 const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
+   const pathname = usePathname();
+   console.log("path", pathname);
   return (
     <div
       className={`${
@@ -43,8 +47,14 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
       </div>
 
       <ul className="ml-3 mt-[1px] font-bold text-sm ">
-        <li className="mb-2 rounded py-2 bg-green-600 text-white font-semibold">
-          <Link href="#" className="">
+        <li
+          className={
+            pathname === "/recruiter/dashboard"
+              ? "mb-2 rounded py-2 bg-green-600 text-white font-semibold"
+              : "mb-1 rounded py-2  hover:bg-green-600 hover:text-white"
+          }
+        >
+          <Link href="/recruiter/dashboard" className="">
             <MdDashboard className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             Dashboard
           </Link>
@@ -74,8 +84,14 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
             Ships
           </Link>
         </li>
-        <li className="mb-2 rounded py-2  hover:bg-green-600 hover:text-white">
-          <Link href="#">
+        <li
+          className={
+            pathname === "/recruiter/wsg"
+              ? "mb-2 rounded py-2 bg-green-600 text-white font-semibold"
+              : "mb-1 rounded py-2  hover:bg-green-600 hover:text-white"
+          }
+        >
+          <Link href="/recruiter/wsg">
             <SiElementor className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             WSG
           </Link>

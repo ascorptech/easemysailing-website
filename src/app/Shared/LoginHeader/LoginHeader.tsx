@@ -15,7 +15,7 @@ const LoginHeader = () => {
             <Image
               src="/images/logo_1.png"
               alt="EaseMySailing Logo"
-              className="object-cover h-full w-full "
+              className="object-contain h-full w-full "
               width={800}
               height={800}
             />

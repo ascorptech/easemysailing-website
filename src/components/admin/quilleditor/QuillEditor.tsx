@@ -17,7 +17,7 @@ import {
 import 'ckeditor5/ckeditor5.css';
 
 interface QuillEditorProps {
-  content?: any;
+  content?:any;
   setContent?: any;
 }
 

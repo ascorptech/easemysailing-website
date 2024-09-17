@@ -13,6 +13,7 @@ import VerificationCode from "@/components/candidate/ChangePassword/Verification
 import Congratulations from "@/components/candidate/ChangePassword/Congratulations";
 import ResetPassword from "@/components/candidate/ChangePassword/ResetPassword";
 import PasswordChange from "@/components/candidate/ChangePassword/PasswordChange";
+import QuillEditor from "../quilleditor/QuillEditor";
 
 const SignIn = () => {
   const [emailOrPhone, setEmailOrPhone] = useState("");
@@ -119,6 +120,7 @@ const SignIn = () => {
                     placeholder="Email/Phone"
                     required
                   />
+                  {/* <QuillEditor/> */}
                   <span className="absolute inset-y-0 left-0 flex items-center p-3 text-white bg-[#00A264] rounded-l-md">
                     <IoCallOutline />
                   </span>

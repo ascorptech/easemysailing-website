@@ -1,6 +1,6 @@
 "use client";
-// import QuillEditor from "@/components/admin/ckeditor/QuillEditor";
-import Image from "next/image";
+import QuillEditor from "@/components/admin/quilleditor/QuillEditor";
+// import Image from "next/image";
 import Link from "next/link";
 import { Input } from "postcss";
 import React, { useState } from "react";
@@ -162,9 +162,18 @@ const page = (props: Props) => {
                 >
                   Video link
                 </label>
+                <input
+                  type="text"
+                  id="description"
+                  name="description"
+                  value={formData.description}
+                  onChange={handleInputChange}
+                  className="w-full px-3 py-2 border h-36 border-gray-300 rounded"
+                  placeholder="Enter description"
+                />
                 {/* <QuillEditor /> */}
               </div>
-              <div className="flex justify-end space-x-4">
+              <div className="flex mt-12 justify-end space-x-4">
                 <Link
                   href={"#"}
                   type="button"

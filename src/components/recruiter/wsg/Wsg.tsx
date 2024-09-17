@@ -1,8 +1,10 @@
 "use client";
+import Image from "next/image";
 import React, { useState } from "react";
 
 function Wsg() {
   const [isOpen, setIsOpen] = useState(false);
+  const [password, setPassword] = useState("");
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -45,17 +47,62 @@ function Wsg() {
               industry. Lorem Ipsum has been the industry's standard dummy text
               ever since the 1500s, when an unknown printer took a galley of
               type and scrambled it to make a type specimen book Lorem Ipsum is
-              simply dummy text of the printing and typesetting industry.<br/> Lorem
-              Ipsum has been the industry's standard dummy text ever since the
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book Lorem Ipsum is
-              simply dummy text of the printing and typesetting industry. Lorem{" "}
+              simply dummy text of the printing and typesetting industry.
+              <br /> Lorem Ipsum has been the industry's standard dummy text
+              ever since the Lorem Ipsum is simply dummy text of the printing
+              and typesetting industry. Lorem Ipsum has been the industry's
+              standard dummy text ever since the 1500s, when an unknown printer
+              took a galley of type and scrambled it to make a type specimen
+              book Lorem Ipsum is simply dummy text of the printing and
+              typesetting industry. Lorem{" "}
             </p>
           </div>
 
-          
+          <div className="flex">
+            <div>
+              <div className="relative pl-8">
+                <input
+                 
+                  type=""
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full px-3 py-2 leading-tight text-gray-700 border rounded-lg focus:outline-none focus:shadow-outline"
+                  placeholder="ship 1"
+                  required
+                />
+
+                <span className="absolute inset-y-0 left-0 flex items-center p-3 text-white bg-[#00A264] rounded-l-md">
+                  <Image
+                    src="/images/requiter-img/ship1.png"
+                    alt=""
+                    width={20}
+                    height={20}
+                    className=""
+                  />
+                </span>
+                <span className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer">
+                  <svg
+                    className={`w-4 h-4 text-white transform ${
+                      isOpen ? "rotate-180" : ""
+                    }`}
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </span>
+              </div>
+            </div>
+            <div>hello</div>
+            <div>hello</div>
+          </div>
         </div>
       )}
     </div>
@@ -63,6 +110,8 @@ function Wsg() {
 }
 
 export default Wsg;
+
+
 // "use client";
 // import React, { useState } from "react";
 
@@ -77,7 +126,7 @@ export default Wsg;
 //     item9: false,
 //   });
 
-//   const toggleDropdown = (key) => {
+//   const toggleDropdown = (key:any) => {
 //     setOpenDropdowns((prev) => ({
 //       ...prev,
 //       [key]: !prev[key],
@@ -127,7 +176,7 @@ export default Wsg;
 //           <div className="grid grid-cols-3 gap-4 p-4">
 //             {/* First Column */}
 //             <div className="border p-4 rounded-md space-y-4">
-//               {[1, 2, 3, 4].map((index) => (
+//               {[1, 2, 3, 4].map((index:any) => (
 //                 <div
 //                   key={index}
 //                   className="p-4 border bg-[#00965C] rounded-md cursor-pointer flex justify-between items-center"

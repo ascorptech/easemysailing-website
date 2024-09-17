@@ -2,7 +2,7 @@
 import React from "react";
 import Trending from "@/components/recruiter/Dashboard/CandidateByEMS/Trending";
 import FreshTalent from "@/components/recruiter/Dashboard/FreshTalent/freshTalent";
-import WsgMarksLine from "@/components/recruiter/Dashboard1/WsgMarksLine";
+// import WsgMarksLine from "@/components/recruiter/Dashboard1/WsgMarksLine";
 
 const page = ({ sidebarToggle }: any) => {
   return (
@@ -11,7 +11,7 @@ const page = ({ sidebarToggle }: any) => {
         sidebarToggle ? "  ml-64 " : ""
       }  flex flex-col scrollbar-hide overflow-x-auto`}
     >
-      <WsgMarksLine/>
+      {/* <WsgMarksLine/> */}
       <Trending />
       <FreshTalent />
     </div>

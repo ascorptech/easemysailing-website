@@ -9,6 +9,7 @@ const LoginImg = () => {
             width={500}
             height={500}
             className="w-[491px] h-[470px] object-contain"
+            priority
           />
         </div>
     )

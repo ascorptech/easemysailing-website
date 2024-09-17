@@ -53,6 +53,7 @@ const Header = () => {
           width={500}
           height={500}
           className="w-12 h-12 rounded-full border-2 border-green-600"
+          priority
         ></Image>
         <p className="ml-1 font-semibold">Easemy Sailing</p>
       </div>

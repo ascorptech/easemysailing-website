@@ -35,45 +35,20 @@ const ArticlesCard = () => {
       title: "Lorem Ip sum is simply dummy text of the printing.",
     },
   ];
-  // return (
-  //   <div className="overflow-x-scroll no-scrollbar scroll-smooth snap-mandatory sm:md:space-x-12 2xl:space-x-8  mt-3 flex sm:md:flex-row flex-col sm:md:w-[90%] 2xl:w-[90%]  sm:md:px-[2.26rem] 2xl:px-[1.74rem] mx-auto">
-  //     {article.map((card) => (
-  //       <div
-  //         className="sm:md:w-[16.4rem] 2xl:w-[19.5rem] w-full rounded shadow-lg mb-5"
-  //         key={card?.id}
-  //       >
-  //         <div className="relative">
-  //           <img
-  //             className="w-full"
-  //             src={card.logoSrc}
-  //             alt="Sunset in the mountains"
-  //           />
-  //           <div className="absolute mt-[-1.5rem] sm:md:mt-[-2.5rem] bg-green-700 text-white font-semibold lg:px-3 lg:py-2 ">
-  //             <h3 className="text-base">{card.date}</h3>
-  //           </div>
-  //         </div>
-  //         <div className="sm:md:px-5 px-2 py-4">
-  //           <p className="text-gray-700 text-base">
-  //             {card?.title}{" "}
-  //             <Link href="#" className="text-[#00A264]">
-  //               Read More
-  //             </Link>
-  //           </p>
-  //         </div>
-  //       </div>
-  //     ))}
-  //   </div>
+  
   // );
   return(
-    <div className="overflow-x-scroll no-scrollbar scroll-smooth snap-mandatory space-x-8 mt-3 flex flex-col sm:flex-row w-full lg:w-[84%] md:w-[94%] px-1 sm:px-0 lg:px-0 lg:mx-28 mx-auto">
+    <div className="overflow-x-scroll no-scrollbar scroll-smooth snap-mandatory space-x-0 lg:sm:space-x-8 mt-3 flex flex-col sm:flex-row w-full lg:w-[83%] md:w-[94%] px-1 sm:px-0 lg:px-0 lg:mx-28 mx-auto">
     {article.map((card) => (
       <div
         className="w-full sm:w-[16.4rem] lg:w-[19.3rem] 2xl:w-[19.5rem] rounded shadow-lg mb-5"
         key={card?.id}
       >
         <div className="relative">
-          <img
+          <Image
             className="w-full"
+            width={500}
+            height={50}
             src={card.logoSrc}
             alt="Sunset in the mountains"
           />

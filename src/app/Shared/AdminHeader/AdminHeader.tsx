@@ -48,7 +48,7 @@ const Header = () => {
       {/* </ul> */}
       <div className=" mr-[8rem] cursor-pointer flex items-center py-1">
         <Image
-          src="/Images/user.webp"
+          src="/images/user.webp"
           alt="image not found"
           width={500}
           height={500}

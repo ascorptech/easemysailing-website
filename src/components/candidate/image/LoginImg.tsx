@@ -4,7 +4,7 @@ const LoginImg = () => {
 
         <div className="w-1/2 hidden md:flex items-center justify-center bg-white">
           <Image
-            src="/Images/user.jpg"
+            src="/images/user.jpg"
             alt="Sign In Illustration"
             width={500}
             height={500}

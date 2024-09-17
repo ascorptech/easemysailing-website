@@ -161,15 +161,15 @@
 //                 >
 //                   Description
 //                 </label>
-//                 {/* <input
-//                   type="text"
-//                   id="description"
-//                   name="description"
-//                   value={formData.description}
-//                   onChange={handleInputChange}
-//                   className="w-full px-3 py-2 border h-32 border-gray-300 rounded"
-//                   placeholder="Enter description"
-//                 /> */}
+                // {/* <input
+                //   type="text"
+                //   id="description"
+                //   name="description"
+                //   value={formData.description}
+                //   onChange={handleInputChange}
+                //   className="w-full px-3 py-2 border h-32 border-gray-300 rounded"
+                //   placeholder="Enter description"
+                // /> */}
 //                 <QuillEditor />
 //               </div>
 //               <div className="flex justify-end space-x-4">
@@ -337,7 +337,7 @@ const page = (props: Props) => {
       {/* Popup Form */}
       {isPopupOpen && (
         <div className="fixed inset-0  bg-black bg-opacity-70 flex justify-center items-center">
-          <div className="bg-white p-6 rounded-lg shadow-lg  lg:w-auto lg:h-auto h-[500px]">
+          <div className="bg-white p-6 rounded-lg shadow-lg  lg:w-[600px] lg:h-auto w-[600px] h-[500px]">
             <h2 className="text-xl font-bold mb-4">Add Resource</h2>
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
@@ -393,8 +393,16 @@ const page = (props: Props) => {
                 >
                   Description
                 </label>
-
-                <QuillEditor />
+                <input
+                  type="text"
+                  id="description"
+                  name="description"
+                  value={formData.description}
+                  onChange={handleInputChange}
+                  className="w-full px-3 py-2 border h-32 border-gray-300 rounded"
+                  placeholder="Enter description"
+                />
+                {/* <QuillEditor /> */}
               </div>
               <div className="flex justify-end space-x-4">
                 <Link

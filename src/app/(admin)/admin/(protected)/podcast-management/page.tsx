@@ -279,9 +279,18 @@ const page = (props: Props) => {
                 >
                   Video link
                 </label>
+                <input
+                  type="text"
+                  id="description"
+                  name="description"
+                  value={formData.description}
+                  onChange={handleInputChange}
+                  className="w-full px-3 py-2 border h-36 border-gray-300 rounded"
+                  placeholder="Enter description"
+                />
                 {/* <QuillEditor /> */}
               </div>
-              <div className="flex justify-end space-x-4">
+              <div className="flex mt-12 justify-end space-x-4">
                 <Link
                   href={"#"}
                   type="button"

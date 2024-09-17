@@ -55,7 +55,7 @@ const ClientSection: React.FC = () => {
   ];
 
   return (
-    <div className="flex bg-[#F1F1F1] mx-2 lg:mx-0 flex-col border-2 border-red-600 w-[95%] lg:w-full mt-5 ">
+    <div className="flex bg-[#F1F1F1] mx-2 lg:mx-0 flex-col  w-[95%] lg:w-full mt-5 ">
       <div className="text-[21px] leading-[28px] font-bold sm:md:text-2xl   lg:ml-[0rem] mt-5">
         <h2 className=" text-[15px] leading-[20px]  sm:text-[28px]  lg:text-[36px] sm:leading-[54px] font-bold  text-center ">
           Seafarer Stories: Why They{" "}

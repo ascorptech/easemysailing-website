@@ -6,7 +6,7 @@ import ArticlesCard from "./ArticlesCard";
 const Articles = () => {
   
   return(
-<div className="mt-7 w-[95%] border-2 border-red-700 mx-2 px-1 md:mx-6 lg:w-full lg:mx-0 sm:mx-5">
+<div className="mt-7 w-[95%]  mx-2 px-1 md:mx-6 lg:w-full lg:mx-0 sm:mx-5">
   <div className="flex items-center justify-between mt-4 pt-4 lg:mr-[9%] md:mx-[6.8rem]">
     <div className="text-[21px] leading-[28px] font-bold sm:text-2xl lg:ml-0">
       <h1>

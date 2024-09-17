@@ -34,7 +34,7 @@ export default function Home() {
       {/* <Applying /> */}
       {/* <PartnersSection /> */}
       <ClientSection />
-      {/* <Interview />  */}
+      <Interview /> 
       <Articles />
     </div>
   );

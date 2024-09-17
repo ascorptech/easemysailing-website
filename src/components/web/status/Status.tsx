@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Status = () => {
   return (
-    <div className="flex sm:md:flex-row border-2 w-[95%] border-red-600 flex-col sm:md:w-[90%] self-center p-2 mt-10">
+    <div className="flex sm:md:flex-row  w-[95%] flex-col sm:md:w-[90%] self-center p-2 mt-10">
       <div className="sm:md:w-[50%] w-full flex flex-col">
         <h2 className="text-[21px] md:text-3xl md:text-left font-bold lg:text-[34px] mb-4">
           <span className="text-[#00A264] text-2xl sm:md:text-4xl">Seafarers</span>: Global Impact in

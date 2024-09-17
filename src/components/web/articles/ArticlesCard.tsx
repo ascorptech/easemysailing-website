@@ -38,7 +38,7 @@ const ArticlesCard = () => {
   
   // );
   return(
-    <div className="overflow-x-scroll no-scrollbar scroll-smooth snap-mandatory space-x-0 lg:sm:space-x-8 mt-3 flex flex-col sm:flex-row w-full lg:w-[83%] md:w-[94%] px-1 sm:px-0 lg:px-0 lg:mx-28 mx-auto">
+    <div className="overflow-x-scroll no-scrollbar scroll-smooth snap-mandatory space-x-0 lg:space-x-8 mt-3 flex flex-col sm:flex-row w-full lg:w-[84%] md:w-[94%] px-1 sm:px-0 lg:px-0 lg:mx-28 mx-auto">
     {article.map((card) => (
       <div
         className="w-full sm:w-[16.4rem] lg:w-[19.3rem] 2xl:w-[19.5rem] rounded shadow-lg mb-5"

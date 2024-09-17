@@ -46,11 +46,11 @@ const Islide = () => {
 
       <div
         ref={card}
-        className=" flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory mx-[1rem] md:mx-[2rem] md:lg:mx-[2.6rem]  gap-8  "
+        className=" flex overflow-x-scroll   no-scrollbar scroll-smooth snap-x snap-mandatory mx-[1rem] md:mx-[2rem] md:lg:mx-[2.6rem]  gap-8  "
       >
         {/* Video Card 1 */}
         <div className="snap-center ">
-          <div className="w-[20rem] bg-gray-500 h-[12rem] p-1  border lg:w-[294.78px] lg:h-[202.52px] rounded-md shadow-md">
+          <div className="w-[20rem] bg-gray-500 h-[12rem] ml-3 sm:lg:ml-0 p-1   border lg:w-[294.78px] lg:h-[202.52px] rounded-md shadow-md">
             <iframe
               width="100%"
               height="100%"

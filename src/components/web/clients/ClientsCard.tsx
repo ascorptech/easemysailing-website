@@ -29,7 +29,7 @@ const ClientsCard: React.FC<ClientsCard> = ({
           width={500}
           height={500}
           className="h-8 w-8 rounded-full mr-4"
-        /><span className="text-gray-700 text-[20px] leading-[28px] mb-4">{text}</span>
+        /><span className="text-gray-700  text-[20px] leading-[28px] mb-4">{text}</span>
         </p>
       <div className="flex items-center mb-4 lg:ml-[3rem]" >
         {[...Array(rating)].map((_, i) => (

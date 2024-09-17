@@ -199,7 +199,7 @@
 
 // export default page;
 "use client";
-import QuillEditor from "@/components/admin/ckeditor/QuillEditor";
+import QuillEditor from "@/components/admin/quilleditor/QuillEditor";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -367,7 +367,7 @@ const page = (props: Props) => {
                       className="absolute top-0 right-0 bg-white rounded-full text-red-500 h-5 w-5  "
                       onClick={removeSelectedImage}
                     >
-                      <IoIosClose  className="text-xl w-full h-full" />
+                      <IoIosClose className="text-xl w-full h-full" />
                     </button>
                   </div>
                 )}

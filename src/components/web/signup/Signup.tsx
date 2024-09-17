@@ -10,7 +10,7 @@ const Signup = () => {
   };
 
   return (
-    <div className=" flex flex-col  w-full lg:flex-row items-center justify-center   lg:mt-16  mt-[57px] px-2 lg:px-0  ">
+    <div className=" flex flex-col  w-full lg:flex-row items-center justify-center   lg:mt-16 2xl:mt-16  mt-[57px] px-2 lg:px-0  ">
       {/* Left Image Container */}
       <div className="flex-1 flex items-center lg:ml-0 justify-center mb-3 lg:mb-0 w-full lg:w-[553px] lg:h-[366px]  ">
         <Image
@@ -32,11 +32,11 @@ const Signup = () => {
           <p className="text-[13px] leading-[19.5px] font-[400px] text-gray-700 lg:text-center ">
             Create an account or sign in. By continuing, you agree to our
             <Link href="/terms">
-              <span className="text-[#00A264]">Terms of Use</span>
+              <span className="text-[#00A264]"> Terms of Use </span>
             </Link>
-            and acknowledge our
+             and acknowledge our 
             <Link href="/privacy-policy">
-              <span className="text-[#00A264]">Privacy Policy.</span>
+              <span className="text-[#00A264]"> Privacy Policy.</span>
             </Link>
           </p>
         </div>
@@ -140,8 +140,8 @@ const Signup = () => {
       {/* Right Image Container */}
       <div className="flex-1 flex items-center lg:ml-0 justify-center mt-3 md:lg:mt-0 lg:mb-0 w-full lg:w-[553px] lg:h-[366px]">
         <Image
-          src="/right.png" // Replace with your image path
-          alt="Left Image"
+          src="/workerhome.png" // Replace with your image path
+          alt="worker Image"
           width={800}
           height={800}
           // Ensure the aspect ratio is consistent

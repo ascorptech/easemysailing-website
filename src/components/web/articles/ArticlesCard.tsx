@@ -35,43 +35,40 @@ const ArticlesCard = () => {
       title: "Lorem Ip sum is simply dummy text of the printing.",
     },
   ];
-  return (
-    
-      <div className=" overflow-x-scroll no-scrollbar scroll-smooth snap-mandatory  space-x-9  lg:ml-[4rem] relative flex items-center sm:md:justify-center w-[90%]  lg:pl-0  ml-6  mt-3 ">
-        {article.map((card) => (
-          <div
-            key={card.id}
-            className="flex justify-center  bg-white ml-0   w-[292px]  h-[265px] lg:mt-4 shadow-lg border rounded-md lg:ml-3 mb-3"
-          >
-            <div className=" relative bg-white w-[292px] h-[202px] ">
-              <div className=" flex ">
-                <Image
-                  src={card.logoSrc}
-                  alt={`${card.title} logo`}
-                  width={500}
-                  height={500}
-                  priority
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <div className="absolute mt-[-3rem] bg-green-700 text-white font-semibold lg:px-3 lg:py-2 ">
-                <h3>{card.date}</h3>
-              </div>
-
-              <div className="text-left w-40 sm:md:w-[252px] sm:md:h-[44px] flex justify-center items-center sm:md:ml-4 pt-2 mx-2">
-                <p className="text-black-500 font-semibold text-[16px] leading-[24px]">
-                  {" "}
-                  {card.title}{" "}
-                  <Link href="#" className="text-[#00A264]">
-                    Read More
-                  </Link>
-                </p>
-              </div>
-            </div>
+  
+  // );
+  return(
+    <div className="overflow-x-scroll no-scrollbar scroll-smooth snap-mandatory space-x-0 lg:space-x-8 mt-3 flex flex-col sm:flex-row w-full lg:w-[84%] md:w-[94%] px-1 sm:px-0 lg:px-0 lg:mx-28 mx-auto">
+    {article.map((card) => (
+      <div
+        className="w-full sm:w-[16.4rem] lg:w-[19.3rem] 2xl:w-[19.5rem] rounded shadow-lg mb-5"
+        key={card?.id}
+      >
+        <div className="relative">
+          <Image
+            className="w-full"
+            width={500}
+            height={50}
+            src={card.logoSrc}
+            alt="Sunset in the mountains"
+          />
+          <div className="absolute mt-[-1.5rem] sm:mt-[-2.5rem] bg-green-700 text-white font-semibold px-2 py-1 lg:px-3 lg:py-2">
+            <h3 className="text-base">{card.date}</h3>
           </div>
-        ))}
+        </div>
+        <div className="px-2 sm:px-5 py-4">
+          <p className="text-gray-700 text-base">
+            {card?.title}{" "}
+            <Link href="#" className="text-[#00A264]">
+              Read More
+            </Link>
+          </p>
+        </div>
       </div>
-  );
+    ))}
+  </div>
+
+  )
 };
 
 export default ArticlesCard;

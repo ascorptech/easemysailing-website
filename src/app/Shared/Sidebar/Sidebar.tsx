@@ -10,28 +10,45 @@ import { MdOutlineCardGiftcard } from "react-icons/md";
 import { FiLogOut } from "react-icons/fi";
 import { RiContactsBook3Line } from "react-icons/ri";
 import { RiExchangeDollarLine } from "react-icons/ri";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+
+
 
 interface sidebarProps {
   sidebarToggle: boolean;
 }
 
 const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
+   const pathname = usePathname();
+   console.log("path", pathname);
   return (
     <div
       className={`${
         sidebarToggle ? " hidden " : " block "
       } w-64  bg-gray-100 fixed top-0  h-screen `}
     >
-      {/* <div className={`fixed top-0 left-0 h-full bg-gray-800 text-white shadow-lg transition-transform duration-300 ${sidebarToggle ? 'translate-x-0' : '-translate-x-full'} w-64`}> */}
-      <div className="bg-white  p-2 pl-5">
-        <Link href="/" className="text-2xl font-extrabold">
-          EaseMy<span className="text-green-700">Sailing</span>
+      <div className="w-44 h-12 sm:w-52 sm:h-[53px] ml-3 ">
+        <Link href="#">
+          <Image
+            src="/images/logo_1.png"
+            alt="EaseMySailing Logo"
+            className="object-contain h-full w-full "
+            width={800}
+            height={800}
+          />
         </Link>
       </div>
 
       <ul className="ml-3 mt-[1px] font-bold text-sm ">
-        <li className="mb-2 rounded py-2 bg-green-600 text-white font-semibold">
-          <Link href="#" className="">
+        <li
+          className={
+            pathname === "/recruiter/dashboard"
+              ? "mb-2 rounded py-2 bg-green-600 text-white font-semibold"
+              : "mb-1 rounded py-2  hover:bg-green-600 hover:text-white"
+          }
+        >
+          <Link href="/recruiter/dashboard" className="">
             <MdDashboard className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             Dashboard
           </Link>
@@ -61,8 +78,14 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
             Ships
           </Link>
         </li>
-        <li className="mb-2 rounded py-2  hover:bg-green-600 hover:text-white">
-          <Link href="#">
+        <li
+          className={
+            pathname === "/recruiter/wsg"
+              ? "mb-2 rounded py-2 bg-green-600 text-white font-semibold"
+              : "mb-1 rounded py-2  hover:bg-green-600 hover:text-white"
+          }
+        >
+          <Link href="/recruiter/wsg">
             <SiElementor className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             WSG
           </Link>

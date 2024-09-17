@@ -7,30 +7,27 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="bg-teal-100 p-4 text-sm md:pl-10 text-gray-700  ">
+    <footer className="bg-teal-100 p-4 text-sm md:pl-10 text-gray-700 w-full ">
       <div className="container mx-auto  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
         {/* Brand and Description */}
 
-        <div>
-          {/* <h2 className="text-2xl font-bold">
-            EaseMy<span className="text-green-600">Sailing</span>
-          </h2> */}
-           <div className="w-[70%] md:w-[240px] h-12 md:h-[65px]  ">
-              <Link href="/">
+        <div className="flex flex-col justify-start">
+           {/* <div className="w-[70%] md:w-[240px] h-12 md:h-[65px]"> */}
+              <Link href="/" className="">
                 <Image
-                  src="/images/Transparent Logo.png"
+                  src="/images/logo_1.png"
                   alt="EaseMySailing Logo"
-                  className="object-cover h-full w-full -ml-5 "
+                  className="object-contain h-full w-[80%] mb-2 -ml-1"
                   width={800}
                   height={800}
                 />
               </Link>
-            </div>
-          <p className="mt-4 mr-14">
+            {/* </div> */}
+          <p className=" mr-14 text-justify">
           EaseMySailing is a platform created by seafarers, for seafarers, built on empathy for life at sea and its unique challenges and joys.
            <Link href="/about" className="text-[#00A264] font-semibold"> Read More</Link></p>
           <p className="mt-4 font-semibold">
-            Are You a vender?{" "}
+            Are You a Vendor?{" "}
             <Link href="#" className="font-bold text-[#00A264] underline">
               Join Us
             </Link>
@@ -81,7 +78,7 @@ const Footer = () => {
             </li> */}
             <li className="mt-2">
               <Link href="/terms" className="hover:text-green-600">
-                Terms and conditions
+                Terms and Conditions
               </Link>
             </li>
             <li className="mt-2">
@@ -106,11 +103,11 @@ const Footer = () => {
               </Link>
             </li>
             <li className="mt-2">
-              <Link href="#" className="flex items-center hover:text-green-600">
+              <Link href="mailto:business@EaseMySailing.com" className="flex items-center hover:text-green-600">
                 <span className="text-green-600 mr-1">
                   <MdOutlineMail />
                 </span>
-                example@gmail.com
+                business@EaseMySailing.com
               </Link>
             </li>
             <li className="mt-2">
@@ -134,8 +131,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <hr className="w-full  border-spacing-1 border-green-400 md:ml-[-2.4rem] md:mr-[-1rem] mt-3  "></hr>
-      <div className="mt-4 flex justify-between items-center ">
+      <div className="w-full  border-spacing-1 border-green-400 mt-3 border "></div>
+      <div className="mt-4 flex justify-center items-center ">
         <span>
           Copyright © {new Date().getFullYear()} | All Rights Reserved
         </span>

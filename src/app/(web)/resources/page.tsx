@@ -1,4 +1,3 @@
-
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
@@ -34,30 +33,55 @@ const ResourceList: React.FC = () => {
   return (
     <div className="">
       <Heading7 />
-      <div className="lg:max-w-[85%] border lg:mx-[15rem]">
-        <Image
-          src="/images/captain4.jpeg"
-          alt="image not found"
-          width={900}
-          height={900}
-          className="w-[100%] h-[15%] "
-        />
-        <h2 className="text-black-500  font-semibold">
-          Lorem Ip sum is simply dummy text of the printing and typesetting
-          industry.
-        </h2>
-        <p className=" ">
-          Lorem Ip sum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book.
-        </p>
-        <Link
-          href={`/resources`}
-          className="h-8 mt-2 bg-green-700 text-white py-1 px-4 rounded-lg text-sm "
-        >
-          Read more
-        </Link>
+      <div className="flex sm:md:flex-row flex-col mt-5 h-[26rem] container mx-auto mb-[30rem] sm:md:mb-0">
+        <div className="flex sm:md:w-[50%] w-full">
+          <div className="relative w-full p-4">
+            <Image
+              src="/images/captain4.jpeg"
+              alt="image not found"
+              width={900}
+              height={900}
+              className="w-[100%] h-[100%] object-contain"
+              priority
+            />
+            <div className="absolute sm:md:mt-[-2.9rem] mt-[-1.5rem] bg-green-700 text-white font-semibold ">
+              <h3>{Resource[0].date}</h3>
+            </div>
+          </div>
+        </div>
+        <div className="sm:md:w-[50%] w-full flex flex-col p-4">
+          <h2 className="text-black-500  font-bold">
+            Lorem Ip sum is simply dummy text of the printing and typesetting
+            industry.
+          </h2>
+          <p className="text-gray-500 text-sm text-justify ">
+            Lorem Ip sum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book. Lorem Ip sum is
+            simply dummy text of the printing and typesetting industry. Lorem
+            Ipsum has been the industry's standard dummy text ever since the
+            1500s, when an unknown printer took a galley of type and scrambled
+            it to make a type specimen book. Lorem Ip sum is simply dummy text
+            of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown
+            printer took a galley of type and scrambled it to make a type
+            specimen book. Lorem Ip sum is simply dummy text of the printing and
+            typesetting industry. Lorem Ipsum has been the industry's standard
+            dummy text ever since the 1500s, when an unknown printer took a
+            galley of type and scrambled it to make a type specimen book. Lorem
+            Ip sum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book.
+          </p>
+          <Link
+            href={`/resources`}
+            className="h-8 sm:md:w-[20%] w-[40%] mt-2 bg-green-700 text-white py-1 px-4 rounded-lg text-sm justify-center items-center flex "
+          >
+            Read more
+          </Link>
+        </div>
       </div>
       <div className="mt-2 lg:max-w-[90%] grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 gap-1 py-3 -black lg:ml-20  w-full ">
         {Resource.map((item) => (
@@ -82,7 +106,7 @@ const ResourceList: React.FC = () => {
                   {item.title}
                 </span>
               </div>
-              <div className="text-gray-500 text-sm text-justify">
+              <div className="text-gray-500 text-sm text-justify mb-2">
                 {" "}
                 {item.discription1}{" "}
               </div>

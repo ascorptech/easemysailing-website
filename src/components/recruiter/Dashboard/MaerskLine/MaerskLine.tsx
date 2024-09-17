@@ -3,6 +3,7 @@ import React from "react";
 import { ChevronDown } from "lucide-react";
 // import { Link } from "react-router-dom";
 import Link from "next/link";
+import Image from "next/image";
 
 type Ship = {
   id: number;
@@ -108,9 +109,11 @@ const MaerskLine: React.FC = () => {
         <div className=" grid row-span-1 md:grid-cols-1 bg-gray-100 shadow-inner shadow-slate-400  gap-5 rounded-[40px] p-2    ">
           <div className="flex items-center justify-around ml-2  pb-1">
             <div className=" relative  text-center h-[74px] w-[74px] ">
-              <img
-                src="../Images/MaerskLine.jpeg"
+              <Image
+                src="/Images/MaerskLine.jpeg"
                 alt="Avatar"
+                width={500}
+                height={500}
                 className="w-full h-full rounded-full border-[#00A264] border-[2px] mt-[11px] ml-[11px]"
               />
               <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center p-12">
@@ -144,9 +147,11 @@ const MaerskLine: React.FC = () => {
 
             <div>
               <div className="w-[103px] h-[103px]">
-                <img
-                  src="../Images/Premium.png"
+                <Image
+                  src="/Images/Premium.png"
                   alt="Avatar"
+                  width={500}
+                  height={500}
                   className="w-full h-full rounded-full mt-[20px]"
                 />
                 <h3 className="font-semibold text-lg ml-5 mt-2">Premium</h3>
@@ -317,11 +322,11 @@ const MaerskLine: React.FC = () => {
               <span className=" text-gray-600 ">30 Days+</span>
             </div>
             <div className="flex items-center space-x-2">
-              <span className="w-3 h-3 bg-yellow-500 "></span>
+              <span className="w-3 h-3 bg-[#FF9900] "></span>
               <span className=" text-gray-600">Less than 30 days</span>
             </div>
             <div className="flex items-center space-x-2">
-              <span className="w-3 h-3 bg-red-500 "></span>
+              <span className="w-3 h-3 bg-[#FF0000] "></span>
               <span className=" text-gray-600">Overdue</span>
             </div>
           </div>
@@ -332,9 +337,9 @@ const MaerskLine: React.FC = () => {
                 key={ship.id}
                 className={`flex items-center p-3 bg-white rounded-lg shadow-md border-r-4  ${
                   ship.status === "overdue"
-                    ? "border-red-500"
+                    ? "border-[#FF0000]"
                     : ship.status === "lessThan30Days"
-                    ? "border-yellow-500"
+                    ? "border-[#FF9900]"
                     : "border-[#00A264]"
                 }`}
               >

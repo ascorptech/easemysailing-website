@@ -126,15 +126,14 @@ const SlidesTrend = () => {
   }, []);
 
   return (
-    <div className=" lg:ml-[4rem] relative flex items-center justify-center w-[90%] border-2 border-red-600  ">
-      {/* {/ Left Arrow /} */}
+    <div className=" lg:ml-[4rem] relative flex items-center justify-center w-[90%]  ">
+      {/* Left Arrow */}
       <button
         onClick={scrollLeft}
         className="absolute left-1 lg:left-10 z-10 p-2 bg-white border rounded-full shadow-md ml-1 lg:ml-2 mr-2"
       >
         &lt;
       </button>
-
       {/* {/ Carousel Wrapper /} */}
       <div
         ref={card}
@@ -166,7 +165,8 @@ const SlidesTrend = () => {
         &gt;
       </button>
     </div>
+    
   );
 };
 
-export default SlidesTrend;
+export default SlidesTrend

@@ -2,7 +2,7 @@
 import React from "react";
 import Trending from "@/components/recruiter/Dashboard/CandidateByEMS/Trending";
 import FreshTalent from "@/components/recruiter/Dashboard/FreshTalent/freshTalent";
-import WsgMarksLine from "@/components/recruiter/dashboard1/WsgMarksLine";
+import WsgMarksLine from "@/components/recruiter/Dashboard1/WsgMarksLine";
 
 const page = ({ sidebarToggle }: any) => {
   return (

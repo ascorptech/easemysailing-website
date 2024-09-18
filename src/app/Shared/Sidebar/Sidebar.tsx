@@ -28,12 +28,6 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
         sidebarToggle ? " hidden " : " block "
       } w-64  bg-gray-100 fixed top-0  h-screen `}
     >
-      {/* <div className={`fixed top-0 left-0 h-full bg-gray-800 text-white shadow-lg transition-transform duration-300 ${sidebarToggle ? 'translate-x-0' : '-translate-x-full'} w-64`}> */}
-      {/* <div className="bg-white  p-2 pl-5">
-        <Link href="/" className="text-2xl font-extrabold">
-          EaseMy<span className="text-green-700">Sailing</span>
-        </Link>
-      </div> */}
       <div className="w-44 h-12 sm:w-52 sm:h-[53px] ml-3 ">
         <Link href="#">
           <Image

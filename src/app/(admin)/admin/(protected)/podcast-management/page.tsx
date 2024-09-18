@@ -116,7 +116,7 @@
 
 // export default page
 "use client";
-import QuillEditor from "@/components/admin/quilleditor/QuillEditor";
+// import QuillEditor from "@/components/admin/quilleditor/QuillEditor";
 // import Image from "next/image";
 import Link from "next/link";
 import { Input } from "postcss";

@@ -199,7 +199,7 @@
 
 // export default page;
 "use client";
-import QuillEditor from "@/components/admin/quilleditor/QuillEditor";
+// import QuillEditor from "@/components/admin/quilleditor/QuillEditor";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -393,6 +393,7 @@ const page = (props: Props) => {
                 >
                   Description
                 </label>
+<<<<<<< HEAD
                 <input
                   type="text"
                   id="description"
@@ -402,6 +403,9 @@ const page = (props: Props) => {
                   className="w-full px-3 py-2 border h-32 border-gray-300 rounded"
                   placeholder="Enter description"
                 />
+=======
+
+>>>>>>> ea0d48a0b9f25cf216bda35a98f34c4e9da4da18
                 {/* <QuillEditor /> */}
               </div>
               <div className="flex justify-end space-x-4">

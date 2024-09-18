@@ -38,13 +38,13 @@ export default function RootLayout({
             <PinPopup closeModal={closeModal} />
           ) : ( */}
           <>
-            <DisableRightClick />
+            {/* <DisableRightClick /> */}
 
             <Header />
 
             {children}
-            <Footer1 />
-            <Footer />
+            {/* <Footer1 />
+            <Footer /> */}
           </>
           {/* )}  */}
         </main>

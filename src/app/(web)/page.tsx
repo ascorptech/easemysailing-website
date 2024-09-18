@@ -10,6 +10,8 @@ import ClientSection from "@/components/web/clients/ClientSection";
 import Applying from "@/components/web/applying/Applying";
 import Interview from "@/components/web/interview/Interview";
 import Articles from "@/components/web/articles/Articles";
+import SignupContent from "@/components/web/signup/SignupContent";
+import Findout from "@/components/web/findout/Findout";
 
 
 
@@ -20,9 +22,11 @@ export default function Home() {
       
       {/* <SearchBar /> */}
 
-      <Signup />
-      {/* <Companies /> */}
-      <Status/>
+      {/* <Signup /> */}
+      <SignupContent/>
+      <Companies />
+      <Findout/>
+      {/* <Status/> */}
       
       {/* <div className="bg-[#F1F1F1]">
         {" "}
@@ -33,9 +37,9 @@ export default function Home() {
 
       {/* <Applying /> */}
       {/* <PartnersSection /> */}
-      <ClientSection />
-      <Interview /> 
-      <Articles />
+      {/* <ClientSection /> */}
+      {/* <Interview />  */}
+      {/* <Articles /> */}
     </div>
   );
 }

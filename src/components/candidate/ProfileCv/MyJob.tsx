@@ -65,7 +65,7 @@ const MyJob = () => {
                 <CircularProgress percentage={70} color="#FF9900" />
               </div>
             </div>{" "}
-            <div className=" h-screen overflow-y-scroll scroll scroll-smooth snap-x snap-mandatory ">
+            <div className=" h-screen overflow-x-scroll  scroll-smooth snap-x snap-mandatory ">
               {isOpen && <MyJobRequirements />}
 
 

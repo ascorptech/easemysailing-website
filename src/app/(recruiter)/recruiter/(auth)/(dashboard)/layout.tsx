@@ -2,18 +2,25 @@
 import React, { lazy, Suspense, useState } from "react";
 // import type { Metadata } from "next";
 
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "../../../../globals.scss";
 import Sidebar from "@/app/Shared/Sidebar/Sidebar";
 import Header from "@/app/Shared/Header/Header";
 // import RecruiterHeader from "@/components/recruiter/RecruiterHeader/RecruiterHeader";
 
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: "400"
+});
 
 // export const metadata: Metadata = {
 //     title: "Recruiter",
 //     description: "This is recruiter page",
 // };
+
+
+
+
 
 type Props = {
   // sidebarToggle:any,
@@ -22,6 +29,7 @@ type Props = {
   setSidebarToggle: React.Dispatch<React.SetStateAction<boolean>>; // Correct typing for a state setter
 };
 
+
 export default function RecruiterLayout({
   children,
 }: Readonly<{
@@ -29,29 +37,27 @@ export default function RecruiterLayout({
 }>) {
   const [sidebarToggle, setSidebarToggle] = useState(false);
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    
       
 
-        <div className="flex h-screen scrollbar-hide overflow-x-auto  ">
+    <div className={`${poppins.className} flex h-screen`}>
           <Sidebar sidebarToggle={sidebarToggle} />
           
           <div
-            className={`${
-              sidebarToggle ? "" : " ml-64 "
-            } w-full scrollbar-hide overflow-x-auto`}
-          >
+          className={`${
+            sidebarToggle ? "" : " ml-64 "
+          } flex-auto relative overflow-hidden`}
+        >
             <Header
               sidebarToggle={sidebarToggle}
               setSidebarToggle={setSidebarToggle}
             />
-            <div className="lg:h-[calc(100vh-4rem)] xxl:max-h-min overflow-auto scrollbar-hide overflow-x-auto">
+          <div className="lg:h-[calc(100vh-4rem)] xxl:max-h-min scrollbar-hide overflow-auto">
              
               {children}
             </div>
           </div>
         </div>
-      </body>
-    </html>
+      
   );
 }

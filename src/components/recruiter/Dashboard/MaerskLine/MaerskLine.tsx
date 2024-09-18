@@ -102,7 +102,7 @@ const ship: ShipStatus[] = [
 
 const MaerskLine: React.FC = () => {
   return (
-    <div className=" mx-auto p-4 grid grid-cols-1 md:grid-cols-2 gap-7 w-full lg:grid-cols-3 lg:gap-12">
+    <div className=" mx-auto p-4 grid grid-cols-1 md:grid-cols-2 gap-4 w-full lg:grid-cols-3 lg:gap-12">
       {/* Profile Status Card */}
 
       <div className="grid row-span-1 grid-rows-2 gap-5 md:grid-rows-1 ">
@@ -110,11 +110,12 @@ const MaerskLine: React.FC = () => {
           <div className="flex items-center justify-around ml-2  pb-1">
             <div className=" relative  text-center h-[74px] w-[74px] ">
               <Image
-                src="/Images/MaerskLine.jpeg"
+                src="/images/MaerskLine.jpeg"
                 alt="Avatar"
                 width={500}
                 height={500}
                 className="w-full h-full rounded-full border-[#00A264] border-[2px] mt-[11px] ml-[11px]"
+                priority
               />
               <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center p-12">
                 <svg className=" absolute top-0 left-0 w-full h-full ">
@@ -148,11 +149,12 @@ const MaerskLine: React.FC = () => {
             <div>
               <div className="w-[103px] h-[103px]">
                 <Image
-                  src="/Images/Premium.png"
+                  src="/images/Premium.png"
                   alt="Avatar"
                   width={500}
                   height={500}
                   className="w-full h-full rounded-full mt-[20px]"
+                  priority
                 />
                 <h3 className="font-semibold text-lg ml-5 mt-2">Premium</h3>
               </div>
@@ -206,13 +208,13 @@ const MaerskLine: React.FC = () => {
       </div>
 
       {/* second section company profile visitor  */}
-      <div className="grid row-span-1 ">
+      <div className=" grid row-span-1">
         <div className=" bg-gray-100 p-5  shadow-inner shadow-slate-600  rounded-[40px] text-center  ">
           <div className="space-y-4 ">
             <div className="flex justify-between items-center  bg-[#D3EAEA] p-[10px] rounded-lg">
               <div className="flex items-center space-x-2">
                 <img
-                  src="../Images/visitor.png"
+                  src="../images/visitor.png"
                   alt="Salary Icon"
                   className="w-6 h-6"
                 />

@@ -1,6 +1,4 @@
 "use client";
-import QuillEditor from "@/components/admin/quilleditor/QuillEditor";
-// import Image from "next/image";
 import Link from "next/link";
 import { Input } from "postcss";
 import React, { useState } from "react";
@@ -13,7 +11,7 @@ const page = (props: Props) => {
   const [formData, setFormData] = useState({
     image: "",
     title: "",
-    description: "",
+    link: "",
   });
 
   const handleAddClick = () => {
@@ -164,12 +162,12 @@ const page = (props: Props) => {
                 </label>
                 <input
                   type="text"
-                  id="description"
-                  name="description"
-                  value={formData.description}
+                  id="link"
+                  name="link"
+                  value={formData.link}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border h-36 border-gray-300 rounded"
-                  placeholder="Enter description"
+                  className="w-full px-3 py-2 border h-12 border-gray-300 rounded"
+                  placeholder="Enter video link"
                 />
                 {/* <QuillEditor /> */}
               </div>

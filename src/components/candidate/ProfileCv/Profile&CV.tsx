@@ -4,17 +4,28 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { RiArrowDownSLine } from "react-icons/ri";
+import { X } from "lucide-react";
+import { FaStar } from "react-icons/fa";
 
 const ProfileCV = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-  const [formData, setFormData] = useState({
-    image: "",
-    title: "",
-    description: "",
+  const [ratings, setRatings] = useState({
+    teamCollaboration: 0,
+    teamEnhancement: 0,
+    problemResolution: 0,
+    communication: 0,
+    attitude: 0,
+    acceptability: 0,
   });
 
+  const [date, setDate] = useState("");
+  const [feedback, setFeedback] = useState("");
+
+  const handleRating = (key: string, value: number) => {
+    setRatings({ ...ratings, [key]: value });
+  };
 
   const handleClosePopup = () => {
     setIsPopupOpen(false);
@@ -24,19 +35,19 @@ const ProfileCV = () => {
     setIsPopupOpen(true);
   };
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+  // const handleInputChange = (
+  //   e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  // ) => {
+  //   setFormData({
+  //     ...formData,
+  //     [e.target.name]: e.target.value,
+  //   });
+  // };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission logic here (e.g., update state or send to backend)
-    console.log("Form Submitted:", formData);
+    console.log("Form Submitted:");
     setIsPopupOpen(false); // Close the popup after submission
   };
 
@@ -171,10 +182,12 @@ const ProfileCV = () => {
               </p>
 
               {isOpen && (
-                <div className="border shadow-lg p-2 rounded-lg">
-                  <p>On board</p>
-                  <p>On leave</p>
-                  <p>Ready for joining</p>
+                <div className="fixed bg-black  bg-opacity-10 rounded-lg flex mt-32 ml-28 justify-center items-center z-50">
+                  <div className="border  shadow-lg p-2 pl-3 rounded-lg bg-white text-[14px] leading-[20px] ">
+                    <p>On board</p>
+                    <p>On leave</p>
+                    <p>Ready for joining</p>
+                  </div>
                 </div>
               )}
             </div>
@@ -243,66 +256,88 @@ const ProfileCV = () => {
        {/* Popup Form */}
        {isPopupOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-[450px] h-[500px]">
-            <h2 className="text-xl font-bold mt-6 mb-4">Add Podcast</h2>
+          <div className="relative bg-white p-6 rounded-lg shadow-lg w-[500px] ">
+            <button className="absolute top-2 right-2 bg-[#00A264] text-white  rounded-full">
+              <X size={20} onClick={handleClosePopup} />
+            </button>
+            <h2 className="text-center text-[24px] leading-[36px] font-bold mt-2 mb-4">
+              Rate your previous employer
+            </h2>
             <form onSubmit={handleSubmit}>
-              {/* <div className="mb-4">
-                <label htmlFor="image" className="block text-gray-700 mb-2">
-                  Image URL
+              <div className="flex flex-col">
+                <label className="text-[16px] leading-[21.79px] font-semibold mb-2 ">
+                  1. Enter your Signoff Date
                 </label>
                 <input
-                  type="text"
-                  id="image"
-                  name="image"
-                  value={formData.image}
-                  onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded"
-                  placeholder="Enter image URL"
+                  type="date"
+                  className="border p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
                 />
-              </div> */}
-              <div className="mb-4 ">
-                {/* <label htmlFor="title" className="block text-gray-700 mb-2">
-                  Title
-                </label>
-                <input
-                  type="text"
-                  id="title"
-                  name="title"
-                  value={formData.title}
-                  onChange={handleInputChange}
-                  className="w-full px-3 py-2 border h-12 border-gray-300 rounded"
-                  placeholder="Enter title"
-                /> */}
               </div>
-              <div className="mb-4">
-                {/* <label
-                  htmlFor="description"
-                  className="block text-gray-700 mb-2"
-                >
-                </label>
-                <input
-                  type="text"
-                  id="description"
-                  name="description"
-                  value={formData.description}
-                  onChange={handleInputChange}
-                  className="w-full px-3 py-2 h-36 border border-gray-300 rounded"
-                  placeholder="Enter video link"
-                /> */}
+
+              <div>
+                {[
+                  {
+                    label: "2. Please rate your Team Collaboration",
+                    key: "teamCollaboration",
+                  },
+                  {
+                    label: "3. Please rate your Team Enhancement",
+                    key: "teamEnhancement",
+                  },
+                  {
+                    label: "4. Please rate your Problem Resolution",
+                    key: "problemResolution",
+                  },
+                  {
+                    label: "5. Please rate your Effective Communication",
+                    key: "communication",
+                  },
+                  { label: "6. Please rate your Attitude", key: "attitude" },
+                  {
+                    label:
+                      "7. Please rate your Acceptability for next employment",
+                    key: "acceptability",
+                  },
+                ].map(({ label, key }, index) => (
+                  <div key={index} className="flex flex-col mb-1 ">
+                    <label className="text-[16px] leading-[21.79px] font-semibold mb-2">
+                      {label}
+                    </label>
+                    <div className="flex space-x-1">
+                      {[...Array(5)].map((_, i) => (
+                        <FaStar
+                          key={i}
+                          className={`cursor-pointer ${
+                            ratings[key as keyof typeof ratings] > i
+                              ? "text-yellow-400"
+                              : "text-gray-300"
+                          }`}
+                          onClick={() => handleRating(key, i + 1)}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                ))}
               </div>
-              <div className="flex justify-end space-x-4">
-                <Link
-                  href={"#"}
-                  type="button"
-                  onClick={handleClosePopup}
-                  className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700"
-                >
-                  Cancel
-                </Link>
+
+              {/* Feedback Input */}
+              <div className="flex flex-col mb-2 mt-2">
+                {/* <label className="text-[16px] leading-[21.79px] font-semibold mb-2"></label> */}
+                <textarea
+                  className="border p-2 bg-[#DAFFF1] rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-[#333333]"
+                  rows={2}
+                  value={feedback}
+                  onChange={(e) => setFeedback(e.target.value)}
+                  placeholder="Enter your Feedback"
+                />
+              </div>
+              <div className="mb-2  ">
                 <Link
                   href={"#"}
                   type="submit"
-                  className="w-full px-4 py-2 bg-green-600 text-white rounded "
+                  className=" block w-full text-center px-4 py-2 bg-green-600 text-white rounded "
                 >
                   Submit
                 </Link>

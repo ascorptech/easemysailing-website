@@ -2,8 +2,6 @@ import Image from "next/image";
 import React from "react";
 import Link from "next/link";
 
-import { BiSolidContact } from "react-icons/bi";
-import { IoBagHandleSharp } from "react-icons/io5";
 
 const ProfileStatus: React.FC = () => {
   return (
@@ -14,6 +12,7 @@ const ProfileStatus: React.FC = () => {
         <div className="flex items-center justify-center mb-4">
           <div className=" relative  text-center h-[92px] w-[92px] ">
             <Image
+             priority
               src="/Images/robin.png"
               alt="Avatar"
               width={800}
@@ -55,7 +54,7 @@ const ProfileStatus: React.FC = () => {
           {/* first di cucle  */}
           <div className="text-center  ">
             <div className="relative text-center h-16 w-16 ml-5 ">
-              <Image src="/images/candidate/group-coin.png" alt="image not found" width={50}
+              <Image priority src="/images/candidate/group-coin.png" alt="image not found" width={50}
               height={50} className="absolute mt-2 ml-1 pt-2 pl-1" />
 
               <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center p-3">
@@ -162,6 +161,7 @@ const ProfileStatus: React.FC = () => {
             <div className="flex justify-between items-center bg-white text-black p-[10px] rounded-lg">
               <div className="flex items-center space-x-2">
                 <Image
+                priority
                   src="/Images/candidate/Salary.png"
                   alt="Salary Icon"
                   width={500}
@@ -176,6 +176,7 @@ const ProfileStatus: React.FC = () => {
             <div className="flex justify-between items-center  bg-white text-black p-[10px] rounded-lg">
               <div className="flex items-center space-x-2 ">
                 <Image
+                priority
                   src="/Images/candidate/rank.png"
                   alt="Rank Icon"
                   width={500}
@@ -190,6 +191,7 @@ const ProfileStatus: React.FC = () => {
             <div className="flex justify-between items-center  bg-white text-black p-[10px] rounded-lg">
               <div className="flex items-center space-x-2 ">
                 <Image
+                priority
                   src="/Images/candidate/ship-boat.png"
                   alt="Ship Type Icon"
                   width={500}
@@ -212,7 +214,7 @@ const ProfileStatus: React.FC = () => {
           <div className="space-y-3">
             <div className="flex justify-between items-center border  rounded-tl-2xl rounded-br-3xl">
               <div className=" bg-[#D8F2EA] flex items-center justify-center  rounded-tl-2xl rounded-br-2xl h-12 w-14">
-                <Image src="/images/candidate/user.png" alt="image not found" width={500} height={500} className="p-2"/>
+                <Image priority src="/images/candidate/user.png" alt="image not found" width={500} height={500} className="p-2"/>
               </div>
               <div className=" flex items-center  flex-col space-x-2 rounded-l-xl  mr-7 ">
                 <span className="text-xl font-bold ml-12 ">70</span>
@@ -222,7 +224,7 @@ const ProfileStatus: React.FC = () => {
 
             <div className="flex justify-between items-center border  rounded-tl-2xl rounded-br-3xl">
               <div className=" bg-[#D8F2EA] flex items-center justify-center  rounded-tl-2xl rounded-br-2xl h-12 w-14">
-              <Image src="/images/candidate/bag.png" alt="image not found" width={500} height={500} className="p-2"/>              </div>
+              <Image priority src="/images/candidate/bag.png" alt="image not found" width={500} height={500} className="p-2"/>              </div>
               <div className=" flex items-center  flex-col space-x-2 rounded-l-xl  mr-7 ">
                 <span className="text-xl font-bold ml-20">75</span>
                 <span>Recommended Jobs</span>
@@ -242,12 +244,13 @@ const ProfileStatus: React.FC = () => {
             <div className="flex justify-between items-center bg-white p-3 rounded-lg shadow-lg">
               <div className="border shadow-lg w-[90px] h-[90px]">
                 <Image
+                priority
                   src="/images/wsg.png"
                   alt="imgage not found"
                   width={1000}
                   height={1000}
                   className="w-full h-full object-contain"
-                ></Image>
+                />
               </div>
               <p className="text-center font-bold">WSG Initiatives by Maersk</p>
               <Link
@@ -260,6 +263,7 @@ const ProfileStatus: React.FC = () => {
             <div className="flex justify-between items-center bg-white p-3 rounded-lg shadow-lg">
               <div className="border shadow-lg w-[90px] h-[90px] p-2">
                 <Image
+                priority
                   src="/images/easymysailing.png"
                   alt="imgage not found"
                   width={1000}

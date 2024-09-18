@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function EmsDetail() {
   return (
-    <div className="mx-4  ">
+    <div className="mx-2   ">
       <div>
         <h1 className="font-bold text-[25px]">Maersk Line</h1>
         <p>Captain</p>

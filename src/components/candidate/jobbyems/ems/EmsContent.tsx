@@ -9,7 +9,7 @@ export default function EmsContain() {
         <EmsCard />
       </div>
       {/* right div */}
-      <div className="border-2 w-[48%]  shadow-2xl p-6 bg-white rounded-lg">
+      <div className="border-2 w-[48%]  shadow-2xl p-3 bg-white rounded-lg">
         <EmsDetail />
       </div>
     </div>

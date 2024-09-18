@@ -17,7 +17,7 @@ import {
 import 'ckeditor5/ckeditor5.css';
 
 interface QuillEditorProps {
-  content?:any;
+  content?: any;
   setContent?: any;
 }
 
@@ -32,7 +32,6 @@ const QuillEditor: React.FC<QuillEditorProps> = ({ content, setContent }) => {
 
   return (
     <CKEditor
-    
       editor={ ClassicEditor }
       data={content}
       config={ {

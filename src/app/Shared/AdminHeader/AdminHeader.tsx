@@ -48,11 +48,12 @@ const Header = () => {
       {/* </ul> */}
       <div className=" mr-[8rem] cursor-pointer flex items-center py-1">
         <Image
-          src="/Images/user.webp"
+          src="/images/user.webp"
           alt="image not found"
           width={500}
           height={500}
           className="w-12 h-12 rounded-full border-2 border-green-600"
+          priority
         ></Image>
         <p className="ml-1 font-semibold">Easemy Sailing</p>
       </div>

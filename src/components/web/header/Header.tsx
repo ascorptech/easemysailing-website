@@ -323,7 +323,7 @@ const Header: React.FC = () => {
               </li> */}
               <li>
                 <Link
-                  href="/resource-details"
+                  href="/resources"
                   className="block py-2 px-3 text-[#00A264] rounded-lg hover:bg-[#00A264] mt-1  hover:text-[#FFFFFF] text-xl"
                 >
                   Resource
@@ -374,7 +374,7 @@ const Header: React.FC = () => {
 
               <li className="flex relative items-center gap-4 h-2 mt-7 mb-5">
                 <Link
-                  href={"candidate"}
+                  href={"/candidate"}
                   className="flex justify-center items-center mr-4 border border-[#00A264] text-[#00A264] p-2 rounded-full hover:bg-[#00A264] hover:text-[#FFFFFF]"
                 >
                   <span className="pr-2">
@@ -390,8 +390,8 @@ const Header: React.FC = () => {
                   Seafarers Login
                 </Link>
                 <Link
-                  href="recruiter"
-                  className=" h-9 w-21  text-white bg-[#00A264] hover:bg-[#00A264] focus:outline-none focus:ring-1 focus:ring-[#00A264] font-medium rounded-full text-sm px-5 py-5 text-center me-2  dark:bg-[#00A264] dark:hover:bg-[#00A264] dark:focus:ring-[#00A264] flex justify-center items-center"
+                  href="/recruiter"
+                  className="hidden h-9 w-21  text-white bg-[#00A264] hover:bg-[#00A264] focus:outline-none focus:ring-1 focus:ring-[#00A264] font-medium rounded-full text-sm px-5 py-5 text-center me-2  dark:bg-[#00A264] dark:hover:bg-[#00A264] dark:focus:ring-[#00A264] flex justify-center items-center"
                 >
                   Post a Job
                 </Link>

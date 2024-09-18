@@ -102,7 +102,7 @@ const ship: ShipStatus[] = [
 
 const MaerskLine: React.FC = () => {
   return (
-    <div className=" mx-auto p-4 grid grid-cols-1 md:grid-cols-2 gap-7 w-full lg:grid-cols-3 lg:gap-12">
+    <div className=" mx-auto p-4 grid grid-cols-1 md:grid-cols-2 gap-4 w-full lg:grid-cols-3 lg:gap-12">
       {/* Profile Status Card */}
 
       <div className="grid row-span-1 grid-rows-2 gap-5 md:grid-rows-1 ">
@@ -206,7 +206,7 @@ const MaerskLine: React.FC = () => {
       </div>
 
       {/* second section company profile visitor  */}
-      <div className="grid row-span-1 ">
+      <div className=" grid row-span-1">
         <div className=" bg-gray-100 p-5  shadow-inner shadow-slate-600  rounded-[40px] text-center  ">
           <div className="space-y-4 ">
             <div className="flex justify-between items-center  bg-[#D3EAEA] p-[10px] rounded-lg">

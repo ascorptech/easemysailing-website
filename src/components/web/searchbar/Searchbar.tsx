@@ -20,7 +20,7 @@ const Searchbar = () => {
         <div className=" pt-1  text-black lg:mt-1 h-full lg:py-2  ">|</div>
 
         {/* {/ Dropdown /} */}
-        <div className="lg:w-[300px] text-black lg:pt-1 pt-1 lg:py-2  lg:mt-1 h-full ">
+        <div className="lg:w-[300px] text-black lg:pt-1 pt-1 lg:py-2  lg:mt-2 h-full ">
           <select className="px-4 text-sm ">
             <option>Rank Type</option>
             <option>Captain</option>
@@ -30,7 +30,7 @@ const Searchbar = () => {
         </div>
 
         {/* {/ Button /} */}
-        <button className="bg-[#00A264] px-1 text-white lg:px-5 lg:h-[50px] rounded-full text-base w-[147px]">
+        <button className="bg-[#00A264] px-1 text-white lg:px-5 lg:h-[47px] rounded-full text-base w-[147px]">
           Find A Job
         </button>
       </div>

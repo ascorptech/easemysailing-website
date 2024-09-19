@@ -43,8 +43,8 @@ export default function RootLayout({
             <Header />
 
             {children}
-            {/* <Footer1 />
-            <Footer /> */}
+            <Footer1 />
+            <Footer />
           </>
           {/* )}  */}
         </main>

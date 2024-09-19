@@ -3,14 +3,22 @@ import Searchbar from "../searchbar/Searchbar";
 import GalleryBackground from "./Signup";
 import Image from "next/image";
 
-export default function Home() {
+export default function SignupContent() {
+  
   return (
     <div className="relative h-screen w-full ">
       {/* The gallery background */}
-      <GalleryBackground />
+      {/* <GalleryBackground /> */}
+      <video
+        src="/seeview.mp4"
+        autoPlay
+        muted
+        loop
+        className="absolute top-0 mt-16 left-0 w-full h-full object-cover"
+      />
 
       {/* Your content, which will be layered above the background */}
-      <div className="relative bg-black bg-opacity-70 mt-16 w-full h-screen z-5 flex items-center justify-center text-center text-white">
+      <div className="relative bg-black bg-opacity-50 mt-16 w-full h-screen z-5 flex items-center justify-center text-center text-white">
         <div className="p-3 flex flex-col items-center justify-center rounded-md w-[70%]">
           <h1 className="text-[80px]  font-bold  mb-4">
             Your Smooth<span className="text-[#00A264]"> Sailing </span>Starts

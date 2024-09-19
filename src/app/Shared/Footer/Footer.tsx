@@ -7,25 +7,30 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="bg-teal-100 p-4 text-sm md:pl-10 text-gray-700 w-full ">
-      <div className="container mx-auto  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
+    <footer className="bg-[#D1EFE4] p-4 text-sm md:pl-10 text-gray-700 w-full ">
+      <div className="container mx-auto mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
         {/* Brand and Description */}
 
         <div className="flex flex-col justify-start">
-           {/* <div className="w-[70%] md:w-[240px] h-12 md:h-[65px]"> */}
-              <Link href="/" className="">
-                <Image
-                  src="/images/logo_1.png"
-                  alt="EaseMySailing Logo"
-                  className="object-contain h-full w-[80%] mb-2 -ml-1"
-                  width={800}
-                  height={800}
-                />
-              </Link>
-            {/* </div> */}
+          {/* <div className="w-[70%] md:w-[240px] h-12 md:h-[65px]"> */}
+          <Link href="/" className="">
+            <Image
+              src="/images/logo_1.png"
+              alt="EaseMySailing Logo"
+              className="object-contain h-full w-[80%] mb-2 -ml-1"
+              width={800}
+              height={800}
+            />
+          </Link>
+          {/* </div> */}
           <p className=" mr-14 text-justify">
-          EaseMySailing is a platform created by seafarers, for seafarers, built on empathy for life at sea and its unique challenges and joys.
-           <Link href="/about" className="text-[#00A264] font-semibold"> Read More</Link></p>
+            EaseMySailing is a platform created by seafarers, for seafarers,
+            built on empathy for life at sea and its unique challenges and joys.
+            <Link href="/about" className="text-[#00A264] font-semibold">
+              {" "}
+              Read More
+            </Link>
+          </p>
           <p className="mt-4 font-semibold">
             Are You a Vendor?{" "}
             <Link href="#" className="font-bold text-[#00A264] underline">
@@ -103,7 +108,10 @@ const Footer = () => {
               </Link>
             </li>
             <li className="mt-2">
-              <Link href="mailto:business@EaseMySailing.com" className="flex items-center hover:text-green-600">
+              <Link
+                href="mailto:business@EaseMySailing.com"
+                className="flex items-center hover:text-green-600"
+              >
                 <span className="text-green-600 mr-1">
                   <MdOutlineMail />
                 </span>
@@ -131,13 +139,11 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="w-full  border-spacing-1 border-green-400 mt-3 border "></div>
+      <div className="w-full  border-spacing-1 border-[#77E2B9] mt-3 border "></div>
       <div className="mt-4 flex justify-center items-center ">
         <span>
           Copyright © {new Date().getFullYear()} | All Rights Reserved
         </span>
-
-        
       </div>
     </footer>
   );

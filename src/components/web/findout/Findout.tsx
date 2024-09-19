@@ -3,7 +3,7 @@ import Link from "next/link";
 const Findout = () => {
   return (
     <div className="flex items-center    bg-[url('/ocean.png')] ">
-      <div className="flex  bg-[#021527] bg-opacity-65 justify-between w-full items-center p-16 gap-8 ">
+      <div className="flex bg-[#021527] bg-opacity-60  justify-between w-full items-center p-16 gap-8 ">
         {/* Left div */}
         <div className="w-[50%]">
           <div className="relative h-[400px]  ">

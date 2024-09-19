@@ -1,4 +1,6 @@
+"use client"
 import Image from "next/image";
+import { useState, useEffect } from "react";
 
 const images = [
   "/bg/bg1.png",
@@ -16,24 +18,187 @@ const images = [
 ];
 
 const GalleryBackground = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [transition, setTransition] = useState("fade");
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTransition("slide-out"); // Start slide-out
+      setTimeout(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+        setTransition("fade"); // Start fade-in
+      }, 1000); // Duration should match the CSS transition duration
+    }, 3000); // Change image every 3 seconds
+
+    return () => clearInterval(interval); // Clean up interval on component unmount
+  }, []);
+
   return (
-    <div className=" absolute inset-0 mt-16 h-screen w-full z-0 grid grid-cols-4 grid-rows-3 ">
-      {images.map((src, index) => (
-        <div key={index} className="relative  w-full h-full">
+    <div className="absolute inset-0 mt-16 h-screen w-full z-0 overflow-hidden">
+      <div className="relative w-full h-full">
+        <div
+          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+            transition === "fade" ? "opacity-100" : "opacity-0"
+          } ${
+            transition === "slide-out" ? "-translate-x-full" : "translate-x-0"
+          }`}
+        >
           <Image
-            src={src}
-            alt={`Gallery Image ${index + 1}`}
+            src={images[currentIndex]}
+            alt={`Gallery Image ${currentIndex + 1}`}
             layout="fill"
             objectFit="cover"
-            className=" lg:h-[330px]  lg:w-[481px]"
           />
         </div>
-      ))}
+      </div>
     </div>
   );
 };
 
 export default GalleryBackground;
+
+
+
+// import { useState, useEffect } from "react";
+
+// const images = [
+//   "/bg/bg1.png",
+//   "/bg/bg2.png",
+//   "/bg/bg3.png",
+//   "/bg/bg4.png",
+//   "/bg/bg5.png",
+//   "/bg/bg6.png",
+//   "/bg/bg7.png",
+//   "/bg/bg2.png",
+//   "/bg/bg9.png",
+//   "/bg/bg10.png",
+//   "/bg/bg11.png",
+//   "/bg/bg12.png",
+// ];
+
+// const GalleryBackground = () => {
+//   const [currentIndex, setCurrentIndex] = useState(0);
+
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+//     }, 3000); // Change image every 3 seconds
+
+//     return () => clearInterval(interval); // Clean up interval on component unmount
+//   }, []);
+
+//   return (
+//     <div className="absolute inset-0 mt-16 h-screen w-full z-0 overflow-hidden">
+//       <div className="relative w-full h-full">
+//         <Image
+//           src={images[currentIndex]}
+//           alt={`Gallery Image ${currentIndex + 1}`}
+//           layout="fill"
+//           objectFit="cover"
+//           className="transition-opacity duration-1000 ease-in-out"
+//         />
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default GalleryBackground;
+
+
+
+// import Image from "next/image";
+// import { useState, useEffect } from "react";
+
+// const images = [
+//   "/bg/bg1.png",
+//   "/bg/bg2.png",
+//   "/bg/bg3.png",
+//   "/bg/bg4.png",
+//   "/bg/bg5.png",
+//   "/bg/bg6.png",
+//   "/bg/bg7.png",
+//   "/bg/bg2.png",
+//   "/bg/bg9.png",
+//   "/bg/bg10.png",
+//   "/bg/bg11.png",
+//   "/bg/bg12.png",
+// ];
+
+// const GalleryBackground = () => {
+//   const [currentIndex, setCurrentIndex] = useState(0);
+//   const [Zoom, setZoom] = useState(true);
+
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       setZoom(false); // Start fade-out
+//       setTimeout(() => {
+//         setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+//         setZoom(true); // Start fade-in
+//       }, 1000); // Duration should match the CSS transition duration
+//     }, 3000); // Change image every 3 seconds
+
+//     return () => clearInterval(interval); // Clean up interval on component unmount
+//   }, []);
+
+//   return (
+//     <div className="absolute inset-0 mt-16 h-screen w-full z-0 overflow-hidden">
+//       <div className="relative w-full h-full">
+//         <Image
+//           src={images[currentIndex]}
+//           alt={`Gallery Image ${currentIndex + 1}`}
+//           layout="fill"
+//           objectFit="cover"
+//           className={`transition-transform duration-1000 ease-in-out ${
+//             Zoom ? "scale-100" : "scale-110"
+//           }`}
+//         />
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default GalleryBackground;
+
+//
+ 
+// *******************background as 4*3 form************************
+
+// import Image from "next/image";
+
+// const images = [
+//   "/bg/bg1.png",
+//   "/bg/bg2.png",
+//   "/bg/bg3.png",
+//   "/bg/bg4.png",
+//   "/bg/bg5.png",
+//   "/bg/bg6.png",
+//   "/bg/bg7.png",
+//   "/bg/bg2.png",
+//   "/bg/bg9.png",
+//   "/bg/bg10.png",
+//   "/bg/bg11.png",
+//   "/bg/bg12.png",
+// ];
+
+// const GalleryBackground = () => {
+//   return (
+//     <div className=" absolute inset-0 mt-16 h-screen w-full z-0 grid grid-cols-4 grid-rows-3 ">
+//       {images.map((src, index) => (
+//         <div key={index} className="relative  w-full h-full">
+//           <Image
+//             src={src}
+//             alt={`Gallery Image ${index + 1}`}
+//             layout="fill"
+//             objectFit="cover"
+//             className=" lg:h-[330px]  lg:w-[481px]"
+//           />
+//         </div>
+//       ))}
+//     </div>
+//   );
+// };
+
+// export default GalleryBackground;
 
 // "use client";
 // import Image from "next/image";
@@ -143,36 +308,36 @@ export default GalleryBackground;
 //           </form>
 //         </div>
 
-      //   <div className="flex lg:flex-row lg:w-[364px] lg:[53px] justify-center  items-center mt-4 lg:mt-1 space-y-0 lg:space-y-0 lg:space-x-1">
-      //     {/* Google Play Button */}
-      //     <Link
-      //       href="https://play.google.com/store/apps/details?id=YOUR_APP_ID"
-      //       target="_blank"
-      //       rel="noopener noreferrer"
-      //       className="flex items-center justify-center text-white w-full lg:w-auto"
-      //     >
-      //       <img
-      //         src="./play.png"
-      //         alt="Google Play"
-      //         className="w-auto lg:w-[178px] h-[53px]"
-      //       />
-      //     </Link>
+//   <div className="flex lg:flex-row lg:w-[364px] lg:[53px] justify-center  items-center mt-4 lg:mt-1 space-y-0 lg:space-y-0 lg:space-x-1">
+//     {/* Google Play Button */}
+//     <Link
+//       href="https://play.google.com/store/apps/details?id=YOUR_APP_ID"
+//       target="_blank"
+//       rel="noopener noreferrer"
+//       className="flex items-center justify-center text-white w-full lg:w-auto"
+//     >
+//       <img
+//         src="./play.png"
+//         alt="Google Play"
+//         className="w-auto lg:w-[178px] h-[53px]"
+//       />
+//     </Link>
 
-      //     {/* App Store Button */}
-      //     <Link
-      //       href="https://apps.apple.com/us/app/your-app-id"
-      //       target="_blank"
-      //       rel="noopener noreferrer"
-      //       className="flex items-center justify-center text-white  w-full lg:w-auto"
-      //     >
-      //       <img
-      //         src="./apple.png"
-      //         alt="App Store"
-      //         className="w-[178px] h-[53px]"
-      //       />
-      //     </Link>
-      //   </div>
-      // </div>
+//     {/* App Store Button */}
+//     <Link
+//       href="https://apps.apple.com/us/app/your-app-id"
+//       target="_blank"
+//       rel="noopener noreferrer"
+//       className="flex items-center justify-center text-white  w-full lg:w-auto"
+//     >
+//       <img
+//         src="./apple.png"
+//         alt="App Store"
+//         className="w-[178px] h-[53px]"
+//       />
+//     </Link>
+//   </div>
+// </div>
 
 //       {/* Right Image Container */}
 //       <div className="flex-1 flex items-center lg:ml-0 justify-center mt-3 md:lg:mt-0 lg:mb-0 w-full lg:w-[553px] lg:h-[366px]">

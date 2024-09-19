@@ -37,30 +37,42 @@
 
 // export default Footer1;
 import React from "react";
-import { FiSend } from "react-icons/fi";
+import Image from "next/image";
 
 const Footer1 = () => {
   return (
-    <footer className="w-full lg:mt-5">
+    <footer className="w-full bg-white">
       {/* Newsletter Section */}
-      <div className="bg-[#00A264] py-8 px-4 md:px-10 lg:flex lg:items-center flex-wrap lg:justify-between lg:px-24 w-full">
-        <div className="lg:w-[661px] mb-6 lg:mb-0">
-          <h2 className="text-white text-[20px] md:text-2xl lg:text-4xl font-semibold mb-2">
-            Don't miss out! Subscribe to our
-          </h2>
-          <h2 className="text-white text-[20px] md:text-2xl lg:text-4xl font-semibold">
-            newsletter for exclusive content.
-          </h2>
+      <div className="  lg:flex-row lg:justify-between lg:items-center  lg:flex  lg:h-[380px]  w-full">
+        <div className="lg:flex lg:flex-col lg:px-5 lg:items-center  lg:w-[65%]  lg:justify-center ">
+          <div className=" mb-6 lg:mb-0 py-8">
+            <h2 className="text-black text-[20px] md:text-2xl lg:text-5xl font-extrabold mb-2">
+              Don't miss out! Subscribe to our
+            </h2>
+            <h2 className="text-black text-[20px] md:text-2xl lg:text-5xl font-extrabold">
+              newsletter for exclusive content.
+            </h2>
+          </div>
+          <div className="lg:w-[570px] -ml-48 flex flex-col h-10 lg:mt-12 lg:flex-row gap-3">
+            <input
+              type="email"
+              placeholder="Enter your Email Address"
+              className="p-2 w-full  border-2 border-[#00A264] rounded-3xl focus:outline-none"
+            />
+            <button className="w-full lg:w-44 text-sm bg-[#00A264] text-white px-6 py-2 rounded-3xl flex justify-center items-center">
+              Subscribe
+            </button>
+          </div>
         </div>
-        <div className="lg:w-[470px] flex flex-col gap-3">
-          <input
-            type="email"
-            placeholder="Enter your Email Address"
-            className="p-2 w-full rounded-md focus:outline-none"
+        <div className="h-[370px] w-[35%]">
+          <Image
+            priority
+            src="/footer1.png"
+            alt=""
+            width={470}
+            height={380}
+            className=" lg:h-full lg:w-full "
           />
-          <button className="w-full bg-black text-white px-6 py-2 rounded-md flex justify-center items-center">
-            Subscribe <FiSend className="ml-2" />
-          </button>
         </div>
       </div>
     </footer>

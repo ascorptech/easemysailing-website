@@ -61,6 +61,7 @@ const ProfileCV = () => {
         <div className="flex gap-2">
           <div className="w-[115.32px] h-[128.85px] border p-2">
             <Image
+            priority
               src="/images/candidate/profileCv/profile.png"
               alt="image not found"
               width={100}
@@ -77,6 +78,7 @@ const ProfileCV = () => {
             </p>
             <div className="flex items-center gap-2">
               <Image
+               priority
                 src="/images/candidate/profileCv/user.png"
                 alt="logo not found"
                 width={30}
@@ -92,6 +94,7 @@ const ProfileCV = () => {
             </div>
             <div className="flex items-center gap-2">
               <Image
+               priority
                 src="/images/candidate/profileCv/vector1.png"
                 alt="logo not found"
                 width={30}
@@ -111,6 +114,7 @@ const ProfileCV = () => {
           <div className="flex  gap-2">
             {" "}
             <Image
+             priority
               src="/images/candidate/profileCv/Vector.png"
               alt=""
               width={200}
@@ -128,6 +132,7 @@ const ProfileCV = () => {
           <div className="flex items-center gap-2">
             {" "}
             <Image
+             priority
               src="/images/candidate/profileCv/Group.png"
               alt=""
               width={500}
@@ -194,6 +199,7 @@ const ProfileCV = () => {
           <div className="flex items-center gap-2">
             {" "}
             <Image
+             priority
               src="/images/candidate/profileCv/zondicons_time.png"
               alt=""
               width={50}
@@ -211,6 +217,7 @@ const ProfileCV = () => {
           <div className="flex gap-2">
             {" "}
             <Image
+             priority
               src="/images/candidate/profileCv/star-rate.png"
               alt=""
               width={500}
@@ -231,6 +238,7 @@ const ProfileCV = () => {
             className="rounded-lg  bg-[#00A264] flex p-2 px-4 text-white"
           >
             <Image
+             priority
               src="/images/candidate/profileCv/import-line.png"
               alt=""
               width={500}

@@ -8,6 +8,9 @@ import MyJobRequirements from "./MyJobRequirements/MyJobRequirements";
 import PersonalDetails from "./PersonalDetalis/PersonalDetalis";
 import AddressDetails from "./AddressDetails/AddressDetails";
 import Refrences from "./Refrences/Refrences";
+import PreSeaTrainigDetails from "./PreSeaTrainigDetails/PreSeaTrainigDetails";
+import AdditionalTraining from "./AdditionalTraining/AdditionalTraining";
+import MedicalCertificates from "./MedicalCertificates/MedicalCertificates";
 
 const MyJob = () => {
   const [isOpen, setIsOpen] = useState(false); // State to toggle
@@ -272,7 +275,7 @@ const MyJob = () => {
                 </div>
               </div>
 
-              {preOpen && <MyJobRequirements />}
+              {preOpen && <PreSeaTrainigDetails/>}
 
               <div
                 className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#00A264] mt-3"
@@ -544,7 +547,7 @@ const MyJob = () => {
               </div>
             </div>
 
-            {aCOpen && <MyJobRequirements />}
+            {aCOpen && <AdditionalTraining/>}
 
             <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#00A264] mt-3">
               <h2 className="">Medical Certificates</h2>
@@ -586,7 +589,7 @@ const MyJob = () => {
               </div>
             </div>
 
-            {madicalOpen && <MyJobRequirements />}
+            {madicalOpen && <MedicalCertificates />}
 
             <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF9900] mt-3">
               <h2 className="">Sea Going Service</h2>

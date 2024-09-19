@@ -13,11 +13,13 @@ import VerificationCode from "@/components/candidate/ChangePassword/Verification
 import Congratulations from "@/components/candidate/ChangePassword/Congratulations";
 import ResetPassword from "@/components/candidate/ChangePassword/ResetPassword";
 import PasswordChange from "@/components/candidate/ChangePassword/PasswordChange";
-import QuillEditor from "../quilleditor/QuillEditor";
+import { postReq } from "@/RootServices";
+import { LoginData } from "@/app/(admin)/admin/Services/loginService";
 
 const SignIn = () => {
-  const [emailOrPhone, setEmailOrPhone] = useState("");
-  const [password, setPassword] = useState("");
+  // const [emailOrPhone, setEmailOrPhone] = useState("ems@admin.com");
+  const [emailOrPhone, setEmailOrPhone] = useState("ajay.chaurasia25921@gmail.com");
+  const [password, setPassword] = useState("C@$R@k2020");
   const [showPassword, setShowPassword] = useState(false);
 
   const [isForgotPasswordOpen, setIsForgotPasswordOpen] = useState(false);
@@ -77,10 +79,23 @@ const SignIn = () => {
     setIsPasswordChangeOpen(false);
   };
 
-  const handleSubmit = () => {
-    // console.log(element.preventDefault());
-    // Handle login logic here
-    // console.log({ emailOrPhone, password });
+  const handleSubmit = async(e:any) => {
+    try {
+      e.preventDefault();
+
+    let data = {
+      email: emailOrPhone,
+      password:password
+    }
+
+    console.log(data);
+
+    const response = await LoginData(data);
+    console.log(response);
+    } catch (error) {
+      console.log('err',error)
+    }
+    
   };
 
   return (
@@ -105,14 +120,14 @@ const SignIn = () => {
               <div className="mb-2">
                 <label
                   className="block mb-2 text-sm font-bold text-gray-700"
-                  htmlFor="emailOrPhone"
+                  htmlFor="email"
                 >
-                  Enter Registered Email/Phone
+                  Enter Registered Email
                 </label>
                 <div className="relative flex items-center pl-8 ">
                   {/* <span className="p-2 bg-green-600 border-2"></span> */}
                   <input
-                    id="emailOrPhone"
+                    id="email"
                     type="text"
                     value={emailOrPhone}
                     onChange={(e) => setEmailOrPhone(e.target.value)}
@@ -181,11 +196,11 @@ const SignIn = () => {
                 </Link>
               </div>
 
-                <Link href={"/admin/dashboard"}
+                <button type="submit"
                       className="block w-full px-4 py-2 text-white bg-[#00A264] text-center hover:bg-[#00A264] font-bold rounded focus:outline-none focus:shadow-outline"
                 >
                   Sign in
-                </Link>
+                </button>
             </form>
           </div>
         </div>

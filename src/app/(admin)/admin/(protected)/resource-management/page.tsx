@@ -1,4 +1,5 @@
 "use client";
+import { getReq, postReq } from "@/RootServices";
 // import QuillEditor from "@/components/admin/quilleditor/QuillEditor";
 import dynamic from "next/dynamic";
 const QuillEditor = dynamic(
@@ -7,7 +8,7 @@ const QuillEditor = dynamic(
 );
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaEdit, FaEye, FaTrash } from "react-icons/fa";
 import { IoIosClose } from "react-icons/io";
 type Props = {};
@@ -20,6 +21,29 @@ const page = (props: Props) => {
     description: "",
   });
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [resourcesList,setResourcesList] = useState([
+    {
+      id: 1,
+      title: "Gwen Stacy",
+      about: "Lorem Ipsum is simply dummy text of the printing.",
+      image: "/images/captain.png",
+      date: "2020-01-01",
+    },
+    {
+      id: 2,
+      title: "Gwen Stacy",
+      about: "Lorem Ipsum is simply dummy text of the printing.",
+      image: "/images/captain.png",
+      date: "2020-01-01",
+    },
+    {
+      id: 3,
+      title: "Gwen Stacy",
+      about: "Lorem Ipsum is simply dummy text of the printing.",
+      image: "/images/captain.png",
+      date: "2020-01-01",
+    },
+  ])
 
   const handleAddClick = () => {
     setIsPopupOpen(true);
@@ -49,35 +73,33 @@ const page = (props: Props) => {
     setSelectedImage(null); // Remove the selected image
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async(e: React.FormEvent) => {
+    try {
+      e.preventDefault();
     console.log("Form Submitted:", formData);
+    let data ={
+      title:formData.title,
+      description:formData.description,
+    }
+    const response = await postReq('/api/resoures', data);
+    console.log(response);
     setIsPopupOpen(false); // Close the popup after submission
+    } catch (error) {
+      
+    }
+    
   };
 
-  const data = [
-    {
-      id: 1,
-      title: "Gwen Stacy",
-      about: "Lorem Ipsum is simply dummy text of the printing.",
-      image: "/images/captain.png",
-      date: "2020-01-01",
-    },
-    {
-      id: 2,
-      title: "Gwen Stacy",
-      about: "Lorem Ipsum is simply dummy text of the printing.",
-      image: "/images/captain.png",
-      date: "2020-01-01",
-    },
-    {
-      id: 3,
-      title: "Gwen Stacy",
-      about: "Lorem Ipsum is simply dummy text of the printing.",
-      image: "/images/captain.png",
-      date: "2020-01-01",
-    },
-  ];
+  useEffect(() => {
+    fetchResources()
+  }, [])
+
+  const fetchResources=async()=>{
+    const response = await getReq('/api/resoures');
+    setResourcesList(response.data);
+  }
+  
+
 
   return (
     <div className="mt-4 mx-auto flex w-[90%] flex-col">
@@ -102,7 +124,7 @@ const page = (props: Props) => {
             </tr>
           </thead>
           <tbody>
-            {data.map((item) => (
+            {resourcesList?.map((item) => (
               <tr key={item.id} className="text-center">
                 <td className="py-2 px-4  flex items-center justify-center">
                   <Image
@@ -205,24 +227,23 @@ const page = (props: Props) => {
                   className="w-full px-3 py-2 border h-32 border-gray-300 rounded"
                   placeholder="Enter description"
                 /> */}
-                <QuillEditor/>
+                <QuillEditor content={formData.description} setContent={(des:any)=>setFormData({...formData,description:des})}/>
               </div>
               <div className="flex justify-end space-x-4">
-                <Link
-                  href={"#"}
-                  type="button"
+                <button
+                  type="reset"
                   onClick={handleClosePopup}
                   className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700"
                 >
                   Cancel
-                </Link>
-                <Link
-                  href={"#"}
+                </button>
+                <button
+                  
                   type="submit"
                   className="px-4 py-2 bg-green-600 text-white rounded "
                 >
                   Submit
-                </Link>
+                </button>
               </div>
             </form>
           </div>

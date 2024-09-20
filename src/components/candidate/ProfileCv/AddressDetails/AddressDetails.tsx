@@ -24,7 +24,7 @@ const AddressDetails = () => {
             {" "}
             <div className="w-[50%] ">
               <label
-                className="block text-gray-700 text-sm font-bold mb-1"
+                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
                 htmlFor="street"
               >
                 Street
@@ -35,7 +35,7 @@ const AddressDetails = () => {
                   type="text"
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
-                  className="border rounded-lg w-full py-[7px]  text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-[#00A264]"
+                  className="border rounded-lg w-full py-[7px]  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
                   placeholder="Enter your address"
                   required
                 />
@@ -43,7 +43,7 @@ const AddressDetails = () => {
             </div>
             <div className="w-[50%] ">
               <label
-                className="block text-gray-700 text-sm font-bold mb-1"
+                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
                 htmlFor="number"
               >
                 Number
@@ -54,7 +54,7 @@ const AddressDetails = () => {
                   type="text"
                   value={number}
                   onChange={(e) => setNumber(e.target.value)}
-                  className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-[#00A264]"
+                  className="border rounded-lg w-full py-[7px] px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
                   placeholder="Enter middle Name"
                   required
                 />
@@ -64,7 +64,7 @@ const AddressDetails = () => {
 
           <div className=" ">
             <label
-              className="block text-gray-700 text-sm font-bold mb-1"
+              className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
               htmlFor="addinfo"
             >
               Add. Info (c/o etc.)
@@ -75,7 +75,7 @@ const AddressDetails = () => {
                 type="text"
                 value={addInfo}
                 onChange={(e) => setAddInfo(e.target.value)}
-                className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  border-[#00A264]"
+                className="border rounded-lg w-full py-[7px] px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline  border-[#00A264]"
                 placeholder="Enter Last Name"
                 required
               />
@@ -84,7 +84,7 @@ const AddressDetails = () => {
 
           <div className="flex items-center gap-4">
             <div className="w-[50%]">
-              <label className="text-[16px] leading-[21.79px] font-semibold mb-2 ">
+              <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2 ">
                 Postal Code/ZIP Code
               </label>
               <div className="relative flex items-center  ">
@@ -93,7 +93,7 @@ const AddressDetails = () => {
                   type="number"
                   value={postalCode}
                   onChange={(e) => setPostalCode(e.target.value)}
-                  className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  border-[#00A264]"
+                  className="border rounded-lg w-full py-[7px] px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline  border-[#00A264]"
                   placeholder="Enter ZipCode"
                   required
                 />
@@ -101,7 +101,7 @@ const AddressDetails = () => {
             </div>
             <div className="w-[50%] ">
               <label
-                className="block text-gray-700 text-sm font-bold mb-1"
+                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
                 htmlFor="cityName"
               >
                 City
@@ -112,7 +112,7 @@ const AddressDetails = () => {
                   type="text"
                   value={cityName}
                   onChange={(e) => setCityName(e.target.value)}
-                  className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-[#00A264]"
+                  className="border rounded-lg w-full py-[7px] px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
                   placeholder="Enter your city"
                   required
                 />
@@ -125,7 +125,7 @@ const AddressDetails = () => {
           <div className="flex items-center gap-4 w-full">
             <div className="w-[50%]">
               <label
-                className="text-[16px] leading-[21.79px] font-semibold mb-2 "
+                className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2 "
                 htmlFor="state"
               >
                 State/Province
@@ -136,17 +136,17 @@ const AddressDetails = () => {
                   type="text"
                   value={state}
                   onChange={(e) => setState(e.target.value)}
-                  className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  border-[#82908b]"
+                  className="border rounded-lg w-full py-[7px] px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline  border-[#82908b]"
                   placeholder=""
                   required
                 />
               </div>
             </div>
             <div className="flex flex-col w-[50%]  ">
-              <label className="text-[16px] leading-[21.79px] font-semibold mb-2 ">
+              <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2 ">
                 Country
               </label>{" "}
-              <select className=" bg-white h-8  border border-[#00A264] focus:outline-none rounded-lg">
+              <select className=" bg-white h-8 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]  border border-[#00A264] focus:outline-none rounded-lg">
                 <option value="maile">India</option>
                 <option value="maile">Austrelia</option>
                 <option value="maile">England</option>
@@ -157,10 +157,10 @@ const AddressDetails = () => {
           {/* airport  */}
 
           <div className="flex flex-col">
-            <label className="text-[16px] leading-[21.79px] font-semibold mb-2 ">
+            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2 ">
               Nearest Airport
             </label>
-            <select className=" bg-white h-8 w-full border border-[#00A264] focus:outline-none rounded-lg">
+            <select className=" bg-white text-[14px] leading-[19.07px] font-[openSans] text-[#333333] h-8 w-full border border-[#00A264] focus:outline-none rounded-lg">
               <option value="maile">India</option>
               <option value="maile">Austrelia</option>
               <option value="maile">England</option>
@@ -171,10 +171,10 @@ const AddressDetails = () => {
 
           <div className="flex items-center justify-between gap-4  ">
             <div className="flex flex-col  ">
-              <label className="text-[16px] leading-[21.79px] font-semibold mb-2 ">
+              <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2 ">
                 Country Code
               </label>
-              <select className=" bg-white h-8  border border-[#00A264] focus:outline-none rounded-lg">
+              <select className=" bg-white h-8 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-lg">
                 <option value="maile">+91</option>
                 <option value="maile">+50</option>
                 <option value="maile">+08</option>
@@ -183,7 +183,7 @@ const AddressDetails = () => {
 
             <div className="w-[75%] ">
               <label
-                className="block text-gray-700 text-sm font-bold mb-1"
+                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
                 htmlFor="number"
               >
                 Phone Number
@@ -194,7 +194,7 @@ const AddressDetails = () => {
                   type="text"
                   value={phoneNumber}
                   onChange={(e) => setPhoneNumber(e.target.value)}
-                  className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-[#00A264]"
+                  className="border rounded-lg w-full py-[7px] px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
@@ -205,7 +205,7 @@ const AddressDetails = () => {
           <div className="flex items-center justify-between gap-4  ">
             <div className="flex flex-col w-[50%] ">
               <label
-                className="text-[16px] leading-[21.79px] font-semibold mb-2 "
+                className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2 "
                 htmlFor="email"
               >
                 Email
@@ -216,7 +216,7 @@ const AddressDetails = () => {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-[#00A264]"
+                  className="border rounded-lg w-full py-[7px] px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
@@ -225,7 +225,7 @@ const AddressDetails = () => {
 
             <div className="w-[50%] ">
               <label
-                className="block text-gray-700 text-sm font-bold mb-1"
+                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
                 htmlFor="inumber"
               >
                 INDoS Number
@@ -236,7 +236,7 @@ const AddressDetails = () => {
                   type="text"
                   value={indNumber}
                   onChange={(e) => setIndNumber(e.target.value)}
-                  className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-[#00A264]"
+                  className="border rounded-lg w-full py-[7px] px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />

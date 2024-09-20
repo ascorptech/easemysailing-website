@@ -1,62 +1,110 @@
+"use client";
 import Link from "next/link";
-import React from "react";
+import { useState } from "react";
 import { RiArrowDownSLine } from "react-icons/ri";
-import { FaCalendarAlt } from 'react-icons/fa';
 
 const MyJobRequirements = () => {
+
+  const [availabilitydate, setAvailabilityDate] = useState("");
+
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <div className="grid grid-cols-2 gap-4">
-        <div className="flex items-center justify-between border border-[#00A264] p-2">
-          <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+      <div className="">
+          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]" htmlFor="">
+          Current Position/Rank*
+          </label>
+          <select
+            className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+            name="options"
+          >
+            <option value="" disabled selected>
             Current Position/Rank*
-          </p>{" "}
-          <Link href="#">
-            <RiArrowDownSLine className="text-2xl " />
-          </Link>
+            </option>
+            <option value="">Captain</option>
+            <option value="">Captain2</option>
+            <option value="">Training3</option>
+          </select>
         </div>
-        <div className="flex items-center justify-between border border-[#00A264] p-2">
-          <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+        <div className="">
+          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="">
+          Alternate Position/Rank*
+          </label>
+          <select
+            className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+            name="options"
+          >
+            <option value="" disabled selected>
             Alternate Position/Rank*
-          </p>
-          <Link href="#">
-            <RiArrowDownSLine className="text-2xl " />
-          </Link>
+            </option>
+            <option value="">Chemical Tanker1</option>
+            <option value="">Chemical Tanker2</option>
+            <option value="">Chemical Tanker3</option>
+          </select>
         </div>
-        <div className="flex items-center justify-between border p-2 border-[#00A264]">
-          <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-            Preferred Vessel Type*
-          </p>{" "}
-          <Link href="#">
-            <RiArrowDownSLine className="text-2xl " />
-          </Link>
+        <div className="">
+          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]" htmlFor="">
+          Alternate Position/Rank
+          </label>
+          <select
+            className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+            name="options"
+          >
+            <option value="" disabled selected>
+            Alternate Position/Rank
+            </option>
+            <option value="">Training1</option>
+            <option value="">Training2</option>
+            <option value="">Training3</option>
+          </select>
         </div>
-        <div className="flex items-center justify-between border border-[#00A264] p-2">
-          <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+        <div className="">
+          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] font-normal " htmlFor="">
+          Alternate Vessel Type*
+          </label>
+          <select
+            className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+            name="options"
+          >
+            <option value="" disabled selected>
             Alternate Vessel Type*
-          </p>
-          <Link href="#">
-            <RiArrowDownSLine className="text-2xl " />
-          </Link>
+            </option>
+            <option value="">Training1</option>
+            <option value="">Training2</option>
+            <option value="">Training3</option>
+          </select>
         </div>
-        <div className="flex items-center justify-between border border-[#00A264] p-2">
-          <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-            Availability Date
-          </p>
-          <Link href="#">
-            {/* <RiArrowDownSLine className="text-2xl " /> */}
-            <FaCalendarAlt className="text-[#00A264]" />
-
-          </Link>
+        <div className="">
+          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="issue">
+          Availability Date*
+          </label>
+          <input
+            id="issue"
+            type="date"
+            className="border text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 w-full  h-11 rounded-md border-[#00A264]"
+            placeholder="Availability Date*"
+            value={availabilitydate}
+            onChange={(e) => setAvailabilityDate(e.target.value)}
+          />
         </div>
-        <div className="flex items-center justify-between border border-[#00A264] p-2">
-          <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-           No Available
-          </p>{" "}
-          <Link href="#">
-            <RiArrowDownSLine className="text-2xl " />
-          </Link>
+       
+        <div className="">
+          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="">
+          Available*
+          </label>
+          <select
+            className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+            name="options"
+          >
+            <option value="" disabled selected>
+            Available*
+            </option>
+            <option value="">Training1</option>
+            <option value="">Training2</option>
+            <option value="">Training3</option>
+          </select>
         </div>
+     
       </div>
       <div className="my-4">
         <h1 className="text-[16px] leading-[24px] font-semibold">
@@ -72,37 +120,78 @@ const MyJobRequirements = () => {
       {/* Third section */}
 
       <div className="grid grid-cols-2 gap-4">
-        <div className="flex items-center justify-between border border-[rgb(0,162,100)] p-2">
-          <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+       
+
+         <div className="">
+          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="">
+          Min. Time on Board(months)
+          </label>
+          <select
+            className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+            name="options"
+          >
+            <option value="" disabled selected>
             Min. Time on Board(months)
-          </p>{" "}
-          <Link href="#">
-            <RiArrowDownSLine className="text-2xl " />
-          </Link>
+            </option>
+            <option value="">Training1</option>
+            <option value="">Training2</option>
+            <option value="">Training3</option>
+          </select>
         </div>
-        <div className="flex items-center justify-between border border-[#00A264] p-2">
-          <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-            Max. Time on Board(months){" "}
-          </p>
-          <Link href="#">
-            <RiArrowDownSLine className="text-2xl " />
-          </Link>
-        </div>
-        <div className="flex items-center justify-between border p-2 border-[#00A264]">
-          <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-            Min. Time on Home(months)
-          </p>{" "}
-          <Link href="#">
-            <RiArrowDownSLine className="text-2xl " />
-          </Link>
-        </div>
-        <div className="flex items-center justify-between border p-2 border-[#00A264]">
-          <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+     
+
+        <div className="">
+          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="">
+          Max. Time on Board(months)
+          </label>
+          <select
+            className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+            name="options"
+          >
+            <option value="" disabled selected>
             Max. Time on Board(months)
-          </p>
-          <Link href="#">
-            <RiArrowDownSLine className="text-2xl " />
-          </Link>
+            </option>
+            <option value="">Training1</option>
+            <option value="">Training2</option>
+            <option value="">Training3</option>
+          </select>
+        </div>
+       
+      
+          <div className="">
+          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="">
+          Min. Time on Home(months)
+          </label>
+          <select
+            className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+            name="options"
+          >
+            <option value="" disabled selected>
+            Min. Time on Home(months)
+            </option>
+            <option value="">Training1</option>
+            <option value="">Training2</option>
+            <option value="">Training3</option>
+          </select>
+        </div>
+
+
+        
+        <div className="px-2">
+          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="">
+          Max. Time on Board(months)
+          </label>
+          <select
+            className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264] "
+            name="options"
+          >
+            <option value="" disabled selected>
+            Max. Time on Board(months)
+            </option>
+            <option value="">Training1</option>
+            <option value="">Training2</option>
+            <option value="">Training3</option>
+          </select>
         </div>
       </div>
 
@@ -123,73 +212,133 @@ const MyJobRequirements = () => {
       </h1>
 
       <div className="grid  grid-cols-2 gap-4 ">
-        <div className="flex items-center justify-between border border-[rgb(0,162,100)] p-2 ">
-          <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+      
+         <div className="px-2">
+          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="">
+          Voyage (per month)
+          </label>
+          <select
+            className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264] "
+            name="options"
+          >
+            <option value="" disabled selected>
             Voyage (per month)
-          </p>{" "}
-          <Link href="#">
-            <RiArrowDownSLine className="text-2xl " />
-          </Link>
+            </option>
+            <option value="">Training1</option>
+            <option value="">Training2</option>
+            <option value="">Training3</option>
+          </select>
         </div>
         <div className="grid grid-cols-2 gap-4">
-          {" "}
-          <div className="flex items-center justify-between border border-[rgb(0,162,100)] p-2">
-            <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-              Currency
-            </p>{" "}
-            <Link href="#">
-              <RiArrowDownSLine className="text-2xl " />
-            </Link>
-          </div>
-          {/* <div> */}
-          <div className="flex items-center justify-between border border-[rgb(0,162,100)] p-2">
-            <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-              Negotiable
-            </p>{" "}
-            <Link href="#">
-              <RiArrowDownSLine className="text-2xl " />
-            </Link>
-            {/* </div> */}
-          </div>
+         
+             <div className="px-2">
+          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="">
+          Currency
+          </label>
+          <select
+            className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264] "
+            name="options"
+          >
+            <option value="" disabled selected>
+            Currency
+            </option>
+            <option value="">Training1</option>
+            <option value="">Training2</option>
+            <option value="">Training3</option>
+          </select>
+        </div>
+         
+      
+            <div className="px-2">
+          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="">
+          Negotiable
+          </label>
+          <select
+            className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264] "
+            name="options"
+          >
+            <option value="" disabled selected>
+            Negotiable
+            </option>
+            <option value="">Training1</option>
+            <option value="">Training2</option>
+            <option value="">Training3</option>
+          </select>
+        </div>
         </div>
 
-        <div className="flex items-center justify-between border border-[rgb(0,162,100)] p-2">
-          <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+          <div className="px-2">
+          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="">
+          Permanent (per Month)
+          </label>
+          <select
+            className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264] "
+            name="options"
+          >
+            <option value="" disabled selected>
             Permanent (per Month)
-          </p>{" "}
-          <Link href="#">
-            <RiArrowDownSLine className="text-2xl " />
-          </Link>
+            </option>
+            <option value="">Training1</option>
+            <option value="">Training2</option>
+            <option value="">Training3</option>
+          </select>
         </div>
         <div className="grid grid-cols-2 gap-4">
-          {" "}
-          <div className="flex items-center justify-between border border-[rgb(0,162,100)] p-2">
-            <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-              currency
-            </p>{" "}
-            <Link href="#">
-              <RiArrowDownSLine className="text-2xl " />
-            </Link>
-          </div>
-          <div className="flex items-center justify-between border border-[rgb(0,162,100)] p-2">
-            <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-              negotiable
-            </p>{" "}
-            <Link href="#">
-              <RiArrowDownSLine className="text-2xl " />
-            </Link>
-          </div>
+        
+
+<div className="px-2">
+          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="">
+          currency
+          </label>
+          <select
+            className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264] "
+            name="options"
+          >
+            <option value="" disabled selected>
+            currency
+            </option>
+            <option value="">Training1</option>
+            <option value="">Training2</option>
+            <option value="">Training3</option>
+          </select>
+        </div>
+       
+          <div className="px-2">
+          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="">
+          negotiable
+          </label>
+          <select
+            className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264] "
+            name="options"
+          >
+            <option value="" disabled selected>
+            negotiable
+            </option>
+            <option value="">Training1</option>
+            <option value="">Training2</option>
+            <option value="">Training3</option>
+          </select>
+        </div>
         </div>
 
         <div className="grid col-span-2 mb-3">
-          <div className="flex items-center justify-between border border-[rgb(0,162,100)] p-2">
-            <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-              Trading Area Exclusions
-            </p>{" "}
-            <Link href="#">
-              <RiArrowDownSLine className="text-2xl " />
-            </Link>
-          </div>
+         
+           <div className="px-2">
+          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="">
+          Trading Area Exclusions
+          </label>
+          <select
+            className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264] "
+            name="options"
+          >
+            <option value="" disabled selected>
+            Trading Area Exclusions
+            </option>
+            <option value="">Training1</option>
+            <option value="">Training2</option>
+            <option value="">Training3</option>
+          </select>
+        </div>
         </div>
       </div>
 

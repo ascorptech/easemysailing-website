@@ -40,7 +40,7 @@ const AdditionalTraining = () => {
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <div className="grid grid-cols-2 gap-4">
         <div className="">
-          <label className="text-[16px] leading-[21.79px] " htmlFor="option4">
+          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="option4">
             Certification
           </label>
           <select
@@ -59,7 +59,7 @@ const AdditionalTraining = () => {
 
         <div className="   ">
             <label
-              className="text-[16px] leading-[21.79px] "
+              className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
               htmlFor="trainingC1"
             >
               Training Center
@@ -69,7 +69,7 @@ const AdditionalTraining = () => {
               type="text"
               value={trainingCenter}
               onChange={(e) => setTrainingCenter(e.target.value)}
-              className="border border-[#00A264] rounded-md w-full h-11 py-[8px] px-2 text-gray-700 leading-tight focus:outline-green-300 focus:shadow-outline "
+              className="border border-[#00A264] rounded-md w-full h-11 py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 focus:shadow-outline "
               placeholder=""
               required
             />
@@ -77,7 +77,7 @@ const AdditionalTraining = () => {
 
 
           <div className=" ">
-          <label className="text-[16px] leading-[21.79px] " htmlFor="options1">
+          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="options1">
           Issuing Country
           </label>
           <select
@@ -97,7 +97,7 @@ const AdditionalTraining = () => {
         {/* <div className=""> */}
 
         <div className="   ">
-          <label className="text-[16px] leading-[21.79px] " htmlFor="number1">
+          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="number1">
             Enter Number
           </label>
           <input
@@ -105,7 +105,7 @@ const AdditionalTraining = () => {
             type="number"
             value={number}
             onChange={(e) => setNumber(e.target.value)}
-            className="border border-[#00A264] rounded-md w-full h-11 py-[8px] px-2 text-gray-700 leading-tight focus:outline-green-300 focus:shadow-outline "
+            className="border border-[#00A264] rounded-md w-full h-11 py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 focus:shadow-outline "
             placeholder=""
             required
           />
@@ -115,13 +115,13 @@ const AdditionalTraining = () => {
 
         {/* </div> */}
         <div className="">
-          <label className="text-[16px] leading-[21.79px]" htmlFor="issue3">
+          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]" htmlFor="issue3">
             Issue Date
           </label>
           <input
             id="issue3"
             type="date"
-            className="border focus:outline-green-300 w-full  h-11 rounded-md border-[#00A264]"
+            className="border focus:outline-green-300 w-full text-[14px] leading-[19.07px] font-[openSans] text-[#333333] h-11 rounded-md border-[#00A264]"
             value={issuedate}
             onChange={(e) => setIssueDate(e.target.value)}
           />
@@ -129,14 +129,14 @@ const AdditionalTraining = () => {
       {/* </div> */}
 
       <div className="">
-        <label className="text-[16px] leading-[21.79px]  " htmlFor="expiryDate3">
+        <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]  " htmlFor="expiryDate3">
           Expiry Date
         </label>
         <div className="flex items-center gap-4 ">
           <input
             id="expiryDate3"
             type="date"
-            className="border focus:outline-green-300  w-full  h-11 rounded-md border-[#00A264]"
+            className="border focus:outline-green-300  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full  h-11 rounded-md border-[#00A264]"
             value={exdate}
             onChange={(e) => setExDate(e.target.value)}
           />
@@ -147,12 +147,12 @@ const AdditionalTraining = () => {
           <input
             id="neverExpires1"
             type="checkbox"
-            className="border focus:ring-[#00A264]  text-[#00A264] checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264]"
+            className="border focus:ring-[#00A264]  checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
             //   value={exdate}
             //   onChange={(e) => setExDate(e.target.value)}
           />
           <label
-            className="text-[16px] leading-[21.79px]"
+            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
             htmlFor="neverExpires1"
           >
             Never Expires
@@ -163,7 +163,7 @@ const AdditionalTraining = () => {
       <div className="flex gap-6 items-center  my-6">
         <label
           htmlFor="file-upload3"
-          className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 "
+          className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[openSans]  "
         >
           Attachment Document
         </label>
@@ -174,7 +174,7 @@ const AdditionalTraining = () => {
           onChange={handleFileChange}
         />
         {selectedFile && (
-          <p className="mt-4 text-gray-700">
+          <p className="mt-4 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
             File Selected: {selectedFile.name}
           </p>
         )}
@@ -195,7 +195,7 @@ const AdditionalTraining = () => {
             <h1 className="text-center font-bold">PROFESSIONAL KNOWLEDGE TEST</h1>
             </div>
           <div className="">
-            <label className="text-[16px] leading-[21.79px] " htmlFor="option2">
+            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="option2">
              Capacity
             </label>
             <select
@@ -214,7 +214,7 @@ const AdditionalTraining = () => {
 
 
           <div className="">
-            <label className="text-[16px] leading-[21.79px] " htmlFor="level">
+            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="level">
              Level
             </label>
             <select
@@ -233,7 +233,7 @@ const AdditionalTraining = () => {
 
           <div className="   ">
             <label
-              className="text-[16px] leading-[21.79px] "
+              className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
               htmlFor="trainingCe"
             >
               Training Center
@@ -243,14 +243,14 @@ const AdditionalTraining = () => {
               type="text"
               value={trainingCenter1}
               onChange={(e) => setTrainingCenter1(e.target.value)}
-              className="border border-[#00A264] rounded-md w-full h-11 py-[8px] px-2 text-gray-700 leading-tight focus:outline-green-300 focus:shadow-outline "
+              className="border border-[#00A264] rounded-md w-full h-11 py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 focus:shadow-outline "
               placeholder=""
               required
             />
           </div>
 
           <div className="">
-            <label className="text-[16px] leading-[21.79px] " htmlFor="typeoftest">
+            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="typeoftest">
              Type of Test
             </label>
             <select
@@ -270,7 +270,7 @@ const AdditionalTraining = () => {
 
           <div className="   ">
             <label
-              className="text-[16px] leading-[21.79px] "
+              className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
               htmlFor="result"
             >
               Result
@@ -280,7 +280,7 @@ const AdditionalTraining = () => {
               type="text"
               value={result}
               onChange={(e) => setResult(e.target.value)}
-              className="border border-[#00A264] rounded-md w-full h-11 py-[8px] px-2 text-gray-700 leading-tight focus:outline-green-300 focus:shadow-outline "
+              className="border border-[#00A264] rounded-md w-full h-11 py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 focus:shadow-outline "
               placeholder=""
               required
             />
@@ -288,7 +288,7 @@ const AdditionalTraining = () => {
          
 
           <div className=" ">
-            <label className="text-[16px] leading-[21.79px] " htmlFor="optionT1">
+            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="optionT1">
               Issuing Country
             </label>
             <select
@@ -308,7 +308,7 @@ const AdditionalTraining = () => {
 
           <div className="   ">
             <label
-              className="text-[16px] leading-[21.79px] "
+              className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
               htmlFor="proNumber1"
             >
               Enter Number
@@ -318,7 +318,7 @@ const AdditionalTraining = () => {
               type="number"
               value={eCDISNumber}
               onChange={(e) => setECDISNumber(e.target.value)}
-              className="border border-[#00A264] rounded-md w-full h-11 py-[8px] px-2 text-gray-700 leading-tight focus:outline-green-300 focus:shadow-outline "
+              className="border border-[#00A264] rounded-md w-full h-11 py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 focus:shadow-outline "
               placeholder=""
               required
             />
@@ -326,13 +326,13 @@ const AdditionalTraining = () => {
 
           {/* </div> */}
           <div className="">
-            <label className="text-[16px] leading-[21.79px]" htmlFor="issue2">
+            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]" htmlFor="issue2">
               Issue Date
             </label>
             <input
               id="issue2"
               type="date"
-              className="border focus:outline-green-300 w-full  h-11 rounded-md border-[#00A264]"
+              className="border focus:outline-green-300 w-full text-[14px] leading-[19.07px] font-[openSans] text-[#333333]  h-11 rounded-md border-[#00A264]"
               value={issuedate1}
               onChange={(e) => setIssueDate1(e.target.value)}
             />
@@ -340,7 +340,7 @@ const AdditionalTraining = () => {
 
           <div className="">
             <label
-              className="text-[16px] leading-[21.79px]  "
+              className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]  "
               htmlFor="expiryDate2"
             >
               Expiry Date
@@ -349,7 +349,7 @@ const AdditionalTraining = () => {
             <input
               id="expiryDate2"
               type="date"
-              className="border focus:outline-green-300 w-full  h-11 rounded-md border-[#00A264]"
+              className="border text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 w-full  h-11 rounded-md border-[#00A264]"
               value={exdate1}
               onChange={(e) => setExDate1(e.target.value)}
             />
@@ -363,7 +363,7 @@ const AdditionalTraining = () => {
               //   onChange={(e) => setExDate(e.target.value)}
             />
             <label
-              className="text-[16px] leading-[21.79px]"
+              className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
               htmlFor="neverExpires2"
             >
               Never Expires
@@ -373,7 +373,7 @@ const AdditionalTraining = () => {
           <div className="flex gap-6 items-center  ">
             <label
               htmlFor="file-upload2"
-              className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 "
+              className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] text-[14px] leading-[19.07px] font-[openSans]  focus:outline-none focus:ring-2 "
             >
               Attach Docoment
             </label>
@@ -384,11 +384,11 @@ const AdditionalTraining = () => {
               onChange={handleFileChanges}
             />
             {selectedFiles ? (
-              <p className="text-gray-700">
+              <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
                 File Selected: {selectedFiles.name}
               </p>
             ) : (
-              <p className="text-gray-500">No file selected</p>
+              <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">No file selected</p>
             )}
           </div>
         </div>
@@ -400,13 +400,13 @@ const AdditionalTraining = () => {
       <div className="flex gap-2 mb-4 mt-4">
         <Link
           href="#"
-          className="border border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
+          className="border text-[14px] leading-[19.07px] font-[openSans]  border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
         >
           Save
         </Link>
         <Link
           href="#"
-          className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
+          className="border border-[#00A264]  p-2 rounded-lg px-8 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
         >
           Edit
         </Link>

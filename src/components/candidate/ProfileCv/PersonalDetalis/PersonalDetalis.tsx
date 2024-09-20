@@ -31,7 +31,7 @@ const PersonalDetails = () => {
             {" "}
             <div className="w-full ">
               <label
-                className="block text-gray-700 text-sm font-bold mb-1"
+                className="blocktext-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
                 htmlFor="firstName"
               >
                 First Name
@@ -42,7 +42,7 @@ const PersonalDetails = () => {
                   type="text"
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
-                  className="border rounded-md w-full py-[8px] px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full py-[8px] px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
                   placeholder="Enter First Name"
                   required
                 />
@@ -50,7 +50,7 @@ const PersonalDetails = () => {
             </div>
             <div className="w-full ">
               <label
-                className="block text-gray-700 text-sm font-bold mb-1"
+                className="block  text-[14px] leading-[19.07px] font-[openSans] text-[#333333]  mb-1"
                 htmlFor="userName"
               >
                 Middle Name
@@ -61,7 +61,7 @@ const PersonalDetails = () => {
                   type="text"
                   value={middleName}
                   onChange={(e) => setmidddleName(e.target.value)}
-                  className="border rounded-md w-full py-[8px] px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
                   placeholder="Enter middle Name"
                   required
                 />
@@ -71,7 +71,7 @@ const PersonalDetails = () => {
 
           <div className="w-[80%] ">
             <label
-              className="block text-gray-700 text-sm font-bold mb-1"
+              className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
               htmlFor="lastName"
             >
               Last Name
@@ -82,7 +82,7 @@ const PersonalDetails = () => {
                 type="text"
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
-                className="border rounded-md w-full py-[8px] px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  border-[#00A264]"
+                className="border rounded-md w-full py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline  border-[#00A264]"
                 placeholder="Enter Last Name"
                 required
               />
@@ -91,22 +91,22 @@ const PersonalDetails = () => {
 
           <div className="flex items-center justify-between gap-4  ">
           <div className="flex flex-col w-full">
-            <label className="text-[16px] leading-[21.79px] font-semibold mb-2 ">
+            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2 ">
               Gender
             </label>{" "}
-            <select className="bg-white h-9  border border-[#00A264] focus:outline-none rounded-md">
+            <select className="bg-white h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]  border border-[#00A264] focus:outline-none rounded-md">
               <option value="maile">Male</option>
               <option value="maile">Female</option>
               <option value="maile">Other</option>
             </select>
           </div>
           <div className="flex flex-col w-full">
-            <label className="text-[16px] leading-[21.79px] font-semibold mb-2 ">
+            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2 ">
               Date of Birth
             </label>
             <input
               type="date"
-              className="border p-2 rounded-md border-[#00A264]"
+              className="border p-2 rounded-md border-[#00A264] text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
               value={date}
               onChange={(e) => setDate(e.target.value)}
             />
@@ -121,10 +121,10 @@ const PersonalDetails = () => {
 
           <div className="flex items-center justify-between gap-4  ">
             <div className="flex flex-col w-[50%]">
-              <label className="text-[16px] leading-[21.79px] font-semibold mb-2 ">
+              <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2 ">
                 Country of Birth
               </label>{" "}
-              <select className=" bg-white h-9 w-full border border-[#00A264] focus:outline-none rounded-md">
+              <select className=" bg-white h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full border border-[#00A264] focus:outline-none rounded-md">
                 <option value="maile">India</option>
                 <option value="maile">Austrelia</option>
                 <option value="maile">England</option>
@@ -133,7 +133,7 @@ const PersonalDetails = () => {
 
             <div className="w-[50%] ">
               <label
-                className="block text-gray-700 text-sm font-bold mb-1"
+                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
                 htmlFor="cityName"
               >
                 City of Birth
@@ -144,7 +144,7 @@ const PersonalDetails = () => {
                   type="text"
                   value={cityName}
                   onChange={(e) => setCityName(e.target.value)}
-                  className="border rounded-md w-full py-[8px] px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full py-[8px] px-2text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
                   placeholder="Enter your city"
                   required
                 />
@@ -157,10 +157,10 @@ const PersonalDetails = () => {
           <div className="flex items-center justify-between gap-4  ">
 
           <div className="flex flex-col w-full">
-            <label className="text-[16px] leading-[21.79px] font-semibold mb-2 ">
+            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2 ">
               Nationality
             </label>
-            <select className="bg-white h-9  border border-[#00A264] rounded-md">
+            <select className="bg-white h-9  border border-[#00A264] text-[14px] leading-[19.07px] font-[openSans] text-[#333333] rounded-md">
               <option value="maile">Indian</option>
               <option value="maile">Bangali</option>
               <option value="maile">English</option>
@@ -170,7 +170,7 @@ const PersonalDetails = () => {
           {/* Relision */}
           <div className="w-full ">
             <label
-              className="block text-gray-700 text-sm font-bold mb-1"
+              className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
               htmlFor="cityName"
             >
               Religion
@@ -181,7 +181,7 @@ const PersonalDetails = () => {
                 type="text"
                 value={religionName}
                 onChange={(e) => setReligionName(e.target.value)}
-                className="border rounded-lg w-full py-[8px] px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-[#00A264]"
+                className="border rounded-lg w-full py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Religion Name"
                 required
               />
@@ -203,7 +203,7 @@ const PersonalDetails = () => {
             
             <div className=" ">
               <label
-                className="block text-gray-700 text-sm font-bold mb-1"
+                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
                 htmlFor="cityName"
               >
                 Religion
@@ -214,7 +214,7 @@ const PersonalDetails = () => {
                   type="text"
                   value={nextKinName}
                   onChange={(e) => setNextKinName(e.target.value)}
-                  className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-[#00A264]"
+                  className="border rounded-lg w-full py-[7px] px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
                   placeholder="Enter Religion Name"
                   required
                 />
@@ -222,7 +222,7 @@ const PersonalDetails = () => {
             </div>
             <div className="">
               <label
-                className="block text-gray-700 text-sm font-bold mb-1"
+                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
                 htmlFor="cityName"
               >
                 Religion
@@ -233,7 +233,7 @@ const PersonalDetails = () => {
                   type="text"
                   value={nextKinShip}
                   onChange={(e) => setNextKinShip(e.target.value)}
-                  className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-[#00A264]"
+                  className="border rounded-lg w-full py-[7px] px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
                   placeholder="Enter Religion Name"
                   required
                 />
@@ -241,7 +241,7 @@ const PersonalDetails = () => {
             </div>
             <div className=" ">
               <label
-                className="block text-gray-700 text-sm font-bold mb-1"
+                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
                 htmlFor="cityName"
               >
                 Religion
@@ -252,7 +252,7 @@ const PersonalDetails = () => {
                   type="text"
                   value={nextKinAddre}
                   onChange={(e) => setNextKinAddre(e.target.value)}
-                  className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-[#00A264]"
+                  className="border rounded-lg w-full py-[7px] px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
                   placeholder="Enter Religion Name"
                   required
                 />
@@ -261,7 +261,7 @@ const PersonalDetails = () => {
 
             <div className=" ">
               <label
-                className="block text-gray-700 text-sm font-bold mb-1"
+                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
                 htmlFor="cityName"
               >
                 Religion
@@ -272,7 +272,7 @@ const PersonalDetails = () => {
                   type="text"
                   value={nextKinChildren}
                   onChange={(e) => setNextKinChildren(e.target.value)}
-                  className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-[#00A264]"
+                  className="border rounded-lg w-full py-[7px] px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
                   placeholder="Enter Religion Name"
                   required
                 />
@@ -289,7 +289,7 @@ const PersonalDetails = () => {
             
             <div className=" ">
               <label
-                className="blocktext-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
+                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
                 htmlFor="personality"
               >
                 My Personality and professional Attitude
@@ -300,7 +300,7 @@ const PersonalDetails = () => {
                   type="text"
                   value={personality}
                   onChange={(e) => setPersonality(e.target.value)}
-                  className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-[#00A264]"
+                  className="border rounded-lg w-full py-[7px] px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
@@ -319,7 +319,7 @@ const PersonalDetails = () => {
                   type="text"
                   value={additional}
                   onChange={(e) => setAdditional(e.target.value)}
-                  className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-[#00A264]"
+                  className="border rounded-lg w-full py-[7px] px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
@@ -327,7 +327,7 @@ const PersonalDetails = () => {
             </div>
             <div className=" ">
               <label
-                className="block text-gray-700 text-sm font-bold mb-1"
+                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
                 htmlFor="future"
               >
                My Future Aims and Expectations
@@ -338,7 +338,7 @@ const PersonalDetails = () => {
                   type="text"
                   value={myFuture}
                   onChange={(e) => setMyFuture(e.target.value)}
-                  className="border rounded-md w-full py-[7px] px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full py-[7px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
@@ -347,7 +347,7 @@ const PersonalDetails = () => {
 
             <div className=" ">
               <label
-                className="block text-gray-700 text-sm font-bold mb-1"
+                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
                 htmlFor="action"
               >
                 Criminal action.
@@ -358,7 +358,7 @@ const PersonalDetails = () => {
                   type="text"
                   value={criminal}
                   onChange={(e) => setCriminal(e.target.value)}
-                  className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-[#00A264]"
+                  className="border rounded-lg w-full py-[7px] px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
                   placeholder="Yes/No"
                   required
                 />

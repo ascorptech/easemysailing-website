@@ -96,26 +96,6 @@ const page = (props: Props) => {
   }
 
   useEffect(() => {
-    // Fetch data from API
-    // const fetchData = async () => {
-    //   fetch('http://111.118.178.132:9987/api/resources', {
-    //     method: 'GET',
-    //     mode:'cors',
-    //     headers: {
-    //       'Access-Control-Allow-Origin':'*',
-    //       'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhamF5LmNoYXVyYXNpYTI1OTIxQGdtYWlsLmNvbSIsImlhdCI6MTcyNjc3OTM2MiwiZXhwIjoxNzI2NzgwODAyfQ.4EDRQjCIO40mDCui9w7Quw4EHEr-lLhBpQquAmEtNmQ',  // Replace YOUR_ACCESS_TOKEN with the actual token
-    //       'Content-Type': 'application/json'
-    //     }
-    //   })
-    //   .then(response => response.json())  // Assuming the response is in JSON format
-    //   .then(data => {
-    //     console.log(data);  // Handle the data returned by the API
-    //   })
-    //   .catch(error => {
-    //     console.error('Error:', error);  // Handle any errors
-    //   });
-    //     }
-    //     fetchData();
     GetResourcesList(fetchResources)
   }, [])
 

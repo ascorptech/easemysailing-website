@@ -28,7 +28,6 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
         sidebarToggle ? "hidden" : "block "
       } w-64 bg-gray-100 fixed h-full`}
     >
-    
       <div className="w-44 h-12 sm:w-52 sm:h-[53px] ml-3 ">
         <Link href="#">
           <Image
@@ -42,61 +41,73 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
       </div>
 
       <ul className="m-6 font-bold text-sm">
-        <li    className={
+        <li
+          className={
             pathname === "/candidate/dashboard"
               ? "mb-2 rounded py-2 bg-green-600 text-white font-semibold"
               : "mb-1 rounded py-2  hover:bg-green-600 hover:text-white"
-          }>
+          }
+        >
           <Link href="/candidate/dashboard" className="">
             <MdDashboard className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px]  " />
             My Dashboard
           </Link>
         </li>
-        <li  className={
+        <li
+          className={
             pathname === "/candidate/profilecv"
               ? "mb-2 rounded py-2 bg-green-600  text-white font-semibold"
               : "mb-1 rounded py-2  hover:bg-green-600 hover:text-white"
-          }>
+          }
+        >
           <Link href="/candidate/profilecv">
             <FaFileLines className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             Profile/CV
           </Link>
         </li>
-        <li  className={
-            pathname === "/admin/resource-management"
+        <li
+          className={
+            pathname === "/candidate/jobbyems"
               ? "mb-2 rounded py-2 bg-green-600 text-white font-semibold"
               : "mb-1 rounded py-2  hover:bg-green-600 hover:text-white"
-          }>
-          <Link href="#">
+          }
+        >
+          <Link href="/candidate/jobbyems">
             <IoBag className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " /> Jobs
             By EMS
           </Link>
         </li>
-        <li  className={
-            pathname === "/admin/resource-management"
+        <li
+          className={
+            pathname === "#"
               ? "mb-2 rounded py-2 bg-green-600 text-white font-semibold"
               : "mb-1 rounded py-2  hover:bg-green-600 hover:text-white"
-          }>
+          }
+        >
           <Link href="#">
             <PiShoppingBagOpenFill className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             My Job Applicatins
           </Link>
         </li>
-        <li  className={
-            pathname === "/admin/resource-management"
+        <li
+          className={
+            pathname === "#"
               ? "mb-2 rounded py-2 bg-green-600 text-white font-semibold"
               : "mb-1 rounded py-2  hover:bg-green-600 hover:text-white"
-          }>
+          }
+        >
           <Link href="#">
             <MdMenuBook className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             EduEMS
           </Link>
         </li>
-        <li  className={
+        <li
+          className={
             pathname === "/admin/resource-management"
               ? "mb-2 rounded py-2 bg-green-600 text-white font-semibold"
               : "mb-1 rounded py-2  hover:bg-green-600 hover:text-white"
-          }>
+          }
+        >
           <Link href="#">
             <SiElementor className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             Mentoring

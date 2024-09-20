@@ -11,6 +11,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { FaEdit, FaEye, FaTrash } from "react-icons/fa";
 import { IoIosClose } from "react-icons/io";
+import { AddResourcesData, GetResourcesList } from "./Services/resourceService";
 type Props = {};
 
 const page = (props: Props) => {
@@ -81,22 +82,46 @@ const page = (props: Props) => {
       title:formData.title,
       description:formData.description,
     }
-    const response = await postReq('/api/resoures', data);
-    console.log(response);
-    setIsPopupOpen(false); // Close the popup after submission
+    AddResourcesData(data,AddResourcesDataCB)
+    // setIsPopupOpen(false); // Close the popup after submission
     } catch (error) {
       
     }
     
   };
 
+  const AddResourcesDataCB=(result:any)=>{
+    console.log(result);
+    setIsPopupOpen(false);
+  }
+
   useEffect(() => {
-    fetchResources()
+    // Fetch data from API
+    // const fetchData = async () => {
+    //   fetch('http://111.118.178.132:9987/api/resources', {
+    //     method: 'GET',
+    //     mode:'cors',
+    //     headers: {
+    //       'Access-Control-Allow-Origin':'*',
+    //       'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhamF5LmNoYXVyYXNpYTI1OTIxQGdtYWlsLmNvbSIsImlhdCI6MTcyNjc3OTM2MiwiZXhwIjoxNzI2NzgwODAyfQ.4EDRQjCIO40mDCui9w7Quw4EHEr-lLhBpQquAmEtNmQ',  // Replace YOUR_ACCESS_TOKEN with the actual token
+    //       'Content-Type': 'application/json'
+    //     }
+    //   })
+    //   .then(response => response.json())  // Assuming the response is in JSON format
+    //   .then(data => {
+    //     console.log(data);  // Handle the data returned by the API
+    //   })
+    //   .catch(error => {
+    //     console.error('Error:', error);  // Handle any errors
+    //   });
+    //     }
+    //     fetchData();
+    GetResourcesList(fetchResources)
   }, [])
 
-  const fetchResources=async()=>{
-    const response = await getReq('/api/resoures');
-    setResourcesList(response.data);
+  const fetchResources=(result:any)=>{
+    console.log('res',result)
+    // setResourcesList(response.data);
   }
   
 

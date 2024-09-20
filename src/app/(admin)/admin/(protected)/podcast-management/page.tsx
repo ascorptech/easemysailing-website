@@ -3,13 +3,13 @@ import Link from "next/link";
 import { Input } from "postcss";
 import React, { useState } from "react";
 import { FaEdit, FaEye, FaTrash } from "react-icons/fa";
+import { AddPodcastData } from "./Services/podcastService";
 
 type Props = {};
 
 const page = (props: Props) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [formData, setFormData] = useState({
-    image: "",
     title: "",
     link: "",
   });
@@ -35,8 +35,17 @@ const page = (props: Props) => {
     e.preventDefault();
     // Handle form submission logic here (e.g., update state or send to backend)
     console.log("Form Submitted:", formData);
-    setIsPopupOpen(false); // Close the popup after submission
+    let data ={
+      title:formData.title,
+      videoLink:formData.link,
+    }
+    AddPodcastData(data,AddPodcastDataCB)
   };
+
+  const AddPodcastDataCB=(result:any)=>{
+    console.log(result);
+    setIsPopupOpen(false);
+  }
 
   const data = [
     {
@@ -180,13 +189,12 @@ const page = (props: Props) => {
                 >
                   Cancel
                 </Link>
-                <Link
-                  href={"#"}
+                <button
                   type="submit"
                   className="px-4 py-2 bg-green-600 text-white rounded "
                 >
                   Submit
-                </Link>
+                </button>
               </div>
             </form>
           </div>

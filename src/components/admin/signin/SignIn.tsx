@@ -15,8 +15,10 @@ import ResetPassword from "@/components/candidate/ChangePassword/ResetPassword";
 import PasswordChange from "@/components/candidate/ChangePassword/PasswordChange";
 import { postReq } from "@/RootServices";
 import { LoginData } from "@/app/(admin)/admin/Services/loginService";
+import { useRouter } from "next/navigation";
 
 const SignIn = () => {
+  const route = useRouter()
   // const [emailOrPhone, setEmailOrPhone] = useState("ems@admin.com");
   const [emailOrPhone, setEmailOrPhone] = useState("ajay.chaurasia25921@gmail.com");
   const [password, setPassword] = useState("C@$R@k2020");
@@ -91,7 +93,13 @@ const SignIn = () => {
     console.log(data);
 
     const response = await LoginData(data);
-    console.log(response);
+    console.log(response?.data);
+    if (response?.data) {
+      const token = response?.data?.token;
+      const user = response?.data?.user;
+      localStorage.setItem('token',token)
+      route.replace('/admin/dashboard')
+    }
     } catch (error) {
       console.log('err',error)
     }

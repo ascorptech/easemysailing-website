@@ -21,6 +21,10 @@ interface sidebarProps {
 const AdminSidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
   const pathname = usePathname();
   console.log("path", pathname);
+
+  const onLogout =()=>{
+    localStorage.removeItem("token");
+  }
   return (
     <div
       className={`${
@@ -81,7 +85,7 @@ const AdminSidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
 
        
         <li className=" rounded py-2  hover:bg-green-600 hover:text-white">
-          <Link href="/admin">
+          <Link href="/admin" onClick={onLogout}>
             <FiLogOut className="inline-block w-6 h-6 mr-1 ml-2 mt-[-5px] " />
             Logout
           </Link>

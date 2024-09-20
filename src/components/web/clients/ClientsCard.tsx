@@ -6,7 +6,6 @@ interface ClientsCard {
   text: string;
   name: string;
   role: string;
-  rating: number;
   imageSrc: string;
   image1:string,
   // className:string
@@ -16,45 +15,32 @@ const ClientsCard: React.FC<ClientsCard> = ({
   text,
   name,
   role,
-  rating,
   imageSrc,
   image1,
 }) => {
   return (
-    
-    <div className=" py- flex-shrink-0 w-80 lg:w-[375px] lg:h-[320px] p-4  ">
-      <p className="flex"><Image
-          src={image1}
-          alt={name}
-          width={500}
-          height={500}
-          className="h-8 w-8 rounded-full mr-4"
-        /><span className="text-gray-700  text-[20px] leading-[28px] mb-4">{text}</span>
+    <div className=" rounded-full ">
+      <div className=" hover:border hover:border-green-500 bg-white lg:w-[300px] lg:h-[430px] p-3 rounded-full flex flex-col justify-center items-center flex-shrink-0 w-80  ">
+        <p className=" flex  flex-col -mt-12 justify-center items-center ">
+          <Image
+            src={imageSrc}
+            alt={name}
+            width={500}
+            height={500}
+            className="h-[65px] w-[65px] rounded-full "
+          />
         </p>
-      <div className="flex items-center mb-4 lg:ml-[3rem]" >
-        {[...Array(rating)].map((_, i) => (
-          <span key={i} className="text-yellow-500 ">
-            ⭐
-          </span>
-    
-        ))}
-      <span className="text-white">⭐</span>
-      </div>
-      
-      <div className="flex items-center h-[65px] w-[204px]">
-        <Image
-          src={imageSrc}
-          alt={name}
-          width={500}
-          height={500}
-          className="h-[65px] w-[65px] rounded-full mr-4"
-        />
-        <div>
-          <h4 className="font-bold text-[16px] text-[#00A264]">{name}</h4>
-          <p className="text-black">{role}</p>
+        <span className="text-gray-700 mt-8 text-center text-[16px] leading-[28px] mb-4">
+          {text}
+        </span>
+
+        <div className="flex text-center items-center ">
+          <div>
+            <h4 className="font-bold text-[20px] text-[#00A264]">{name}</h4>
+            <p className="text-black">{role}</p>
+          </div>
         </div>
       </div>
-      
     </div>
   );
 };

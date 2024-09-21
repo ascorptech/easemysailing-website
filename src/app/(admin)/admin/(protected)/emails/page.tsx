@@ -1,148 +1,42 @@
 "use client";
-import { getReq, postReq } from "@/RootServices";
-// import QuillEditor from "@/components/admin/quilleditor/QuillEditor";
-import dynamic from "next/dynamic";
-const QuillEditor = dynamic(
-  () => import("@/components/admin/quilleditor/QuillEditor"),
-  { ssr: false }
-);
-import Image from "next/image";
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import moment from 'moment';
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react'
 import { FaEdit, FaEye, FaTrash } from "react-icons/fa";
-import { IoIosClose } from "react-icons/io";
-import { AddResourcesData, DeleteResourcesData, GetResourcesList, PutResourcesData } from "./Services/resourceService";
-import { toast } from "react-toastify";
-import moment from "moment";
-type Props = {};
+import { toast } from 'react-toastify';
+import { DeleteEmailData, GetEmailsList } from './Services/emailService';
+
+type Props = {}
 
 const page = (props: Props) => {
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [isPopupDeleteOpen, setIsPopupDeleteOpen] = useState(false);
-  const [isPopupViewOpen, setIsPopupViewOpen] = useState(false);
-  const [isPopupEditOpen, setIsPopupEditOpen] = useState(false);
-  const [resourceData, setResourceData] = useState({
-    image: "",
-    title: "",
-    description: "",
-  });
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [image, setImage] = useState<any>(null);
-  const [resourceDetail, setResourceDetail] = useState<any>()
-  const [resourcesList,setResourcesList] = useState([])
+    const [isPopupDeleteOpen, setIsPopupDeleteOpen] = useState(false);
+    const [emailsList,setEmailsList] = useState<any>([])
+    const [emailDetail, setEmailDetail] = useState<any>({})
 
-  const handleAddClick = () => {
-    setIsPopupOpen(true);
-  };
-
-  const handleClosePopup = () => {
-    setIsPopupOpen(false);
-  };
-
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setResourceData({
-      ...resourceData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files.length > 0) {
-      const imageUrl = URL.createObjectURL(e.target.files[0]);
-      setImage(e.target.files[0])
-      setSelectedImage(imageUrl);
-    }
-  };
-  const handleEditInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setResourceDetail({
-      ...resourceDetail,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const removeSelectedImage = () => {
-    setSelectedImage(null); // Remove the selected image
-  };
-
-  const handleSubmit = async(e: React.FormEvent) => {
-    try {
-      e.preventDefault();
-    let formData = new FormData()
-    formData.append('image',image)
-    formData.append('title',resourceData.title)
-    formData.append('description',resourceData.description)
-    AddResourcesData(formData,AddResourcesDataCB)
-    // setIsPopupOpen(false); // Close the popup after submission
-    } catch (error) {
-      console.log('err',error)
-    }
+    useEffect(() => {
+        GetEmailsList(fetchResources)
+      }, [])
     
-  };
+      const fetchResources=(result:any)=>{
+        setEmailsList(result.data);
+      }
 
-  const AddResourcesDataCB=(result:any)=>{
-    console.log(result);
-    if (result?.status == 200) {
-      GetResourcesList(fetchResources)
-      toast.success('Resource created successfully')
-    } else {
-      toast.error('Resource not created')
-    }
-    setIsPopupOpen(false);
-  }
-
-  useEffect(() => {
-    GetResourcesList(fetchResources)
-  }, [])
-
-  const fetchResources=(result:any)=>{
-    setResourcesList(result.data);
-  }
-
-  const handleUpdateSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission logic here (e.g., update state or send to backend)
-  
-    let formData = new FormData()
-    // formData.append('image',selectedImage)
-    formData.append('id',resourceDetail.id)
-    formData.append('title',resourceDetail.title)
-    formData.append('description',resourceDetail.description)
-    PutResourcesData(formData, PutPodcastDataCB)
-  };
-
-  const PutPodcastDataCB = (result: any) => {
-    if (result?.status == 200) {
-      GetResourcesList(fetchResources)
-      toast.success('Resource updated successfully')
-    } else {
-      toast.error('Resource not updated')
-    }
-    setIsPopupEditOpen(false);
-  }
-
-  const handleDelete = (id:any)=>{
-    DeleteResourcesData(id, DeletePodcastCB)
-  }
-
-  const DeletePodcastCB=(result:any)=>{
-    if (result?.status == 204) {
-      GetResourcesList(fetchResources)
-      toast.success('Resource deleted successfully')
-    } else {
-      toast.error('Resource not deleted')
-    }
-    setIsPopupDeleteOpen(false);
-  }
-  
-
-
+    const handleDelete = (id:any)=>{
+        DeleteEmailData(id, DeletePodcastCB)
+      }
+    
+      const DeletePodcastCB=(result:any)=>{
+        if (result?.status == 204) {
+            GetEmailsList(fetchResources)
+          toast.success('Email deleted successfully')
+        } else {
+          toast.error('Email not deleted')
+        }
+        setIsPopupDeleteOpen(false);
+      }
   return (
     <div className="mt-4 mx-auto flex w-[90%] flex-col">
-      <div className=" flex justify-end ">
+      {/* <div className=" flex justify-end ">
         <Link
           href={"#"}
           className="px-4 py-2 bg-green-600 text-white rounded transition duration-300"
@@ -150,7 +44,7 @@ const page = (props: Props) => {
         >
           Add Resource
         </Link>
-      </div>
+      </div> */}
       {/* Table */}
       <div className="overflow-x-auto w-full mt-2">
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -218,16 +112,19 @@ const page = (props: Props) => {
                   </div>
                 </th> */}
                 <th scope="col" className="px-6 py-3">
-                  Resource Image
+                  User Name
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Resource Title
+                  User Email
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Resource Description
+                  User PhoneNumber
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Resource Date
+                  Message
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Date
                 </th>
                 <th scope="col" className="px-6 py-3">
                   Action
@@ -235,34 +132,31 @@ const page = (props: Props) => {
               </tr>
             </thead>
             <tbody>
-              {resourcesList?.length ? resourcesList?.map((item: any) => (
+              {emailsList?.length ? emailsList?.map((item: any) => (
                 <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" key={item?.id}>
-                  {/* <td className="w-4 p-4">
-                    <div className="flex items-center">
-                      <input id="checkbox-table-search-1" type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                      <label htmlFor="checkbox-table-search-1" className="sr-only">checkbox</label>
-                    </div>
-                  </td> */}
                   <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {item?.title}
+                    {item?.name}
                   </th>
                   <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {item?.title}
+                    {item?.email}
                   </th>
                   <td className="px-6 py-4">
-                  {item?.description?.replace(/<[^>]+>/g, '')}
+                  {item?.mobileNumber}
+                  </td>
+                  <td className="px-6 py-4">
+                  {item?.message}
                   </td>
                   <td className="px-6 py-4">
                   {item?.createdDate?moment(item?.createdDate).format('YYYY-MM-DD'):''}
                   </td>
                   <td className="px-6 py-4 flex flex-row space-x-4">
-                  <Link href={`#`} className="font-medium text-blue-600 dark:text-blue-500 hover:underline" onClick={() => { setIsPopupViewOpen(true); setResourceDetail(item); }}><FaEye /></Link>
-                    <Link href={`#`} className="font-medium text-green-600 dark:text-green-500 hover:underline" onClick={() => { setIsPopupEditOpen(true); setResourceDetail(item); }}><FaEdit /></Link>
-                    <Link href={`#`} className="font-medium text-red-600 dark:text-red-500 hover:underline" onClick={() => { setIsPopupDeleteOpen(true); setResourceDetail(item); }}><FaTrash /></Link>
+                  {/* <Link href={`#`} className="font-medium text-blue-600 dark:text-blue-500 hover:underline" onClick={() => { setIsPopupViewOpen(true); setResourceDetail(item); }}><FaEye /></Link>
+                    <Link href={`#`} className="font-medium text-green-600 dark:text-green-500 hover:underline" onClick={() => { setIsPopupEditOpen(true); setResourceDetail(item); }}><FaEdit /></Link> */}
+                    <Link href={`#`} className="font-medium text-red-600 dark:text-red-500 hover:underline" onClick={() => { setIsPopupDeleteOpen(true); setEmailDetail(item); }}><FaTrash /></Link>
                   </td>
                 </tr>
               )) : <tr>
-                <td colSpan={4} className="text-center">No Data Found</td>
+                <td colSpan={6} className="text-center">No Data Found</td>
               </tr>}
 
             </tbody>
@@ -271,94 +165,7 @@ const page = (props: Props) => {
       </div>
 
       {/* Popup Form */}
-      {isPopupOpen && (
-        <div className="fixed inset-0  bg-black bg-opacity-70 flex justify-center items-center">
-          <div className="bg-white p-6 rounded-lg shadow-lg  lg:w-[600px] lg:h-auto w-[600px] h-[500px]">
-            <h2 className="text-xl font-bold mb-4">Add Resource</h2>
-            <form onSubmit={handleSubmit}>
-              <div className="mb-4">
-                <label htmlFor="image" className="block text-gray-700 mb-2">
-                  Choose Image
-                </label>
-                <input
-                  type="file"
-                  id="image"
-                  name="image"
-                  accept="image/*"
-                  className="block w-full border rounded-lg h-12 text-sm text-gray-500 file:mr-4 file:py-[15px] file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-gray-200 file:text-gray-700 hover:file:bg-gray-100"
-                  onChange={handleImageChange}
-                />
-                {selectedImage && (
-                  <div className=" relative mt-4 h-20 w-20 ">
-                    <img
-                      src={selectedImage}
-                      alt="Selected"
-                      className="relative h-full w-full object-cover rounded-lg border"
-                    />
-                    {/* Close button for removing the image */}
-                    <button
-                      type="button"
-                      className="absolute top-0 right-0 bg-white rounded-full text-red-500 h-5 w-5  "
-                      onClick={removeSelectedImage}
-                    >
-                      <IoIosClose className="text-xl w-full h-full" />
-                    </button>
-                  </div>
-                )}
-              </div>
-              <div className="mb-4">
-                <label htmlFor="title" className="block text-gray-700 mb-2">
-                  Title
-                </label>
-                <input
-                  type="text"
-                  id="title"
-                  name="title"
-                  value={resourceData.title}
-                  onChange={handleInputChange}
-                  className="w-full px-3 py-2 border h-12 border-gray-300 rounded"
-                  placeholder="Enter title"
-                />
-              </div>
-              <div className="mb-4">
-                <label
-                  htmlFor="description"
-                  className="block text-gray-700 mb-2"
-                >
-                  Description
-                </label>
-                {/* <input
-                  type="text"
-                  id="description"
-                  name="description"
-                  value={formData.description}
-                  onChange={handleInputChange}
-                  className="w-full px-3 py-2 border h-32 border-gray-300 rounded"
-                  placeholder="Enter description"
-                /> */}
-                <QuillEditor content={resourceData.description} setContent={(des:any)=>setResourceData({...resourceData,description:des})}/>
-              </div>
-              <div className="flex justify-end space-x-4">
-                <button
-                  type="reset"
-                  onClick={handleClosePopup}
-                  className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700"
-                >
-                  Cancel
-                </button>
-                <button
-                  
-                  type="submit"
-                  className="px-4 py-2 bg-green-600 text-white rounded "
-                >
-                  Submit
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
-      {isPopupViewOpen && (
+      {/* {isPopupViewOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center  lg:h-auto h-[500px] items-center">
           <div className="bg-white p-6 rounded-lg shadow-lg w-[600px]">
             <div className="flex justify-end">
@@ -375,7 +182,6 @@ const page = (props: Props) => {
                   id="title"
                   name="title"
                   value={resourceDetail.title}
-                  // onChange={handleInputChange}
                   className="w-full px-3 py-2 border h-12 border-gray-300 rounded"
                   placeholder="Enter title"
                 />
@@ -392,32 +198,15 @@ const page = (props: Props) => {
                   id="link"
                   name="description"
                   value={resourceDetail.description}
-                  // onChange={handleInputChange}
                   className="w-full px-3 py-2 border h-12 border-gray-300 rounded"
                   placeholder="Enter description"
                 />
               </div>
-              {/* <div className="flex mt-12 justify-end space-x-4">
-                <Link
-                  href={"#"}
-                  type="button"
-                  onClick={() => setIsPopupViewOpen(true)}
-                  className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700"
-                >
-                  Cancel
-                </Link>
-                <button
-                  type="submit"
-                  className="px-4 py-2 bg-green-600 text-white rounded "
-                >
-                  Submit
-                </button>
-              </div> */}
             </form>
           </div>
         </div>
-      )}
-      {isPopupEditOpen && (
+      )} */}
+      {/* {isPopupEditOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center  lg:h-auto h-[500px] items-center">
           <div className="bg-white p-6 rounded-lg shadow-lg w-[600px]">
             <div className="flex justify-end">
@@ -467,7 +256,7 @@ const page = (props: Props) => {
             </form>
           </div>
         </div>
-      )}
+      )} */}
       {isPopupDeleteOpen && <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center  lg:h-auto h-[500px] items-center">
         <div className="relative p-4 w-full max-w-md max-h-full">
           <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -481,8 +270,8 @@ const page = (props: Props) => {
               <svg className="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
               </svg>
-              <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this resource?</h3>
-              <button data-modal-hide="popup-modal" type="button" className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center" onClick={()=>handleDelete(resourceDetail?.id)}>
+              <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this email?</h3>
+              <button data-modal-hide="popup-modal" type="button" className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center" onClick={()=>handleDelete(emailDetail?.id)}>
                 Yes, I'm sure
               </button>
               <button data-modal-hide="popup-modal" type="button" className="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" onClick={() => setIsPopupDeleteOpen(false)}>No, cancel</button>
@@ -491,7 +280,7 @@ const page = (props: Props) => {
         </div>
       </div>}
     </div>
-  );
-};
+  )
+}
 
-export default page;
+export default page

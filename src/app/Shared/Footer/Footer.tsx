@@ -100,11 +100,11 @@ const Footer = () => {
           </h3>
           <ul>
             <li className="mt-2">
-              <Link href="#" className="flex items-center hover:text-green-600">
+              <Link href="tel:+917055-70-5555" className="flex items-center hover:text-green-600">
                 <span className="text-green-600 mr-1">
                   <FiPhone />
                 </span>
-                (01) xxx xxx xxxx
+                (+91) - 7055-70-5555
               </Link>
             </li>
             <li className="mt-2">

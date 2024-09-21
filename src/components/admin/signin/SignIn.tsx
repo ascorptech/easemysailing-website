@@ -18,9 +18,11 @@ import { LoginData } from "@/app/(admin)/admin/Services/loginService";
 import { useRouter } from "next/navigation";
 
 const SignIn = () => {
-  const route = useRouter()
+  const route = useRouter();
   // const [emailOrPhone, setEmailOrPhone] = useState("ems@admin.com");
-  const [emailOrPhone, setEmailOrPhone] = useState("ajay.chaurasia25921@gmail.com");
+  const [emailOrPhone, setEmailOrPhone] = useState(
+    "ajay.chaurasia25921@gmail.com"
+  );
   const [password, setPassword] = useState("C@$R@k2020");
   const [showPassword, setShowPassword] = useState(false);
 
@@ -81,29 +83,26 @@ const SignIn = () => {
     setIsPasswordChangeOpen(false);
   };
 
-  const handleSubmit = async(e:any) => {
+  const handleSubmit = async (e: any) => {
     try {
       e.preventDefault();
 
-    let data = {
-      email: emailOrPhone,
-      password:password
-    }
+      let data = {
+        email: emailOrPhone,
+        password: password,
+        // rememberMe: true,
+      };
 
-    console.log(data);
-
-    const response = await LoginData(data);
-    console.log(response?.data);
-    if (response?.data) {
-      const token = response?.data?.token;
-      const user = response?.data?.user;
-      localStorage.setItem('token',token)
-      route.replace('/admin/dashboard')
-    }
+      const response = await LoginData(data);
+      if (response?.data) {
+        const token = response?.data?.token;
+        const user = response?.data?.user;
+        localStorage.setItem("token", token);
+        route.replace("/admin/dashboard");
+      }
     } catch (error) {
-      console.log('err',error)
+      console.log("err", error);
     }
-    
   };
 
   return (
@@ -116,7 +115,7 @@ const SignIn = () => {
           {/* Sign-In Form Section */}
           <div className="w-full md:w-1/2 p-7 bg-[#EAEAEA]  ">
             <h2 className="mt-8 mb-2 text-2xl font-bold text-center">
-              Sign In as {'Admin'}
+              Sign In as {"Admin"}
             </h2>
             <p className="mb-4 text-center text-gray-600">
               Enter your credential to access your account.
@@ -175,7 +174,10 @@ const SignIn = () => {
                     className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
                     
                   > */}
-                    <GoEye className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer" onClick={() => setShowPassword(!showPassword)}/>
+                  <GoEye
+                    className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
+                    onClick={() => setShowPassword(!showPassword)}
+                  />
                   {/* </span> */}
                 </div>
               </div>
@@ -204,11 +206,12 @@ const SignIn = () => {
                 </Link>
               </div>
 
-                <button type="submit"
-                      className="block w-full px-4 py-2 text-white bg-[#00A264] text-center hover:bg-[#00A264] font-bold rounded focus:outline-none focus:shadow-outline"
-                >
-                  Sign in
-                </button>
+              <button
+                type="submit"
+                className="block w-full px-4 py-2 text-white bg-[#00A264] text-center hover:bg-[#00A264] font-bold rounded focus:outline-none focus:shadow-outline"
+              >
+                Sign in
+              </button>
             </form>
           </div>
         </div>

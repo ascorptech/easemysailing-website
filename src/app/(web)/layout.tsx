@@ -6,8 +6,8 @@ import Header from "@/components/web/header/Header";
 import Footer1 from "@/components/web/footer/Footer";
 import Footer from "../Shared/Footer/Footer";
 import DisableRightClick from "@/components/web/disablerightclick/DisableRightClick";
-// import Footer from "@/components/web/footer/Footer";
-import PinPopup from "@/components/web/secruity_code/Pinpopup";
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const metadata: Metadata = {
   title: { default: "EaseMySailing", template: "%s | EaseMySailing" },
@@ -38,8 +38,8 @@ export default function RootLayout({
             <PinPopup closeModal={closeModal} />
           ) : ( */}
           <>
-            <DisableRightClick />
-
+            {/* <DisableRightClick /> */}
+            <ToastContainer/>
             <Header />
 
             {children}

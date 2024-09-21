@@ -6,10 +6,11 @@ import { TfiReload } from "react-icons/tfi";
 import { GrLocation } from "react-icons/gr";
 import { FiPhoneCall } from "react-icons/fi";
 import { FiMail } from "react-icons/fi";
+import { toast } from "react-toastify";
+import { AddContactData } from "@/app/(web)/contact/Services/contactService";
 
 const Contact = () => {
   const [name, setName] = useState("");
-
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [textarea, setTextArea] = useState("");
@@ -17,10 +18,22 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // if (!error) {
-    //   console.log("Form submitted successfully");
-    // }
+    let data = {
+      name:name,
+      email:email,
+      mobileNumber:phone,
+      message:textarea
+    }
+    AddContactData(data,AddContactDataCB)
   };
+
+  const AddContactDataCB = (res:any)=>{
+    toast.success('Thank you for contacting us')
+    setName('')
+    setEmail('')
+    setPhone('')
+    setTextArea('')
+  }
 
   return (
     <div className="contact mt-14">
@@ -91,7 +104,7 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="mb-[7px] flex">
+            {/* <div className="mb-[7px] flex">
               <div className="flex w-[65%]">
                 <input
                   id="Captcha"
@@ -114,7 +127,7 @@ const Contact = () => {
                   <TfiReload />
                 </span>
               </div>
-            </div>
+            </div> */}
 
             <div>
               {/* {/ {error && <p style={{ color: "red" }}>{error}</p>} /} */}
@@ -137,7 +150,7 @@ const Contact = () => {
             <div className="lg:ml-4 ml-6">
               <h2 className="font-bold text-lg">Address</h2>
               <p className="text-sm">
-                Lorem Ipsum is simply dummy text of the printing
+                Noida, Gautam Buddha Nagar, Uttar Pradesh, India -201301
               </p>
             </div>
           </div>
@@ -148,7 +161,7 @@ const Contact = () => {
             </div>
             <div className="ml-3 lg:ml-4 ">
               <h2 className="font-bold text-lg">Call us on</h2>
-              <p className="text-sm">+1(XXX) XXX-XXX</p>
+              <p className="text-sm">(+91) - 7055-70-5555</p>
             </div>
           </div>
 

@@ -13,8 +13,8 @@ const addAuthorizationHeader = async (config:any) => {
   if (token) {
     config.headers = {
       ...config.headers,
-      Authorization: `Bearer ${token}`
-      // 'Access-Control-Allow-Origin': '*',
+      Authorization: `Bearer ${token}`,
+      'Access-Control-Allow-Origin': '*',
     };
   }
   return config;

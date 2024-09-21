@@ -11,6 +11,7 @@ import { MdOutlineCardGiftcard } from "react-icons/md";
 import { FiLogOut } from "react-icons/fi";
 import { RiContactsBook3Line } from "react-icons/ri";
 import { RiExchangeDollarLine } from "react-icons/ri";
+import { FiMail } from "react-icons/fi";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 
@@ -41,6 +42,7 @@ const AdminSidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
             className="object-contain h-full w-full "
             width={800}
             height={800}
+            priority
           />
         </Link>
       </div>
@@ -80,6 +82,18 @@ const AdminSidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
           <Link href="/admin/podcast-management">
             <FaFileLines className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             Podcast Management
+          </Link>
+        </li>
+        <li
+          className={
+            pathname === "/admin/emails"
+              ? "mb-2 rounded py-2 bg-green-600 text-white font-semibold"
+              : "mb-1 rounded py-2  hover:bg-green-600 hover:text-white"
+          }
+        >
+          <Link href="/admin/emails">
+            <FiMail className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
+            Emails
           </Link>
         </li>
 

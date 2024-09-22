@@ -1,4 +1,4 @@
-import { deleteReq, getReq, postReq, putReq } from "@/RootServices";
+import { deleteReq, getReq, patchReq, postReq, putReq } from "@/RootServices";
 import apiEndPoints from "./apiEndPoints";
 
 const {GETRESOURCES,POSTRESOURCES,DELETERESOURCES,PUTRESOURCES} = apiEndPoints
@@ -23,7 +23,7 @@ export const AddResourcesData = async(data:any,cb:any)=>{
 }
 export const PutResourcesData = async(data:any,cb:any)=>{
     try {
-        const response = await putReq(PUTRESOURCES,data);
+        const response = await patchReq(PUTRESOURCES,data);
         return cb(response)
     } catch (error:any) {
         console.log('err',error)

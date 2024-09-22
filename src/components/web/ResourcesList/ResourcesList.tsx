@@ -48,11 +48,11 @@ const ResourcesList = (props: Props) => {
         <div className="flex sm:md:w-[50%] w-full">
           <div className="relative w-full p-4">
             <Image
-              src={resourcesList[0]?.image?resourcesList[0]:"/images/captain4.jpeg"}
+              src={resourcesList[0]?.imageUrl?`data:image/png;image/jpg;image/jpeg;base64,${resourcesList[0]?.imageUrl}`:"/images/captain4.jpeg"}
               alt="image not found"
               width={900}
               height={900}
-              className="w-[100%] h-[100%] object-contain"
+              className="w-full h-full object-cover"
               priority
             />
             <div className="absolute sm:md:mt-[-2.9rem] mt-[-1.5rem] bg-green-700 text-white font-semibold ">
@@ -81,7 +81,7 @@ const ResourcesList = (props: Props) => {
             <div className="relative bg-white border rounded-lg md:p-5 p-2  shadow-md  w-auto ">
               <div className=" flex mb-2">
                 <Image
-                  src={item?.image?item:"/images/captain4.jpeg"}
+                  src={item?.imageUrl?`data:image/png;image/jpg;image/jpeg;base64,${item?.imageUrl}`:"/images/captain4.jpeg"}
                   alt={`${item.title} logo`}
                   width={500}
                   height={500}

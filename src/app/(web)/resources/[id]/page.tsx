@@ -44,7 +44,7 @@ const ResourceDetailsPage: React.FC = () => {
       <div className=" float-left w-[70%]  px-10">
         <div className="mr-5 w-[787px] h-[417px] border2 border-blue-600">
           <Image
-            src={resourceDetail?.image?resourceDetail?.image:"/images/captain4.jpeg"}
+            src={resourceDetail?.imageUrl?`data:image/png;image/jpg;image/jpeg;base64,${resourceDetail?.imageUrl}`:"/images/captain4.jpeg"}
             alt="image not found"
             width={1000}
             height={1000}

@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
 import { FaBars } from "react-icons/fa6";
@@ -5,6 +6,7 @@ import { SiApollographql } from "react-icons/si";
 import { RiExchangeDollarLine } from "react-icons/ri";
 import { MdNotificationAdd } from "react-icons/md";
 import { IoCart } from "react-icons/io5";
+import { useState } from "react";
 
 interface HeaderProps {
   sidebarToggle: boolean;
@@ -12,6 +14,10 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ sidebarToggle, setSidebarToggle }) => {
+  let name:any
+  (async()=>{
+    name = await localStorage.getItem('firstName')+' '+ await localStorage.getItem('lastName')
+  })()
   return (
     <div className="bg-gray-200 flex items-center justify-between sticky top-0 z-50">
       <div className="ml-4">
@@ -84,7 +90,7 @@ const Header: React.FC<HeaderProps> = ({ sidebarToggle, setSidebarToggle }) => {
             height={500}
             className="w-9 h-9 rounded-full border-2 border-green-600"
           ></Image>
-          <p className="ml-1 font-semibold">{localStorage.getItem('firstName')+' '+localStorage.getItem('lastName')}</p>
+          <p className="ml-1 font-semibold">{name}</p>
         </div>
       </div>
     </div>

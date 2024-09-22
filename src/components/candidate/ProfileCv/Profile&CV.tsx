@@ -19,7 +19,12 @@ const ProfileCV = () => {
     attitude: 0,
     acceptability: 0,
   });
-const [profileDetail,setProfileDetail] = useState<any>()
+const [profileDetail,setProfileDetail] = useState<any>(
+  {
+    name:'',
+    email:''
+  }
+)
   const [date, setDate] = useState("");
   const [feedback, setFeedback] = useState("");
 
@@ -29,6 +34,7 @@ const [profileDetail,setProfileDetail] = useState<any>()
 
   const fetchDetails=async()=>{
     let id = await localStorage.getItem('id')
+    setProfileDetail({name:localStorage.getItem('firstName')+' '+localStorage.getItem('lastName'),email:localStorage.getItem('email')})
     GetProfileDetail(id,(res:any)=>{
       console.log('data here',res)
     })
@@ -84,7 +90,7 @@ const [profileDetail,setProfileDetail] = useState<any>()
           </div>
           <div className="flex flex-col gap-[6px]">
             <h1 className="font-semibold text-[24px] leading-[36px]">
-              {localStorage.getItem('firstName')+' '+localStorage.getItem('lastName')}
+              {profileDetail?.name}
             </h1>
             <p className="text-[#00A264] font-medium text-[16px] leading-[24px]">
               Captain
@@ -115,7 +121,7 @@ const [profileDetail,setProfileDetail] = useState<any>()
               <p className="font-semibold text-[15px] leading-[21px]">
                 Email :
                 <span className="ml-1 font-normal text-[15px] leading-[21px]">
-                {localStorage.getItem('email')}
+                {profileDetail?.email}
                 </span>
               </p>
             </div>

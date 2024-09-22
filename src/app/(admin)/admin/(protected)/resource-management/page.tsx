@@ -112,10 +112,10 @@ const page = (props: Props) => {
   
     let formData = new FormData()
     formData.append('image',image)
-    formData.append('id',resourceDetail.id)
+    // formData.append('id',resourceDetail.id)
     formData.append('title',resourceDetail.title)
     formData.append('description',resourceDetail.description)
-    PutResourcesData(formData, PutPodcastDataCB)
+    PutResourcesData(resourceDetail.id,formData, PutPodcastDataCB)
   };
 
   const PutPodcastDataCB = (result: any) => {

@@ -6,7 +6,7 @@ import { SiApollographql } from "react-icons/si";
 import { RiExchangeDollarLine } from "react-icons/ri";
 import { MdNotificationAdd } from "react-icons/md";
 import { IoCart } from "react-icons/io5";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface HeaderProps {
   sidebarToggle: boolean;
@@ -14,10 +14,17 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ sidebarToggle, setSidebarToggle }) => {
-  let name:any
-  (async()=>{
-    name = await localStorage.getItem('firstName')+' '+ await localStorage.getItem('lastName')
-  })()
+  
+  const [name, setName] = useState<any>();
+  useEffect(() => {
+    fetchName()
+  }, [])
+
+  const fetchName = async()=>{
+    let compl = await localStorage.getItem('firstName') + ' ' + await localStorage.getItem('lastName')
+    setName(compl)
+  }
+  
   return (
     <div className="bg-gray-200 flex items-center justify-between sticky top-0 z-50">
       <div className="ml-4">

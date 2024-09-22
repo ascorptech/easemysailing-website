@@ -15,6 +15,7 @@ import ResetPassword from "../ChangePassword/ResetPassword";
 import PasswordChange from "../ChangePassword/PasswordChange";
 import { LoginData } from "@/app/(candidate)/candidate/Services/loginService";
 import { useRouter } from "next/navigation";
+import ClipLoader from "react-spinners/ClipLoader";
 
 type Props = {
   route: string;
@@ -24,7 +25,7 @@ const SignIn = ({ route }: Props) => {
   const [emailOrPhone, setEmailOrPhone] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(false)
   const [isForgotPasswordOpen, setIsForgotPasswordOpen] = useState(false);
   const [isVerificationOptOpen, setIsVerificationOptOpen] = useState(false);
   const [isVerificationCodeOpen, setIsVerificationCodeOpen] = useState(false);
@@ -82,7 +83,7 @@ const SignIn = ({ route }: Props) => {
     setIsPasswordChangeOpen(false);
   };
 
-  const handleSubmit = async(e:any) => {
+  const handleSubmit = async (e: any) => {
     // console.log(element.preventDefault());
     // Handle login logic here
     // console.log({ emailOrPhone, password });
@@ -97,12 +98,19 @@ const SignIn = ({ route }: Props) => {
       const response = await LoginData(data);
       if (response?.data) {
         const token = response?.data?.token;
+        const user = response?.data?.user;
         document.cookie = `token=${response?.data?.token}; path=/candidate`;
         localStorage.setItem("token", token);
+        localStorage.setItem("id", user?.id);
+        localStorage.setItem("firstName", user?.firstName);
+        localStorage.setItem("lastName", user?.lastName);
+        localStorage.setItem("email", user?.email);
+        setIsLoading(true)
         if (token) {
           router.push("/candidate/dashboard");
+          setIsLoading(true)
         }
-        
+
       }
     } catch (error) {
       console.log("err", error);
@@ -205,12 +213,22 @@ const SignIn = ({ route }: Props) => {
                 </Link>
               </div>
 
-              <button
+              {isLoading ? <div className="block w-full px-4 py-2 text-white bg-[#00A264] text-center hover:bg-[#00A264] font-bold rounded focus:outline-none focus:shadow-outline "><ClipLoader
+                color={'#ffffff'}
+                loading={isLoading}
+                cssOverride={{
+                  height:'25px',
+                  width:'25px'
+                }}
+                size={150}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+              /> </div>: <button
                 type="submit"
                 className="block w-full px-4 py-2 text-white bg-[#00A264] text-center hover:bg-[#00A264] font-bold rounded focus:outline-none focus:shadow-outline "
               >
                 Sign in
-              </button>
+              </button>}
             </form>
 
             {route == "candidate" && (

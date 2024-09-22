@@ -14,13 +14,6 @@ const page = ({ sidebarToggle }:any) => {
     >
       <ProfileCV/>
       <MyJob/>
-     
-
-      
-     
-    
-      
-      
     </div>
   );
 };

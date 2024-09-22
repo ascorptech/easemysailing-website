@@ -84,7 +84,7 @@ const Header: React.FC<HeaderProps> = ({ sidebarToggle, setSidebarToggle }) => {
             height={500}
             className="w-9 h-9 rounded-full border-2 border-green-600"
           ></Image>
-          <p className="ml-1 font-semibold">Me</p>
+          <p className="ml-1 font-semibold">{localStorage.getItem('firstName')+' '+localStorage.getItem('lastName')}</p>
         </div>
       </div>
     </div>

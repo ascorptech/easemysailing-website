@@ -99,7 +99,12 @@ const page = (props: Props) => {
   }, [])
 
   const fetchResources=(result:any)=>{
+    if (result?.status == 200) {
     setResourcesList(result.data);
+    } else {
+      setResourcesList([])
+      toast.success('No Record Found')
+    }
   }
 
   const handleUpdateSubmit = (e: React.FormEvent) => {
@@ -137,8 +142,15 @@ const page = (props: Props) => {
     }
     setIsPopupDeleteOpen(false);
   }
-  
 
+  function blobToBase64(blob:any) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result);
+      reader.onerror = (err) => reject(err);
+      reader.readAsDataURL(blob);
+    });
+  }
 
   return (
     <div className="mt-4 mx-auto flex w-[90%] flex-col">
@@ -244,7 +256,13 @@ const page = (props: Props) => {
                     </div>
                   </td> */}
                   <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {item?.title}
+                    <Image
+                    src={`${blobToBase64(item?.image)}`}
+                    alt={item?.title}
+                    width={100}
+                    height={100}
+                    priority
+                    />
                   </th>
                   <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {item?.title}

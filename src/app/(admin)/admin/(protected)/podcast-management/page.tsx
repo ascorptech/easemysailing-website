@@ -98,11 +98,6 @@ const page = (props: Props) => {
   }, [])
 
   const fetchPodcast = (result: any) => {
-    if (result?.status == 500) {
-      setPodcastList([])
-      localStorage.clear()
-      route.replace('/admin')
-    }
     if (result?.status == 200) {
       setPodcastList(result?.data);
     }

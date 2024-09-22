@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-// import ".../globals.scss";
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "../globals.scss";
 
 const poppins = Poppins({
@@ -29,6 +30,7 @@ export default function AdminLayout({
         <html lang="en">
             <body className={poppins.className}>
                 <main className="w-full h-screen flex flex-col">
+                <ToastContainer />
                     {children}
                 </main>
             </body>

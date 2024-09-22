@@ -51,6 +51,8 @@ const ProfileCV = () => {
     setIsPopupOpen(false); // Close the popup after submission
   };
 
+
+
   const handletoggle = () => {
     setIsOpen(!isOpen);
   };
@@ -248,18 +250,19 @@ const ProfileCV = () => {
             Import CV
           </Link>
 
-          <Link
-            href="#"
+          <Link href="#"
+            
             className="rounded-lg p-2 text-white bg-[#00A264] mt-2"
-            onClick={handleAddClick}
-          >
+          onClick={handleAddClick} >
             Rate Employer
           </Link>
         </div>
       </div>
 
-      {/* Popup Form */}
-      {isPopupOpen && (
+
+
+       {/* Popup Form */}
+       {isPopupOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50">
           <div className="relative bg-white p-6 rounded-lg shadow-lg w-[500px] ">
             <button className="absolute top-2 right-2 bg-[#00A264] text-white  rounded-full">

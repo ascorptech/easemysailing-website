@@ -13,11 +13,17 @@ import VerificationCode from "@/components/candidate/ChangePassword/Verification
 import Congratulations from "@/components/candidate/ChangePassword/Congratulations";
 import ResetPassword from "@/components/candidate/ChangePassword/ResetPassword";
 import PasswordChange from "@/components/candidate/ChangePassword/PasswordChange";
-import QuillEditor from "../quilleditor/QuillEditor";
+import { postReq } from "@/RootServices";
+import { LoginData } from "@/app/(admin)/admin/Services/loginService";
+import { useRouter } from "next/navigation";
 
 const SignIn = () => {
-  const [emailOrPhone, setEmailOrPhone] = useState("");
-  const [password, setPassword] = useState("");
+  const route = useRouter();
+  // const [emailOrPhone, setEmailOrPhone] = useState("ems@admin.com");
+  const [emailOrPhone, setEmailOrPhone] = useState(
+    "ajay.chaurasia25921@gmail.com"
+  );
+  const [password, setPassword] = useState("C@$R@k2020");
   const [showPassword, setShowPassword] = useState(false);
 
   const [isForgotPasswordOpen, setIsForgotPasswordOpen] = useState(false);
@@ -77,10 +83,26 @@ const SignIn = () => {
     setIsPasswordChangeOpen(false);
   };
 
-  const handleSubmit = () => {
-    // console.log(element.preventDefault());
-    // Handle login logic here
-    // console.log({ emailOrPhone, password });
+  const handleSubmit = async (e: any) => {
+    try {
+      e.preventDefault();
+
+      let data = {
+        email: emailOrPhone,
+        password: password,
+        // rememberMe: true,
+      };
+
+      const response = await LoginData(data);
+      if (response?.data) {
+        const token = response?.data?.token;
+        const user = response?.data?.user;
+        localStorage.setItem("token", token);
+        route.replace("/admin/dashboard");
+      }
+    } catch (error) {
+      console.log("err", error);
+    }
   };
 
   return (
@@ -93,7 +115,7 @@ const SignIn = () => {
           {/* Sign-In Form Section */}
           <div className="w-full md:w-1/2 p-7 bg-[#EAEAEA]  ">
             <h2 className="mt-8 mb-2 text-2xl font-bold text-center">
-              Sign In as {'Admin'}
+              Sign In as {"Admin"}
             </h2>
             <p className="mb-4 text-center text-gray-600">
               Enter your credential to access your account.
@@ -105,14 +127,14 @@ const SignIn = () => {
               <div className="mb-2">
                 <label
                   className="block mb-2 text-sm font-bold text-gray-700"
-                  htmlFor="emailOrPhone"
+                  htmlFor="email"
                 >
-                  Enter Registered Email/Phone
+                  Enter Registered Email
                 </label>
                 <div className="relative flex items-center pl-8 ">
                   {/* <span className="p-2 bg-green-600 border-2"></span> */}
                   <input
-                    id="emailOrPhone"
+                    id="email"
                     type="text"
                     value={emailOrPhone}
                     onChange={(e) => setEmailOrPhone(e.target.value)}
@@ -152,7 +174,10 @@ const SignIn = () => {
                     className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
                     
                   > */}
-                    <GoEye className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer" onClick={() => setShowPassword(!showPassword)}/>
+                  <GoEye
+                    className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
+                    onClick={() => setShowPassword(!showPassword)}
+                  />
                   {/* </span> */}
                 </div>
               </div>
@@ -181,11 +206,12 @@ const SignIn = () => {
                 </Link>
               </div>
 
-                <Link href={"/admin/dashboard"}
-                      className="block w-full px-4 py-2 text-white bg-[#00A264] text-center hover:bg-[#00A264] font-bold rounded focus:outline-none focus:shadow-outline"
-                >
-                  Sign in
-                </Link>
+              <button
+                type="submit"
+                className="block w-full px-4 py-2 text-white bg-[#00A264] text-center hover:bg-[#00A264] font-bold rounded focus:outline-none focus:shadow-outline"
+              >
+                Sign in
+              </button>
             </form>
           </div>
         </div>

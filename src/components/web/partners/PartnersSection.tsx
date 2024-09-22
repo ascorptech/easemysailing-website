@@ -2,6 +2,7 @@
 import React, { useRef } from "react";
 import PartnerCard from "./PartnerCard";
 import Link from "next/link";
+import Image from "next/image";
 import { IoMdArrowBack } from "react-icons/io";
 import { IoMdArrowForward } from "react-icons/io";
 
@@ -13,7 +14,7 @@ const PartnersSection = () => {
       rating: "4.8",
       contactPerson: "Sherry Smith",
       description: "Lorem Ipsum is simply dummy text of the printing",
-      logoSrc: "/images/logo1.png",
+      logoSrc: "/images/logo3.png",
     },
     {
       name: "CMA CGM Group",
@@ -88,26 +89,37 @@ const PartnersSection = () => {
   return (
     // <section className="w-[94%]  ml-1 md:mx-6 px-1 sm:mx-5 lg:w-[98%] lg:mx-0">
     <div className="mt-7 w-[94%] mx-3 px-1   md:mx-6 lg:w-full lg:mx-0 sm:mx-5">
-      {/* <div className="flex items-center  justify-between pt-4 lg:mr-[8%] md:mx-[3rem]"> 
-      */}
-      <div className="flex items-center justify-between mt-4 pt-4 lg:mr-[8%] md:mx-[3rem]">
+      {/* <div className="flex items-center  justify-between pt-4 lg:mr-[8%] md:mx-[3rem]">
+       */}
+      <div className="flex items-center justify-between mt-4 pt-4 lg:mr-[8%]  md:mx-[1rem]">
         {/* <div className="font-bold text-2xl  lg:ml-[4rem]"> */}
-        <div className="font-bold text-2xl lg:ml-[4rem]">
+        <div className="font-bold flex items-center text-4xl lg:ml-[4rem]">
           <h1>
-            <span>Our</span> <span className="text-green-700">Partners</span>
+            <span>OUR</span> <span className="text-green-700">PARTNERS</span>
           </h1>
+          <div className="ml-5">
+            <Image
+            priority
+            src="/anchor.png"
+            alt="partners"
+            width={200}
+            height={200}
+            className=" h-8 w-7"
+            />
+
+          </div>
         </div>
         <div>
-          <Link href="/partner-details">
-            <button className="h-8 bg-green-600 text-white py-1 px-4 rounded-lg text-sm mb-2">
+          <Link href="/partner-details"
+             className="h-8 bg-green-600 text-white py-1 px-4 rounded-lg  text-sm mb-2">
               View All
-            </button>
+           
           </Link>
         </div>
       </div>
 
       {/* <div className=" lg:ml-[2rem] relative flex items-center justify-center w-[97%]  "> */}
-      <div className=" lg:ml-[4rem] relative flex items-center justify-center w-[90%]  border-2 border-red-600">
+      <div className=" lg:px-[1rem] relative flex items-center justify-center w-[100%]  ">
         {/* {/ Left Arrow /} */}
         {/* <button
           onClick={scrollLeft}
@@ -115,17 +127,17 @@ const PartnersSection = () => {
         >
           &lt;
         </button> */}
-         <button
+        {/* <button
         onClick={scrollLeft}
         className="absolute left-1  z-10 bg-[#D9D9D9] w-[23.6px] h-[23.6px] rounded-full shadow-md ml-1 lg:ml-2 mr-2"
       >
         &lt;
-      </button>
+      </button> */}
 
         {/* {/ Partner Cards Scroll Container /} */}
         <div
           ref={scrollRef}
-          className="overflow-x-auto flex space-x-4 lg:mx-[4rem] no-scrollbar mx-[5rem] scroll-smooth snap-x snap-mandatory lg:w-[90%] w-[97%] border-2 border-red-400"
+          className="overflow-x-auto my-10 flex space-x-16 lg:mx-0 no-scrollbar mx-[5rem] scroll-smooth snap-x snap-mandatory lg:w-[90%] w-[97%] "
         >
           {partners.map((partner, index) => (
             <PartnerCard
@@ -147,12 +159,12 @@ const PartnersSection = () => {
         >
           &gt;
         </button> */}
-        <button
+        {/* <button
         onClick={scrollRight}
         className="absolute right-1 mr-3 z-10 bg-[#D9D9D9] w-[23.6px] h-[23.6px] rounded-full shadow-md  "
       >
         &gt;
-      </button>
+      </button> */}
       </div>
     </div>
   );

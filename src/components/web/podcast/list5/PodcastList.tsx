@@ -1,46 +1,28 @@
 "use client";
-// /components/MentoringList.tsx
-import Image from "next/image";
-import React, { useState } from "react";
+import { GetPodcastList } from "@/app/(web)/podcast-list/Services/podcastService";
+import React, { useEffect, useState } from "react";
 
-interface VideoProps {
-  id: string;
-}
 
-const PodcastList: React.FC = () => {
+
+const PodcastList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 12; // Number of items per pag
+  const [podcasts, setPodcasts] = useState<any>([])
 
-  // Array of YouTube video IDs
-  const videoData: VideoProps[] = [
-    { id: "lm6CLMLSZBc" },
-    { id: "WovyjecUtaU" },
-    { id: "E7wJTI-1dvQ" },
-    { id: "ZjAqacIC_3c" },
-    { id: "kVddMV-TrSw" },
-    { id: "FmerxXWD66g" },
-    { id: "N4-EkNJ6RFM" },
-    { id: "Vn4p4K6_M44" },
-    { id: "yE_y4EBq-EA" },
-    { id: "TVAF5Fr_2QA" },
-    { id: "lm6CLMLSZBc" },
-    { id: "WovyjecUtaU" },
-    { id: "E7wJTI-1dvQ" },
-    { id: "ZjAqacIC_3c" },
-    { id: "kVddMV-TrSw" },
-    { id: "FmerxXWD66g" },
-    { id: "N4-EkNJ6RFM" },
-    { id: "Vn4p4K6_M44" },
-    { id: "yE_y4EBq-EA" },
-    { id: "TVAF5Fr_2QA" },
-    // Add more video IDs here...
-  ];
+  useEffect(() => {
+    GetPodcastList(GetPodcastListCB)
+  }, [])
+
+  const GetPodcastListCB = (res: any) => {
+    setPodcasts(res?.data)
+  }
+
 
   // Calculate total pages
-  const totalPages = Math.ceil(videoData.length / itemsPerPage);
+  const totalPages = Math.ceil(podcasts?.length / itemsPerPage);
 
   // Get items for the current page
-  const currentItems = videoData.slice(
+  const currentItems = podcasts?.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
@@ -57,40 +39,46 @@ const PodcastList: React.FC = () => {
     }
   };
 
+  const getEmbedUrl = (videoLink: string) => {
+    const videoIdMatch = videoLink?.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/|.+\?v=))([^?&]+)/);
+    return videoIdMatch ? `https://www.youtube.com/embed/${videoIdMatch[1]}` : '';
+  };
+
   return (
     <div>
-     
-      <div  className=" lg:h-[500px] mb-8">
+
+      <div className=" lg:h-[500px] mb-8">
         <iframe
           width="100%"
           height="100%"
-          src={`https://www.youtube.com/embed/lm6CLMLSZBc`}
-          title={`YouTube video`}
+          src={getEmbedUrl(currentItems[0]?.videoLink )|| ''}
+          title={currentItems[0]?.title || 'Video Player'}
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
-          
         ></iframe>
+
       </div>
 
       <div className="grid lg:grid-cols-3 lg:gap-5 lg:py-4 grid-cols-1  gap-5 lg:mt-5 mt-3 sm:grid-cols-2 ">
-        {currentItems.map((item, index) => (
+        {currentItems?.map((item: any, index: any) => (
           <div
             key={index}
             className="w-full border-4 rounded-lg border-black mb-8  h-[200px]"
           >
+            <>{console.log('check',item?.videoLink)}</>
             <iframe
               width="100%"
               height="100%"
-              src={`https://www.youtube.com/embed/${item.id}`}
-              title={`YouTube video ${index + 1}`}
+              src={getEmbedUrl(item?.videoLink) || ''}
+              title={item?.title || 'Video Player'}
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             ></iframe>
             {/* <p className="flex justify-center my-1"> */}
             <p className="text-center my-1">
-              Cruise ship Interviews questions & answers !
+              {item?.title}
             </p>
           </div>
         ))}

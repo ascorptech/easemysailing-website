@@ -1,10 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import Image  from "next/image";
 import { useState } from "react";
 import { useParams } from "next/navigation"; // Use useParams instead of useRouter
 import { Resource } from "../../data/resources";
+import { GetResourceDetail } from "../Services/resourceService";
+import moment from "moment";
 
 const ResourceDetailsPage: React.FC = () => {
   const params = useParams(); // useParams hook to get route parameters
@@ -15,17 +17,25 @@ const ResourceDetailsPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [textarea, setTextArea] = useState("");
+  const [resourceDetail,setResourceDetail] = useState<any>()
+
+  useEffect(() => {
+    GetResourceDetail(id,GetResourceDetailCB)
+  }, [])
+
+  const GetResourceDetailCB=(res:any)=>{
+    setResourceDetail(res?.data)
+  }
+  
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
   };
 
-  // Find the item with the matching ID from the shippingData array
-  const item = Resource.find((item) => item.id === id);
 
   // If no item is found, show a not found message
-  if (!item) {
+  if (!resourceDetail) {
     return <div>Item not found</div>;
   }
 
@@ -34,20 +44,20 @@ const ResourceDetailsPage: React.FC = () => {
       <div className=" float-left w-[70%]  px-10">
         <div className="mr-5 w-[787px] h-[417px] border2 border-blue-600">
           <Image
-            src={item.logoSrc}
+            src={resourceDetail?.image?resourceDetail?.image:"/images/captain4.jpeg"}
             alt="image not found"
             width={1000}
             height={1000}
             className="w-full h-full object-cover"
           ></Image>
         </div>
-        <div className="flex gap-4   mt-0 ">
-          <p className="text-green-600">{item.date}</p>
+        <div className="flex gap-4 mt-0 ">
+          <p className="text-green-600">{moment(resourceDetail?.createDate).format('YYYY-MM-DD')}</p>
           <p className="font-semibold">By Gwen Stacy</p>
         </div>
         <div>
-          <h2 className="font-bold text-xl mt-4">{item.title}</h2>
-          <p className=" text-sm text-justify  mt-4">{item.discription}</p>
+          <h2 className="font-bold text-xl mt-4">{resourceDetail?.title}</h2>
+          <p className=" text-sm text-justify  mt-4">{resourceDetail?.discription}</p>
         </div>
 
         <h1 className=" my-4  font-bold text-xl">Drop Your Comment</h1>

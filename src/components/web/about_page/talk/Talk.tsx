@@ -10,7 +10,8 @@ const Talk = () => {
             alt="Left Image"
             width={5000}
             height={5050}
-            className="w-[23rem] md:max-w-[23rem] pt-2 mt-2"
+            className="w-full pt-2 mt-2"
+            priority
           />
         </div>
         <div className="w-full  md:max-w-[45rem]  text-center md:text-left mt-4 md:mt-0 lg:w-[681px] lg:h-[386px] ">

@@ -34,7 +34,7 @@ const Crew = () => {
           width={500}
           height={500}
           className="w-full h-full"
-          loading="lazy"
+          priority
         />
       </div>
     </div>

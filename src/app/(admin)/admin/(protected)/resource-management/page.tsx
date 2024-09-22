@@ -1,4 +1,5 @@
 "use client";
+import { getReq, postReq } from "@/RootServices";
 // import QuillEditor from "@/components/admin/quilleditor/QuillEditor";
 import dynamic from "next/dynamic";
 const QuillEditor = dynamic(
@@ -7,19 +8,28 @@ const QuillEditor = dynamic(
 );
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaEdit, FaEye, FaTrash } from "react-icons/fa";
 import { IoIosClose } from "react-icons/io";
+import { AddResourcesData, DeleteResourcesData, GetResourcesList, PutResourcesData } from "./Services/resourceService";
+import { toast } from "react-toastify";
+import moment from "moment";
 type Props = {};
 
 const page = (props: Props) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [formData, setFormData] = useState({
+  const [isPopupDeleteOpen, setIsPopupDeleteOpen] = useState(false);
+  const [isPopupViewOpen, setIsPopupViewOpen] = useState(false);
+  const [isPopupEditOpen, setIsPopupEditOpen] = useState(false);
+  const [resourceData, setResourceData] = useState({
     image: "",
     title: "",
     description: "",
   });
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [image, setImage] = useState<any>(null);
+  const [resourceDetail, setResourceDetail] = useState<any>()
+  const [resourcesList,setResourcesList] = useState([])
 
   const handleAddClick = () => {
     setIsPopupOpen(true);
@@ -32,8 +42,8 @@ const page = (props: Props) => {
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setFormData({
-      ...formData,
+    setResourceData({
+      ...resourceData,
       [e.target.name]: e.target.value,
     });
   };
@@ -41,43 +51,94 @@ const page = (props: Props) => {
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       const imageUrl = URL.createObjectURL(e.target.files[0]);
+      setImage(e.target.files[0])
       setSelectedImage(imageUrl);
     }
+  };
+  const handleEditInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setResourceDetail({
+      ...resourceDetail,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const removeSelectedImage = () => {
     setSelectedImage(null); // Remove the selected image
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Form Submitted:", formData);
-    setIsPopupOpen(false); // Close the popup after submission
+  const handleSubmit = async(e: React.FormEvent) => {
+    try {
+      e.preventDefault();
+    let formData = new FormData()
+    formData.append('image',image)
+    formData.append('title',resourceData.title)
+    formData.append('description',resourceData.description)
+    AddResourcesData(formData,AddResourcesDataCB)
+    // setIsPopupOpen(false); // Close the popup after submission
+    } catch (error) {
+      console.log('err',error)
+    }
+    
   };
 
-  const data = [
-    {
-      id: 1,
-      title: "Gwen Stacy",
-      about: "Lorem Ipsum is simply dummy text of the printing.",
-      image: "/images/captain.png",
-      date: "2020-01-01",
-    },
-    {
-      id: 2,
-      title: "Gwen Stacy",
-      about: "Lorem Ipsum is simply dummy text of the printing.",
-      image: "/images/captain.png",
-      date: "2020-01-01",
-    },
-    {
-      id: 3,
-      title: "Gwen Stacy",
-      about: "Lorem Ipsum is simply dummy text of the printing.",
-      image: "/images/captain.png",
-      date: "2020-01-01",
-    },
-  ];
+  const AddResourcesDataCB=(result:any)=>{
+    console.log(result);
+    if (result?.status == 200) {
+      GetResourcesList(fetchResources)
+      toast.success('Resource created successfully')
+    } else {
+      toast.error('Resource not created')
+    }
+    setIsPopupOpen(false);
+  }
+
+  useEffect(() => {
+    GetResourcesList(fetchResources)
+  }, [])
+
+  const fetchResources=(result:any)=>{
+    setResourcesList(result.data);
+  }
+
+  const handleUpdateSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle form submission logic here (e.g., update state or send to backend)
+  
+    let formData = new FormData()
+    // formData.append('image',selectedImage)
+    formData.append('id',resourceDetail.id)
+    formData.append('title',resourceDetail.title)
+    formData.append('description',resourceDetail.description)
+    PutResourcesData(formData, PutPodcastDataCB)
+  };
+
+  const PutPodcastDataCB = (result: any) => {
+    if (result?.status == 200) {
+      GetResourcesList(fetchResources)
+      toast.success('Resource updated successfully')
+    } else {
+      toast.error('Resource not updated')
+    }
+    setIsPopupEditOpen(false);
+  }
+
+  const handleDelete = (id:any)=>{
+    DeleteResourcesData(id, DeletePodcastCB)
+  }
+
+  const DeletePodcastCB=(result:any)=>{
+    if (result?.status == 204) {
+      GetResourcesList(fetchResources)
+      toast.success('Resource deleted successfully')
+    } else {
+      toast.error('Resource not deleted')
+    }
+    setIsPopupDeleteOpen(false);
+  }
+  
+
 
   return (
     <div className="mt-4 mx-auto flex w-[90%] flex-col">
@@ -91,52 +152,122 @@ const page = (props: Props) => {
         </Link>
       </div>
       {/* Table */}
-      <div className="overflow-x-auto w-full mt-2 -z-10">
-        <table className="min-w-full bg-white border border-gray-300">
-          <thead>
-            <tr>
-              <th className="py-2 px-4 ">Title</th>
-              <th className="py-2 px-4 ">Description</th>
-              <th className="py-2 px-4">Date</th>
-              <th className="py-2 px-4 ">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((item) => (
-              <tr key={item.id} className="text-center">
-                <td className="py-2 px-4  flex items-center justify-center">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    width={100}
-                    height={100}
-                    className="w-8 h-8 rounded-full object-cover mr-2"
-                  />
-                  <span>{item.title}</span>
-                </td>
-                <td className="py-2 px-4 ">{item.about}</td>
-                <td className="py-2 px-4 ">{item.date}</td>
-                <td className="py-2 px-4 flex justify-center space-x-4">
-                  <Link
-                    href="#"
-                    className="text-blue-500 pb-2 hover:text-blue-700"
-                  >
-                    <FaEye />
-                  </Link>
-                  <Link
-                    href="#"
-                    className="text-green-500 hover:text-green-700"
-                  >
-                    <FaEdit />
-                  </Link>
-                  <Link href="#" className="text-red-500 hover:text-red-700">
-                    <FaTrash />
-                  </Link>
-                </td>
+      <div className="overflow-x-auto w-full mt-2">
+        <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+          <div className="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
+            {/* <div>
+            <button className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button" onClick={()=>setIsOpen(!isOpen)}>
+                <svg className="w-3 h-3 text-gray-500 dark:text-gray-400 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm3.982 13.982a1 1 0 0 1-1.414 0l-3.274-3.274A1.012 1.012 0 0 1 9 10V6a1 1 0 0 1 2 0v3.586l2.982 2.982a1 1 0 0 1 0 1.414Z"/>
+                    </svg>
+                Last 30 days
+                <svg className="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4"/>
+                </svg>
+            </button>
+            {isOpen?<div id="dropdownRadio" className="z-10 w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 absolute inset-y-auto inset-x-0 m-0 translate-[522.5px, 3847.5px, 0px]" >
+                <ul className="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200">
+                    <li>
+                        <div className="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                            <input id="filter-radio-example-1" type="radio" value="" name="filter-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                            <label htmlFor="filter-radio-example-1" className="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Last day</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div className="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                            <input checked="" id="filter-radio-example-2" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                            <label htmlFor="filter-radio-example-2" className="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Last 7 days</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div className="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                            <input id="filter-radio-example-3" type="radio" value="" name="filter-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                            <label htmlFor="filter-radio-example-3" className="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Last 30 days</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div className="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                            <input id="filter-radio-example-4" type="radio" value="" name="filter-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                            <label htmlFor="filter-radio-example-4" className="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Last month</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div className="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                            <input id="filter-radio-example-5" type="radio" value="" name="filter-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                            <label htmlFor="filter-radio-example-5" className="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Last year</label>
+                        </div>
+                    </li>
+                </ul>
+            </div>:null}
+        </div> */}
+            {/* <label htmlFor="table-search" className="sr-only">Search</label>
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 rtl:inset-r-0 rtl:right-0 flex items-center ps-3 pointer-events-none">
+                <svg className="w-5 h-5 text-gray-500 dark:text-gray-400" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"></path></svg>
+              </div>
+              <input type="text" id="table-search" className="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for items" />
+            </div> */}
+          </div>
+          <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+              <tr>
+                {/* <th scope="col" className="p-4">
+                  <div className="flex items-center">
+                    <input id="checkbox-all-search" type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                    <label htmlFor="checkbox-all-search" className="sr-only">checkbox</label>
+                  </div>
+                </th> */}
+                <th scope="col" className="px-6 py-3">
+                  Resource Image
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Resource Title
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Resource Description
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Resource Date
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Action
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {resourcesList?.length ? resourcesList?.map((item: any) => (
+                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" key={item?.id}>
+                  {/* <td className="w-4 p-4">
+                    <div className="flex items-center">
+                      <input id="checkbox-table-search-1" type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                      <label htmlFor="checkbox-table-search-1" className="sr-only">checkbox</label>
+                    </div>
+                  </td> */}
+                  <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {item?.title}
+                  </th>
+                  <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {item?.title}
+                  </th>
+                  <td className="px-6 py-4">
+                  {item?.description?.replace(/<[^>]+>/g, '')}
+                  </td>
+                  <td className="px-6 py-4">
+                  {item?.createdDate?moment(item?.createdDate).format('YYYY-MM-DD'):''}
+                  </td>
+                  <td className="px-6 py-4 flex flex-row space-x-4">
+                  <Link href={`#`} className="font-medium text-blue-600 dark:text-blue-500 hover:underline" onClick={() => { setIsPopupViewOpen(true); setResourceDetail(item); }}><FaEye /></Link>
+                    <Link href={`#`} className="font-medium text-green-600 dark:text-green-500 hover:underline" onClick={() => { setIsPopupEditOpen(true); setResourceDetail(item); }}><FaEdit /></Link>
+                    <Link href={`#`} className="font-medium text-red-600 dark:text-red-500 hover:underline" onClick={() => { setIsPopupDeleteOpen(true); setResourceDetail(item); }}><FaTrash /></Link>
+                  </td>
+                </tr>
+              )) : <tr>
+                <td colSpan={4} className="text-center">No Data Found</td>
+              </tr>}
+
+            </tbody>
+          </table>
+        </div>
       </div>
 
       {/* Popup Form */}
@@ -159,11 +290,9 @@ const page = (props: Props) => {
                 />
                 {selectedImage && (
                   <div className=" relative mt-4 h-20 w-20 ">
-                    <Image
+                    <img
                       src={selectedImage}
                       alt="Selected"
-                      width={20}
-                      height={20}
                       className="relative h-full w-full object-cover rounded-lg border"
                     />
                     {/* Close button for removing the image */}
@@ -185,7 +314,7 @@ const page = (props: Props) => {
                   type="text"
                   id="title"
                   name="title"
-                  value={formData.title}
+                  value={resourceData.title}
                   onChange={handleInputChange}
                   className="w-full px-3 py-2 border h-12 border-gray-300 rounded"
                   placeholder="Enter title"
@@ -207,29 +336,160 @@ const page = (props: Props) => {
                   className="w-full px-3 py-2 border h-32 border-gray-300 rounded"
                   placeholder="Enter description"
                 /> */}
-                <QuillEditor/>
+                <QuillEditor content={resourceData.description} setContent={(des:any)=>setResourceData({...resourceData,description:des})}/>
               </div>
               <div className="flex justify-end space-x-4">
-                <Link
-                  href={"#"}
-                  type="button"
+                <button
+                  type="reset"
                   onClick={handleClosePopup}
                   className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700"
                 >
                   Cancel
-                </Link>
-                <Link
-                  href={"#"}
+                </button>
+                <button
+                  
                   type="submit"
                   className="px-4 py-2 bg-green-600 text-white rounded "
                 >
                   Submit
-                </Link>
+                </button>
               </div>
             </form>
           </div>
         </div>
       )}
+      {isPopupViewOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center  lg:h-auto h-[500px] items-center">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-[600px]">
+            <div className="flex justify-end">
+              <Link href={''} className="font-bold text-3xl" onClick={() => { setIsPopupViewOpen(false) }}>x</Link>
+            </div>
+            <h2 className="text-xl font-bold mt-6 mb-4">Resource Details</h2>
+            <form >
+              <div className="mb-4 ">
+                <label htmlFor="title" className="block text-gray-700 mb-2">
+                  Title
+                </label>
+                <input
+                  type="text"
+                  id="title"
+                  name="title"
+                  value={resourceDetail.title}
+                  // onChange={handleInputChange}
+                  className="w-full px-3 py-2 border h-12 border-gray-300 rounded"
+                  placeholder="Enter title"
+                />
+              </div>
+              <div className="mb-4">
+                <label
+                  htmlFor="description"
+                  className="block text-gray-700 mb-2"
+                >
+                  Description
+                </label>
+                <input
+                  type="text"
+                  id="link"
+                  name="description"
+                  value={resourceDetail.description}
+                  // onChange={handleInputChange}
+                  className="w-full px-3 py-2 border h-12 border-gray-300 rounded"
+                  placeholder="Enter description"
+                />
+              </div>
+              {/* <div className="flex mt-12 justify-end space-x-4">
+                <Link
+                  href={"#"}
+                  type="button"
+                  onClick={() => setIsPopupViewOpen(true)}
+                  className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700"
+                >
+                  Cancel
+                </Link>
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-green-600 text-white rounded "
+                >
+                  Submit
+                </button>
+              </div> */}
+            </form>
+          </div>
+        </div>
+      )}
+      {isPopupEditOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center  lg:h-auto h-[500px] items-center">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-[600px]">
+            <div className="flex justify-end">
+              <Link href={''} className="font-bold text-3xl" onClick={() => { setIsPopupEditOpen(false) }}>x</Link>
+            </div>
+            <h2 className="text-xl font-bold mt-6 mb-4">Edit Resource Details</h2>
+            <form onSubmit={handleUpdateSubmit}>
+              <div className="mb-4 ">
+                <label htmlFor="title" className="block text-gray-700 mb-2">
+                  Title
+                </label>
+                <input
+                  type="text"
+                  id="title"
+                  name="title"
+                  value={resourceDetail.title}
+                  onChange={handleEditInputChange}
+                  className="w-full px-3 py-2 border h-12 border-gray-300 rounded"
+                  placeholder="Enter title"
+                />
+              </div>
+              <div className="mb-4">
+                <label
+                  htmlFor="description"
+                  className="block text-gray-700 mb-2"
+                >
+                  Video link
+                </label>
+                <QuillEditor content={resourceDetail.description} setContent={(des:any)=>setResourceDetail({...resourceDetail,description:des})}/>
+              </div>
+              <div className="flex mt-12 justify-end space-x-4">
+                <Link
+                  href={"#"}
+                  type="button"
+                  onClick={() => setIsPopupEditOpen(false)}
+                  className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700"
+                >
+                  Cancel
+                </Link>
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-green-600 text-white rounded "
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+      {isPopupDeleteOpen && <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center  lg:h-auto h-[500px] items-center">
+        <div className="relative p-4 w-full max-w-md max-h-full">
+          <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <button type="button" className="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="popup-modal" onClick={() => setIsPopupDeleteOpen(false)}>
+              <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+              </svg>
+              <span className="sr-only">Close modal</span>
+            </button>
+            <div className="p-4 md:p-5 text-center">
+              <svg className="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+              </svg>
+              <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this resource?</h3>
+              <button data-modal-hide="popup-modal" type="button" className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center" onClick={()=>handleDelete(resourceDetail?.id)}>
+                Yes, I'm sure
+              </button>
+              <button data-modal-hide="popup-modal" type="button" className="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" onClick={() => setIsPopupDeleteOpen(false)}>No, cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>}
     </div>
   );
 };

@@ -12,8 +12,11 @@ import { useState } from "react";
 import LoginImg from "../image/LoginImg";
 import LoginHeader from "@/app/Shared/LoginHeader/LoginHeader";
 import Footer from "@/app/Shared/Footer/Footer";
+import { SignupData } from "@/app/(candidate)/candidate/signup/Services/signupService";
+import { useRouter } from "next/navigation";
 
 const SignUp: React.FC = () => {
+  const route = useRouter();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
@@ -36,12 +39,32 @@ const SignUp: React.FC = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async(e: React.FormEvent) => {
+    try {
+      e.preventDefault();
     validatePasswords();
+    let data = {
+      firstName: firstName,
+      lastName: lastName,
+      email:email,
+      phoneNumber:phone,
+      password:password,
+      role:'USER'
+    }
     if (!error) {
       console.log("Form submitted successfully");
     }
+      const response = await SignupData(data);
+      if (response?.data) {
+        // const token = response?.data?.token;
+        // document.cookie = `token=${response?.data?.token}; path=/candidate`;
+        // localStorage.setItem("token", token);
+        route.push("/candidate");
+      }
+    } catch (error) {
+      console.log("err", error);
+    }
+    
   };
 
   return (
@@ -255,7 +278,7 @@ const SignUp: React.FC = () => {
 
             <p className=" text-center font-semibold mb-6">
               Already have on account?
-              <Link href="/" className="text-[#00A264] ">
+              <Link href="/candidate" className="text-[#00A264] ">
                 Sign In as Candidate
               </Link>
             </p>

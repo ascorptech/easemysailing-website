@@ -98,7 +98,7 @@ const SignIn = () => {
         const token = response?.data?.token;
         document.cookie = `token=${response?.data?.token}; path=/admin`;
         localStorage.setItem("token", token);
-        route.replace("/admin/dashboard");
+        route.push("/admin/dashboard");
       }
     } catch (error) {
       console.log("err", error);

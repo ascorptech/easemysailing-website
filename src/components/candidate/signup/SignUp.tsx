@@ -255,7 +255,7 @@ const SignUp: React.FC = () => {
 
             <p className=" text-center font-semibold mb-6">
               Already have on account?
-              <Link href="/" className="text-[#00A264] ">
+              <Link href="/candidate" className="text-[#00A264] ">
                 Sign In as Candidate
               </Link>
             </p>

@@ -197,7 +197,7 @@ const SignIn = ({ route }: Props) => {
               <p className="mt-2 text-center mb-16 ">
                 Don’t have an account?
                 <Link
-                  href={"signup"}
+                  href={"candidate/signup"}
                   className="text-[#00A264] hover:underline"
                 >
                   Sign Up

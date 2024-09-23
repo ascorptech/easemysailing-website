@@ -13,11 +13,14 @@ import VerificationCode from "../ChangePassword/VerificationCode";
 import Congratulations from "../ChangePassword/Congratulations";
 import ResetPassword from "../ChangePassword/ResetPassword";
 import PasswordChange from "../ChangePassword/PasswordChange";
+import { LoginData } from "@/app/(candidate)/candidate/Services/loginService";
+import { useRouter } from "next/navigation";
 
 type Props = {
   route: string;
 };
 const SignIn = ({ route }: Props) => {
+  const router = useRouter();
   const [emailOrPhone, setEmailOrPhone] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -79,10 +82,31 @@ const SignIn = ({ route }: Props) => {
     setIsPasswordChangeOpen(false);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async(e:any) => {
     // console.log(element.preventDefault());
     // Handle login logic here
     // console.log({ emailOrPhone, password });
+    try {
+      e.preventDefault();
+
+      let data = {
+        email: emailOrPhone,
+        password: password,
+      };
+
+      const response = await LoginData(data);
+      if (response?.data) {
+        const token = response?.data?.token;
+        document.cookie = `token=${response?.data?.token}; path=/candidate`;
+        localStorage.setItem("token", token);
+        if (token) {
+          router.push("/candidate/dashboard");
+        }
+        
+      }
+    } catch (error) {
+      console.log("err", error);
+    }
   };
 
   return (
@@ -181,23 +205,19 @@ const SignIn = ({ route }: Props) => {
                 </Link>
               </div>
 
-              <Link
-                href={
-                  route == "candidate"
-                    ? "/candidate/dashboard"
-                    : "/recruiter/dashboard"
-                }
+              <button
+                type="submit"
                 className="block w-full px-4 py-2 text-white bg-[#00A264] text-center hover:bg-[#00A264] font-bold rounded focus:outline-none focus:shadow-outline "
               >
                 Sign in
-              </Link>
+              </button>
             </form>
 
             {route == "candidate" && (
               <p className="mt-2 text-center mb-16 ">
                 Don’t have an account?
                 <Link
-                  href={"candidate/signup"}
+                  href={"/candidate/signup"}
                   className="text-[#00A264] hover:underline"
                 >
                   Sign Up

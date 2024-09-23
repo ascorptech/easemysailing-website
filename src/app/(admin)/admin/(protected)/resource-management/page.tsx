@@ -84,7 +84,6 @@ const page = (props: Props) => {
   };
 
   const AddResourcesDataCB=(result:any)=>{
-    console.log(result);
     if (result?.status == 200) {
       GetResourcesList(fetchResources)
       toast.success('Resource created successfully')
@@ -99,7 +98,12 @@ const page = (props: Props) => {
   }, [])
 
   const fetchResources=(result:any)=>{
+    if (result?.status == 200) {
     setResourcesList(result.data);
+    } else {
+      setResourcesList([])
+      toast.success('No Record Found')
+    }
   }
 
   const handleUpdateSubmit = (e: React.FormEvent) => {
@@ -107,11 +111,11 @@ const page = (props: Props) => {
     // Handle form submission logic here (e.g., update state or send to backend)
   
     let formData = new FormData()
-    // formData.append('image',selectedImage)
-    formData.append('id',resourceDetail.id)
+    formData.append('image',image)
+    // formData.append('id',resourceDetail.id)
     formData.append('title',resourceDetail.title)
     formData.append('description',resourceDetail.description)
-    PutResourcesData(formData, PutPodcastDataCB)
+    PutResourcesData(resourceDetail.id,formData, PutPodcastDataCB)
   };
 
   const PutPodcastDataCB = (result: any) => {
@@ -137,8 +141,6 @@ const page = (props: Props) => {
     }
     setIsPopupDeleteOpen(false);
   }
-  
-
 
   return (
     <div className="mt-4 mx-auto flex w-[90%] flex-col">
@@ -244,7 +246,14 @@ const page = (props: Props) => {
                     </div>
                   </td> */}
                   <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {item?.title}
+                    <Image
+                    src={`data:image/png;image/jpg;image/jpeg;base64,${item?.imageUrl}`}
+                    alt={item?.title}
+                    width={100}
+                    height={100}
+                    priority
+                    className="h-14 w-14 rounded-full"
+                    />
                   </th>
                   <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {item?.title}
@@ -255,10 +264,12 @@ const page = (props: Props) => {
                   <td className="px-6 py-4">
                   {item?.createdDate?moment(item?.createdDate).format('YYYY-MM-DD'):''}
                   </td>
-                  <td className="px-6 py-4 flex flex-row space-x-4">
-                  <Link href={`#`} className="font-medium text-blue-600 dark:text-blue-500 hover:underline" onClick={() => { setIsPopupViewOpen(true); setResourceDetail(item); }}><FaEye /></Link>
-                    <Link href={`#`} className="font-medium text-green-600 dark:text-green-500 hover:underline" onClick={() => { setIsPopupEditOpen(true); setResourceDetail(item); }}><FaEdit /></Link>
-                    <Link href={`#`} className="font-medium text-red-600 dark:text-red-500 hover:underline" onClick={() => { setIsPopupDeleteOpen(true); setResourceDetail(item); }}><FaTrash /></Link>
+                  <td className="px-6 py-4 flex justify-center items-center">
+                    <div className="flex self-center space-x-4">
+                  <Link href={`#`} className="font-large text-blue-600 dark:text-blue-500 hover:underline" onClick={() => { setIsPopupViewOpen(true); setResourceDetail(item); }}><FaEye  className="h-10"/></Link>
+                    <Link href={`#`} className="font-large text-green-600 dark:text-green-500 hover:underline" onClick={() => { setIsPopupEditOpen(true); setResourceDetail(item);setSelectedImage(`data:image/png;image/jpg;image/jpeg;base64,${item?.imageUrl}`); }}><FaEdit  className="h-10"/></Link>
+                    <Link href={`#`} className="font-large text-red-600 dark:text-red-500 hover:underline" onClick={() => { setIsPopupDeleteOpen(true); setResourceDetail(item); }}><FaTrash  className="h-10"/></Link>
+                    </div>
                   </td>
                 </tr>
               )) : <tr>
@@ -366,6 +377,17 @@ const page = (props: Props) => {
             </div>
             <h2 className="text-xl font-bold mt-6 mb-4">Resource Details</h2>
             <form >
+              <div className="mb-4 flex justify-center">
+
+                <Image
+                    src={`data:image/png;image/jpg;image/jpeg;base64,${resourceDetail?.imageUrl}`}
+                    alt={resourceDetail?.title}
+                    width={100}
+                    height={100}
+                    priority
+                    className="h-14 w-14 rounded-full"
+                    />
+              </div>
               <div className="mb-4 ">
                 <label htmlFor="title" className="block text-gray-700 mb-2">
                   Title
@@ -391,7 +413,7 @@ const page = (props: Props) => {
                   type="text"
                   id="link"
                   name="description"
-                  value={resourceDetail.description}
+                  value={resourceDetail.description?.replace(/<[^>]+>/g, '')}
                   // onChange={handleInputChange}
                   className="w-full px-3 py-2 border h-12 border-gray-300 rounded"
                   placeholder="Enter description"
@@ -425,6 +447,36 @@ const page = (props: Props) => {
             </div>
             <h2 className="text-xl font-bold mt-6 mb-4">Edit Resource Details</h2>
             <form onSubmit={handleUpdateSubmit}>
+            <div className="mb-4">
+                <label htmlFor="image" className="block text-gray-700 mb-2">
+                  Choose Image
+                </label>
+                <input
+                  type="file"
+                  id="image"
+                  name="image"
+                  accept="image/*"
+                  className="block w-full border rounded-lg h-12 text-sm text-gray-500 file:mr-4 file:py-[15px] file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-gray-200 file:text-gray-700 hover:file:bg-gray-100"
+                  onChange={handleImageChange}
+                />
+                {selectedImage && (
+                  <div className=" relative mt-4 h-20 w-20 ">
+                    <img
+                      src={selectedImage}
+                      alt="Selected"
+                      className="relative h-full w-full object-cover rounded-lg border"
+                    />
+                    {/* Close button for removing the image */}
+                    <button
+                      type="button"
+                      className="absolute top-0 right-0 bg-white rounded-full text-red-500 h-5 w-5  "
+                      onClick={removeSelectedImage}
+                    >
+                      <IoIosClose className="text-xl w-full h-full" />
+                    </button>
+                  </div>
+                )}
+              </div>
               <div className="mb-4 ">
                 <label htmlFor="title" className="block text-gray-700 mb-2">
                   Title
@@ -444,7 +496,7 @@ const page = (props: Props) => {
                   htmlFor="description"
                   className="block text-gray-700 mb-2"
                 >
-                  Video link
+                  Description
                 </label>
                 <QuillEditor content={resourceDetail.description} setContent={(des:any)=>setResourceDetail({...resourceDetail,description:des})}/>
               </div>

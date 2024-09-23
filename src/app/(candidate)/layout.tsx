@@ -1,21 +1,27 @@
 
 
 import React, { lazy, Suspense, useState } from "react";
-// import type { Metadata } from "next";
+import type { Metadata } from "next";
 
 import { Poppins } from "next/font/google";
 import "../globals.scss";
-// import RecruiterHeader from "@/components/recruiter/RecruiterHeader/RecruiterHeader";
 
 const poppins = Poppins({
   subsets: ["latin"],
   weight: "400"
 });
 
-// export const metadata: Metadata = {
-//     title: "Recruiter",
-//     description: "This is recruiter page",
-// };
+export const metadata: Metadata = {
+    title: "Candidate",
+    description: "This is candidate page",
+    icons: {
+      icon: {
+        url: "/Favicon.ico",
+        type: "image/png",
+      },
+      shortcut: { url: "/Favicon.ico", type: "image/png" },
+    },
+};
 
 
 export default function RecruiterLayout({

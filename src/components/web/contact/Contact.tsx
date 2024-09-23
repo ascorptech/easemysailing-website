@@ -57,7 +57,7 @@ const Contact = () => {
                   id="Name"
                   type="text"
                   value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(e) => setName(e.target.value.trim())}
                   className="border lg:h-10 rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
                   placeholder=" Name"
                   required
@@ -71,7 +71,7 @@ const Contact = () => {
                   id="email"
                   type="email"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => setEmail(e.target.value.trim())}
                   className="border lg:h-10 rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
                   placeholder="Email"
                   required
@@ -82,9 +82,10 @@ const Contact = () => {
               <div className="relative flex items-center  ">
                 <input
                   id="phone"
-                  type="number"
+                  type="text"
                   value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
+                  maxLength={10}
+                  onChange={(e) => setPhone(e.target.value.trim())}
                   className="border lg:h-10  rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
                   placeholder="Phone Number"
                   required
@@ -96,7 +97,8 @@ const Contact = () => {
               <div className="relative flex items-center  ">
                 <textarea
                   value={textarea}
-                  onChange={(e) => setTextArea(e.target.value)}
+                  maxLength={500}
+                  onChange={(e) => setTextArea(e.target.value.trim())}
                   className="border rounded-lg w-full h-28 py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
                   placeholder="Message"
                   required

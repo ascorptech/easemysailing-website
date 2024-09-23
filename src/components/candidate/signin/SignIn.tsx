@@ -168,7 +168,7 @@ const SignIn = ({ route }: Props) => {
                 >
                   Password
                 </label>
-                <div className="relative pl-8">
+                <div className="relative flex items-center pl-8 border border-[#00A264] rounded-l-md">
                   <input
                     id="password"
                     type={showPassword ? "text" : "password"}

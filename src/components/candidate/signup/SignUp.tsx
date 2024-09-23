@@ -35,7 +35,8 @@ const SignUp: React.FC = () => {
   const validatePasswords = () => {
     if (password !== cPassword) {
       setError("Passwords do not match");
-    } else {
+    } 
+    else {
       setError("");
     }
   };

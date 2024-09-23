@@ -24,8 +24,8 @@ const AdminSidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
   console.log("path", pathname);
 
   const onLogout =()=>{
-    localStorage.removeItem("token");
-    document.cookie=`token=`
+    localStorage.clear();
+    document.cookie=`token=${''}; path=/admin`
   }
   return (
     <div

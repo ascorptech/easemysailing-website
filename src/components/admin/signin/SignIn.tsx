@@ -16,6 +16,7 @@ import PasswordChange from "@/components/candidate/ChangePassword/PasswordChange
 import { postReq } from "@/RootServices";
 import { LoginData } from "@/app/(admin)/admin/Services/loginService";
 import { useRouter } from "next/navigation";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const SignIn = () => {
   const route = useRouter();
@@ -25,7 +26,7 @@ const SignIn = () => {
   );
   const [password, setPassword] = useState("C@$R@k2020");
   const [showPassword, setShowPassword] = useState(false);
-
+  const [isLoading,setIsLoading] = useState(false)
   const [isForgotPasswordOpen, setIsForgotPasswordOpen] = useState(false);
   const [isVerificationOptOpen, setIsVerificationOptOpen] = useState(false);
   const [isVerificationCodeOpen, setIsVerificationCodeOpen] = useState(false);
@@ -206,12 +207,22 @@ const SignIn = () => {
                 </Link>
               </div>
 
-              <button
+              {isLoading ? <div className="block w-full px-4 py-2 text-white bg-[#00A264] text-center hover:bg-[#00A264] font-bold rounded focus:outline-none focus:shadow-outline "><ClipLoader
+                color={'#ffffff'}
+                loading={isLoading}
+                cssOverride={{
+                  height:'25px',
+                  width:'25px'
+                }}
+                size={150}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+              /> </div>:<button
                 type="submit"
                 className="block w-full px-4 py-2 text-white bg-[#00A264] text-center hover:bg-[#00A264] font-bold rounded focus:outline-none focus:shadow-outline"
               >
                 Sign in
-              </button>
+              </button>}
             </form>
           </div>
         </div>

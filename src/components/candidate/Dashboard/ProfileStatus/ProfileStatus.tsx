@@ -286,6 +286,7 @@ const ProfileStatus: React.FC = () => {
         <div className="flex items-center justify-between bg-white shadow-lg rounded-2xl p-4 mt-5 gap-3">
           <div className="border shadow-lg w-[115px] h-[130px] ">
             <Image
+            priority
               src="/images/playdeck.png"
               alt="images not found"
               width={500}

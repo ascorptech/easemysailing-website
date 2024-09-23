@@ -1,3 +1,3 @@
 export default{
-    PROFILE:'/v1/profile'
+    GETPROFILE:'/v1/profile'
 }

@@ -22,6 +22,10 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
 
   const pathname = usePathname();
   console.log("path", pathname);
+  const onLogout =()=>{
+    localStorage.clear();
+    document.cookie=`token=${''}; path=/candidate`
+  }
   return (
     <div
       className={`${
@@ -30,7 +34,9 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
     >
       <div className="w-44 h-12 sm:w-52 sm:h-[53px] ml-3 ">
         <Link href="#">
+        
           <Image
+          priority
             src="/images/logo_1.png"
             alt="EaseMySailing Logo"
             className="object-contain h-full w-full "
@@ -149,23 +155,24 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
             Contact Us
           </Link>
         </li>
-        <li className="mb-3 rounded py-2">
-          <Link href="#">
+        <li className="mb-2 rounded py-2">
+          <Link href="/candidate" onClick={onLogout}>
             <FiLogOut className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             Logout
           </Link>
         </li>
       </ul>
 
-      <div className="w-12 h-12">
+      {/* <div className="w-32 h-16 border-2 border-red-300">
         <Image
+        priority
           src="/Images/google-play-store.jpg"
           alt="images not found"
-          width={500}
-          height={500}
-          className="w-12 h-12 object-cover"
-        ></Image>
-      </div>
+          width={100}
+          height={100}
+          className="w-full h-full object-contain"
+        />
+      </div> */}
     </div>
   );
 };

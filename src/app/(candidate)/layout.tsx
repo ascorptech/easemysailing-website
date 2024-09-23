@@ -2,9 +2,11 @@
 
 import React, { lazy, Suspense, useState } from "react";
 import type { Metadata } from "next";
-
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Poppins } from "next/font/google";
 import "../globals.scss";
+
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -32,7 +34,10 @@ export default function RecruiterLayout({
   return (
     <html lang="en">
       <body className={poppins.className}>
-        <main className="w-full h-screen flex flex-col">{children}</main>
+        <main className="w-full h-screen flex flex-col">
+        <ToastContainer />
+          {children}
+          </main>
       </body>
     </html>
   );

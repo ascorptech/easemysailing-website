@@ -2,15 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RiArrowDownSLine } from "react-icons/ri";
 import { X } from "lucide-react";
 import { FaStar } from "react-icons/fa";
+import { GetProfileDetail } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 
 const ProfileCV = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-
   const [ratings, setRatings] = useState({
     teamCollaboration: 0,
     teamEnhancement: 0,
@@ -19,9 +19,27 @@ const ProfileCV = () => {
     attitude: 0,
     acceptability: 0,
   });
-
+const [profileDetail,setProfileDetail] = useState<any>(
+  {
+    name:'',
+    email:''
+  }
+)
   const [date, setDate] = useState("");
   const [feedback, setFeedback] = useState("");
+
+  useEffect(() => {
+    fetchDetails()
+  }, [])
+
+  const fetchDetails=async()=>{
+    let id = await localStorage.getItem('id')
+    setProfileDetail({name:localStorage.getItem('firstName')+' '+localStorage.getItem('lastName'),email:localStorage.getItem('email')})
+    GetProfileDetail(id,(res:any)=>{
+      console.log('data here',res)
+    })
+  }
+  
 
   const handleRating = (key: string, value: number) => {
     setRatings({ ...ratings, [key]: value });
@@ -73,7 +91,7 @@ const ProfileCV = () => {
           </div>
           <div className="flex flex-col gap-[6px]">
             <h1 className="font-semibold text-[24px] leading-[36px]">
-              Robin Smith
+              {profileDetail?.name}
             </h1>
             <p className="text-[#00A264] font-medium text-[16px] leading-[24px]">
               Captain
@@ -106,7 +124,7 @@ const ProfileCV = () => {
               <p className="font-semibold text-[15px] leading-[21px]">
                 Email :
                 <span className="ml-1 font-normal text-[15px] leading-[21px]">
-                  Lorem Ipsum is simply dummy text of
+                {profileDetail?.email}
                 </span>
               </p>
             </div>

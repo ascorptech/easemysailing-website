@@ -1,19 +1,20 @@
 "use client";
+import Image from "next/image";
 import React, { useRef, useEffect } from "react";
 
 interface Card {
-    id: number;
-    logo: string;
-    company: string;
-    rating: number;
-    reviews: string;
-    rank :string;
-  }
+  id: number;
+  logo: string;
+  company: string;
+  rating: number;
+  reviews: string;
+  rank: string;
+}
 
 interface SlidesTrendProps {
   card1: any;
 }
-const SlidesTrend: React.FC<SlidesTrendProps> = ({ card1}) => {
+const SlidesTrend: React.FC<SlidesTrendProps> = ({ card1 }) => {
   // const card = useRef<HTMLDivElement>(null);
 
   const cards: Card[] = [
@@ -101,21 +102,24 @@ const SlidesTrend: React.FC<SlidesTrendProps> = ({ card1}) => {
 
   return (
     <div className="flex flex-col items-center justify-between">
-      <div className=" lg:ml-[4rem] relative flex items-center justify-center w-[90%]  ">
+      <div className=" lg:ml-[1rem] relative flex items-center justify-center w-[98%]  ">
         {/* {/ Carousel Wrapper /} */}
         <div
           ref={card1}
-          className=" flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory lg:mx-[5rem] mx-[2rem] ml-[3rem] "
+          className=" flex border-2 border-red-700 overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory lg:mx-[1rem] mx-[2rem] ml-[3rem] "
         >
           {/* {/ Card 1 /} */}
           {cards.map((card) => (
-            <div key={card.id} className="snap-center p-2">
-              <div className=" flex flex-col justify-center items-center w-44 h-40 p-4  lg:w-44  lg:h-40 bg-white border rounded-lg shadow-md">
-                <div className="w-16 h-16 border">
-                  <img
+            <div key={card.id} className="snap-center sm:w-1/6  p-4">
+              <div className=" flex flex-col justify-center items-center w-44 h-40 p-4  lg:w-44  lg:h-40 bg-white rounded-lg shadow-md">
+                <div className=" mb-4 w-16 h-16 border">
+                  <Image
+                    priority
+                    width={200}
+                    height={200}
                     src={card.logo}
                     alt="Maersk Line"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full rounded-full"
                   />
                 </div>
 
@@ -142,4 +146,4 @@ const SlidesTrend: React.FC<SlidesTrendProps> = ({ card1}) => {
   );
 };
 
-export default SlidesTrend
+export default SlidesTrend;

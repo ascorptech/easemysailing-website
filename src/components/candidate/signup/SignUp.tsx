@@ -41,7 +41,7 @@ const SignUp: React.FC = () => {
 
   const handleSubmit = async(e: React.FormEvent) => {
     try {
-      e.preventDefault();
+    e.preventDefault();
     validatePasswords();
     let data = {
       firstName: firstName,

@@ -1,8 +1,10 @@
 "use client";
+import { AddProfileData } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/ProfileCVService";
 import Link from "next/link";
 import React from "react";
 
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const AddressDetails = () => {
   const [address, setAddress] = useState("");
@@ -14,10 +16,55 @@ const AddressDetails = () => {
   const [email, setEmail] = useState("");
   const [indNumber, setIndNumber] = useState("");
   const [cityName, setCityName] = useState("");
+
+
+ const  handlesubmit = async(e:React.FormEvent) => {
+ 
+    e.preventDefault(); 
+  let data = {
+    address,
+    number,
+    addInfo,
+    postalCode,
+    state,
+    phoneNumber,
+    email,
+    indNumber,
+    cityName,
+
+  }
+
+  // console.log(data);
+  AddProfileData(data, AddaddressdataDB)
+};
+const AddaddressdataDB = (result:any)=> {
+  console.log(result)
+  if(result?.status == 200){
+    toast.success("address submited successfully")
+  }else {
+
+    toast.error('address not submited ')
+  }
+}
+
+
+
+
+//   const data = await AddProfileData(data);
+//   console.log("Success:", data);
+//   toast.success(" PersonalDetails successfully");
+// } catch (error) {
+//   toast.error("PersonalDetails not updated");
+
+//   console.error("Error:", error);
+// }
+
+//  }
  
 
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
+      <form onSubmit={handlesubmit}>
       <div className="">
         <div className=" flex flex-col  px-4 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] gap-4">
           <div className="flex items-center justify-between gap-4  ">
@@ -246,20 +293,21 @@ const AddressDetails = () => {
         </div>
 
         <div className="flex gap-2 mb-4 mt-4 ml-3">
-          <Link
-            href="#"
+          <button
+            type="submit"
             className="border border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
           >
             Save
-          </Link>
-          <Link
-            href="#"
+          </button>
+          <button
+            type="submit"
             className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
           >
             Edit
-          </Link>
+          </button>
         </div>
       </div>
+      </form>
     </div>
   );
 };

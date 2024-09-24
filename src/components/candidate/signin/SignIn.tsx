@@ -122,36 +122,36 @@ const SignIn = ({ route }: Props) => {
   return (
     <div className="flex flex-col">
       <LoginHeader />
-      <div className="flex items-center justify-center bg-gray-100   ">
-        <div className="flex w-full h-auto overflow-hidden bg-white">
+      <div className="flex items-center justify-center bg-[#EAEAEA]   ">
+        <div className="flex w-full h-auto overflow-hidden bg-[#EAEAEA]">
           <LoginImg />
 
           {/* Sign-In Form Section */}
-          <div className="w-full md:w-1/2 p-7 bg-[#EAEAEA]  ">
-            <h2 className="mt-12 mb-2 text-2xl font-bold text-center">
+          <div className="w-full flex flex-col items-center justify-center md:w-1/2  bg-[#EAEAEA]  ">
+            <h2 className="mt-12 mb-2 text-[30.52px] leading-[45.79px] font-semibold text-center">
               Sign In as {route == "candidate" ? "Candidate" : "Recruiter"}
             </h2>
-            <p className="mb-4 text-center text-gray-600">
+            <p className="mb-4 text-center text-[18px] leading-[27px] text-[#333333]">
               Enter your credential to access your account.
             </p>
             <form
               onSubmit={handleSubmit}
-              className="w-full max-w-lg p-6 ml-10 "
+              className="w-[70%]"
             >
               <div className="mb-2">
                 <label
-                  className="block mb-2 text-sm font-bold text-gray-700"
+                  className="block mb-2 text-[16px] leading-[24px] font-[500] text-[#333333] "
                   htmlFor="emailOrPhone"
                 >
                   Enter Registered Email/Phone
                 </label>
-                <div className="relative flex items-center pl-8 ">
+                <div className="relative flex items-center pl-8 rounded-l-md ">
                   <input
                     id="emailOrPhone"
                     type="text"
                     value={emailOrPhone}
                     onChange={(e) => setEmailOrPhone(e.target.value)}
-                    className="w-full px-3 py-2 leading-tight text-gray-700 border rounded-lg focus:outline-none focus:shadow-outline"
+                    className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline font-[opensans]"
                     placeholder="Email/Phone"
                     required
                   />
@@ -163,18 +163,18 @@ const SignIn = ({ route }: Props) => {
 
               <div className="mb-4">
                 <label
-                  className="block mb-2 text-sm font-bold text-gray-700"
+                  className="block mb-2 text-[16px] leading-[24px] font-[500] text-[#333333]"
                   htmlFor="password"
                 >
                   Password
                 </label>
-                <div className="relative pl-8">
+                <div className="relative flex items-center pl-8 rounded-l-md">
                   <input
                     id="password"
                     type={showPassword ? "text" : "password"}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full px-3 py-2 leading-tight text-gray-700 border rounded-lg focus:outline-none focus:shadow-outline"
+                    className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline font-[opensans]"
                     placeholder="Password"
                     required
                   />
@@ -196,11 +196,11 @@ const SignIn = ({ route }: Props) => {
                   <input
                     id="rememberMe"
                     type="checkbox"
-                    className="w-4 h-4 text-green-500 border-gray-300 rounded focus:ring-green-800"
+                    className="w-4 h-4 text-[#00A264] border-[#333333] rounded focus:ring-[#00A264]"
                   />
                   <label
                     htmlFor="rememberMe"
-                    className="block ml-2 text-sm text-green-700"
+                    className="block ml-2 text-[15.26px] leading-[22.89px] text-[#00A264]"
                   >
                     Remember me
                   </label>
@@ -208,7 +208,7 @@ const SignIn = ({ route }: Props) => {
 
                 <Link
                   href="#"
-                  className="inline-block text-sm text-green-500 align-baseline hover:text-green-800 "
+                  className="inline-block text-[15.26px] leading-[22.89px]  text-[#00A264] align-baseline hover:text-[#00A264] "
                   onClick={openForgotPassword}
                 >
                   Forgot Password?
@@ -227,18 +227,18 @@ const SignIn = ({ route }: Props) => {
                 data-testid="loader"
               /> </div>: <button
                 type="submit"
-                className="block w-full px-4 py-2 text-white bg-[#00A264] text-center hover:bg-[#00A264] font-bold rounded focus:outline-none focus:shadow-outline "
+                className="block w-full px-4 h-[42px] text-white bg-[#00A264] text-center hover:bg-[#00A264] font-bold rounded focus:outline-none focus:shadow-outline "
               >
                 Sign in
               </button>}
             </form>
 
             {route == "candidate" && (
-              <p className="mt-2 text-center mb-16 ">
+              <p className="mt-2 text-center mb-16 text-[16px] leading-[24px]  text-[#333333] ">
                 Don’t have an account?
                 <Link
                   href={"/candidate/signup"}
-                  className="text-[#00A264] hover:underline"
+                  className="text-[#00A264] font-[500] hover:underline ml-1"
                 >
                   Sign Up
                 </Link>

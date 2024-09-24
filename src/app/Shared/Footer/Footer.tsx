@@ -1,11 +1,32 @@
+"use client";
 import { FiPhone } from "react-icons/fi";
 import Link from "next/link";
 import { MdOutlineMail } from "react-icons/md";
 import { FaFacebook, FaInstagram, FaWhatsapp, FaTwitter, FaXingSquare } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import Image from "next/image";
+import { useEffect } from "react";
+
+declare global {
+  interface Window {
+    dataLayer?: any[];
+  }
+}
 
 const Footer = () => {
+  useEffect(() => {
+    var Tawk_API: any = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function () {
+      var s1: any = document.createElement("script")
+      let s0: any = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/65ffd3841ec1082f04da916f/1hpnl4g1e';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+    
+  }, [])
   return (
     <footer className="bg-[#D1EFE4] p-4 text-sm md:pl-10 text-gray-700 w-full ">
       <div className="container mx-auto mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">

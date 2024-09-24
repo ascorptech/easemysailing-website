@@ -79,6 +79,7 @@ const NewVacancies: React.FC = () => {
               className="bg-white shadow-md rounded-lg p-3 min-w-[170px] "
             >
               <Image
+              priority
                 src={vacancy.logoSrc}
                 alt={vacancy.companyName}
                 className="h-10 mx-auto"

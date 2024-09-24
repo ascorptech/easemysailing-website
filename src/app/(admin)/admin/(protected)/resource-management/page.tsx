@@ -21,8 +21,8 @@ const page = (props: Props) => {
   const [isPopupDeleteOpen, setIsPopupDeleteOpen] = useState(false);
   const [isPopupViewOpen, setIsPopupViewOpen] = useState(false);
   const [isPopupEditOpen, setIsPopupEditOpen] = useState(false);
-  const [resourceData, setResourceData] = useState({
-    image: "",
+  const [resourceData, setResourceData] = useState<any>({
+    
     title: "",
     description: "",
   });
@@ -30,6 +30,63 @@ const page = (props: Props) => {
   const [image, setImage] = useState<any>(null);
   const [resourceDetail, setResourceDetail] = useState<any>()
   const [resourcesList,setResourcesList] = useState([])
+
+    // Pagination state
+    const [currentPage, setCurrentPage] = useState(1);
+    const resourcesPerPage = 10;
+
+  const [letterCount, setLetterCount] = useState(0); 
+
+
+  // Pagination start
+ // Pagination: Calculate current page resources
+ const indexOfLastResource = currentPage * resourcesPerPage;
+ const indexOfFirstResource = indexOfLastResource - resourcesPerPage;
+ const currentResources = resourcesList.slice(indexOfFirstResource, indexOfLastResource);
+
+ const nextPage = () => {
+   if (currentPage < Math.ceil(resourcesList.length / resourcesPerPage)) {
+     setCurrentPage(currentPage + 1);
+   }
+ };
+
+ const previousPage = () => {
+   if (currentPage > 1) {
+     setCurrentPage(currentPage - 1);
+   }
+ };
+
+   // Pagination end
+ 
+
+  const handleDescriptionChange = (content: any) => {
+    // Update letter count (excluding HTML tags)
+    const plainText = content.replace(/<[^>]+>/g, ""); // Remove HTML tags
+
+    // Limit to 4000 characters
+    if (plainText.length <= 4000) {
+      setResourceData({
+        ...resourceData,
+        description: content,
+      });
+      setLetterCount(plainText.length); // Update letter count
+    } else {
+      toast.error("Description cannot exceed 4000 characters.");
+    }
+  };
+ 
+
+
+  // const handleDescriptionChange = (content: any) => {
+  //   setResourceData({
+  //     ...resourceData,
+  //     description: content,
+  //   });
+  //   // Update word count
+  //   const plainText = content.replace(/<[^>]+>/g, ""); // Remove HTML tags
+  //   const wordArray = plainText.trim().split(/\s+/);
+  //   setWordCount(wordArray.filter((word) => word !== "").length); // Update word count
+  // };
 
   const handleAddClick = () => {
     setIsPopupOpen(true);
@@ -76,7 +133,12 @@ const page = (props: Props) => {
     formData.append('title',resourceData.title)
     formData.append('description',resourceData.description)
     AddResourcesData(formData,AddResourcesDataCB)
+    setResourceData({title: null, description: "" });
+    setSelectedImage(null);
+    setLetterCount(0);
+    
     // setIsPopupOpen(false); // Close the popup after submission
+    
     } catch (error) {
       console.log('err',error)
     }
@@ -331,6 +393,17 @@ const page = (props: Props) => {
                   placeholder="Enter title"
                 />
               </div>
+              {/* <div className="mb-4">
+                <label
+                  htmlFor="description"
+                  className="block text-gray-700 mb-2"
+                >
+                  Description
+                </label>
+               
+                <QuillEditor content={resourceData.description} setContent={(des:any)=>setResourceData({...resourceData,description:des})}/>
+              </div> */}
+              
               <div className="mb-4">
                 <label
                   htmlFor="description"
@@ -338,16 +411,11 @@ const page = (props: Props) => {
                 >
                   Description
                 </label>
-                {/* <input
-                  type="text"
-                  id="description"
-                  name="description"
-                  value={formData.description}
-                  onChange={handleInputChange}
-                  className="w-full px-3 py-2 border h-32 border-gray-300 rounded"
-                  placeholder="Enter description"
-                /> */}
-                <QuillEditor content={resourceData.description} setContent={(des:any)=>setResourceData({...resourceData,description:des})}/>
+               
+                <QuillEditor content={resourceData.description} setContent={handleDescriptionChange}/>
+                <div className="text-gray-500 text-sm float-right mb-4">
+                Word Count: {letterCount}\4000
+              </div>
               </div>
               <div className="flex justify-end space-x-4">
                 <button
@@ -542,6 +610,27 @@ const page = (props: Props) => {
           </div>
         </div>
       </div>}
+
+       {/* Pagination Controls */}
+       <div className="flex justify-center gap-4 items-center mt-4">
+        <button
+          onClick={previousPage}
+          className="bg-[#00A264] text-white px-4 py-2 rounded"
+          disabled={currentPage === 1}
+        >
+          Previous
+        </button>
+        <span>
+          Page {currentPage} of {Math.ceil(resourcesList.length / resourcesPerPage)}
+        </span>
+        <button
+          onClick={nextPage}
+          className="bg-[#00A264] text-white px-4 py-2 rounded"
+          disabled={currentPage >= Math.ceil(resourcesList.length / resourcesPerPage)}
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 };

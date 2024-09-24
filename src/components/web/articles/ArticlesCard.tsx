@@ -53,7 +53,7 @@ const ArticlesCard = () => {
               src={card.logoSrc}
               alt="Sunset in the mountains"
             />
-            <div className="absolute mt-[-1.5rem] sm:mt-[-2.5rem] bg-green-700 text-white font-semibold px-2 py-1 lg:px-3 lg:py-2">
+            <div className="absolute mt-[-2rem] sm:mt-[-2.5rem] bg-green-700 text-white font-semibold px-2 py-1 lg:px-3 lg:py-2">
               <h3 className="text-base">{card.date}</h3>
             </div>
           </div>

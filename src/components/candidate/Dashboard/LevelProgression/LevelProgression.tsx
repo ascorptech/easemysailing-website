@@ -11,6 +11,7 @@ const LevelProgression: React.FC = () => {
         <div className=" flex  ">
           <div className="">
             <Image
+            priority
               src="/images/candidate/ship.png"
               alt="image not found"
               width={50}
@@ -22,6 +23,7 @@ const LevelProgression: React.FC = () => {
         </div>
         <div className=" flex items-center mr-24">
           <Image
+          priority
             src="/images/candidate/coin.png"
             alt="image not found"
             width={30}
@@ -33,6 +35,7 @@ const LevelProgression: React.FC = () => {
         </div>
         <div className="flex items-center mr-16">
           <Image
+          priority
             src="/images/candidate/coin.png"
             alt="image not found"
             width={30}
@@ -43,6 +46,7 @@ const LevelProgression: React.FC = () => {
         </div>
         <div className="flex items-center ml-5">
           <Image
+          priority
             src="/images/candidate/coin.png"
             alt="image not found"
             width={30}

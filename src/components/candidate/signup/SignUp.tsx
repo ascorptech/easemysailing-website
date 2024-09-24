@@ -35,7 +35,8 @@ const SignUp: React.FC = () => {
   const validatePasswords = () => {
     if (password !== cPassword) {
       setError("Passwords do not match");
-    } else {
+    } 
+    else {
       setError("");
     }
   };
@@ -265,11 +266,11 @@ const SignUp: React.FC = () => {
                       className="ml-2 block  text-sm "
                     >
                       You agree to our
-                      <Link href="" className="text-[#00A264]">
+                      <Link href="/terms" className="text-[#00A264]">
                         Teams & Conditions
                       </Link>
-                      and{" "}
-                      <Link href="#" className="text-[#00A264]">
+                      {" "}and{" "}
+                      <Link href="/privacy-policy" className="text-[#00A264]">
                         Privacy Policy.
                       </Link>
                     </label>
@@ -279,7 +280,7 @@ const SignUp: React.FC = () => {
             </form>
 
             <p className=" text-center font-semibold mb-6">
-              Already have on account?
+              Already have on account?{" "}
               <Link href="/candidate" className="text-[#00A264] ">
                 Sign In as Candidate
               </Link>

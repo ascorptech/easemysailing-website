@@ -12,8 +12,8 @@ const NumberContent = () => {
           <span className="text-[#00A264]"> TRADE AND ECONOMY</span>
         </h2>
         {/* first rating */}
-        <div className="flex pt-8  space-y-4 lg:ml-6 sm:md:mx-0">
-          <div className="relative flex-wrap justify-center lg:mt-4 flex items-center sm:justify-around gap-x-16 md:gap-x-10 border-2 rounded-r-full lg:px-[2.5rem] lg:w-[300px] lg:h-[90px] sm:md:ml-9 shadow-md">
+        <div className="flex pt-8 sm:md:flex-row flex-col  space-y-4 lg:ml-6 sm:md:mx-0 mx-4">
+          <div className="relative flex-wrap justify-center lg:mt-4 flex items-center sm:justify-around gap-x-16 md:gap-x-10 border-2 rounded-r-full lg:px-[2.5rem] lg:w-[300px] lg:h-[90px] sm:md:ml-9 shadow-md mx-6">
             <div className="absolute text-lg -left-9 md:text-2xl ml-[1.5px] lg:ml-[0px]">
               {/* <BsFillPeopleFill /> */}
               <Image
@@ -33,7 +33,7 @@ const NumberContent = () => {
             </div>
           </div>
 
-          <div className="relative justify-center lg:mt-4 flex items-center sm:justify-around gap-x-16 md:gap-x-10 border-2 rounded-r-full lg:px-[2.5rem] lg:w-[300px] lg:h-[90px] sm:md:ml-9 shadow-md">
+          <div className="relative justify-center lg:mt-4 flex items-center sm:justify-around gap-x-16 md:gap-x-10 border-2 rounded-r-full lg:px-[2.5rem] lg:w-[300px] lg:h-[90px] sm:md:ml-9 shadow-md mx-6">
             <div className="absolute text-lg -left-9 md:text-2xl ml-[1.5px] lg:ml-[0px]">
               {/* <BsFillPeopleFill /> */}
               <Image
@@ -55,7 +55,7 @@ const NumberContent = () => {
             </div>
           </div>
 
-          <div className="relative justify-center lg:mt-4 flex items-center sm:justify-around gap-x-16 md:gap-x-10 border-2 rounded-r-full lg:px-[2.5rem] lg:w-[300px] lg:h-[90px] sm:md:ml-9 shadow-md">
+          <div className="relative justify-center lg:mt-4 flex items-center sm:justify-around gap-x-16 md:gap-x-10 border-2 rounded-r-full lg:px-[2.5rem] lg:w-[300px] lg:h-[90px] sm:md:ml-9 shadow-md mx-6">
             <div className="absolute text-lg -left-9 md:text-2xl ml-[1.5px] ">
               {/* <BsFillPeopleFill /> */}
               <Image
@@ -77,9 +77,9 @@ const NumberContent = () => {
         </div>
 
         {/* another rating */}
-        <div className="flex flex-row space-y-4 lg:ml-6 sm:md:mx-0">
-          <div className="relative justify-center lg:mt-4 flex items-center sm:justify-around gap-x-16 md:gap-x-10 border-2 rounded-r-full lg:px-[2.5rem] lg:w-[300px] lg:h-[90px] sm:md:ml-9 shadow-md">
-            <div className="absolute text-lg -left-9 md:text-2xl ml-[1.5px] ">
+        <div className="flex mt-4 sm:md:flex-row flex-col space-y-4 lg:ml-6 sm:md:mx-0 mx-4 mb-2 sm:md:mb-0">
+          <div className="relative justify-center lg:mt-4 flex items-center sm:justify-around gap-x-16 md:gap-x-10 border-2 rounded-r-full lg:px-[2.5rem] lg:w-[300px] lg:h-[90px] sm:md:ml-9 shadow-md mx-6">
+            <div className="absolute text-lg -left-9 md:text-2xl ml-[1.5px]">
               {/* <BsFillPeopleFill /> */}
               <Image
                 src="/globe2.png"
@@ -98,7 +98,7 @@ const NumberContent = () => {
             </div>
           </div>
 
-          <div className="relative justify-center lg:mt-4 flex items-center sm:justify-around gap-x-16 md:gap-x-10 border-2 rounded-r-full lg:px-[2.5rem] lg:w-[300px] lg:h-[90px] sm:md:ml-9 shadow-md">
+          <div className="relative justify-center lg:mt-4 flex items-center sm:justify-around gap-x-16 md:gap-x-10 border-2 rounded-r-full lg:px-[2.5rem] lg:w-[300px] lg:h-[90px] sm:md:ml-9 shadow-md mx-6">
             <div className="absolute text-lg -left-9 md:text-2xl ml-[1.5px] ">
               {/* <BsFillPeopleFill /> */}
               <Image
@@ -118,7 +118,7 @@ const NumberContent = () => {
             </div>
           </div>
 
-          <div className="relative justify-center lg:mt-4 flex items-center sm:justify-around gap-x-16 md:gap-x-10 border-2 rounded-r-full lg:px-[2.5rem] lg:w-[300px] lg:h-[90px] sm:md:ml-9 shadow-md">
+          <div className="relative justify-center lg:mt-4 flex items-center sm:justify-around gap-x-16 md:gap-x-10 border-2 rounded-r-full lg:px-[2.5rem] lg:w-[300px] lg:h-[90px] sm:md:ml-9 shadow-md mx-6">
             <div className="absolute text-lg -left-9 md:text-2xl ml-[1.5px] ">
               {/* <BsFillPeopleFill /> */}
               <Image
@@ -140,7 +140,7 @@ const NumberContent = () => {
         </div>
 
         <div className="flex sm:md:flex-col ml-3  lg:ml-7 flex-col ">
-          <p className="  text-[18px] lg:pt-6  lg:mt-8 leading-[20px] lg:leading-[26px] ">
+          <p className="  text-[18px] lg:pt-6  lg:mt-8 leading-[20px] lg:leading-[26px] mb-2 sm:md:mb-0">
             Know about Global Impact and Influence
           </p>
           <Link

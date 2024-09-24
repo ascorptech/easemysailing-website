@@ -125,7 +125,7 @@ const PartnersSection = () => {
           ref={scrollRef}
           className="overflow-x-auto my-10 flex space-x-2 lg:space-x-6 lg:mx-0 no-scrollbar scroll-smooth snap-x snap-mandatory lg:w-[95%] w-[52%] "
         >
-          {partners.map((partner, index) => (
+          {partners?.map((partner, index) => (
             <PartnerCard
               key={index}
               name={partner.name}

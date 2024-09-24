@@ -32,7 +32,7 @@ export function middleware(request: NextRequest) {
             return NextResponse.redirect(new URL('/admin/dashboard', request.url))
         }
         if (path==='/candidate') {
-            return NextResponse.redirect(new URL('/candidate/dashboard', request.url))
+            return NextResponse.redirect(new URL('/candidate/profilecv', request.url))
         }
         if (path==='/recruiter') {
             return NextResponse.redirect(new URL('/recruiter/dashboard', request.url))

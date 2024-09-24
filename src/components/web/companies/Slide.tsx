@@ -81,7 +81,7 @@ const Slide = () => {
   }, []);
 
   return (
-    <div className=" lg:ml-[0rem]  relative flex items-center justify-center w-[90%] lg:w-[1328px] lg:h-[84px] lg:mt-4 ">
+    <div className=" lg:ml-[0rem]  relative flex items-center justify-center w-[90%] lg:w-[1328px] lg:h-[200px]  ">
       {/* Left Arrow */}
       <button
         onClick={scrollLeft}
@@ -93,7 +93,7 @@ const Slide = () => {
       {/* Carousel Wrapper */}
       <div
         ref={card}
-        className=" lg:mr-12 flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory ml-[2.4rem] lg:w-[1266px] lg:h-[84px]"
+        className=" lg:mr-12 flex overflow-x-scroll mt-3 no-scrollbar scroll-smooth snap-x snap-mandatory ml-[2.4rem] lg:w-[1266px] lg:h-[100px]"
       >
         {cards.map((card) => (
           <div key={card.id} className="flex lg:mb-2 lg:px-1 lg:w-[250px] lg:h-[84px] sm:w-[16.9%] ">

@@ -23,8 +23,8 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
   const pathname = usePathname();
   console.log("path", pathname);
   const onLogout =()=>{
-    localStorage.removeItem("token");
-    document.cookie=`token=`
+    localStorage.clear();
+    document.cookie=`token=${''}; path=/candidate`
   }
   return (
     <div

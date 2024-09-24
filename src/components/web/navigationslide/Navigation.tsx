@@ -60,9 +60,9 @@ const ClientSection: React.FC = () => {
   }, [activeTab]);
 
   return (
-    <div className="border-2 border-red-700 w-full">
+    <div className=" w-full">
       {/* Tab Navigation */}
-      <div className="flex justify-between items-center mt-10 border-2 border-red-700 gap-2 mb-6 ">
+      <div className="flex justify-between items-center mt-10 gap-2 mb-6 ">
         <div className="ml-10 flex justify-center items-center">
           <button
             onClick={() => handleTabClick("top-recruiting")}

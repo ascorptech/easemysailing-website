@@ -20,61 +20,61 @@ const CareerSlide: React.FC<CareerSlideProps> = ({ card3 }) => {
   const cards: Card[] = [
     {
       id: 1,
-      logo: "/images/career/captain.png",
+      logo: "/images/requiter-img/logo1.png",
       name: "Maersk Line",
       job: "captain",
     },
     {
       id: 2,
-      logo: "/images/career/captain1.png",
+      logo: "/images/requiter-img/logo1.png",
       name: "MSC",
       job: "captain",
     },
     {
       id: 3,
-      logo: "/images/career/captain2.png",
+      logo: "/images/requiter-img/logo1.png",
       name: "CMA CGM Group",
       job: "captain",
     },
     {
       id: 4,
-      logo: "/images/career/captain3.png",
+      logo: "/images/requiter-img/logo1.png",
       name: "MEC",
       job: "captain",
     },
     {
       id: 5,
-      logo: "/images/career/captain4.png",
+      logo: "/images/requiter-img/logo1.png",
       name: "AP Moller-Maersk",
       job: "captain",
     },
     {
       id: 6,
-      logo: "/images/career/captain2.png",
+      logo: "/images/requiter-img/logo1.png",
       name: "Maersk Line",
       job: "captain",
     },
     {
       id: 7,
-      logo: "/images/career/captain3.png",
+      logo: "/images/requiter-img/logo1.png",
       name: "MSC",
       job: "captain",
     },
     {
       id: 8,
-      logo: "/images/career/captain4.png",
+      logo: "/images/requiter-img/logo1.png",
       name: "CMA CGM Group",
       job: "captain",
     },
     {
       id: 9,
-      logo: "/images/career/captain1.png",
+      logo: "/images/requiter-img/logo1.png",
       name: "MEC",
       job: "captain",
     },
     {
       id: 10,
-      logo: "/images/career/captain4.png",
+      logo: "/images/requiter-img/logo1.png",
       name: "AP Moller-Maersk",
       job: "captain",
     },
@@ -83,21 +83,24 @@ const CareerSlide: React.FC<CareerSlideProps> = ({ card3 }) => {
 
 
   return (
-    <div className="flex flex-col items-center justify-between">
-      <div className=" lg:ml-[4rem] relative flex items-center justify-center w-[90%]  ">
+    <div className="flex flex-col items-center justify-between ">
+      <div className=" lg:mx-[1rem] relative flex items-center justify-center w-[98%]  ">
         {/* Carousel Wrapper */}
         <div
           ref={card3}
-          className=" flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory lg:mx-[7rem] mx-[2rem] ml-[3rem] "
+          className=" flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory lg:mx-[1rem] mx-[2rem] ml-[3rem] "
         >
           {cards.map((card) => (
-            <div key={card.id} className="flex-none w-full sm:w-1/5 p-3">
-              <div className="flex flex-col items-center justify-center bg-white rounded-lg shadow-md p-2">
-                <div className="mb-2 w-16 h-16">
-                  <img
+            <div key={card.id} className="flex-none  w-full sm:w-1/6 p-4">
+              <div className="flex flex-col items-center bg-white border rounded-lg shadow-md p-4">
+                <div className="mb-4 w-14 h-14">
+                  <Image
+                    priority
                     src={card.logo}
                     alt={card.name}
-                    className="w-full h-full "
+                    height={300}
+                    width={300}
+                    className="w-full h-full object-contain rounded-full"
                   />
                 </div>
                 <h3 className="text-md font-semibold">{card.name}</h3>

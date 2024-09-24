@@ -20,7 +20,7 @@ const SlidesTrend: React.FC<SlidesTrendProps> = ({ card1 }) => {
   const cards: Card[] = [
     {
       id: 1,
-      logo: "/images/logo1.png",
+      logo: "/images/requiter-img/logo2.png",
       company: "Maersk Line",
       rating: 4.8,
       reviews: "5K+",
@@ -28,7 +28,7 @@ const SlidesTrend: React.FC<SlidesTrendProps> = ({ card1 }) => {
     },
     {
       id: 2,
-      logo: "/images/logo2.png",
+      logo: "/images/requiter-img/logo2.png",
       company: "MSC",
       rating: 4.8,
       reviews: "5K+",
@@ -36,7 +36,7 @@ const SlidesTrend: React.FC<SlidesTrendProps> = ({ card1 }) => {
     },
     {
       id: 3,
-      logo: "/images/logo3.png",
+      logo: "/images/requiter-img/logo2.png",
       company: "CMA CGM Group",
       rating: 4.8,
       reviews: "5K+",
@@ -44,7 +44,7 @@ const SlidesTrend: React.FC<SlidesTrendProps> = ({ card1 }) => {
     },
     {
       id: 4,
-      logo: "/images/logo4.png",
+      logo: "/images/requiter-img/logo2.png",
       company: "MEC",
       rating: 4.8,
       reviews: "5K+",
@@ -52,7 +52,7 @@ const SlidesTrend: React.FC<SlidesTrendProps> = ({ card1 }) => {
     },
     {
       id: 5,
-      logo: "/images/logo5.png",
+      logo: "/images/requiter-img/logo2.png",
       company: "AP Moller-Maersk",
       rating: 4.8,
       reviews: "5K+",
@@ -60,7 +60,7 @@ const SlidesTrend: React.FC<SlidesTrendProps> = ({ card1 }) => {
     },
     {
       id: 1,
-      logo: "/images/logo1.png",
+      logo: "/images/requiter-img/logo2.png",
       company: "Maersk Line",
       rating: 4.8,
       reviews: "5K+",
@@ -68,7 +68,7 @@ const SlidesTrend: React.FC<SlidesTrendProps> = ({ card1 }) => {
     },
     {
       id: 2,
-      logo: "/images/logo2.png",
+      logo: "/images/requiter-img/logo2.png",
       company: "MSC",
       rating: 4.8,
       reviews: "5K+",
@@ -76,7 +76,7 @@ const SlidesTrend: React.FC<SlidesTrendProps> = ({ card1 }) => {
     },
     {
       id: 3,
-      logo: "/images/logo3.png",
+      logo: "/images/requiter-img/logo2.png",
       company: "CMA CGM Group",
       rating: 4.8,
       reviews: "5K+",
@@ -84,7 +84,7 @@ const SlidesTrend: React.FC<SlidesTrendProps> = ({ card1 }) => {
     },
     {
       id: 4,
-      logo: "/images/logo4.png",
+      logo: "/images/requiter-img/logo2.png",
       company: "MEC",
       rating: 4.8,
       reviews: "5K+",
@@ -92,7 +92,7 @@ const SlidesTrend: React.FC<SlidesTrendProps> = ({ card1 }) => {
     },
     {
       id: 5,
-      logo: "/images/logo5.png",
+      logo: "/images/requiter-img/logo2.png",
       company: "AP Moller-Maersk",
       rating: 4.8,
       reviews: "5K+",
@@ -102,28 +102,28 @@ const SlidesTrend: React.FC<SlidesTrendProps> = ({ card1 }) => {
 
   return (
     <div className="flex flex-col items-center justify-between">
-      <div className=" lg:ml-[1rem] relative flex items-center justify-center w-[98%]  ">
+      <div className=" lg:mx-[1rem] relative flex items-center justify-center w-[98%]  ">
         {/* {/ Carousel Wrapper /} */}
         <div
           ref={card1}
-          className=" flex border-2 border-red-700 overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory lg:mx-[1rem] mx-[2rem] ml-[3rem] "
+          className=" flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory lg:mx-[1rem] mx-[2rem] ml-[3rem] "
         >
           {/* {/ Card 1 /} */}
           {cards.map((card) => (
-            <div key={card.id} className="snap-center sm:w-1/6  p-4">
-              <div className=" flex flex-col justify-center items-center w-44 h-40 p-4  lg:w-44  lg:h-40 bg-white rounded-lg shadow-md">
-                <div className=" mb-4 w-16 h-16 border">
+            <div key={card.id} className="flex-none  w-full sm:w-1/6 p-4">
+              <div className="flex flex-col items-center bg-white border rounded-lg shadow-md p-4">
+                <div className=" mb-4 w-14 h-14 ">
                   <Image
                     priority
                     width={200}
                     height={200}
                     src={card.logo}
                     alt="Maersk Line"
-                    className="w-full h-full rounded-full"
+                    className="w-full h-full object-contain rounded-full"
                   />
                 </div>
 
-                <p className="text-sm font-bold mt-2 lg:mt-2">{card.company}</p>
+                <p className="text-sm font-bold ">{card.company}</p>
                 <p className="text-sm text-gray-500">
                   <span className="text-yellow-500">
                     ★{" "}

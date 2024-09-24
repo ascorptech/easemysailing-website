@@ -38,10 +38,10 @@ const Rating1 = () => {
         {/* Fourth div */}
         <div className="flex flex-col justify-center items-center text-center w-full md:w-1/4 h-auto">
           <h1 className="text-4xl sm:md:text-[46px] lg:leading-[108px] font-bold">
-            70+
+          11 Billion
           </h1>
           <p className="text-sm sm:md:text-[15px] lg:leading-[30px]">
-            Recruiter Profiles
+          Tons of Cargo yearly
           </p>
         </div>
       </div>

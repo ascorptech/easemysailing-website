@@ -3,7 +3,7 @@ import Link from "next/link";
 const Findout = () => {
   return (
     <div className="flex items-center    bg-[url('/ocean.png')] ">
-      <div className="flex bg-[#021527] bg-opacity-60  justify-between w-full items-center p-16 gap-8 ">
+      <div className="flex bg-[#021527] bg-opacity-70  justify-between w-full items-center p-16 gap-8 ">
         {/* Left div */}
         <div className="w-[50%]">
           <div className="relative h-[400px]  ">
@@ -19,7 +19,7 @@ const Findout = () => {
         </div>
 
         {/* Right Div */}
-        <div className="w-[50%]  h-[400px]">
+        <div className="w-[50%]  ">
           <h1 className=" text-white font-semibold text-[50px] ">
             FIND OUT WHAT'S NEW A{" "}
             <span className="text-[#00A264]"> EASEMYSAILING </span>

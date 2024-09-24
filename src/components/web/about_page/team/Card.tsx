@@ -104,7 +104,7 @@ const Card = () => {
       {/* Carousel Wrapper */}
       <div
         ref={card}
-        className="flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory w-[calc(5*198px+5*10px)] gap-5 text-center"
+        className="flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory w-[calc(5*198px+5*10px)] gap-3 text-center"
       >
         {cards.map((card) => (
           <div key={card.id} className="snap-center flex flex-col items-center">
@@ -118,7 +118,7 @@ const Card = () => {
             <h2 className="text-[#00A264] mt-2">
               {card.company}
               <br />
-              <span className="text-black">Funder</span>
+              <span className="text-black">Founder</span>
             </h2>
           </div>
         ))}

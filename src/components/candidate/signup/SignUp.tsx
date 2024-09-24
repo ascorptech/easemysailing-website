@@ -14,6 +14,7 @@ import LoginHeader from "@/app/Shared/LoginHeader/LoginHeader";
 import Footer from "@/app/Shared/Footer/Footer";
 import { SignupData } from "@/app/(candidate)/candidate/signup/Services/signupService";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const SignUp: React.FC = () => {
   const route = useRouter();
@@ -42,25 +43,25 @@ const SignUp: React.FC = () => {
   const handleSubmit = async(e: React.FormEvent) => {
     try {
       e.preventDefault();
-    validatePasswords();
-    let data = {
-      firstName: firstName,
-      lastName: lastName,
-      email:email,
-      phoneNumber:phone,
-      password:password,
-      role:'USER'
-    }
-    if (!error) {
-      console.log("Form submitted successfully");
-    }
-      const response = await SignupData(data);
-      if (response?.data) {
-        // const token = response?.data?.token;
-        // document.cookie = `token=${response?.data?.token}; path=/candidate`;
-        // localStorage.setItem("token", token);
-        route.push("/candidate");
+
+    if (password !== cPassword) {
+      toast.error("Passwords do not match");
+    }else{
+      let data = {
+        firstName: firstName,
+        lastName: lastName,
+        email:email,
+        phoneNumber:phone,
+        password:password,
+        role:'USER'
       }
+        const response = await SignupData(data);
+        if (response?.data) {
+          toast.success('Register successfully')
+          route.push("/candidate");
+        }
+    }
+    
     } catch (error) {
       console.log("err", error);
     }
@@ -86,8 +87,8 @@ const SignUp: React.FC = () => {
               onSubmit={handleSubmit}
               className="items-center p-2 pr-2 pl-2 ml-20 w-full max-w-lg "
             >
-              <div className="mb-2 mt-2 flex">
-                <div>
+              <div className="mb-2 mt-2 flex w-full space-x-2">
+                <div className="w-[49%] mb-2">
                   {" "}
                   <label
                     className="block text-gray-700 text-sm font-bold mb-1"
@@ -100,7 +101,7 @@ const SignUp: React.FC = () => {
                       id="userName"
                       type="text"
                       value={firstName}
-                      onChange={(e) => setFirstName(e.target.value)}
+                      onChange={(e) => setFirstName(e.target.value.trim())}
                       className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       placeholder="Enter First Name"
                       required
@@ -111,7 +112,7 @@ const SignUp: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="mb-2 ml-2">
+                <div className="w-[49%] mb-2">
                   <label
                     className="block text-gray-700 text-sm font-bold mb-1"
                     htmlFor="lastName"
@@ -123,7 +124,7 @@ const SignUp: React.FC = () => {
                       id="lastName"
                       type="text"
                       value={lastName}
-                      onChange={(e) => setLastName(e.target.value)}
+                      onChange={(e) => setLastName(e.target.value.trim())}
                       className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       placeholder="Enter Last Name"
                       required
@@ -147,7 +148,7 @@ const SignUp: React.FC = () => {
                     id="email"
                     type="email"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => setEmail(e.target.value.trim())}
                     className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     placeholder="Email"
                     required
@@ -168,9 +169,10 @@ const SignUp: React.FC = () => {
                 <div className="relative flex items-center pl-8 ">
                   <input
                     id="phone"
-                    type="number"
+                    type="text"
                     value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
+                    maxLength={10}
+                    onChange={(e) => setPhone(e.target.value.trim())}
                     className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     placeholder="Enter Phone"
                     required
@@ -193,7 +195,7 @@ const SignUp: React.FC = () => {
                     id="password"
                     type={showPassword ? "text" : "password"}
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) => setPassword(e.target.value.trim())}
                     className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     placeholder="Password"
                     required
@@ -223,7 +225,7 @@ const SignUp: React.FC = () => {
                     id="Password"
                     type={showCpassword ? "text" : "password"}
                     value={cPassword}
-                    onChange={(e) => setCpassword(e.target.value)}
+                    onChange={(e) => setCpassword(e.target.value.trim())}
                     className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     placeholder="Confirm Password"
                     required
@@ -242,7 +244,7 @@ const SignUp: React.FC = () => {
               </div>
 
               <div>
-                {error && <p style={{ color: "red" }}>{error}</p>}
+                {/* {error && <p style={{ color: "red" }}>{error}</p>} */}
 
                 <button
                   type="submit"

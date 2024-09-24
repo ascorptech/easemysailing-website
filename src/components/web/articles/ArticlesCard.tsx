@@ -38,14 +38,15 @@ const ArticlesCard = () => {
   
   // );
   return (
-    <div className="overflow-x-scroll no-scrollbar mt-7 mb-5 lg:items-center  scroll-smooth snap-mandatory space-x-0 lg:space-x-8  flex flex-col sm:flex-row w-full lg:w-[83%] md:w-[94%] px-1 sm:px-0 lg:px-0 lg:mx-[110px] mx-auto">
+    <div className="overflow-x-scroll no-scrollbar mt-7  lg:items-center  scroll-smooth snap-mandatory space-x-0 lg:space-x-8  flex flex-col sm:flex-row w-full lg:w-[83%] md:w-[94%] px-1 sm:px-0 lg:px-0 lg:mx-[110px] mx-auto">
       {article.map((card) => (
         <div
-          className="w-full sm:w-[16.4rem] lg:w-[19.3rem] 2xl:w-[19.5rem] rounded shadow-lg mb-5"
+          className="w-full sm:w-[16.4rem] lg:w-[19.3rem] 2xl:w-[19.5rem] rounded mb-7 shadow-lg "
           key={card?.id}
         >
           <div className="relative  lg:h-[12rem]">
             <Image
+            priority
               className="w-full h-full"
               width={500}
               height={50}

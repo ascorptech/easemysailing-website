@@ -43,7 +43,7 @@ const Footer1 = () => {
   return (
     <footer className="w-full bg-white">
       {/* Newsletter Section */}
-      <div className="  lg:flex-row lg:justify-between lg:items-center  lg:flex  lg:h-[380px]  w-full">
+      <div className="  lg:flex-row lg:justify-between lg:items-center  lg:flex    w-full">
         <div className="lg:flex lg:flex-col lg:px-5 lg:items-center  lg:w-[65%]  lg:justify-center ">
           <div className=" mb-6 lg:mb-0 py-8">
             <h2 className="text-black text-[20px] md:text-2xl lg:text-5xl font-extrabold mb-2">
@@ -64,14 +64,14 @@ const Footer1 = () => {
             </button>
           </div>
         </div>
-        <div className="h-[370px] w-[35%]">
+        <div className="h-[420px] w-[35%]">
           <Image
             priority
-            src="/footer1.png"
+            src="/ship3.png"
             alt=""
             width={470}
             height={380}
-            className=" lg:h-full lg:w-full "
+            className=" lg:h-full lg:w-full rounded-l-full"
           />
         </div>
       </div>

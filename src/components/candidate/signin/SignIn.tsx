@@ -16,6 +16,7 @@ import PasswordChange from "../ChangePassword/PasswordChange";
 import { LoginData } from "@/app/(candidate)/candidate/Services/loginService";
 import { useRouter } from "next/navigation";
 import ClipLoader from "react-spinners/ClipLoader";
+import { toast } from "react-toastify";
 
 type Props = {
   route: string;
@@ -94,7 +95,7 @@ const SignIn = ({ route }: Props) => {
         email: emailOrPhone,
         password: password,
       };
-
+      setIsLoading(true)
       const response = await LoginData(data);
       if (response?.data) {
         const token = response?.data?.token;
@@ -105,10 +106,11 @@ const SignIn = ({ route }: Props) => {
         localStorage.setItem("firstName", user?.firstName);
         localStorage.setItem("lastName", user?.lastName);
         localStorage.setItem("email", user?.email);
-        setIsLoading(true)
+
+        toast.success('Login successfull')
         if (token) {
           router.push("/candidate/dashboard");
-          setIsLoading(true)
+          setIsLoading(false)
         }
 
       }

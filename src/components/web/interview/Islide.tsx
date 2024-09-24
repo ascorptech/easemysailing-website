@@ -32,25 +32,16 @@ const Islide = () => {
   }, []);
 
   return (
-    <div className="  lg:ml-[2.9rem] relative flex items-center justify-center md:lg:w-[92%]  mt-6 ">
-      {/* Left Arrow */}
-
-      <button
-        onClick={scrollLeft}
-        className="absolute left-1 cursor-default z-10  w-[23.6px] h-[23.6px]  ml-0 lg:ml-2  mr-2"
-      >
-        {/* &lt; */}
-      </button>
-
+    <div className="overflow-x-scroll  no-scrollbar mt-7 mb-3 lg:items-center  scroll-smooth snap-mandatory space-x-0 lg:space-x-8  flex flex-col sm:flex-row w-full lg:w-[83%] md:w-[94%] px-1 sm:px-0 lg:px-0 lg:mx-[110px] mx-auto">
       {/* Carousel Wrapper */}
 
       <div
         ref={card}
-        className=" flex overflow-x-scroll   no-scrollbar scroll-smooth snap-x snap-mandatory mx-[1rem] md:mx-[2rem] md:lg:mx-[3.8rem]  gap-9  "
+        className=" flex overflow-x-scroll  no-scrollbar scroll-smooth snap-x snap-mandatory  gap-7 "
       >
         {/* Video Card 1 */}
         <div className="snap-center ">
-          <div className="w-[20rem] h-[12rem] ml-3 sm:lg:ml-0    lg:w-[250px] lg:h-[170px]  ">
+          <div className="w-[20rem] h-[15rem] sm:lg:ml-0    lg:w-[18rem] lg:h-[220px]  ">
             <iframe
               className="w-full border-4 shadow-md rounded-lg h-full"
               src="https://www.youtube.com/embed/afKjXPA5f0E"
@@ -63,7 +54,7 @@ const Islide = () => {
         </div>
         {/* Video Card 2 */}
         <div className="snap-center ">
-          <div className="w-[20rem] h-[12rem] ml-3 sm:lg:ml-0 lg:w-[250px] lg:h-[170px]  ">
+          <div className="w-[20rem] h-[12rem]  lg:w-[18rem] lg:h-[220px]  ">
             <iframe
               className="w-full border-4 shadow-md rounded-lg h-full"
               src="https://www.youtube.com/embed/roz9sXFkTuE"
@@ -76,7 +67,7 @@ const Islide = () => {
         </div>
         {/* Video Card 3 */}
         <div className="snap-center ">
-          <div className="w-[20rem] h-[12rem] ml-3 sm:lg:ml-0    lg:w-[250px] lg:h-[170px]  ">
+          <div className="w-[20rem] h-[12rem]     lg:w-[18rem] lg:h-[220px] ">
             <iframe
               className="w-full border-4 shadow-md rounded-lg h-full"
               src="https://www.youtube.com/embed/Tl4bQBfOtbg"
@@ -89,7 +80,7 @@ const Islide = () => {
         </div>
         {/* Video Card 4 */}
         <div className="snap-center ">
-          <div className="w-[20rem] h-[12rem] ml-3 sm:lg:ml-0    lg:w-[250px] lg:h-[170px]  ">
+          <div className="w-[20rem] h-[12rem]   lg:w-[18rem] lg:h-[220px]  ">
             <iframe
               className="w-full border-4 shadow-md rounded-lg h-full"
               src="https://www.youtube.com/embed/VYslt8bc-4Q"
@@ -100,36 +91,7 @@ const Islide = () => {
             ></iframe>
           </div>
         </div>
-
-        {/* Video Card 5*/}
-
-        <div className="snap-center ">
-          <div className="w-[20rem] h-[12rem] ml-3 sm:lg:ml-0    lg:w-[250px] lg:h-[170px]  ">
-            <iframe
-              className="w-full border-4 shadow-md rounded-lg h-full"
-              src="https://www.youtube.com/embed/lm6CLMLSZBc"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          </div>
-        </div>
-        {/* Continue adding more video cards as needed */}
       </div>
-
-      {/* <button
-        onClick={scrollRight}
-        className="absolute right-1 mr-3 z-10 bg-[#D9D9D9] w-[23.6px] h-[23.6px] rounded-full shadow-md "
-      >
-        &gt;
-      </button> */}
-      <button
-        onClick={scrollRight}
-        className="absolute right-1 cursor-default md:mr-3 z-10  w-[23.6px] h-[23.6px] mr-0   "
-      >
-        {/* &gt; */}
-      </button>
     </div>
   );
 };

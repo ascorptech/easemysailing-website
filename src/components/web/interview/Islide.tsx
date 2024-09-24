@@ -41,7 +41,7 @@ const Islide = () => {
       >
         {/* Video Card 1 */}
         <div className="snap-center ">
-          <div className="w-[20rem] h-[15rem] sm:lg:ml-0    lg:w-[18rem] lg:h-[220px]  ">
+          <div className="w-[23.4rem] h-[12rem] sm:lg:ml-0    lg:w-[18rem] lg:h-[220px]  ">
             <iframe
               className="w-full border-4 shadow-md rounded-lg h-full"
               src="https://www.youtube.com/embed/afKjXPA5f0E"
@@ -54,7 +54,7 @@ const Islide = () => {
         </div>
         {/* Video Card 2 */}
         <div className="snap-center ">
-          <div className="w-[20rem] h-[12rem]  lg:w-[18rem] lg:h-[220px]  ">
+          <div className="w-[23.4rem] h-[12rem]  lg:w-[18rem] lg:h-[220px]  ">
             <iframe
               className="w-full border-4 shadow-md rounded-lg h-full"
               src="https://www.youtube.com/embed/roz9sXFkTuE"
@@ -67,7 +67,7 @@ const Islide = () => {
         </div>
         {/* Video Card 3 */}
         <div className="snap-center ">
-          <div className="w-[20rem] h-[12rem]     lg:w-[18rem] lg:h-[220px] ">
+          <div className="w-[23.4rem] h-[12rem]     lg:w-[18rem] lg:h-[220px] ">
             <iframe
               className="w-full border-4 shadow-md rounded-lg h-full"
               src="https://www.youtube.com/embed/Tl4bQBfOtbg"
@@ -80,7 +80,7 @@ const Islide = () => {
         </div>
         {/* Video Card 4 */}
         <div className="snap-center ">
-          <div className="w-[20rem] h-[12rem]   lg:w-[18rem] lg:h-[220px]  ">
+          <div className="w-[23.4rem] h-[12rem]   lg:w-[18rem] lg:h-[220px]  ">
             <iframe
               className="w-full border-4 shadow-md rounded-lg h-full"
               src="https://www.youtube.com/embed/VYslt8bc-4Q"

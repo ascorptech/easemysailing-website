@@ -5,15 +5,15 @@ import Link from "next/link";
 
 const NumberContent = () => {
   return (
-    <div className="flex sm:md:flex-row  lg:w-full lg:h-full flex-col sm:md:w-[90%] justify-between self-center">
+    <div className="flex sm:md:flex-row lg:mb-12 mb-5 lg:w-full  flex-col sm:md:w-[90%] justify-between self-center">
       <div className="sm:md:w-[50%] lg:ml-10 lg:mt-10 flex lg:w-[60%] flex-col  ">
-        <h2 className="text-[21px] ml-8 md:text-3xl  md:text-left lg:text-5xl font-[800]  ">
+        <h2 className="text-[21px] lg:ml-8 mx-3 lg:mx-0 md:text-3xl  md:text-left lg:text-5xl font-[800]  ">
           SEAFARERS POWERING GLOBAL{" "}
           <span className="text-[#00A264]"> TRADE AND ECONOMY</span>
         </h2>
         {/* first rating */}
-        <div className="flex pt-8 flex-row space-y-4 lg:ml-8 sm:md:mx-0">
-          <div className="relative justify-center lg:mt-4 flex items-center sm:justify-around gap-x-16 md:gap-x-10 border-2 rounded-r-full lg:px-[2.5rem] lg:w-[300px] lg:h-[90px] sm:md:ml-9 shadow-md">
+        <div className="flex pt-8  space-y-4 lg:ml-6 sm:md:mx-0">
+          <div className="relative flex-wrap justify-center lg:mt-4 flex items-center sm:justify-around gap-x-16 md:gap-x-10 border-2 rounded-r-full lg:px-[2.5rem] lg:w-[300px] lg:h-[90px] sm:md:ml-9 shadow-md">
             <div className="absolute text-lg -left-9 md:text-2xl ml-[1.5px] lg:ml-[0px]">
               {/* <BsFillPeopleFill /> */}
               <Image
@@ -77,7 +77,7 @@ const NumberContent = () => {
         </div>
 
         {/* another rating */}
-        <div className="flex flex-row space-y-4 lg:ml-8 sm:md:mx-0">
+        <div className="flex flex-row space-y-4 lg:ml-6 sm:md:mx-0">
           <div className="relative justify-center lg:mt-4 flex items-center sm:justify-around gap-x-16 md:gap-x-10 border-2 rounded-r-full lg:px-[2.5rem] lg:w-[300px] lg:h-[90px] sm:md:ml-9 shadow-md">
             <div className="absolute text-lg -left-9 md:text-2xl ml-[1.5px] ">
               {/* <BsFillPeopleFill /> */}
@@ -139,7 +139,7 @@ const NumberContent = () => {
           </div>
         </div>
 
-        <div className="flex sm:md:flex-col lg:ml-8 flex-col ">
+        <div className="flex sm:md:flex-col ml-3  lg:ml-7 flex-col ">
           <p className="  text-[18px] lg:pt-6  lg:mt-8 leading-[20px] lg:leading-[26px] ">
             Know about Global Impact and Influence
           </p>
@@ -151,13 +151,13 @@ const NumberContent = () => {
           </Link>
         </div>
       </div>
-      <div className="sm:md:w-[50%] py-10 lg:h-[550px]  lg:w-[33%]">
+      <div className="sm:md:w-[50%] h-[280px] mt-3 w-full lg:pt-10 lg:h-[550px]  lg:w-[33%]">
         <Image
           src="/ship1.png"
           alt="captain Logo"
-          width={800}
-          height={800}
-          className="w-full h-full  rounded-l-full "
+          width={470}
+          height={380}
+          className="lg:w-full pl-3 lg:pl-0 lg:h-full h-full rounded-l-full "
         />
       </div>
     </div>

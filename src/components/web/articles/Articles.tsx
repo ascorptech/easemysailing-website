@@ -7,7 +7,7 @@ const Articles = () => {
   
   return (
     <div className=" w-[95%]  mx-2 px-1 md:mx-6 lg:w-full lg:mx-0 sm:mx-5">
-      <div className="flex items-center justify-between mt-2 pt-2 lg:mr-[9%] md:mx-[6.8rem]">
+      <div className="flex items-center justify-between mt-2 pt-2 lg:mr-[9rem] md:mx-[6.8rem]">
         <div className="text-[21px] leading-[28px] font-bold sm:text-4xl lg:ml-0">
           <h1>
             <span className="text-white">LATEST NEWS & </span>
@@ -18,7 +18,7 @@ const Articles = () => {
         <div>
           <Link
             href="/trendingjob"
-            className="h-8 bg-[#00A264] text-white py-2 px-4 rounded-lg text-sm"
+            className="h-8 bg-[#00A264] text-white py-2 px-4 rounded-full text-sm"
           >
             View All
           </Link>

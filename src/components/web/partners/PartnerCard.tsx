@@ -21,7 +21,7 @@ const PartnerCard: React.FC<PartnerCardProps> = ({
   logoSrc,
 }) => {
   return (
-    <div className=" flex flex-col justify-center  items-center bg-white border-2 rounded-lg p-4 shadow-md flex-shrink-0 w-52  ">
+    <div className="  flex flex-col justify-center  items-center bg-white border-2 rounded-lg p-4 shadow-md flex-shrink-0 w-52  ">
       <div className="flex h-20 w-20 items-center rounded-full bg-[#E8E8FF] justify-center mb-4">
         <Image
           src={logoSrc}

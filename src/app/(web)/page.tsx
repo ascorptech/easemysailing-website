@@ -23,14 +23,14 @@ export default function Home() {
 
       {/* <Signup /> */}
       <SignupContent />
-      {/* <Companies /> */}
-      {/* <NumberContent /> */}
-      {/* <Findout /> */}
+      <Companies />
+      <NumberContent />
+      <Findout />
       {/* <Navigation /> */}
-      {/* <Sailors /> */}
-      {/* <PartnersSection /> */}
+      <Sailors />
+      <PartnersSection />
       {/* <ClientSection /> */}
-      {/* <Aimergee /> */}
+      <Aimergee />
       {/* <Status/> */}
 
       {/* <div className="bg-[#F1F1F1]">

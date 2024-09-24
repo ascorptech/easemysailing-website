@@ -6,9 +6,9 @@ export default function BackgroundSlider() {
   const [currentBackground, setCurrentBackground] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(true);
 
-  const totalSlides = 3; // We have 3 backgrounds (2 images, 1 video)
+  const totalSlides = 3; // Total slides: 2 images, 1 video
 
-  // Cycle through the background items every 3 seconds
+  // Cycle through the background items every 4 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       // Disable transition at the end of the loop for seamless looping
@@ -31,7 +31,7 @@ export default function BackgroundSlider() {
   }, [currentBackground, totalSlides]);
 
   return (
-    <div className="absolute top-0 left-0 w-full h-full mt-16 overflow-hidden z-0">
+    <div className="absolute top-0 left-0 w-full h-full  overflow-hidden z-0">
       {/* Slider container */}
       <div
         className={`absolute top-0 left-0 w-full h-full flex ${
@@ -42,7 +42,7 @@ export default function BackgroundSlider() {
         style={{ transform: `translateX(-${currentBackground * 100}%)` }}
       >
         {/* First Image */}
-        <div className="w-full h-full flex-shrink-0">
+        <div className="w-full h-full flex-shrink-0 relative">
           <Image
             src="/banner.png"
             alt="Background 1"
@@ -52,19 +52,10 @@ export default function BackgroundSlider() {
           />
         </div>
 
-        {/* Second Image */}
-        <div className="w-full h-full flex-shrink-0 filter grayscale">
-          <Image
-            src="/banner.png"
-            alt="Background 2"
-            fill
-            style={{ objectFit: "cover" }}
-            priority
-          />
-        </div>
+      
 
         {/* Background Video */}
-        <div className="w-full h-full flex-shrink-0">
+        <div className="w-full h-full flex-shrink-0 relative">
           <video
             src="/seaview.mp4"
             autoPlay
@@ -74,7 +65,8 @@ export default function BackgroundSlider() {
           />
         </div>
 
-        <div className="w-full h-full flex-shrink-0">
+        {/* Repeat First Image for Loop Effect */}
+        <div className="w-full h-full flex-shrink-0 relative">
           <Image
             src="/banner.png"
             alt="Background 1"

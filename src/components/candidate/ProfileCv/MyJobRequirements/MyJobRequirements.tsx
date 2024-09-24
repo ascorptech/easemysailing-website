@@ -78,39 +78,24 @@ const MyJobRequirements = () => {
       }
     }
 
-      // const response = await AddProfileData(data);
-
-      // if (!response) {
-
-      // }
-
-      // Handle successful response
-    //   const data = await AddProfileData(formData);
-    //   console.log("Success:", formData);
-    //   toast.success(" myjobRequirements successfully");
-    // } catch (error) {
-    //   toast.error("myjobRequirements not updated");
-
-    //   console.error("Error:", error);
-    // }
-  // };
+     
 
   return (
-    <div className="container border-2 shadow-lg p-3 mt-[14px] mb-8">
+    <div className="container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] gap-4">
           {/* Current Position/Rank */}
           <div>
             <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-              Current Position/Rank*
+              Current Position/Rank
             </label>
             <select
-              className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+              className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
               value={currentPosition}
               onChange={(e) => setCurrentPosition(e.target.value)}
             >
               <option value="" disabled>
-                Current Position/Rank*
+                Current Position/Rank
               </option>
               <option value="Captain">Captain</option>
               <option value="Captain2">Captain2</option>
@@ -121,15 +106,15 @@ const MyJobRequirements = () => {
           {/* Alternate Position/Rank */}
           <div>
             <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-              Alternate Position/Rank*
+              Alternate Position/Rank
             </label>
             <select
-              className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+              className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
               value={alternatePosition}
               onChange={(e) => setAlternatePosition(e.target.value)}
             >
               <option value="" disabled>
-                Alternate Position/Rank*
+                Alternate Position/Rank
               </option>
               <option value="Chemical Tanker1">Chemical Tanker1</option>
               <option value="Chemical Tanker2">Chemical Tanker2</option>
@@ -140,15 +125,15 @@ const MyJobRequirements = () => {
           {/* Preferred Vessel Type */}
           <div>
             <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-              Preferred Vessel Type*
+              Preferred Vessel Type
             </label>
             <select
-              className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+              className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
               value={preferredVesselType}
               onChange={(e) => setPreferredVesselType(e.target.value)}
             >
               <option value="" disabled>
-                Preferred Vessel Type*
+                Preferred Vessel Type
               </option>
               <option value="Training1">Training1</option>
               <option value="Training2">Training2</option>
@@ -159,15 +144,15 @@ const MyJobRequirements = () => {
           {/* Alternate Vessel Type */}
           <div>
             <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-              Alternate Vessel Type*
+              Alternate Vessel Type
             </label>
             <select
-              className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+              className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
               value={alternateVesselType}
               onChange={(e) => setAlternateVesselType(e.target.value)}
             >
               <option value="" disabled>
-                Alternate Vessel Type*
+                Alternate Vessel Type
               </option>
               <option value="Training1">Training1</option>
               <option value="Training2">Training2</option>
@@ -175,40 +160,41 @@ const MyJobRequirements = () => {
             </select>
           </div>
 
+          <div>
+            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+            Availability
+            </label>
+            <select
+              className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
+              value={available}
+              onChange={(e) => setAvailable(e.target.value)}
+            >
+              <option value="" disabled>
+              Availability
+              </option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
           {/* Availability Date */}
           <div>
             <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-              Availability Date*
+              Availability Date
             </label>
             <input
               type="date"
-              className="border text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 w-full h-11 rounded-md border-[#00A264]"
+              className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
               value={availabilityDate}
               onChange={(e) => setAvailabilityDate(e.target.value)}
             />
           </div>
 
           {/* Available */}
-          <div>
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-              Available*
-            </label>
-            <select
-              className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
-              value={available}
-              onChange={(e) => setAvailable(e.target.value)}
-            >
-              <option value="" disabled>
-                Available*
-              </option>
-              <option value="Yes">Yes</option>
-              <option value="No">No</option>
-            </select>
-          </div>
+          
         </div>
 
         {/* Rotation Expectation */}
-        <div className="my-4">
+        {/* <div className="my-4">
           <h1 className="text-[16px] leading-[24px] font-semibold">
             Rotation Expectation
           </h1>
@@ -217,10 +203,10 @@ const MyJobRequirements = () => {
             section “Offshore Requirements” below to enter your expectations and
             skills as per segment requirement.
           </p>
-        </div>
+        </div> */}
 
         {/* Time on Board and Home */}
-        <div className="grid grid-cols-2 gap-4">
+        {/* <div className="grid grid-cols-2 gap-4">
           <div>
             <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
               Min. Time on Board (months)
@@ -292,10 +278,10 @@ const MyJobRequirements = () => {
               <option value="3">3</option>
             </select>
           </div>
-        </div>
+        </div> */}
 
         {/* Preferred Contract Type */}
-        <div className="my-5">
+        {/* <div className="my-5">
           <h1 className="mb-2">Preferred Contract Type</h1>
           <input
             type="checkbox"
@@ -314,14 +300,14 @@ const MyJobRequirements = () => {
           <label className="p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
             Permanent
           </label>
-        </div>
+        </div> */}
 
         {/* Salary Expectation */}
-        <h1 className="mb-2 font-semibold text-[16px] leading-[24px]">
+        {/* <h1 className="mb-2 font-semibold text-[16px] leading-[24px]">
           Salary Expectation
-        </h1>
+        </h1> */}
 
-        <div className="grid grid-cols-2 gap-4">
+        {/* <div className="grid grid-cols-2 gap-4">
           <div>
             <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
               Voyage (per month)
@@ -444,9 +430,9 @@ const MyJobRequirements = () => {
               </select>
             </div>
           </div>
-        </div>
+        </div> */}
 
-        <div className="flex gap-2 mb-4">
+        <div className="flex gap-2 mb-4 mt-4">
           <button
             type="submit"
             className="border border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
@@ -467,363 +453,3 @@ const MyJobRequirements = () => {
 
 export default MyJobRequirements;
 
-// "use client";
-// import Link from "next/link";
-// import { useState } from "react";
-// import { RiArrowDownSLine } from "react-icons/ri";
-
-// const MyJobRequirements = () => {
-
-//   const [availabilitydate, setAvailabilityDate] = useState("");
-//   const [selectedOption, setSelectedOption] = useState("");
-
-//   return (
-//     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
-//       <form>
-//       <div className="grid grid-cols-2 gap-4">
-//       <div className="">
-//           <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]" htmlFor="">
-//           Current Position/Rank*
-//           </label>
-//           <select
-//             className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
-//             name="options"
-//             value={selectedOption}
-//             onChange={(e) => setSelectedOption(e.target.value)}
-//           >
-//             <option value="" disabled selected>
-//             Current Position/Rank*
-//             </option>
-//             <option value="">Captain</option>
-//             <option value="">Captain2</option>
-//             <option value="">Training3</option>
-//           </select>
-//         </div>
-//         <div className="">
-//           <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="">
-//           Alternate Position/Rank*
-//           </label>
-//           <select
-//             className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
-//             name="options"
-//           >
-//             <option value="" disabled selected>
-//             Alternate Position/Rank*
-//             </option>
-//             <option value="">Chemical Tanker1</option>
-//             <option value="">Chemical Tanker2</option>
-//             <option value="">Chemical Tanker3</option>
-//           </select>
-//         </div>
-//         <div className="">
-//           <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]" htmlFor="">
-//           Preferred Vessel Type*
-//           </label>
-//           <select
-//             className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
-//             name="options"
-//           >
-//             <option value="" disabled selected>
-//             Preferred Vessel Type*
-//             </option>
-//             <option value="">Training1</option>
-//             <option value="">Training2</option>
-//             <option value="">Training3</option>
-//           </select>
-//         </div>
-//         <div className="">
-//           <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] font-normal " htmlFor="">
-//           Alternate Vessel Type*
-//           </label>
-//           <select
-//             className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
-//             name="options"
-//           >
-//             <option value="" disabled selected>
-//             Alternate Vessel Type*
-//             </option>
-//             <option value="">Training1</option>
-//             <option value="">Training2</option>
-//             <option value="">Training3</option>
-//           </select>
-//         </div>
-//         <div className="">
-//           <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="issue">
-//           Availability Date*
-//           </label>
-//           <input
-//             id="issue"
-//             type="date"
-//             className="border text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 w-full  h-11 rounded-md border-[#00A264]"
-//             placeholder="Availability Date*"
-//             value={availabilitydate}
-//             onChange={(e) => setAvailabilityDate(e.target.value)}
-//           />
-//         </div>
-
-//         <div className="">
-//           <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="">
-//           Available*
-//           </label>
-//           <select
-//             className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
-//             name="options"
-//           >
-//             <option value="" disabled selected>
-//             Available*
-//             </option>
-//             <option value="">Training1</option>
-//             <option value="">Training2</option>
-//             <option value="">Training3</option>
-//           </select>
-//         </div>
-
-//       </div>
-//       <div className="my-4">
-//         <h1 className="text-[16px] leading-[24px] font-semibold">
-//           Rotation Expectation
-//         </h1>
-//         <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-//           For seafarers working in Offshore: Please consider as well the section
-//           “Offshore Requirements” below to enter your expectations and skills as
-//           per segment requirement.
-//         </p>
-//       </div>
-
-//       {/* Third section */}
-
-//       <div className="grid grid-cols-2 gap-4">
-
-//          <div className="">
-//           <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="">
-//           Min. Time on Board(months)
-//           </label>
-//           <select
-//             className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
-//             name="options"
-//           >
-//             <option value="" disabled selected>
-//             Min. Time on Board(months)
-//             </option>
-//             <option value="">Training1</option>
-//             <option value="">Training2</option>
-//             <option value="">Training3</option>
-//           </select>
-//         </div>
-
-//         <div className="">
-//           <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="">
-//           Max. Time on Board(months)
-//           </label>
-//           <select
-//             className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
-//             name="options"
-//           >
-//             <option value="" disabled selected>
-//             Max. Time on Board(months)
-//             </option>
-//             <option value="">Training1</option>
-//             <option value="">Training2</option>
-//             <option value="">Training3</option>
-//           </select>
-//         </div>
-
-//           <div className="">
-//           <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="">
-//           Min. Time on Home(months)
-//           </label>
-//           <select
-//             className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
-//             name="options"
-//           >
-//             <option value="" disabled selected>
-//             Min. Time on Home(months)
-//             </option>
-//             <option value="">Training1</option>
-//             <option value="">Training2</option>
-//             <option value="">Training3</option>
-//           </select>
-//         </div>
-
-//         <div className="px-2">
-//           <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="">
-//           Max. Time on Board(months)
-//           </label>
-//           <select
-//             className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264] "
-//             name="options"
-//           >
-//             <option value="" disabled selected>
-//             Max. Time on Board(months)
-//             </option>
-//             <option value="">Training1</option>
-//             <option value="">Training2</option>
-//             <option value="">Training3</option>
-//           </select>
-//         </div>
-//       </div>
-
-//       <div className=" my-5">
-//         <h1 className="mb-2">Preferred Contract Type</h1>
-//         <input type="checkbox" />
-//         <label className=" p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-//           Voyage
-//         </label>
-//         <input type="checkbox" className="ml-4 " />
-//         <label className=" p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-//           Voyage
-//         </label>
-//       </div>
-
-//       <h1 className="mb-2 font-semibold text-[16px] leading-[24px]">
-//         Salary Expectation
-//       </h1>
-
-//       <div className="grid  grid-cols-2 gap-4 ">
-
-//          <div className="px-2">
-//           <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="">
-//           Voyage (per month)
-//           </label>
-//           <select
-//             className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264] "
-//             name="options"
-//           >
-//             <option value="" disabled selected>
-//             Voyage (per month)
-//             </option>
-//             <option value="">Training1</option>
-//             <option value="">Training2</option>
-//             <option value="">Training3</option>
-//           </select>
-//         </div>
-//         <div className="grid grid-cols-2 gap-4">
-
-//              <div className="px-2">
-//           <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="">
-//           Currency
-//           </label>
-//           <select
-//             className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264] "
-//             name="options"
-//           >
-//             <option value="" disabled selected>
-//             Currency
-//             </option>
-//             <option value="">Training1</option>
-//             <option value="">Training2</option>
-//             <option value="">Training3</option>
-//           </select>
-//         </div>
-
-//             <div className="px-2">
-//           <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="">
-//           Negotiable
-//           </label>
-//           <select
-//             className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264] "
-//             name="options"
-//           >
-//             <option value="" disabled selected>
-//             Negotiable
-//             </option>
-//             <option value="">Training1</option>
-//             <option value="">Training2</option>
-//             <option value="">Training3</option>
-//           </select>
-//         </div>
-//         </div>
-
-//           <div className="px-2">
-//           <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="">
-//           Permanent (per Month)
-//           </label>
-//           <select
-//             className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264] "
-//             name="options"
-//           >
-//             <option value="" disabled selected>
-//             Permanent (per Month)
-//             </option>
-//             <option value="">Training1</option>
-//             <option value="">Training2</option>
-//             <option value="">Training3</option>
-//           </select>
-//         </div>
-//         <div className="grid grid-cols-2 gap-4">
-
-// <div className="px-2">
-//           <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="">
-//           currency
-//           </label>
-//           <select
-//             className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264] "
-//             name="options"
-//           >
-//             <option value="" disabled selected>
-//             currency
-//             </option>
-//             <option value="">Training1</option>
-//             <option value="">Training2</option>
-//             <option value="">Training3</option>
-//           </select>
-//         </div>
-
-//           <div className="px-2">
-//           <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="">
-//           negotiable
-//           </label>
-//           <select
-//             className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264] "
-//             name="options"
-//           >
-//             <option value="" disabled selected>
-//             negotiable
-//             </option>
-//             <option value="">Training1</option>
-//             <option value="">Training2</option>
-//             <option value="">Training3</option>
-//           </select>
-//         </div>
-//         </div>
-
-//         <div className="grid col-span-2 mb-3">
-
-//            <div className="px-2">
-//           <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="">
-//           Trading Area Exclusions
-//           </label>
-//           <select
-//             className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264] "
-//             name="options"
-//           >
-//             <option value="" disabled selected>
-//             Trading Area Exclusions
-//             </option>
-//             <option value="">Training1</option>
-//             <option value="">Training2</option>
-//             <option value="">Training3</option>
-//           </select>
-//         </div>
-//         </div>
-//       </div>
-
-//       <div className="flex gap-2 mb-4">
-//         <button
-
-//           className="border border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
-//         >
-//           Save
-//         </button>
-//         <Link
-//           href="#"
-//           className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
-//         >
-//           Edit
-//         </Link>
-//       </div>
-//       </form>
-//     </div>
-//   );
-// };
-// export default MyJobRequirements;

@@ -1,0 +1,125 @@
+"use client";
+import React from "react";
+import { useState } from "react";
+
+const NextOfKinDetails = () => {
+  const [nextKinName, setNextKinName] = useState("");
+  const [nextKinShip, setNextKinShip] = useState("");
+  const [nextKinAddre, setNextKinAddre] = useState("");
+  const [nextKinChildren, setNextKinChildren] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    
+    e.preventDefault(); 
+  };
+
+  return (
+    <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
+      <form onSubmit={handleSubmit}>
+        {/* next of kin details */}
+
+        <div className="flex flex-col ">
+          <h1 className="text-center font-semibold mb-2">
+            NEXT OF KIN DETAILS
+          </h1>
+
+          <div className="grid grid-cols-2 gap-4">
+            <div className="w-full ">
+              <label
+                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1 "
+                htmlFor="cityName"
+              >
+               Next of Kin Name
+              </label>
+              {/* <div className="relative flex items-center  "> */}
+              <input
+                id="cityName"
+                type="text"
+                value={nextKinName}
+                onChange={(e) => setNextKinName(e.target.value)}
+                className="border rounded-lg w-full h-9 py-[7px] px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
+                placeholder=""
+                required
+              />
+              {/* </div> */}
+            </div>
+            <div className="w-full">
+              <label
+                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1 "
+                htmlFor="cityName"
+              >
+                Next of Kin Relation Ship
+              </label>
+              {/* <div className="relative flex items-center  "> */}
+                <input
+                  id="cityName"
+                  type="text"
+                  value={nextKinShip}
+                  onChange={(e) => setNextKinShip(e.target.value)}
+                  className="border rounded-lg w-full h-9 py-[7px] px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
+                  placeholder=""
+                  required
+                />
+              {/* </div> */}
+            </div>
+            <div className=" w-full">
+              <label
+                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
+                htmlFor="cityName"
+              >
+                Next of Kin Address
+              </label>
+              {/* <div className="relative flex items-center  "> */}
+                <input
+                  id="cityName"
+                  type="text"
+                  value={nextKinAddre}
+                  onChange={(e) => setNextKinAddre(e.target.value)}
+                  className="border rounded-lg w-full h-9 py-[7px] px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
+                  placeholder=""
+                  required
+                />
+              {/* </div> */}
+            </div>
+
+            <div className=" w-full">
+              <label
+                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
+                htmlFor="cityName"
+              >
+                Number of Children
+              </label>
+              {/* <div className="relative flex items-center  "> */}
+                <input
+                  id="cityName"
+                  type="text"
+                  value={nextKinChildren}
+                  onChange={(e) => setNextKinChildren(e.target.value)}
+                  className="border rounded-lg w-full h-9 py-[7px] px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
+                  placeholder=""
+                  required
+                />
+              {/* </div> */}
+            </div>
+          </div>
+        </div>
+
+        <div className="flex gap-2 mb-4 mt-4">
+          <button
+            type="submit"
+            className="border border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
+          >
+            Save
+          </button>
+          <button
+            type="submit"
+            className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
+          >
+            Edit
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+};
+export default NextOfKinDetails;

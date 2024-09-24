@@ -72,27 +72,27 @@ const SignUp: React.FC = () => {
   return (
     <div className="flex flex-col">
       <LoginHeader />
-      <div className=" flex items-center justify-center bg-[#EAEAEA]">
-        <div className="bg-white overflow-hidden flex w-full h-auto">
+      <div className=" flex items-center justify-center bg-[#EAEAEA] ">
+        <div className="flex w-full h-auto overflow-hidden bg-[#EAEAEA]">
           <LoginImg />
 
           {/* Sign-Up Form Section */}
-          <div className="w-full md:w-1/2 p-1  pr-3 pl-6 bg-[#EAEAEA]  ">
-            <h2 className="text-xl font-bold  text-center mt-4">
+          <div className="w-full flex flex-col items-center justify-center md:w-1/2  bg-[#EAEAEA]  ">
+            <h2 className="mt-4 mb-2 text-[30.52px] leading-[45.79px] font-semibold text-center">
               Sign In as Candidate
             </h2>
-            <p className="text-gray-600  text-center">
+            <p className="text-center text-[18px] leading-[27px] text-[#333333]">
               Enter your credential to access your account.
             </p>
             <form
               onSubmit={handleSubmit}
-              className="items-center p-2 pr-2 pl-2 ml-20 w-full max-w-lg "
+              className="w-[70%]"
             >
-              <div className="mb-2 mt-2 flex w-full space-x-2">
+              <div className="mb-1 mt-2 flex w-full space-x-2">
                 <div className="w-[49%] mb-2">
                   {" "}
                   <label
-                    className="block text-gray-700 text-sm font-bold mb-1"
+                    className="block mb-1 text-[16px] leading-[24px] font-[500] text-[#333333]"
                     htmlFor="userName"
                   >
                     First Name
@@ -103,7 +103,7 @@ const SignUp: React.FC = () => {
                       type="text"
                       value={firstName}
                       onChange={(e) => setFirstName(e.target.value.trim())}
-                      className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline font-[opensans]"
                       placeholder="Enter First Name"
                       required
                     />
@@ -113,9 +113,9 @@ const SignUp: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="w-[49%] mb-2">
+                <div className="w-[49%] mb-1">
                   <label
-                    className="block text-gray-700 text-sm font-bold mb-1"
+                    className="block mb-1 text-[16px] leading-[24px] font-[500] text-[#333333]"
                     htmlFor="lastName"
                   >
                     Last Name
@@ -126,7 +126,7 @@ const SignUp: React.FC = () => {
                       type="text"
                       value={lastName}
                       onChange={(e) => setLastName(e.target.value.trim())}
-                      className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline font-[opensans]"
                       placeholder="Enter Last Name"
                       required
                     />
@@ -137,9 +137,9 @@ const SignUp: React.FC = () => {
                 </div>
               </div>
 
-              <div className="mb-2">
+              <div className="mb-1">
                 <label
-                  className="block text-gray-700 text-sm font-bold mb-1"
+                  className="block mb-1 text-[16px] leading-[24px] font-[500] text-[#333333]"
                   htmlFor="email"
                 >
                   Enter Registered Email
@@ -150,7 +150,7 @@ const SignUp: React.FC = () => {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value.trim())}
-                    className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline font-[opensans]"
                     placeholder="Email"
                     required
                   />
@@ -160,9 +160,9 @@ const SignUp: React.FC = () => {
                   </span>
                 </div>
               </div>
-              <div className="mb-2">
+              <div className="mb-1">
                 <label
-                  className="block text-gray-700 text-sm font-bold mb-1"
+                  className="block mb-1 text-[16px] leading-[24px] font-[500] text-[#333333]"
                   htmlFor="phone"
                 >
                   Phone
@@ -174,7 +174,7 @@ const SignUp: React.FC = () => {
                     value={phone}
                     maxLength={10}
                     onChange={(e) => setPhone(e.target.value.trim())}
-                    className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline font-[opensans]"
                     placeholder="Enter Phone"
                     required
                   />
@@ -184,9 +184,9 @@ const SignUp: React.FC = () => {
                 </div>
               </div>
 
-              <div className="mb-2">
+              <div className="mb-1">
                 <label
-                  className="block text-gray-700 text-sm font-bold mb-1"
+                  className="block mb-1 text-[16px] leading-[24px] font-[500] text-[#333333]"
                   htmlFor="password"
                 >
                   Password
@@ -197,7 +197,7 @@ const SignUp: React.FC = () => {
                     type={showPassword ? "text" : "password"}
                     value={password}
                     onChange={(e) => setPassword(e.target.value.trim())}
-                    className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline font-[opensans]"
                     placeholder="Password"
                     required
                   />
@@ -214,9 +214,9 @@ const SignUp: React.FC = () => {
                 </div>
               </div>
 
-              <div className="mb-[1rem]">
+              <div className="mb-2">
                 <label
-                  className="block text-gray-700 text-sm font-bold mb-1"
+                  className="block mb-1 text-[16px] leading-[24px] font-[500] text-[#333333]"
                   htmlFor="Password"
                 >
                   Confirm Password
@@ -227,7 +227,7 @@ const SignUp: React.FC = () => {
                     type={showCpassword ? "text" : "password"}
                     value={cPassword}
                     onChange={(e) => setCpassword(e.target.value.trim())}
-                    className="border rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline font-[opensans]"
                     placeholder="Confirm Password"
                     required
                   />
@@ -249,7 +249,7 @@ const SignUp: React.FC = () => {
 
                 <button
                   type="submit"
-                  className="w-full bg-[#00A264] hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                  className="w-full bg-[#00A264] hover:bg-green-700 text-white font-bold h-[42px] px-4 rounded focus:outline-none focus:shadow-outline"
                 >
                   Sign Up
                 </button>
@@ -263,14 +263,14 @@ const SignUp: React.FC = () => {
                     />
                     <label
                       htmlFor="You agree to our"
-                      className="ml-2 block  text-sm "
+                      className=" ml-2 block  text-sm  text-center text-[16px] leading-[24px]  text-[#333333]  "
                     >
                       You agree to our
-                      <Link href="" className="text-[#00A264]">
+                      <Link href="" className="text-[#00A264] font-[500] hover:underline mx-1">
                         Teams & Conditions
                       </Link>
                       and{" "}
-                      <Link href="#" className="text-[#00A264]">
+                      <Link href="#" className="text-[#00A264] font-[500] hover:underline ">
                         Privacy Policy.
                       </Link>
                     </label>
@@ -279,9 +279,9 @@ const SignUp: React.FC = () => {
               </div>
             </form>
 
-            <p className=" text-center font-semibold mb-6">
+            <p className=" text-center font-semibold mb-6 mt-2  text-[16px] leading-[24px]  text-[#333333]">
               Already have on account?
-              <Link href="/candidate" className="text-[#00A264] ">
+              <Link href="/candidate" className="text-[#00A264] font-[500] hover:underline ml-1">
                 Sign In as Candidate
               </Link>
             </p>

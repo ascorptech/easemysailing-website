@@ -60,7 +60,7 @@ const ResourceDetailsPage: React.FC = () => {
           <p className=" text-sm text-justify  mt-4">{resourceDetail?.discription}</p>
         </div>
 
-        <h1 className=" my-4  font-bold text-xl">Drop Your Comment</h1>
+        {/* <h1 className=" my-4  font-bold text-xl">Drop Your Comment</h1>
 
         <div className="bg-gray-200  p-8 rounded-xl ">
           <form onSubmit={handleSubmit} className="   ">
@@ -126,7 +126,7 @@ const ResourceDetailsPage: React.FC = () => {
               </button>
             </div>
           </form>
-        </div>
+        </div> */}
       </div>
 
       <div className="float-right  w-[27%]  ">

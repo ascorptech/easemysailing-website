@@ -6,6 +6,8 @@ import { GrLocation } from "react-icons/gr";
 import { FiPhoneCall, FiMail } from "react-icons/fi";
 import { toast } from "react-toastify";
 import { AddContactData } from "@/app/(web)/contact/Services/contactService";
+import PhoneInput from "react-phone-input-2"; // Import the phone input component
+import "react-phone-input-2/lib/style.css";
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -139,20 +141,21 @@ const Contact = () => {
             <div className="mb-[7px]">
               <div className="relative flex items-center">
                 {/* Country Code Dropdown */}
-                <select
+                {/* <select
                   value={countryCode}
                   onChange={(e) => setCountryCode(e.target.value)}
                   className="border h-10  rounded-lg px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
                 >
-                  <option value="+91">🇮🇳 +91 </option>
-                  <option value="+1">🇺🇸 +1 </option>
-                  <option value="+44">🇬🇧 +44</option>
-                  <option value="+61">🇦🇺 +61</option>
+                  <option value="+91">IN +91 </option>
+                  <option value="+1">US +1 </option>
+                  <option value="+93">AF +93 </option>
+                  
+
                   {/* Add more country codes as needed */}
-                </select>
+                {/* </select> */}
 
                 {/* Phone Input */}
-                <input
+                {/* <input
                   id="phone"
                   type="text"
                   value={phone}
@@ -161,7 +164,24 @@ const Contact = () => {
                   className="border lg:h-10 rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm ml-2"
                   placeholder="Phone Number"
                   required
+                /> */}
+                <PhoneInput
+                  country={"in"} //default country
+                  value={phone}
+                  // maxLength={10}
+                  // onChange={(e) => setPhone(e.target.value.trim())}
+                  onChange={(phone) => setPhone(phone)}
+                  inputProps={{
+                    name: "phone",
+                    required: true,
+                    autoFocus: false,
+                  }}
+                  inputClass="!w-full !h-[42px] !leading-[21.79px] !text-[16px] !text-[#333333] !border !rounded-lg focus:!outline-none focus:!shadow-outline font-[opensans] "
+                  containerClass="w-full"
                 />
+                {/* <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-[#00A264] text-white mr-7 rounded-l-md">
+                  <FaPhone />
+                </span> */}
               </div>
               {errors.phone && (
                 <p className="text-red-500 text-xs mt-1">{errors.phone}</p>

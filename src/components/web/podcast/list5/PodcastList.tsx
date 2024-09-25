@@ -2,6 +2,7 @@
 import { GetPodcastList } from "@/app/(web)/podcast-list/Services/podcastService";
 import React, { useEffect, useState } from "react";
 import { RxCrossCircled } from "react-icons/rx";
+import Image from "next/image";
 
 const PodcastList = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -39,12 +40,14 @@ const PodcastList = () => {
 
   const getEmbedUrl = (videoLink: string) => {
     const videoIdMatch = videoLink?.match(
-      /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/|.+\?v=))([^?&]+)/,
+      /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/|.+\?v=))([^?&]+)/
     );
-    return videoIdMatch ? `https://www.youtube.com/embed/${videoIdMatch[1]}` : '';
+    return videoIdMatch
+      ? `https://www.youtube.com/embed/${videoIdMatch[1]}`
+      : "";
   };
 
-  const openModal = (item:any) => {
+  const openModal = (item: any) => {
     setSelected(item);
     setModalOpen(true);
   };
@@ -56,7 +59,7 @@ const PodcastList = () => {
   return (
     <div>
       <div className="lg:h-[500px] h-[220px] mb-8">
-        <iframe
+        {/* <iframe
           width="100%"
           height="100%"
           src={getEmbedUrl(selected?.videoLink) || ''}
@@ -64,7 +67,15 @@ const PodcastList = () => {
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
-        ></iframe>
+        ></iframe> */}
+        <Image
+          src={`data:image/png;image/jpg;image/jpeg;base64,${selected?.thumbnail}`}
+          alt={selected?.title}
+          width={100}
+          height={100}
+          priority
+          className="h-full w-full rounded-sm"
+        />
       </div>
 
       <div className="grid lg:grid-cols-3 lg:gap-5 lg:py-4 grid-cols-1 gap-5 lg:mt-5 mt-3 sm:grid-cols-2">
@@ -74,18 +85,15 @@ const PodcastList = () => {
             className="w-full border-4 rounded-lg border-black mb-8 h-[200px]"
             onClick={() => openModal(item)}
           >
-            <iframe
-              width="100%"
-              height="100%"
-              src={getEmbedUrl(item?.videoLink) || ''}
-              title={item?.title || 'Video Player'}
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-            <h6 className="text-center my-1 cursor-pointer">
-              {item?.title}
-            </h6>
+            <Image
+              src={`data:image/png;image/jpg;image/jpeg;base64,${item?.thumbnail}`}
+              alt={item?.title}
+              width={100}
+              height={100}
+              priority
+              className="h-full w-full rounded-sm"
+            />
+            <h6 className="text-center my-1 cursor-pointer">{item?.title}</h6>
           </div>
         ))}
       </div>
@@ -132,7 +140,6 @@ const PodcastList = () => {
                 className="absolute  top-2 right-2 text-red-500  rounded-full "
               >
                 <RxCrossCircled className="w-6 h-6" />
-
               </button>
             </div>
           </div>

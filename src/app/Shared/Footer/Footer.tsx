@@ -20,7 +20,7 @@ const Footer = () => {
       var s1: any = document.createElement("script")
       let s0: any = document.getElementsByTagName("script")[0];
       s1.async = true;
-      s1.src = 'https://embed.tawk.to/65ffd3841ec1082f04da916f/1hpnl4g1e';
+      s1.src = 'https://embed.tawk.to/66d5966cea492f34bc0cb5e9/1i6p57660';
       s1.charset = 'UTF-8';
       s1.setAttribute('crossorigin', '*');
       s0.parentNode.insertBefore(s1, s0);

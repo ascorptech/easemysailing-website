@@ -27,7 +27,7 @@ const NumberContent = () => {
           <div className="h-[250px] sm:h-[350px] lg:h-[500px] mx-2 lg:ml-10">
             <Image
               priority
-              src="/applying1.png"
+              src="/leftbanner.png"
               alt="Applying"
               width={1000}
               height={1000}

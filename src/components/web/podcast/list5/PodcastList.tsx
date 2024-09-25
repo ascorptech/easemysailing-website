@@ -116,11 +116,11 @@ const PodcastList = () => {
       {/* Popup */}
       {ModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75">
-          <div className="bg-white lg:w-[50rem] h-[15rem] lg:h-[500px] rounded-lg overflow-hidden shadow-lg">
-            <div className="relative">
+          <div className="bg-white  rounded-lg overflow-hidden shadow-lg">
+            <div className="h-[15rem] w-[22rem] lg:w-[50rem]  lg:h-[500px] relative">
               <iframe
                 width="100%"
-                height="500px"
+                height="100%"
                 src={getEmbedUrl(selected?.videoLink)}
                 title={selected?.title}
                 frameBorder="0"

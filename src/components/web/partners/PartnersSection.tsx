@@ -56,14 +56,7 @@ const PartnersSection = () => {
       description: "Lorem Ipsum is simply dummy text of the printing",
       logoSrc: "/images/logo4.png",
     },
-    {
-      name: "Teekay Corporation",
-      reviews: "1k+",
-      rating: "3.6",
-      contactPerson: "Robin",
-      description: "Lorem Ipsum is simply dummy text of the printing",
-      logoSrc: "/images/logo2.png",
-    },
+    
   ];
 
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -71,7 +64,7 @@ const PartnersSection = () => {
   const scrollLeft = () => {
     if (scrollRef.current) {
       scrollRef.current.scrollBy({
-        left: -200, // Adjust the value for smooth scrolling
+        left: -224, // Adjust the value for smooth scrolling
         behavior: "smooth",
       });
     }
@@ -80,22 +73,19 @@ const PartnersSection = () => {
   const scrollRight = () => {
     if (scrollRef.current) {
       scrollRef.current.scrollBy({
-        left: 200, // Adjust the value for smooth scrolling
+        left: 224, // Adjust the value for smooth scrolling
         behavior: "smooth",
       });
     }
   };
 
   return (
-    // <section className="w-[94%]  ml-1 md:mx-6 px-1 sm:mx-5 lg:w-[98%] lg:mx-0">
     <div className="mt-7 lg:px-1  md:mx-6 lg:w-full lg:mx-0 sm:mx-5">
-      {/* <div className="flex items-center  justify-between pt-4 lg:mr-[8%] md:mx-[3rem]">
-       */}
+       
       <div className="flex items-center justify-between mt-4 pt-4 lg:mr-[5%]  md:mx-[1rem]">
-        {/* <div className="font-bold text-2xl  lg:ml-[4rem]"> */}
-        <div className="font-bold mx-5 text-xl flex items-center lg:text-4xl lg:ml-[2rem]">
+        <div className="font-bold mx-5 text-xl flex items-center lg:text-4xl lg:ml-[1.5rem]">
           <h1>
-            <span>OUR</span> <span className="text-7green-00">PARTNERS</span>
+            <span>OUR</span> <span className=" text-[#00A265]">PARTNERS</span>
           </h1>
           <div className="ml-2">
             <Image
@@ -118,12 +108,17 @@ const PartnersSection = () => {
         </div>
       </div>
 
-      {/* <div className=" lg:ml-[2rem] relative flex items-center justify-center w-[97%]  "> */}
-      <div className=" lg:px-[1rem] relative flex items-center justify-center w-[100%]  ">
-        {/* {/ Partner Cards Scroll Container /} */}
+      <div className="  relative flex items-center justify-center w-[100%]  ">
+      <button 
+          onClick={scrollLeft} 
+          className="absolute left-6 md:hidden bg-white p-2 rounded-full shadow-md"
+          aria-label="Scroll Left"
+        >
+          <IoMdArrowBack />
+        </button>
         <div
           ref={scrollRef}
-          className="overflow-x-auto my-10 flex space-x-2 lg:space-x-6 lg:mx-0 no-scrollbar scroll-smooth snap-x snap-mandatory lg:w-[95%] w-[52%] "
+          className="overflow-x-auto my-10 gap-2 flex space-x-2 lg:space-x-6 lg:mx-0 no-scrollbar scroll-smooth snap-x snap-mandatory lg:w-[95%] w-[220px] "
         >
           {partners?.map((partner, index) => (
             <PartnerCard
@@ -137,6 +132,13 @@ const PartnersSection = () => {
             />
           ))}
         </div>
+        <button 
+          onClick={scrollRight} 
+          className="absolute right-6 md:hidden bg-white p-2  rounded-full shadow-md"
+          aria-label="Scroll Right"
+        >
+          <IoMdArrowForward />
+        </button>
       </div>
     </div>
   );

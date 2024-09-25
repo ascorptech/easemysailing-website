@@ -32,6 +32,8 @@ const Header: React.FC = () => {
             <div className="w-44 h-12 sm:w-[230px] sm:h-[55px] ">
               <Link href="/">
                 <Image
+                priority
+                
                   src="/images/logo_1.png"
                   alt="EaseMySailing Logo"
                   className="object-contain h-full w-full "
@@ -325,6 +327,7 @@ const Header: React.FC = () => {
                 <Link
                   href="/resources"
                   className="block py-2 px-3 text-[#00A264] rounded-lg hover:bg-[#00A264] mt-1  hover:text-[#FFFFFF] text-xl"
+                  onClick={()=>setIsMenuOpen(false)}
                 >
                   Resource
                 </Link>
@@ -333,6 +336,7 @@ const Header: React.FC = () => {
                 <Link
                   href="/podcast-list"
                   className="block py-2 px-3 text-[#00A264] rounded-lg hover:bg-[#00A264] mt-1  hover:text-[#FFFFFF] text-xl"
+                  onClick={()=>setIsMenuOpen(false)}
                 >
                   Podcast & Interviews
                 </Link>
@@ -341,6 +345,7 @@ const Header: React.FC = () => {
                 <Link
                   href="/about"
                   className="block py-2 px-3 text-[#00A264] rounded-lg hover:bg-[#00A264] mt-1  hover:text-[#FFFFFF] text-xl"
+                  onClick={()=>setIsMenuOpen(false)}
                 >
                   About Us
                 </Link>
@@ -349,6 +354,7 @@ const Header: React.FC = () => {
                 <Link
                   href="/contact"
                   className="block py-2 px-3 text-[#00A264] rounded-lg hover:bg-[#00A264] mt-1  hover:text-[#FFFFFF] text-xl"
+                  onClick={()=>setIsMenuOpen(false)}
                 >
                   Contact Us
                 </Link>
@@ -375,6 +381,7 @@ const Header: React.FC = () => {
               <li className="flex relative items-center gap-4 h-2 mt-7 mb-5">
                 <Link
                   href={"/candidate"}
+                  onClick={()=>setIsMenuOpen(false)}
                   className="flex justify-center items-center mr-4 border border-[#00A264] text-[#00A264] p-2 rounded-full hover:bg-[#00A264] hover:text-[#FFFFFF]"
                 >
                   <span className="pr-2">

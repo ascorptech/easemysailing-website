@@ -26,7 +26,7 @@ export default function Home() {
       <Companies />
       <NumberContent />
       <Findout />
-      {/* <Navigation /> */}
+      <Navigation />
       <Sailors />
       <PartnersSection />
       {/* <ClientSection /> */}

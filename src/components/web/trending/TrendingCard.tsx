@@ -102,15 +102,16 @@ const SlidesTrend: React.FC<SlidesTrendProps> = ({ card1 }) => {
 
   return (
     <div className="flex flex-col items-center justify-between">
-      <div className=" lg:mx-[1rem] relative flex items-center justify-center w-[98%]  ">
+      <div className=" lg:mx-[1rem] sm:md:mt-0 mt-6 relative flex items-center justify-center w-[98%]  ">
         {/* {/ Carousel Wrapper /} */}
         <div
           ref={card1}
-          className=" flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory lg:mx-[1rem] mx-[2rem] ml-[3rem] "
+          className=" flex overflow-x-scroll w-[245px] sm:md:w-full no-scrollbar scroll-smooth snap-x snap-mandatory lg:mx-[1rem] mx-[2rem] ml-[3rem] "
         >
           {/* {/ Card 1 /} */}
           {cards.map((card) => (
-            <div key={card.id} className="flex-none  w-full sm:w-1/6 p-4">
+            <div key={card.id} 
+            className="flex-none  w-[245px] sm:w-1/6 p-4">
               <div className="flex flex-col items-center bg-white border rounded-lg shadow-md p-4">
                 <div className=" mb-4 w-14 h-14 ">
                   <Image

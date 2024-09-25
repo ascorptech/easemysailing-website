@@ -67,7 +67,7 @@ const Islide = () => {
         </div>
         {/* Video Card 3 */}
         <div className="snap-center ">
-          <div className="w-[23.4rem] h-[12rem]     lg:w-[18rem] lg:h-[220px] ">
+          <div className="w-[23.3rem] h-[12rem] sm:md:w-[23.4rem] lg:w-[18rem] lg:h-[220px] ">
             <iframe
               className="w-full border-4 shadow-md rounded-lg h-full"
               src="https://www.youtube.com/embed/Tl4bQBfOtbg"

@@ -37,7 +37,7 @@ const Islide = () => {
 
       <div
         ref={card}
-        className=" flex overflow-x-scroll  no-scrollbar scroll-smooth snap-x snap-mandatory  gap-7 "
+        className=" flex overflow-x-scroll  no-scrollbar scroll-smooth snap-x snap-mandatory  gap-[34px] "
       >
         {/* Video Card 1 */}
         <div className="snap-center ">

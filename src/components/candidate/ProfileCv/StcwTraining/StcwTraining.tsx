@@ -45,7 +45,7 @@ const [selectedFiles, setSelectedFiles] = useState<File | null>(null);
           </label>
           <select
             id="option"
-            className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
           >
             <option value="" disabled selected>
@@ -57,12 +57,12 @@ const [selectedFiles, setSelectedFiles] = useState<File | null>(null);
           </select>
         </div>
         <div className=" ">
-          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="options">
+          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="trainingcou">
             Training Country
           </label>
           <select
-            id="options"
-            className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+            id="trainingcou"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
           >
             <option value="" disabled selected>
@@ -76,63 +76,68 @@ const [selectedFiles, setSelectedFiles] = useState<File | null>(null);
         {/* <div className=""> */}
 
         <div className="   ">
-          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="number">
-            Enter Number
+          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="number12">
+            Number
           </label>
           <input
-            id="number"
+            id="number12"
             type="number"
             value={number}
             onChange={(e) => setNumber(e.target.value)}
-            className="border border-[#00A264] rounded-md w-full h-11 py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 focus:shadow-outline "
-            placeholder="Enter Number"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+            placeholder=""
             required
           />
         </div>
 
         {/* </div> */}
         <div className="">
-          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]" htmlFor="issue">
+          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]" htmlFor="issuedate12">
             Issue Date
           </label>
           <input
-            id="issue"
+            id="issuedate12"
             type="date"
-            className="border focus:outline-green-300 w-full text-[14px] leading-[19.07px] font-[openSans] text-[#333333] h-11 rounded-md border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             value={issuedate}
             onChange={(e) => setIssueDate(e.target.value)}
           />
         </div>
-      </div>
+     
 
-      <div className="mt-2">
-        <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]  " htmlFor="expiryDate">
+      <div className="">
+        <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]  " htmlFor="expiryDate12">
           Expiry Date
         </label>
-        <div className="flex items-center gap-4 mt-2">
+        {/* <div className="flex items-center gap-4 mt-2"> */}
           <input
-            id="expiryDate"
+            id="expiryDate12"
             type="date"
-            className="border focus:outline-green-300 w-[65%] text-[14px] leading-[19.07px] font-[openSans] text-[#333333] h-11 rounded-md border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             value={exdate}
             onChange={(e) => setExDate(e.target.value)}
           />
+          </div>
+          
 
-          <input
-            id="neverExpires"
-            type="checkbox"
-            className="border focus:ring-[#00A264] text-[14px] leading-[19.07px] font-[openSans] text-[#333333]  checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264]"
-            //   value={exdate}
-            //   onChange={(e) => setExDate(e.target.value)}
-          />
-          <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
-            htmlFor="neverExpires"
-          >
-            Never Expires
-          </label>
-        </div>
-      </div>
+          <div className=" flex items-center gap-3 ">
+            <input
+              id="neverExpires"
+              type="checkbox"
+              className="border focus:ring-[#00A264]  text-[#00A264] checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
+              //   value={exdate}
+              //   onChange={(e) => setExDate(e.target.value)}
+            />
+            <label
+              className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+              htmlFor="neverExpires"
+            >
+              Never Expires
+            </label>
+          </div>
+          </div>
+        
+      {/* </div> */}
       {/* </div> */}
 
 

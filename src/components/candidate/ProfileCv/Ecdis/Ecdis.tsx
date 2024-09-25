@@ -47,7 +47,7 @@ const [selectedFiles, setSelectedFiles] = useState<File | null>(null);
             </label>
             <select
               id="option1"
-              className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
             >
               <option value="" disabled selected>
@@ -70,7 +70,7 @@ const [selectedFiles, setSelectedFiles] = useState<File | null>(null);
               type="text"
               value={trainingCenter}
               onChange={(e) => setTrainingCenter(e.target.value)}
-              className="border border-[#00A264] rounded-md w-full h-11 py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 focus:shadow-outline "
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder="Enter Number"
               required
             />
@@ -82,7 +82,7 @@ const [selectedFiles, setSelectedFiles] = useState<File | null>(null);
             </label>
             <select
               id="optionT"
-              className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
             >
               <option value="" disabled selected>
@@ -107,7 +107,7 @@ const [selectedFiles, setSelectedFiles] = useState<File | null>(null);
               type="number"
               value={eCDISNumber}
               onChange={(e) => setECDISNumber(e.target.value)}
-              className="border border-[#00A264] rounded-md w-full h-11 py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 focus:shadow-outline "
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder="Enter Number"
               required
             />
@@ -121,7 +121,7 @@ const [selectedFiles, setSelectedFiles] = useState<File | null>(null);
             <input
               id="issue1"
               type="date"
-              className="border focus:outline-green-300 w-full text-[14px] leading-[19.07px] font-[openSans] text-[#333333]  h-11 rounded-md border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={issuedate1}
               onChange={(e) => setIssueDate1(e.target.value)}
             />
@@ -138,12 +138,27 @@ const [selectedFiles, setSelectedFiles] = useState<File | null>(null);
             <input
               id="expiryDate1"
               type="date"
-              className="border focus:outline-green-300 w-full text-[14px] leading-[19.07px] font-[openSans] text-[#333333] h-11 rounded-md border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={exdate1}
               onChange={(e) => setExDate1(e.target.value)}
             />
           </div>
-          <div className=" flex items-center  gap-4">
+          {/* <div className="flex  ">
+            <input
+              id="neverExpires"
+              type="checkbox"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+              //   value={exdate}
+              //   onChange={(e) => setExDate(e.target.value)}
+            />
+            <label
+              className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+              htmlFor="neverExpires"
+            >
+              Never Expires
+            </label>
+          </div> */}
+           <div className=" flex items-center  gap-4">
             <input
               id="neverExpires"
               type="checkbox"

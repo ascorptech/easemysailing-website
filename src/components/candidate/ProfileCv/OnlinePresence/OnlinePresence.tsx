@@ -30,7 +30,7 @@ const OnlinePresence = () => {
         {/* <div className="  "> */}
         <div className="my-5 ">
           <h1 className="mb-2 text-center font-bold">Messengers in Use</h1>
-          <div className="flex justify-between ">
+          <div className="flex justify-between items-center ">
             <div>
               <input
                 type="checkbox"
@@ -84,115 +84,7 @@ const OnlinePresence = () => {
               </label>
             </div>
           </div>
-          {/* </div> */}
-          {/* </div> */}
-
-          {/* Current Position/Rank */}
-          {/* <div>
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-              Current Position/Rank
-            </label>
-            <select
-              className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
-              value={currentPosition}
-              onChange={(e) => setCurrentPosition(e.target.value)}
-            >
-              <option value="" disabled>
-                Current Position/Rank
-              </option>
-              <option value="Captain">Captain</option>
-              <option value="Captain2">Captain2</option>
-              <option value="Training3">Training3</option>
-            </select>
-          </div> */}
-
-          {/* Alternate Position/Rank */}
-          {/* <div>
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-              Alternate Position/Rank
-            </label>
-            <select
-              className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
-              value={alternatePosition}
-              onChange={(e) => setAlternatePosition(e.target.value)}
-            >
-              <option value="" disabled>
-                Alternate Position/Rank
-              </option>
-              <option value="Chemical Tanker1">Chemical Tanker1</option>
-              <option value="Chemical Tanker2">Chemical Tanker2</option>
-              <option value="Chemical Tanker3">Chemical Tanker3</option>
-            </select>
-          </div> */}
-
-          {/* Preferred Vessel Type */}
-          {/* <div>
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-              Preferred Vessel Type
-            </label>
-            <select
-              className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
-              value={preferredVesselType}
-              onChange={(e) => setPreferredVesselType(e.target.value)}
-            >
-              <option value="" disabled>
-                Preferred Vessel Type
-              </option>
-              <option value="Training1">Training1</option>
-              <option value="Training2">Training2</option>
-              <option value="Training3">Training3</option>
-            </select>
-          </div> */}
-
-          {/* Alternate Vessel Type */}
-          {/* <div>
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-              Alternate Vessel Type
-            </label>
-            <select
-              className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
-              value={alternateVesselType}
-              onChange={(e) => setAlternateVesselType(e.target.value)}
-            >
-              <option value="" disabled>
-                Alternate Vessel Type
-              </option>
-              <option value="Training1">Training1</option>
-              <option value="Training2">Training2</option>
-              <option value="Training3">Training3</option>
-            </select>
-          </div> */}
-
-          {/* Availability Date */}
-          {/* <div>
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-              Availability Date
-            </label>
-            <input
-              type="date"
-              className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
-              value={availabilityDate}
-              onChange={(e) => setAvailabilityDate(e.target.value)}
-            />
-          </div> */}
-
-          {/* Available */}
-          {/* <div>
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-              Not Available
-            </label>
-            <select
-              className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
-              value={available}
-              onChange={(e) => setAvailable(e.target.value)}
-            >
-              <option value="" disabled>
-                Not Available
-              </option>
-              <option value="Yes">Yes</option>
-              <option value="No">No</option>
-            </select>
-          </div> */}
+         
         </div>
         <div>
           <label
@@ -206,7 +98,7 @@ const OnlinePresence = () => {
             type="text"
             value={skypeId}
             onChange={(e) => setSkypeId(e.target.value)}
-            className="bg-white text-[14px] leading-[19.07px] font-[openSans] text-[#333333] px-2  h-9 w-full border border-[#00A264] focus:outline-none rounded-lg"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             required
           />
         </div>

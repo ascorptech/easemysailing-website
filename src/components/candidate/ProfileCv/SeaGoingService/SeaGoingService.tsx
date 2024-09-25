@@ -56,7 +56,7 @@ const SeaGoingService = () => {
             IMO
           </label>
           <select
-            className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
           >
             <option value="" disabled selected>
@@ -80,7 +80,7 @@ const SeaGoingService = () => {
             type="text"
             value={number}
             onChange={(e) => setNumber(e.target.value)}
-            className="border border-[#00A264] text-[14px]  font-[openSans] text-[#333333] rounded-md w-full h-11 py-[8px] px-2  leading-tight focus:outline-green-300 focus:shadow-outline "
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             placeholder="Passport No"
             required
           />
@@ -92,7 +92,7 @@ const SeaGoingService = () => {
             Rank
           </label>
           <select
-            className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
           >
             <option value="" disabled selected>
@@ -116,7 +116,7 @@ const SeaGoingService = () => {
               type="text"
               value={trainingCenter}
               onChange={(e) => setTrainingCenter(e.target.value)}
-              className="border border-[#00A264] rounded-md w-full h-11 py-[8px] px-2text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 focus:shadow-outline "
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder=""
               required
             />
@@ -129,7 +129,7 @@ const SeaGoingService = () => {
               Engine Make
             </label>
             <select
-              className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
             >
               <option value="" disabled selected>
@@ -151,7 +151,7 @@ const SeaGoingService = () => {
           <input
             id="issue"
             type="date"
-            className="border focus:outline-green-300 w-full  h-11 rounded-md border-[#00A264] text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             value={embarkationdate}
             onChange={(e) => setEmbarkationDate(e.target.value)}
           />
@@ -171,7 +171,7 @@ const SeaGoingService = () => {
           <input
             id="expiryDate"
             type="date"
-            className="border focus:outline-green-300 w-full text-[14px] leading-[19.07px] font-[openSans] text-[#333333]  h-11 rounded-md border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             value={ disembarkationDate}
             onChange={(e) => setDisembarkationDate(e.target.value)}
           />
@@ -189,7 +189,7 @@ const SeaGoingService = () => {
               type="text"
               value={seagoingNumber}
               onChange={(e) => setSeagoingNumber(e.target.value)}
-              className="border border-[#00A264] rounded-md w-full h-11 py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 focus:shadow-outline "
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder=""
               required
             />
@@ -201,7 +201,7 @@ const SeaGoingService = () => {
             </label>
             <select
               
-              className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
             >
               <option value="" disabled selected>
@@ -225,7 +225,7 @@ const SeaGoingService = () => {
               type="text"
               value={ gearless}
               onChange={(e) => setGearless(e.target.value)}
-              className="border border-[#00A264] rounded-md w-full h-11 py-[8px] px-2text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 focus:shadow-outline "
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder=""
               required
             />
@@ -243,7 +243,7 @@ const SeaGoingService = () => {
               type="text"
               value={inertGas}
               onChange={(e) => setInertGas(e.target.value)}
-              className="border border-[#00A264] rounded-md w-full h-11 py-[8px] px-2text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 focus:shadow-outline "
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder=""
               required
             />

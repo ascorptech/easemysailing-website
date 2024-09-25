@@ -72,7 +72,7 @@ const AddaddressdataDB = (result:any)=> {
                   type="text"
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
-                  className=" bg-white text-[14px] leading-[19.07px] font-[openSans] text-[#333333]   h-9 w-full border border-[#00A264] focus:outline-none rounded-lg"
+                  className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder="Enter your address"
                   required
                 />
@@ -91,7 +91,7 @@ const AddaddressdataDB = (result:any)=> {
                   type="text"
                   value={number}
                   onChange={(e) => setNumber(e.target.value)}
-                  className=" bg-white text-[14px] leading-[19.07px] font-[openSans] text-[#333333]   h-9 w-full border border-[#00A264] focus:outline-none rounded-lg"
+                  className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder="Enter middle Name"
                   required
                 />
@@ -112,7 +112,7 @@ const AddaddressdataDB = (result:any)=> {
                 type="text"
                 value={addInfo}
                 onChange={(e) => setAddInfo(e.target.value)}
-                className=" bg-white text-[14px] leading-[19.07px] font-[openSans] text-[#333333]   h-9 w-full border border-[#00A264] focus:outline-none rounded-lg"
+                className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Last Name"
                 required
               />
@@ -130,7 +130,7 @@ const AddaddressdataDB = (result:any)=> {
                   type="number"
                   value={postalCode}
                   onChange={(e) => setPostalCode(e.target.value)}
-                  className="    bg-white text-[14px] leading-[19.07px] font-[openSans] text-[#333333]   h-9 w-full border border-[#00A264] focus:outline-none rounded-lg"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder="Enter ZipCode"
                   required
                 />
@@ -149,7 +149,7 @@ const AddaddressdataDB = (result:any)=> {
                   type="text"
                   value={cityName}
                   onChange={(e) => setCityName(e.target.value)}
-                  className=" bg-white text-[14px] leading-[19.07px] font-[openSans] text-[#333333]   h-9 w-full border border-[#00A264] focus:outline-none rounded-lg"
+                  className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder="Enter your city"
                   required
                 />
@@ -173,7 +173,7 @@ const AddaddressdataDB = (result:any)=> {
                   type="text"
                   value={state}
                   onChange={(e) => setState(e.target.value)}
-                  className=" bg-white text-[14px] leading-[19.07px] font-[openSans] text-[#333333]   h-9 w-full border border-[#00A264] focus:outline-none rounded-lg"
+                  className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
@@ -183,7 +183,7 @@ const AddaddressdataDB = (result:any)=> {
               <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2 ">
                 Country
               </label>{" "}
-              <select className="  bg-white text-[14px] leading-[19.07px] font-[openSans] text-[#333333]   h-9 w-full border border-[#00A264] focus:outline-none rounded-lg">
+              <select className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]">
                 <option value="maile">India</option>
                 <option value="maile">Austrelia</option>
                 <option value="maile">England</option>
@@ -197,7 +197,7 @@ const AddaddressdataDB = (result:any)=> {
             <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2 ">
               Nearest Airport
             </label>
-            <select className=" bg-white text-[14px] leading-[19.07px] font-[openSans] text-[#333333]   h-9 w-full border border-[#00A264] focus:outline-none rounded-lg">
+            <select className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]">
               <option value="maile">India</option>
               <option value="maile">Austrelia</option>
               <option value="maile">England</option>
@@ -211,7 +211,7 @@ const AddaddressdataDB = (result:any)=> {
               <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2 ">
                 Country Code
               </label>
-              <select className=" bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-lg">
+              <select className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]">
                 <option value="maile">+91</option>
                 <option value="maile">+50</option>
                 <option value="maile">+08</option>
@@ -231,7 +231,7 @@ const AddaddressdataDB = (result:any)=> {
                   type="text"
                   value={phoneNumber}
                   onChange={(e) => setPhoneNumber(e.target.value)}
-                  className="border rounded-lg w-full h-9 px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
@@ -244,7 +244,7 @@ const AddaddressdataDB = (result:any)=> {
               <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2 ">
                 Country Code
               </label>
-              <select className=" bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-lg">
+              <select className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]">
                 <option value="maile">+91</option>
                 <option value="maile">+50</option>
                 <option value="maile">+08</option>
@@ -264,7 +264,7 @@ const AddaddressdataDB = (result:any)=> {
                   type="text"
                   value={phoneNumber}
                   onChange={(e) => setPhoneNumber(e.target.value)}
-                  className="border rounded-lg w-full h-9 px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
@@ -286,7 +286,7 @@ const AddaddressdataDB = (result:any)=> {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="border rounded-lg w-full h-9 px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
@@ -306,7 +306,7 @@ const AddaddressdataDB = (result:any)=> {
                   type="text"
                   value={indNumber}
                   onChange={(e) => setIndNumber(e.target.value)}
-                  className=" bg-white text-[14px] leading-[19.07px] font-[openSans] text-[#333333]   h-9 w-full border border-[#00A264] focus:outline-none rounded-lg"
+                  className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />

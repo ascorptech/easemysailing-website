@@ -5,14 +5,14 @@ import Link from "next/link";
 
 const NumberContent = () => {
   return (
-    <div className="flex sm:md:flex-row lg:mb-12 mb-5 lg:w-full  flex-col sm:md:w-[90%] justify-between self-center">
+    <div className="flex sm:md:flex-row lg:mb-12 mb-5 lg:w-full lg:mt-0 mt-5 flex-col sm:md:w-[90%] justify-between self-center">
       <div className="sm:md:w-[50%] lg:ml-10 lg:mt-10 flex lg:w-[60%] flex-col  ">
         <h2 className="text-[21px] lg:ml-8 mx-3 lg:mx-0 md:text-3xl  md:text-left lg:text-5xl font-[800]  ">
           SEAFARERS POWERING GLOBAL{" "}
           <span className="text-[#00A264]"> TRADE AND ECONOMY</span>
         </h2>
         {/* first rating */}
-        <div className="flex pt-8 sm:md:flex-row flex-col  space-y-4 lg:ml-6 sm:md:mx-0 mx-4">
+        <div className="flex pt-8 sm:md:flex-row flex-col ml-11 space-y-4 lg:ml-6 sm:md:mx-0 mx-4">
           <div className="relative flex-wrap justify-center lg:mt-4 flex items-center sm:justify-around gap-x-16 md:gap-x-10 border-2 rounded-r-full lg:px-[2.5rem] lg:w-[300px] lg:h-[90px] sm:md:ml-9 shadow-md mx-6">
             <div className="absolute text-lg -left-9 md:text-2xl ml-[1.5px] lg:ml-[0px]">
               {/* <BsFillPeopleFill /> */}
@@ -77,7 +77,7 @@ const NumberContent = () => {
         </div>
 
         {/* another rating */}
-        <div className="flex mt-4 sm:md:flex-row flex-col space-y-4 lg:ml-6 sm:md:mx-0 mx-4 mb-2 sm:md:mb-0">
+        <div className="flex mt-4 ml-11 sm:md:flex-row flex-col space-y-4 lg:ml-6 sm:md:mx-0 mx-4 mb-2 sm:md:mb-0">
           <div className="relative justify-center lg:mt-4 flex items-center sm:justify-around gap-x-16 md:gap-x-10 border-2 rounded-r-full lg:px-[2.5rem] lg:w-[300px] lg:h-[90px] sm:md:ml-9 shadow-md mx-6">
             <div className="absolute text-lg -left-9 md:text-2xl ml-[1.5px]">
               {/* <BsFillPeopleFill /> */}

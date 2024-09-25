@@ -16,6 +16,14 @@ const PreSeaTrainigDetails = () => {
   const [exdate1, setExDate1] = useState("");
   const [salary, setSalary] = useState("");
   const [number, setNumber] = useState("");
+  const [crewManager, setCrewManager] = useState("");
+  const [technicalManager, setTechnicalManager] = useState("");
+  const [operator, setOperator] = useState("");
+  const [vesselType, setVesselType] = useState("");
+  const [commercialSpecification, setCommercialSpecification] = useState("");
+  const [designSpecification, setDesignSpecification] = useState("");
+  const [dPHours, setDPHours] = useState("");
+  const [numberOfrig, setNumberOfrig] = useState("");
 
   //   const handleFileChange = (event: any) => {
   //     setSelectedFile(event.target.files[0]);
@@ -42,17 +50,17 @@ const PreSeaTrainigDetails = () => {
         <div className="   ">
           <label
             className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
-            htmlFor="number"
+            htmlFor="permanent"
           >
             Permanent (per day)
           </label>
           <input
-            id="number"
-            type="textr"
+            id="permanent"
+            type="text"
             value={permanect}
             onChange={(e) => setPermanect(e.target.value)}
-            className="border border-[#00A264] rounded-md w-full h-11 py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 focus:shadow-outline "
-            placeholder="Enter Number"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            placeholder=""
             required
           />
         </div>
@@ -65,7 +73,7 @@ const PreSeaTrainigDetails = () => {
           </label>
           <select
             id="option"
-            className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
           >
             <option value="" disabled selected>
@@ -80,16 +88,16 @@ const PreSeaTrainigDetails = () => {
         <div className="   ">
           <label
             className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
-            htmlFor="number"
+            htmlFor="salaryis"
           >
             Salary is Negotiable
           </label>
           <input
-            id="number"
-            type="textr"
+            id="salaryis"
+            type="text"
             value={salary}
             onChange={(e) => setSalary(e.target.value)}
-            className="border border-[#00A264] rounded-md w-full h-9 py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 focus:shadow-outline "
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             placeholder="Yes/No"
             required
           />
@@ -102,13 +110,13 @@ const PreSeaTrainigDetails = () => {
         <div className=" ">
           <label
             className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
-            htmlFor="options"
+            htmlFor="minBoard"
           >
             Min. Time on Board (weeks)
           </label>
           <select
-            id="options"
-            className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-9 focus:outline-green-300 border border-[#00A264]"
+            id="minBoard"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
           >
             <option value="" disabled selected>
@@ -123,13 +131,13 @@ const PreSeaTrainigDetails = () => {
         <div className=" ">
           <label
             className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
-            htmlFor="options"
+            htmlFor="maxBoard"
           >
             Max. Time on Board (weeks)
           </label>
           <select
-            id="options"
-            className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+            id="maxBoard"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
           >
             <option value="" disabled selected>
@@ -144,13 +152,13 @@ const PreSeaTrainigDetails = () => {
         <div className=" ">
           <label
             className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
-            htmlFor="options"
+            htmlFor="minHome"
           >
             Min. Time at Home (weeks)
           </label>
           <select
-            id="options"
-            className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-9 focus:outline-green-300 border border-[#00A264]"
+            id="minHome"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
           >
             <option value="" disabled selected>
@@ -165,13 +173,13 @@ const PreSeaTrainigDetails = () => {
         <div className=" ">
           <label
             className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
-            htmlFor="options"
+            htmlFor="maxHome"
           >
             Max. Time at Home (weeks)
           </label>
           <select
-            id="options"
-            className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+            id="maxHome"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
           >
             <option value="" disabled selected>
@@ -191,13 +199,13 @@ const PreSeaTrainigDetails = () => {
         <div className=" ">
           <label
             className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
-            htmlFor="options"
+            htmlFor="certificate1"
           >
             Certificate
           </label>
           <select
-            id="options"
-            className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-9 focus:outline-green-300 border border-[#00A264]"
+            id="certificate1"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
           >
             <option value="" disabled selected>
@@ -210,28 +218,32 @@ const PreSeaTrainigDetails = () => {
         </div>
 
         <div className="   ">
-          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] ">
+          <label
+            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+            htmlFor="trainingCenter"
+          >
             Training Center
           </label>
           <input
+            id="trainingCenter"
             type="text"
             value={trainingCenter}
             onChange={(e) => setTrainingCenter(e.target.value)}
-            className="border border-[#00A264] rounded-md w-full h-9 px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 focus:shadow-outline "
-            placeholder="Enter Number"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+            placeholder=""
             required
           />
         </div>
         <div className=" ">
           <label
             className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
-            htmlFor="options"
+            htmlFor="issuingCountry"
           >
             Issuing Country
           </label>
           <select
-            id="options"
-            className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-9 focus:outline-green-300 border border-[#00A264]"
+            id="issuingCountry"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
           >
             <option value="" disabled selected>
@@ -244,14 +256,18 @@ const PreSeaTrainigDetails = () => {
         </div>
 
         <div className="   ">
-          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] ">
+          <label
+            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+            htmlFor="number01"
+          >
             Number
           </label>
           <input
+            id="number01"
             type="text"
             value={number}
             onChange={(e) => setNumber(e.target.value)}
-            className="border border-[#00A264] rounded-md w-full h-9  px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 focus:shadow-outline "
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             placeholder=""
             required
           />
@@ -261,14 +277,14 @@ const PreSeaTrainigDetails = () => {
         <div className="">
           <label
             className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
-            htmlFor="issue"
+            htmlFor="issue01"
           >
             Issue Date
           </label>
           <input
-            id="issue"
+            id="issue01"
             type="date"
-            className="border focus:outline-green-300 w-full text-[14px] leading-[19.07px] font-[openSans] text-[#333333] h-9 rounded-md border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             value={issuedate}
             onChange={(e) => setIssueDate(e.target.value)}
           />
@@ -281,231 +297,335 @@ const PreSeaTrainigDetails = () => {
             Expiry Date
           </label>
           {/* <div className="flex items-center gap-4 "> */}
-            <input
-              id="expiryDate"
-              type="date"
-              className="border focus:outline-green-300 w-full text-[14px] leading-[19.07px] font-[openSans] text-[#333333] h-9 rounded-md border-[#00A264]"
-              value={exdate}
-              onChange={(e) => setExDate(e.target.value)}
-            />
-          {/* </div> */}
-          </div>
-
-          <div className="">
-            {/* <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]  " htmlFor="expiryDate">
-          Expiry Date
-        </label>
-        <div className="flex items-center gap-4 mt-2">
           <input
             id="expiryDate"
             type="date"
-            className="border focus:outline-green-300 w-[65%] text-[14px] leading-[19.07px] font-[openSans] text-[#333333] h-11 rounded-md border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             value={exdate}
             onChange={(e) => setExDate(e.target.value)}
-          /> */}
-
-            <input
-              id="neverExpires"
-              type="checkbox"
-              className="border focus:ring-[#00A264] text-[14px] leading-[19.07px] font-[openSans] text-[#333333]  checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264]"
-              //   value={exdate}
-              //   onChange={(e) => setExDate(e.target.value)}
-            />
-            <label
-              className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
-              htmlFor="neverExpires"
-            >
-              Never Expires
-            </label>
-          
-        </div>
-      </div>
-      <div className="flex items-center justify-center my-4">
-        <div className="flex gap-4 items-center  ">
-          <label
-            htmlFor="file-upload"
-            className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[openSans]  "
-          >
-            Attachment Document
-          </label>
-          <input
-            id="file-upload"
-            type="file"
-            className="hidden"
-            onChange={handleFileChange}
           />
-          {/* {selectedFile && (
+          {/* </div> */}
+        </div>
+
+        <div className="">
+          <input
+            id="neverExpires01"
+            type="checkbox"
+            className="border focus:ring-[#00A264] text-[14px] leading-[19.07px] font-[openSans] text-[#333333]  checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264]"
+            //   value={exdate}
+            //   onChange={(e) => setExDate(e.target.value)}
+          />
+          <label
+            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+            htmlFor="neverExpires01"
+          >
+            Never Expires
+          </label>
+        </div>
+
+        <div className="grid col-span-2">
+          <div className="flex gap-4 items-center justify-center ">
+            <label
+              htmlFor="file-upload"
+              className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[openSans]"
+            >
+              Attachment Document
+            </label>
+            <input
+              id="file-upload"
+              type="file"
+              className="hidden"
+              onChange={handleFileChange}
+            />
+            {/* {selectedFile && (
           <p className="mt-4 text-gray-700">
             File Selected: {selectedFile.name}
           </p>
         )} */}
-        </div>
-        <div>
-          {selectedFile ? (
-            <p className="mt-4 text-gray-700">
-              File Selected: {selectedFile.name}
-            </p>
-          ) : (
-            <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-              No file selected
-            </p>
-          )}
-        </div>
-      </div>
-
-      {/* second section */}
-      <div className=" flex flex-col items-center">
-        <h1 className="font-bold">ECDIS</h1>
-
-        <div className="grid grid-cols-2 gap-4">
-          <div className="">
-            <label
-              className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
-              htmlFor="option1"
-            >
-              Training
-            </label>
-            <select
-              id="option1"
-              className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-9 focus:outline-green-300 border border-[#00A264]"
-              name="options"
-            >
-              <option value="" disabled selected>
-                Training
-              </option>
-              <option value="">Training1</option>
-              <option value="">Training2</option>
-              <option value="">Training3</option>
-            </select>
-          </div>
-          <div className="   ">
-            <label
-              className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
-              htmlFor="trainingC"
-            >
-              Training Center
-            </label>
-            <input
-              id="trainingC"
-              type="text"
-              value={trainingCenter}
-              onChange={(e) => setTrainingCenter(e.target.value)}
-              className="border border-[#00A264] rounded-md w-full h-9 py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 focus:shadow-outline  "
-              placeholder=""
-              required
-            />
-          </div>
-
-          <div className=" ">
-            <label
-              className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
-              htmlFor="optionT"
-            >
-              Issuing Country
-            </label>
-            <select
-              id="optionT"
-              className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-9 focus:outline-green-300 border border-[#00A264]"
-              name="options"
-            >
-              <option value="" disabled selected>
-                Issuing Country
-              </option>
-              <option value="">India</option>
-              <option value="">Us</option>
-              <option value="">England</option>
-            </select>
-          </div>
-          {/* <div className=""> */}
-
-          <div className="   ">
-            <label
-              className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
-              htmlFor="eCDISNumber"
-            >
-              Enter Number
-            </label>
-            <input
-              id="eCDISNumber"
-              type="number"
-              value={eCDISNumber}
-              onChange={(e) => setECDISNumber(e.target.value)}
-              className="border border-[#00A264] rounded-md w-full h-9 py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 focus:shadow-outline "
-              placeholder=""
-              required
-            />
-          </div>
-
-          {/* </div> */}
-          <div className="">
-            <label
-              className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
-              htmlFor="issue1"
-            >
-              Issue Date
-            </label>
-            <input
-              id="issue1"
-              type="date"
-              className="border focus:outline-green-300 w-full text-[14px] px-2 leading-[19.07px] font-[openSans] text-[#333333]  h-9 rounded-md border-[#00A264]"
-              value={issuedate1}
-              onChange={(e) => setIssueDate1(e.target.value)}
-            />
-          </div>
-
-          <div className="">
-            <label
-              className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]  "
-              htmlFor="expiryDate1"
-            >
-              Expiry Date
-            </label>
-
-            <input
-              id="expiryDate1"
-              type="date"
-              className="border focus:outline-green-300 w-full text-[14px] leading-[19.07px] font-[openSans] text-[#333333] h-9 rounded-md border-[#00A264]"
-              value={exdate1}
-              onChange={(e) => setExDate1(e.target.value)}
-            />
-          </div>
-          <div className=" flex items-center  gap-4">
-            <input
-              id="neverExpires"
-              type="checkbox"
-              className="border focus:ring-[#00A264]  text-[#00A264] checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
-              //   value={exdate}
-              //   onChange={(e) => setExDate(e.target.value)}
-            />
-            <label
-              className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
-              htmlFor="neverExpires"
-            >
-              Never Expires
-            </label>
+            {/* </div> */}
+            <div>
+              {selectedFile ? (
+                <p className="mt-4 text-gray-700">
+                  File Selected: {selectedFile.name}
+                </p>
+              ) : (
+                <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+                  No file selected
+                </p>
+              )}
+            </div>
           </div>
         </div>
 
-        <div className="flex gap-6 items-center  my-6 ">
-          <label
-            htmlFor="file-upload1"
-            className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  text-[14px] leading-[19.07px] font-[openSans]  hover:bg-[#04714e] focus:outline-none focus:ring-2 "
+        <div className="grid col-span-2 ">
+          <h1 className="font-bold text-center">Company Name/Ship type</h1>
+        </div>
+
+        {/* <div className="grid grid-cols-2 gap-4"> */}
+        <div className="">
+          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] ">
+            Pump Type
+          </label>
+          <select
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            name="options"
           >
-            Attach Docoment
+            <option value="" disabled selected>
+              Pump Type
+            </option>
+            <option value="">Training1</option>
+            <option value="">Training2</option>
+            <option value="">Training3</option>
+          </select>
+        </div>
+        <div className="   ">
+          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] ">
+            Crew Manager
           </label>
           <input
-            id="file-upload1"
-            type="file"
-            className="hidden"
-            onChange={handleFileChanges}
+            type="text"
+            value={crewManager}
+            onChange={(e) => setCrewManager(e.target.value)}
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+            placeholder=""
+            required
           />
-          {selectedFiles ? (
-            <p className="text-gray-700">File Selected: {selectedFiles.name}</p>
-          ) : (
-            <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-              No file selected
-            </p>
-          )}
+        </div>
+        <div className="   ">
+          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] ">
+            Technical Manager
+          </label>
+          <input
+            type="text"
+            value={technicalManager}
+            onChange={(e) => setTechnicalManager(e.target.value)}
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+            placeholder=""
+            required
+          />
+        </div>
+        <div className="   ">
+          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] ">
+            Operator
+          </label>
+          <input
+            type="text"
+            value={operator}
+            onChange={(e) => setOperator(e.target.value)}
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+            placeholder=""
+            required
+          />
+        </div>
+
+        <div className="grid col-span-2">
+          <h1 className="text-center font-bold">Company Name/Ship type</h1>
+        </div>
+        <div className="   ">
+          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] ">
+            Vessel Type
+          </label>
+          <input
+            type="text"
+            value={vesselType}
+            onChange={(e) => setVesselType(e.target.value)}
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+            placeholder=""
+            required
+          />
+        </div>
+
+        <div className="   ">
+          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] ">
+            Vessel Type - Commercial Specification
+          </label>
+          <input
+            type="text"
+            value={commercialSpecification}
+            onChange={(e) => setCommercialSpecification(e.target.value)}
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+            placeholder=""
+            required
+          />
+        </div>
+
+        <div className="   ">
+          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] ">
+            Vessel Type - Design Specification
+          </label>
+          <input
+            type="text"
+            value={designSpecification}
+            onChange={(e) => setDesignSpecification(e.target.value)}
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            placeholder=""
+            required
+          />
+        </div>
+
+        <div className="grid col-span-2">
+          <h1 className="text-center font-bold">OFFSHORE SPECIFIC SKILLS</h1>
+
+          <div className="   ">
+            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] ">
+              DP hours
+            </label>
+            <input
+              type="text"
+              value={dPHours}
+              onChange={(e) => setDPHours(e.target.value)}
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+              placeholder=""
+              required
+            />
+          </div>
+        </div>
+
+        <div className="grid col-span-2">
+          <h1 className="text-center font-bold">Rig Move Experience</h1>
+        </div>
+
+        <div className=" ">
+          <label
+            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+            htmlFor="vesseltype"
+          >
+            Vessel type
+          </label>
+          <select
+            id="vesseltype"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            name="options"
+          >
+            <option value="" disabled selected>
+              Vessel type
+            </option>
+            <option value="">India</option>
+            <option value="">Us</option>
+            <option value="">England</option>
+          </select>
+        </div>
+
+        <div className=" ">
+          <label
+            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+            htmlFor="rank01"
+          >
+            Rank
+          </label>
+          <select
+            id="rank01"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            name="options"
+          >
+            <option value="" disabled selected>
+              Rank
+            </option>
+            <option value="">India</option>
+            <option value="">Us</option>
+            <option value="">England</option>
+          </select>
+        </div>
+        {/* <div className=""> */}
+
+        <div className="   ">
+          <label
+            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+            htmlFor="numberOfrig"
+          >
+            Number of rig moves
+          </label>
+          <input
+            id="numberOfrig"
+            type="number"
+            value={numberOfrig}
+            onChange={(e) => setNumberOfrig(e.target.value)}
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+            placeholder=""
+            required
+          />
+        </div>
+        <div className=" ">
+          <label
+            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+            htmlFor="moveditem"
+          >
+            Moved item
+          </label>
+          <select
+            id="moveditem"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            name="options"
+          >
+            <option value="" disabled selected>
+              Moved item
+            </option>
+            <option value="">India</option>
+            <option value="">Us</option>
+            <option value="">England</option>
+          </select>
+        </div>
+        <div className=" ">
+          <label
+            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+            htmlFor=" waterdepth"
+          >
+            Water depth
+          </label>
+          <select
+            id="waterdepth"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            name="options"
+          >
+            <option value="" disabled selected>
+              Water depth
+            </option>
+            <option value="">India</option>
+            <option value="">Us</option>
+            <option value="">England</option>
+          </select>
+        </div>
+
+        <div className=" ">
+          <label
+            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+            htmlFor="tradingarea"
+          >
+            Trading area
+          </label>
+          <select
+            id="tradingarea"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            name="options"
+          >
+            <option value="" disabled selected>
+              Trading area
+            </option>
+            <option value="">India</option>
+            <option value="">Us</option>
+            <option value="">England</option>
+          </select>
+        </div>
+
+        <div className="grid col-span-2 ">
+          <label
+            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+            htmlFor="winchDrive"
+          >
+            Winch Drive Experience
+          </label>
+          <select
+            id="winchDrive"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            name="options"
+          >
+            <option value="" disabled selected>
+              Winch Drive Experience
+            </option>
+            <option value="">India</option>
+            <option value="">Us</option>
+            <option value="">England</option>
+          </select>
         </div>
       </div>
 

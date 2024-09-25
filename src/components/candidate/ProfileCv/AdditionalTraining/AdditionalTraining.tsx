@@ -45,7 +45,7 @@ const AdditionalTraining = () => {
           </label>
           <select
             id="option4"
-            className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
           >
             <option value="" disabled selected>
@@ -69,7 +69,7 @@ const AdditionalTraining = () => {
               type="text"
               value={trainingCenter}
               onChange={(e) => setTrainingCenter(e.target.value)}
-              className="border border-[#00A264] rounded-md w-full h-11 py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 focus:shadow-outline "
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder=""
               required
             />
@@ -82,7 +82,7 @@ const AdditionalTraining = () => {
           </label>
           <select
             id="options1"
-            className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
           >
             <option value="" disabled selected>
@@ -105,7 +105,7 @@ const AdditionalTraining = () => {
             type="number"
             value={number}
             onChange={(e) => setNumber(e.target.value)}
-            className="border border-[#00A264] rounded-md w-full h-11 py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 focus:shadow-outline "
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             placeholder=""
             required
           />
@@ -121,7 +121,7 @@ const AdditionalTraining = () => {
           <input
             id="issue3"
             type="date"
-            className="border focus:outline-green-300 w-full text-[14px] leading-[19.07px] font-[openSans] text-[#333333] h-11 rounded-md border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             value={issuedate}
             onChange={(e) => setIssueDate(e.target.value)}
           />
@@ -136,13 +136,13 @@ const AdditionalTraining = () => {
           <input
             id="expiryDate3"
             type="date"
-            className="border focus:outline-green-300  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full  h-11 rounded-md border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             value={exdate}
             onChange={(e) => setExDate(e.target.value)}
           />
           </div>
           </div>
-          <div className="flex items-center gap-4">
+          {/* <div className="flex items-center gap-4">
 
           <input
             id="neverExpires1"
@@ -157,10 +157,25 @@ const AdditionalTraining = () => {
           >
             Never Expires
           </label>
-        {/* </div> */}
-      </div>
-
-      <div className="flex gap-6 items-center  my-6">
+       
+      </div> */}
+       <div className=" flex items-center  gap-4">
+            <input
+              id="neverExpires"
+              type="checkbox"
+              className="border focus:ring-[#00A264]  text-[#00A264] checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
+              //   value={exdate}
+              //   onChange={(e) => setExDate(e.target.value)}
+            />
+            <label
+              className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+              htmlFor="neverExpires"
+            >
+              Never Expires
+            </label>
+          </div>
+<div className="grid col-span-2">
+      <div className="flex gap-6 items-center justify-center">
         <label
           htmlFor="file-upload3"
           className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[openSans]  "
@@ -173,11 +188,19 @@ const AdditionalTraining = () => {
           className="hidden"
           onChange={handleFileChange}
         />
-        {selectedFile && (
+        {/* {selectedFile && (
           <p className="mt-4 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
             File Selected: {selectedFile.name}
           </p>
-        )}
+        )} */}
+         {selectedFiles ? (
+              <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+                File Selected: {selectedFiles.name}
+              </p>
+            ) : (
+              <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">No file selected</p>
+            )}
+      </div>
       </div>
 
       {/* second section */}
@@ -200,7 +223,7 @@ const AdditionalTraining = () => {
             </label>
             <select
               id="option2"
-              className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
             >
               <option value="" disabled selected>
@@ -219,7 +242,7 @@ const AdditionalTraining = () => {
             </label>
             <select
               id="level"
-              className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
             >
               <option value="" disabled selected>
@@ -243,7 +266,7 @@ const AdditionalTraining = () => {
               type="text"
               value={trainingCenter1}
               onChange={(e) => setTrainingCenter1(e.target.value)}
-              className="border border-[#00A264] rounded-md w-full h-11 py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 focus:shadow-outline "
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder=""
               required
             />
@@ -255,7 +278,7 @@ const AdditionalTraining = () => {
             </label>
             <select
               id="typeoftest"
-              className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
             >
               <option value="" disabled selected>
@@ -280,7 +303,7 @@ const AdditionalTraining = () => {
               type="text"
               value={result}
               onChange={(e) => setResult(e.target.value)}
-              className="border border-[#00A264] rounded-md w-full h-11 py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 focus:shadow-outline "
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder=""
               required
             />
@@ -293,7 +316,7 @@ const AdditionalTraining = () => {
             </label>
             <select
               id="optionT1"
-              className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
             >
               <option value="" disabled selected>
@@ -318,7 +341,7 @@ const AdditionalTraining = () => {
               type="number"
               value={eCDISNumber}
               onChange={(e) => setECDISNumber(e.target.value)}
-              className="border border-[#00A264] rounded-md w-full h-11 py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 focus:shadow-outline "
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder=""
               required
             />
@@ -332,7 +355,7 @@ const AdditionalTraining = () => {
             <input
               id="issue2"
               type="date"
-              className="border focus:outline-green-300 w-full text-[14px] leading-[19.07px] font-[openSans] text-[#333333]  h-11 rounded-md border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={issuedate1}
               onChange={(e) => setIssueDate1(e.target.value)}
             />
@@ -349,7 +372,7 @@ const AdditionalTraining = () => {
             <input
               id="expiryDate2"
               type="date"
-              className="border text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 w-full  h-11 rounded-md border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={exdate1}
               onChange={(e) => setExDate1(e.target.value)}
             />
@@ -369,8 +392,8 @@ const AdditionalTraining = () => {
               Never Expires
             </label>
           </div>
-
-          <div className="flex gap-6 items-center  ">
+      <div className="grid col-span-2">
+          <div className="flex gap-4 items-center justify-center ">
             <label
               htmlFor="file-upload2"
               className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] text-[14px] leading-[19.07px] font-[openSans]  focus:outline-none focus:ring-2 "
@@ -392,7 +415,7 @@ const AdditionalTraining = () => {
             )}
           </div>
         </div>
-        {/* </div> */}
+        </div>
       {/* </div> */}
 
       {/* Third section */}

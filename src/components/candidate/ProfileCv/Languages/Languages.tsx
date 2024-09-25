@@ -62,7 +62,7 @@ const Languages = () => {
                 Language
               </label>
               <select
-                className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-lg"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={currentPosition}
                 onChange={(e) => setCurrentPosition(e.target.value)}
               >
@@ -84,7 +84,7 @@ const Languages = () => {
             Language
             </label>
             <select
-              className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-lg"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={alternatePosition}
               onChange={(e) => setAlternatePosition(e.target.value)}
             >
@@ -103,7 +103,7 @@ const Languages = () => {
             Level
             </label>
             <select
-              className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-lg"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={preferredVesselType}
               onChange={(e) => setPreferredVesselType(e.target.value)}
             >
@@ -125,7 +125,7 @@ const Languages = () => {
               Level
             </label>
             <select
-              className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-lg"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={alternateVesselType}
               onChange={(e) => setAlternateVesselType(e.target.value)}
             >
@@ -150,7 +150,7 @@ const Languages = () => {
               Language
             </label>
             <select
-              className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={alternateVesselType}
               onChange={(e) => setAlternateVesselType(e.target.value)}
             >
@@ -176,7 +176,7 @@ const Languages = () => {
                 type="text"
                 value={nextKinName}
                 onChange={(e) => setNextKinName(e.target.value)}
-                className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-lg"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder=""
                 required
               />
@@ -195,7 +195,7 @@ const Languages = () => {
                   type="text"
                   value={nextKinShip}
                   onChange={(e) => setNextKinShip(e.target.value)}
-                  className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
@@ -214,7 +214,7 @@ const Languages = () => {
                   type="text"
                   value={nextKinAddre}
                   onChange={(e) => setNextKinAddre(e.target.value)}
-                  className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
@@ -228,7 +228,7 @@ const Languages = () => {
             </label>
             <input
               type="date"
-              className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={availabilityDate}
               onChange={(e) => setAvailabilityDate(e.target.value)}
             />
@@ -241,7 +241,7 @@ const Languages = () => {
               Issuing Country
             </label>
             <select
-              className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={available}
               onChange={(e) => setAvailable(e.target.value)}
             >

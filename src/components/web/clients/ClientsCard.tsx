@@ -7,7 +7,7 @@ interface ClientsCardProps {
   name: string;
   role: string;
   imageSrc: string;
-  image1: string;
+  isActive: boolean; // Add isActive prop
 }
 
 const ClientsCard: React.FC<ClientsCardProps> = ({
@@ -15,11 +15,15 @@ const ClientsCard: React.FC<ClientsCardProps> = ({
   name,
   role,
   imageSrc,
-  image1,
+  isActive, // Destructure isActive
 }) => {
   return (
     <div className="flex justify-center items-center">
-      <div className="bg-white p-6 lg:w-[300px] lg:h-[430px] w-[280px] h-[400px] rounded-full ml-10 flex flex-col justify-center items-center flex-shrink-0 transition-transform hover:scale-110 hover:border hover:border-[#00A264]">
+      <div
+        className={`bg-white p-6 lg:w-[300px] lg:h-[430px] w-[280px] h-[400px] rounded-full ml-10 flex flex-col justify-center items-center flex-shrink-0 transition-transform ${
+          isActive ? "scale-110" : "scale-90"
+        }`} // Apply scale class based on isActive
+      >
         {/* Image Section */}
         <div className="flex justify-center items-center mb-4">
           <Image

@@ -21,10 +21,10 @@ const AboutMe = () => {
         {/* next of About me */}
 
         <div>
-            <div className="flex flex-col mt-4 ">
+            <div className="flex flex-col gap-4 ">
               <h1 className="text-center font-semibold mb-2">ABOUT ME</h1>
 
-              <div className="">
+              <div className="flex flex-col gap-4">
                 <div className=" ">
                   <label
                     className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
@@ -32,17 +32,17 @@ const AboutMe = () => {
                   >
                     My Personality and professional Attitude
                   </label>
-                  <div className="relative flex items-center  ">
+                 
                     <input
                       id="personality"
                       type="text"
                       value={personality}
                       onChange={(e) => setPersonality(e.target.value)}
-                      className="border rounded-lg w-full py-[7px] px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
+                      className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                       placeholder=""
                       required
                     />
-                  </div>
+                
                 </div>
                 <div className="">
                   <label
@@ -57,7 +57,7 @@ const AboutMe = () => {
                       type="text"
                       value={additional}
                       onChange={(e) => setAdditional(e.target.value)}
-                      className="border rounded-lg w-full py-[7px] px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
+                      className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                       placeholder=""
                       required
                     />
@@ -76,7 +76,7 @@ const AboutMe = () => {
                       type="text"
                       value={myFuture}
                       onChange={(e) => setMyFuture(e.target.value)}
-                      className="border rounded-md w-full py-[7px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
+                      className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                       placeholder=""
                       required
                     />
@@ -96,7 +96,7 @@ const AboutMe = () => {
                       type="text"
                       value={criminal}
                       onChange={(e) => setCriminal(e.target.value)}
-                      className="border rounded-lg w-full py-[7px] px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
+                      className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                       placeholder="Yes/No"
                       required
                     />

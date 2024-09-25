@@ -125,7 +125,7 @@ const PersonalDetails = () => {
                     type="text"
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
-                    className="border rounded-md w-full h-9 py-[8px] px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
+                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter First Name"
                     required
                   />
@@ -144,7 +144,7 @@ const PersonalDetails = () => {
                     type="text"
                     value={middleName}
                     onChange={(e) => setmidddleName(e.target.value)}
-                    className="border rounded-md w-full h-9 py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
+                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter middle Name"
                     required
                   />
@@ -165,7 +165,7 @@ const PersonalDetails = () => {
                   type="text"
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
-                  className="border rounded-md h-9 w-full py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline  border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder="Enter Last Name"
                   required
                 />
@@ -178,7 +178,7 @@ const PersonalDetails = () => {
                   Gender
                 </label>
                 <select
-                  className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={gender}
                   onChange={(e) => setGender(e.target.value)}
                   required
@@ -195,7 +195,7 @@ const PersonalDetails = () => {
                 </label>
                 <input
                   type="date"
-                  className="border w-full p-2 h-9 rounded-md border-[#00A264] text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
                 />
@@ -210,7 +210,7 @@ const PersonalDetails = () => {
                   Country of Birth
                 </label>
                 <select
-                  className="bg-white h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full border border-[#00A264] focus:outline-none rounded-md"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={countryOfBirth}
                   onChange={(e) => setCountryOfBirth(e.target.value)}
                   required
@@ -235,7 +235,7 @@ const PersonalDetails = () => {
                     type="text"
                     value={cityName}
                     onChange={(e) => setCityName(e.target.value)}
-                    className="border rounded-md w-full h-9 py-[8px] px-2text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
+                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter your city"
                     required
                   />
@@ -251,7 +251,7 @@ const PersonalDetails = () => {
                   Nationality
                 </label>
                 <select
-                  className="bg-white w-full h-9 border border-[#00A264] text-[14px] leading-[19.07px] font-[openSans] text-[#333333] rounded-md"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={nationality}
                   onChange={(e) => setNationality(e.target.value)}
                 >
@@ -275,7 +275,7 @@ const PersonalDetails = () => {
                     type="text"
                     value={religionName}
                     onChange={(e) => setReligionName(e.target.value)}
-                    className="border rounded-lg w-full h-9 py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
+                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter Religion Name"
                     required
                   />
@@ -286,7 +286,7 @@ const PersonalDetails = () => {
                 Marital Status
                 </label>
                 <select
-                  className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={gender}
                   onChange={(e) => setGender(e.target.value)}
                   required

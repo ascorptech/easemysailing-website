@@ -23,6 +23,7 @@ import Ecdis from "./Ecdis/Ecdis";
 import Education from "./Education/Education";
 import AcademicDetails from "./AcademicDetails/AcademicDetails";
 import ProfessionalSkills from "./ProfessionalSkills/ProfessionalSkills";
+import VettingServices from "./VettingServices/VettingServices";
 
 const MyJob = () => {
   const [isOpen, setIsOpen] = useState(false); // State to toggle
@@ -499,7 +500,7 @@ const MyJob = () => {
               </div>
             </div>
 
-            {!academicOpen&& <AcademicDetails />}
+            {academicOpen&& <AcademicDetails />}
 
             <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF9900] mt-3">
               <h2 className="">SeaGoing Experience </h2>
@@ -642,7 +643,7 @@ const MyJob = () => {
 
               
 
-              <div
+              {/* <div
                 className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF9900] mt-3"
                 onClick={handleEase}
               >
@@ -686,7 +687,7 @@ const MyJob = () => {
                   <CircularProgress percentage={100} color="#FF9900" />
                 </div>
               </div>
-              {easeOpen && <MyJobRequirements />}
+              {easeOpen && <MyJobRequirements />} */}
             </div>
           </div>
         </div>
@@ -1144,7 +1145,7 @@ const MyJob = () => {
               {refOpen && <Refrences />}
 
             <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#00A264] mt-3">
-              <h2 className="">Modular Courses Details</h2>
+              <h2 className="">Vetting Service</h2>
               <div className="flex items-center justify-center gap-1">
                 <span className="ml-2 cursor-pointer" onClick={hendleModular}>
                   {mCOpen ? (
@@ -1182,7 +1183,7 @@ const MyJob = () => {
                 <CircularProgress percentage={100} color="#00A264" />
               </div>
             </div>
-            {mCOpen && <MyJobRequirements />}
+            {mCOpen && <VettingServices />}
 
           
 
@@ -1190,7 +1191,7 @@ const MyJob = () => {
 
             
 
-            <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
+            {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
               <h2 className="">Offshore Requirements</h2>
               <div className="flex items-center justify-center gap-1">
                 <span className="ml-2 cursor-pointer" onClick={handleOffshore}>
@@ -1230,9 +1231,9 @@ const MyJob = () => {
               </div>
             </div>
 
-            {offshoreOpen && <MyJobRequirements />}
+            {offshoreOpen && <MyJobRequirements />} */}
 
-            <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#00A264] mt-3">
+            {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#00A264] mt-3">
               <h2 className="">Family Details (NOK)</h2>
               <div className="flex items-center justify-center gap-1">
                 <span className="ml-2 cursor-pointer" onClick={handleFamily}>
@@ -1271,26 +1272,12 @@ const MyJob = () => {
                 <CircularProgress percentage={99} color="#00A264" />
               </div>
             </div>
-            {fDOpen && <MyJobRequirements />}
+            {fDOpen && <MyJobRequirements />} */}
           </div>
         </div>
       </div>
 
-      {/* <div className="flex gap-2 mt-4">
-        <Link
-          href="#"
-          className="border border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
-        >
-          Save
-        </Link>
-        <Link
-          href="#"
-          className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
-        >
-          Edit
-        </Link>
-      </div> */}
-      {/* </div> */}
+      
     </div>
   );
 };

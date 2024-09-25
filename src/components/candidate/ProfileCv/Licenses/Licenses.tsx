@@ -80,27 +80,10 @@ const Licenses = () => {
   return (
     <div className="container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
-        {/* <div className="  text-[14px] leading-[19.07px]  text-[#333333] gap-4"> */}
-        {/* NATIVE LANGUAGE*/}
+       
         <div className="mb-3">
           <h1 className="font-bold  text-center ">CERTIFICATE OF COMPETENCY</h1>
-          {/* <div>
-              <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-              I do not have a CoC
-              </label>
-              <select
-                className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-lg"
-                value={currentPosition}
-                onChange={(e) => setCurrentPosition(e.target.value)}
-              >
-                <option value="" disabled>
-                Language
-                </option>
-                <option value="Captain">Captain</option>
-                <option value="Captain2">Captain2</option>
-                <option value="Training3">Training3</option>
-              </select>
-            </div> */}
+         
           <div className="w-full ">
             <label
               className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1 "
@@ -114,7 +97,7 @@ const Licenses = () => {
               type="text"
               value={idoNotACoC}
               onChange={(e) => setIdoNotACoC(e.target.value)}
-              className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-lg"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder=""
               required
             />
@@ -131,7 +114,7 @@ const Licenses = () => {
                 Issue Authority
               </label>
               <select
-                className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-lg"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={issueAuthority}
                 onChange={(e) => setIssueAuthority(e.target.value)}
               >
@@ -157,7 +140,7 @@ const Licenses = () => {
                 type="text"
                 value={certificateNo}
                 onChange={(e) => setCertificateNo(e.target.value)}
-                className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-lg"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Number"
                 required
               />
@@ -170,7 +153,7 @@ const Licenses = () => {
                 Certificate Type
               </label>
               <select
-                className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-lg"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={certificateType}
                 onChange={(e) => setCertificateType(e.target.value)}
               >
@@ -187,7 +170,7 @@ const Licenses = () => {
                 STCW Regulation
               </label>
               <select
-                className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-lg"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={sTCWRegulation}
                 onChange={(e) => setSTCWRegulation(e.target.value)}
               >
@@ -212,7 +195,7 @@ const Licenses = () => {
                 type="text"
                 value={areaLimitation}
                 onChange={(e) => setAreaLimitation(e.target.value)}
-                className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder=""
                 required
               />
@@ -231,7 +214,7 @@ const Licenses = () => {
                 type="text"
                 value={otherLimitation}
                 onChange={(e) => setOtherLimitation(e.target.value)}
-                className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder=""
                 required
               />
@@ -244,7 +227,7 @@ const Licenses = () => {
               </label>
               <input
                 type="date"
-                className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={issueDate}
                 onChange={(e) => setIssueDate(e.target.value)}
               />
@@ -255,7 +238,7 @@ const Licenses = () => {
               </label>
               <input
                 type="date"
-                className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={expiryDate}
                 onChange={(e) => setExpiryDate(e.target.value)}
               />
@@ -301,7 +284,7 @@ const Licenses = () => {
                 Issuing Country
               </label>
               <select
-                className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={issuingCountry}
                 onChange={(e) => setIssuingCountry(e.target.value)}
               >
@@ -327,7 +310,7 @@ const Licenses = () => {
                 type="text"
                 value={number}
                 onChange={(e) => setNumber(e.target.value)}
-                className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-lg"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder=""
                 required
               />
@@ -338,7 +321,7 @@ const Licenses = () => {
                 Capacity
               </label>
               <select
-                className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={capacity}
                 onChange={(e) => setCapacity(e.target.value)}
               >
@@ -355,7 +338,7 @@ const Licenses = () => {
                 STCW Regulation
               </label>
               <select
-                className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={wRegulation}
                 onChange={(e) => setWRegulation(e.target.value)}
               >
@@ -373,7 +356,7 @@ const Licenses = () => {
               </label>
               <input
                 type="date"
-                className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={issueDate}
                 onChange={(e) => setIssueDate(e.target.value)}
               />
@@ -384,7 +367,7 @@ const Licenses = () => {
               </label>
               <input
                 type="date"
-                className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={expiryDate}
                 onChange={(e) => setExpiryDate(e.target.value)}
               />
@@ -422,7 +405,7 @@ const Licenses = () => {
                 Not Issued Separately
               </label>
               <select
-                className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-lg"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={separately}
                 onChange={(e) => setSeparately(e.target.value)}
               >
@@ -444,7 +427,7 @@ const Licenses = () => {
                   Type
                 </label>
                 <select
-                  className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={typeOption}
                   onChange={(e) => setTypeOption(e.target.value)}
                 >
@@ -460,7 +443,7 @@ const Licenses = () => {
                   Issuing Country
                 </label>
                 <select
-                  className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={issuingOption}
                   onChange={(e) => setIssuingOption(e.target.value)}
                 >
@@ -483,7 +466,7 @@ const Licenses = () => {
                   type="text"
                   value={number1}
                   onChange={(e) => setNumber1(e.target.value)}
-                  className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
@@ -495,7 +478,7 @@ const Licenses = () => {
                   Capacity
                 </label>
                 <select
-                  className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={capacityOption}
                   onChange={(e) => setCapacityOption(e.target.value)}
                 >
@@ -511,7 +494,7 @@ const Licenses = () => {
                   STCW Regulation
                 </label>
                 <select
-                  className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={sTCWRegulationOption}
                   onChange={(e) => setSTCWRegulationOption(e.target.value)}
                 >
@@ -528,7 +511,7 @@ const Licenses = () => {
                 </label>
                 <input
                   type="date"
-                  className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={issueDateOption}
                   onChange={(e) => setIssueDateOption(e.target.value)}
                 />
@@ -539,7 +522,7 @@ const Licenses = () => {
                 </label>
                 <input
                   type="date"
-                  className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={expiryDateOption}
                   onChange={(e) => setExpiryDateOption(e.target.value)}
                 />

@@ -51,7 +51,7 @@ const ProfessionalSkills = () => {
             </label>
             <select
               id="option1"
-              className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
             >
               <option value="" disabled selected>
@@ -68,7 +68,7 @@ const ProfessionalSkills = () => {
             </label>
             <select
               id="option1"
-              className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
             >
               <option value="" disabled selected>
@@ -90,7 +90,7 @@ const ProfessionalSkills = () => {
             </label>
             <select
               id="option1"
-              className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
             >
               <option value="" disabled selected>
@@ -107,7 +107,7 @@ const ProfessionalSkills = () => {
             </label>
             <select
               id="option1"
-              className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
             >
               <option value="" disabled selected>
@@ -126,7 +126,7 @@ const ProfessionalSkills = () => {
             </label>
             <select
               id="option1"
-              className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
             >
               <option value="" disabled selected>
@@ -143,7 +143,7 @@ const ProfessionalSkills = () => {
             </label>
             <select
               id="option1"
-              className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
             >
               <option value="" disabled selected>
@@ -161,7 +161,7 @@ const ProfessionalSkills = () => {
             </label>
             <select
               id="option1"
-              className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
             >
               <option value="" disabled selected>
@@ -182,7 +182,7 @@ const ProfessionalSkills = () => {
             </label>
             <select
               id="option1"
-              className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
             >
               <option value="" disabled selected>
@@ -211,7 +211,7 @@ const ProfessionalSkills = () => {
             type="text"
             value={maker}
             onChange={(e) => setMaker(e.target.value)}
-            className="border border-[#00A264] rounded-md w-full h-11 py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 focus:shadow-outline "
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             placeholder=""
             required
           />
@@ -228,7 +228,7 @@ const ProfessionalSkills = () => {
             type="text"
             value={sWL}
             onChange={(e) => setSWL(e.target.value)}
-            className="border border-[#00A264] rounded-md w-full h-11 py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 focus:shadow-outline "
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             placeholder=""
             required
           />
@@ -242,7 +242,7 @@ const ProfessionalSkills = () => {
             </label>
             <select
               id=""
-              className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
             >
               <option value="" disabled selected>
@@ -259,7 +259,7 @@ const ProfessionalSkills = () => {
             </label>
             <select
               id=""
-              className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
             >
               <option value="" disabled selected>
@@ -284,7 +284,7 @@ const ProfessionalSkills = () => {
             type="text"
             value={cAvailable}
             onChange={(e) => setCAvailable(e.target.value)}
-            className="border border-[#00A264] rounded-md w-full h-11 py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 focus:shadow-outline "
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             placeholder="Yes/No"
             required
           />
@@ -302,29 +302,12 @@ const ProfessionalSkills = () => {
             type="text"
             value={classApproved}
             onChange={(e) => setClassApproved(e.target.value)}
-            className="border border-[#00A264] rounded-md w-full h-11 py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 focus:shadow-outline "
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
             placeholder="Yes/No"
             required
           />
         </div>
-{/* 
-        <div className="   ">
-          <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
-            htmlFor="number"
-          >
-            Percentage{" "}
-          </label>
-          <input
-            id="number"
-            type="number"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            className="border border-[#00A264] rounded-md w-full h-11 py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 focus:shadow-outline "
-            placeholder=""
-            required
-          />
-        </div> */}
+
 
 
       
@@ -368,7 +351,7 @@ const ProfessionalSkills = () => {
             </label>
             <select
               id=""
-              className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
             >
               <option value="" disabled selected>
@@ -388,7 +371,7 @@ const ProfessionalSkills = () => {
             </label>
             <select
               id=""
-              className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
             >
               <option value="" disabled selected>
@@ -405,7 +388,7 @@ const ProfessionalSkills = () => {
             </label>
             <select
               id=""
-              className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
             >
               <option value="" disabled selected>
@@ -424,7 +407,7 @@ const ProfessionalSkills = () => {
           <input
             id="expiryDate"
             type="date"
-            className="border focus:outline-green-300 w-full text-[14px] leading-[19.07px] font-[openSans] text-[#333333] h-9 rounded-md border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             value={date}
             onChange={(e) => setDate(e.target.value)}
           />
@@ -442,7 +425,7 @@ const ProfessionalSkills = () => {
             type="text"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="border border-[#00A264] rounded-md w-full h-11 py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 focus:shadow-outline "
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             placeholder="Yes/No"
             required
           />
@@ -461,7 +444,7 @@ const ProfessionalSkills = () => {
             type="text"
             value={inspection}
             onChange={(e) => setInspection(e.target.value)}
-            className="border border-[#00A264] rounded-md w-full h-11 py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 focus:shadow-outline "
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
             placeholder=""
             required
           />
@@ -472,7 +455,7 @@ const ProfessionalSkills = () => {
             </label>
             <select
               id=""
-              className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
             >
               <option value="" disabled selected>
@@ -491,7 +474,7 @@ const ProfessionalSkills = () => {
           <input
             id="expiryDate"
             type="date"
-            className="border focus:outline-green-300 w-full text-[14px] leading-[19.07px] font-[openSans] text-[#333333] h-9 rounded-md border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             value={vdate}
             onChange={(e) => setVDate(e.target.value)}
           />
@@ -509,7 +492,7 @@ const ProfessionalSkills = () => {
             type="text"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="border border-[#00A264] rounded-md w-full h-11 py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 focus:shadow-outline "
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
             placeholder="Yes/No"
             required
           />
@@ -522,7 +505,7 @@ const ProfessionalSkills = () => {
             </label>
             <select
               id=""
-              className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
             >
               <option value="" disabled selected>

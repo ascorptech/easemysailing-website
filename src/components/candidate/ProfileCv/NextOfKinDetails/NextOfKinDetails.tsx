@@ -37,7 +37,7 @@ const NextOfKinDetails = () => {
                 type="text"
                 value={nextKinName}
                 onChange={(e) => setNextKinName(e.target.value)}
-                className="border rounded-lg w-full h-9 py-[7px] px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder=""
                 required
               />
@@ -56,7 +56,7 @@ const NextOfKinDetails = () => {
                   type="text"
                   value={nextKinShip}
                   onChange={(e) => setNextKinShip(e.target.value)}
-                  className="border rounded-lg w-full h-9 py-[7px] px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
@@ -75,7 +75,7 @@ const NextOfKinDetails = () => {
                   type="text"
                   value={nextKinAddre}
                   onChange={(e) => setNextKinAddre(e.target.value)}
-                  className="border rounded-lg w-full h-9 py-[7px] px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
@@ -95,7 +95,7 @@ const NextOfKinDetails = () => {
                   type="text"
                   value={nextKinChildren}
                   onChange={(e) => setNextKinChildren(e.target.value)}
-                  className="border rounded-lg w-full h-9 py-[7px] px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />

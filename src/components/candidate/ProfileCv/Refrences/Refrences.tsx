@@ -27,7 +27,7 @@ const Refrences = () => {
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <div className="">
         <div className="text-center my-4"><h1 className="font-bold">EVALUATION REPORT AND REFERENCE/RECOMMENDATION LETTERS</h1></div>
-        <div className=" flex flex-col  px-4 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] gap-4">
+        <div className=" flex flex-col  px-4  gap-4">
           <div className="flex items-center justify-between gap-2  ">
             
             <div className=" w-[25%]">
@@ -37,7 +37,7 @@ const Refrences = () => {
               >
                 Issued
               </label>
-              <select className=" bg-white h-8 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]  border border-[#00A264] focus:outline-none rounded-lg w-full">
+              <select className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]">
                 <option value="maile">2</option>
                 <option value="maile">5</option>
                 <option value="maile">8</option>
@@ -58,7 +58,7 @@ const Refrences = () => {
                   type="date"
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
-                  className="border rounded-lg w-full py-[7px] px-3text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder="Enter middle Name"
                   required
                 />
@@ -78,7 +78,7 @@ const Refrences = () => {
                   type="text"
                   value={companyName}
                   onChange={(e) => setCompanyName(e.target.value)}
-                  className="border rounded-lg w-full py-[7px] text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
@@ -97,7 +97,7 @@ const Refrences = () => {
                   type="text"
                   value={companyName}
                   onChange={(e) => setCompanyName(e.target.value)}
-                  className="border rounded-lg w-full py-[7px] text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
@@ -115,7 +115,7 @@ const Refrences = () => {
               <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2 ">
                 Issuing Country
               </label>
-              <select className=" bg-white h-8 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]  border border-[#00A264] focus:outline-none rounded-lg">
+              <select className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]">
                 <option value="maile">India</option>
                 <option value="maile">Austrelia</option>
                 <option value="maile">England</option>
@@ -136,8 +136,8 @@ const Refrences = () => {
                   type="date"
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
-                  className="border rounded-lg w-full py-[7px] px-3text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
-                  placeholder="Enter middle Name"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  placeholder=""
                   required
                 />
               </div>
@@ -185,8 +185,8 @@ const Refrences = () => {
                   type="text"
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
-                  className="border rounded-lg w-full py-[7px] text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
-                  placeholder="Enter First Name"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  placeholder=""
                   required
                 />
               </div>
@@ -204,8 +204,8 @@ const Refrences = () => {
                 type="text"
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
-                className="border rounded-lg w-full py-[7px] px-3text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline  border-[#00A264]"
-                placeholder="Enter Last Name"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                placeholder=""
                 required
               />
             </div>
@@ -224,7 +224,7 @@ const Refrences = () => {
                   type="text"
                   value={companyName}
                   onChange={(e) => setCompanyName(e.target.value)}
-                  className="border rounded-lg w-full py-[7px] text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
@@ -235,7 +235,7 @@ const Refrences = () => {
               <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2 ">
                Country Code
               </label>
-              <select className=" bg-white h-8 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-lg">
+              <select className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]">
                 <option value="maile">45440</option>
                 <option value="maile">02458</option>
                 <option value="maile">010203</option>
@@ -268,8 +268,8 @@ const Refrences = () => {
                 type="text"
                 value={addInfo}
                 onChange={(e) => setAddInfo(e.target.value)}
-                className="border rounded-lg w-full py-[7px] px-3text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline  border-[#00A264]"
-                placeholder="Enter Last Name"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                placeholder=""
                 required
               />
             </div>
@@ -286,7 +286,7 @@ const Refrences = () => {
                   type="number"
                   value={postalCode}
                   onChange={(e) => setPostalCode(e.target.value)}
-                  className="border rounded-lg w-full py-[7px] px-3text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline  border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder="Enter ZipCode"
                   required
                 />
@@ -305,8 +305,8 @@ const Refrences = () => {
                   type="text"
                   value={cityName}
                   onChange={(e) => setCityName(e.target.value)}
-                  className="border rounded-lg w-full py-[7px] px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
-                  placeholder="Enter your city"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  placeholder=""
                   required
                 />
               </div>
@@ -329,7 +329,7 @@ const Refrences = () => {
                   type="text"
                   value={state}
                   onChange={(e) => setState(e.target.value)}
-                  className="border rounded-lg w-full py-[7px] px-3text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline  border-[#82908b]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
@@ -339,7 +339,7 @@ const Refrences = () => {
               <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2 ">
                 Country
               </label>{" "}
-              <select className=" bg-white h-8 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]  border border-[#00A264] focus:outline-none rounded-lg">
+              <select className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]">
                 <option value="maile">India</option>
                 <option value="maile">Austrelia</option>
                 <option value="maile">England</option>
@@ -353,7 +353,7 @@ const Refrences = () => {
             <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2 ">
               Nearest Airport
             </label>
-            <select className=" bg-white h-8 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full border border-[#00A264] focus:outline-none rounded-lg">
+            <select className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]">
               <option value="maile">India</option>
               <option value="maile">Austrelia</option>
               <option value="maile">England</option>
@@ -367,7 +367,7 @@ const Refrences = () => {
               <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2 ">
                 Country Code
               </label>
-              <select className=" bg-white h-8 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-lg">
+              <select className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]">
                 <option value="maile">+91</option>
                 <option value="maile">+50</option>
                 <option value="maile">+08</option>
@@ -387,7 +387,7 @@ const Refrences = () => {
                   type="text"
                   value={phoneNumber}
                   onChange={(e) => setPhoneNumber(e.target.value)}
-                  className="border rounded-lg w-full py-[7px] px-3text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
@@ -409,7 +409,7 @@ const Refrences = () => {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="border rounded-lg w-full py-[7px] px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
@@ -429,7 +429,7 @@ const Refrences = () => {
                   type="text"
                   value={indNumber}
                   onChange={(e) => setIndNumber(e.target.value)}
-                  className="border rounded-lg w-full py-[7px] px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />

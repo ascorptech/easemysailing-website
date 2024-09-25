@@ -44,7 +44,7 @@ const TravelDocuments = () => {
 
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
-      <h1 className="text-center">PASSPORT DETAILS</h1>
+      <h1 className="text-center font-bold">PASSPORT DETAILS</h1>
       <div className="grid grid-cols-2 gap-4">
         <div className="">
           <label
@@ -54,7 +54,7 @@ const TravelDocuments = () => {
             Issuing Authority
           </label>
           <select
-            className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
           >
             <option value="" disabled selected>
@@ -69,16 +69,16 @@ const TravelDocuments = () => {
         <div className="   ">
           <label
             className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
-            htmlFor="numberauth"
+            htmlFor="passportnumber"
           >
             Passport Number
           </label>
           <input
-            id="numberauth"
+            id="passportnumber"
             type="number"
             value={number}
             onChange={(e) => setNumber(e.target.value)}
-            className="border border-[#00A264] rounded-md w-full h-11 py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 focus:shadow-outline "
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
             placeholder="Passport No"
             required
           />
@@ -97,7 +97,7 @@ const TravelDocuments = () => {
           <input
             id="issue"
             type="date"
-            className="border focus:outline-green-300 w-full  h-11 rounded-md border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             value={issuedate}
             onChange={(e) => setIssueDate(e.target.value)}
           />
@@ -116,34 +116,21 @@ const TravelDocuments = () => {
           <input
             id="expiryDate"
             type="date"
-            className="border focus:outline-green-300 w-full  h-11 rounded-md border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             value={exdate}
             onChange={(e) => setExDate(e.target.value)}
           />
-
-          {/* <input
-            id="neverExpires"
-            type="checkbox"
-            className="border focus:ring-[#00A264]  text-[#00A264] checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264]"
-              value={exdate}
-              onChange={(e) => setExDate(e.target.value)}
-          />
-          <label
-            className="text-[16px] leading-[21.79px]"
-            htmlFor="neverExpires"
-          >
-            Never Expires
-          </label> */}
         </div>
-        <div className=" ">
+        <div className="grid col-span-2 ">
           <label
             className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
-            htmlFor=""
+            htmlFor="biometric"
           >
             Biometric
           </label>
           <select
-            className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+            id="biometric"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
           >
             <option value="" disabled selected>
@@ -155,8 +142,9 @@ const TravelDocuments = () => {
           </select>
         </div>
 
-        <div className="grid grid-cols-2 my-4">
-          <div className="flex gap-6 items-center  ">
+        <div className="grid col-span-2 my-4">
+          <div className="flex gap-4 justify-center items-center  ">
+            <div>
             <label
               htmlFor="file-uploadpassport1"
               className="cursor-pointer bg-[#00A264] text-[14px] leading-[19.07px] font-[openSans]  text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 "
@@ -175,7 +163,7 @@ const TravelDocuments = () => {
           </p>
         )} */}
           </div>
-        </div>
+        
 
         <div>
           {selectedFile ? (
@@ -188,6 +176,8 @@ const TravelDocuments = () => {
             </p>
           )}
         </div>
+        </div>
+        </div>
       </div>
 
       {/* second section */}
@@ -198,12 +188,13 @@ const TravelDocuments = () => {
           <div className="">
             <label
               className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
-              htmlFor=""
+              htmlFor="issingcountry"
             >
               Issuing Country/Flag State
             </label>
             <select
-              className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+              id="issingcountry"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
             >
               <option value="" disabled selected>
@@ -226,7 +217,7 @@ const TravelDocuments = () => {
               type="text"
               value={trainingCenter}
               onChange={(e) => setTrainingCenter(e.target.value)}
-              className="border border-[#00A264] rounded-md w-full h-11 py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 focus:shadow-outline "
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder=""
               required
             />
@@ -236,13 +227,14 @@ const TravelDocuments = () => {
           <div className="">
             <label
               className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
-              htmlFor=""
+              htmlFor="issuedate"
             >
               Issue Date
             </label>
             <input
+              id="issuedate"
               type="date"
-              className="border focus:outline-green-300 w-full  h-11 rounded-md border-[#00A264] text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={issuedate1}
               onChange={(e) => setIssueDate1(e.target.value)}
             />
@@ -251,29 +243,30 @@ const TravelDocuments = () => {
           <div className="">
             <label
               className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
-              htmlFor=""
+              htmlFor="expdate"
             >
               Expiry Date
             </label>
 
             <input
+              id="expdate"
               type="date"
-              className="border focus:outline-green-300 w-full text-[14px] leading-[19.07px] font-[openSans] text-[#333333]  h-11 rounded-md border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={exdate1}
               onChange={(e) => setExDate1(e.target.value)}
             />
           </div>
           <div className=" flex items-center  gap-4">
             <input
-              id="neverExpirespass"
+              id="neverExpires"
               type="checkbox"
-              className="border focus:ring-[#00A264] text-[14px] leading-[19.07px] font-[openSans] text-[#333333]   checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
+              className="border focus:ring-[#00A264]  text-[#00A264] checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
               //   value={exdate}
               //   onChange={(e) => setExDate(e.target.value)}
             />
             <label
               className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
-              htmlFor="neverExpirespass"
+              htmlFor="neverExpires"
             >
               Never Expires
             </label>
@@ -314,12 +307,13 @@ const TravelDocuments = () => {
           <div className="">
             <label
               className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
-              htmlFor=""
+              htmlFor="countryissue"
             >
               Country(Issue Authority)
             </label>
             <select
-              className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+              id="countryissue"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
             >
               <option value="" disabled selected>
@@ -333,16 +327,16 @@ const TravelDocuments = () => {
           <div className="   ">
             <label
               className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
-              htmlFor="seamanVisa"
+              htmlFor="visanumber01"
             >
               Visa Number
             </label>
             <input
-              id="seamanVisa"
+              id="visanumber01"
               type="text"
               value={visaNumber}
               onChange={(e) => setVisaNumber(e.target.value)}
-              className="border border-[#00A264] rounded-md w-full h-11 py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 focus:shadow-outline "
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder=""
               required
             />
@@ -352,31 +346,33 @@ const TravelDocuments = () => {
           <div className="">
             <label
               className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
-              htmlFor=""
+              htmlFor="issueDatek"
             >
               Issue Date
             </label>
             <input
+              id="issueDatek"
               type="date"
-              className="border focus:outline-green-300 w-full text-[14px] leading-[19.07px] font-[openSans] text-[#333333]  h-11 rounded-md border-[#00A264]"
-              //   value={issuedate1}
-              //   onChange={(e) => setIssueDate1(e.target.value)}
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              value={issuedate1}
+              onChange={(e) => setIssueDate1(e.target.value)}
             />
           </div>
 
           <div className="">
             <label
               className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]  "
-              htmlFor=""
+              htmlFor="expdate01"
             >
               Expiry Date
             </label>
 
             <input
+              id="expdate01"
               type="date"
-              className="border focus:outline-green-300 w-full  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] h-11 rounded-md border-[#00A264]"
-              //   value={exdate1}
-              //   onChange={(e) => setExDate1(e.target.value)}
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              value={exdate1}
+              onChange={(e) => setExDate1(e.target.value)}
             />
           </div>
         </div>
@@ -415,12 +411,13 @@ const TravelDocuments = () => {
           <div className="">
             <label
               className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
-              htmlFor=""
+              htmlFor="issuingcou"
             >
               Issuing Country
             </label>
             <select
-              className="rounded-md text-[14px] leading-[19.07px] font-[openSans] text-[#333333] w-full h-11 focus:outline-green-300 border border-[#00A264]"
+              id="issuingcou"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
             >
               <option value="" disabled selected>
@@ -436,14 +433,14 @@ const TravelDocuments = () => {
               className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
               htmlFor="seamanPermit"
             >
-              Visa Number
+              Number
             </label>
             <input
               id="seamanPermit"
               type="text"
               value={permitNumber}
               onChange={(e) => setPermitNumber(e.target.value)}
-              className="border border-[#00A264] rounded-md w-full h-11 py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-green-300 focus:shadow-outline "
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder=""
               required
             />
@@ -452,13 +449,14 @@ const TravelDocuments = () => {
           <div className="">
             <label
               className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
-              htmlFor=""
+              htmlFor="issuedate11"
             >
               Issue Date
             </label>
             <input
+              id="issuedate11"
               type="date"
-              className="border focus:outline-green-300 w-full text-[14px] leading-[19.07px] font-[openSans] text-[#333333] h-11 rounded-md border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               //   value={issuedate1}
               //   onChange={(e) => setIssueDate1(e.target.value)}
             />
@@ -467,14 +465,15 @@ const TravelDocuments = () => {
           <div className="">
             <label
               className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
-              htmlFor=""
+              htmlFor="expidate11"
             >
               Expiry Date
             </label>
 
             <input
+              id="expidate11"
               type="date"
-              className="border focus:outline-green-300 w-full text-[14px] leading-[19.07px] font-[openSans] text-[#333333]  h-11 rounded-md border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               //   value={exdate1}
               //   onChange={(e) => setExDate1(e.target.value)}
             />

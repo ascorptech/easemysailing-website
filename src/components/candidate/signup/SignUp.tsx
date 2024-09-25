@@ -1,6 +1,8 @@
 "use client";
 import Link from "next/link";
 import { MdOutlineEmail } from "react-icons/md";
+import PhoneInput from "react-phone-input-2"; // Import the phone input component
+import "react-phone-input-2/lib/style.css";
 
 import { GoEye } from "react-icons/go";
 import { MdOutlineLock } from "react-icons/md";
@@ -168,17 +170,27 @@ const SignUp: React.FC = () => {
                   Phone
                 </label>
                 <div className="relative flex items-center pl-8 ">
-                  <input
-                    id="phone"
-                    type="text"
+                  <PhoneInput
+                  country={"in"}  //default country
+                   
+                  
                     value={phone}
-                    maxLength={10}
-                    onChange={(e) => setPhone(e.target.value.trim())}
-                    className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline font-[opensans]"
-                    placeholder="Enter Phone"
-                    required
+                    // maxLength={10}
+                    // onChange={(e) => setPhone(e.target.value.trim())}
+                    onChange={(phone) => setPhone(phone)}  
+                    inputProps={{
+                      name: "phone",
+                      required: true,
+                      autoFocus: false,
+                    }}
+                    inputClass="!w-full !h-[42px] !leading-[21.79px] !text-[16px] !text-[#333333] !border !rounded-lg focus:!outline-none focus:!shadow-outline font-[opensans] "
+                     
+                    
+      containerClass="w-full"
+                   
+                    
                   />
-                  <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-[#00A264] text-white rounded-l-md">
+                  <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-[#00A264] text-white mr-7 rounded-l-md">
                     <FaPhone />
                   </span>
                 </div>

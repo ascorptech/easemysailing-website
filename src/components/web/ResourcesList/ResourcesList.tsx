@@ -44,7 +44,7 @@ const ResourcesList = (props: Props) => {
   return (
     <div className="">
       <Heading7 />
-      <div className="flex sm:md:flex-row flex-col mt-5 h-[26rem] container mx-auto mb-[30rem] sm:md:mb-0">
+      <div className="flex  sm:md:flex-row flex-col mt-5 h-[26rem] container mx-auto mb-[7rem] lg:mb-0 sm:md:mb-0">
         <div className="flex sm:md:w-[50%] w-full">
           <div className="relative w-full p-4">
             <Image
@@ -55,12 +55,12 @@ const ResourcesList = (props: Props) => {
               className="w-full h-full object-cover"
               priority
             />
-            <div className="absolute sm:md:mt-[-2.9rem] mt-[-1.5rem] bg-green-700 text-white font-semibold ">
+            <div className="absolute px-2 sm:md:mt-[-1.5rem] mt-[-1.5rem] bg-green-700 text-white font-semibold ">
               <h3>{moment(resourcesList[0]?.createDate).format('YYYY-MM-DD')}</h3>
             </div>
           </div>
         </div>
-        <div className="sm:md:w-[50%] w-full flex flex-col p-4">
+        <div className="sm:md:w-[50%]   w-full flex flex-col p-4">
           <h2 className="text-black-500  font-bold">
             {resourcesList[0]?.title}
           </h2>
@@ -88,7 +88,7 @@ const ResourcesList = (props: Props) => {
                   className="w-full h-auto"
                 />
               </div>
-              <div className="absolute mt-[-2rem] bg-green-700 text-white font-semibold ">
+              <div className="absolute px-2 mt-[-2rem] bg-green-700 text-white font-semibold ">
                 <h3>{moment(resourcesList[0]?.createDate).format('YYYY-MM-DD')}</h3>
               </div>
 

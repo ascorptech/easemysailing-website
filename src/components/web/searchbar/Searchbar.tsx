@@ -30,7 +30,7 @@ const Searchbar = () => {
         </div>
 
         {/* Button */}
-        <button className="bg-[#00A264] mt-[2px] lg:mt-0 sm:md:mt-0 px-3 lg:px-5 lg:h-[47px] h-[44px] rounded-full text-xs lg:text-base text-white w-[120px] lg:w-[147px]">
+        <button className="bg-[#00A264] lg:mt-0 sm:md:mt-0 px-3 lg:px-5 lg:h-[47px] h-[47px] rounded-full text-xs lg:text-base text-white w-[120px] lg:w-[147px]">
           Find A Job
         </button>
       </div>

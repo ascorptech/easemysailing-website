@@ -89,13 +89,13 @@ const Slide = () => {
         onClick={scrollLeft}
         className="absolute left-1 z-10 border-2 w-[23.6px] h-[23.6px]  rounded-full border-black ml-1  mr-2"
       >
-        <MdArrowBack className=""/>
+        <MdArrowBack className="ml-[2px]"/>
       </button>
 
       {/* Carousel Wrapper */}
       <div
         ref={card}
-        className=" lg:mr-12 w-36  lg:gap-1 gap-3 flex overflow-x-scroll lg:mt-3  mt-3 no-scrollbar scroll-smooth snap-x mx-[4rem] lg:mx-0 snap-mandatory lg:ml-[2.4rem] lg:w-[1276px] lg:h-[100px]"
+        className=" lg:mr-12 w-36  lg:gap-1 gap-3 flex overflow-x-scroll lg:mt-3  mt-3 no-scrollbar scroll-smooth snap-x mx-[4rem] lg:mx-0 snap-mandatory lg:ml-[2.4rem] sm:w-[1276px] lg:h-[100px]"
       >
         {cards.map((card) => (
           <div

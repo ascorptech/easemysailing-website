@@ -7,7 +7,7 @@ const NumberContent = () => {
   return (
     <div className="flex sm:md:flex-row lg:mb-12 mb-5 lg:w-full lg:mt-0 mt-5 flex-col sm:md:w-[90%] justify-between self-center">
       <div className="sm:md:w-[50%] lg:ml-10 lg:mt-10 flex lg:w-[60%] flex-col  ">
-        <h2 className="text-[21px] lg:ml-8 mx-3 lg:mx-0 md:text-3xl  md:text-left lg:text-5xl font-[800]  ">
+        <h2 className="text-[20px] text-center sm:text-left lg:ml-8 mx-3 lg:mx-0 md:text-3xl  md:text-left lg:text-5xl font-[800]  ">
           SEAFARERS POWERING GLOBAL{" "}
           <span className="text-[#00A264]"> TRADE AND ECONOMY</span>
         </h2>
@@ -139,13 +139,13 @@ const NumberContent = () => {
           </div>
         </div>
 
-        <div className="flex sm:md:flex-col ml-3  lg:ml-7 flex-col ">
+        <div className="flex sm:md:flex-col items-center sm:items-start mx-2 sm:mx-0 mt-3 sm:mt-0  lg:ml-7 flex-col ">
           <p className="  text-[18px] lg:pt-6  lg:mt-8 leading-[20px] lg:leading-[26px] mb-2 sm:md:mb-0">
             Know about Global Impact and Influence
           </p>
           <Link
             href="/contact"
-            className=" lg:mt-5 text-center bg-[#00A264] w-36 text-white sm:ml-0 py-2 px-2 md:px-1  rounded-3xl  text-[16px]"
+            className=" lg:mt-5 mt-2 text-center bg-[#00A264] w-36 text-white sm:ml-0 py-2 px-2 md:px-1  rounded-3xl  text-[16px]"
           >
             Contact Us
           </Link>

@@ -37,26 +37,26 @@ const NumberContent = () => {
         </div>
 
         {/* Right image with phone.png overlay */}
-        <div className="relative w-full lg:w-[40%] h-[280px] sm:h-[350px] lg:h-[500px] flex items-center  justify-center mt-6 lg:mt-0">
+        <div className="relative w-full lg:w-[50%] h-[285px] sm:h-[350px] lg:h-[500px] flex items-center justify-center mt-6 lg:mt-0">
           {/* ship2.png */}
           <Image
             priority
-            src="/ship2.png"
+            src="/leftsailor.png"
             alt="ship"
-            width={800}
+            width={900}
             height={800}
-            className="w-full h-full  pl-3 lg:pl-0  rounded-l-full"
+            className="w-full h-full   lg:pl-0  "
           />
 
           {/* phone.png overlay */}
-          <div className="absolute top-0 w-full h-full flex items-center justify-center">
+          <div className="absolute top-0 w-full  h-full flex items-center justify-center">
             <Image
             priority
               src="/phone1.png"
               alt="Phone"
               width={400}
               height={400}
-              className="w-[100px] sm:w-[150px] lg:w-[190px] h-auto "
+              className="w-[100px] sm:w-[150px] sm:md:ml-[8rem] ml-12 lg:w-[190px] h-auto "
             />
           </div>
         </div>

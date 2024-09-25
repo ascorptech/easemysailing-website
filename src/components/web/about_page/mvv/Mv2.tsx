@@ -8,7 +8,7 @@ const Mv2 = () => {
         <div className="flex flex-col justify-center items-center text-center border-2 shadow-lg rounded-tl-[2rem] rounded-br-[2rem] w-full md:w-[400px] h-auto pt-12">
           <div className="w-[100px] h-[100px] ">
             <Image
-              src="/images/mission.jpg"
+              src="/mission.png"
               alt="Mission Image"
               width={100}
               height={100}
@@ -34,7 +34,7 @@ const Mv2 = () => {
         <div className="flex flex-col justify-center items-center text-center border-2 shadow-lg rounded-tl-[2rem] rounded-br-[2rem] w-full md:w-[400px] h-auto pt-12 ">
           <div className="w-[100px] h-[100px] ">
             <Image
-              src="/images/vision.jpg"
+              src="/vision.png"
               alt="Vision Image"
               width={100}
               height={100}
@@ -59,7 +59,7 @@ const Mv2 = () => {
         <div className="flex flex-col justify-center items-center text-center border-2 shadow-lg rounded-tl-[2rem] rounded-br-[2rem] w-full md:w-[400px] h-auto pt-12 ">
           <div className="w-[100px] h-[100px] ">
             <Image
-              src="/sqr.png"
+              src="/value.png"
               alt="Values Image"
               width={100}
               height={100}

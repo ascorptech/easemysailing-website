@@ -18,7 +18,7 @@ const ClientsCard: React.FC<ClientsCardProps> = ({
   isActive, // Destructure isActive
 }) => {
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex justify-center w-[20%] items-center">
       <div
         className={`bg-white p-6 lg:w-[300px] lg:h-[430px] w-[280px] h-[400px] rounded-full ml-10 flex flex-col justify-center items-center flex-shrink-0 transition-transform ${
           isActive ? "scale-110" : "scale-90"

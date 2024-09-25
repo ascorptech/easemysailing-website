@@ -47,7 +47,7 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
       </div>
 
       <ul className="m-6 font-bold text-sm">
-        <li
+        {/* <li
           className={
             pathname === "/candidate/dashboard"
               ? "mb-2 rounded py-2 bg-green-600 text-white font-semibold"
@@ -58,7 +58,7 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
             <MdDashboard className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px]  " />
             My Dashboard
           </Link>
-        </li>
+        </li> */}
         <li
           className={
             pathname === "/candidate/profilecv"
@@ -71,7 +71,7 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
             Profile/CV
           </Link>
         </li>
-        <li
+        {/* <li
           className={
             pathname === "/candidate/jobbyems"
               ? "mb-2 rounded py-2 bg-green-600 text-white font-semibold"
@@ -82,8 +82,8 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
             <IoBag className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " /> Jobs
             By EMS
           </Link>
-        </li>
-        <li
+        </li> */}
+        {/* <li
           className={
             pathname === "#"
               ? "mb-2 rounded py-2 bg-green-600 text-white font-semibold"
@@ -94,8 +94,8 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
             <PiShoppingBagOpenFill className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             My Job Applicatins
           </Link>
-        </li>
-        <li
+        </li> */}
+        {/* <li
           className={
             pathname === "#"
               ? "mb-2 rounded py-2 bg-green-600 text-white font-semibold"
@@ -106,8 +106,8 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
             <MdMenuBook className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             EduEMS
           </Link>
-        </li>
-        <li
+        </li> */}
+        {/* <li
           className={
             pathname === "/admin/resource-management"
               ? "mb-2 rounded py-2 bg-green-600 text-white font-semibold"
@@ -118,43 +118,49 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
             <SiElementor className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             Mentoring
           </Link>
-        </li>
-        <li className="mb-3 rounded py-2">
+        </li> */}
+
+        {/* <li className="mb-3 rounded py-2">
           <Link href="#">
             <FaFileLines className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             My Subscription
           </Link>
-        </li>
-        <li className="mb-3 rounded py-2">
+        </li> */}
+
+        {/* <li className="mb-3 rounded py-2">
           <Link href="#">
             <MdMapsHomeWork className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             Market Place
           </Link>
-        </li>
-        <li className="mb-3 rounded py-2">
+        </li> */}
+
+        {/* <li className="mb-3 rounded py-2">
           <Link href="#">
             <MdOutlineCardGiftcard className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             Refer and Earn
           </Link>
-        </li>
-        <li className="mb-3 rounded py-2">
+        </li> */}
+
+        {/* <li className="mb-3 rounded py-2">
           <Link href="#">
             <FaFileLines className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             Career testimonial
           </Link>
-        </li>
-        <li className="mb-3 rounded py-2">
+        </li> */}
+
+        {/* <li className="mb-3 rounded py-2">
           <Link href="#">
             <RiExchangeDollarLine className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             My Transactions
           </Link>
-        </li>
-        <li className="mb-3 rounded py-2">
+        </li> */}
+        {/* <li className="mb-3 rounded py-2">
           <Link href="#">
             <RiContactsBook3Line className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             Contact Us
           </Link>
-        </li>
+        </li> */}
+        
         <li className="mb-2 rounded py-2">
           <Link href="/candidate" onClick={onLogout}>
             <FiLogOut className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />

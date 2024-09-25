@@ -95,20 +95,16 @@ const Slide = () => {
       {/* Carousel Wrapper */}
       <div
         ref={card}
-        className=" lg:mr-12 lg:gap-0 gap-3 flex overflow-x-scroll mt-3 no-scrollbar scroll-smooth snap-x mx-[4rem] lg:mx-0 snap-mandatory lg:ml-[2.4rem] lg:w-[1266px] lg:h-[100px]"
+        className=" lg:mr-12   lg:gap-0 gap-3 flex overflow-x-scroll mt-3 no-scrollbar scroll-smooth snap-x mx-[4rem] lg:mx-0 snap-mandatory lg:ml-[2.4rem] lg:w-[1266px] lg:h-[100px]"
       >
         {cards.map((card) => (
           <div
             key={card.id}
-            className="flex lg:mb-2 lg:px-1 lg:w-[250px] lg:h-[84px] sm:w-[16.9%] "
+            className="flex lg:mb-2 h-[12rem] lg:px-1 lg:w-[250px] lg:h-[84px] sm:w-[16.9%] "
           >
             <div className="flex flex-col items-center justify-center bg-white rounded-lg border-2 shadow-md p-6 w-[129.8px] ">
               <div className="   px-2 ">
-                {/* <img
-                  src={card.logo}
-                  alt="images not find"
-                  className="w-full h-full "
-                /> */}
+             
                 <Image
                   src={card.logo}
                   width={150}

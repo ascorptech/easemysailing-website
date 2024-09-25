@@ -1,27 +1,25 @@
 "use client";
 import { GetPodcastList } from "@/app/(web)/podcast-list/Services/podcastService";
 import React, { useEffect, useState } from "react";
-
-
+import { RxCrossCircled } from "react-icons/rx";
 
 const PodcastList = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12; // Number of items per pag
-  const [podcasts, setPodcasts] = useState<any>([])
+  const itemsPerPage = 12;
+  const [podcasts, setPodcasts] = useState<any>([]);
+  const [selected, setSelected] = useState<any>();
+  const [ModalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
-    GetPodcastList(GetPodcastListCB)
-  }, [])
+    GetPodcastList(GetPodcastListCB);
+  }, []);
 
   const GetPodcastListCB = (res: any) => {
-    setPodcasts(res?.data)
-  }
+    setPodcasts(res?.data);
+    setSelected(res?.data[0]);
+  };
 
-
-  // Calculate total pages
   const totalPages = Math.ceil(podcasts?.length / itemsPerPage);
-
-  // Get items for the current page
   const currentItems = podcasts?.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
@@ -40,33 +38,42 @@ const PodcastList = () => {
   };
 
   const getEmbedUrl = (videoLink: string) => {
-    const videoIdMatch = videoLink?.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/|.+\?v=))([^?&]+)/);
+    const videoIdMatch = videoLink?.match(
+      /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/|.+\?v=))([^?&]+)/,
+    );
     return videoIdMatch ? `https://www.youtube.com/embed/${videoIdMatch[1]}` : '';
+  };
+
+  const openModal = (item:any) => {
+    setSelected(item);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
   };
 
   return (
     <div>
-
-      <div className=" lg:h-[500px] mb-8">
+      <div className="lg:h-[500px] h-[220px] mb-8">
         <iframe
           width="100%"
           height="100%"
-          src={getEmbedUrl(currentItems[0]?.videoLink )|| ''}
-          title={currentItems[0]?.title || 'Video Player'}
+          src={getEmbedUrl(selected?.videoLink) || ''}
+          title={selected?.title || 'Video Player'}
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         ></iframe>
-
       </div>
 
-      <div className="grid lg:grid-cols-3 lg:gap-5 lg:py-4 grid-cols-1  gap-5 lg:mt-5 mt-3 sm:grid-cols-2 ">
+      <div className="grid lg:grid-cols-3 lg:gap-5 lg:py-4 grid-cols-1 gap-5 lg:mt-5 mt-3 sm:grid-cols-2">
         {currentItems?.map((item: any, index: any) => (
           <div
             key={index}
-            className="w-full border-4 rounded-lg border-black mb-8  h-[200px]"
+            className="w-full border-4 rounded-lg border-black mb-8 h-[200px]"
+            onClick={() => openModal(item)}
           >
-            <>{console.log('check',item?.videoLink)}</>
             <iframe
               width="100%"
               height="100%"
@@ -76,10 +83,9 @@ const PodcastList = () => {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             ></iframe>
-            {/* <p className="flex justify-center my-1"> */}
-            <p className="text-center my-1">
+            <h6 className="text-center my-1 cursor-pointer">
               {item?.title}
-            </p>
+            </h6>
           </div>
         ))}
       </div>
@@ -106,6 +112,32 @@ const PodcastList = () => {
           Next
         </button>
       </div>
+
+      {/* Popup */}
+      {ModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75">
+          <div className="bg-white lg:w-[50rem] h-[15rem] lg:h-[500px] rounded-lg overflow-hidden shadow-lg">
+            <div className="relative">
+              <iframe
+                width="100%"
+                height="500px"
+                src={getEmbedUrl(selected?.videoLink)}
+                title={selected?.title}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+              <button
+                onClick={closeModal}
+                className="absolute  top-2 right-2 text-red-500  rounded-full "
+              >
+                <RxCrossCircled className="w-6 h-6" />
+
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

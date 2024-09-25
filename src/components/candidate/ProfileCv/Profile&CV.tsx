@@ -280,7 +280,7 @@ const [profileDetail,setProfileDetail] = useState<any>(
 
 
        {/* Popup Form */}
-       {isPopupOpen && (
+       {/* {isPopupOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50">
           <div className="relative bg-white p-6 rounded-lg shadow-lg w-[500px] ">
             <button className="absolute top-2 right-2 bg-[#00A264] text-white  rounded-full">
@@ -348,9 +348,9 @@ const [profileDetail,setProfileDetail] = useState<any>(
                 ))}
               </div>
 
-              {/* Feedback Input */}
+              
               <div className="flex flex-col mb-2 mt-2">
-                {/* <label className="text-[16px] leading-[21.79px] font-semibold mb-2"></label> */}
+               
                 <textarea
                   className="border p-2 bg-[#DAFFF1] rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-[#333333]"
                   rows={2}
@@ -371,7 +371,7 @@ const [profileDetail,setProfileDetail] = useState<any>(
             </form>
           </div>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

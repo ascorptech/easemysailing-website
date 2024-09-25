@@ -51,6 +51,7 @@ const NumberContent = () => {
           {/* phone.png overlay */}
           <div className="absolute top-0 w-full h-full flex items-center justify-center">
             <Image
+            priority
               src="/phone1.png"
               alt="Phone"
               width={400}
@@ -65,3 +66,4 @@ const NumberContent = () => {
 };
 
 export default NumberContent;
+

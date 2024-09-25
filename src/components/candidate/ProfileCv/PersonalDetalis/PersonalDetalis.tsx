@@ -14,6 +14,9 @@ const PersonalDetails = () => {
   const [religionName, setReligionName] = useState("");
   const [countryOfBirth, setCountryOfBirth] = useState("");
 
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [selectedFiles, setSelectedFiles] = useState<File | null>(null);
+
   const [gender, setGender] = useState("");
 
   const [nextKinName, setNextKinName] = useState("");
@@ -27,39 +30,45 @@ const PersonalDetails = () => {
   const [criminal, setCriminal] = useState("");
   const [nationality, setNationality] = useState("");
 
+  const handleFileChange = (event: any) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      setSelectedFile(file);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     // try {
-      e.preventDefault(); // Prevent default form submission
+    e.preventDefault(); // Prevent default form submission
 
-      let formData = {
-        firstName,
-        middleName,
-        lastName,
-        date,
-        cityName,
-        religionName,
-        nextKinName,
-        nextKinShip,
-        nextKinAddre,
-        nextKinChildren,
-        personality,
-        additional,
-        myFuture,
-        criminal,
-        countryOfBirth,
-        gender,
-      };
-      console.log(formData);
-      AddProfileData(formData, AddaddressdataDB)
+    let formData = {
+      firstName,
+      middleName,
+      lastName,
+      date,
+      cityName,
+      religionName,
+      nextKinName,
+      nextKinShip,
+      nextKinAddre,
+      nextKinChildren,
+      personality,
+      additional,
+      myFuture,
+      criminal,
+      countryOfBirth,
+      gender,
     };
-    const AddaddressdataDB = (result:any)=> {
-      console.log(result)
-      if(result?.status == 200){
-        toast.success("address submited successfully")
-      }else {
-    
-        toast.error('address not submited ')
-      }
+    console.log(formData);
+    AddProfileData(formData, AddaddressdataDB);
+  };
+  const AddaddressdataDB = (result: any) => {
+    console.log(result);
+    if (result?.status == 200) {
+      toast.success("address submited successfully");
+    } else {
+      toast.error("address not submited ");
+    }
 
     //   const data = await AddProfileData(formData);
     //   console.log("Success:", formData);
@@ -75,9 +84,34 @@ const PersonalDetails = () => {
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
         <div className="px-2">
-          <div className=" flex flex-col   text-[14px] leading-[19.07px] font-[openSans] text-[#333333] gap-4">
-            <div className="flex items-center justify-between gap-4  ">
-              {" "}
+         
+            <div className="flex gap-8 items-center justify-center mt-3 mb-6">
+              <label
+                htmlFor="medicalfile-upload3"
+                className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[openSans]  "
+              >
+                Photo
+              </label>
+              <input
+                id="medicalfile-upload3"
+                type="file"
+                className="hidden"
+                onChange={handleFileChange}
+              />
+              {selectedFile ? (
+                <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+                  File Selected: {selectedFile.name}
+                </p>
+              ) : (
+                <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+                  No file selected
+                </p>
+              )}
+            </div>
+          
+          
+            <div className="grid grid-cols-2 gap-4    ">
+             
               <div className="w-full ">
                 <label
                   className="blocktext-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
@@ -85,17 +119,17 @@ const PersonalDetails = () => {
                 >
                   First Name
                 </label>
-                <div className="relative flex items-center  ">
+                {/* <div className="relative flex items-center  "> */}
                   <input
                     id="firstName"
                     type="text"
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
-                    className="border rounded-md w-full py-[8px] px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
+                    className="border rounded-md w-full h-9 py-[8px] px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
                     placeholder="Enter First Name"
                     required
                   />
-                </div>
+                {/* </div> */}
               </div>
               <div className="w-full ">
                 <label
@@ -104,47 +138,47 @@ const PersonalDetails = () => {
                 >
                   Middle Name
                 </label>
-                <div className="relative flex items-center  ">
+                {/* <div className=" flex items-center  "> */}
                   <input
                     id="userName"
                     type="text"
                     value={middleName}
                     onChange={(e) => setmidddleName(e.target.value)}
-                    className="border rounded-md w-full py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
+                    className="border rounded-md w-full h-9 py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
                     placeholder="Enter middle Name"
                     required
                   />
-                </div>
+                {/* </div> */}
               </div>
-            </div>
+            
 
-            <div className="w-[80%] ">
+            <div className="w-full ">
               <label
                 className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
                 htmlFor="lastName"
               >
                 Last Name
               </label>
-              <div className="relative flex items-center  ">
+              {/* <div className="relative flex items-center  "> */}
                 <input
                   id="lastName"
                   type="text"
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
-                  className="border rounded-md w-full py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline  border-[#00A264]"
+                  className="border rounded-md h-9 w-full py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline  border-[#00A264]"
                   placeholder="Enter Last Name"
                   required
                 />
-              </div>
+              {/* </div> */}
             </div>
 
-            <div className="flex items-center justify-between gap-4  ">
-              <div className="flex flex-col w-full">
+            {/* <div className="flex items-center justify-between gap-4  "> */}
+              <div className=" w-full">
                 <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2">
                   Gender
                 </label>
                 <select
-                  className="bg-white h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
+                  className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
                   value={gender}
                   onChange={(e) => setGender(e.target.value)}
                   required
@@ -155,23 +189,23 @@ const PersonalDetails = () => {
                   <option value="other">Other</option>
                 </select>
               </div>
-              <div className="flex flex-col w-full">
+              <div className=" w-full">
                 <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2 ">
                   Date of Birth
                 </label>
                 <input
                   type="date"
-                  className="border p-2 rounded-md border-[#00A264] text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+                  className="border w-full p-2 h-9 rounded-md border-[#00A264] text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
                 />
               </div>
-            </div>
+            {/* </div> */}
 
             {/* counstry and city section start*/}
 
-            <div className="flex items-center justify-between gap-4  ">
-              <div className="flex flex-col w-[50%]">
+            {/* <div className="flex items-center justify-between gap-4  "> */}
+              <div className="w-full">
                 <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2">
                   Country of Birth
                 </label>
@@ -188,36 +222,36 @@ const PersonalDetails = () => {
                 </select>
               </div>
 
-              <div className="w-[50%] ">
+              <div className="w-full ">
                 <label
                   className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
                   htmlFor="cityName"
                 >
                   City of Birth
                 </label>
-                <div className="relative flex items-center  ">
+                {/* <div className=" flex items-center  "> */}
                   <input
                     id="cityName"
                     type="text"
                     value={cityName}
                     onChange={(e) => setCityName(e.target.value)}
-                    className="border rounded-md w-full py-[8px] px-2text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
+                    className="border rounded-md w-full h-9 py-[8px] px-2text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
                     placeholder="Enter your city"
                     required
                   />
-                </div>
+                {/* </div> */}
               </div>
-            </div>
+            {/* </div> */}
 
             {/* counstry and city section end*/}
 
-            <div className="flex items-center justify-between gap-4  ">
-              <div className="flex flex-col w-full">
+            {/* <div className="flex items-center justify-between gap-4  "> */}
+              <div className=" w-full">
                 <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2">
                   Nationality
                 </label>
                 <select
-                  className="bg-white h-9 border border-[#00A264] text-[14px] leading-[19.07px] font-[openSans] text-[#333333] rounded-md"
+                  className="bg-white w-full h-9 border border-[#00A264] text-[14px] leading-[19.07px] font-[openSans] text-[#333333] rounded-md"
                   value={nationality}
                   onChange={(e) => setNationality(e.target.value)}
                 >
@@ -235,194 +269,41 @@ const PersonalDetails = () => {
                 >
                   Religion
                 </label>
-                <div className="relative flex items-center  ">
+                {/* <div className="relative flex items-center  "> */}
                   <input
                     id="cityName"
                     type="text"
                     value={religionName}
                     onChange={(e) => setReligionName(e.target.value)}
-                    className="border rounded-lg w-full py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
+                    className="border rounded-lg w-full h-9 py-[8px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
                     placeholder="Enter Religion Name"
                     required
                   />
-                </div>
+                {/* </div> */}
+              </div>
+              <div className=" w-full">
+                <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2">
+                Marital Status
+                </label>
+                <select
+                  className="bg-white w-full h-9 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border border-[#00A264] focus:outline-none rounded-md"
+                  value={gender}
+                  onChange={(e) => setGender(e.target.value)}
+                  required
+                >
+                  <option value="">Select Marital Status</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
               </div>
             </div>
-          </div>
+          
 
-          {/* next of kin details */}
 
-          <div className="flex flex-col mt-4 ">
-            <h1 className="text-center font-semibold mb-2">
-              NEXT OF KIN DETAILS
-            </h1>
+        
 
-            <div className="grid grid-cols-2 gap-4">
-              <div className=" ">
-                <label
-                  className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
-                  htmlFor="cityName"
-                >
-                  Religion
-                </label>
-                <div className="relative flex items-center  ">
-                  <input
-                    id="cityName"
-                    type="text"
-                    value={nextKinName}
-                    onChange={(e) => setNextKinName(e.target.value)}
-                    className="border rounded-lg w-full py-[7px] px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
-                    placeholder="Enter Religion Name"
-                    required
-                  />
-                </div>
-              </div>
-              <div className="">
-                <label
-                  className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
-                  htmlFor="cityName"
-                >
-                  Religion
-                </label>
-                <div className="relative flex items-center  ">
-                  <input
-                    id="cityName"
-                    type="text"
-                    value={nextKinShip}
-                    onChange={(e) => setNextKinShip(e.target.value)}
-                    className="border rounded-lg w-full py-[7px] px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
-                    placeholder="Enter Religion Name"
-                    required
-                  />
-                </div>
-              </div>
-              <div className=" ">
-                <label
-                  className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
-                  htmlFor="cityName"
-                >
-                  Religion
-                </label>
-                <div className="relative flex items-center  ">
-                  <input
-                    id="cityName"
-                    type="text"
-                    value={nextKinAddre}
-                    onChange={(e) => setNextKinAddre(e.target.value)}
-                    className="border rounded-lg w-full py-[7px] px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
-                    placeholder="Enter Religion Name"
-                    required
-                  />
-                </div>
-              </div>
-
-              <div className=" ">
-                <label
-                  className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
-                  htmlFor="cityName"
-                >
-                  Religion
-                </label>
-                <div className="relative flex items-center  ">
-                  <input
-                    id="cityName"
-                    type="text"
-                    value={nextKinChildren}
-                    onChange={(e) => setNextKinChildren(e.target.value)}
-                    className="border rounded-lg w-full py-[7px] px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
-                    placeholder="Enter Religion Name"
-                    required
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <div className="flex flex-col mt-4 ">
-              <h1 className="text-center font-semibold mb-2">ABOUT ME</h1>
-
-              <div className="">
-                <div className=" ">
-                  <label
-                    className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
-                    htmlFor="personality"
-                  >
-                    My Personality and professional Attitude
-                  </label>
-                  <div className="relative flex items-center  ">
-                    <input
-                      id="personality"
-                      type="text"
-                      value={personality}
-                      onChange={(e) => setPersonality(e.target.value)}
-                      className="border rounded-lg w-full py-[7px] px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
-                      placeholder=""
-                      required
-                    />
-                  </div>
-                </div>
-                <div className="">
-                  <label
-                    className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
-                    htmlFor="additional"
-                  >
-                    Additional Information about my past Sea Service
-                  </label>
-                  <div className="relative flex items-center  ">
-                    <input
-                      id="additional"
-                      type="text"
-                      value={additional}
-                      onChange={(e) => setAdditional(e.target.value)}
-                      className="border rounded-lg w-full py-[7px] px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
-                      placeholder=""
-                      required
-                    />
-                  </div>
-                </div>
-                <div className=" ">
-                  <label
-                    className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
-                    htmlFor="future"
-                  >
-                    My Future Aims and Expectations
-                  </label>
-                  <div className="relative flex items-center  ">
-                    <input
-                      id="future"
-                      type="text"
-                      value={myFuture}
-                      onChange={(e) => setMyFuture(e.target.value)}
-                      className="border rounded-md w-full py-[7px] px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
-                      placeholder=""
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className=" ">
-                  <label
-                    className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
-                    htmlFor="action"
-                  >
-                    Criminal action.
-                  </label>
-                  <div className="relative flex items-center  ">
-                    <input
-                      id="action"
-                      type="text"
-                      value={criminal}
-                      onChange={(e) => setCriminal(e.target.value)}
-                      className="border rounded-lg w-full py-[7px] px-3 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
-                      placeholder="Yes/No"
-                      required
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          
 
           <div className="flex gap-2 mb-4 mt-4">
             <button

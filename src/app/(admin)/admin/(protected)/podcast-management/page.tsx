@@ -5,7 +5,9 @@ import { FaEdit, FaEye, FaTrash } from "react-icons/fa";
 import { AddPodcastData, DeletePodcastData, GetPodcastList, PutPodcastData } from "./Services/podcastService";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import { IoIosClose } from "react-icons/io";
 import moment from "moment";
+import Image from "next/image";
 
 type Props = {};
 
@@ -21,6 +23,8 @@ const page = (props: Props) => {
   });
   const [podcastDetail, setPodcastDetail] = useState<any>()
   const [podcastList, setPodcastList] = useState([])
+  const [selectedImage, setSelectedImage] = useState<any>(null);
+  const [image, setImage] = useState<any>(null);
 
   const handleAddClick = () => {
     setIsPopupOpen(true);
@@ -47,20 +51,42 @@ const page = (props: Props) => {
     });
   };
 
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const imageUrl = URL.createObjectURL(e.target.files[0]);
+      setImage(e.target.files[0])
+      setSelectedImage(imageUrl);
+    }
+  };
+
+  const removeSelectedImage = () => {
+    setSelectedImage(null); // Remove the selected image
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission logic here (e.g., update state or send to backend)
-    let data = {
-      title: podcastData.title,
-      videoLink: podcastData.videoLink,
-    }
-    AddPodcastData(data, AddPodcastDataCB)
+    // let data = {
+    //   title: podcastData.title,
+    //   videoLink: podcastData.videoLink,
+    // }
+    let formData = new FormData()
+    formData.append('thumbnail', image)
+    formData.append('title', podcastDetail.title)
+    formData.append('videoLink', podcastDetail.videoLink)
+    AddPodcastData(formData, AddPodcastDataCB)
   };
 
   const AddPodcastDataCB = (result: any) => {
     console.log(result);
     if (result?.status == 200) {
       GetPodcastList(fetchPodcast)
+      setImage(null)
+      selectedImage(null)
+      setPodcastData({
+        title: "",
+        videoLink: "",
+      })
       toast.success('Podcast created successfully')
     } else {
       toast.error('Podcast not created')
@@ -72,19 +98,23 @@ const page = (props: Props) => {
     e.preventDefault();
     // Handle form submission logic here (e.g., update state or send to backend)
     // let id = podcastDetail?.id
-    console.log('pod',podcastDetail)
-    let data = {
-      id: podcastDetail?.id,
-      title: podcastDetail.title,
-      videoLink: podcastDetail.videoLink,
-    }
-    PutPodcastData(data, PutPodcastDataCB)
+    let formData = new FormData()
+    // formData.append('id', podcastDetail?.id)
+    formData.append('thumbnail', image)
+    formData.append('title', podcastDetail.title)
+    formData.append('videoLink', podcastDetail.videoLink)
+    PutPodcastData(podcastDetail?.id,formData, PutPodcastDataCB)
   };
 
   const PutPodcastDataCB = (result: any) => {
-    console.log(result);
     if (result?.status == 200) {
       GetPodcastList(fetchPodcast)
+      setImage(null)
+      selectedImage(null)
+      setPodcastDetail({
+        title: "",
+        videoLink: "",
+      })
       toast.success('Podcast updated successfully')
     } else {
       toast.error('Podcast not updated')
@@ -108,11 +138,11 @@ const page = (props: Props) => {
 
   }
 
-  const handleDelete = (id:any)=>{
+  const handleDelete = (id: any) => {
     DeletePodcastData(id, DeletePodcastCB)
   }
 
-  const DeletePodcastCB=(result:any)=>{
+  const DeletePodcastCB = (result: any) => {
     console.log(result)
     if (result?.status == 204) {
       GetPodcastList(fetchPodcast)
@@ -194,7 +224,10 @@ const page = (props: Props) => {
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
-               
+
+                <th scope="col" className="px-6 py-3">
+                  Podcast Thumbnail
+                </th>
                 <th scope="col" className="px-6 py-3">
                   Podcast Title
                 </th>
@@ -218,6 +251,16 @@ const page = (props: Props) => {
                       <label htmlFor="checkbox-table-search-1" className="sr-only">checkbox</label>
                     </div>
                   </td> */}
+                  <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <Image
+                    src={`data:image/png;image/jpg;image/jpeg;base64,${item?.thumbnail}`}
+                    alt={item?.title}
+                    width={100}
+                    height={100}
+                    priority
+                    className="h-14 w-14 rounded-full"
+                    />
+                  </th>
                   <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-wrap">
                     {item?.title}
                   </th>
@@ -225,7 +268,7 @@ const page = (props: Props) => {
                     <Link href={item?.videoLink} target="_blank">{item?.videoLink}</Link>
                   </td>
                   <td className="px-6 py-4">
-                  {item?.createdDate?moment(item?.createdDate).format('YYYY-MM-DD'):''}
+                    {item?.createdDate ? moment(item?.createdDate).format('YYYY-MM-DD') : ''}
                   </td>
                   <td className="px-6 py-4 flex flex-row space-x-4">
                     <Link href={`#`} className="font-medium text-blue-600 dark:text-blue-500 hover:underline" onClick={() => { setIsPopupViewOpen(true); setPodcastDetail(item); }}><FaEye /></Link>
@@ -247,12 +290,41 @@ const page = (props: Props) => {
       {isPopupOpen ? (
         <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center  lg:h-auto h-[500px] items-center">
           <div className="bg-white p-6 rounded-lg shadow-lg w-[600px]">
-          <div className="flex justify-end">
+            <div className="flex justify-end">
               <Link href={''} className="font-bold text-3xl" onClick={() => { setIsPopupOpen(false) }}>x</Link>
             </div>
             <h2 className="text-xl font-bold mt-6 mb-4">Add Podcast</h2>
             <form onSubmit={handleSubmit}>
-             
+              <div className="mb-4">
+                <label htmlFor="image" className="block text-gray-700 mb-2">
+                  Choose Image
+                </label>
+                <input
+                  type="file"
+                  id="image"
+                  name="image"
+                  accept="image/*"
+                  className="block w-full border rounded-lg h-12 text-sm text-gray-500 file:mr-4 file:py-[15px] file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-gray-200 file:text-gray-700 hover:file:bg-gray-100"
+                  onChange={handleImageChange}
+                />
+                {selectedImage && (
+                  <div className=" relative mt-4 h-20 w-20 ">
+                    <img
+                      src={selectedImage}
+                      alt="Selected"
+                      className="relative h-full w-full object-cover rounded-lg border"
+                    />
+                    {/* Close button for removing the image */}
+                    <button
+                      type="button"
+                      className="absolute top-0 right-0 bg-white rounded-full text-red-500 h-5 w-5  "
+                      onClick={removeSelectedImage}
+                    >
+                      <IoIosClose className="text-xl w-full h-full" />
+                    </button>
+                  </div>
+                )}
+              </div>
               <div className="mb-4 ">
                 <label htmlFor="title" className="block text-gray-700 mb-2">
                   Title
@@ -313,6 +385,17 @@ const page = (props: Props) => {
             </div>
             <h2 className="text-xl font-bold mt-6 mb-4">Podcast Details</h2>
             <form >
+              <div className="mb-4 flex justify-center">
+
+                <Image
+                  src={`data:image/png;image/jpg;image/jpeg;base64,${podcastDetail?.thumbnail}`}
+                  alt={podcastDetail?.title}
+                  width={100}
+                  height={100}
+                  priority
+                  className="h-14 w-14 rounded-full"
+                />
+              </div>
               <div className="mb-4 ">
                 <label htmlFor="title" className="block text-gray-700 mb-2">
                   Title
@@ -372,6 +455,36 @@ const page = (props: Props) => {
             </div>
             <h2 className="text-xl font-bold mt-6 mb-4">Edit Podcast Details</h2>
             <form onSubmit={handleUpdateSubmit}>
+            <div className="mb-4">
+                <label htmlFor="image" className="block text-gray-700 mb-2">
+                  Choose Image
+                </label>
+                <input
+                  type="file"
+                  id="image"
+                  name="image"
+                  accept="image/*"
+                  className="block w-full border rounded-lg h-12 text-sm text-gray-500 file:mr-4 file:py-[15px] file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-gray-200 file:text-gray-700 hover:file:bg-gray-100"
+                  onChange={handleImageChange}
+                />
+                {selectedImage && (
+                  <div className=" relative mt-4 h-20 w-20 ">
+                    <img
+                      src={selectedImage}
+                      alt="Selected"
+                      className="relative h-full w-full object-cover rounded-lg border"
+                    />
+                    {/* Close button for removing the image */}
+                    <button
+                      type="button"
+                      className="absolute top-0 right-0 bg-white rounded-full text-red-500 h-5 w-5  "
+                      onClick={removeSelectedImage}
+                    >
+                      <IoIosClose className="text-xl w-full h-full" />
+                    </button>
+                  </div>
+                )}
+              </div>
               <div className="mb-4 ">
                 <label htmlFor="title" className="block text-gray-700 mb-2">
                   Title
@@ -437,7 +550,7 @@ const page = (props: Props) => {
                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
               </svg>
               <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this podcast?</h3>
-              <button data-modal-hide="popup-modal" type="button" className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center" onClick={()=>handleDelete(podcastDetail?.id)}>
+              <button data-modal-hide="popup-modal" type="button" className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center" onClick={() => handleDelete(podcastDetail?.id)}>
                 Yes, I'm sure
               </button>
               <button data-modal-hide="popup-modal" type="button" className="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" onClick={() => setIsPopupDeleteOpen(false)}>No, cancel</button>

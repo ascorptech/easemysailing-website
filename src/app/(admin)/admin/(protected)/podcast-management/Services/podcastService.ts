@@ -1,4 +1,4 @@
-import { deleteReq, getReq, postReq, putReq } from "@/RootServices";
+import { deleteReq, getReq, patchReq, postReq, putReq } from "@/RootServices";
 import apiEndPoints from "./apiEndPoints";
 
 const {GETPOSDCAST,POSTPODCAST,DELETEPODCAST,PUTPODCAST} = apiEndPoints
@@ -21,9 +21,10 @@ export const AddPodcastData = async(data:any,cb:any)=>{
         return cb(error?.response)
     }
 }
-export const PutPodcastData = async(data:any,cb:any)=>{
+export const PutPodcastData = async(id:any,data:any,cb:any)=>{
     try {
-        const response = await putReq(PUTPODCAST,data);
+        let url:any=`${PUTPODCAST}/${id}`
+        const response = await patchReq(url,data);
         return cb(response)
     } catch (error:any) {
         console.log('err',error)

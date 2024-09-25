@@ -102,6 +102,7 @@ function Wsg() {
               <div className=" border rounded-md cursor-pointer flex  items-center bg-white ">
                 <div className="flex gap-2 items-center p-[5px] bg-[#00A264] rounded-md">
                   <Image
+                  priority
                     src="/images/requiter-img/ship1.png"
                     alt=""
                     width={40}
@@ -177,6 +178,7 @@ function Wsg() {
               >
                 <div className="flex gap-2 items-center p-[5px] bg-[#00A264] rounded-md">
                   <Image
+                  priority
                     src="/images/requiter-img/ship1.png"
                     alt=""
                     width={40}
@@ -217,6 +219,7 @@ function Wsg() {
               >
                 <div className="flex gap-2 items-center p-[5px] bg-[#00A264] rounded-md">
                   <Image
+                  priority
                     src="/images/requiter-img/ship1.png"
                     alt=""
                     width={40}
@@ -257,6 +260,7 @@ function Wsg() {
               >
                 <div className="flex gap-2 items-center p-[5px] bg-[#00A264] rounded-md">
                   <Image
+                  priority
                     src="/images/requiter-img/ship1.png"
                     alt=""
                     width={40}
@@ -301,6 +305,7 @@ function Wsg() {
                 >
                   <div className="flex gap-2 items-center p-[5px] bg-[#00A264] rounded-md">
                     <Image
+                    priority
                       src="/images/requiter-img/shipbag.png"
                       alt=""
                       width={40}
@@ -351,6 +356,7 @@ function Wsg() {
                 <div className=" border rounded-md cursor-pointer flex  items-center bg-white ">
                   <div className="flex gap-2 items-center p-[5px] bg-[#00A264] rounded-md">
                     <Image
+                    priority
                       src="/images/requiter-img/shipbag.png"
                       alt=""
                       width={30}
@@ -389,6 +395,7 @@ function Wsg() {
               <div className=" border rounded-md cursor-pointer flex  items-center bg-white ">
                 <div className="flex gap-2 items-center p-[5px] bg-[#00A264] rounded-md">
                   <Image
+                  priority
                     src="/images/requiter-img/shipbag.png"
                     alt=""
                     width={40}
@@ -426,6 +433,7 @@ function Wsg() {
               <div className=" border rounded-md cursor-pointer flex  items-center bg-white ">
                 <div className="flex gap-2 items-center p-[5px] bg-[#00A264] rounded-md">
                   <Image
+                  priority
                     src="/images/requiter-img/shipbag.png"
                     alt=""
                     width={40}
@@ -463,6 +471,7 @@ function Wsg() {
               <div className=" border rounded-md cursor-pointer flex  items-center bg-white ">
                 <div className="flex gap-2 items-center p-[5px] bg-[#00A264] rounded-md">
                   <Image
+                  priority
                     src="/images/requiter-img/shipbag.png"
                     alt=""
                     width={40}
@@ -505,6 +514,7 @@ function Wsg() {
                   <div className=" border rounded-md cursor-pointer flex  items-center bg-white ">
                     <div className="flex gap-2 items-center p-[5px] bg-[#00A264] rounded-md">
                       <Image
+                      priority
                         src="/images/requiter-img/doller1.png"
                         alt=""
                         width={40}
@@ -519,6 +529,7 @@ function Wsg() {
 
                       <div className="   ">
                         <Image
+                        priority
                           src="/images/requiter-img/birthday.png"
                           alt=""
                           width={40}
@@ -534,6 +545,7 @@ function Wsg() {
                   >
                     <div className="flex gap-2 items-center p-[5px] bg-[#00A264] rounded-md">
                       <Image
+                      priority
                         src="/images/requiter-img/doller1.png"
                         alt=""
                         width={40}
@@ -548,6 +560,7 @@ function Wsg() {
 
                       <div className="   ">
                         <Image
+                        priority
                           src="/images/requiter-img/doller.png"
                           alt=""
                           width={40}
@@ -578,6 +591,7 @@ function Wsg() {
                 >
                   <div className="flex gap-2 items-center p-[5px] bg-[#00A264] rounded-md">
                     <Image
+                    priority
                       src="/images/requiter-img/doller1.png"
                       alt=""
                       width={40}
@@ -607,6 +621,7 @@ function Wsg() {
                 >
                   <div className="flex gap-2 items-center p-[5px] bg-[#00A264] rounded-md">
                     <Image
+                    priority
                       src="/images/requiter-img/doller1.png"
                       alt=""
                       width={40}
@@ -636,6 +651,7 @@ function Wsg() {
                 >
                   <div className="flex gap-2 items-center p-[5px] bg-[#00A264] rounded-md">
                     <Image
+                    priority
                       src="/images/requiter-img/doller1.png"
                       alt=""
                       width={40}

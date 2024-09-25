@@ -142,6 +142,7 @@ const EmsCard: React.FC = () => {
               <h3 className="  text-base font-semibold ">{item.name}</h3>
               <div className="flex absolute top-0 right-3 justify-center items-center h-16 w-16 border shadow-md rounded-md mt-3">
                 <Image
+                priority
                   src={item.logoSrc}
                   width={100}
                   height={100}

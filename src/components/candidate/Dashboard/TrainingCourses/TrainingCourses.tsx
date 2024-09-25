@@ -76,6 +76,7 @@ const TrainingCourses: React.FC = () => {
               className="bg-white shadow-md rounded-lg p-3 min-w-[170px] border-2"
             >
               <Image
+              priority
                 src={vacancy.logoSrc}
                 alt={vacancy.companyName}
                 width={800}

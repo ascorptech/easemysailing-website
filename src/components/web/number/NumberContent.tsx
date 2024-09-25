@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const NumberContent = () => {
   return (
-    <div className="flex sm:md:flex-row lg:mb-12 mb-5 lg:w-full  flex-col sm:md:w-[90%] justify-between self-center">
+    <div className="flex sm:md:flex-row lg:mb-12 mb-5 lg:w-full lg:mt-0 mt-5 flex-col sm:md:w-[90%] justify-between self-center">
       <div className="sm:md:w-[50%] lg:ml-10 lg:mt-10 flex lg:w-[60%] flex-col  ">
         <h2 className="text-[21px] lg:ml-8 mx-3 lg:mx-0 md:text-3xl  md:text-left lg:text-5xl font-[800]  ">
           SEAFARERS POWERING GLOBAL{" "}

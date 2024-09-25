@@ -2,7 +2,7 @@
 import Link from "next/link";
 
 import { useState } from "react";
-const AuthorizedDocuments = () => {
+const TravelDocuments = () => {
   const [number, setNumber] = useState("");
   const [issuedate, setIssueDate] = useState("");
   const [exdate, setExDate] = useState("");
@@ -526,4 +526,4 @@ const AuthorizedDocuments = () => {
   );
 };
 
-export default AuthorizedDocuments;
+export default TravelDocuments;

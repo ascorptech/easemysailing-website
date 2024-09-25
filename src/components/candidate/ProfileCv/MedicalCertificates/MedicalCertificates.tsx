@@ -207,10 +207,10 @@ const MedicalCertificates = () => {
             className="hidden"
             onChange={handleFileChange}
           />
-          {selectedFile && (
-            <p className="mt-4 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-              File Selected: {selectedFile.name}
-            </p>
+          {selectedFile ? (
+            <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">File Selected: {selectedFile.name}</p>
+          ) : (
+            <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">No file selected</p>
           )}
         </div>
 

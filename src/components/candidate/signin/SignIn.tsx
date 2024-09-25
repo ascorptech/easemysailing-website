@@ -100,18 +100,38 @@ const SignIn = ({ route }: Props) => {
       if (response?.data) {
         const token = response?.data?.token;
         const user = response?.data?.user;
-        document.cookie = `token=${response?.data?.token}; path=/candidate`;
-        localStorage.setItem("token", token);
-        localStorage.setItem("id", user?.id);
-        localStorage.setItem("firstName", user?.firstName);
-        localStorage.setItem("lastName", user?.lastName);
-        localStorage.setItem("email", user?.email);
+        if (route == 'candidate') {
 
-        toast.success('Login successfull')
-        if (token) {
-          router.push("/candidate/dashboard");
-          setIsLoading(false)
+          document.cookie = `token=${response?.data?.token}; path=/candidate`;
+          localStorage.setItem("token", token);
+          localStorage.setItem("id", user?.id);
+          localStorage.setItem("firstName", user?.firstName);
+          localStorage.setItem("lastName", user?.lastName);
+          localStorage.setItem("email", user?.email);
+  
+          toast.success('Login successfull')
+          if (token) {
+            router.push("/candidate/dashboard");
+            setIsLoading(false)
+          }
+
         }
+        if ( route == 'recruiter'){
+          document.cookie = `token=${response?.data?.token}; path=/recruiter`;
+          localStorage.setItem("token", token);
+          localStorage.setItem("id", user?.id);
+          localStorage.setItem("firstName", user?.firstName);
+          localStorage.setItem("lastName", user?.lastName);
+          localStorage.setItem("email", user?.email);
+  
+          toast.success('Login successfull')
+          if (token) {
+            router.push("/recruiter/dashboard");
+            setIsLoading(false)
+          }
+
+        }
+       
 
       }
     } catch (error) {

@@ -1,11 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { TfiReload } from "react-icons/tfi";
 import { GrLocation } from "react-icons/gr";
-import { FiPhoneCall } from "react-icons/fi";
-import { FiMail } from "react-icons/fi";
+import { FiPhoneCall, FiMail } from "react-icons/fi";
 import { toast } from "react-toastify";
 import { AddContactData } from "@/app/(web)/contact/Services/contactService";
 
@@ -13,127 +11,180 @@ const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [countryCode, setCountryCode] = useState("+91"); // Default country code
   const [textarea, setTextArea] = useState("");
-  const [captcha, setCaptcha] = useState("");
+  const [errors, setErrors] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const validateInputs = () => {
+    let formIsValid = true;
+    let newErrors = {
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+    };
+
+    if (!name.trim()) {
+      newErrors.name = "Name is required";
+      formIsValid = false;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email.trim()) {
+      newErrors.email = "Email is required";
+      formIsValid = false;
+    } else if (!emailRegex.test(email)) {
+      newErrors.email = "Invalid email format";
+      formIsValid = false;
+    }
+
+    if (!phone.trim()) {
+      newErrors.phone = "Phone number is required";
+      formIsValid = false;
+    } else if (!/^\d{10}$/.test(phone)) {
+      newErrors.phone = "Phone number must be 10 digits";
+      formIsValid = false;
+    }
+
+    if (!textarea.trim()) {
+      newErrors.message = "Message is required";
+      formIsValid = false;
+    }
+
+    setErrors(newErrors);
+    return formIsValid;
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    let data = {
-      name:name,
-      email:email,
-      mobileNumber:phone,
-      message:textarea
+    if (!validateInputs()) {
+      return;
     }
-    AddContactData(data,AddContactDataCB)
+
+    let data = {
+      name: name,
+      email: email,
+      mobileNumber: `${countryCode} ${phone}`,
+      message: textarea,
+    };
+
+    AddContactData(data, AddContactDataCB);
   };
 
-  const AddContactDataCB = (res:any)=>{
-    toast.success('Thank you for contacting us')
-    setName('')
-    setEmail('')
-    setPhone('')
-    setTextArea('')
-  }
+  const AddContactDataCB = (res: any) => {
+    toast.success("Thank you for contacting us");
+    setName("");
+    setEmail("");
+    setPhone("");
+    setTextArea("");
+    setErrors({
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+    });
+  };
 
   return (
     <div className="contact mt-14">
-      {/* <div className="flex justify-center items-center h-[6rem]  bg-green-100">
-        <h1 className="text-3xl text-green-600 font-bold">Get in touch</h1>
-      </div> */}
-      <div className="flex  justify-center items-center h-[8rem]  bg-green-100 bg-[url('/images/Rectangle1.png')] ">
+      <div className="flex justify-center items-center h-[8rem] bg-green-100 bg-[url('/images/Rectangle1.png')] ">
         <h1 className="text-[46px] leading-[69px] text-[#00A264] font-bold">
           Get in touch
         </h1>
       </div>
-      <div className="grid lg:grid-cols-2  lg:gap-24 md:mx-24 mx-8 my-10">
-        <div className="bg-gray-200  p-8 rounded-xl ">
+      <div className="grid lg:grid-cols-2 lg:gap-24 md:mx-24 mx-8 my-10">
+        <div className="bg-gray-200 p-8 rounded-xl">
           <h1 className="text-center mb-2">
             For questions and assistance, reach out to us.
           </h1>
-          <form onSubmit={handleSubmit} className="   ">
-            <div className="mb-[7px] ">
-              <div className="relative flex items-center ">
-                <input
-                  id="Name"
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value.trim())}
-                  className="border lg:h-10 rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
-                  placeholder=" Name"
-                  required
-                />
-              </div>
+          <form onSubmit={handleSubmit}>
+            {/* Name Input */}
+            <div className="mb-[7px]">
+              <input
+                id="Name"
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="border lg:h-10 rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
+                placeholder=" Name"
+                required
+              />
+              {errors.name && (
+                <p className="text-red-500 text-xs mt-1">{errors.name}</p>
+              )}
             </div>
 
+            {/* Email Input */}
             <div className="mb-[7px]">
-              <div className="relative flex items-center  ">
-                <input
-                  id="email"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value.trim())}
-                  className="border lg:h-10 rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
-                  placeholder="Email"
-                  required
-                />
-              </div>
+              <input
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="border lg:h-10 rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
+                placeholder="Email"
+                required
+              />
+              {errors.email && (
+                <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+              )}
             </div>
+
+            {/* Phone Number with Country Code */}
             <div className="mb-[7px]">
-              <div className="relative flex items-center  ">
+              <div className="relative flex items-center">
+                {/* Country Code Dropdown */}
+                <select
+                  value={countryCode}
+                  onChange={(e) => setCountryCode(e.target.value)}
+                  className="border h-10  rounded-lg px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
+                >
+                  <option value="+91">🇮🇳 +91 </option>
+                  <option value="+1">🇺🇸 +1 </option>
+                  <option value="+44">🇬🇧 +44</option>
+                  <option value="+61">🇦🇺 +61</option>
+                  {/* Add more country codes as needed */}
+                </select>
+
+                {/* Phone Input */}
                 <input
                   id="phone"
                   type="text"
                   value={phone}
                   maxLength={10}
-                  onChange={(e) => setPhone(e.target.value.trim())}
-                  className="border lg:h-10  rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
+                  onChange={(e) => setPhone(e.target.value)}
+                  className="border lg:h-10 rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm ml-2"
                   placeholder="Phone Number"
                   required
                 />
               </div>
+              {errors.phone && (
+                <p className="text-red-500 text-xs mt-1">{errors.phone}</p>
+              )}
             </div>
 
+            {/* Message Textarea */}
             <div className="mb-[7px]">
-              <div className="relative flex items-center  ">
-                <textarea
-                  value={textarea}
-                  maxLength={500}
-                  onChange={(e) => setTextArea(e.target.value.trim())}
-                  className="border rounded-lg w-full h-28 py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
-                  placeholder="Message"
-                  required
-                />
-              </div>
+              <textarea
+                value={textarea}
+                maxLength={500}
+                onChange={(e) => setTextArea(e.target.value)}
+                className="border rounded-lg w-full h-28 py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
+                placeholder="Message"
+                required
+              />
+              {errors.message && (
+                <p className="text-red-500 text-xs mt-1">{errors.message}</p>
+              )}
             </div>
 
-            {/* <div className="mb-[7px] flex">
-              <div className="flex w-[65%]">
-                <input
-                  id="Captcha"
-                  type="text"
-                  value={captcha}
-                  onChange={(e) => setCaptcha(e.target.value)}
-                  className="border rounded-lg w-full lg:h-10  py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
-                  placeholder="Captcha Code"
-                  required
-                />
-              </div>
-              <div className="flex items-center gap-2 ">
-                <div className="ml-4 ">
-                  <img
-                    src="./images/captcha.png"
-                    className="h-10 rounded-md"
-                  ></img>
-                </div>
-                <span className="text-white p-2 bg-[#00A264] text-2xl font-extrabold rounded-md">
-                  <TfiReload />
-                </span>
-              </div>
-            </div> */}
-
+            {/* Submit Button */}
             <div>
-              {/* {/ {error && <p style={{ color: "red" }}>{error}</p>} /} */}
-
               <button
                 type="submit"
                 className="w-full bg-[#00A264] hover:bg-[#00A264] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
@@ -144,8 +195,9 @@ const Contact = () => {
           </form>
         </div>
 
+        {/* Contact Info Section */}
         <div>
-          <div className="flex items-center bg-white shadow-lg border  p-3 mt-3 rounded-xl">
+          <div className="flex items-center bg-white shadow-lg border p-3 mt-3 rounded-xl">
             <div className="w-16 h-16 flex items-center justify-center text-[#00A264] text-3xl">
               <GrLocation />
             </div>
@@ -157,17 +209,17 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="  items-center bg-white shadow-lg border flex py-3 px-1 lg:px-3 mt-3 rounded-xl">
+          <div className="items-center bg-white shadow-lg border flex py-3 px-1 lg:px-3 mt-3 rounded-xl">
             <div className="w-16 h-16 flex items-center justify-center text-[#00A264] text-3xl">
               <FiPhoneCall />
             </div>
-            <div className="ml-3 lg:ml-4 ">
+            <div className="ml-3 lg:ml-4">
               <h2 className="font-bold text-lg">Call us on</h2>
               <p className="text-sm">(+91) - 7055-70-5555</p>
             </div>
           </div>
 
-          <div className=" items-center bg-white shadow-lg border flex lg:p-3 px-2 mt-3 rounded-xl">
+          <div className="items-center bg-white shadow-lg border flex lg:p-3 px-2 mt-3 rounded-xl">
             <div className="w-16 h-16 flex items-center justify-center text-[#00A264] text-3xl font-extrabold">
               <FiMail />
             </div>
@@ -176,21 +228,10 @@ const Contact = () => {
               <p className="text-sm">business@EaseMySailing.com</p>
             </div>
           </div>
-
-          {/* <div className=" items-center bg-white shadow-lg border flex p-3 mt-3 rounded-xl">
-            <div className="w-16 h-16 flex items-center justify-center text-red-600 text-3xl">
-              <FiMail />
-            </div>
-            <div className="ml-4">
-              <h2 className="font-bold text-lg text-red-600">
-                For Distress, Fraud & Grievance
-              </h2>
-              <p className="text-sm">sos@gmail.com</p>
-            </div>
-          </div> */}
         </div>
       </div>
     </div>
   );
 };
+
 export default Contact;

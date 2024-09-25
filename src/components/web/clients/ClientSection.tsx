@@ -1,4 +1,5 @@
-"use client"
+"use client";
+
 import React, { useRef } from "react";
 import ClientsCard from "./ClientsCard";
 
@@ -46,19 +47,20 @@ const ClientSection: React.FC = () => {
       text: "EaseMySailing has redefined how seafarers connect with recruiters. It’s intuitive and respectful of our hard work. It’s the go-to platform for Seafarers.",
       name: "Danny Jhonas",
       role: "Customer",
-
       imageSrc: "/images/ellipse.png",
       image1: "/images/quotes.png",
     },
-    // Add more clientcard as needed
   ];
 
   const scrollRef = useRef<HTMLDivElement>(null);
 
+  const cardWidth = 300; // Approximate width of each card including margin
+
   // Scroll handling for left and right buttons
   const handleScroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
-      const scrollAmount = direction === "left" ? -360 : 360;
+      const scrollAmount =
+        direction === "left" ? -cardWidth * 1 : cardWidth * 1;
       scrollRef.current.scrollBy({
         left: scrollAmount,
         behavior: "smooth",
@@ -77,7 +79,7 @@ const ClientSection: React.FC = () => {
 
       {/* Arrow Buttons */}
       <button
-        className="absolute left-20 top-[58%] transform -translate-y-1/2 bg-green-500 text-white rounded-full h-8 w-8 flex items-center justify-center"
+        className="absolute left-20 top-[58%] transform -translate-y-1/2 bg-[#00A264] text-white rounded-full h-8 w-8 flex items-center justify-center"
         onClick={() => handleScroll("left")}
       >
         &lt;
@@ -85,7 +87,7 @@ const ClientSection: React.FC = () => {
 
       <div
         ref={scrollRef}
-        className="flex gap-5 ml-6 overflow-auto no-scrollbar space-x-12 mt-14 mb-10 lg:ml-[10rem] lg:mr-[9%]"
+        className="flex justify-start items-center space-x-20 h-[500px] overflow-auto no-scrollbar w-[900px] ml-[10rem] mt-14 mb-10 lg:w-[80%]" // width adjusted for 3 cards
       >
         {clientcard?.map((ccard, index) => (
           <ClientsCard
@@ -100,7 +102,7 @@ const ClientSection: React.FC = () => {
       </div>
 
       <button
-        className="absolute right-20 top-[58%] transform -translate-y-1/2 bg-green-500 text-white rounded-full h-8 w-8 flex items-center justify-center"
+        className="absolute right-20 top-[58%] transform -translate-y-1/2 bg-[#00A264] text-white rounded-full h-8 w-8 flex items-center justify-center"
         onClick={() => handleScroll("right")}
       >
         &gt;

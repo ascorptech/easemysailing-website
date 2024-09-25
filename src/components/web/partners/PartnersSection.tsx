@@ -30,7 +30,7 @@ const PartnersSection = () => {
       rating: "3.6",
       contactPerson: "Robin",
       description: "Lorem Ipsum is simply dummy text of the printing",
-      logoSrc: "/images/logo2.png",
+      logoSrc: "/images/logo4.png",
     },
     {
       name: "V. Ships",
@@ -88,58 +88,44 @@ const PartnersSection = () => {
 
   return (
     // <section className="w-[94%]  ml-1 md:mx-6 px-1 sm:mx-5 lg:w-[98%] lg:mx-0">
-    <div className="mt-7 w-[94%] mx-3 px-1   md:mx-6 lg:w-full lg:mx-0 sm:mx-5">
+    <div className="mt-7 lg:px-1  md:mx-6 lg:w-full lg:mx-0 sm:mx-5">
       {/* <div className="flex items-center  justify-between pt-4 lg:mr-[8%] md:mx-[3rem]">
        */}
-      <div className="flex items-center justify-between mt-4 pt-4 lg:mr-[8%]  md:mx-[1rem]">
+      <div className="flex items-center justify-between mt-4 pt-4 lg:mr-[5%]  md:mx-[1rem]">
         {/* <div className="font-bold text-2xl  lg:ml-[4rem]"> */}
-        <div className="font-bold flex items-center text-4xl lg:ml-[4rem]">
+        <div className="font-bold mx-5 text-xl flex items-center lg:text-4xl lg:ml-[2rem]">
           <h1>
-            <span>OUR</span> <span className="text-green-700">PARTNERS</span>
+            <span>OUR</span> <span className="text-7green-00">PARTNERS</span>
           </h1>
-          <div className="ml-5">
+          <div className="ml-2">
             <Image
-            priority
-            src="/anchor.png"
-            alt="partners"
-            width={200}
-            height={200}
-            className=" h-8 w-7"
+              priority
+              src="/anchor.png"
+              alt="partners"
+              width={200}
+              height={200}
+              className=" lg:h-8 lg:w-7 h-5 w-5"
             />
-
           </div>
         </div>
-        <div>
-          <Link href="/partner-details"
-             className="h-8 bg-green-600 text-white py-1 px-4 rounded-lg  text-sm mb-2">
-              View All
-           
+        <div className="lg:mr-[-1.5rem]">
+          <Link
+            href="/partner-details"
+            className=" bg-green-600 text-white mx-5  text-xs py-2 px-4 lg:py-3 lg:px-8 rounded-full  lg:text-sm mb-2"
+          >
+            View All
           </Link>
         </div>
       </div>
 
       {/* <div className=" lg:ml-[2rem] relative flex items-center justify-center w-[97%]  "> */}
       <div className=" lg:px-[1rem] relative flex items-center justify-center w-[100%]  ">
-        {/* {/ Left Arrow /} */}
-        {/* <button
-          onClick={scrollLeft}
-          className="absolute left-1 lg:left-10 z-10 p-2 bg-white border rounded-full shadow-md ml-1 lg:ml-2 mr-2"
-        >
-          &lt;
-        </button> */}
-        {/* <button
-        onClick={scrollLeft}
-        className="absolute left-1  z-10 bg-[#D9D9D9] w-[23.6px] h-[23.6px] rounded-full shadow-md ml-1 lg:ml-2 mr-2"
-      >
-        &lt;
-      </button> */}
-
         {/* {/ Partner Cards Scroll Container /} */}
         <div
           ref={scrollRef}
-          className="overflow-x-auto my-10 flex space-x-16 lg:mx-0 no-scrollbar mx-[5rem] scroll-smooth snap-x snap-mandatory lg:w-[90%] w-[97%] "
+          className="overflow-x-auto my-10 flex space-x-2 lg:space-x-6 lg:mx-0 no-scrollbar scroll-smooth snap-x snap-mandatory lg:w-[95%] w-[52%] "
         >
-          {partners.map((partner, index) => (
+          {partners?.map((partner, index) => (
             <PartnerCard
               key={index}
               name={partner.name}
@@ -151,20 +137,6 @@ const PartnersSection = () => {
             />
           ))}
         </div>
-
-        {/* {/ Right Arrow /} */}
-        {/* <button
-          onClick={scrollRight}
-          className="absolute right-1 lg:right-20  z-10 p-2 bg-white border rounded-full shadow-md  lg:-mr-1"
-        >
-          &gt;
-        </button> */}
-        {/* <button
-        onClick={scrollRight}
-        className="absolute right-1 mr-3 z-10 bg-[#D9D9D9] w-[23.6px] h-[23.6px] rounded-full shadow-md  "
-      >
-        &gt;
-      </button> */}
       </div>
     </div>
   );

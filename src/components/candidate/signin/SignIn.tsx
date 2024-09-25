@@ -165,7 +165,7 @@ const SignIn = ({ route }: Props) => {
                 >
                   Enter Registered Email/Phone
                 </label>
-                <div className="relative flex items-center pl-8 border border-[#00A264] rounded-l-md ">
+                <div className="relative flex items-center pl-8 rounded-l-md ">
                   <input
                     id="emailOrPhone"
                     type="text"
@@ -188,7 +188,7 @@ const SignIn = ({ route }: Props) => {
                 >
                   Password
                 </label>
-                <div className="relative flex items-center pl-8 border border-[#00A264] rounded-l-md">
+                <div className="relative flex items-center pl-8 rounded-l-md">
                   <input
                     id="password"
                     type={showPassword ? "text" : "password"}

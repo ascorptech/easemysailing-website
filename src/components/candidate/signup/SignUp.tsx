@@ -266,11 +266,11 @@ const SignUp: React.FC = () => {
                       className=" ml-2 block  text-sm  text-center text-[16px] leading-[24px]  text-[#333333]  "
                     >
                       You agree to our
-                      <Link href="" className="text-[#00A264] font-[500] hover:underline mx-1">
+                      <Link href="/terms" className="text-[#00A264]">
                         Teams & Conditions
                       </Link>
-                      and{" "}
-                      <Link href="#" className="text-[#00A264] font-[500] hover:underline ">
+                      {" "}and{" "}
+                      <Link href="/privacy-policy" className="text-[#00A264]">
                         Privacy Policy.
                       </Link>
                     </label>
@@ -279,9 +279,9 @@ const SignUp: React.FC = () => {
               </div>
             </form>
 
-            <p className=" text-center font-semibold mb-6 mt-2  text-[16px] leading-[24px]  text-[#333333]">
-              Already have on account?
-              <Link href="/candidate" className="text-[#00A264] font-[500] hover:underline ml-1">
+            <p className=" text-center font-semibold mb-6">
+              Already have on account?{" "}
+              <Link href="/candidate" className="text-[#00A264] ">
                 Sign In as Candidate
               </Link>
             </p>

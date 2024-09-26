@@ -6,7 +6,7 @@ const Interview = () => {
       <div className="flex items-center justify-between  lg:mr-[9rem] md:mx-[6.8rem]">
         <div className="text-[21px]  leading-[28px] font-bold sm:md:text-4xl  ">
           <h1 className="text-white">
-            PODCAST &<span className="text-[#00A264]"> INTERVIEWS</span>
+            Podcast &<span className="text-[#00A264]"> Interviews</span>
           </h1>
         </div>
 

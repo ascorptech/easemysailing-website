@@ -67,7 +67,7 @@ const Islide = () => {
   }, []);
 
   return (
-    <div className="relative overflow-x-hidden mt-7 mb-3 lg:items-center items-center flex flex-col sm:flex-row w-full lg:w-[83%]  md:w-[94%] px-1 sm:px-0 lg:px-0 lg:mx-[110px] mx-auto">
+    <div className="relative overflow-x-hidden  mt-7 pb-4 lg:pb-0 flex justify-center items-center lg:items-center w-full lg:w-[83%] 2xl:w-[85%] md:w-[94%] px-1 sm:px-0 lg:px-0 lg:mx-[110px] ">
       {/* Left Scroll Button for Mobile */}
       <button 
         onClick={scrollLeft} 
@@ -80,7 +80,7 @@ const Islide = () => {
       {/* Carousel Wrapper */}
       <div
         ref={card}
-        className="w-[288px] sm:w-full sm:ml-0 flex overflow-x-scroll  no-scrollbar scroll-smooth snap-x snap-mandatory gap-[33px]"
+        className="w-[289px] sm:w-full sm:ml-0 flex overflow-x-scroll  no-scrollbar scroll-smooth snap-x snap-mandatory gap-1 lg:gap-[33px] 2xl:space-x-14"
       >
         {/* Video Card 1 */}
         <div className="snap-center ">

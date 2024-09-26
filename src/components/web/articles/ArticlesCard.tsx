@@ -55,7 +55,7 @@ const ArticlesCard = () => {
   };
 
   return (
-    <div className="relative overflow-x-hidden  mt-7 pb-4 lg:pb-0 flex justify-center items-center lg:items-center w-full lg:w-[83%] md:w-[94%] px-1 sm:px-0 lg:px-0 lg:mx-[110px] ">
+    <div className="relative overflow-x-hidden  mt-7 pb-4 lg:pb-0 flex justify-center items-center lg:items-center w-full lg:w-[83%] 2xl:w-[85%] md:w-[94%] px-1 sm:px-0 lg:px-0 lg:mx-[110px] ">
       {/* Left Scroll Button */}
       <button 
         onClick={scrollLeft} 
@@ -67,15 +67,15 @@ const ArticlesCard = () => {
 
       <div
         ref={cardRef}
-        className="w-[289px]  sm:w-full sm:ml-0 flex overflow-x-scroll  no-scrollbar scroll-smooth snap-x snap-mandatory gap-1 lg:gap-[33px]"
+        className="w-[289px] sm:w-full sm:ml-0 flex overflow-x-scroll  no-scrollbar scroll-smooth snap-x snap-mandatory gap-1 lg:gap-[33px] 2xl:space-x-20"
 
 >
         {articles.map((card) => (
           <div
-          className="w-[289px]  sm:w-[16.4rem] lg:w-[19.3rem] 2xl:w-[19.5rem] rounded md:mb-7 shadow-lg "
+          className="w-[289px]  sm:w-[16.4rem] lg:w-[19.3rem] 2xl:w-[22rem] border rounded md:mb-7 shadow-lg "
             key={card.id}
           >
-            <div className="relative  w-[289px] lg:h-[12rem]">
+            <div className="relative  w-full lg:h-[12rem]">
               <Image
                 priority
                 className="w-full h-full "

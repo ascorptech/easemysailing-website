@@ -18,6 +18,35 @@ import { SignupData } from "@/app/(candidate)/candidate/signup/Services/signupSe
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
+type PhoneLengthRule = {
+  min: number;
+  max: number;
+};
+
+type CountryPhoneLengthRules = {
+  [key: string]: PhoneLengthRule;
+};
+const phoneLengthRules: CountryPhoneLengthRules = {
+  in: { min: 12, max: 12 },
+  us: { min: 12, max: 15 },
+  uk: { min: 10, max: 11 },
+};
+
+type PasswordRules = {
+  length: { min: number };
+  lowercase: RegExp;
+  uppercase: RegExp;
+  digit: RegExp;
+  special: RegExp;
+};
+
+const passwordRules: PasswordRules = {
+  length: { min: 8 },
+  lowercase: /[a-z]/,
+  uppercase: /[A-Z]/,
+  digit: /\d/,
+  special: /[!@#$%^&*(),.?":{}|<>]/,
+};
 const SignUp: React.FC = () => {
   const route = useRouter();
   const [firstName, setFirstName] = useState("");
@@ -32,24 +61,105 @@ const SignUp: React.FC = () => {
   const [cPassword, setCpassword] = useState("");
   const [showCpassword, setShowCpassword] = useState(false);
 
-  const [error, setError] = useState("");
+  // const [error, setError] = useState("");
   const [termsAccepted, setTermsAccepted] = useState(false);
+  const [isValidPhone, setIsValidPhone] = useState(true); 
+  const [countryCode, setCountryCode] = useState("in");
+  const [passwordError, setPasswordError] = useState("");
 
-  const validatePasswords = () => {
-    if (password !== cPassword) {
-      setError("Passwords do not match");
-    } 
-    else {
-      setError("");
-    }
-  };
+
+
+    // Password Validation
+    const validatePassword = (password: string) => {
+      if (password.length < passwordRules.length.min) {
+        return toast.error ("Password must be at least 8 characters long.");
+      }
+      if (!passwordRules.lowercase.test(password)) {
+        return toast.error("Password must contain at least one lowercase letter.");
+      }
+      if (!passwordRules.uppercase.test(password)) {
+        return toast.error("Password must contain at least one uppercase letter.");
+      }
+      if (!passwordRules.digit.test(password)) {
+        return toast.error("Password must contain at least one digit.");
+      }
+      if (!passwordRules.special.test(password)) {
+        return toast.error ("Password must contain at least one special character.");
+      }
+      return "";
+    };
+
+  // const validatePasswords = () => {
+  //   if (password !== cPassword) {
+  //     setError("Passwords do not match");
+  //   } 
+  //   else {
+  //     setError("");
+  //   }
+  // };
+  // const validatePasswords = () => {
+  //   return password === cPassword;
+  // };
+
+
+ const validatePhoneLength = (phone: string, countryCode: any) => {
+  const normalizedCountryCode = countryCode.toLowerCase();
+
+
+  const rule = phoneLengthRules[countryCode];
+
+
+  if (!rule) return true; 
+  const phoneWithoutCountryCode = phone.replace(`+${countryCode}`, "");
+
+
+  return (
+    phoneWithoutCountryCode.length >= rule.min &&
+    phoneWithoutCountryCode.length <= rule.max
+  );
+};
+
+const handlePhoneChange = (value: string, country: any) => {
+  setPhone(value);
+  setCountryCode(country.countryCode); 
+  
+  const isValid = validatePhoneLength(value, country.countryCode);
+  setIsValidPhone(isValid); 
+};
 
   const handleSubmit = async(e: React.FormEvent) => {
     try {
       e.preventDefault();
+      const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+  
+      // Email validation check
+      if (!emailPattern.test(email)) {
+        toast.error("Please enter a valid email address.");
+        return;
+      }
 
+      if (!isValidPhone) {
+        toast.error("Phone number is not valid according to the selected country.");
+        return;
+      }
+
+
+  if (!termsAccepted) {
+      toast.error("You must accept the terms and conditions");
+      return;
+    }
+
+          // Validate password
+          const passwordValidationError = validatePassword(password);
+          
+          if (passwordValidationError) {
+            setPasswordError(passwordValidationError);
+           
+            return;
+          }
+    
     if (password !== cPassword) {
-    // if(validatePasswords){
+    // if(!validatePasswords){
       toast.error("Passwords do not match");
     }else{
       let data = {
@@ -69,6 +179,8 @@ const SignUp: React.FC = () => {
     
     } catch (error) {
       console.log("err", error);
+      toast.error("Registration failed. Please try again.");
+
     }
     
   };
@@ -153,7 +265,9 @@ const SignUp: React.FC = () => {
                     id="email"
                     type="email"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value.trim())}
+                    // onChange={(e) => setEmail(e.target.value.trim())}
+                     onChange={(e) => setEmail(e.target.value.toLowerCase())} 
+                      // pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                     className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline font-[opensans]"
                     placeholder="Email"
                     required
@@ -173,19 +287,20 @@ const SignUp: React.FC = () => {
                 </label>
                 <div className="relative flex items-center pl-8 ">
                   <div className=" w-full ml-2"> <PhoneInput
-                  country={"in"}  //default country
-                   
-                  
+                  country={"in"}  
                     value={phone}
                     // maxLength={10}
                     // onChange={(e) => setPhone(e.target.value.trim())}
-                    onChange={(phone) => setPhone(phone)}  
+                    // onChange={(phone) => setPhone(phone)} 
+                    onChange={handlePhoneChange} 
                     inputProps={{
                       name: "phone",
                       required: true,
                       autoFocus: false,
                     }}
-                    inputClass="!w-full !border-none  !h-[42px] !leading-[21.79px] !text-[16px] !text-[#333333]  !rounded-l-md focus:!outline-none  font-[opensans]   "
+               
+                    inputClass={`!w-full !h-[42px] !leading-[21.79px] !text-[16px] !text-[#333333]  ${!isValidPhone && '!border-2 !border-red-500  '} !rounded-lg focus:!outline-none focus:!shadow-outline font-[opensans]`}
+
                      
                     
                 containerClass="w-full"
@@ -197,6 +312,8 @@ const SignUp: React.FC = () => {
                     <FaPhone />
                   </span>
                 </div>
+                {/* {!isValidPhone && <span className="text-red-500 text-sm mt-1">Invalid phone number for the selected country.</span>} */}
+
               </div>
 
               <div className="mb-1">
@@ -211,7 +328,11 @@ const SignUp: React.FC = () => {
                     id="password"
                     type={showPassword ? "text" : "password"}
                     value={password}
-                    onChange={(e) => setPassword(e.target.value.trim())}
+                    // onChange={(e) => setPassword(e.target.value.trim())}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                      setPasswordError("");
+                    }}
                     className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline font-[opensans]"
                     placeholder="Password"
                     required
@@ -276,6 +397,8 @@ const SignUp: React.FC = () => {
                       id="rememberMe"
                       type="checkbox"
                       className="h-4 w-4 text-[#00A264] focus:ring-green-800 border-gray-300 rounded"
+                      checked={termsAccepted}
+                      onChange={() => setTermsAccepted(!termsAccepted)}
                     />
                     </div>
                     <div>

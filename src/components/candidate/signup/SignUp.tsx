@@ -33,6 +33,7 @@ const SignUp: React.FC = () => {
   const [showCpassword, setShowCpassword] = useState(false);
 
   const [error, setError] = useState("");
+  const [termsAccepted, setTermsAccepted] = useState(false);
 
   const validatePasswords = () => {
     if (password !== cPassword) {
@@ -48,6 +49,7 @@ const SignUp: React.FC = () => {
       e.preventDefault();
 
     if (password !== cPassword) {
+    // if(validatePasswords){
       toast.error("Passwords do not match");
     }else{
       let data = {
@@ -75,23 +77,23 @@ const SignUp: React.FC = () => {
     <div className="flex flex-col">
       <LoginHeader />
       <div className=" flex items-center justify-center bg-[#EAEAEA] ">
-        <div className="flex w-full h-auto overflow-hidden bg-[#EAEAEA]">
+        <div className="flex w-full h-auto md:overflow-hidden bg-[#EAEAEA]">
           <LoginImg />
 
           {/* Sign-Up Form Section */}
-          <div className="w-full flex flex-col items-center justify-center md:w-1/2  bg-[#EAEAEA]  ">
-            <h2 className="mt-4 mb-2 text-[30.52px] leading-[45.79px] font-semibold text-center">
+          <div className="w-full flex flex-col items-center justify-center md:w-1/2  bg-[#EAEAEA]   ">
+            <h2 className="mt-4 mb-2 text-[30.52px] leading-[45.79px] font-semibold text-center ">
               Sign In as Candidate
             </h2>
-            <p className="text-center text-[18px] leading-[27px] text-[#333333]">
+            <p className="text-center text-[18px] leading-[27px] text-[#333333] w-[70%]">
               Enter your credential to access your account.
             </p>
             <form
               onSubmit={handleSubmit}
               className="w-[70%]"
             >
-              <div className="mb-1 mt-2 flex w-full space-x-2">
-                <div className="w-[49%] mb-2">
+              <div className="mb-1 mt-2 flex flex-wrap w-full lg:flex-nowrap space-x-2">
+                <div className="w-full lg:w-[50%] mb-2">
                   {" "}
                   <label
                     className="block mb-1 text-[16px] leading-[24px] font-[500] text-[#333333]"
@@ -115,7 +117,7 @@ const SignUp: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="w-[49%] mb-1">
+                <div className="w-full lg:w-[50%] mb-1">
                   <label
                     className="block mb-1 text-[16px] leading-[24px] font-[500] text-[#333333]"
                     htmlFor="lastName"
@@ -170,7 +172,7 @@ const SignUp: React.FC = () => {
                   Phone
                 </label>
                 <div className="relative flex items-center pl-8 ">
-                  <PhoneInput
+                  <div className=" w-full ml-2"> <PhoneInput
                   country={"in"}  //default country
                    
                   
@@ -183,14 +185,15 @@ const SignUp: React.FC = () => {
                       required: true,
                       autoFocus: false,
                     }}
-                    inputClass="!w-full !h-[42px] !leading-[21.79px] !text-[16px] !text-[#333333] !border !rounded-lg focus:!outline-none focus:!shadow-outline font-[opensans] "
+                    inputClass="!w-full !border-none  !h-[42px] !leading-[21.79px] !text-[16px] !text-[#333333]  !rounded-l-md focus:!outline-none  font-[opensans]   "
                      
                     
-      containerClass="w-full"
+                containerClass="w-full"
                    
                     
-                  />
-                  <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-[#00A264] text-white mr-7 rounded-l-md">
+                  /></div>
+                 
+                  <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-[#00A264] text-white mr-2 rounded-l-md ">
                     <FaPhone />
                   </span>
                 </div>
@@ -266,16 +269,19 @@ const SignUp: React.FC = () => {
                   Sign Up
                 </button>
 
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center mt-2">
+                <div className="flex  items-center lg:justify-start gap-2 mt-2 ">
+                  
+                    <div>
                     <input
                       id="rememberMe"
                       type="checkbox"
                       className="h-4 w-4 text-[#00A264] focus:ring-green-800 border-gray-300 rounded"
                     />
+                    </div>
+                    <div>
                     <label
                       htmlFor="You agree to our"
-                      className=" ml-2 block  text-sm  text-center text-[16px] leading-[24px]  text-[#333333]  "
+                      className="  block  text-sm text-left  text-[16px] leading-[24px]  text-[#333333]  "
                     >
                       You agree to our
                       <Link href="" className="text-[#00A264] font-[500] hover:underline mx-1">
@@ -286,12 +292,13 @@ const SignUp: React.FC = () => {
                         Privacy Policy.
                       </Link>
                     </label>
+                    {/* </div> */}
                   </div>
                 </div>
               </div>
             </form>
 
-            <p className=" text-center font-semibold mb-6 mt-2  text-[16px] leading-[24px]  text-[#333333]">
+            <p className=" text-center  font-semibold mb-6 mt-2  text-[16px] leading-[24px]  text-[#333333]">
               Already have on account?
               <Link href="/candidate" className="text-[#00A264] font-[500] hover:underline ml-1">
                 Sign In as Candidate

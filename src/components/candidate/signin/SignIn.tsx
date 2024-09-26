@@ -151,7 +151,7 @@ const SignIn = ({ route }: Props) => {
             <h2 className="mt-12 mb-2 text-[30.52px] leading-[45.79px] font-semibold text-center">
               Sign In as {route == "candidate" ? "Candidate" : "Recruiter"}
             </h2>
-            <p className="mb-4 text-center text-[18px] leading-[27px] text-[#333333]">
+            <p className="mb-4 text-center text-[18px] leading-[27px] text-[#333333] w-[70%]">
               Enter your credential to access your account.
             </p>
             <form

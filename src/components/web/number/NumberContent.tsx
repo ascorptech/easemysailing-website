@@ -59,7 +59,7 @@ const NumberContent = () => {
             <div className="absolute text-lg -left-9 md:text-2xl ml-[1.5px] ">
               {/* <BsFillPeopleFill /> */}
               <Image
-                src="/globe.png"
+                src="/globe2.png"
                 alt="captain Logo"
                 width={350}
                 height={350}

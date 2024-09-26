@@ -48,16 +48,16 @@ const ResourceDetailsPage: React.FC = () => {
             alt="image not found"
             width={1000}
             height={1000}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain"
           ></Image>
         </div>
         <div className="flex gap-4 mt-0 ">
-          <p className="text-green-600">{moment(resourceDetail?.createDate).format('YYYY-MM-DD')}</p>
+          <p className="text-green-600">{moment(resourceDetail?.createdDate).format('YYYY-MM-DD')}</p>
           <p className="font-semibold">By Gwen Stacy</p>
         </div>
         <div>
           <h2 className="font-bold text-xl mt-4">{resourceDetail?.title}</h2>
-          <p className=" text-sm text-justify  mt-4">{resourceDetail?.discription}</p>
+          <p className=" text-sm text-justify  mt-4">{resourceDetail?.description?.replace(/<[^>]+>/g, '')}</p>
         </div>
 
         {/* <h1 className=" my-4  font-bold text-xl">Drop Your Comment</h1>

@@ -90,6 +90,8 @@ const page = (props: Props) => {
 
   const handleAddClick = () => {
     setIsPopupOpen(true);
+    setSelectedImage(null);
+    setImage(null)
   };
 
   const handleClosePopup = () => {
@@ -142,9 +144,6 @@ const page = (props: Props) => {
         formData.append('title',resourceData.title)
         formData.append('description',resourceData.description)
         AddResourcesData(formData,AddResourcesDataCB)
-        setResourceData({title: null, description: "" });
-        setSelectedImage(null);
-        setLetterCount(0);
       }
     
     
@@ -159,6 +158,9 @@ const page = (props: Props) => {
   const AddResourcesDataCB=(result:any)=>{
     if (result?.status == 200) {
       GetResourcesList(fetchResources)
+      setResourceData({title: null, description: "" });
+        setSelectedImage(null);
+        setLetterCount(0);
       toast.success('Resource created successfully')
     } else {
       toast.error('Resource not created')
@@ -329,10 +331,10 @@ const page = (props: Props) => {
                     />
                   </th>
                   <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-wrap dark:text-white text-wrap">
-                    {item?.title}
+                    {item?.title.slice(0, 20)}
                   </th>
                   <td className="px-6 py-4">
-                  {item?.description?.replace(/<[^>]+>/g, '')}
+                  {item?.description?.replace(/<[^>]+>/g, '').slice(0, 20)}
                   </td>
                   <td className="px-6 py-4">
                   {item?.createdDate?moment(item?.createdDate).format('YYYY-MM-DD'):''}
@@ -520,8 +522,8 @@ const page = (props: Props) => {
         </div>
       )}
       {isPopupEditOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center  lg:h-auto h-[500px] items-center">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-[600px]">
+        <div className="fixed inset-0  bg-black bg-opacity-70 flex justify-center items-center">
+          <div className="bg-white p-6 rounded-lg shadow-lg  lg:w-[600px] w-[600px] h-[500px] overflow-y-auto no-scroll">
             <div className="flex justify-end">
               <Link href={''} className="font-bold text-3xl" onClick={() => { setIsPopupEditOpen(false) }}>x</Link>
             </div>

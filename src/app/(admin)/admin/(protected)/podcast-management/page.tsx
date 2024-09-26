@@ -17,7 +17,7 @@ const page = (props: Props) => {
   const [isPopupDeleteOpen, setIsPopupDeleteOpen] = useState(false);
   const [isPopupViewOpen, setIsPopupViewOpen] = useState(false);
   const [isPopupEditOpen, setIsPopupEditOpen] = useState(false);
-  const [podcastData, setPodcastData] = useState({
+  const [podcastData, setPodcastData] = useState<any>({
     title: "",
     videoLink: "",
   });
@@ -53,6 +53,8 @@ const previousPage = () => {
 
   const handleAddClick = () => {
     setIsPopupOpen(true);
+    setImage(null)
+    setSelectedImage(null);
   };
 
   const handleClosePopup = () => {
@@ -119,8 +121,8 @@ const previousPage = () => {
       setImage(null)
       setSelectedImage(null)
       setPodcastData({
-        title: "",
-        videoLink: "",
+        title: null,
+        videoLink: null,
       })
       toast.success('Podcast created successfully')
     } else {
@@ -297,7 +299,7 @@ const previousPage = () => {
                     />
                   </th>
                   <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-wrap">
-                    {item?.title}
+                    {item?.title.slice(0, 20)}
                   </th>
                   <td className="px-6 py-4">
                     <Link href={item?.videoLink} target="_blank">{item?.videoLink}</Link>

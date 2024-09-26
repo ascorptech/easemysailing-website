@@ -42,7 +42,7 @@ const page = (props: Props) => {
  // Pagination: Calculate current page resources
  const indexOfLastResource = currentPage * resourcesPerPage;
  const indexOfFirstResource = indexOfLastResource - resourcesPerPage;
- const currentResources = resourcesList.slice(indexOfFirstResource, indexOfLastResource);
+ const currentResources = resourcesList.toReversed().slice(indexOfFirstResource, indexOfLastResource);
 
  const nextPage = () => {
    if (currentPage < Math.ceil(resourcesList.length / resourcesPerPage)) {

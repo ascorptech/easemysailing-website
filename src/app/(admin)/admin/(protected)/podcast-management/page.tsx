@@ -36,7 +36,7 @@ const [letterCount, setLetterCount] = useState(0);
 // Pagination: Calculate current page resources
 const indexOfLastResource = currentPage * resourcesPerPage;
 const indexOfFirstResource = indexOfLastResource - resourcesPerPage;
-const currentPodcasts = podcastList.slice(indexOfFirstResource, indexOfLastResource);
+const currentPodcasts = podcastList.toReversed().slice(indexOfFirstResource, indexOfLastResource);
 
 const nextPage = () => {
  if (currentPage < Math.ceil(podcastList.length / resourcesPerPage)) {

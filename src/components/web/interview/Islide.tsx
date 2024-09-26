@@ -67,7 +67,7 @@ const Islide = () => {
   }, []);
 
   return (
-    <div className="relative overflow-x-hidden  mt-7 pb-4 lg:pb-0 flex justify-center items-center lg:items-center w-full lg:w-[83%] 2xl:w-[85%] md:w-[94%] px-1 sm:px-0 lg:px-0 lg:mx-[110px] ">
+    <div className="relative overflow-x-hidden  mt-7 pb-4 lg:pb-0 flex justify-center items-center lg:items-center w-full lg:w-[83%] xl:w-[82%] 2xl:w-[85%] md:w-[94%] px-1 sm:px-0 lg:px-0 lg:mx-[110px] ">
       {/* Left Scroll Button for Mobile */}
       <button 
         onClick={scrollLeft} 
@@ -84,7 +84,7 @@ const Islide = () => {
       >
         {/* Video Card 1 */}
         <div className="snap-center ">
-          <div className="w-[18rem]  h-[12rem] sm:ml-0 lg:w-[18rem] lg:h-[220px]">
+          <div className="w-[18rem]  h-[12rem] sm:ml-0 lg:w-[18rem] xl:w-[16.8rem] lg:h-[220px]">
             <iframe
               className="w-full border-4 shadow-md rounded-lg h-full"
               src="https://www.youtube.com/embed/afKjXPA5f0E"
@@ -97,7 +97,7 @@ const Islide = () => {
         </div>
         {/* Video Card 2 */}
         <div className="snap-center">
-          <div className="w-[18rem] h-[12rem] lg:w-[18rem] lg:h-[220px]">
+          <div className="w-[18rem] h-[12rem] lg:w-[18rem] xl:w-[16.8rem] lg:h-[220px]">
             <iframe
               className="w-full border-4 shadow-md rounded-lg h-full"
               src="https://www.youtube.com/embed/roz9sXFkTuE"
@@ -110,7 +110,7 @@ const Islide = () => {
         </div>
         {/* Video Card 3 */}
         <div className="snap-center">
-          <div className="w-[18rem] h-[12rem] sm:md:w-[18rem] lg:w-[18rem] lg:h-[220px]">
+          <div className="w-[18rem] h-[12rem] lg:w-[18rem] xl:w-[16.8rem] lg:h-[220px]">
             <iframe
               className="w-full border-4 shadow-md rounded-lg h-full"
               src="https://www.youtube.com/embed/Tl4bQBfOtbg"
@@ -123,7 +123,7 @@ const Islide = () => {
         </div>
         {/* Video Card 4 */}
         <div className="snap-center">
-          <div className="w-[18rem] h-[12rem] lg:w-[18rem] lg:h-[220px]">
+          <div className="w-[18rem] h-[12rem] lg:w-[18rem] xl:w-[16.8rem] lg:h-[220px]">
             <iframe
               className="w-full border-4 shadow-md rounded-lg h-full"
               src="https://www.youtube.com/embed/VYslt8bc-4Q"

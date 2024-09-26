@@ -6,7 +6,7 @@ const Mv2 = () => {
       <div className="flex flex-col md:flex-row justify-center  gap-8 md:gap-10 mx-4 md:mx-7 lg:mx-[106px]">
         {/* First div */}
         <div className="flex flex-col justify-center items-center text-center border-2 shadow-lg rounded-tl-[2rem] rounded-br-[2rem] w-full md:w-[400px] h-auto pt-12">
-          <div className="w-[100px] h-[100px] border">
+          <div className="w-[100px] h-[100px]">
             <Image
               src="/mission.png"
               alt="Mission Image"
@@ -38,7 +38,7 @@ const Mv2 = () => {
               alt="Vision Image"
               width={100}
               height={100}
-              className="w-full h-full object-contain border"
+              className="w-full h-full object-contain"
               priority
             />
           </div>
@@ -63,7 +63,7 @@ const Mv2 = () => {
               alt="Values Image"
               width={100}
               height={100}
-              className="w-full h-full object-contain border"
+              className="w-full h-full object-contain"
               priority
             />
           </div>

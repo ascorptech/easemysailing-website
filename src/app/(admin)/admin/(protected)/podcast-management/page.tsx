@@ -26,6 +26,31 @@ const page = (props: Props) => {
   const [selectedImage, setSelectedImage] = useState<any>(null);
   const [image, setImage] = useState<any>(null);
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const resourcesPerPage = 5;
+
+const [letterCount, setLetterCount] = useState(0); 
+
+
+// Pagination start
+// Pagination: Calculate current page resources
+const indexOfLastResource = currentPage * resourcesPerPage;
+const indexOfFirstResource = indexOfLastResource - resourcesPerPage;
+const currentPodcasts = podcastList.slice(indexOfFirstResource, indexOfLastResource);
+
+const nextPage = () => {
+ if (currentPage < Math.ceil(podcastList.length / resourcesPerPage)) {
+   setCurrentPage(currentPage + 1);
+ }
+};
+
+const previousPage = () => {
+ if (currentPage > 1) {
+   setCurrentPage(currentPage - 1);
+ }
+};
+
+
   const handleAddClick = () => {
     setIsPopupOpen(true);
   };
@@ -70,11 +95,21 @@ const page = (props: Props) => {
     //   title: podcastData.title,
     //   videoLink: podcastData.videoLink,
     // }
+    if (!image) {
+      toast.error('Thumbnail is required')
+    }
+    if (!podcastData.title) {
+      toast.error('Title is required')
+    }
+    if (!podcastData.videoLink) {
+      toast.error('Video Link is required')
+    }else{
     let formData = new FormData()
     formData.append('thumbnail', image)
-    formData.append('title', podcastDetail.title)
-    formData.append('videoLink', podcastDetail.videoLink)
+    formData.append('title', podcastData.title)
+    formData.append('videoLink', podcastData.videoLink)
     AddPodcastData(formData, AddPodcastDataCB)
+    }
   };
 
   const AddPodcastDataCB = (result: any) => {
@@ -82,7 +117,7 @@ const page = (props: Props) => {
     if (result?.status == 200) {
       GetPodcastList(fetchPodcast)
       setImage(null)
-      selectedImage(null)
+      setSelectedImage(null)
       setPodcastData({
         title: "",
         videoLink: "",
@@ -110,7 +145,7 @@ const page = (props: Props) => {
     if (result?.status == 200) {
       GetPodcastList(fetchPodcast)
       setImage(null)
-      selectedImage(null)
+      setSelectedImage(null)
       setPodcastDetail({
         title: "",
         videoLink: "",
@@ -243,7 +278,7 @@ const page = (props: Props) => {
               </tr>
             </thead>
             <tbody>
-              {podcastList?.length ? podcastList?.map((item: any) => (
+              {currentPodcasts?.length ? currentPodcasts?.map((item: any) => (
                 <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" key={item?.id}>
                   {/* <td className="w-4 p-4">
                     <div className="flex items-center">
@@ -272,7 +307,7 @@ const page = (props: Props) => {
                   </td>
                   <td className="px-6 py-4 flex flex-row space-x-4">
                     <Link href={`#`} className="font-medium text-blue-600 dark:text-blue-500 hover:underline" onClick={() => { setIsPopupViewOpen(true); setPodcastDetail(item); }}><FaEye /></Link>
-                    <Link href={`#`} className="font-medium text-green-600 dark:text-green-500 hover:underline" onClick={() => { setIsPopupEditOpen(true); setPodcastDetail(item); }}><FaEdit /></Link>
+                    <Link href={`#`} className="font-medium text-green-600 dark:text-green-500 hover:underline" onClick={() => { setIsPopupEditOpen(true); setPodcastDetail(item);setSelectedImage(`data:image/png;image/jpg;image/jpeg;base64,${item?.thumbnail}`);  }}><FaEdit /></Link>
                     <Link href={`#`} className="font-medium text-red-600 dark:text-red-500 hover:underline" onClick={() => { setIsPopupDeleteOpen(true); setPodcastDetail(item); }}><FaTrash /></Link>
                   </td>
                 </tr>
@@ -558,6 +593,26 @@ const page = (props: Props) => {
           </div>
         </div>
       </div>}
+       {/* Pagination Controls */}
+       <div className="flex justify-center gap-4 items-center mt-4">
+        <button
+          onClick={previousPage}
+          className="bg-[#00A264] text-white px-4 py-2 rounded"
+          disabled={currentPage === 1}
+        >
+          Previous
+        </button>
+        <span>
+          Page {currentPage} of {Math.ceil(podcastList.length / resourcesPerPage)}
+        </span>
+        <button
+          onClick={nextPage}
+          className="bg-[#00A264] text-white px-4 py-2 rounded"
+          disabled={currentPage >= Math.ceil(podcastList.length / resourcesPerPage)}
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 

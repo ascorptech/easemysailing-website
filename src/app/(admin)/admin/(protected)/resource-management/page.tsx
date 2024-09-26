@@ -33,7 +33,7 @@ const page = (props: Props) => {
 
     // Pagination state
     const [currentPage, setCurrentPage] = useState(1);
-    const resourcesPerPage = 10;
+    const resourcesPerPage = 5;
 
   const [letterCount, setLetterCount] = useState(0); 
 
@@ -128,14 +128,25 @@ const page = (props: Props) => {
   const handleSubmit = async(e: React.FormEvent) => {
     try {
       e.preventDefault();
-    let formData = new FormData()
-    formData.append('image',image)
-    formData.append('title',resourceData.title)
-    formData.append('description',resourceData.description)
-    AddResourcesData(formData,AddResourcesDataCB)
-    setResourceData({title: null, description: "" });
-    setSelectedImage(null);
-    setLetterCount(0);
+      if (!image) {
+        toast.error('Image is required')
+      }
+      if (!resourceData.title) {
+        toast.error('Title is required')
+      }
+      if (!resourceData.description) {
+        toast.error('Description is required')
+      }else{
+        let formData = new FormData()
+        formData.append('image',image)
+        formData.append('title',resourceData.title)
+        formData.append('description',resourceData.description)
+        AddResourcesData(formData,AddResourcesDataCB)
+        setResourceData({title: null, description: "" });
+        setSelectedImage(null);
+        setLetterCount(0);
+      }
+    
     
     // setIsPopupOpen(false); // Close the popup after submission
     
@@ -299,7 +310,7 @@ const page = (props: Props) => {
               </tr>
             </thead>
             <tbody>
-              {resourcesList?.length ? resourcesList?.map((item: any) => (
+              {currentResources?.length ? currentResources?.map((item: any) => (
                 <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" key={item?.id}>
                   {/* <td className="w-4 p-4">
                     <div className="flex items-center">
@@ -317,7 +328,7 @@ const page = (props: Props) => {
                     className="h-14 w-14 rounded-full"
                     />
                   </th>
-                  <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-wrap dark:text-white text-wrap">
                     {item?.title}
                   </th>
                   <td className="px-6 py-4">
@@ -346,7 +357,7 @@ const page = (props: Props) => {
       {/* Popup Form */}
       {isPopupOpen && (
         <div className="fixed inset-0  bg-black bg-opacity-70 flex justify-center items-center">
-          <div className="bg-white p-6 rounded-lg shadow-lg  lg:w-[600px] lg:h-auto w-[600px] h-[500px]">
+          <div className="bg-white p-6 rounded-lg shadow-lg  lg:w-[600px] w-[600px] h-[500px] overflow-y-auto no-scroll">
             <h2 className="text-xl font-bold mb-4">Add Resource</h2>
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
@@ -438,8 +449,8 @@ const page = (props: Props) => {
         </div>
       )}
       {isPopupViewOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center  lg:h-auto h-[500px] items-center">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-[600px]">
+        <div className="fixed inset-0  bg-black bg-opacity-70 flex justify-center items-center">
+          <div className="bg-white p-6 rounded-lg shadow-lg  lg:w-[600px] w-[600px] h-[500px] overflow-y-auto no-scroll">
             <div className="flex justify-end">
               <Link href={''} className="font-bold text-3xl" onClick={() => { setIsPopupViewOpen(false) }}>x</Link>
             </div>
@@ -477,7 +488,8 @@ const page = (props: Props) => {
                 >
                   Description
                 </label>
-                <input
+                <QuillEditor content={resourceDetail.description} setContent={(des:any)=>setResourceDetail({...resourceDetail,description:des})}/>
+                {/* <input
                   type="text"
                   id="link"
                   name="description"
@@ -485,7 +497,7 @@ const page = (props: Props) => {
                   // onChange={handleInputChange}
                   className="w-full px-3 py-2 border h-12 border-gray-300 rounded"
                   placeholder="Enter description"
-                />
+                /> */}
               </div>
               {/* <div className="flex mt-12 justify-end space-x-4">
                 <Link

@@ -12,6 +12,26 @@ const page = (props: Props) => {
     const [isPopupDeleteOpen, setIsPopupDeleteOpen] = useState(false);
     const [emailsList,setEmailsList] = useState<any>([])
     const [emailDetail, setEmailDetail] = useState<any>({})
+    const [currentPage, setCurrentPage] = useState(1);
+    const resourcesPerPage = 5;
+
+    // Pagination start
+// Pagination: Calculate current page resources
+const indexOfLastResource = currentPage * resourcesPerPage;
+const indexOfFirstResource = indexOfLastResource - resourcesPerPage;
+const currentEmails = emailsList.slice(indexOfFirstResource, indexOfLastResource);
+
+const nextPage = () => {
+ if (currentPage < Math.ceil(emailsList.length / resourcesPerPage)) {
+   setCurrentPage(currentPage + 1);
+ }
+};
+
+const previousPage = () => {
+ if (currentPage > 1) {
+   setCurrentPage(currentPage - 1);
+ }
+};
 
     useEffect(() => {
         GetEmailsList(fetchResources)
@@ -132,7 +152,7 @@ const page = (props: Props) => {
               </tr>
             </thead>
             <tbody>
-              {emailsList?.length ? emailsList?.map((item: any) => (
+              {currentEmails?.length ? currentEmails?.map((item: any) => (
                 <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" key={item?.id}>
                   <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {item?.name}
@@ -279,6 +299,26 @@ const page = (props: Props) => {
           </div>
         </div>
       </div>}
+      {/* Pagination Controls */}
+      <div className="flex justify-center gap-4 items-center mt-4">
+        <button
+          onClick={previousPage}
+          className="bg-[#00A264] text-white px-4 py-2 rounded"
+          disabled={currentPage === 1}
+        >
+          Previous
+        </button>
+        <span>
+          Page {currentPage} of {Math.ceil(emailsList.length / resourcesPerPage)}
+        </span>
+        <button
+          onClick={nextPage}
+          className="bg-[#00A264] text-white px-4 py-2 rounded"
+          disabled={currentPage >= Math.ceil(emailsList.length / resourcesPerPage)}
+        >
+          Next
+        </button>
+      </div>
     </div>
   )
 }

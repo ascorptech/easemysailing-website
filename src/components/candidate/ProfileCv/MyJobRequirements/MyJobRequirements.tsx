@@ -3,88 +3,91 @@ import { AddProfileData } from "@/app/(candidate)/candidate/(auth)/(dashboard)/p
 import Link from "next/link";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import CircularProgress from "../CircularProgress";
 
 const MyJobRequirements = () => {
-  // State for form fields
+  
   const [availabilityDate, setAvailabilityDate] = useState("");
   const [currentPosition, setCurrentPosition] = useState("");
   const [alternatePosition, setAlternatePosition] = useState("");
   const [preferredVesselType, setPreferredVesselType] = useState("");
   const [alternateVesselType, setAlternateVesselType] = useState("");
   const [available, setAvailable] = useState("");
-  const [minTimeOnBoard, setMinTimeOnBoard] = useState("");
-  const [maxTimeOnBoard, setMaxTimeOnBoard] = useState("");
-  const [minTimeOnHome, setMinTimeOnHome] = useState("");
-  const [maxTimeOnHome, setMaxTimeOnHome] = useState("");
+ 
 
-  const [contractTypeVoyage, setContractTypeVoyage] = useState(false);
-  const [contractTypePermanent, setContractTypePermanent] = useState(false);
 
-  // Salary expectation states
-  const [voyageSalary, setVoyageSalary] = useState("");
-  const [currencyVoyage, setCurrencyVoyage] = useState("");
-  const [negotiableVoyage, setNegotiableVoyage] = useState(false);
-  const [permanentSalary, setPermanentSalary] = useState("");
-  const [currencyPermanent, setCurrencyPermanent] = useState("");
-  const [negotiablePermanent, setNegotiablePermanent] = useState(false);
-  const [tradingAreaExclusions, setTradingAreaExclusions] = useState("");
+ 
+  const filledFields = [
+    currentPosition,
+    alternatePosition,
+    preferredVesselType,
+    alternateVesselType,
+    available,
+    availabilityDate,
+  ].filter(Boolean).length; 
 
-  const handleSubmit =  (e: React.FormEvent) => {
+  const totalFields = available === "Yes" ? 6 : 5; 
+
+
+  const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
+  let color;
+  if (percentage <= 30) {
+    color = "red"; 
+  } else if (percentage <= 70) {
+    color = "orange"; 
+  } else {
+    color = "green";
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
     // try {
-      e.preventDefault(); // Prevent default form submission
+    e.preventDefault(); 
 
-      let formData = {
-        availabilityDate,
-        currentPosition,
-        alternatePosition,
-        preferredVesselType,
-        alternateVesselType,
-        available,
-        minTimeOnBoard,
-        maxTimeOnBoard,
-        minTimeOnHome,
-        contractTypeVoyage,
-        contractTypePermanent,
-        voyageSalary,
-        currencyVoyage,
-        negotiableVoyage,
-        permanentSalary,
-        currencyPermanent,
-        negotiablePermanent,
-        tradingAreaExclusions,
-
-        // id: 0,
-        // userId: 0,
-        // firstName: "abht",
-        // lastName: "string",
-        // email: "string",
-        // phoneNumber: "string",
-        // country: "string",
-        // rank: "string",
-        // shipType: "string",
-        // profilePhotoUrl: "string",
-      };
-      console.log(formData);
-      AddProfileData(formData, AddaddressdataDB)
-    };
-
-    const AddaddressdataDB = (result:any)=> {
-      console.log(result)
-      if(result?.status == 200){
-        toast.success("address submited successfully")
-      }else {
-    
-        toast.error('address not submited ')
-      }
+    if (
+      !availabilityDate ||
+      !currentPosition ||
+      !alternatePosition ||
+      !preferredVesselType ||
+      !alternateVesselType ||
+      !available
+    ) {
+      toast.error("Please fill in all required fields.");
+      return;
     }
 
-     
+    let formData = {
+      availabilityDate,
+      currentPosition,
+      alternatePosition,
+      preferredVesselType,
+      alternateVesselType,
+      available,
+    };
+    console.log(formData);
+    AddProfileData(formData, AddaddressdataDB);
+  };
+
+  const AddaddressdataDB = (result: any) => {
+    console.log(result);
+    if (result?.status == 200) {
+      toast.success("address submited successfully");
+    } else {
+      toast.error("address not submited ");
+    }
+  };
+
+  const handleEdit = () => {
+    toast.info("You are now in edit mode. Make your changes.");
+  };
 
   return (
     <div className="container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
+        {/* <MyJob percentage={percentage} color="#FF9900" /> */}
+       {/* <CircularProgress percentage={percentage} /> */}
+       {/* <CircularProgress percentage={Math.round(percentage)} />  */}
+       <CircularProgress percentage={Math.round(percentage)} color={color} /> 
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-2  gap-4">
-          {/* Current Position/Rank */}
           <div>
             <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
               Current Position/Rank
@@ -103,7 +106,6 @@ const MyJobRequirements = () => {
             </select>
           </div>
 
-          {/* Alternate Position/Rank */}
           <div>
             <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
               Alternate Position/Rank
@@ -122,7 +124,6 @@ const MyJobRequirements = () => {
             </select>
           </div>
 
-          {/* Preferred Vessel Type */}
           <div>
             <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
               Preferred Vessel Type
@@ -141,7 +142,6 @@ const MyJobRequirements = () => {
             </select>
           </div>
 
-          {/* Alternate Vessel Type */}
           <div>
             <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
               Alternate Vessel Type
@@ -162,38 +162,40 @@ const MyJobRequirements = () => {
 
           <div>
             <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-            Availability
+              Availability
             </label>
             <select
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={available}
-              onChange={(e) => setAvailable(e.target.value)}
+              // onChange={(e) => setAvailable(e.target.value)}
+              onChange={(e) => {
+                setAvailable(e.target.value);
+                if (e.target.value === "No") {
+                  setAvailabilityDate(""); // Clear availability date if "No" is selected
+                }
+              }}
             >
               <option value="" disabled>
-              Availability
+                Availability
               </option>
               <option value="Yes">Yes</option>
               <option value="No">No</option>
             </select>
           </div>
-          {/* Availability Date */}
-          <div>
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-              Availability Date
-            </label>
-            <input
-              type="date"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              value={availabilityDate}
-              onChange={(e) => setAvailabilityDate(e.target.value)}
-            />
-          </div>
-
-          
-          
+          {available === "Yes" && (
+            <div>
+              <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+                Availability Date
+              </label>
+              <input
+                type="date"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                value={availabilityDate}
+                onChange={(e) => setAvailabilityDate(e.target.value)}
+              />
+            </div>
+          )}
         </div>
-
-       
 
         <div className="flex gap-2 mb-4 mt-4">
           <button
@@ -204,6 +206,7 @@ const MyJobRequirements = () => {
           </button>
           <button
             type="submit"
+            onClick={handleEdit}
             className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
           >
             Edit
@@ -215,4 +218,3 @@ const MyJobRequirements = () => {
 };
 
 export default MyJobRequirements;
-

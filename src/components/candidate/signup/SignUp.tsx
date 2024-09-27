@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { MdOutlineEmail } from "react-icons/md";
-import PhoneInput from "react-phone-input-2"; // Import the phone input component
+import PhoneInput from "react-phone-input-2"; 
 import "react-phone-input-2/lib/style.css";
 
 import { GoEye } from "react-icons/go";
@@ -70,23 +70,23 @@ const SignUp: React.FC = () => {
 
 
     // Password Validation
-    const validatePassword = (password: string) => {
+    const validatePassword = (password: string): string | undefined => {
       if (password.length < passwordRules.length.min) {
-        return toast.error ("Password must be at least 8 characters long.");
+        return "Password must be at least 8 characters long.";
       }
       if (!passwordRules.lowercase.test(password)) {
-        return toast.error("Password must contain at least one lowercase letter.");
+        return "Password must contain at least one lowercase letter.";
       }
       if (!passwordRules.uppercase.test(password)) {
-        return toast.error("Password must contain at least one uppercase letter.");
+        return "Password must contain at least one uppercase letter.";
       }
       if (!passwordRules.digit.test(password)) {
-        return toast.error("Password must contain at least one digit.");
+        return "Password must contain at least one digit.";
       }
       if (!passwordRules.special.test(password)) {
-        return toast.error ("Password must contain at least one special character.");
+        return "Password must contain at least one special character.";
       }
-      return "";
+      return undefined;
     };
 
   // const validatePasswords = () => {
@@ -153,6 +153,8 @@ const handlePhoneChange = (value: string, country: any) => {
           const passwordValidationError = validatePassword(password);
           
           if (passwordValidationError) {
+            toast.error('Password must contain at A,a,1,@ character')
+
             setPasswordError(passwordValidationError);
            
             return;
@@ -394,7 +396,7 @@ const handlePhoneChange = (value: string, country: any) => {
                   
                     <div>
                     <input
-                      id="rememberMe"
+                      id="termsAccepted"
                       type="checkbox"
                       className="h-4 w-4 text-[#00A264] focus:ring-green-800 border-gray-300 rounded"
                       checked={termsAccepted}
@@ -403,7 +405,7 @@ const handlePhoneChange = (value: string, country: any) => {
                     </div>
                     <div>
                     <label
-                      htmlFor="You agree to our"
+                      htmlFor="termsAccepted"
                       className="  block  text-sm text-left  text-[16px] leading-[24px]  text-[#333333]  "
                     >
                       You agree to our

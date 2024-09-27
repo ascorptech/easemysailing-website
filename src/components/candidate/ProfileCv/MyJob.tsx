@@ -25,7 +25,11 @@ import AcademicDetails from "./AcademicDetails/AcademicDetails";
 import ProfessionalSkills from "./ProfessionalSkills/ProfessionalSkills";
 import VettingServices from "./VettingServices/VettingServices";
 
+
+
 const MyJob = () => {
+
+
   const [isOpen, setIsOpen] = useState(false); // State to toggle
   const [pDOpen, setPDOpen] = useState(false);
   const [languageOpen, setLanguageOpen] = useState(false);
@@ -135,13 +139,17 @@ const MyJob = () => {
   const handleFamily = () => {
     setFDOpen(!fDOpen);
   };
+
+
+  
+
   return (
     <div className=" mx-6 mt-4  ">
       <div className=" flex justify-between     ">
         <div className=" w-[50%] ">
           <div className="    ">
             <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2  border-r-8 border-[#FF9900]">
-              {" "}
+              
               <h2 className=""> My Job Requirements</h2>{" "}
               <div className="flex items-center justify-center gap-1">
                 <span className="ml-2 cursor-pointer" onClick={toggleCollapse}>
@@ -181,7 +189,7 @@ const MyJob = () => {
               </div>
             </div>{" "}
             <div className=" h-screen overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory ">
-              {isOpen && <MyJobRequirements />}
+              {isOpen && <MyJobRequirements  />}
 
               {/* PersonalDetails start */}
 

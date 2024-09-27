@@ -1,12 +1,37 @@
 "use client";
 import React from "react";
 import { useState } from "react";
+import CircularProgress from "../CircularProgress";
+
 
 const NextOfKinDetails = () => {
   const [nextKinName, setNextKinName] = useState("");
   const [nextKinShip, setNextKinShip] = useState("");
   const [nextKinAddre, setNextKinAddre] = useState("");
   const [nextKinChildren, setNextKinChildren] = useState("");
+
+
+  const totalFields = 4;
+  const filledFields = [
+    nextKinName,
+    nextKinShip,
+    nextKinAddre,
+    nextKinChildren,
+   
+  ].filter(Boolean).length;
+
+  // const totalFields = available === "Yes" ? 6 : 5;
+
+  const percentage = (filledFields / totalFields) * 100;
+  // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
+  let color;
+  if (percentage <= 30) {
+    color = "red";
+  } else if (percentage <= 70) {
+    color = "orange";
+  } else {
+    color = "green";
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     
@@ -15,6 +40,8 @@ const NextOfKinDetails = () => {
 
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
+    <CircularProgress percentage={Math.round(percentage)} color={color} /> 
+
       <form onSubmit={handleSubmit}>
         {/* next of kin details */}
 
@@ -27,13 +54,13 @@ const NextOfKinDetails = () => {
             <div className="w-full ">
               <label
                 className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1 "
-                htmlFor="cityName"
+                htmlFor="NextofKinName"
               >
                Next of Kin Name
               </label>
               {/* <div className="relative flex items-center  "> */}
               <input
-                id="cityName"
+                id="NextofKinName"
                 type="text"
                 value={nextKinName}
                 onChange={(e) => setNextKinName(e.target.value)}
@@ -46,13 +73,13 @@ const NextOfKinDetails = () => {
             <div className="w-full">
               <label
                 className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1 "
-                htmlFor="cityName"
+                htmlFor="nextofkineship"
               >
                 Next of Kin Relation Ship
               </label>
               {/* <div className="relative flex items-center  "> */}
                 <input
-                  id="cityName"
+                  id="nextofkineship"
                   type="text"
                   value={nextKinShip}
                   onChange={(e) => setNextKinShip(e.target.value)}
@@ -65,13 +92,13 @@ const NextOfKinDetails = () => {
             <div className=" w-full">
               <label
                 className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
-                htmlFor="cityName"
+                htmlFor="nextofkinaddres"
               >
                 Next of Kin Address
               </label>
               {/* <div className="relative flex items-center  "> */}
                 <input
-                  id="cityName"
+                  id="nextofkinaddres"
                   type="text"
                   value={nextKinAddre}
                   onChange={(e) => setNextKinAddre(e.target.value)}
@@ -85,13 +112,13 @@ const NextOfKinDetails = () => {
             <div className=" w-full">
               <label
                 className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
-                htmlFor="cityName"
+                htmlFor="numberofchildren"
               >
                 Number of Children
               </label>
               {/* <div className="relative flex items-center  "> */}
                 <input
-                  id="cityName"
+                  id="numberofchildren"
                   type="text"
                   value={nextKinChildren}
                   onChange={(e) => setNextKinChildren(e.target.value)}

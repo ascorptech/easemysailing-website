@@ -5,6 +5,9 @@ type CircularProgressProps = {
   size?: number;
   strokeWidth?: number;
   color?: string;
+  
+
+
 };
 
 const CircularProgress: React.FC<CircularProgressProps> = ({
@@ -12,10 +15,14 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
   size = 35,
   strokeWidth = 2,
   color = "#FF9900",
+  
 }) => {
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
   const offset = circumference - (percentage / 100) * circumference;
+
+
+  
 
   return (
     <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
@@ -52,6 +59,7 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
       >
         {`${percentage}%`}
       </text>
+     
     </svg>
   );
 };

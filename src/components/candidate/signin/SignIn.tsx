@@ -33,6 +33,8 @@ const SignIn = ({ route }: Props) => {
   const [isCongratulationsOpen, setIsCongratulationsOpen] = useState(false);
   const [isResetPasswordOpne, setIsResetpasswordOpen] = useState(false);
   const [isPasswordChange, setIsPasswordChangeOpen] = useState(false);
+  const [termsAccepted, setTermsAccepted] = useState(false);
+
 
   const openForgotPassword = () => {
     setIsForgotPasswordOpen(true);
@@ -90,6 +92,10 @@ const SignIn = ({ route }: Props) => {
     // console.log({ emailOrPhone, password });
     try {
       e.preventDefault();
+      if (!termsAccepted) {
+        toast.error("You must accept the terms and conditions");
+        return;
+      }
 
       let data = {
         email: emailOrPhone,
@@ -111,7 +117,7 @@ const SignIn = ({ route }: Props) => {
   
           toast.success('Login successfull')
           if (token) {
-            router.push("/candidate/dashboard");
+            router.push("/candidate/profilecv");
             setIsLoading(false)
           }
 
@@ -217,6 +223,8 @@ const SignIn = ({ route }: Props) => {
                     id="rememberMe"
                     type="checkbox"
                     className="w-4 h-4 text-[#00A264] border-[#333333] rounded focus:ring-[#00A264]"
+                    checked={termsAccepted}
+                    onChange={() => setTermsAccepted(!termsAccepted)}
                   />
                   <label
                     htmlFor="rememberMe"

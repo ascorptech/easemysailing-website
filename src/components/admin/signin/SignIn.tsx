@@ -123,7 +123,7 @@ const SignIn = () => {
             </p>
             <form
               onSubmit={handleSubmit}
-              className="w-full max-w-lg p-6 ml-10 "
+              className="w-full max-w-lg p-6 sm:ml-10 "
             >
               <div className="mb-2">
                 <label

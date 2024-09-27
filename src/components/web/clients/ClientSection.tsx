@@ -4,118 +4,137 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
 const ClientSection: React.FC = () => {
-  const clientcard = [
+  const clientCards = [
     {
       text: "An exceptional platform for seafarers! It’s streamlined, user-friendly, and genuinely cares about our welfare and career growth.",
-      name: "Danny Jhonas",
-      role: "Customer",
+      name: "SALA COLINTON",
+      role: "MANAGER",
       imageSrc: "/images/ellipse.png",
     },
     {
       text: "EaseMySailing is built by seafarers who truly understand and care about us. We deserve respect and recognition, and this platform envisions just that.",
-      name: "Danny Jhonas",
-      role: "Customer",
+      name: "ALEX JHON MARTINN",
+      role: "FIRST CAPTAIN",
       imageSrc: "/images/ellipse.png",
     },
     {
       text: "EaseMySailing has redefined how seafarers connect with recruiters. It’s intuitive and respectful of our hard work. It’s the go-to platform for Seafarers.",
       name: "Danny Jhonas",
-      role: "Customer",
+      role: "SKIPPER",
       imageSrc: "/images/ellipse.png",
     },
     {
       text: "We deserve respect and recognition, and this platform envisions just that.",
-      name: "Danny Jhonas",
-      role: "Customer",
+      name: "ALEX JHON MARTINN",
+      role: "MANAGER",
       imageSrc: "/images/ellipse.png",
     },
     {
       text: "It’s streamlined, user-friendly, and genuinely cares about our welfare and career growth.",
-      name: "Danny Jhonas",
-      role: "Customer",
+      name: "SALA COLINTON",
+      role: "FIRST CAPTAIN",
       imageSrc: "/images/ellipse.png",
     },
   ];
 
-  const [activeIndex, setActiveIndex] = useState<number>(0); // Start from the first card
+  const [activeIndex, setActiveIndex] = useState(0);
+  const totalSlides = clientCards.length;
 
-  // Scroll handling for left and right buttons
-  const handleScroll = (direction: "left" | "right") => {
-    if (direction === "left") {
-      setActiveIndex((prevIndex) => (prevIndex - 1 + clientcard.length) % clientcard.length);
-    } else {
-      setActiveIndex((prevIndex) => (prevIndex + 1) % clientcard.length);
-    }
+  const nextSlide = () => {
+    setActiveIndex((prevIndex) => (prevIndex + 1) % totalSlides);
   };
 
-  // Automatic slide functionality
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      handleScroll("right");
-    }, 3000); // Change every 3 seconds
+  const prevSlide = () => {
+    setActiveIndex((prevIndex) => (prevIndex - 1 + totalSlides) % totalSlides);
+  };
 
-    return () => clearInterval(intervalId); // Clean up the interval on unmount
+  const goToSlide = (index: number) => {
+    setActiveIndex(index);
+  };
+
+  // Auto-slide every 4 seconds
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 4000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="relative flex bg-[#D9F3EA] lg:mx-0 flex-col w-full">
+    <div id="default-carousel" className="relative w-full bg-[#D9F3EA]" data-carousel="slide">
       <div className="text-[21px] leading-[35px] font-bold sm:md:text-4xl lg:ml-[0rem] mt-10">
         <h6 className="text-center text-sm lg:text-base">TESTIMONIALS</h6>
         <h2 className="text-[20px] leading-[20px] sm:text-[28px] lg:text-[45px] sm:leading-[54px] font-bold text-center">
           SEAFARER'S VOICES FROM <span className="text-[#00A264]">THE SEA</span> 
         </h2>
       </div>
-
-      {/* Arrow Buttons */}
-      {/* <button
-        className="absolute left-20 top-[50%] transform -translate-y-1/2 bg-[#00A264] text-white rounded-full h-8 w-8 flex items-center justify-center"
-        onClick={() => handleScroll("left")}
-        disabled={activeIndex === 0} // Disable if it's the first card
-      >
-        &lt;
-      </button> */}
-
-      <div className="flex justify-center items-center h-[500px] overflow-hidden w-full mx-auto mt-14 mb-10 lg:w-[80%]">
-        <div
-          className="flex transition-transform duration-1000 ease-in-out" // Smooth transition
-          style={{ transform: `translateX(-${activeIndex * 100}%)` }} // Adjust to slide one card
-        >
-          {clientcard.map((ccard, index) => (
-            <div key={index} className="min-w-full"> {/* Full width for one card at a time */}
-              <div className={`bg-white p-6 lg:w-[300px] lg:h-[430px] w-[280px] h-[400px] rounded-full mx-auto flex flex-col justify-center items-center flex-shrink-0 transition-transform ${activeIndex === index ? "scale-110" : "scale-90"}`}>
-                {/* Image Section */}
-                <div className="flex justify-center items-center mb-4">
-                  <Image
-                    src={ccard.imageSrc}
-                    alt={ccard.name}
-                    width={65}
-                    height={65}
-                    className="rounded-full object-cover"
-                  />
-                </div>
-
-                {/* Text */}
-                <p className="text-gray-700 text-center text-[16px] leading-[28px] mb-4">
-                  {ccard.text}
-                </p>
-
-                {/* Name and Role */}
-                <div className="text-center">
-                  <h4 className="font-bold text-[20px] text-[#00A264]">{ccard.name}</h4>
-                  <p className="text-black">{ccard.role}</p>
-                </div>
+      {/* Carousel wrapper */}
+      <div className="relative  rounded-lg lg:h-[28rem] flex justify-center items-center h-[26rem] w-full mx-auto mt-14 mb-10 lg:w-[80%] overflow-hidden">
+        {clientCards.map((card, index) => (
+          <div
+            key={index}
+            className={`transition-transform duration-900 bg-white p-6 lg:w-[300px] lg:h-[430px] w-[280px] h-[400px] rounded-full mx-auto flex flex-col justify-center items-center ease-in-out absolute inset-0  
+              ${activeIndex === index ? "opacity-100" : "opacity-0"}`}
+            style={{
+              transform: `translateX(${(index - activeIndex) * 100}%)`,
+              transition: 'transform 0.7s ease-in-out, opacity 0.5s ease-in-out',
+            }}
+            data-carousel-item
+          >
+            <div className={`bg-white p-6 rounded-full flex flex-col justify-center items-center h-full transition-colors duration-900 ${activeIndex === index ? 'bg-[#D9F3EA]' : 'bg-white'}`}>
+              <div className="mb-4 ">
+                <Image
+                  src={card.imageSrc}
+                  alt={card.name}
+                  width={65}
+                  height={65}
+                  className="rounded-full object-cover"
+                />
               </div>
+              <p className="text-gray-700 text-center text-[14px] leading-[28px] mb-4">
+                {card.text}
+              </p>
+              <h4 className="font-bold sm:text-[20px] text-sm text-black">{card.name}</h4>
+              <p className=" sm:text-sm text-xs text-[#00A264]">{card.role}</p>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
-
+      {/* Slider indicators */}
+      <div className="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3">
+        {clientCards.map((_, index) => (
+          <button
+            key={index}
+            type="button"
+            className={`w-3 h-3 rounded-full ${activeIndex === index ? 'bg-[#00A264]' : 'bg-gray-300'}`}
+            aria-current={activeIndex === index}
+            aria-label={`Slide ${index + 1}`}
+            onClick={() => goToSlide(index)}
+          />
+        ))}
+      </div>
+      {/* Slider controls */}
       {/* <button
-        className="absolute right-20 top-[50%]  transform -translate-y-1/2 bg-[#00A264] text-white rounded-full h-8 w-8 flex items-center justify-center"
-        onClick={() => handleScroll("right")}
-        disabled={activeIndex === clientcard.length - 1} // Disable if it's the last card
+        type="button"
+        className="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+        onClick={prevSlide}
       >
-        &gt;
+        <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50 focus:ring-4 focus:ring-white">
+          <svg className="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4"/>
+          </svg>
+          <span className="sr-only">Previous</span>
+        </span>
+      </button> */}
+      {/* <button
+        type="button"
+        className="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+        onClick={nextSlide}
+      >
+        <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50 focus:ring-4 focus:ring-white">
+          <svg className="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4"/>
+          </svg>
+          <span className="sr-only">Next</span>
+        </span>
       </button> */}
     </div>
   );

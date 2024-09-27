@@ -10,8 +10,8 @@ const Articles = () => {
       <div className="flex items-center justify-between mt-2 pt-2 lg:mr-[9rem] md:mx-[6.8rem]">
         <div className="text-[21px] leading-[28px] font-bold sm:text-4xl lg:ml-0">
           <h1>
-            <span className="text-white">LATEST NEWS & </span>
-            <span className="text-[#00A264]">ARTICLES</span>
+            <span className="text-white">Latest News & </span>
+            <span className="text-[#00A264]">Articles</span>
           </h1>
         </div>
 

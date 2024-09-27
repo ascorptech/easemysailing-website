@@ -8,8 +8,8 @@ const NumberContent = () => {
     <div className="flex sm:md:flex-row lg:mb-12 mb-5 lg:w-full lg:mt-0 mt-5 flex-col sm:md:w-[90%] justify-between self-center">
       <div className="sm:md:w-[50%] lg:ml-10 lg:mt-10 flex lg:w-[60%] flex-col  ">
         <h2 className="text-[20px] text-center sm:text-left lg:ml-8 mx-3 lg:mx-0 md:text-3xl  md:text-left lg:text-5xl font-[800]  ">
-          SEAFARERS POWERING GLOBAL{" "}
-          <span className="text-[#00A264]"> TRADE AND ECONOMY</span>
+          Seafarers Powering Global{" "}
+          <span className="text-[#00A264]"> Trade And Economy</span>
         </h2>
         {/* first rating */}
         <div className="flex pt-8 sm:md:flex-row flex-col ml-11 space-y-4 lg:ml-6 sm:md:mx-0 mx-4">
@@ -27,7 +27,7 @@ const NumberContent = () => {
             </div>
             <div className="flex flex-col justify-center items-center ml-4 md:ml-0">
               <span className="text-lg md:text-4xl font-extrabold">$ 14 T</span>
-              <span className="text-gray-700 text-[10px] lg:mt-2 md:text-[11px]">
+              <span className="text-gray-700 text-[10px] lg:mt-2 md:text-[13px]">
                 in Goods moved each year
               </span>
             </div>
@@ -49,7 +49,7 @@ const NumberContent = () => {
               <span className="text-lg md:text-4xl font-extrabold">
                 50,000+
               </span>
-              <span className="text-gray-700 text-[10px] lg:mt-2 md:text-[10px]">
+              <span className="text-gray-700 text-[10px] lg:mt-2 md:text-[13px]">
                 Ships operated by seafarers
               </span>
             </div>
@@ -59,7 +59,7 @@ const NumberContent = () => {
             <div className="absolute text-lg -left-9 md:text-2xl ml-[1.5px] ">
               {/* <BsFillPeopleFill /> */}
               <Image
-                src="/globe.png"
+                src="/globe2.png"
                 alt="captain Logo"
                 width={350}
                 height={350}
@@ -69,7 +69,7 @@ const NumberContent = () => {
             </div>
             <div className="flex flex-col justify-center items-center ml-4 md:ml-0">
               <span className="text-lg md:text-4xl font-extrabold">80%</span>
-              <span className="text-gray-700 text-[10px] lg:mt-2 md:text-[11px]">
+              <span className="text-gray-700 text-[10px] lg:mt-2 md:text-[13px]">
                 of World Energy
               </span>
             </div>
@@ -92,7 +92,7 @@ const NumberContent = () => {
             </div>
             <div className="flex flex-col justify-center items-center ml-4 md:ml-0">
               <span className="text-lg md:text-4xl font-extrabold">90%</span>
-              <span className="text-gray-700 text-[10px] lg:mt-2 md:text-[11px]">
+              <span className="text-gray-700 text-[10px] lg:mt-2 md:text-[13px]">
                 of Global Trade
               </span>
             </div>
@@ -112,7 +112,7 @@ const NumberContent = () => {
             </div>
             <div className="flex flex-col justify-center items-center ml-4 md:ml-0">
               <span className="text-lg md:text-4xl font-extrabold">11 B</span>
-              <span className="text-gray-700 text-[10px] lg:mt-2 md:text-[11px]">
+              <span className="text-gray-700 text-[10px] lg:mt-2 md:text-[13px]">
                 Tons of Cargo yearly
               </span>
             </div>
@@ -132,7 +132,7 @@ const NumberContent = () => {
             </div>
             <div className="flex flex-col justify-center items-center ml-4 md:ml-0">
               <span className="text-lg md:text-4xl font-extrabold">1.9 M</span>
-              <span className="text-gray-700 text-[10px] lg:mt-2 md:text-[11px]">
+              <span className="text-gray-700 text-[10px] lg:mt-2 md:text-[13px]">
                 Seafarers Serving Globally
               </span>
             </div>

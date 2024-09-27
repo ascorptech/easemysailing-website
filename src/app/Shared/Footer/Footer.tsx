@@ -138,15 +138,18 @@ const Footer = () => {
                 (+91) - 7055-70-5555
               </Link>
             </li>
-            <li className="mt-2">
+            <li className="mt-2 flex flex-wrap ">
               <Link
                 href="mailto:business@EaseMySailing.com"
                 className="flex items-center hover:text-green-600"
               >
                 <span className="text-green-600 mr-1">
                   <MdOutlineMail />
-                </span>
-                business@EaseMySailing.com
+                </span> <div><span>business </span>
+                 <br/>
+                <span>@EaseMySailing.com</span>
+                </div> 
+                
               </Link>
             </li>
             <li className="mt-2">

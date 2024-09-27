@@ -1,141 +1,113 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Image from "next/image";
+import React, { useRef } from "react";
+import ClientsCard from "./ClientsCard";
 
 const ClientSection: React.FC = () => {
   const clientCards = [
     {
       text: "An exceptional platform for seafarers! It’s streamlined, user-friendly, and genuinely cares about our welfare and career growth.",
-      name: "SALA COLINTON",
-      role: "MANAGER",
+      name: "Danny Jhonas",
+      role: "Customer",
+      rating: 4,
       imageSrc: "/images/ellipse.png",
+      image1: "/images/quotes.png",
     },
     {
       text: "EaseMySailing is built by seafarers who truly understand and care about us. We deserve respect and recognition, and this platform envisions just that.",
-      name: "ALEX JHON MARTINN",
-      role: "FIRST CAPTAIN",
+      name: "Danny Jhonas",
+      role: "Customer",
+      rating: 4,
       imageSrc: "/images/ellipse.png",
+      image1: "/images/quotes.png",
     },
     {
       text: "EaseMySailing has redefined how seafarers connect with recruiters. It’s intuitive and respectful of our hard work. It’s the go-to platform for Seafarers.",
       name: "Danny Jhonas",
-      role: "SKIPPER",
+      role: "Customer",
+      rating: 4,
       imageSrc: "/images/ellipse.png",
+      image1: "/images/quotes.png",
     },
     {
-      text: "We deserve respect and recognition, and this platform envisions just that.",
-      name: "ALEX JHON MARTINN",
-      role: "MANAGER",
+      text: "An exceptional platform for seafarers! It’s streamlined, user-friendly, and genuinely cares about our welfare and career growth.",
+      name: "Danny Jhonas",
+      role: "Customer",
       imageSrc: "/images/ellipse.png",
+      image1: "/images/quotes.png",
     },
     {
-      text: "It’s streamlined, user-friendly, and genuinely cares about our welfare and career growth.",
-      name: "SALA COLINTON",
-      role: "FIRST CAPTAIN",
+      text: "EaseMySailing is built by seafarers who truly understand and care about us. We deserve respect and recognition, and this platform envisions just that.",
+      name: "Danny Jhonas",
+      role: "Customer",
       imageSrc: "/images/ellipse.png",
+      image1: "/images/quotes.png",
+    },
+    {
+      text: "EaseMySailing has redefined how seafarers connect with recruiters. It’s intuitive and respectful of our hard work. It’s the go-to platform for Seafarers.",
+      name: "Danny Jhonas",
+      role: "Customer",
+      imageSrc: "/images/ellipse.png",
+      image1: "/images/quotes.png",
     },
   ];
 
-  const [activeIndex, setActiveIndex] = useState(0);
-  const totalSlides = clientCards.length;
+  const scrollRef = useRef<HTMLDivElement>(null);
 
-  const nextSlide = () => {
-    setActiveIndex((prevIndex) => (prevIndex + 1) % totalSlides);
+  const cardWidth = 300; // Approximate width of each card including margin
+
+  // Scroll handling for left and right buttons
+  const handleScroll = (direction: "left" | "right") => {
+    if (scrollRef.current) {
+      const scrollAmount =
+        direction === "left" ? -cardWidth * 1 : cardWidth * 1;
+      scrollRef.current.scrollBy({
+        left: scrollAmount,
+        behavior: "smooth",
+      });
+    }
   };
-
-  const prevSlide = () => {
-    setActiveIndex((prevIndex) => (prevIndex - 1 + totalSlides) % totalSlides);
-  };
-
-  const goToSlide = (index: number) => {
-    setActiveIndex(index);
-  };
-
-  // Auto-slide every 4 seconds
-  useEffect(() => {
-    const interval = setInterval(nextSlide, 4000);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
-    <div id="default-carousel" className="relative w-full bg-[#D9F3EA]" data-carousel="slide">
-      <div className="text-[21px] leading-[35px] font-bold sm:md:text-4xl lg:ml-[0rem] mt-10">
-        <h6 className="text-center text-sm lg:text-base">TESTIMONIALS</h6>
-        <h2 className="text-[20px] leading-[20px] sm:text-[28px] lg:text-[45px] sm:leading-[54px] font-bold text-center">
-          SEAFARER'S VOICES FROM <span className="text-[#00A264]">THE SEA</span> 
+    <div className="relative flex bg-[#D9F3EA] mx-2 lg:mx-0 flex-col w-[95%] lg:w-full">
+      <div className="text-[21px] leading-[28px] font-bold sm:md:text-4xl lg:ml-[0rem] mt-10">
+        <h2 className="text-[15px] leading-[20px] sm:text-[28px] lg:text-[45px] sm:leading-[54px] font-bold text-center">
+          Seafarer Stories: Why They Trust Us
+          <span className="text-[#00A264]"></span> Adore Us
         </h2>
       </div>
-      {/* Carousel wrapper */}
-      <div className="relative  rounded-lg lg:h-[28rem] flex justify-center items-center h-[26rem] w-full mx-auto mt-14 mb-10 lg:w-[80%] overflow-hidden">
-        {clientCards.map((card, index) => (
-          <div
+
+      {/* Arrow Buttons */}
+      <button
+        className="absolute left-20 top-[58%] transform -translate-y-1/2 bg-[#00A264] text-white rounded-full h-8 w-8 flex items-center justify-center"
+        onClick={() => handleScroll("left")}
+      >
+        &lt;
+      </button>
+
+      <div
+        ref={scrollRef}
+        className="flex justify-start items-center space-x-20 h-[500px] overflow-auto no-scrollbar w-[900px] ml-[10rem] mt-14 mb-10 lg:w-[80%] 2xl:ml-0 2xl:w-[70%] 2xl:self-center" // width adjusted for 3 cards
+      >
+        {clientCards?.map((ccard:any, index:any) => (
+          <ClientsCard
             key={index}
-            className={`transition-transform duration-900 bg-white p-6 lg:w-[300px] lg:h-[430px] w-[280px] h-[400px] rounded-full mx-auto flex flex-col justify-center items-center ease-in-out absolute inset-0  
-              ${activeIndex === index ? "opacity-100" : "opacity-0"}`}
-            style={{
-              transform: `translateX(${(index - activeIndex) * 100}%)`,
-              transition: 'transform 0.7s ease-in-out, opacity 0.5s ease-in-out',
-            }}
-            data-carousel-item
-          >
-            <div className={`bg-white p-6 rounded-full flex flex-col justify-center items-center h-full transition-colors duration-900 ${activeIndex === index ? 'bg-[#D9F3EA]' : 'bg-white'}`}>
-              <div className="mb-4 ">
-                <Image
-                  src={card.imageSrc}
-                  alt={card.name}
-                  width={65}
-                  height={65}
-                  className="rounded-full object-cover"
-                />
-              </div>
-              <p className="text-gray-700 text-center text-[14px] leading-[28px] mb-4">
-                {card.text}
-              </p>
-              <h4 className="font-bold sm:text-[20px] text-sm text-black">{card.name}</h4>
-              <p className=" sm:text-sm text-xs text-[#00A264]">{card.role}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-      {/* Slider indicators */}
-      <div className="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3">
-        {clientCards.map((_, index) => (
-          <button
-            key={index}
-            type="button"
-            className={`w-3 h-3 rounded-full ${activeIndex === index ? 'bg-[#00A264]' : 'bg-gray-300'}`}
-            aria-current={activeIndex === index}
-            aria-label={`Slide ${index + 1}`}
-            onClick={() => goToSlide(index)}
+            text={ccard.text}
+            name={ccard.name}
+            role={ccard.role}
+            imageSrc={ccard.imageSrc}
+            image1={ccard.image1}
+            index={index}
           />
         ))}
       </div>
-      {/* Slider controls */}
-      {/* <button
-        type="button"
-        className="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-        onClick={prevSlide}
+
+      <button
+        className="absolute right-20 top-[58%] transform -translate-y-1/2 bg-[#00A264] text-white rounded-full h-8 w-8 flex items-center justify-center"
+        onClick={() => handleScroll("right")}
       >
-        <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50 focus:ring-4 focus:ring-white">
-          <svg className="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4"/>
-          </svg>
-          <span className="sr-only">Previous</span>
-        </span>
-      </button> */}
-      {/* <button
-        type="button"
-        className="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-        onClick={nextSlide}
-      >
-        <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50 focus:ring-4 focus:ring-white">
-          <svg className="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4"/>
-          </svg>
-          <span className="sr-only">Next</span>
-        </span>
-      </button> */}
+        &gt;
+      </button>
     </div>
   );
 };

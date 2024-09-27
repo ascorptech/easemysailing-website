@@ -6,160 +6,163 @@ import { FaCirclePlus } from "react-icons/fa6";
 import { FaMinusCircle } from "react-icons/fa";
 
 const Categories = () => {
-  const [selectedTopic, setSelectedTopic] = useState<number | null>(null);
+  const [selectedTopic, setSelectedTopic] = useState<number | null>(1);
   const [selectedQuestion, setSelectedQuestion] = useState<number | null>(null);
 
   const topics = [
+    // {
+    //   id: 1,
+    //   title: "Visa",
+    //   questions: [
+    //     {
+    //       id: 1,
+    //       question: "Value of EMS Coins?",
+    //       answer:
+    //         "Each EMS Coins holds the equivalent value of one US Doller in Services ",
+    //     },
+    //     {
+    //       id: 2,
+    //       question: "Can I delete a EMI Conis cart?",
+    //       answer: "Yes, you can delete a Coins by...",
+    //     },
+    //     {
+    //       id: 3,
+    //       question: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
+    //       answer:
+    //         "Each EMS Coins holds the equivalent value of one US Doller in Services ",
+    //     },
+    //     {
+    //       id: 4,
+    //       question: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
+    //       answer: "Yes, you can delete a Coins by...",
+    //     },
+    //     {
+    //       id: 5,
+    //       question: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
+    //       answer:
+    //         "Each EMS Coins holds the equivalent value of one US Doller in Services ",
+    //     },
+    //     {
+    //       id: 6,
+    //       question: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
+    //       answer: "Yes, you can delete a Coins by...",
+    //     },
+    //   ],
+    // },
+    // {
+    //   id: 2,
+    //   title: "Job Search",
+    //   questions: [
+    //     {
+    //       id: 1,
+    //       question: "How do get a Job?",
+    //       answer: "To Answer the Something",
+    //     },
+    //     {
+    //       id: 2,
+    //       question: "Can I track a phone?",
+    //       answer: "Yes, you can track your Phone by... ",
+    //     },
+    //     {
+    //       id: 3,
+    //       question: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
+    //       answer:
+    //         "Each EMS Coins holds the equivalent value of one US Doller in Services ",
+    //     },
+    //     {
+    //       id: 4,
+    //       question: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
+    //       answer: "Yes, you can delete a Coins by...",
+    //     },
+    //     {
+    //       id: 5,
+    //       question: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
+    //       answer:
+    //         "Each EMS Coins holds the equivalent value of one US Doller in Services ",
+    //     },
+    //     {
+    //       id: 6,
+    //       question: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
+    //       answer: "Yes, you can delete a Coins by...",
+    //     },
+    //   ],
+    // },
+    // {
+    //   id: 3,
+    //   title: "Application Process",
+    //   questions: [
+    //     {
+    //       id: 1,
+    //       question: "What should I do if my payment fails?",
+    //       answer: "If your payment fails, you should...",
+    //     },
+    //     {
+    //       id: 2,
+    //       question: "Can I get a refund?",
+    //       answer: "Yes, you can request a refund by...",
+    //     },
+    //     {
+    //       id: 3,
+    //       question: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
+    //       answer:
+    //         "Each EMS Coins holds the equivalent value of one US Doller in Services ",
+    //     },
+    //     {
+    //       id: 4,
+    //       question: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
+    //       answer: "Yes, you can delete a Coins by...",
+    //     },
+    //     {
+    //       id: 5,
+    //       question: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
+    //       answer:
+    //         "Each EMS Coins holds the equivalent value of one US Doller in Services ",
+    //     },
+    //     {
+    //       id: 6,
+    //       question: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
+    //       answer: "Yes, you can delete a Coins by...",
+    //     },
+    //   ],
+    // },
     {
       id: 1,
-      title: "Visa",
-      questions: [
-        {
-          id: 1,
-          question: "Value of EMS Coins?",
-          answer:
-            "Each EMS Coins holds the equivalent value of one US Doller in Services ",
-        },
-        {
-          id: 2,
-          question: "Can I delete a EMI Conis cart?",
-          answer: "Yes, you can delete a Coins by...",
-        },
-        {
-          id: 3,
-          question: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
-          answer:
-            "Each EMS Coins holds the equivalent value of one US Doller in Services ",
-        },
-        {
-          id: 4,
-          question: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
-          answer: "Yes, you can delete a Coins by...",
-        },
-        {
-          id: 5,
-          question: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
-          answer:
-            "Each EMS Coins holds the equivalent value of one US Doller in Services ",
-        },
-        {
-          id: 6,
-          question: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
-          answer: "Yes, you can delete a Coins by...",
-        },
-      ],
-    },
-    {
-      id: 2,
-      title: "Job Search",
-      questions: [
-        {
-          id: 1,
-          question: "How do get a Job?",
-          answer: "To Answer the Something",
-        },
-        {
-          id: 2,
-          question: "Can I track a phone?",
-          answer: "Yes, you can track your Phone by... ",
-        },
-        {
-          id: 3,
-          question: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
-          answer:
-            "Each EMS Coins holds the equivalent value of one US Doller in Services ",
-        },
-        {
-          id: 4,
-          question: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
-          answer: "Yes, you can delete a Coins by...",
-        },
-        {
-          id: 5,
-          question: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
-          answer:
-            "Each EMS Coins holds the equivalent value of one US Doller in Services ",
-        },
-        {
-          id: 6,
-          question: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
-          answer: "Yes, you can delete a Coins by...",
-        },
-      ],
-    },
-    {
-      id: 3,
-      title: "Application Process",
-      questions: [
-        {
-          id: 1,
-          question: "What should I do if my payment fails?",
-          answer: "If your payment fails, you should...",
-        },
-        {
-          id: 2,
-          question: "Can I get a refund?",
-          answer: "Yes, you can request a refund by...",
-        },
-        {
-          id: 3,
-          question: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
-          answer:
-            "Each EMS Coins holds the equivalent value of one US Doller in Services ",
-        },
-        {
-          id: 4,
-          question: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
-          answer: "Yes, you can delete a Coins by...",
-        },
-        {
-          id: 5,
-          question: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
-          answer:
-            "Each EMS Coins holds the equivalent value of one US Doller in Services ",
-        },
-        {
-          id: 6,
-          question: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
-          answer: "Yes, you can delete a Coins by...",
-        },
-      ],
-    },
-    {
-      id: 4,
       title: "Miscellaneous",
       questions: [
         {
           id: 1,
-          question: "What should I do if my payment fails?",
-          answer: "If your payment fails, you should...",
+          question: "How does the platform help seafarers?",
+          answer: "Our platform is built by seafarers, for seafarers, because we deeply understand the crucial role you play in keeping the world’s economy and global trade moving. We are here to create a powerful collective voice that truly reflects your efforts and dedication. Our goal is not just to connect you with opportunities but to ensure that your hard work, sacrifices, and contributions are acknowledged and celebrated on a global stage. We care about your well-being, and we’re committed to being a platform that stands up for the rights and recognition you deserve.",
         },
         {
           id: 2,
-          question: "Can I get a refund?",
-          answer: "Yes, you can request a refund by...",
+          question: "How does the platform support recruitment?",
+          answer: "We believe that the journey to crew welfare starts with fair recruitment. You deserve a process that values your skills, experience, and future potential. That's why our platform is designed to help you make confident career decisions without fear or hesitation. When you trust us with your career, you’re trusting a platform that is fully committed to your best interests. Every step of our recruitment process is centered around ensuring that your career grows on your terms, with the respect and security you deserve.",
         },
         {
           id: 3,
-          question: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
-          answer:
-            "Each EMS Coins holds the equivalent value of one US Doller in Services ",
+          question: "How will creating my profile benefit me?",
+          answer:"By creating your profile, you take the first step toward a career that aligns with your personal goals and aspirations. We use your profile to connect you with the best opportunities available, always ensuring that these opportunities match your terms. Your profile will be handled with utmost confidentiality and security, so you can trust that your career is in good hands as we work to find the right match for you.",
         },
         {
           id: 4,
-          question: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
-          answer: "Yes, you can delete a Coins by...",
+          question: "Is the platform available for use right now?",
+          answer: "At the moment, we are in the early stages of launching a minimal viable version of the platform. In just two months, you’ll have access to the full functionality, including recruitment services. Right now, you can explore the platform and create your profile to be ready when we go live. We’re excited to have you onboard and be part of our journey from the very beginning.",
         },
         {
           id: 5,
-          question: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
-          answer:
-            "Each EMS Coins holds the equivalent value of one US Doller in Services ",
+          question: "What makes this platform different from other seafarer recruitment sites?",
+          answer:"Our platform is built on fairness, empowerment, and transparency, but what truly sets us apart is our genuine care for the seafarer community. We are more than just a recruitment site; we are a platform that is driven by the well-being and recognition of seafarers. Our focus is not only on matching candidates with opportunities but on making sure the process is respectful, transparent, and always in favor of what’s best for you.",
         },
         {
           id: 6,
-          question: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
-          answer: "Yes, you can delete a Coins by...",
+          question: "Will I get updates about available job opportunities?",
+          answer: "Absolutely. Once your profile is set up, we’ll ensure that you’re notified of job openings that match your qualifications and preferences. We are committed to keeping you in the loop, helping you find the right opportunities as soon as they become available, so you can make informed and timely career decisions.",
+        },
+        {
+          id: 7,
+          question: "How can I trust that my personal data is safe?",
+          answer: "We take the security of your personal information very seriously. Your data is stored securely, and only authorized personnel have access to it. We understand how important your privacy is, and we are dedicated to ensuring that your personal details remain confidential and are only used for the purpose of connecting you with the right opportunities.",
         },
       ],
     },
@@ -190,13 +193,15 @@ const Categories = () => {
               >
                 <span className="text-black-600">{topic.title}</span>
                 {selectedTopic === topic.id ? (
-                  <IoIosArrowDown
+                  // <IoIosArrowDown
+                  <FaMinusCircle
                     style={{ color: "green", fontSize: "24px" }}
                     className="w-4 h-4 text-[#D1EFE4] text-base"
                   />
                 ) : (
-                  <IoIosArrowForward
-                    style={{ color: "[#D1EFE4]", fontSize: "24px" }}
+                  // <IoIosArrowForward
+                  <FaCirclePlus
+                    style={{ color: "green", fontSize: "24px" }}
                     className="w-4 h-4"
                   />
                 )}

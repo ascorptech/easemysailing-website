@@ -25,7 +25,7 @@ const Wedo = () => {
           <h2 className="text-xl md:text-2xl font-semibold mt-4">
             Recruitment
           </h2>
-          <p className="text-sm md:text-base lg:text-[18px] lg:leading-[28px] mt-2 text-[#4E4E4E] text-center">
+          <p className="text-sm text-justify md:text-base lg:text-[18px] lg:leading-[28px] mt-2 text-[#4E4E4E] ">
             EaseMySailing envisions transforming recruitment with AI and
             technology. We focus on fair, efficient practices, connecting
             seafarers and shipowners with optimal opportunities to drive
@@ -46,7 +46,7 @@ const Wedo = () => {
           <h2 className="text-xl md:text-2xl font-semibold mt-4">
             For Seafarer Wellbeing
           </h2>
-          <p className="text-sm md:text-base lg:text-[18px] lg:leading-[28px] mt-2 text-[#4E4E4E] text-center">
+          <p className="text-sm md:text-base text-justify lg:text-[18px] lg:leading-[28px] mt-2 text-[#4E4E4E] ">
             At EaseMySailing, we connect seafarers with recruiters, ensuring
             they feel valued and engaged. We aim to keep seafarers motivated and
             connected with management while creating a supportive environment
@@ -68,7 +68,7 @@ const Wedo = () => {
           <h2 className="text-xl md:text-2xl font-semibold mt-4">
             For Career Progression
           </h2>
-          <p className="text-sm md:text-base lg:text-[18px] lg:leading-[28px] mt-2 text-[#4E4E4E] text-center">
+          <p className="text-sm md:text-base text-justify lg:text-[18px] lg:leading-[28px] mt-2 text-[#4E4E4E] ">
             EaseMySailing supports seafarers navigating career changes, from
             rank advancement to transitions between ship and shore. Our platform
             helps them achieve career goals and explore new opportunities in the

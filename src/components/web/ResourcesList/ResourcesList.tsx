@@ -18,7 +18,7 @@ const ResourcesList = (props: Props) => {
   const totalPages = Math.ceil(resourcesList.length / itemsPerPage);
 
   // Get items for the current page
-  const currentItems = resourcesList.slice(
+  const currentItems = resourcesList.toReversed().slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
@@ -47,7 +47,7 @@ const ResourcesList = (props: Props) => {
       <Heading7 />
       <div className="flex  sm:md:flex-row flex-col mt-5 h-[26rem] container mx-auto mb-[7rem] lg:mb-0 sm:md:mb-0">
         <div className="flex sm:md:w-[50%] w-full">
-          <div className="relative w-full p-4">
+          <div className="relative w-full border">
             <Image
               src={currentItems[0]?.imageUrl?`data:image/png;image/jpg;image/jpeg;base64,${currentItems[0]?.imageUrl}`:"/images/captain4.jpeg"}
               alt="image not found"
@@ -66,7 +66,7 @@ const ResourcesList = (props: Props) => {
             {currentItems[0]?.title}
           </h2>
           <p className="text-gray-500 text-sm text-justify ">
-            {currentItems[0]?.description?.replace(/<[^>]+>/g, '').slice(0, 400)}
+            {currentItems[0]?.description?.replace(/<[^>]+>/g, '').slice(0, 1000)}
           </p>
           <Link
             href={`/resources/${currentItems[0]?.id}`}

@@ -85,7 +85,7 @@ const PartnersSection = () => {
       <div className="flex items-center justify-between mt-4 pt-4 lg:mr-[5%]  md:mx-[1rem]">
         <div className="font-bold mx-5 text-xl flex items-center lg:text-4xl lg:ml-[1.5rem]">
           <h1>
-            <span>OUR</span> <span className=" text-[#00A265]">PARTNERS</span>
+            <span>Our</span> <span className=" text-[#00A265]">Partners</span>
           </h1>
           <div className="ml-2">
             <Image
@@ -108,7 +108,7 @@ const PartnersSection = () => {
         </div>
       </div>
 
-      <div className="  relative flex items-center justify-center w-[100%]  ">
+      <div className="  relative flex items-center justify-center w-full  ">
       <button 
           onClick={scrollLeft} 
           className="absolute left-6 md:hidden bg-white p-2 rounded-full shadow-md"
@@ -118,7 +118,7 @@ const PartnersSection = () => {
         </button>
         <div
           ref={scrollRef}
-          className="overflow-x-auto my-10 gap-2 flex space-x-2 lg:space-x-6 lg:mx-0 no-scrollbar scroll-smooth snap-x snap-mandatory lg:w-[95%] w-[220px] "
+          className="overflow-x-auto my-10 gap-2 flex space-x-2 lg:space-x-6 2xl:space-x-14 lg:mx-0 no-scrollbar scroll-smooth snap-x snap-mandatory lg:w-[95%] w-[220px] "
         >
           {partners?.map((partner, index) => (
             <PartnerCard

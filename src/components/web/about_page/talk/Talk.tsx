@@ -21,7 +21,7 @@ const Talk = () => {
             </span>
           </h1>
           <br />
-          <p className="text-[16px] leading-[28px] md:text-base lg:text-[18px] lg:leading-[28px] mt-2 px-2 text-[#4E4E4E]">
+          <p className="text-[16px] text-justify leading-[28px] md:text-base lg:text-[18px] lg:leading-[28px] mt-2 px-2 text-[#4E4E4E]">
             EaseMySailing is a platform created by seafarers, for seafarers,
             built on empathy for life at sea and its unique challenges and joys.
             The team behind it has navigated the seas from trainees to top
@@ -29,7 +29,7 @@ const Talk = () => {
             those who choose a life on the ocean.
           </p>
 
-          <p className="text-sm md:text-base px-2 text-[#4E4E4E] mt-4 lg:text-[18px] lg:leading-[28px]">
+          <p className="text-sm md:text-base text-justify px-2 text-[#4E4E4E] mt-4 lg:text-[18px] lg:leading-[28px]">
             EaseMySailing aims to bring the life of seafarers into the
             spotlight, highlighting the vital role they play and the challenges
             they face. The platform is dedicated to promoting sustainable

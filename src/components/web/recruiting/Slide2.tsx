@@ -26,28 +26,28 @@ const Slide2: React.FC<Slide2Props> = ({ card }) => {
     {
       id: 2,
       logo: "/images/requiter-img/logo2.png",
-      company: "MSC",
+      company: "MSC CMA",
       rating: 4.8,
       reviews: "5K+",
     },
     {
       id: 3,
       logo: "/images/requiter-img/logo3.png",
-      company: "CMA CGM Group",
+      company: "CMA CGM ",
       rating: 4.8,
       reviews: "5K+",
     },
     {
       id: 4,
       logo: "/images/requiter-img/logo4.png",
-      company: "MEC",
+      company: "MEC CMA",
       rating: 4.8,
       reviews: "5K+",
     },
     {
       id: 5,
       logo: "/images/requiter-img/logo5.png",
-      company: "AP Moller-Maersk",
+      company: "AP Moller",
       rating: 4.8,
       reviews: "5K+",
     },
@@ -68,7 +68,7 @@ const Slide2: React.FC<Slide2Props> = ({ card }) => {
     {
       id: 3,
       logo: "/images/requiter-img/logo3.png",
-      company: "CMA CGM Group",
+      company: "CMA CGM",
       rating: 4.8,
       reviews: "5K+",
     },
@@ -82,7 +82,7 @@ const Slide2: React.FC<Slide2Props> = ({ card }) => {
     {
       id: 5,
       logo: "/images/requiter-img/logo5.png",
-      company: "AP Moller-Maersk",
+      company: "AP Moller",
       rating: 4.8,
       reviews: "5K+",
     },
@@ -114,11 +114,11 @@ const Slide2: React.FC<Slide2Props> = ({ card }) => {
                     className="w-full h-full object-contain rounded-full"
                   />
                 </div>
-                <h3 className="text-sm font-semibold">{card.company}</h3>
-                <p className="text-sm text-gray-500">
-                  <span className="text-yellow-500">
+                <h3 className="text-sm  text-center font-semibold">{card.company}</h3>
+                <p className="text-sm text-gray-500 text-center">
+                  <span className="text-yellow-500 text-center ">
                     ★{" "}
-                    <span className="text-black font-bold">{card.rating}</span>
+                    <span className="text-black font-bold text-center">{card.rating}</span>
                   </span>{" "}
                   | {card.reviews} reviews
                 </p>

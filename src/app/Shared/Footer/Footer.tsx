@@ -35,7 +35,7 @@ const Footer = () => {
   }, []);
   return (
     <footer className="bg-[#D1EFE4] p-4 text-sm md:pl-10 text-gray-700 w-full ">
-      <div className="container mx-auto mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
+      <div className="container mx-auto mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:gap-16 gap-10">
         {/* Brand and Description */}
 
         <div className="flex flex-col justify-start">
@@ -145,10 +145,10 @@ const Footer = () => {
               >
                 <span className="text-green-600 mr-1">
                   <MdOutlineMail />
-                </span> <div><span>business </span>
-                 <br/>
+                </span> business
+                
                 <span>@EaseMySailing.com</span>
-                </div> 
+              
                 
               </Link>
             </li>

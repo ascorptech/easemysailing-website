@@ -20,7 +20,7 @@ const Findout = () => {
 
         {/* Right Div */}
         <div className="w-full lg:w-[50%]">
-          <h1 className="text-white font-semibold text-3xl sm:text-4xl lg:text-[50px]">
+          <h1 className="text-white font-semibold text-3xl sm:text-4xl xl:text-[50px] lg:text-[40px]">
             Find Out What's New At{" "}
             <span className="text-[#00A264] lg:leading-[5rem]">Easemysailing</span>
           </h1>

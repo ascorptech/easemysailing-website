@@ -8,7 +8,7 @@ const NumberContent = () => {
       <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-[60px] font-bold mb-4 lg:w-[70%] ml-5 lg:ml-10">
         Applying For Job Made Easy For{" "}
         <p className="text-[#00A264] flex mt-2 lg:mt-8">
-          Sailors
+          Seafarers
           <Image
             priority
             src="/anchor.png"

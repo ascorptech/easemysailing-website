@@ -71,7 +71,7 @@ const ArticlesCard = () => {
       {/* Left Scroll Button */}
       <button
         onClick={scrollLeft}
-        className="absolute left-0 top-28  sm:hidden bg-white p-[5px] rounded-full shadow-md"
+        className="absolute left-0 top-28  hidden bg-white p-[5px] rounded-full shadow-md"
         aria-label="Scroll Left"
       >
         <IoMdArrowBack />
@@ -115,7 +115,7 @@ const ArticlesCard = () => {
       {/* Right Scroll Button */}
       <button
         onClick={scrollRight}
-        className="absolute right-0 top-28 sm:hidden bg-white p-[5px] rounded-full shadow-md"
+        className="absolute right-0 top-28 hidden bg-white p-[5px] rounded-full shadow-md"
 
         // className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md z-10"
         aria-label="Scroll Right"

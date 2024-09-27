@@ -27,12 +27,12 @@ const Interview = () => {
   return (
     <div className=" md:w-[90%] lg:container mx-auto">
       <div className="flex justify-between items-center mb-4">
-        <h1 className="text-white text-[21px]  leading-[28px] font-bold sm:md:text-4xl">
+        <h1 className="text-white text-[21px]  leading-[28px] font-bold sm:md:text-4xl mt-4">
           Podcast &<span className="text-[#00A264]"> Interviews</span>
         </h1>
         <Link
           href="/podcast-list"
-          className="h-8 bg-[#00A264] text-white py-2 px-4 rounded-full text-sm flex items-center justify-center"
+          className="h-8 bg-[#00A264] text-white py-2 px-4 rounded-full text-sm flex items-center justify-center mt-4"
         >
           View All
         </Link>

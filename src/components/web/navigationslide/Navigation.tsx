@@ -62,8 +62,8 @@ const ClientSection: React.FC = () => {
   return (
     <div className=" w-full">
       {/* Tab Navigation */}
-      <div className="flex flex-col sm:md:flex-row justify-between items-center mt-10 gap-2 mb-6 ">
-        <div className="sm:md:ml-12 flex flex-col sm:md:flex-row justify-center items-center">
+      <div className="flex flex-col sm:md:flex-row justify-between  items-center mt-10 gap-2 mb-6 ">
+        <div className="sm:md:ml-12 flex flex-col  sm:md:flex-row justify-center  items-center">
           <button
             onClick={() => handleTabClick("top-recruiting")}
             className={`${
@@ -99,7 +99,7 @@ const ClientSection: React.FC = () => {
                 ? scrollLeft(cardTrending)
                 : scrollLeft(cardCareer)
             }
-            className="absolute -ml-10 lg:right-[90px] z-10 p-2 h-10 w-10 bg-white border rounded-full shadow-md  lg:-mt-5 lg:ml-2 mr-2"
+            className="absolute -ml-10 md:ml-[-7rem] md:-mt-5 lg:right-[90px] z-10 p-2 h-10 w-10 bg-white border rounded-full shadow-md  lg:-mt-5 lg:ml-2 mr-2"
           >
             &lt;
           </button>
@@ -113,7 +113,7 @@ const ClientSection: React.FC = () => {
                 ? scrollRight(cardTrending)
                 : scrollRight(cardCareer)
             }
-            className="absolute ml-3 sm:md:ml-0 lg:right-[60px] h-10 w-10 z-10 p-2 bg-white border rounded-full shadow-md lg:-mt-5 -mr-7 lg:-mr-2"
+            className="absolute ml-3 md:ml-[-3rem] md:-mt-5 lg:ml-0 sm:ml-0 lg:right-[60px] h-10 w-10 z-10 p-2 bg-white border rounded-full shadow-md lg:-mt-5 -mr-7 lg:-mr-2"
           >
             &gt;
           </button>

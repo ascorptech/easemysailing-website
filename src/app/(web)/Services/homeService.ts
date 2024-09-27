@@ -1,7 +1,7 @@
 import { getReq, postReq } from "@/RootServices";
 import apiEndPoints from "./apiEndPoints";
 
-const {GETRECENTPODCAST,GETRECENTRESOURCE,GETRECENTRESOURCEBYID} = apiEndPoints
+const {GETRECENTPODCAST,GETRECENTRESOURCE,} = apiEndPoints
 
 export const GetRecentPodcast = async(cb:any)=>{
     try {

@@ -37,10 +37,13 @@ import { GetRecentPodcast } from "@/app/(web)/Services/homeService";
 import React, { useRef, useEffect, useState } from "react";
 import { IoMdArrowBack, IoMdArrowForward } from "react-icons/io";
 import Image from "next/image";
+import { RxCrossCircled } from "react-icons/rx";
 
 const Islide = () => {
   const card = useRef<HTMLDivElement>(null);
   const [podcasts, setPodcasts] = useState<any>([])
+  const [selected, setSelected] = useState<any>();
+  const [ModalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     GetRecentPodcast((res: any) => {
@@ -78,6 +81,24 @@ const Islide = () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
+
+  const getEmbedUrl = (videoLink: string) => {
+    const videoIdMatch = videoLink?.match(
+      /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/|.+\?v=))([^?&]+)/
+    );
+    return videoIdMatch
+      ? `https://www.youtube.com/embed/${videoIdMatch[1]}`
+      : "";
+  };
+
+  const openModal = (item: any) => {
+    setSelected(item);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
 
   // return (
   //   <div className="relative overflow-x-hidden  mt-7 pb-4 lg:pb-0 flex justify-center items-center lg:items-center w-full lg:w-[83%] xl:w-[82%] 2xl:w-[85%] md:w-[94%] px-1 sm:px-0 lg:px-0 lg:mx-[110px] ">
@@ -153,7 +174,7 @@ const Islide = () => {
   //     </button>
   //   </div>
   // );
-  return (<div className="container mx-auto relative">
+  return (<div className="container mx-auto relative mb-10">
     <button
       onClick={scrollLeft}
       className="absolute left-0 top-20  sm:hidden bg-white p-[5px] rounded-full shadow-md"
@@ -164,13 +185,14 @@ const Islide = () => {
     <div ref={card} className="overflow-auto flex w-[90%] mx-auto sm:mx-0 sm:w-full sm:grid sm:grid-rows-1 sm:grid-cols-4 gap-2 sm:gap-10">
       {podcasts?.map((item: any, index: any) => (
           <Image
-          key={item?.id}
+            key={item?.id}
             src={`data:image/png;image/jpg;image/jpeg;base64,${item?.thumbnail}`}
             alt={item?.title}
             width={100}
             height={100}
             priority
             className="h-full w-full rounded-md mb-10 border border-gray-600 shadow-sm"
+            onClick={() => openModal(item)}
           />
       ))}
 
@@ -182,7 +204,32 @@ const Islide = () => {
     >
       <IoMdArrowForward />
     </button>
+    {/* Popup */}
+    {ModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-10">
+          <div className="bg-white  rounded-lg overflow-hidden shadow-lg">
+            <div className="h-[15rem] w-[22rem] lg:w-[50rem]  lg:h-[500px] relative">
+              <iframe
+                width="100%"
+                height="100%"
+                src={getEmbedUrl(selected?.videoLink)}
+                title={selected?.title}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+              <button
+                onClick={closeModal}
+                className="absolute  top-2 right-2 text-red-500  rounded-full "
+              >
+                <RxCrossCircled className="w-6 h-6" />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
   </div>)
+  
 };
 
 export default Islide;

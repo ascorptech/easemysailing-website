@@ -1,12 +1,14 @@
 "use client";
 
 import React, { useEffect } from "react";
-import Image  from "next/image";
+import Image from "next/image";
 import { useState } from "react";
 import { useParams } from "next/navigation"; // Use useParams instead of useRouter
 import { Resource } from "../../data/resources";
-import { GetResourceDetail } from "../Services/resourceService";
+import { GetResourceDetail, GetResourcesExcludeList } from "../Services/resourceService";
 import moment from "moment";
+import Link from "next/link";
+import RotateLoader from "react-spinners/RotateLoader";
 
 const ResourceDetailsPage: React.FC = () => {
   const params = useParams(); // useParams hook to get route parameters
@@ -17,20 +19,29 @@ const ResourceDetailsPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [textarea, setTextArea] = useState("");
-  const [resourceDetail,setResourceDetail] = useState<any>()
+  const [resourceDetail, setResourceDetail] = useState<any>()
+  const [resourcesList, setResourcesList] = useState<any>()
+  const [isLoading,setIsLoading] = useState<boolean>(false)
 
   useEffect(() => {
-    GetResourceDetail(id,GetResourceDetailCB)
+    setIsLoading(true)
+    GetResourceDetail(id, GetResourceDetailCB)
+    GetResourcesExcludeList(id, GetResourcesExcludeListCB)
   }, [])
 
-  const GetResourceDetailCB=(res:any)=>{
+  const GetResourceDetailCB = (res: any) => {
     setResourceDetail(res?.data)
   }
-  
+
+  const GetResourcesExcludeListCB = (res: any) => {
+    setResourcesList(res?.data)
+    setIsLoading(false)
+  }
+
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
   };
 
 
@@ -40,11 +51,19 @@ const ResourceDetailsPage: React.FC = () => {
   }
 
   return (
-    <div className="flex justify-around mx-14 my-11 mt-[100px]">
+    <React.Fragment>
+      {isLoading?(<div className="h-[500px] w-full mt-[100px] justify-center flex items-center">
+        <RotateLoader
+        color={'#00A264'}
+        loading={isLoading}
+        size={10}
+        />
+      </div>):
+   ( <div className="flex justify-around mx-14 my-11 mt-[100px]">
       <div className=" float-left w-[70%]  px-10">
         <div className="mr-5 w-[787px] h-[417px] border2 border-blue-600">
           <Image
-            src={resourceDetail?.imageUrl?`data:image/png;image/jpg;image/jpeg;base64,${resourceDetail?.imageUrl}`:"/images/captain4.jpeg"}
+            src={resourceDetail?.imageUrl ? `data:image/png;image/jpg;image/jpeg;base64,${resourceDetail?.imageUrl}` : "/images/captain4.jpeg"}
             alt="image not found"
             width={1000}
             height={1000}
@@ -130,127 +149,36 @@ const ResourceDetailsPage: React.FC = () => {
       </div>
 
       <div className="float-right  w-[27%]  ">
-        <div className="relative bg-green-100 px-4 pt-2 h-[550px] rounded-lg">
-          <h2 className="font-bold text-xl ">More Articals</h2>
+        <div className="relative bg-green-100 px-4 pt-2 h-[460px] rounded-lg">
+          <h2 className="font-bold text-xl ">More Articles</h2>
           <div className="absolute">
-            <div className=" flex gap-3  mb-2 p-2">
-              <div className="w-24 h-14 border-2 border-green-500">
-                <Image
-                  src="/images/article1.png"
-                  alt="image not found"
-                  width={50}
-                  height={50}
-                  className="w-full h-full"
-                />
-              </div>
-              <div className="text-xs">
-                <h2 className="font-bold text-sm">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </h2>
-                <p className="text-green-600   mt-0">
-                  01/jan/2014 By gwen stacy
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-3 mb-2 p-2">
-              <div className="w-24 h-14 border-2 border-green-500">
-                <Image
-                  src="/images/article4.png"
-                  alt="image not found"
-                  width={50}
-                  height={50}
-                  className="w-full h-full"
-                />
-              </div>
-              <div className="text-xs">
-                <h2 className="font-bold text-sm">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </h2>
-                <p className="text-green-600   mt-0">
-                  01/jan/2014 By gwen stacy
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-3  mb-2 p-2">
-              <div className="w-24 h-14 border-2 border-green-500">
-                <Image
-                  src="/images/article3.png"
-                  alt="image not found"
-                  width={50}
-                  height={50}
-                  className="w-full h-full"
-                />
-              </div>
-              <div className="text-xs">
-                <h2 className="font-bold text-sm">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </h2>
-                <p className="text-green-600   mt-0">
-                  01/jan/2014 By gwen stacy
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-3 mb-2 p-2">
-              <div className="w-24 h-14 border-2 border-green-500">
-                <Image
-                  src="/images/article4.png"
-                  alt="image not found"
-                  width={50}
-                  height={50}
-                  className="w-full h-full"
-                />
-              </div>
-              <div className="text-xs">
-                <h2 className="font-bold text-sm">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </h2>
-                <p className="text-green-600   mt-0">
-                  01/jan/2014 By gwen stacy
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-3  mb-2 p-2">
-              <div className="w-24 h-14 border-2 border-green-500">
-                <Image
-                  src="/images/article1.png"
-                  alt="image not found"
-                  width={50}
-                  height={50}
-                  className="w-full h-full"
-                />
-              </div>
-              <div className="text-xs">
-                <h2 className="font-bold text-sm">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </h2>
-                <p className="text-green-600   mt-0">
-                  01/jan/2014 By gwen stacy
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-3   p-2">
-              <div className="w-24 h-14 border-2 border-green-500">
-                <Image
-                  src="/images/article4.png"
-                  alt="image not found"
-                  width={50}
-                  height={50}
-                  className="w-full h-full"
-                />
-              </div>
-              <div className="text-xs">
-                <h2 className="font-bold text-sm">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </h2>
-                <p className="text-green-600   mt-0">
-                  01/jan/2014 By gwen stacy
-                </p>
-              </div>
-            </div>
+            {resourcesList?.map((item: any) => (
+              <Link href={`/resources/${item?.id}`} className=" flex gap-3  mb-2 p-2">
+                <div className="w-24 h-14 border-2 border-green-500">
+                  <Image
+                    priority
+                    src={item?.imageUrl ? `data:image/png;image/jpg;image/jpeg;base64,${item?.imageUrl}` : "/images/captain4.jpeg"}
+                    alt="image not found"
+                    width={50}
+                    height={50}
+                    className="w-full h-full"
+                  />
+                </div>
+                <div className="text-xs">
+                  <h2 className="font-bold text-sm">
+                    {item?.title}
+                  </h2>
+                  <p className="text-green-600   mt-0">
+                    {moment(item?.createdDate).format('YYYY-MM-DD')} By gwen stacy
+                  </p>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </div>
-    </div>
+    </div>)}
+    </React.Fragment>
   );
 };
 

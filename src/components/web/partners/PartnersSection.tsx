@@ -111,7 +111,7 @@ const PartnersSection = () => {
       <div className="  relative flex items-center justify-center w-full  ">
       <button 
           onClick={scrollLeft} 
-          className="absolute left-6 md:hidden bg-white p-2 rounded-full shadow-md"
+          className="absolute left-6 lg:hidden bg-white p-2 rounded-full shadow-md"
           aria-label="Scroll Left"
         >
           <IoMdArrowBack />
@@ -134,7 +134,7 @@ const PartnersSection = () => {
         </div>
         <button 
           onClick={scrollRight} 
-          className="absolute right-6 md:hidden bg-white p-2  rounded-full shadow-md"
+          className="absolute right-6 lg:hidden bg-white p-2  rounded-full shadow-md"
           aria-label="Scroll Right"
         >
           <IoMdArrowForward />

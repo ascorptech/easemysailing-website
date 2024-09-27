@@ -33,11 +33,24 @@
 //   );
 // };
 "use client";
-import React, { useRef, useEffect } from "react";
+import { GetRecentPodcast } from "@/app/(web)/Services/homeService";
+import React, { useRef, useEffect, useState } from "react";
 import { IoMdArrowBack, IoMdArrowForward } from "react-icons/io";
+import Image from "next/image";
 
 const Islide = () => {
   const card = useRef<HTMLDivElement>(null);
+  const [podcasts, setPodcasts] = useState<any>([])
+
+  useEffect(() => {
+    GetRecentPodcast((res: any) => {
+      console.log(res);
+      if (res.status == 200) {
+        setPodcasts(res?.data)
+      }
+    })
+  }, [])
+
 
   const scrollLeft = () => {
     if (card.current) {
@@ -140,59 +153,31 @@ const Islide = () => {
   //     </button>
   //   </div>
   // );
-  return (<div className="container mx-auto">
+  return (<div className="container mx-auto relative">
     <button
       onClick={scrollLeft}
-      className="absolute left-0 top-20  md:hidden bg-white p-[5px] rounded-full shadow-md"
+      className="absolute left-0 top-20  sm:hidden bg-white p-[5px] rounded-full shadow-md"
       aria-label="Scroll Left"
     >
       <IoMdArrowBack />
     </button>
-    <div ref={card} className=" grid grid-rows-1 grid-cols-4 gap-10">
-        <div className="md:w-[9rem] lg:w-[14rem] xl:w-[17.8rem]">
-          <iframe
-            className="w-full border-4 shadow-md rounded-lg h-full"
-            src="https://www.youtube.com/embed/Tl4bQBfOtbg"
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
-        </div>
-        <div className="md:w-[9rem] lg:w-[14rem] xl:w-[17.8rem]">
-          <iframe
-            className="w-full border-4 shadow-md rounded-lg h-full"
-            src="https://www.youtube.com/embed/Tl4bQBfOtbg"
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
-        </div>
-        <div className="md:w-[9rem] lg:w-[14rem] xl:w-[17.8rem]">
-          <iframe
-            className="w-full border-4 shadow-md rounded-lg h-full"
-            src="https://www.youtube.com/embed/Tl4bQBfOtbg"
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
-        </div>
-        <div className="md:w-[9rem] lg:w-[14rem] xl:w-[17.8rem]">
-          <iframe
-            className="w-full border-4 shadow-md rounded-lg h-full"
-            src="https://www.youtube.com/embed/Tl4bQBfOtbg"
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
-        </div>
+    <div ref={card} className="overflow-auto flex w-[90%] mx-auto sm:mx-0 sm:w-full sm:grid sm:grid-rows-1 sm:grid-cols-4 gap-2 sm:gap-10">
+      {podcasts?.map((item: any, index: any) => (
+          <Image
+          key={item?.id}
+            src={`data:image/png;image/jpg;image/jpeg;base64,${item?.thumbnail}`}
+            alt={item?.title}
+            width={100}
+            height={100}
+            priority
+            className="h-full w-full rounded-md mb-10 border border-gray-600 shadow-sm"
+          />
+      ))}
+
     </div>
     <button
       onClick={scrollRight}
-      className="absolute right-0 top-20 md:hidden bg-white p-[5px] rounded-full shadow-md"
+      className="absolute right-0 top-20 sm:hidden bg-white p-[5px] rounded-full shadow-md"
       aria-label="Scroll Right"
     >
       <IoMdArrowForward />

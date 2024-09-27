@@ -25,7 +25,7 @@ const Interview = () => {
   //   </div>
   // );
   return (
-    <div className=" md:w-[90%] lg:container border mx-auto">
+    <div className=" md:w-[90%] lg:container mx-auto">
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-white text-[21px]  leading-[28px] font-bold sm:md:text-4xl">
           Podcast &<span className="text-[#00A264]"> Interviews</span>

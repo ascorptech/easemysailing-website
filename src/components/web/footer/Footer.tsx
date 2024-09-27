@@ -5,17 +5,17 @@ const Footer1 = () => {
   return (
     <footer className="w-full bg-white">
       {/* Newsletter Section */}
-      <div className="flex flex-col md:flex-row lg:justify-between lg:items-center w-full">
+      <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center w-full">
         <div className="flex flex-col items-center lg:ml-6 justify-center lg:w-[65%] lg:items-start lg:justify-start lg:px-5">
           <div className="lg:mb-6 py-8 text-center lg:text-left">
-            <h2 className="text-black text-[22px] sm:md:text-3xl lg:text-5xl font-extrabold mb-2">
+            <h2 className="text-black text-[24px] md:text-4xl lg:text-5xl font-extrabold mb-2">
               Don't miss out! Subscribe to our
             </h2>
-            <h2 className="text-black text-[22px] sm:md:text-3xl lg:text-5xl font-extrabold">
+            <h2 className="text-black text-[24px] md:text-4xl lg:text-5xl font-extrabold">
               newsletter for exclusive content.
             </h2>
           </div>
-          <div className="flex flex-col w-[98%] sm:md:w-[78%] lg:px-0 px-3 gap-3 lg:flex-row lg:mt-12 lg:gap-3 lg:w-auto ">
+          <div className="flex flex-col lg:px-0 px-3 gap-3 lg:flex-row lg:mt-12 lg:gap-3 lg:w-auto w-full">
             <input
               type="email"
               placeholder="Enter your Email Address"
@@ -26,7 +26,7 @@ const Footer1 = () => {
             </button>
           </div>
         </div>
-        <div className="lg:h-[420px] h-[280px] sm:md:h-[300px] mb-3 lg:mb-0 lg:mt-0 mt-3 w-full lg:w-[35%] flex justify-center lg:justify-end">
+        <div className="lg:h-[420px] h-[280px] mb-3 lg:mb-0 lg:mt-0 mt-3 w-full lg:w-[35%] flex justify-center lg:justify-end">
           <Image
             priority
             src="/ship3.png"

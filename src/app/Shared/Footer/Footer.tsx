@@ -36,7 +36,7 @@ const Footer = () => {
   return (
     <footer className="bg-[#D1EFE4] p-4 text-sm text-gray-700 w-full ">
       <div className="container mx-auto grid md:grid-cols-4 md:grid-rows-1 sm:grid-rows-2 sm:grid-cols-2 grid-rows-1 grid-cols-1 h-auto sm:space-x-2 lg:space-x-4">
-        <div className="">
+        <div className="w-[70%]">
           <Link href="/">
             <Image
               src="/images/logo_1.png"

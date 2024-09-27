@@ -48,7 +48,8 @@ const Contact = () => {
     if (!phone.trim()) {
       newErrors.phone = "Phone number is required";
       formIsValid = false;
-    } else if (!/^\d{10}$/.test(phone)) {
+    } else if (/^\d{13}$/.test(phone)) {
+      console.log('phone',phone.length)
       newErrors.phone = "Phone number must be 10 digits";
       formIsValid = false;
     }
@@ -170,7 +171,7 @@ const Contact = () => {
                   value={phone}
                   // maxLength={10}
                   // onChange={(e) => setPhone(e.target.value.trim())}
-                  onChange={(phone) => setPhone(phone)}
+                  onChange={(phone) => {console.log('p',phone); setPhone(phone)}}
                   inputProps={{
                     name: "phone",
                     required: true,

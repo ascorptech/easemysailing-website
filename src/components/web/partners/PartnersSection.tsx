@@ -118,7 +118,7 @@ const PartnersSection = () => {
         </button>
         <div
           ref={scrollRef}
-          className="overflow-x-auto my-10 gap-2 flex space-x-2 lg:space-x-6 2xl:space-x-14 lg:mx-0 no-scrollbar scroll-smooth snap-x snap-mandatory lg:w-[95%] w-[220px] "
+          className="overflow-x-auto my-10 gap-2 flex space-x-2 lg:space-x-2 2xl:space-x-14 lg:mx-0 no-scrollbar scroll-smooth snap-x snap-mandatory lg:w-[95%] w-[220px] "
         >
           {partners?.map((partner, index) => (
             <PartnerCard

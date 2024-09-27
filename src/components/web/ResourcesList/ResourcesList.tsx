@@ -56,7 +56,7 @@ const ResourcesList = (props: Props) => {
       />
     </div>):( <div className="">
       <Heading7 />
-      <div className="mt-2 w-[87%] mx-auto flex sm:flex-row flex-col border shadow-md rounded-md">
+      <div className="mt-2 w-[97.2%] xl:w-[87%] mx-auto flex sm:flex-row flex-col border shadow-md rounded-md">
         <div className="flex sm:w-[50%] w-full p-4">
           <div className="relative w-full border">
             <Image
@@ -81,7 +81,7 @@ const ResourcesList = (props: Props) => {
           </p>
           <Link
             href={`/resources/${currentItems[0]?.id}`}
-            className="h-8 sm:md:w-[20%] w-[40%] mt-2 bg-green-700 text-white py-1 px-4 rounded-lg text-sm justify-center items-center flex "
+            className="h-8 lg:w-[25%] xl:w-[20%] w-[40%] mt-2 bg-green-700 text-white py-1 px-4 rounded-lg text-sm justify-center items-center flex "
           >
             Read more
           </Link>
@@ -89,7 +89,7 @@ const ResourcesList = (props: Props) => {
       </div>
       <div className="mt-2 container mx-auto grid grid-row-2 grid-cols-3 ">
         {currentItems?.map((item:any) => (
-          <div key={item?.id} className="flex  bg-white p-3 flex-shrink-0 ">
+          <div key={item?.id} className="flex bg-white p-3 flex-shrink-0 ">
             <div className="relative bg-white border rounded-lg md:p-5 p-2  shadow-md  w-auto ">
               <div className=" flex mb-2">
                 <Image

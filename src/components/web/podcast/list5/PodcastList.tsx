@@ -70,7 +70,7 @@ const PodcastList = () => {
       />
     </div>):( 
     <div>
-      <div className="lg:h-[500px] h-[220px] mb-8 border-2 border-gray-200">
+      <div className="lg:h-[500px] h-[220px] mb-8 border-2 border-gray-200" onClick={() => openModal(selected)}>
         {/* <iframe
           width="100%"
           height="100%"

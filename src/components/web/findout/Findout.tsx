@@ -24,7 +24,7 @@ const Findout = () => {
             Find Out What's New At{" "}
             <span className="text-[#00A264] lg:leading-[5rem]">Easemysailing</span>
           </h1>
-          <p className="text-white mt-5 lg:mt-8 text-base sm:text-lg lg:text-[16px]">
+          <p className="text-white mt-5 lg:mt-8 text-base sm:text-lg lg:text-[18px]">
             Your career journey is serious, but should never be lonely or dull.
             With the new EaseMySailing, work communities are right at your
             fingertips.

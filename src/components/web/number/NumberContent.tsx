@@ -34,7 +34,7 @@ const NumberContent = () => {
               </span>
             </div>
           </div>
-          <div className="ml-10 sm:ml-0 md:h-[90px] relative flex justify-center items-center rounded-r-full border-2 shadow-md sm:w-[17rem] w-[19rem] mx-6 mt-5">
+          <div className="ml-10 sm:ml-9 md:h-[90px] relative flex justify-center items-center rounded-r-full border-2 shadow-md sm:w-[17rem] w-[19rem] mx-6 mt-5">
             <div className="absolute text-lg -left-9  md:text-xl ml-[1.5px] lg:ml-[0px]">
               {/* <BsFillPeopleFill /> */}
               <Image
@@ -53,7 +53,7 @@ const NumberContent = () => {
               </span>
             </div>
           </div>
-          <div className="ml-10 sm:ml-0 md:h-[90px] relative flex justify-center items-center rounded-r-full border-2 shadow-md sm:w-[17rem] w-[19rem] mx-6 mt-5">
+          <div className="ml-10 sm:ml-9 md:h-[90px] relative flex justify-center items-center rounded-r-full border-2 shadow-md sm:w-[17rem] w-[19rem] mx-6 mt-5">
             <div className="absolute text-lg -left-9  md:text-xl ml-[1.5px] lg:ml-[0px]">
               {/* <BsFillPeopleFill /> */}
               <Image
@@ -93,7 +93,7 @@ const NumberContent = () => {
               </span>
             </div>
           </div>
-          <div className="ml-10 sm:ml-0 md:h-[90px] relative flex justify-center items-center rounded-r-full border-2 shadow-md sm:w-[17rem] w-[19rem] mx-6 mt-5">
+          <div className="ml-10 sm:ml-9 md:h-[90px] relative flex justify-center items-center rounded-r-full border-2 shadow-md sm:w-[17rem] w-[19rem] mx-6 mt-5">
             <div className="absolute text-lg -left-9  md:text-xl ml-[1.5px] lg:ml-[0px]">
               {/* <BsFillPeopleFill /> */}
               <Image
@@ -112,7 +112,7 @@ const NumberContent = () => {
               </span>
             </div>
           </div>
-          <div className="ml-10 sm:ml-0 md:h-[90px] relative flex justify-center items-center rounded-r-full border-2 shadow-md sm:w-[17rem] w-[19rem] mx-6 mt-5">
+          <div className="ml-10 sm:ml-9 md:h-[90px] relative flex justify-center items-center rounded-r-full border-2 shadow-md sm:w-[17rem] w-[19rem] mx-6 mt-5">
             <div className="absolute text-lg -left-9  md:text-xl ml-[1.5px] lg:ml-[0px]">
               {/* <BsFillPeopleFill /> */}
               <Image

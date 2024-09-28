@@ -29,7 +29,7 @@ export default function Home() {
       <Navigation />
       <Sailors />
       <PartnersSection />
-      {/* <ClientSection /> */}
+      <ClientSection />
       <Aimergee />
       {/* <Status/> */}
 

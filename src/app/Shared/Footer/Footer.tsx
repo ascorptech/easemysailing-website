@@ -8,6 +8,7 @@ import {
   FaWhatsapp,
   FaTwitter,
   FaXingSquare,
+  FaYoutube
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import Image from "next/image";
@@ -146,14 +147,17 @@ const Footer = () => {
           </ul>
           <div className="mt-4 flex p-1 space-x-1 items-center">
             <h2 className="font-semibold">Follow Us :</h2>
-            <Link href="#" className="text-green-600">
+            <Link href="https://www.facebook.com/share/5TJ64Ue4vLGsjtti/?mibextid=qi2Omg" className="text-green-600" target="_blank">
               <FaFacebook />
             </Link>
-            <Link href="#" className="text-green-600">
+            <Link href="https://www.instagram.com/easemysailing" className="text-green-600" target="_blank">
               <FaInstagram />
             </Link>
-            <Link href="#" className="text-green-600">
+            <Link href="https://x.com/EaseMySailing?s=08" className="text-green-600" target="_blank">
               <FaXTwitter />
+            </Link>
+            <Link href="https://youtube.com/@easemysailing?si=EnjVlLHxdlHVtfsf" className="text-green-600" target="_blank">
+              <FaYoutube />
             </Link>
           </div>
         </div>

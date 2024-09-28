@@ -59,9 +59,9 @@ const ResourceDetailsPage: React.FC = () => {
         size={10}
         />
       </div>):
-   ( <div className="flex sm:flex-row flex-col sm:justify-around sm:mx-14 my-11 mt-[100px]">
+   ( <div className="flex sm:flex-row flex-col sm:justify-around sm:mx-14 sm:my-11 sm:mt-[100px]">
       <div className=" sm:float-left sm:w-[70%] w-full sm:px-10 px-2">
-        <div className="mr-5 w-full sm:w-[787px] h-[417px] border2 border-blue-600">
+        <div className="sm:mr-5 w-full sm:w-[787px] h-[417px] border2 border-blue-600">
           <Image
             src={resourceDetail?.imageUrl ? `data:image/png;image/jpg;image/jpeg;base64,${resourceDetail?.imageUrl}` : "/images/captain4.jpeg"}
             alt="image not found"

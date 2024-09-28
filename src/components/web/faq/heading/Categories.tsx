@@ -179,11 +179,11 @@ const Categories = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <div className="flex">
+      <div className="flex sm:flex-row flex-col">
         {/* {/ Sidebar for Topics /} */}
-        <div className="w-1/4 p-4 border-r">
+        <div className="sm:w-1/4 w-full p-4 sm:border-r">
           <h2 className="text-xl text-white font-semibold mb-4 p-2 bg-[#00A264]">
-            Category Management
+            Topics
           </h2>
           {topics.map((topic) => (
             <div key={topic.id} className="border border-green-200  ">
@@ -211,7 +211,7 @@ const Categories = () => {
         </div>
 
         {/* {/ Content Area for Topic Details /} */}
-        <div className="w-3/4 p-4">
+        <div className="sm:w-3/4 w-full p-4">
           {selectedTopic !== null && (
             <div className="">
               {topics

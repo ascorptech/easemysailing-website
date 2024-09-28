@@ -2,8 +2,34 @@
 
 import React, { useRef } from "react";
 import ClientsCard from "./ClientsCard";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 const ClientSection: React.FC = () => {
+
+  // slider js start
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 3000, min: 1280 },
+      items: 3
+    },
+    desktop: {
+      breakpoint: { max: 1279, min: 1024 },
+      items: 2
+    },
+    tablet: {
+      breakpoint: { max: 1023, min: 992 },
+      items: 2
+    },
+    mobile: {
+      breakpoint: { max: 991, min: 320 },
+      items: 1
+    },
+    
+  };
+ // slider js end
+
   const clientCards = [
     {
       text: "An exceptional platform for seafarers! It’s streamlined, user-friendly, and genuinely cares about our welfare and career growth.",
@@ -50,6 +76,8 @@ const ClientSection: React.FC = () => {
       imageSrc: "/images/ellipse.png",
       image1: "/images/quotes.png",
     },
+
+    
   ];
 
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -77,38 +105,25 @@ const ClientSection: React.FC = () => {
         </h2>
       </div>
 
-      {/* Arrow Buttons */}
-      <button
-        className="absolute left-20 top-[58%] transform -translate-y-1/2 bg-[#00A264] text-white rounded-full h-8 w-8 flex items-center justify-center"
-        onClick={() => handleScroll("left")}
-      >
-        &lt;
-      </button>
-
-      <div
-        ref={scrollRef}
-        className="flex justify-start items-center space-x-20 h-[500px] overflow-auto no-scrollbar w-[900px] ml-[10rem] mt-14 mb-10 lg:w-[80%] 2xl:ml-0 2xl:w-[70%] 2xl:self-center" // width adjusted for 3 cards
-      >
-        {clientCards?.map((ccard:any, index:any) => (
-          <ClientsCard
-            key={index}
-            text={ccard.text}
-            name={ccard.name}
-            role={ccard.role}
-            imageSrc={ccard.imageSrc}
-            image1={ccard.image1}
-            index={index}
-          />
-        ))}
-      </div>
-
-      <button
-        className="absolute right-20 top-[58%] transform -translate-y-1/2 bg-[#00A264] text-white rounded-full h-8 w-8 flex items-center justify-center"
-        onClick={() => handleScroll("right")}
-      >
-        &gt;
-      </button>
+        <div>
+          <Carousel  infinite responsive={responsive} slidesToSlide={2} sliderClass="slideCenter">
+          {clientCards?.map((ccard:any, index:any) => (
+              <ClientsCard
+                key={index}
+                text={ccard.text}
+                name={ccard.name}
+                role={ccard.role}
+                imageSrc={ccard.imageSrc}
+                image1={ccard.image1}
+                index={index}
+              />
+            ))}
+          </Carousel>
+        </div>
+      
+      
     </div>
+    
   );
 };
 

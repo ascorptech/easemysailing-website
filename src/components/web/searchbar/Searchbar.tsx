@@ -3,7 +3,7 @@ import { FaSearch } from "react-icons/fa";
 const Searchbar = () => {
   return (
     <div className="flex items-center justify-center ml-0 lg:ml-0 w-full">
-      <div className="flex border-2  bg-white rounded-full overflow-hidden h-[50px] lg:max-w-[970px] w-full">
+      <div className="flex border-2 bg-white rounded-full overflow-hidden h-[50px] lg:max-w-[970px] w-full">
         {/* Search Icon */}
         <div className="flex items-center justify-center px-4">
           <FaSearch className="text-[#00A264]" />
@@ -21,7 +21,7 @@ const Searchbar = () => {
 
         {/* Dropdown */}
         <div className="lg:w-[300px] lg:pt-0 sm:md:pt-1 pt-[7px]  text-black h-full">
-          <select className="lg:px-4 px-2 lg:py-[7px] my-[7px] sm:md:text-sm text-xs outline-none">
+          <select className="lg:px-4 px-2 lg:py-[7px] my-[7px] sm:md:text-sm text-xs outline-none bg-transparent">
             <option>Rank Type</option>
             <option>Captain</option>
             <option>Engineer</option>

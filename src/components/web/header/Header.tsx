@@ -30,7 +30,7 @@ const Header: React.FC = () => {
         <div className="lg:w-full w-[98%] text-25px font-[700px] leading-[37.5px] flex flex-wrap items-center justify-between  py-1 px-[1rem] sm:px-[3rem] lg:px-[2rem]   ">
           <div className="flex items-center space-x-3 rtl:space-x-reverse">
             <div className="w-44 h-12 sm:w-[230px] sm:h-[55px] ">
-              <Link href="/">
+              <Link href="/" onClick={()=>setIsMenuOpen(false)}>
                 <Image
                   priority
 
@@ -389,6 +389,7 @@ const Header: React.FC = () => {
                       width={10}
                       height={10}
                       alt="userlock"
+                      className="h-5 w-5"
                     />
                   </span>
                   Seafarers Login

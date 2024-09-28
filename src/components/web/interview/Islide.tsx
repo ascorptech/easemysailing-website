@@ -177,12 +177,12 @@ const Islide = () => {
   return (<div className="container mx-auto relative mb-10">
     <button
       onClick={scrollLeft}
-      className="absolute left-0 top-20  sm:hidden bg-white p-[5px] rounded-full shadow-md"
+      className="absolute left-0 top-20 sm:hidden bg-white p-[5px] rounded-full shadow-md"
       aria-label="Scroll Left"
     >
       <IoMdArrowBack />
     </button>
-    <div ref={card} className="overflow-auto flex w-[90%] mx-auto sm:mx-0 sm:w-full sm:grid sm:grid-rows-1 sm:grid-cols-4 gap-2 sm:gap-10">
+    <div ref={card} className="overflow-auto no-scrollbar flex w-[90%] mx-auto sm:mx-0 sm:w-full sm:grid sm:grid-rows-1 sm:grid-cols-4 gap-2 sm:gap-10">
       {podcasts?.map((item: any, index: any) => (
           <Image
             key={item?.id}

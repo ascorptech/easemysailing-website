@@ -1,7 +1,7 @@
 "use client";
 import { GetResourcesList } from '@/app/(web)/resources/Services/resourceService';
 import React, { useEffect, useState } from 'react'
-import Heading7 from '../resource_page/heading7/Heading7';
+// import Heading7 from '../resource_page/heading7/Heading7';
 import Image from 'next/image';
 import moment from 'moment';
 import Link from 'next/link';
@@ -54,9 +54,9 @@ const ResourcesList = (props: Props) => {
       loading={isLoading}
       size={10}
       />
-    </div>):( <div className="">
-      <Heading7 />
-      <div className="mt-2 w-[97.2%] xl:w-[87%] mx-auto flex sm:flex-row flex-col border shadow-md rounded-md">
+    </div>):( <div className=" w-full">
+      {/* <Heading7 /> */}
+      <div className="mt-2 w-[97.2%] xl:w-[90%] mx-auto flex sm:flex-row flex-col border shadow-md rounded-md">
         <div className="flex sm:w-[50%] w-full p-4">
           <div className="relative w-full border">
             <Image

@@ -5,7 +5,7 @@ const NumberContent = () => {
   return (
     <div className="flex lg:pt-11 pt-4 w-full lg:w-full  flex-col pb-10 bg-[#D9F3EA66] self-center">
       {/* Heading div */}
-      <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-[60px] font-bold mb-4 lg:w-[70%] ml-5 lg:ml-10">
+      <h2 className="text-xl sm:text-2xl lg:text-4xl xl:text-6xl font-bold mb-4 lg:w-[70%] ml-5 lg:ml-10">
         Applying For Job Made Easy For{" "}
         <p className="text-[#00A264] flex mt-2 lg:mt-8">
           Seafarers

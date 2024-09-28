@@ -72,7 +72,7 @@ const ResourcesList = (props: Props) => {
             </div>
           </div>
         </div>
-        <div className="w-[50%] flex flex-col p-4">
+        <div className="sm:w-[50%] w-full flex flex-col p-4">
           <h2 className="text-black-500  font-bold">
             {currentItems[0]?.title}
           </h2>
@@ -87,7 +87,7 @@ const ResourcesList = (props: Props) => {
           </Link>
         </div>
       </div>
-      <div className="mt-2 container mx-auto grid grid-row-2 grid-cols-3 ">
+      <div className="mt-2 container mx-auto sm:grid sm:grid-row-2 sm:grid-cols-3 ">
         {currentItems?.map((item:any) => (
           <div key={item?.id} className="flex bg-white p-3 flex-shrink-0 ">
             <div className="relative bg-white border rounded-lg md:p-5 p-2  shadow-md  w-auto ">

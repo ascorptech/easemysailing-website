@@ -30,10 +30,10 @@ const Header: React.FC = () => {
         <div className="lg:w-full w-[98%] text-25px font-[700px] leading-[37.5px] flex flex-wrap items-center justify-between  py-1 px-[1rem] sm:px-[3rem] lg:px-[2rem]   ">
           <div className="flex items-center space-x-3 rtl:space-x-reverse">
             <div className="w-44 h-12 sm:w-[230px] sm:h-[55px] ">
-              <Link href="/">
+              <Link href="/" onClick={()=>setIsMenuOpen(false)}>
                 <Image
-                priority
-                
+                  priority
+
                   src="/images/logo_1.png"
                   alt="EaseMySailing Logo"
                   className="object-contain h-full w-full "
@@ -45,9 +45,9 @@ const Header: React.FC = () => {
           </div>
 
           <div className=" ">
-            <ul className="hidden  lg:flex lg:items-center flex-col font-medium  p-3 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-white lg:dark:bg-white dark:border-gray-700">
+            <ul className="hidden  lg:flex lg:items-center lg:justify-center flex-col font-medium  p-3 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-white lg:dark:bg-white dark:border-gray-700">
               <div className="">
-              <div className=" relative inline-block px-3 text-left group ">
+                <div className=" relative inline-block px-3 text-left group ">
                   <li className="block  text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white  md:dark:hover:bg-transparent">
                     <Link href="/about" className="text-[16px]">
                       About Us
@@ -82,7 +82,6 @@ const Header: React.FC = () => {
                     </Link>
                   </li>
                 </div>
-
                 <div className="hidden relative inline-block pr-4 text-left group">
                   <li className="relative inline-block pr-4 text-left group  text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
                     <Link href="/trainings" className="text-[16px]">
@@ -90,7 +89,6 @@ const Header: React.FC = () => {
                     </Link>
                   </li>
                 </div>
-
                 <li className="hidden relative inline-block text-left group ">
                   <Link
                     href="/ems"
@@ -194,7 +192,7 @@ const Header: React.FC = () => {
                 </li> */}
               </div>
 
-              <div className="flex relative items-center h-2 mt-2 ">
+              <div className="flex relative items-center h-2 ">
                 <Link
                   href={"/candidate"}
                   className="flex justify-center items-center mr-4 border border-[#00A264] text-[#00A264] p-2 rounded-full text-sm"
@@ -283,9 +281,8 @@ const Header: React.FC = () => {
         </div>
         {isMenuOpen && (
           <div
-            className={`lg:hidden w-full lg:w-auto ${
-              isMenuOpen ? "" : "hidden"
-            }`}
+            className={`lg:hidden w-full lg:w-auto ${isMenuOpen ? "" : "hidden"
+              }`}
             id="navbar-dropdown"
           >
             <ul className="flex flex-col font-medium p-4   mt-1 border border-gray-100 rounded-lg bg-gray-100 md:border-0   dark:border-gray-700">
@@ -327,7 +324,7 @@ const Header: React.FC = () => {
                 <Link
                   href="/resources"
                   className="block py-2 px-3 text-[#00A264] rounded-lg hover:bg-[#00A264] mt-1  hover:text-[#FFFFFF] text-xl"
-                  onClick={()=>setIsMenuOpen(false)}
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   Resource
                 </Link>
@@ -336,7 +333,7 @@ const Header: React.FC = () => {
                 <Link
                   href="/podcast-list"
                   className="block py-2 px-3 text-[#00A264] rounded-lg hover:bg-[#00A264] mt-1  hover:text-[#FFFFFF] text-xl"
-                  onClick={()=>setIsMenuOpen(false)}
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   Podcast & Interviews
                 </Link>
@@ -345,7 +342,7 @@ const Header: React.FC = () => {
                 <Link
                   href="/about"
                   className="block py-2 px-3 text-[#00A264] rounded-lg hover:bg-[#00A264] mt-1  hover:text-[#FFFFFF] text-xl"
-                  onClick={()=>setIsMenuOpen(false)}
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   About Us
                 </Link>
@@ -354,7 +351,7 @@ const Header: React.FC = () => {
                 <Link
                   href="/contact"
                   className="block py-2 px-3 text-[#00A264] rounded-lg hover:bg-[#00A264] mt-1  hover:text-[#FFFFFF] text-xl"
-                  onClick={()=>setIsMenuOpen(false)}
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   Contact Us
                 </Link>
@@ -381,7 +378,7 @@ const Header: React.FC = () => {
               <li className="flex relative items-center gap-4 h-2 mt-7 mb-5">
                 <Link
                   href={"/candidate"}
-                  onClick={()=>setIsMenuOpen(false)}
+                  onClick={() => setIsMenuOpen(false)}
                   className="flex justify-center items-center mr-4 border border-[#00A264] text-[#00A264] p-2 rounded-full hover:bg-[#00A264] hover:text-[#FFFFFF]"
                 >
                   <span className="pr-2">
@@ -392,6 +389,7 @@ const Header: React.FC = () => {
                       width={10}
                       height={10}
                       alt="userlock"
+                      className="h-5 w-5"
                     />
                   </span>
                   Seafarers Login

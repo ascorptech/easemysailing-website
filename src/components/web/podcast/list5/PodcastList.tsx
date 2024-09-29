@@ -3,6 +3,7 @@ import { GetPodcastList } from "@/app/(web)/podcast-list/Services/podcastService
 import React, { useEffect, useState } from "react";
 import { RxCrossCircled } from "react-icons/rx";
 import Image from "next/image";
+import RotateLoader from "react-spinners/RotateLoader";
 
 const PodcastList = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -10,18 +11,21 @@ const PodcastList = () => {
   const [podcasts, setPodcasts] = useState<any>([]);
   const [selected, setSelected] = useState<any>();
   const [ModalOpen, setModalOpen] = useState(false);
+  const [isLoading,setIsLoading] = useState<boolean>(false)
 
   useEffect(() => {
+    setIsLoading(true)
     GetPodcastList(GetPodcastListCB);
   }, []);
 
   const GetPodcastListCB = (res: any) => {
     setPodcasts(res?.data);
     setSelected(res?.data[0]);
+    setIsLoading(false)
   };
 
   const totalPages = Math.ceil(podcasts?.length / itemsPerPage);
-  const currentItems = podcasts?.slice(
+  const currentItems = podcasts.toReversed()?.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
@@ -57,8 +61,16 @@ const PodcastList = () => {
   };
 
   return (
+    <React.Fragment>
+    {isLoading?(<div className="h-[500px] w-full mt-[100px] justify-center flex items-center">
+      <RotateLoader
+      color={'#00A264'}
+      loading={isLoading}
+      size={10}
+      />
+    </div>):( 
     <div>
-      <div className="lg:h-[500px] h-[220px] mb-8">
+      <div className="lg:h-[500px] h-[220px] border-2 rounded-lg mb-8 " onClick={() => openModal(selected)}>
         {/* <iframe
           width="100%"
           height="100%"
@@ -80,20 +92,19 @@ const PodcastList = () => {
 
       <div className="grid lg:grid-cols-3 lg:gap-5 lg:py-4 grid-cols-1 gap-5 lg:mt-5 mt-3 sm:grid-cols-2">
         {currentItems?.map((item: any, index: any) => (
-          <div
-            key={index}
-            className="w-full border-4 rounded-lg border-black mb-8 h-[200px]"
-            onClick={() => openModal(item)}
-          >
-            <Image
-              src={`data:image/png;image/jpg;image/jpeg;base64,${item?.thumbnail}`}
+         <div key={index} className="flex flex-col shadow-md w-full border-2 rounded-lg mb-8"
+         onClick={() => openModal(item)}
+         >
+          <Image
+            src={`data:image/png;image/jpg;image/jpeg;base64,${item?.thumbnail
+              }`}
               alt={item?.title}
               width={100}
               height={100}
               priority
               className="h-full w-full rounded-sm"
-            />
-            <h6 className="text-center my-1 cursor-pointer">{item?.title}</h6>
+              />
+              <h6 className="text-center cursor-pointer">{item?.title}</h6>
           </div>
         ))}
       </div>
@@ -146,6 +157,8 @@ const PodcastList = () => {
         </div>
       )}
     </div>
+    )}
+    </React.Fragment>
   );
 };
 

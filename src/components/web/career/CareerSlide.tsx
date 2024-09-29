@@ -33,7 +33,7 @@ const CareerSlide: React.FC<CareerSlideProps> = ({ card3 }) => {
     {
       id: 3,
       logo: "/images/requiter-img/logo1.png",
-      name: "CMA CGM Group",
+      name: "CMA CGM ",
       job: "captain",
     },
     {
@@ -45,7 +45,7 @@ const CareerSlide: React.FC<CareerSlideProps> = ({ card3 }) => {
     {
       id: 5,
       logo: "/images/requiter-img/logo1.png",
-      name: "AP Moller-Maersk",
+      name: "AP Moller",
       job: "captain",
     },
     {
@@ -63,7 +63,7 @@ const CareerSlide: React.FC<CareerSlideProps> = ({ card3 }) => {
     {
       id: 8,
       logo: "/images/requiter-img/logo1.png",
-      name: "CMA CGM Group",
+      name: "CMA CGM",
       job: "captain",
     },
     {
@@ -75,7 +75,7 @@ const CareerSlide: React.FC<CareerSlideProps> = ({ card3 }) => {
     {
       id: 10,
       logo: "/images/requiter-img/logo1.png",
-      name: "AP Moller-Maersk",
+      name: "AP Moller",
       job: "captain",
     },
   ];
@@ -103,8 +103,8 @@ const CareerSlide: React.FC<CareerSlideProps> = ({ card3 }) => {
                     className="w-full h-full object-contain rounded-full"
                   />
                 </div>
-                <h3 className="text-md font-semibold">{card.name}</h3>
-                <p className="text-sm text-gray-500">{card.job}</p>
+                <h3 className="text-md text-center font-semibold">{card.name}</h3>
+                <p className="text-sm text-center text-gray-500">{card.job}</p>
               </div>
             </div>
           ))}

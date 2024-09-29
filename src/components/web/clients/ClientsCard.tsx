@@ -7,23 +7,22 @@ interface ClientsCardProps {
   name: string;
   role: string;
   imageSrc: string;
-  isActive: boolean; // Add isActive prop
+  image1: string;
+  index:number;
 }
+
 
 const ClientsCard: React.FC<ClientsCardProps> = ({
   text,
   name,
   role,
   imageSrc,
-  isActive, // Destructure isActive
+  image1,
+  index
 }) => {
   return (
-    <div className="flex justify-center w-[20%] items-center">
-      <div
-        className={`bg-white p-6 lg:w-[300px] lg:h-[430px] w-[280px] h-[400px] rounded-full ml-10 flex flex-col justify-center items-center flex-shrink-0 transition-transform ${
-          isActive ? "scale-110" : "scale-90"
-        }`} // Apply scale class based on isActive
-      >
+    <div className="flex justify-center items-center py-[45px]">
+      <div className={index %2 !== 0?"bg-white p-6 lg:w-[300px] lg:h-[430px] w-[280px] h-[400px] rounded-full flex flex-col justify-center items-center flex-shrink-0 transition-transform scale-110 border border-[#00A264]":"bg-white p-6 lg:w-[300px] lg:h-[430px] w-[280px] h-[400px] rounded-full flex flex-col justify-center items-center flex-shrink-0 transition-transform"}>
         {/* Image Section */}
         <div className="flex justify-center items-center mb-4">
           <Image

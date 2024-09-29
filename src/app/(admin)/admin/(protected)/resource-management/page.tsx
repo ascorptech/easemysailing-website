@@ -1,6 +1,4 @@
 "use client";
-import { getReq, postReq } from "@/RootServices";
-// import QuillEditor from "@/components/admin/quilleditor/QuillEditor";
 import dynamic from "next/dynamic";
 const QuillEditor = dynamic(
   () => import("@/components/admin/quilleditor/QuillEditor"),
@@ -14,6 +12,7 @@ import { IoIosClose } from "react-icons/io";
 import { AddResourcesData, DeleteResourcesData, GetResourcesList, PutResourcesData } from "./Services/resourceService";
 import { toast } from "react-toastify";
 import moment from "moment";
+import RotateLoader from "react-spinners/RotateLoader";
 type Props = {};
 
 const page = (props: Props) => {
@@ -30,7 +29,7 @@ const page = (props: Props) => {
   const [image, setImage] = useState<any>(null);
   const [resourceDetail, setResourceDetail] = useState<any>()
   const [resourcesList,setResourcesList] = useState([])
-
+  const [isLoading,setIsLoading] = useState<boolean>(false)
     // Pagination state
     const [currentPage, setCurrentPage] = useState(1);
     const resourcesPerPage = 5;
@@ -42,7 +41,7 @@ const page = (props: Props) => {
  // Pagination: Calculate current page resources
  const indexOfLastResource = currentPage * resourcesPerPage;
  const indexOfFirstResource = indexOfLastResource - resourcesPerPage;
- const currentResources = resourcesList.slice(indexOfFirstResource, indexOfLastResource);
+ const currentResources = resourcesList.toReversed().slice(indexOfFirstResource, indexOfLastResource);
 
  const nextPage = () => {
    if (currentPage < Math.ceil(resourcesList.length / resourcesPerPage)) {
@@ -169,6 +168,7 @@ const page = (props: Props) => {
   }
 
   useEffect(() => {
+    setIsLoading(true)
     GetResourcesList(fetchResources)
   }, [])
 
@@ -179,6 +179,7 @@ const page = (props: Props) => {
       setResourcesList([])
       toast.success('No Record Found')
     }
+    setIsLoading(false)
   }
 
   const handleUpdateSubmit = (e: React.FormEvent) => {
@@ -229,7 +230,13 @@ const page = (props: Props) => {
         </Link>
       </div>
       {/* Table */}
-      <div className="overflow-x-auto w-full mt-2">
+      {isLoading?(<div className="h-[500px] w-full mt-[100px] justify-center flex items-center">
+      <RotateLoader
+      color={'#00A264'}
+      loading={isLoading}
+      size={10}
+      />
+    </div>):<div className="overflow-x-auto w-full mt-2">
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
           <div className="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
             {/* <div>
@@ -294,19 +301,19 @@ const page = (props: Props) => {
                     <label htmlFor="checkbox-all-search" className="sr-only">checkbox</label>
                   </div>
                 </th> */}
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="p-2">
                   Resource Image
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="p-2">
                   Resource Title
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="p-2">
                   Resource Description
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="p-2">
                   Resource Date
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="p-2">
                   Action
                 </th>
               </tr>
@@ -320,7 +327,7 @@ const page = (props: Props) => {
                       <label htmlFor="checkbox-table-search-1" className="sr-only">checkbox</label>
                     </div>
                   </td> */}
-                  <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  <th scope="row" className="p-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     <Image
                     src={`data:image/png;image/jpg;image/jpeg;base64,${item?.imageUrl}`}
                     alt={item?.title}
@@ -330,21 +337,19 @@ const page = (props: Props) => {
                     className="h-14 w-14 rounded-full"
                     />
                   </th>
-                  <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-wrap dark:text-white text-wrap">
+                  <th scope="row" className="p-2 font-medium text-gray-900 whitespace-wrap dark:text-white text-wrap">
                     {item?.title.slice(0, 20)}
                   </th>
-                  <td className="px-6 py-4">
+                  <td className="p-2">
                   {item?.description?.replace(/<[^>]+>/g, '').slice(0, 20)}
                   </td>
-                  <td className="px-6 py-4">
+                  <td className="p-2">
                   {item?.createdDate?moment(item?.createdDate).format('YYYY-MM-DD'):''}
                   </td>
-                  <td className="px-6 py-4 flex justify-center items-center">
-                    <div className="flex self-center space-x-4">
-                  <Link href={`#`} className="font-large text-blue-600 dark:text-blue-500 hover:underline" onClick={() => { setIsPopupViewOpen(true); setResourceDetail(item); }}><FaEye  className="h-10"/></Link>
-                    <Link href={`#`} className="font-large text-green-600 dark:text-green-500 hover:underline" onClick={() => { setIsPopupEditOpen(true); setResourceDetail(item);setSelectedImage(`data:image/png;image/jpg;image/jpeg;base64,${item?.imageUrl}`); }}><FaEdit  className="h-10"/></Link>
-                    <Link href={`#`} className="font-large text-red-600 dark:text-red-500 hover:underline" onClick={() => { setIsPopupDeleteOpen(true); setResourceDetail(item); }}><FaTrash  className="h-10"/></Link>
-                    </div>
+                  <td className="p-2 flex justify-center items-center gap-2">
+                  <Link href={`#`} className="my-5 font-large text-blue-600 dark:text-blue-500 hover:underline" onClick={() => { setIsPopupViewOpen(true); setResourceDetail(item); }}><FaEye  className="h-10"/></Link>
+                    <Link href={`#`} className="my-5 font-large text-green-600 dark:text-green-500 hover:underline" onClick={() => { setIsPopupEditOpen(true); setResourceDetail(item);setSelectedImage(`data:image/png;image/jpg;image/jpeg;base64,${item?.imageUrl}`); }}><FaEdit  className="h-10"/></Link>
+                    <Link href={`#`} className="my-5 font-large text-red-600 dark:text-red-500 hover:underline" onClick={() => { setIsPopupDeleteOpen(true); setResourceDetail(item); }}><FaTrash  className="h-10"/></Link>
                   </td>
                 </tr>
               )) : <tr>
@@ -354,7 +359,7 @@ const page = (props: Props) => {
             </tbody>
           </table>
         </div>
-      </div>
+      </div>}
 
       {/* Popup Form */}
       {isPopupOpen && (

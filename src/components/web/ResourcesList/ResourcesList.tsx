@@ -1,16 +1,18 @@
 "use client";
 import { GetResourcesList } from '@/app/(web)/resources/Services/resourceService';
 import React, { useEffect, useState } from 'react'
-import Heading7 from '../resource_page/heading7/Heading7';
+// import Heading7 from '../resource_page/heading7/Heading7';
 import Image from 'next/image';
 import moment from 'moment';
 import Link from 'next/link';
+import RotateLoader from "react-spinners/RotateLoader";
 
 type Props = {}
 
 const ResourcesList = (props: Props) => {
     const [resourcesList,setResourcesList] = useState<any>([])
     const [currentPage, setCurrentPage] = useState(1);
+    const [isLoading,setIsLoading] = useState<boolean>(false)
     const limit = 100;
   const itemsPerPage = 6; // Number of items per page
 
@@ -18,7 +20,7 @@ const ResourcesList = (props: Props) => {
   const totalPages = Math.ceil(resourcesList.length / itemsPerPage);
 
   // Get items for the current page
-  const currentItems = resourcesList.slice(
+  const currentItems = resourcesList.toReversed().slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
@@ -36,24 +38,33 @@ const ResourcesList = (props: Props) => {
   };
 
     useEffect(() => {
+      setIsLoading(true)
       GetResourcesList(fetchResources)
     }, [])
   
     const fetchResources=(result:any)=>{
       setResourcesList(result.data);
+      setIsLoading(false)
     }
   return (
-    <div className="">
-      <Heading7 />
-      <div className="flex  sm:md:flex-row flex-col mt-5 h-[26rem] container mx-auto mb-[7rem] lg:mb-0 sm:md:mb-0">
-        <div className="flex sm:md:w-[50%] w-full">
-          <div className="relative w-full p-4">
+    <React.Fragment>
+    {isLoading?(<div className="h-[500px] w-full mt-[100px] justify-center flex items-center">
+      <RotateLoader
+      color={'#00A264'}
+      loading={isLoading}
+      size={10}
+      />
+    </div>):( <div className=" w-full">
+      {/* <Heading7 /> */}
+      <div className="mt-2 w-[97.2%] xl:w-[90%] mx-auto flex sm:flex-row flex-col border shadow-md rounded-md">
+        <div className="flex sm:w-[50%] w-full p-4">
+          <div className="relative w-full border">
             <Image
               src={currentItems[0]?.imageUrl?`data:image/png;image/jpg;image/jpeg;base64,${currentItems[0]?.imageUrl}`:"/images/captain4.jpeg"}
               alt="image not found"
               width={900}
               height={900}
-              className="w-full h-full object-contain"
+              className="w-full h-full object-cover"
               priority
             />
             <div className="absolute px-2 sm:md:mt-[-1.5rem] mt-[-1.5rem] bg-green-700 text-white font-semibold ">
@@ -61,24 +72,24 @@ const ResourcesList = (props: Props) => {
             </div>
           </div>
         </div>
-        <div className="sm:md:w-[50%]   w-full flex flex-col p-4">
+        <div className="sm:w-[50%] w-full flex flex-col p-4">
           <h2 className="text-black-500  font-bold">
             {currentItems[0]?.title}
           </h2>
           <p className="text-gray-500 text-sm text-justify ">
-            {currentItems[0]?.description?.replace(/<[^>]+>/g, '').slice(0, 400)}
+            {currentItems[0]?.description?.replace(/<[^>]+>/g, '').slice(0, 1000)}
           </p>
           <Link
             href={`/resources/${currentItems[0]?.id}`}
-            className="h-8 sm:md:w-[20%] w-[40%] mt-2 bg-green-700 text-white py-1 px-4 rounded-lg text-sm justify-center items-center flex "
+            className="h-8 lg:w-[25%] xl:w-[20%] w-[40%] mt-2 bg-green-700 text-white py-1 px-4 rounded-lg text-sm justify-center items-center flex "
           >
             Read more
           </Link>
         </div>
       </div>
-      <div className="mt-2 lg:max-w-[90%] grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 gap-1 py-3 -black lg:ml-20  w-full ">
+      <div className="mt-2 container mx-auto sm:grid sm:grid-row-2 sm:grid-cols-3 ">
         {currentItems?.map((item:any) => (
-          <div key={item?.id} className="flex  bg-white p-3 flex-shrink-0 ">
+          <div key={item?.id} className="flex bg-white p-3 flex-shrink-0 ">
             <div className="relative bg-white border rounded-lg md:p-5 p-2  shadow-md  w-auto ">
               <div className=" flex mb-2">
                 <Image
@@ -164,7 +175,8 @@ const ResourcesList = (props: Props) => {
           Next
         </Link> */}
       </div>
-    </div>
+    </div>)}
+    </React.Fragment>
   )
 }
 

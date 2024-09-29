@@ -10,7 +10,7 @@ export default function SignupContent() {
       <GalleryBackground />
 
       {/* Your content, which will be layered above the background */}
-      <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-center  text-white ">
+      <div className="absolute inset-0 bg-black bg-opacity-0 flex items-center justify-center text-center  text-white ">
         <div className="p-3 flex flex-col items-center justify-center rounded-md w-[90%] sm:w-[80%] md:w-[70%]">
           <h1 className="text-[40px] sm:text-[50px] md:text-[60px] lg:text-[80px] font-bold mb-4">
             Your Smooth

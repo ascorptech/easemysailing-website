@@ -1,8 +1,8 @@
 "use client";
 import React, { useRef, useEffect } from "react";
 import Image from "next/image";
-import { MdArrowBack } from "react-icons/md";
-import { MdArrowForward } from "react-icons/md";
+import { IoArrowBackCircleOutline } from "react-icons/io5";
+import { IoArrowForwardCircleOutline } from "react-icons/io5";
 
 interface Card {
   id: number;
@@ -83,34 +83,35 @@ const Slide = () => {
   }, []);
 
   return (
-    <div className=" lg:ml-[0rem]  relative flex items-center justify-center w-[80%] lg:w-[1435px] lg:h-[200px]  ">
+    <div className=" lg:ml-[0rem] relative flex items-center justify-center w-[100%] lg:w-full lg:h-[140px] sm:md:h-[140px] md:w-[95%] md:ml-5  ">
       {/* Left Arrow */}
       <button
         onClick={scrollLeft}
-        className="absolute left-1 z-10 border-2 w-[23.6px] h-[23.6px]  rounded-full border-black ml-1  mr-2"
+        className="absolute top-[115px] sm:md:top-[70px] left-8 z-1 w-[23.6px] h-[23.6px]   mr-2"
       >
-        <MdArrowBack className="ml-[2px]"/>
-      </button>
+<IoArrowBackCircleOutline />
+</button>
 
       {/* Carousel Wrapper */}
       <div
         ref={card}
-        className=" lg:mr-12 w-36  lg:gap-1 gap-3 flex overflow-x-scroll lg:mt-3  mt-3 no-scrollbar scroll-smooth snap-x mx-[4rem] lg:mx-0 snap-mandatory lg:ml-[2.4rem] sm:w-[1276px] lg:h-[100px]"
+        className=" lg:mr-12 w-36  lg:gap-1 gap-3 flex overflow-x-scroll lg:mt-3  mt-3 no-scrollbar scroll-smooth snap-x mx-[4rem] lg:mx-0 snap-mandatory lg:ml-[2.4rem] sm:w-full lg:w-[84.5%] lg:h-[115px]"
       >
         {cards.map((card) => (
           <div
             key={card.id}
-            className="flex ml-[6px] lg:ml-0 lg:mb-2 h-[12rem] lg:px-1 lg:w-[250px] lg:h-[84px] sm:w-[16.9%] "
+            className="flex ml-[6px] md:h-[130px] lg:ml-0 lg:mb-2 h-[12rem] lg:px-1 lg:w-[250px] lg:h-[84px] sm:w-[16.9%] mt-5"
           >
             <div className="flex flex-col items-center justify-center bg-white rounded-lg border-2 shadow-md p-6 w-[129.8px] ">
               <div className="   px-2 ">
              
                 <Image
                   src={card.logo}
-                  width={150}
-                  height={150}
+                  width={250}
+                  height={250}
                   priority
                   alt="images not find"
+                  className=""
                 />
               </div>
             </div>
@@ -123,10 +124,10 @@ const Slide = () => {
       {/* Right Arrow */}
       <button
         onClick={scrollRight}
-        className="absolute right-1 mr-3 z-10 border border-black w-[23.6px] h-[23.6px] rounded-full shadow-md  "
+        className="absolute right-8 mr-3 top-[115px] z-10 sm:md:top-[70px] w-[23.6px] h-[23.6px]   "
       >
-        <MdArrowForward className="ml-[2px]" />
-      </button>
+<IoArrowForwardCircleOutline />
+</button>
     </div>
   );
 };

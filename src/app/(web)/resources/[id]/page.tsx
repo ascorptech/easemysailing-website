@@ -1,12 +1,14 @@
 "use client";
 
 import React, { useEffect } from "react";
-import Image  from "next/image";
+import Image from "next/image";
 import { useState } from "react";
 import { useParams } from "next/navigation"; // Use useParams instead of useRouter
 import { Resource } from "../../data/resources";
-import { GetResourceDetail } from "../Services/resourceService";
+import { GetResourceDetail, GetResourcesExcludeList } from "../Services/resourceService";
 import moment from "moment";
+import Link from "next/link";
+import RotateLoader from "react-spinners/RotateLoader";
 
 const ResourceDetailsPage: React.FC = () => {
   const params = useParams(); // useParams hook to get route parameters
@@ -17,50 +19,92 @@ const ResourceDetailsPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [textarea, setTextArea] = useState("");
-  const [resourceDetail,setResourceDetail] = useState<any>()
+  const [resourceDetail, setResourceDetail] = useState<any>()
+  const [resourcesList, setResourcesList] = useState<any>()
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   useEffect(() => {
-    GetResourceDetail(id,GetResourceDetailCB)
+    setIsLoading(true)
+    GetResourceDetail(id, GetResourceDetailCB)
+    GetResourcesExcludeList(id, GetResourcesExcludeListCB)
   }, [])
 
-  const GetResourceDetailCB=(res:any)=>{
+  const GetResourceDetailCB = (res: any) => {
     setResourceDetail(res?.data)
   }
-  
+
+  const GetResourcesExcludeListCB = (res: any) => {
+    setResourcesList(res?.data)
+    setIsLoading(false)
+  }
+
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
   };
 
-
+  const cleanDescText = (text: any) => {
+    let parser = new DOMParser();
+    let doc = parser.parseFromString(text, "text/html");
+  
+    // Collect paragraphs as an array
+    let paragraphs: string[] = [];
+  
+    // Iterate through the child nodes of the body
+    doc.body.childNodes.forEach(node => {
+      // If the node is a paragraph or block-level element, push its text content to the array
+      if (node.nodeName === "P" || node.nodeName === "DIV") {
+        let paragraph = (node.textContent || "").trim();
+        if (paragraph) {
+          // Wrap content in <p> tags
+          paragraphs.push(paragraph);
+        }
+      }
+    });
+  
+    // Join paragraphs with no additional line breaks (HTML handles spacing)
+    return paragraphs.join('');
+  }
+  
+  
+  
   // If no item is found, show a not found message
   if (!resourceDetail) {
     return <div>Item not found</div>;
   }
 
   return (
-    <div className="flex justify-around mx-14 my-11 mt-[100px]">
-      <div className=" float-left w-[70%]  px-10">
-        <div className="mr-5 w-[787px] h-[417px] border2 border-blue-600">
-          <Image
-            src={resourceDetail?.imageUrl?`data:image/png;image/jpg;image/jpeg;base64,${resourceDetail?.imageUrl}`:"/images/captain4.jpeg"}
-            alt="image not found"
-            width={1000}
-            height={1000}
-            className="w-full h-full object-contain"
-          ></Image>
-        </div>
-        <div className="flex gap-4 mt-0 ">
-          <p className="text-green-600">{moment(resourceDetail?.createdDate).format('YYYY-MM-DD')}</p>
-          <p className="font-semibold">By Gwen Stacy</p>
-        </div>
-        <div>
-          <h2 className="font-bold text-xl mt-4">{resourceDetail?.title}</h2>
-          <p className=" text-sm text-justify  mt-4">{resourceDetail?.description?.replace(/<[^>]+>/g, '')}</p>
-        </div>
+    <React.Fragment>
+      {isLoading ? (<div className="h-[500px] w-full mt-[100px] justify-center flex items-center">
+        <RotateLoader
+          color={'#00A264'}
+          loading={isLoading}
+          size={10}
+        />
+      </div>) :
+        (<div className="flex sm:flex-row flex-col sm:justify-around sm:mx-14 sm:my-11 sm:mt-[100px]">
+          <div className=" sm:float-left sm:w-[70%] w-full sm:px-10 px-2">
+            <div className="sm:mr-5 w-full sm:w-[787px] h-[417px] border2 border-blue-600">
+              <Image
+                src={resourceDetail?.imageUrl ? `data:image/png;image/jpg;image/jpeg;base64,${resourceDetail?.imageUrl}` : "/images/captain4.jpeg"}
+                alt="image not found"
+                width={1000}
+                height={1000}
+                className="w-full h-full object-contain"
+              ></Image>
+            </div>
+            <div className="flex gap-4 mt-0 ">
+              <p className="text-green-600">{moment(resourceDetail?.createdDate).format('YYYY-MM-DD')}</p>
+              <p className="font-semibold">By Gwen Stacy</p>
+            </div>
+            <div>
+              <h2 className="font-bold text-xl mt-4">{resourceDetail?.title}</h2>
+              {/* <p className=" text-sm text-justify  mt-4">{resourceDetail?.description?.replace(/<[^>]+>/g, '')}</p> */}
+              <p className=" text-sm text-justify  mt-4">{cleanDescText(resourceDetail?.description)}</p>
+            </div>
 
-        {/* <h1 className=" my-4  font-bold text-xl">Drop Your Comment</h1>
+            {/* <h1 className=" my-4  font-bold text-xl">Drop Your Comment</h1>
 
         <div className="bg-gray-200  p-8 rounded-xl ">
           <form onSubmit={handleSubmit} className="   ">
@@ -127,130 +171,39 @@ const ResourceDetailsPage: React.FC = () => {
             </div>
           </form>
         </div> */}
-      </div>
+          </div>
 
-      <div className="float-right  w-[27%]  ">
-        <div className="relative bg-green-100 px-4 pt-2 h-[550px] rounded-lg">
-          <h2 className="font-bold text-xl ">More Articals</h2>
-          <div className="absolute">
-            <div className=" flex gap-3  mb-2 p-2">
-              <div className="w-24 h-14 border-2 border-green-500">
-                <Image
-                  src="/images/article1.png"
-                  alt="image not found"
-                  width={50}
-                  height={50}
-                  className="w-full h-full"
-                />
-              </div>
-              <div className="text-xs">
-                <h2 className="font-bold text-sm">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </h2>
-                <p className="text-green-600   mt-0">
-                  01/jan/2014 By gwen stacy
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-3 mb-2 p-2">
-              <div className="w-24 h-14 border-2 border-green-500">
-                <Image
-                  src="/images/article4.png"
-                  alt="image not found"
-                  width={50}
-                  height={50}
-                  className="w-full h-full"
-                />
-              </div>
-              <div className="text-xs">
-                <h2 className="font-bold text-sm">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </h2>
-                <p className="text-green-600   mt-0">
-                  01/jan/2014 By gwen stacy
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-3  mb-2 p-2">
-              <div className="w-24 h-14 border-2 border-green-500">
-                <Image
-                  src="/images/article3.png"
-                  alt="image not found"
-                  width={50}
-                  height={50}
-                  className="w-full h-full"
-                />
-              </div>
-              <div className="text-xs">
-                <h2 className="font-bold text-sm">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </h2>
-                <p className="text-green-600   mt-0">
-                  01/jan/2014 By gwen stacy
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-3 mb-2 p-2">
-              <div className="w-24 h-14 border-2 border-green-500">
-                <Image
-                  src="/images/article4.png"
-                  alt="image not found"
-                  width={50}
-                  height={50}
-                  className="w-full h-full"
-                />
-              </div>
-              <div className="text-xs">
-                <h2 className="font-bold text-sm">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </h2>
-                <p className="text-green-600   mt-0">
-                  01/jan/2014 By gwen stacy
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-3  mb-2 p-2">
-              <div className="w-24 h-14 border-2 border-green-500">
-                <Image
-                  src="/images/article1.png"
-                  alt="image not found"
-                  width={50}
-                  height={50}
-                  className="w-full h-full"
-                />
-              </div>
-              <div className="text-xs">
-                <h2 className="font-bold text-sm">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </h2>
-                <p className="text-green-600   mt-0">
-                  01/jan/2014 By gwen stacy
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-3   p-2">
-              <div className="w-24 h-14 border-2 border-green-500">
-                <Image
-                  src="/images/article4.png"
-                  alt="image not found"
-                  width={50}
-                  height={50}
-                  className="w-full h-full"
-                />
-              </div>
-              <div className="text-xs">
-                <h2 className="font-bold text-sm">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </h2>
-                <p className="text-green-600   mt-0">
-                  01/jan/2014 By gwen stacy
-                </p>
+          <div className="sm:float-right  sm:w-[27%] w-full mt-2 sm:mt-0">
+            <div className="relative bg-green-100 px-4 pt-2 h-[460px] rounded-lg">
+              <h2 className="font-bold text-xl ">More Articles</h2>
+              <div className="absolute">
+                {resourcesList?.map((item: any) => (
+                  <Link href={`/resources/${item?.id}`} className=" flex gap-3  mb-2 p-2">
+                    <div className="w-24 h-14 border-2 border-green-500">
+                      <Image
+                        priority
+                        src={item?.imageUrl ? `data:image/png;image/jpg;image/jpeg;base64,${item?.imageUrl}` : "/images/captain4.jpeg"}
+                        alt="image not found"
+                        width={50}
+                        height={50}
+                        className="w-full h-full"
+                      />
+                    </div>
+                    <div className="text-xs">
+                      <h2 className="font-bold text-sm">
+                        {item?.title}
+                      </h2>
+                      <p className="text-green-600   mt-0">
+                        {moment(item?.createdDate).format('YYYY-MM-DD')} By gwen stacy
+                      </p>
+                    </div>
+                  </Link>
+                ))}
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
+        </div>)}
+    </React.Fragment>
   );
 };
 

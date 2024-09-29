@@ -6,18 +6,16 @@ import ArticlesCard from "./ArticlesCard";
 const Articles = () => {
   
   return (
-    <div className=" w-[95%]  mx-2 px-1 md:mx-6 lg:w-full lg:mx-0 sm:mx-5">
-      <div className="flex items-center justify-between mt-2 pt-2 lg:mr-[9rem] md:mx-[6.8rem]">
-        <div className="text-[21px] leading-[28px] font-bold sm:text-4xl lg:ml-0">
-          <h1>
-            <span className="text-white">LATEST NEWS & </span>
-            <span className="text-[#00A264]">ARTICLES</span>
+    <div className=" md:w-[90%] lg:container mx-auto">
+      <div className="flex justify-between items-center mb-4">
+          <h1 className="text-white text-[21px]  leading-[28px] font-bold sm:md:text-4xl">
+            <span className="text-white">Latest News & </span>
+            <span className="text-[#00A264]">Articles</span>
           </h1>
-        </div>
 
         <div>
           <Link
-            href="/trendingjob"
+            href="/resources"
             className="h-8 bg-[#00A264] text-white py-2 px-4 rounded-full text-sm"
           >
             View All

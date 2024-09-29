@@ -3,7 +3,7 @@
 //     <div className="overflow-x-scroll no-scrollbar mt-7  lg:items-center  scroll-smooth snap-mandatory space-x-0 lg:space-x-8  flex flex-col sm:flex-row w-full lg:w-[83%] md:w-[94%] px-1 sm:px-0 lg:px-0 lg:mx-[110px] mx-auto">
 //       {article.map((card) => (
 //         <div
-          // className="w-full sm:w-[16.4rem] lg:w-[19.3rem] 2xl:w-[19.5rem] rounded mb-7 shadow-lg "
+// className="w-full sm:w-[16.4rem] lg:w-[19.3rem] 2xl:w-[19.5rem] rounded mb-7 shadow-lg "
 //           key={card?.id}
 //         >
 //           <div className="relative  lg:h-[12rem]">
@@ -19,9 +19,9 @@
 //               <h3 className="text-base">{card.date}</h3>
 //             </div>
 //           </div>
-          // <div className="px-2 sm:px-2 bg-white py-2">
+// <div className="px-2 sm:px-2 bg-white py-2">
 //             <p className="text-black text-justify text-[9px] mr-1">
-              // {card?.title} {card?.title}{" "}
+// {card?.title} {card?.title}{" "}
 //               <Link href="#" className="text-[#00A264] ">
 //                 Read More
 //               </Link>
@@ -33,11 +33,27 @@
 //   );
 // };
 "use client";
-import React, { useRef, useEffect } from "react";
+import { GetRecentPodcast } from "@/app/(web)/Services/homeService";
+import React, { useRef, useEffect, useState } from "react";
 import { IoMdArrowBack, IoMdArrowForward } from "react-icons/io";
+import Image from "next/image";
+import { RxCrossCircled } from "react-icons/rx";
 
 const Islide = () => {
   const card = useRef<HTMLDivElement>(null);
+  const [podcasts, setPodcasts] = useState<any>([])
+  const [selected, setSelected] = useState<any>();
+  const [ModalOpen, setModalOpen] = useState(false);
+
+  useEffect(() => {
+    GetRecentPodcast((res: any) => {
+      console.log(res);
+      if (res.status == 200) {
+        setPodcasts(res?.data)
+      }
+    })
+  }, [])
+
 
   const scrollLeft = () => {
     if (card.current) {
@@ -66,86 +82,154 @@ const Islide = () => {
     };
   }, []);
 
-  return (
-    <div className="relative overflow-x-hidden mt-7 mb-3 lg:items-center items-center flex flex-col sm:flex-row w-full lg:w-[83%]  md:w-[94%] px-1 sm:px-0 lg:px-0 lg:mx-[110px] mx-auto">
-      {/* Left Scroll Button for Mobile */}
-      <button 
-        onClick={scrollLeft} 
-        className="absolute left-0 top-20  md:hidden bg-white p-[5px] rounded-full shadow-md"
-        aria-label="Scroll Left"
-      >
-        <IoMdArrowBack />
-      </button>
+  const getEmbedUrl = (videoLink: string) => {
+    const videoIdMatch = videoLink?.match(
+      /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/|.+\?v=))([^?&]+)/
+    );
+    return videoIdMatch
+      ? `https://www.youtube.com/embed/${videoIdMatch[1]}`
+      : "";
+  };
 
-      {/* Carousel Wrapper */}
-      <div
-        ref={card}
-        className="w-[288px] sm:w-full sm:ml-0 flex overflow-x-scroll  no-scrollbar scroll-smooth snap-x snap-mandatory gap-[33px]"
-      >
-        {/* Video Card 1 */}
-        <div className="snap-center ">
-          <div className="w-[18rem]  h-[12rem] sm:ml-0 lg:w-[18rem] lg:h-[220px]">
-            <iframe
-              className="w-full border-4 shadow-md rounded-lg h-full"
-              src="https://www.youtube.com/embed/afKjXPA5f0E"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          </div>
-        </div>
-        {/* Video Card 2 */}
-        <div className="snap-center">
-          <div className="w-[18rem] h-[12rem] lg:w-[18rem] lg:h-[220px]">
-            <iframe
-              className="w-full border-4 shadow-md rounded-lg h-full"
-              src="https://www.youtube.com/embed/roz9sXFkTuE"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          </div>
-        </div>
-        {/* Video Card 3 */}
-        <div className="snap-center">
-          <div className="w-[18rem] h-[12rem] sm:md:w-[18rem] lg:w-[18rem] lg:h-[220px]">
-            <iframe
-              className="w-full border-4 shadow-md rounded-lg h-full"
-              src="https://www.youtube.com/embed/Tl4bQBfOtbg"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          </div>
-        </div>
-        {/* Video Card 4 */}
-        <div className="snap-center">
-          <div className="w-[18rem] h-[12rem] lg:w-[18rem] lg:h-[220px]">
-            <iframe
-              className="w-full border-4 shadow-md rounded-lg h-full"
-              src="https://www.youtube.com/embed/VYslt8bc-4Q"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          </div>
-        </div>
-      </div>
+  const openModal = (item: any) => {
+    setSelected(item);
+    setModalOpen(true);
+  };
 
-      {/* Right Scroll Button for Mobile */}
-      <button 
-        onClick={scrollRight} 
-        className="absolute right-0 top-20 md:hidden bg-white p-[5px] rounded-full shadow-md"
-        aria-label="Scroll Right"
-      >
-        <IoMdArrowForward />
-      </button>
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+  // return (
+  //   <div className="relative overflow-x-hidden  mt-7 pb-4 lg:pb-0 flex justify-center items-center lg:items-center w-full lg:w-[83%] xl:w-[82%] 2xl:w-[85%] md:w-[94%] px-1 sm:px-0 lg:px-0 lg:mx-[110px] ">
+
+  //     <button 
+  //       onClick={scrollLeft} 
+  //       className="absolute left-0 top-20  md:hidden bg-white p-[5px] rounded-full shadow-md"
+  //       aria-label="Scroll Left"
+  //     >
+  //       <IoMdArrowBack />
+  //     </button>
+
+  //     <div
+  //       ref={card}
+  //       className="w-[289px] sm:w-full sm:ml-0 flex overflow-x-scroll  no-scrollbar scroll-smooth snap-x snap-mandatory gap-1 lg:gap-[33px] 2xl:space-x-14"
+  //     >
+  //       <div className="snap-center ">
+  //         <div className="w-[18rem]  h-[12rem] sm:ml-0 lg:w-[18rem] xl:w-[16.8rem] 2xl:w-[18rem] lg:h-[220px]">
+  //           <iframe
+  //             className="w-full border-4 shadow-md rounded-lg h-full"
+  //             src="https://www.youtube.com/embed/afKjXPA5f0E"
+  //             title="YouTube video player"
+  //             frameBorder="0"
+  //             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  //             allowFullScreen
+  //           ></iframe>
+  //         </div>
+  //       </div>
+  //       <div className="snap-center">
+  //         <div className="w-[18rem] h-[12rem] lg:w-[18rem] xl:w-[16.8rem] 2xl:w-[18rem] lg:h-[220px]">
+  //           <iframe
+  //             className="w-full border-4 shadow-md rounded-lg h-full"
+  //             src="https://www.youtube.com/embed/roz9sXFkTuE"
+  //             title="YouTube video player"
+  //             frameBorder="0"
+  //             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  //             allowFullScreen
+  //           ></iframe>
+  //         </div>
+  //       </div>
+  //       <div className="snap-center">
+  //         <div className="w-[18rem] h-[12rem] lg:w-[18rem] xl:w-[16.8rem] 2xl:w-[18rem] lg:h-[220px]">
+  //           <iframe
+  //             className="w-full border-4 shadow-md rounded-lg h-full"
+  //             src="https://www.youtube.com/embed/Tl4bQBfOtbg"
+  //             title="YouTube video player"
+  //             frameBorder="0"
+  //             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  //             allowFullScreen
+  //           ></iframe>
+  //         </div>
+  //       </div>
+  //       <div className="snap-center">
+  //         <div className="w-[18rem] h-[12rem] lg:w-[18rem] xl:w-[16.8rem] 2xl:w-[18rem] lg:h-[220px]">
+  //           <iframe
+  //             className="w-full border-4 shadow-md rounded-lg h-full"
+  //             src="https://www.youtube.com/embed/VYslt8bc-4Q"
+  //             title="YouTube video player"
+  //             frameBorder="0"
+  //             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  //             allowFullScreen
+  //           ></iframe>
+  //         </div>
+  //       </div>
+  //     </div>
+
+  //     <button 
+  //       onClick={scrollRight} 
+  //       className="absolute right-0 top-20 md:hidden bg-white p-[5px] rounded-full shadow-md"
+  //       aria-label="Scroll Right"
+  //     >
+  //       <IoMdArrowForward />
+  //     </button>
+  //   </div>
+  // );
+  return (<div className="container mx-auto relative mb-10">
+    <button
+      onClick={scrollLeft}
+      className="absolute left-0 top-20 sm:hidden bg-white p-[5px] rounded-full shadow-md"
+      aria-label="Scroll Left"
+    >
+      <IoMdArrowBack />
+    </button>
+    <div ref={card} className="overflow-auto no-scrollbar flex w-[90%] mx-auto sm:mx-0 sm:w-full sm:grid sm:grid-rows-1 sm:grid-cols-4 gap-2 sm:gap-10">
+      {podcasts?.map((item: any, index: any) => (
+          <Image
+            key={item?.id}
+            src={`data:image/png;image/jpg;image/jpeg;base64,${item?.thumbnail}`}
+            alt={item?.title}
+            width={100}
+            height={100}
+            priority
+            className="h-full w-full rounded-md mb-10 border border-gray-600 shadow-sm"
+            onClick={() => openModal(item)}
+          />
+      ))}
+
     </div>
-  );
+    <button
+      onClick={scrollRight}
+      className="absolute right-0 top-20 sm:hidden bg-white p-[5px] rounded-full shadow-md"
+      aria-label="Scroll Right"
+    >
+      <IoMdArrowForward />
+    </button>
+    {/* Popup */}
+    {ModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-10">
+          <div className="bg-white  rounded-lg overflow-hidden shadow-lg">
+            <div className="h-[15rem] w-[22rem] lg:w-[50rem]  lg:h-[500px] relative">
+              <iframe
+                width="100%"
+                height="100%"
+                src={getEmbedUrl(selected?.videoLink)}
+                title={selected?.title}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+              <button
+                onClick={closeModal}
+                className="absolute  top-2 right-2 text-red-500  rounded-full "
+              >
+                <RxCrossCircled className="w-6 h-6" />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+  </div>)
+  
 };
 
 export default Islide;

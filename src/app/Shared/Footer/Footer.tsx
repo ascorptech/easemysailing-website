@@ -8,6 +8,7 @@ import {
   FaWhatsapp,
   FaTwitter,
   FaXingSquare,
+  FaYoutube
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import Image from "next/image";
@@ -34,23 +35,20 @@ const Footer = () => {
     })();
   }, []);
   return (
-    <footer className="bg-[#D1EFE4] p-4 text-sm md:pl-10 text-gray-700 w-full ">
-      <div className="container mx-auto mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
-        {/* Brand and Description */}
-
-        <div className="flex flex-col justify-start">
-          {/* <div className="w-[70%] md:w-[240px] h-12 md:h-[65px]"> */}
-          <Link href="/" className="">
+    <footer className="bg-[#D1EFE4] p-4 text-sm text-gray-700 w-full ">
+      <div className="container mx-auto grid md:grid-cols-4 md:grid-rows-1 sm:grid-rows-2 sm:grid-cols-2 grid-rows-1 grid-cols-1 h-auto sm:space-x-2 lg:space-x-4">
+        <div className="w-[70%]">
+          <Link href="/">
             <Image
               src="/images/logo_1.png"
               alt="EaseMySailing Logo"
-              className="object-contain h-full w-[80%] mb-2 -ml-1"
+              className="object-contain w-full mb-2 -ml-1"
               width={800}
               height={800}
             />
           </Link>
           {/* </div> */}
-          <p className=" mr-14 text-justify">
+          <p className="text-justify">
             EaseMySailing is a platform created by seafarers, for seafarers,
             built on empathy for life at sea and its unique challenges and joys.
             <Link href="/about" className="text-[#00A264] font-semibold">
@@ -58,17 +56,8 @@ const Footer = () => {
               Read More
             </Link>
           </p>
-          <p className="mt-4 font-semibold">
-            Are You a Vendor?{" "}
-            <Link href="#" className="font-bold text-[#00A264] underline">
-              Join Us
-            </Link>
-          </p>
         </div>
-
-        {/* Quick link */}
-
-        <div className=" md:ml-12">
+        <div className="md:mt-0 mt-4 sm:ml-2 md:ml-0 flex flex-col justify-center">
           <h3 className="text-lg text-green-600 font-semibold">Quick link</h3>
           <ul>
             <li className="mt-2">
@@ -94,9 +83,7 @@ const Footer = () => {
             </li> */}
           </ul>
         </div>
-        {/* Help */}
-
-        <div className="md:ml-12">
+        <div className="md:mt-0 mt-4 flex flex-col justify-center">
           <h3 className="text-lg text-green-600 font-semibold">Help</h3>
           <ul>
             <li className="mt-2">
@@ -121,8 +108,7 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-
-        <div className="md:ml-10">
+        <div className="md:mt-0 mt-4 flex flex-col justify-center">
           <h3 className="text-lg text-green-600 font-semibold">
             Connect with Us
           </h3>
@@ -130,50 +116,48 @@ const Footer = () => {
             <li className="mt-2">
               <Link
                 href="tel:+917055-70-5555"
-                className="flex items-center hover:text-green-600"
+                className="hover:text-green-600 sm:text-[11px] lg:text-sm flex lg:flex lg:items-center"
               >
-                <span className="text-green-600 mr-1">
-                  <FiPhone />
-                </span>
+                <FiPhone className="text-green-600 mr-1" />
                 (+91) - 7055-70-5555
               </Link>
             </li>
             <li className="mt-2">
               <Link
                 href="mailto:business@EaseMySailing.com"
-                className="flex items-center hover:text-green-600"
+                className="hover:text-green-600 sm:text-[11px] lg:text-sm flex lg:flex lg:items-center"
               >
-                <span className="text-green-600 mr-1">
-                  <MdOutlineMail />
-                </span>
-                business@EaseMySailing.com
+                <MdOutlineMail className="text-green-600 mr-1" />business@easemysailing.com
+
               </Link>
             </li>
             <li className="mt-2">
-              <Link href="#" className="flex items-center hover:text-green-600">
-                <span className="mr-1">
-                  <Image
-                    src="/globe.png"
-                    alt="Globe Logo"
-                    className=" h-[14px] w-[14px]"
-                    width={800}
-                    height={800}
-                  />
-                </span>
+              <Link href="https://www.easemysailing.com" className="hover:text-green-600 sm:text-[11px] lg:text-sm flex lg:flex lg:items-center">
+                <Image
+                  priority
+                  src="/globe.png"
+                  alt="Globe Logo"
+                  className=" h-[14px] w-[14px] mr-1"
+                  width={800}
+                  height={800}
+                />
                 www.easemysailing.com
               </Link>
             </li>
           </ul>
           <div className="mt-4 flex p-1 space-x-1 items-center">
             <h2 className="font-semibold">Follow Us :</h2>
-            <Link href="#" className="text-green-600">
+            <Link href="https://www.facebook.com/share/5TJ64Ue4vLGsjtti/?mibextid=qi2Omg" className="text-green-600" target="_blank">
               <FaFacebook />
             </Link>
-            <Link href="#" className="text-green-600">
+            <Link href="https://www.instagram.com/easemysailing" className="text-green-600" target="_blank">
               <FaInstagram />
             </Link>
-            <Link href="#" className="text-green-600">
+            <Link href="https://x.com/EaseMySailing?s=08" className="text-green-600" target="_blank">
               <FaXTwitter />
+            </Link>
+            <Link href="https://youtube.com/@easemysailing?si=EnjVlLHxdlHVtfsf" className="text-green-600" target="_blank">
+              <FaYoutube />
             </Link>
           </div>
         </div>

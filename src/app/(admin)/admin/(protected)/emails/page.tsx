@@ -131,22 +131,22 @@ const previousPage = () => {
                     <label htmlFor="checkbox-all-search" className="sr-only">checkbox</label>
                   </div>
                 </th> */}
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="p-2">
                   User Name
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="p-2">
                   User Email
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="p-2">
                   User PhoneNumber
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="p-2">
                   Message
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="p-2">
                   Date
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="p-2">
                   Action
                 </th>
               </tr>
@@ -154,22 +154,22 @@ const previousPage = () => {
             <tbody>
               {currentEmails?.length ? currentEmails?.map((item: any) => (
                 <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" key={item?.id}>
-                  <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  <th scope="row" className="p-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {item?.name}
                   </th>
-                  <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  <th scope="row" className="p-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {item?.email}
                   </th>
-                  <td className="px-6 py-4">
+                  <td className="p-2">
                   {item?.mobileNumber}
                   </td>
-                  <td className="px-6 py-4">
+                  <td className="p-2">
                   {item?.message}
                   </td>
-                  <td className="px-6 py-4">
+                  <td className="p-2">
                   {item?.createdDate?moment(item?.createdDate).format('YYYY-MM-DD'):''}
                   </td>
-                  <td className="px-6 py-4 flex flex-row space-x-4">
+                  <td className="p-2 flex justify-center items-center gap-2">
                   {/* <Link href={`#`} className="font-medium text-blue-600 dark:text-blue-500 hover:underline" onClick={() => { setIsPopupViewOpen(true); setResourceDetail(item); }}><FaEye /></Link>
                     <Link href={`#`} className="font-medium text-green-600 dark:text-green-500 hover:underline" onClick={() => { setIsPopupEditOpen(true); setResourceDetail(item); }}><FaEdit /></Link> */}
                     <Link href={`#`} className="font-medium text-red-600 dark:text-red-500 hover:underline" onClick={() => { setIsPopupDeleteOpen(true); setEmailDetail(item); }}><FaTrash /></Link>

@@ -29,7 +29,7 @@ const SlidesTrend: React.FC<SlidesTrendProps> = ({ card1 }) => {
     {
       id: 2,
       logo: "/images/requiter-img/logo2.png",
-      company: "MSC",
+      company: "MSC CMA",
       rating: 4.8,
       reviews: "5K+",
       rank: "All Ranks",
@@ -37,7 +37,7 @@ const SlidesTrend: React.FC<SlidesTrendProps> = ({ card1 }) => {
     {
       id: 3,
       logo: "/images/requiter-img/logo2.png",
-      company: "CMA CGM Group",
+      company: "CMA CGM ",
       rating: 4.8,
       reviews: "5K+",
       rank: "All Ranks",
@@ -45,7 +45,7 @@ const SlidesTrend: React.FC<SlidesTrendProps> = ({ card1 }) => {
     {
       id: 4,
       logo: "/images/requiter-img/logo2.png",
-      company: "MEC",
+      company: "MEC CMA",
       rating: 4.8,
       reviews: "5K+",
       rank: "All Ranks",
@@ -53,7 +53,7 @@ const SlidesTrend: React.FC<SlidesTrendProps> = ({ card1 }) => {
     {
       id: 5,
       logo: "/images/requiter-img/logo2.png",
-      company: "AP Moller-Maersk",
+      company: "AP Moller",
       rating: 4.8,
       reviews: "5K+",
       rank: "All Ranks",
@@ -61,7 +61,7 @@ const SlidesTrend: React.FC<SlidesTrendProps> = ({ card1 }) => {
     {
       id: 1,
       logo: "/images/requiter-img/logo2.png",
-      company: "Maersk Line",
+      company: "Maersk  Line",
       rating: 4.8,
       reviews: "5K+",
       rank: "All Ranks",
@@ -69,7 +69,7 @@ const SlidesTrend: React.FC<SlidesTrendProps> = ({ card1 }) => {
     {
       id: 2,
       logo: "/images/requiter-img/logo2.png",
-      company: "MSC",
+      company: "MSC CMA",
       rating: 4.8,
       reviews: "5K+",
       rank: "All Ranks",
@@ -77,7 +77,7 @@ const SlidesTrend: React.FC<SlidesTrendProps> = ({ card1 }) => {
     {
       id: 3,
       logo: "/images/requiter-img/logo2.png",
-      company: "CMA CGM Group",
+      company: "CMA CGM ",
       rating: 4.8,
       reviews: "5K+",
       rank: "All Ranks",
@@ -85,7 +85,7 @@ const SlidesTrend: React.FC<SlidesTrendProps> = ({ card1 }) => {
     {
       id: 4,
       logo: "/images/requiter-img/logo2.png",
-      company: "MEC",
+      company: "MEC CMA",
       rating: 4.8,
       reviews: "5K+",
       rank: "All Ranks",
@@ -93,7 +93,7 @@ const SlidesTrend: React.FC<SlidesTrendProps> = ({ card1 }) => {
     {
       id: 5,
       logo: "/images/requiter-img/logo2.png",
-      company: "AP Moller-Maersk",
+      company: "AP Moller",
       rating: 4.8,
       reviews: "5K+",
       rank: "All Ranks",
@@ -124,15 +124,15 @@ const SlidesTrend: React.FC<SlidesTrendProps> = ({ card1 }) => {
                   />
                 </div>
 
-                <p className="text-sm font-bold ">{card.company}</p>
-                <p className="text-sm text-gray-500">
-                  <span className="text-yellow-500">
+                <p className="text-sm font-bold text-center ">{card.company}</p>
+                <p className="text-sm text-gray-500 text-center">
+                  <span className="text-yellow-500 ">
                     ★{" "}
-                    <span className="text-black font-bold">{card.rating}</span>
+                    <span className="text-black text-center font-bold">{card.rating}</span>
                   </span>{" "}
                   | {card.reviews} reviews
                 </p>
-                <p className="font-semibold text-[13px]">{card.rank}</p>
+                <p className="font-semibold text-center text-[13px]">{card.rank}</p>
               </div>
             </div>
           ))}

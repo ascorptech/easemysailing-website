@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { IoIosClose } from "react-icons/io";
 import moment from "moment";
 import Image from "next/image";
+import RotateLoader from "react-spinners/RotateLoader";
 
 type Props = {};
 
@@ -25,30 +26,30 @@ const page = (props: Props) => {
   const [podcastList, setPodcastList] = useState([])
   const [selectedImage, setSelectedImage] = useState<any>(null);
   const [image, setImage] = useState<any>(null);
-
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const [currentPage, setCurrentPage] = useState(1);
   const resourcesPerPage = 5;
 
-const [letterCount, setLetterCount] = useState(0); 
+  const [letterCount, setLetterCount] = useState(0);
 
 
-// Pagination start
-// Pagination: Calculate current page resources
-const indexOfLastResource = currentPage * resourcesPerPage;
-const indexOfFirstResource = indexOfLastResource - resourcesPerPage;
-const currentPodcasts = podcastList.slice(indexOfFirstResource, indexOfLastResource);
+  // Pagination start
+  // Pagination: Calculate current page resources
+  const indexOfLastResource = currentPage * resourcesPerPage;
+  const indexOfFirstResource = indexOfLastResource - resourcesPerPage;
+  const currentPodcasts = podcastList.toReversed().slice(indexOfFirstResource, indexOfLastResource);
 
-const nextPage = () => {
- if (currentPage < Math.ceil(podcastList.length / resourcesPerPage)) {
-   setCurrentPage(currentPage + 1);
- }
-};
+  const nextPage = () => {
+    if (currentPage < Math.ceil(podcastList.length / resourcesPerPage)) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
 
-const previousPage = () => {
- if (currentPage > 1) {
-   setCurrentPage(currentPage - 1);
- }
-};
+  const previousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
 
 
   const handleAddClick = () => {
@@ -105,12 +106,12 @@ const previousPage = () => {
     }
     if (!podcastData.videoLink) {
       toast.error('Video Link is required')
-    }else{
-    let formData = new FormData()
-    formData.append('thumbnail', image)
-    formData.append('title', podcastData.title)
-    formData.append('videoLink', podcastData.videoLink)
-    AddPodcastData(formData, AddPodcastDataCB)
+    } else {
+      let formData = new FormData()
+      formData.append('thumbnail', image)
+      formData.append('title', podcastData.title)
+      formData.append('videoLink', podcastData.videoLink)
+      AddPodcastData(formData, AddPodcastDataCB)
     }
   };
 
@@ -140,7 +141,7 @@ const previousPage = () => {
     formData.append('thumbnail', image)
     formData.append('title', podcastDetail.title)
     formData.append('videoLink', podcastDetail.videoLink)
-    PutPodcastData(podcastDetail?.id,formData, PutPodcastDataCB)
+    PutPodcastData(podcastDetail?.id, formData, PutPodcastDataCB)
   };
 
   const PutPodcastDataCB = (result: any) => {
@@ -161,6 +162,7 @@ const previousPage = () => {
 
 
   useEffect(() => {
+    setIsLoading(true)
     GetPodcastList(fetchPodcast)
   }, [])
 
@@ -172,7 +174,7 @@ const previousPage = () => {
       setPodcastList([])
       toast.success('No Record Found')
     }
-
+    setIsLoading(false)
   }
 
   const handleDelete = (id: any) => {
@@ -202,7 +204,13 @@ const previousPage = () => {
         </Link>
       </div>
       {/* Table */}
-      <div className="overflow-x-auto w-full mt-2 ">
+      {isLoading ? (<div className="h-[500px] w-full mt-[100px] justify-center flex items-center">
+        <RotateLoader
+          color={'#00A264'}
+          loading={isLoading}
+          size={10}
+        />
+      </div>) : (<div className="overflow-x-auto w-full mt-2 ">
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
           <div className="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
             {/* <div>
@@ -262,19 +270,19 @@ const previousPage = () => {
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
 
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="p-2">
                   Podcast Thumbnail
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="p-2">
                   Podcast Title
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="p-2">
                   Podcast Link
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="p-2">
                   Podcast Date
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="p-2">
                   Action
                 </th>
               </tr>
@@ -288,29 +296,29 @@ const previousPage = () => {
                       <label htmlFor="checkbox-table-search-1" className="sr-only">checkbox</label>
                     </div>
                   </td> */}
-                  <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  <th scope="row" className="p-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     <Image
-                    src={`data:image/png;image/jpg;image/jpeg;base64,${item?.thumbnail}`}
-                    alt={item?.title}
-                    width={100}
-                    height={100}
-                    priority
-                    className="h-14 w-14 rounded-full"
+                      src={`data:image/png;image/jpg;image/jpeg;base64,${item?.thumbnail}`}
+                      alt={item?.title}
+                      width={100}
+                      height={100}
+                      priority
+                      className="h-14 w-14 rounded-full"
                     />
                   </th>
-                  <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-wrap">
+                  <th scope="row" className="p-2 font-medium text-gray-900 whitespace-nowrap dark:text-white text-wrap">
                     {item?.title.slice(0, 20)}
                   </th>
-                  <td className="px-6 py-4">
+                  <td className="p-2">
                     <Link href={item?.videoLink} target="_blank">{item?.videoLink}</Link>
                   </td>
-                  <td className="px-6 py-4">
+                  <td className="p-2">
                     {item?.createdDate ? moment(item?.createdDate).format('YYYY-MM-DD') : ''}
                   </td>
-                  <td className="px-6 py-4 flex flex-row space-x-4">
-                    <Link href={`#`} className="font-medium text-blue-600 dark:text-blue-500 hover:underline" onClick={() => { setIsPopupViewOpen(true); setPodcastDetail(item); }}><FaEye /></Link>
-                    <Link href={`#`} className="font-medium text-green-600 dark:text-green-500 hover:underline" onClick={() => { setIsPopupEditOpen(true); setPodcastDetail(item);setSelectedImage(`data:image/png;image/jpg;image/jpeg;base64,${item?.thumbnail}`);  }}><FaEdit /></Link>
-                    <Link href={`#`} className="font-medium text-red-600 dark:text-red-500 hover:underline" onClick={() => { setIsPopupDeleteOpen(true); setPodcastDetail(item); }}><FaTrash /></Link>
+                  <td className="p-2 flex justify-center items-center gap-2">
+                      <Link href={`#`} className="my-5 font-medium text-blue-600 dark:text-blue-500 hover:underline" onClick={() => { setIsPopupViewOpen(true); setPodcastDetail(item); }}><FaEye /></Link>
+                      <Link href={`#`} className="my-5 font-medium text-green-600 dark:text-green-500 hover:underline" onClick={() => { setIsPopupEditOpen(true); setPodcastDetail(item); setSelectedImage(`data:image/png;image/jpg;image/jpeg;base64,${item?.thumbnail}`); }}><FaEdit /></Link>
+                      <Link href={`#`} className="my-5 font-medium text-red-600 dark:text-red-500 hover:underline" onClick={() => { setIsPopupDeleteOpen(true); setPodcastDetail(item); }}><FaTrash /></Link>
                   </td>
                 </tr>
               )) : <tr>
@@ -321,7 +329,7 @@ const previousPage = () => {
           </table>
         </div>
 
-      </div>
+      </div>)}
 
       {/* Popup Form */}
       {isPopupOpen ? (
@@ -492,7 +500,7 @@ const previousPage = () => {
             </div>
             <h2 className="text-xl font-bold mt-6 mb-4">Edit Podcast Details</h2>
             <form onSubmit={handleUpdateSubmit}>
-            <div className="mb-4">
+              <div className="mb-4">
                 <label htmlFor="image" className="block text-gray-700 mb-2">
                   Choose Image
                 </label>
@@ -595,8 +603,8 @@ const previousPage = () => {
           </div>
         </div>
       </div>}
-       {/* Pagination Controls */}
-       <div className="flex justify-center gap-4 items-center mt-4">
+      {/* Pagination Controls */}
+      <div className="flex justify-center gap-4 items-center mt-4">
         <button
           onClick={previousPage}
           className="bg-[#00A264] text-white px-4 py-2 rounded"

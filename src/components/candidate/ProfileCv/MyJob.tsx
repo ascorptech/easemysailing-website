@@ -193,10 +193,10 @@ const MyJob = () => {
 
               {/* PersonalDetails start */}
 
-              <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
-                <Link href="#" className="">
+              <div className="flex justify-between items-center rounded-md   bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
+                <h1 className="">
                   Next Of Kin Details
-                </Link>
+                </h1>
                 <div className="flex items-center justify-center gap-1">
                   <span
                     className="ml-2 cursor-pointer"

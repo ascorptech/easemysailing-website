@@ -203,7 +203,11 @@ const handlePhoneChange = (value: string, country: any) => {
               Enter your credential to access your account.
             </p>
             <form
+<<<<<<< HEAD
                onSubmit={handleSubmit}
+=======
+              onSubmit={handleSubmit}
+>>>>>>> 83ea88fd4ac390681535886f7aef17120dc15686
               className="w-[70%]"
             >
               <div className="mb-1 mt-2 flex flex-wrap w-full lg:flex-nowrap lg:space-x-2">

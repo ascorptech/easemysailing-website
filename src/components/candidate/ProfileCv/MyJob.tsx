@@ -215,7 +215,7 @@ const MyJob = () => {
                     </svg>
                   )}
                 </span>
-                <CircularProgress percentage={mjrComplete?.percentage} color={mjrComplete.color} />
+                <CircularProgress percentage={Math.round(mjrComplete?.percentage)} color={mjrComplete.color} />
               </div>
             </div>{" "}
             <div className=" h-screen overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory ">
@@ -815,11 +815,11 @@ const MyJob = () => {
                 )}
               </span>
 
-              <CircularProgress percentage={personalComplete?.percentage} color={personalComplete?.color} />
+              <CircularProgress percentage={Math.round(personalComplete?.percentage)} color={personalComplete?.color} />
             </div>
           </div>
           <div className=" h-screen overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory ">
-            {pDOpen && <PersonalDetails userDetail={profileDetail}/>}
+            {pDOpen && <PersonalDetails personalComplete={personalComplete} setPersonalComplete={setPersonalComplete} userDetail={profileDetail}/>}
             {/* PersonalDetails end */}
 
             {/* Aboutme  start*/}

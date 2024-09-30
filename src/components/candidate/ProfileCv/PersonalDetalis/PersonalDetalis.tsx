@@ -8,11 +8,17 @@ import Image from "next/image";
 import { IoIosClose } from "react-icons/io";
 import CircularProgress from "../CircularProgress";
 
+type PersonalComplete = {
+  percentage: number;
+  color: string;
+};
 type Props={
+  personalComplete: PersonalComplete; // mjrComplete is an object with percentage and color
+  setPersonalComplete: React.Dispatch<React.SetStateAction<PersonalComplete>>; // setMjrComplete is a function to update mjrComplete
   userDetail:any
 }
 
-const PersonalDetails = ({userDetail}:Props) => {
+const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props) => {
   const [firstName, setFirstName] = useState("");
   const [middleName, setmidddleName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -23,6 +29,7 @@ const PersonalDetails = ({userDetail}:Props) => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [image, setImage] = useState<any>(null);
   const [genderDrop,setGenderDrop] = useState<any>([])
+  const [martialStatusDrop,setMartialStatusDrop] = useState<any>([])
 
   
   const [gender, setGender] = useState("");
@@ -68,19 +75,40 @@ const PersonalDetails = ({userDetail}:Props) => {
     GetDropdownDetails('gender',(res:any)=>{
       setGenderDrop(res?.data?.values)
     })
+    GetDropdownDetails('martialStatus',(res:any)=>{
+      setMartialStatusDrop(res?.data?.values)
+    })
   }, [])
   
 
   const percentage = (filledFields / totalFields) * 100;
   // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
   let color;
-  if (percentage <= 30) {
-    color = "red";
-  } else if (percentage <= 70) {
-    color = "orange";
-  } else {
-    color = "green";
-  }
+  useEffect(() => {
+    console.log('user',userDetail)
+    if (percentage <= 30) {
+      setPersonalComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: '#FF0000' // Update the color field
+      }));
+      color = "red"; 
+    } else if (percentage <= 70) {
+      setPersonalComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: '#FF9900' // Update the color field
+      }));
+      color = "#FF9900"; 
+    } else {
+      setPersonalComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: '#00A264' // Update the color field
+      }));
+      color = "green";
+    }
+  }, [percentage,color])
 
   const handleSubmit = async (e: React.FormEvent) => {
     // try {
@@ -131,7 +159,7 @@ const PersonalDetails = ({userDetail}:Props) => {
 
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
-      <CircularProgress percentage={Math.round(percentage)} color={color} />
+      {/* <CircularProgress percentage={Math.round(percentage)} color={per} /> */}
 
       <form onSubmit={handleSubmit}>
         <div className="px-2">
@@ -279,9 +307,9 @@ const PersonalDetails = ({userDetail}:Props) => {
                 required
               >
                 <option value="">Select gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
+                {genderDrop&& genderDrop?.map((gen:any,index:number)=>(
+                <option key={index} value={gen}>{gen}</option>
+              ))}
               </select>
             </div>
             <div className=" w-full">
@@ -391,9 +419,12 @@ const PersonalDetails = ({userDetail}:Props) => {
                 required
               >
                 <option value="">Select Marital Status</option>
-                <option value="male">Male</option>
+                {martialStatusDrop&& martialStatusDrop?.map((status:any,index:number)=>(
+                <option key={index} value={status}>{status}</option>
+              ))}
+                {/* <option value="male">Male</option>
                 <option value="female">Female</option>
-                <option value="other">Other</option>
+                <option value="other">Other</option> */}
               </select>
             </div>
           </div>

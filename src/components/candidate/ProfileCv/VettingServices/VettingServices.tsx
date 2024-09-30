@@ -1,5 +1,5 @@
 "use client";
-import { AddProfileData } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/ProfileCVService";
+import { AddProfileData } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
 import { useState } from "react";
 import { toast } from "react-toastify";

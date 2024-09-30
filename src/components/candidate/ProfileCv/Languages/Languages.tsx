@@ -3,45 +3,66 @@
 import Link from "next/link";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import CircularProgress from "../CircularProgress";
 
 const Languages = () => {
   // State for form fields
-  const [nextKinName, setNextKinName] = useState("");
-  const [nextKinShip, setNextKinShip] = useState("");
-  const [nextKinAddre, setNextKinAddre] = useState("");
-  const [availabilityDate, setAvailabilityDate] = useState("");
-  const [currentPosition, setCurrentPosition] = useState("");
-  const [alternatePosition, setAlternatePosition] = useState("");
-  const [preferredVesselType, setPreferredVesselType] = useState("");
-  const [alternateVesselType, setAlternateVesselType] = useState("");
-  const [available, setAvailable] = useState("");
-  const [minTimeOnBoard, setMinTimeOnBoard] = useState("");
-  const [maxTimeOnBoard, setMaxTimeOnBoard] = useState("");
-  const [minTimeOnHome, setMinTimeOnHome] = useState("");
-  const [maxTimeOnHome, setMaxTimeOnHome] = useState("");
+  const [language1, setLanguage1] = useState("");
+  const [addiLanguage, setAddiLanguage] = useState("");
+  const [languageLavel, setLanguageLavel] = useState("");
+  const [englishLavel, setEnglishLavel] = useState("");
+  const [languageTests, setLanguageTests] = useState("");
+
+  const [testCenter, setTestCenter] = useState("");
+  const [typeofTest, setTypeofTest] = useState("");
+  const [result, setResult] = useState("");
+
+
+
+  const [issuingCountry, setIssuingCountry] = useState("");
+  const [dateofTest, setDateofTest] = useState("");
+  
+ 
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
-  const [contractTypeVoyage, setContractTypeVoyage] = useState(false);
-  const [contractTypePermanent, setContractTypePermanent] = useState(false);
 
-  // Salary expectation states
-  const [voyageSalary, setVoyageSalary] = useState("");
-  const [currencyVoyage, setCurrencyVoyage] = useState("");
-  const [negotiableVoyage, setNegotiableVoyage] = useState(false);
-  const [permanentSalary, setPermanentSalary] = useState("");
-  const [currencyPermanent, setCurrencyPermanent] = useState("");
-  const [negotiablePermanent, setNegotiablePermanent] = useState(false);
-  const [tradingAreaExclusions, setTradingAreaExclusions] = useState("");
+
+
+
+
+  const totalFields =11;
+  const filledFields = [
+    language1, 
+    addiLanguage, 
+    languageLavel,
+    englishLavel,
+    languageTests,
+    testCenter,
+    typeofTest,
+    result,
+    issuingCountry,
+    dateofTest,
+    selectedFile,
+   
+  ].filter(Boolean).length;
+
+  const percentage = (filledFields / totalFields) * 100;
+
+  let color;
+  if (percentage <= 30) {
+    color = "red";
+  } else if (percentage <= 70) {
+    color = "orange";
+  } else {
+    color = "green";
+  }
 
   const handleSubmit = (e: React.FormEvent) => {
     // try {
-    e.preventDefault(); // Prevent default form submission
+    e.preventDefault(); 
   };
 
-  // const AddaddressdataDB = (result:any)=> {
-  //   console.log(result)
-
-  // }
+ 
 
   const handleFileChange = (event: any) => {
     const file = event.target.files?.[0];
@@ -52,8 +73,9 @@ const Languages = () => {
 
   return (
     <div className="container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
+          <CircularProgress percentage={Math.round(percentage)} color={color} /> 
+
       <form onSubmit={handleSubmit}>
-        {/* <div className="  text-[14px] leading-[19.07px]  text-[#333333] gap-4"> */}
           {/* NATIVE LANGUAGE*/}
           <div className="mb-3">
             <h1 className="font-bold  text-center ">NATIVE LANGUAGE</h1>
@@ -63,8 +85,8 @@ const Languages = () => {
               </label>
               <select
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                value={currentPosition}
-                onChange={(e) => setCurrentPosition(e.target.value)}
+                value={language1}
+                onChange={(e) => setLanguage1(e.target.value)}
               >
                 <option value="" disabled>
                 Language
@@ -76,7 +98,6 @@ const Languages = () => {
             </div>
           </div>
 
-          {/* Alternate Position/Rank */}
           <div className="mb-3"> <h1 className="font-bold text-center  ">ADDITIONAL LANGUAGE</h1>
           <div className="grid grid-cols-2 gap-4  "> 
           <div>
@@ -85,8 +106,8 @@ const Languages = () => {
             </label>
             <select
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              value={alternatePosition}
-              onChange={(e) => setAlternatePosition(e.target.value)}
+              value={addiLanguage}
+              onChange={(e) => setAddiLanguage(e.target.value)}
             >
               <option value="" disabled>
               Language
@@ -104,8 +125,8 @@ const Languages = () => {
             </label>
             <select
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              value={preferredVesselType}
-              onChange={(e) => setPreferredVesselType(e.target.value)}
+              value={languageLavel}
+              onChange={(e) => setLanguageLavel(e.target.value)}
             >
               <option value="" disabled>
               Level              </option>
@@ -118,7 +139,6 @@ const Languages = () => {
           
          
 
-          {/* Alternate Vessel Type */}
           <div className="mb-3"><h1 className="font-bold text-center ">ENGLISH LEVEL</h1>
           <div>
             <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
@@ -126,8 +146,8 @@ const Languages = () => {
             </label>
             <select
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              value={alternateVesselType}
-              onChange={(e) => setAlternateVesselType(e.target.value)}
+              value={englishLavel}
+              onChange={(e) => setEnglishLavel(e.target.value)}
             >
               <option value="" disabled>
               Level
@@ -146,13 +166,14 @@ const Languages = () => {
             <h1 className="text-center font-bold ">LANGUAGE TESTS</h1>
             <div className="grid grid-cols-2 gap-4">
             <div>
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+            <label htmlFor="languagetest" className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
               Language
             </label>
             <select
+            id="languagetest"
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              value={alternateVesselType}
-              onChange={(e) => setAlternateVesselType(e.target.value)}
+              value={languageTests}
+              onChange={(e) => setLanguageTests(e.target.value)}
             >
               <option value="" disabled>
               Language
@@ -166,16 +187,16 @@ const Languages = () => {
           <div className="w-full ">
               <label
                 className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1 "
-                htmlFor="cityName"
+                htmlFor="testcenter"
               >
                Test Center
               </label>
               {/* <div className="relative flex items-center  "> */}
               <input
-                id="cityName"
+                id="testceter"
                 type="text"
-                value={nextKinName}
-                onChange={(e) => setNextKinName(e.target.value)}
+                value={testCenter}
+                onChange={(e) => setTestCenter(e.target.value)}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder=""
                 required
@@ -193,8 +214,8 @@ const Languages = () => {
                 <input
                   id="cityName"
                   type="text"
-                  value={nextKinShip}
-                  onChange={(e) => setNextKinShip(e.target.value)}
+                  value={typeofTest}
+                  onChange={(e) => setTypeofTest(e.target.value)}
                   className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
@@ -204,46 +225,30 @@ const Languages = () => {
             <div className=" w-full">
               <label
                 className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
-                htmlFor="cityName"
+                htmlFor="result1"
               >
                 Result
               </label>
-              {/* <div className="relative flex items-center  "> */}
                 <input
-                  id="cityName"
+                  id="result1"
                   type="text"
-                  value={nextKinAddre}
-                  onChange={(e) => setNextKinAddre(e.target.value)}
+                  value={result}
+                  onChange={(e) => setResult(e.target.value)}
                   className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
-              {/* </div> */}
             </div>
 
-
-          <div>
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-              Date of Test
-            </label>
-            <input
-              type="date"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              value={availabilityDate}
-              onChange={(e) => setAvailabilityDate(e.target.value)}
-            />
-          </div>
-          
-
-          {/* Available */}
-          <div>
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+            <div>
+            <label htmlFor="issuingcountry" className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
               Issuing Country
             </label>
             <select
+            id="issuingcountry"
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              value={available}
-              onChange={(e) => setAvailable(e.target.value)}
+              value={issuingCountry}
+              onChange={(e) => setIssuingCountry(e.target.value)}
             >
               <option value="" disabled>
                 Issuing Country
@@ -252,6 +257,24 @@ const Languages = () => {
               <option value="No">No</option>
             </select>
           </div>
+
+
+          <div>
+            <label htmlFor="dateofTest" className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              Date of Test
+            </label>
+            <input
+            id="dateofTest"
+              type="date"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              value={dateofTest}
+              onChange={(e) => setDateofTest(e.target.value)}
+            />
+          </div>
+          
+
+          {/* Available */}
+          
           </div>
 
           </div>
@@ -277,7 +300,6 @@ const Languages = () => {
             <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">No file selected</p>
           )}
         </div>
-        {/* </div> */}
 
         <div className="flex gap-2 mb-4 mt-4">
           <button

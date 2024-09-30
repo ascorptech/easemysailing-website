@@ -14,53 +14,33 @@ const Card = () => {
   const cards: Card[] = [
     {
       id: 1,
-      logo: "/images/captain1.jpeg",
-      company: "JohanSmith",
+      logo: "/Team/arun.png",
+      company: "Arun Tiwari",
     },
     {
       id: 2,
-      logo: "/images/captain2.jpeg",
-      company: "Azah",
+      logo: "/Team/prachi.png",
+      company: "Prachi",
     },
     {
       id: 3,
-      logo: "/images/captain2.png",
-      company: "CMA CGM Group",
+      logo: "/Team/amit.jpeg",
+      company: "Amit",
     },
     {
       id: 4,
-      logo: "/images/captain4.jpeg",
-      company: "MEC",
+      logo: "/Team/archna.png",
+      company: "Archna",
     },
     {
       id: 5,
-      logo: "/images/captain5.png",
-      company: "AP Moller-Maersk",
+      logo: "/Team/satish.png",
+      company: "Satish",
     },
     {
       id: 6,
-      logo: "/images/captain6.jpeg",
-      company: "Maersk Line",
-    },
-    {
-      id: 7,
-      logo: "/images/captain7.jpeg",
-      company: "MSC",
-    },
-    {
-      id: 8,
-      logo: "/images/captain8.jpeg",
-      company: "CMA CGM Group",
-    },
-    {
-      id: 9,
-      logo: "/images/captain9.jpeg",
-      company: "MEC",
-    },
-    {
-      id: 10,
-      logo: "/images/captain11.jpeg",
-      company: "AP Moller-Maersk",
+      logo: "/Team/manish.jpg",
+      company: "Manish",
     },
   ];
 

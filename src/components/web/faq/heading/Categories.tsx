@@ -127,7 +127,7 @@ const Categories = () => {
     // },
     {
       id: 1,
-      title: "Miscellaneous",
+      title: "General Questions",
       questions: [
         {
           id: 1,

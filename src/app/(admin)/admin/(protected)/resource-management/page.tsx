@@ -381,7 +381,9 @@ const page = (props: Props) => {
                 />
                 {selectedImage && (
                   <div className=" relative mt-4 h-20 w-20 ">
-                    <img
+                    <Image
+                    width={500}
+                    height={500}
                       src={selectedImage}
                       alt="Selected"
                       className="relative h-full w-full object-cover rounded-lg border"

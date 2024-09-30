@@ -1,7 +1,28 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Image from "next/image";
+import { AddSubscribe } from "@/app/(web)/Services/homeService";
+import { toast } from "react-toastify";
 
 const Footer1 = () => {
+  const [email,setEmail]= useState('')
+
+  const handleSubmit =(e:any)=>{
+    e.preventDefault();
+    if (!email) {
+      toast.error('Email is required')
+    }else{
+      let data ={
+        email:email
+      }
+      AddSubscribe(data,(res:any)=>{
+        console.log(res)
+        toast.success('Thanks for subscribe')
+        setEmail('')
+      })
+    }
+    
+  }
   return (
     <footer className="w-full bg-white">
       {/* Newsletter Section */}
@@ -20,8 +41,10 @@ const Footer1 = () => {
               type="email"
               placeholder="Enter your Email Address"
               className="p-2 w-full border-2 border-[#00A264] rounded-3xl focus:outline-none"
+              value={email}
+              onChange={(e)=>setEmail(e.target.value)}
             />
-            <button className="w-full lg:w-44 text-sm bg-[#00A264] text-white px-6 py-2 rounded-3xl flex justify-center items-center">
+            <button type="submit" className="w-full lg:w-44 text-sm bg-[#00A264] text-white px-6 py-2 rounded-3xl flex justify-center items-center" onClick={handleSubmit}>
               Subscribe
             </button>
           </div>

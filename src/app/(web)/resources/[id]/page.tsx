@@ -9,6 +9,7 @@ import { GetResourceDetail, GetResourcesExcludeList } from "../Services/resource
 import moment from "moment";
 import Link from "next/link";
 import RotateLoader from "react-spinners/RotateLoader";
+import Heading7 from "@/components/web/resource_page/heading7/Heading7";
 
 const ResourceDetailsPage: React.FC = () => {
   const params = useParams(); // useParams hook to get route parameters
@@ -76,6 +77,8 @@ const ResourceDetailsPage: React.FC = () => {
 
   return (
     <React.Fragment>
+      <div className="flex flex-col">
+      <Heading7 />
       {isLoading ? (<div className="h-[500px] w-full mt-[100px] justify-center flex items-center">
         <RotateLoader
           color={'#00A264'}
@@ -85,7 +88,7 @@ const ResourceDetailsPage: React.FC = () => {
       </div>) :
         (<div className="flex sm:flex-row flex-col sm:justify-around sm:mx-14 sm:my-11 sm:mt-[100px]">
           <div className=" sm:float-left sm:w-[70%] w-full sm:px-10 px-2">
-            <div className="sm:mr-5 w-full sm:w-[787px] h-[417px] border2 border-blue-600">
+            <div className="w-full">
               <Image
                 src={resourceDetail?.imageUrl ? `data:image/png;image/jpg;image/jpeg;base64,${resourceDetail?.imageUrl}` : "/images/captain4.jpeg"}
                 alt="image not found"
@@ -203,6 +206,7 @@ const ResourceDetailsPage: React.FC = () => {
             </div>
           </div>
         </div>)}
+        </div>
     </React.Fragment>
   );
 };

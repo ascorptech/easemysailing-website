@@ -70,7 +70,7 @@ const PodcastList = () => {
       />
     </div>):( 
     <div>
-      <div className="lg:h-[500px] h-[220px] border-2 rounded-lg mb-8 " onClick={() => openModal(selected)}>
+      <div className="lg:h-[500px] h-[220px] border-2 rounded-lg mb-8 cursor-pointer" onClick={() => openModal(selected)}>
         {/* <iframe
           width="100%"
           height="100%"
@@ -92,7 +92,7 @@ const PodcastList = () => {
 
       <div className="grid lg:grid-cols-3 lg:gap-5 lg:py-4 grid-cols-1 gap-5 lg:mt-5 mt-3 sm:grid-cols-2">
         {currentItems?.map((item: any, index: any) => (
-         <div key={index} className="flex flex-col shadow-md w-full border-2 rounded-lg mb-8"
+         <div key={index} className="flex flex-col shadow-md w-full border-2 rounded-lg mb-8 cursor-pointer"
          onClick={() => openModal(item)}
          >
           <Image

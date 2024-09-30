@@ -33,6 +33,8 @@ const SignIn = ({ route }: Props) => {
   const [isCongratulationsOpen, setIsCongratulationsOpen] = useState(false);
   const [isResetPasswordOpne, setIsResetpasswordOpen] = useState(false);
   const [isPasswordChange, setIsPasswordChangeOpen] = useState(false);
+  const [termsAccepted, setTermsAccepted] = useState(false);
+
 
   const openForgotPassword = () => {
     setIsForgotPasswordOpen(true);
@@ -90,6 +92,10 @@ const SignIn = ({ route }: Props) => {
     // console.log({ emailOrPhone, password });
     try {
       e.preventDefault();
+      // if (!termsAccepted) {
+      //   toast.error("You must accept the terms and conditions");
+      //   return;
+      // }
 
       let data = {
         email: emailOrPhone,
@@ -97,43 +103,49 @@ const SignIn = ({ route }: Props) => {
       };
       setIsLoading(true)
       const response = await LoginData(data);
-      if (response?.data) {
-        const token = response?.data?.token;
-        const user = response?.data?.user;
-        if (route == 'candidate') {
-
-          document.cookie = `token=${response?.data?.token}; path=/candidate`;
-          localStorage.setItem("token", token);
-          localStorage.setItem("id", user?.id);
-          localStorage.setItem("firstName", user?.firstName);
-          localStorage.setItem("lastName", user?.lastName);
-          localStorage.setItem("email", user?.email);
+      if (response?.status==200) {
+        if (response?.data) {
+          const token = response?.data?.token;
+          const user = response?.data?.user;
+          if (route == 'candidate') {
   
-          toast.success('Login successfull')
-          if (token) {
-            router.push("/candidate/dashboard");
-            setIsLoading(false)
-          }
-
-        }
-        if ( route == 'recruiter'){
-          document.cookie = `token=${response?.data?.token}; path=/recruiter`;
-          localStorage.setItem("token", token);
-          localStorage.setItem("id", user?.id);
-          localStorage.setItem("firstName", user?.firstName);
-          localStorage.setItem("lastName", user?.lastName);
-          localStorage.setItem("email", user?.email);
+            document.cookie = `token=${response?.data?.token}; path=/candidate`;
+            localStorage.setItem("token", token);
+            localStorage.setItem("id", user?.id);
+            localStorage.setItem("firstName", user?.firstName);
+            localStorage.setItem("lastName", user?.lastName);
+            localStorage.setItem("email", user?.email);
+    
+            toast.success('Login successfull')
+            if (token) {
+              router.push("/candidate/profilecv");
+              setIsLoading(false)
+            }
   
-          toast.success('Login successfull')
-          if (token) {
-            router.push("/recruiter/dashboard");
-            setIsLoading(false)
           }
-
+          if ( route == 'recruiter'){
+            document.cookie = `token=${response?.data?.token}; path=/recruiter`;
+            localStorage.setItem("token", token);
+            localStorage.setItem("id", user?.id);
+            localStorage.setItem("firstName", user?.firstName);
+            localStorage.setItem("lastName", user?.lastName);
+            localStorage.setItem("email", user?.email);
+    
+            toast.success('Login successfull')
+            if (token) {
+              router.push("/recruiter/dashboard");
+              setIsLoading(false)
+            }
+  
+          }
+         
+  
         }
-       
-
+      } else {
+        setIsLoading(false)
+        toast.error("Invalid email or password");
       }
+     
     } catch (error) {
       console.log("err", error);
     }
@@ -155,7 +167,7 @@ const SignIn = ({ route }: Props) => {
               Enter your credential to access your account.
             </p>
             <form
-              onSubmit={handleSubmit}
+              // onSubmit={handleSubmit}
               className="w-[70%]"
             >
               <div className="mb-2">
@@ -171,7 +183,7 @@ const SignIn = ({ route }: Props) => {
                     type="text"
                     value={emailOrPhone}
                     onChange={(e) => setEmailOrPhone(e.target.value)}
-                    className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline font-[opensans]"
+                    className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline"
                     placeholder="Email/Phone"
                     required
                   />
@@ -194,7 +206,7 @@ const SignIn = ({ route }: Props) => {
                     type={showPassword ? "text" : "password"}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline font-[opensans]"
+                    className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline"
                     placeholder="Password"
                     required
                   />
@@ -217,6 +229,8 @@ const SignIn = ({ route }: Props) => {
                     id="rememberMe"
                     type="checkbox"
                     className="w-4 h-4 text-[#00A264] border-[#333333] rounded focus:ring-[#00A264]"
+                    checked={termsAccepted}
+                    onChange={() => setTermsAccepted(!termsAccepted)}
                   />
                   <label
                     htmlFor="rememberMe"

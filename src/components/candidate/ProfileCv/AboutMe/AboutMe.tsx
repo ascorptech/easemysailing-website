@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { useState } from "react";
+import CircularProgress from "../CircularProgress";
 
 const AboutMe = () => {
     const [personality, setPersonality] = useState("");
@@ -10,6 +11,28 @@ const AboutMe = () => {
     const [criminal, setCriminal] = useState("");
     const [nationality, setNationality] = useState("");
 
+    const totalFields = 4;
+  const filledFields = [
+    personality, 
+    additional,
+    myFuture,
+    criminal,
+   
+  ].filter(Boolean).length;
+
+  // const totalFields = available === "Yes" ? 6 : 5;
+
+  const percentage = (filledFields / totalFields) * 100;
+  // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
+  let color;
+  if (percentage <= 30) {
+    color = "red";
+  } else if (percentage <= 70) {
+    color = "orange";
+  } else {
+    color = "green";
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     
     e.preventDefault(); 
@@ -17,6 +40,8 @@ const AboutMe = () => {
 
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
+          <CircularProgress percentage={Math.round(percentage)} color={color} /> 
+
       <form onSubmit={handleSubmit}>
         {/* next of About me */}
 

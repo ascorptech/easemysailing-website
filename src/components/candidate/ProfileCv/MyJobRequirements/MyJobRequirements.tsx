@@ -1,90 +1,139 @@
 "use client";
-import { AddProfileData } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/ProfileCVService";
+import { AddProfileData, GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import CircularProgress from "../CircularProgress";
 
-const MyJobRequirements = () => {
-  // State for form fields
+type MjrComplete = {
+  percentage: number;
+  color: string;
+};
+
+type Props = {
+  mjrComplete: MjrComplete; // mjrComplete is an object with percentage and color
+  setMjrComplete: React.Dispatch<React.SetStateAction<MjrComplete>>; // setMjrComplete is a function to update mjrComplete
+  userDetail:any
+};
+
+const MyJobRequirements = ({mjrComplete,setMjrComplete,userDetail}:Props) => {
+  const [rankDrop,setRankDrop]=useState<any>([])
   const [availabilityDate, setAvailabilityDate] = useState("");
   const [currentPosition, setCurrentPosition] = useState("");
   const [alternatePosition, setAlternatePosition] = useState("");
   const [preferredVesselType, setPreferredVesselType] = useState("");
   const [alternateVesselType, setAlternateVesselType] = useState("");
   const [available, setAvailable] = useState("");
-  const [minTimeOnBoard, setMinTimeOnBoard] = useState("");
-  const [maxTimeOnBoard, setMaxTimeOnBoard] = useState("");
-  const [minTimeOnHome, setMinTimeOnHome] = useState("");
-  const [maxTimeOnHome, setMaxTimeOnHome] = useState("");
+ 
 
-  const [contractTypeVoyage, setContractTypeVoyage] = useState(false);
-  const [contractTypePermanent, setContractTypePermanent] = useState(false);
 
-  // Salary expectation states
-  const [voyageSalary, setVoyageSalary] = useState("");
-  const [currencyVoyage, setCurrencyVoyage] = useState("");
-  const [negotiableVoyage, setNegotiableVoyage] = useState(false);
-  const [permanentSalary, setPermanentSalary] = useState("");
-  const [currencyPermanent, setCurrencyPermanent] = useState("");
-  const [negotiablePermanent, setNegotiablePermanent] = useState(false);
-  const [tradingAreaExclusions, setTradingAreaExclusions] = useState("");
+ 
+  const filledFields = [
+    currentPosition,
+    alternatePosition,
+    preferredVesselType,
+    alternateVesselType,
+    available,
+    availabilityDate,
+  ].filter(Boolean).length; 
 
-  const handleSubmit =  (e: React.FormEvent) => {
-    // try {
-      e.preventDefault(); // Prevent default form submission
+  const totalFields = available === "Yes" ? 6 : 5; 
 
-      let formData = {
-        availabilityDate,
-        currentPosition,
-        alternatePosition,
-        preferredVesselType,
-        alternateVesselType,
-        available,
-        minTimeOnBoard,
-        maxTimeOnBoard,
-        minTimeOnHome,
-        contractTypeVoyage,
-        contractTypePermanent,
-        voyageSalary,
-        currencyVoyage,
-        negotiableVoyage,
-        permanentSalary,
-        currencyPermanent,
-        negotiablePermanent,
-        tradingAreaExclusions,
 
-        // id: 0,
-        // userId: 0,
-        // firstName: "abht",
-        // lastName: "string",
-        // email: "string",
-        // phoneNumber: "string",
-        // country: "string",
-        // rank: "string",
-        // shipType: "string",
-        // profilePhotoUrl: "string",
-      };
-      console.log(formData);
-      AddProfileData(formData, AddaddressdataDB)
-    };
-
-    const AddaddressdataDB = (result:any)=> {
-      console.log(result)
-      if(result?.status == 200){
-        toast.success("address submited successfully")
-      }else {
-    
-        toast.error('address not submited ')
-      }
+  const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
+  let color;
+  // setMjrComplete({...mjrComplete,percentage:percentage})
+  useEffect(() => {
+    console.log('user',userDetail)
+    if (percentage <= 30) {
+      setMjrComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: '#FF0000' // Update the color field
+      }));
+      color = "red"; 
+    } else if (percentage <= 70) {
+      setMjrComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: '#FF9900' // Update the color field
+      }));
+      color = "#FF9900"; 
+    } else {
+      setMjrComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: '#00A264' // Update the color field
+      }));
+      color = "green";
     }
+  }, [percentage,color])
 
-     
+  useEffect(() => {
+    GetDropdownDetails('rank',(res:any)=>{
+      setRankDrop(res?.data?.values)
+    })
+  }, [])
+  
+  
+  
+
+  const handleSubmit = (e: React.FormEvent) => {
+    // try {
+    e.preventDefault(); 
+
+    if (
+      !currentPosition ||
+      !alternatePosition ||
+      !preferredVesselType ||
+      !alternateVesselType ||
+      !available
+    ) {
+      toast.error("Please fill in all required fields.");
+      return;
+    }
+    // let formData = new FormData()
+    // formData.append('userId', userDetail?.userId)
+    // formData.append('currentPosition', currentPosition)
+    // formData.append('alternatePosition', alternatePosition)
+    // formData.append('preferredVesselType', preferredVesselType)
+    // formData.append('alternateVesselType', alternateVesselType)
+    // availabilityDate&&formData.append('availabilityDate', availabilityDate)
+    // formData.append('notAvailable', available=='Yes'?'true':'false')
+    let formData = {
+      userId:userDetail?.userId,
+      availabilityDate:availabilityDate?availabilityDate:'',
+      currentPosition:currentPosition,
+      alternatePosition:alternatePosition,
+      preferredVesselType:preferredVesselType,
+      alternateVesselType:alternateVesselType,
+      available:available=='Yes'?'true':'false',
+    };
+    console.log(formData);
+    AddProfileData(formData, AddaddressdataDB);
+  };
+
+  const AddaddressdataDB = (result: any) => {
+    console.log(result);
+    if (result?.status == 200) {
+      toast.success("Job requirements submited successfully");
+    } else {
+      toast.error("Job requirements not submited ");
+    }
+  };
+
+  const handleEdit = () => {
+    toast.info("You are now in edit mode. Make your changes.");
+  };
 
   return (
     <div className="container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
+        {/* <MyJob percentage={percentage} color="#FF9900" /> */}
+       {/* <CircularProgress percentage={percentage} /> */}
+       {/* <CircularProgress percentage={Math.round(percentage)} />  */}
+       {/* <CircularProgress percentage={Math.round(percentage)} color={color} />  */}
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-2  gap-4">
-          {/* Current Position/Rank */}
           <div>
             <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
               Current Position/Rank
@@ -97,13 +146,15 @@ const MyJobRequirements = () => {
               <option value="" disabled>
                 Current Position/Rank
               </option>
-              <option value="Captain">Captain</option>
+              {rankDrop&& rankDrop?.map((rank:any,index:number)=>(
+                <option key={index} value={rank}>{rank}</option>
+              ))}
+              {/* <option value="Captain">Captain</option>
               <option value="Captain2">Captain2</option>
-              <option value="Training3">Training3</option>
+              <option value="Training3">Training3</option> */}
             </select>
           </div>
 
-          {/* Alternate Position/Rank */}
           <div>
             <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
               Alternate Position/Rank
@@ -116,13 +167,12 @@ const MyJobRequirements = () => {
               <option value="" disabled>
                 Alternate Position/Rank
               </option>
-              <option value="Chemical Tanker1">Chemical Tanker1</option>
-              <option value="Chemical Tanker2">Chemical Tanker2</option>
-              <option value="Chemical Tanker3">Chemical Tanker3</option>
+              {rankDrop&& rankDrop?.map((rank:any,index:number)=>(
+                <option key={index} value={rank}>{rank}</option>
+              ))}
             </select>
           </div>
 
-          {/* Preferred Vessel Type */}
           <div>
             <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
               Preferred Vessel Type
@@ -135,13 +185,12 @@ const MyJobRequirements = () => {
               <option value="" disabled>
                 Preferred Vessel Type
               </option>
-              <option value="Training1">Training1</option>
-              <option value="Training2">Training2</option>
-              <option value="Training3">Training3</option>
+              {rankDrop&& rankDrop?.map((rank:any,index:number)=>(
+                <option key={index} value={rank}>{rank}</option>
+              ))}
             </select>
           </div>
 
-          {/* Alternate Vessel Type */}
           <div>
             <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
               Alternate Vessel Type
@@ -154,46 +203,48 @@ const MyJobRequirements = () => {
               <option value="" disabled>
                 Alternate Vessel Type
               </option>
-              <option value="Training1">Training1</option>
-              <option value="Training2">Training2</option>
-              <option value="Training3">Training3</option>
+              {rankDrop&& rankDrop?.map((rank:any,index:number)=>(
+                <option key={index} value={rank}>{rank}</option>
+              ))}
             </select>
           </div>
 
           <div>
             <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-            Availability
+              Availability
             </label>
             <select
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={available}
-              onChange={(e) => setAvailable(e.target.value)}
+              // onChange={(e) => setAvailable(e.target.value)}
+              onChange={(e) => {
+                setAvailable(e.target.value);
+                if (e.target.value === "No") {
+                  setAvailabilityDate(""); // Clear availability date if "No" is selected
+                }
+              }}
             >
               <option value="" disabled>
-              Availability
+                Availability
               </option>
               <option value="Yes">Yes</option>
               <option value="No">No</option>
             </select>
           </div>
-          {/* Availability Date */}
-          <div>
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-              Availability Date
-            </label>
-            <input
-              type="date"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              value={availabilityDate}
-              onChange={(e) => setAvailabilityDate(e.target.value)}
-            />
-          </div>
-
-          
-          
+          {available === "Yes" && (
+            <div>
+              <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+                Availability Date
+              </label>
+              <input
+                type="date"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                value={availabilityDate}
+                onChange={(e) => setAvailabilityDate(e.target.value)}
+              />
+            </div>
+          )}
         </div>
-
-       
 
         <div className="flex gap-2 mb-4 mt-4">
           <button
@@ -204,6 +255,7 @@ const MyJobRequirements = () => {
           </button>
           <button
             type="submit"
+            onClick={handleEdit}
             className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
           >
             Edit
@@ -215,4 +267,3 @@ const MyJobRequirements = () => {
 };
 
 export default MyJobRequirements;
-

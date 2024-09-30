@@ -51,7 +51,7 @@ const MyJobRequirements = ({mjrComplete,setMjrComplete,userDetail}:Props) => {
         percentage: percentage, // Update the percentage field
         color: '#FF0000' // Update the color field
       }));
-      color = "red"; 
+      color = "#FF0000"; 
     } else if (percentage <= 70) {
       setMjrComplete((prevState) => ({
         ...prevState, // Spread the previous state to keep any other properties

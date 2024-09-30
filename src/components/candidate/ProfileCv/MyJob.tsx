@@ -777,11 +777,11 @@ const MyJob = () => {
 
           <div
             className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2  border-r-8 border-[${personalComplete?.color}]`}
-            onClick={hendletoggle}
+           
           >
             <h2 className="">Personal Details</h2>
             <div className="flex items-center justify-center gap-1">
-              <span className="ml-2 cursor-pointer">
+              <span className="ml-2 cursor-pointer"  onClick={hendletoggle}>
                 {pDOpen ? (
                   <svg
                     className="w-6 h-6 transform rotate-180 transition-transform"

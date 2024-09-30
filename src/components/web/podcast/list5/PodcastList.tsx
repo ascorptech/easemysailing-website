@@ -25,7 +25,7 @@ const PodcastList = () => {
   };
 
   const totalPages = Math.ceil(podcasts?.length / itemsPerPage);
-  const currentItems = podcasts.toReversed()?.slice(
+  const currentItems = podcasts?.toReversed()?.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );

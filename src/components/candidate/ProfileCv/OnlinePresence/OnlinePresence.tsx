@@ -3,6 +3,7 @@ import { AddProfileData } from "@/app/(candidate)/candidate/(auth)/(dashboard)/p
 import Link from "next/link";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import CircularProgress from "../CircularProgress";
 
 const OnlinePresence = () => {
   // State for form fields
@@ -17,6 +18,34 @@ const OnlinePresence = () => {
   const [instagram, setInstagram] = useState(false);
   const [other, setOther] = useState(false);
 
+  const totalFields = 9;
+  const filledFields = [
+    whatsApp,
+    weChat,
+    facebookMess,
+    telegram,
+    skypeId,
+    linkedIn,
+    facebook,
+    instagram,
+    other
+    
+  ].filter(Boolean).length;
+
+  // const totalFields = available === "Yes" ? 6 : 5;
+
+  const percentage = (filledFields / totalFields) * 100;
+  // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
+  let color;
+  if (percentage <= 30) {
+    color = "red";
+  } else if (percentage <= 70) {
+    color = "orange";
+  } else {
+    color = "green";
+  }
+
+
   const handleSubmit = (e: React.FormEvent) => {
     // try {
     e.preventDefault(); // Prevent default form submission
@@ -26,6 +55,8 @@ const OnlinePresence = () => {
 
   return (
     <div className="container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
+            <CircularProgress percentage={Math.round(percentage)} color={color} />
+
       <form onSubmit={handleSubmit}>
         {/* <div className="  "> */}
         <div className="my-5 ">

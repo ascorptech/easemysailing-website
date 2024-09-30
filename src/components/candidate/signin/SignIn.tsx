@@ -167,7 +167,7 @@ const SignIn = ({ route }: Props) => {
               Enter your credential to access your account.
             </p>
             <form
-              // onSubmit={handleSubmit}
+              onSubmit={handleSubmit}
               className="w-[70%]"
             >
               <div className="mb-2">

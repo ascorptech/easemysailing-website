@@ -203,7 +203,7 @@ const handlePhoneChange = (value: string, country: any) => {
               Enter your credential to access your account.
             </p>
             <form
-              // onSubmit={handleSubmit}
+               onSubmit={handleSubmit}
               className="w-[70%]"
             >
               <div className="mb-1 mt-2 flex flex-wrap w-full lg:flex-nowrap lg:space-x-2">
@@ -221,7 +221,7 @@ const handlePhoneChange = (value: string, country: any) => {
                       type="text"
                       value={firstName}
                       onChange={(e) => setFirstName(e.target.value.trim())}
-                      className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline font-[opensans]"
+                      className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline "
                       placeholder="Enter First Name"
                       required
                     />

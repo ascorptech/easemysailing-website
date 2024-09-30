@@ -5,55 +5,59 @@ import React, { useEffect, useState } from 'react'
 import { FaEdit, FaEye, FaTrash } from "react-icons/fa";
 import { toast } from 'react-toastify';
 import { DeleteEmailData, GetEmailsList } from './Services/emailService';
+import RotateLoader from 'react-spinners/RotateLoader';
 
 type Props = {}
 
 const page = (props: Props) => {
-    const [isPopupDeleteOpen, setIsPopupDeleteOpen] = useState(false);
-    const [emailsList,setEmailsList] = useState<any>([])
-    const [emailDetail, setEmailDetail] = useState<any>({})
-    const [currentPage, setCurrentPage] = useState(1);
-    const resourcesPerPage = 5;
+  const [isPopupDeleteOpen, setIsPopupDeleteOpen] = useState(false);
+  const [emailsList, setEmailsList] = useState<any>([])
+  const [emailDetail, setEmailDetail] = useState<any>({})
+  const [currentPage, setCurrentPage] = useState(1);
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const resourcesPerPage = 5;
 
-    // Pagination start
-// Pagination: Calculate current page resources
-const indexOfLastResource = currentPage * resourcesPerPage;
-const indexOfFirstResource = indexOfLastResource - resourcesPerPage;
-const currentEmails = emailsList.slice(indexOfFirstResource, indexOfLastResource);
+  // Pagination start
+  // Pagination: Calculate current page resources
+  const indexOfLastResource = currentPage * resourcesPerPage;
+  const indexOfFirstResource = indexOfLastResource - resourcesPerPage;
+  const currentEmails = emailsList.slice(indexOfFirstResource, indexOfLastResource);
 
-const nextPage = () => {
- if (currentPage < Math.ceil(emailsList.length / resourcesPerPage)) {
-   setCurrentPage(currentPage + 1);
- }
-};
+  const nextPage = () => {
+    if (currentPage < Math.ceil(emailsList.length / resourcesPerPage)) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
 
-const previousPage = () => {
- if (currentPage > 1) {
-   setCurrentPage(currentPage - 1);
- }
-};
+  const previousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
 
-    useEffect(() => {
-        GetEmailsList(fetchResources)
-      }, [])
-    
-      const fetchResources=(result:any)=>{
-        setEmailsList(result.data);
-      }
+  useEffect(() => {
+    setIsLoading(true)
+    GetEmailsList(fetchResources)
+  }, [])
 
-    const handleDelete = (id:any)=>{
-        DeleteEmailData(id, DeletePodcastCB)
-      }
-    
-      const DeletePodcastCB=(result:any)=>{
-        if (result?.status == 204) {
-            GetEmailsList(fetchResources)
-          toast.success('Email deleted successfully')
-        } else {
-          toast.error('Email not deleted')
-        }
-        setIsPopupDeleteOpen(false);
-      }
+  const fetchResources = (result: any) => {
+    setEmailsList(result.data);
+    setIsLoading(false)
+  }
+
+  const handleDelete = (id: any) => {
+    DeleteEmailData(id, DeletePodcastCB)
+  }
+
+  const DeletePodcastCB = (result: any) => {
+    if (result?.status == 204) {
+      GetEmailsList(fetchResources)
+      toast.success('Email deleted successfully')
+    } else {
+      toast.error('Email not deleted')
+    }
+    setIsPopupDeleteOpen(false);
+  }
   return (
     <div className="mt-4 mx-auto flex w-[90%] flex-col">
       {/* <div className=" flex justify-end ">
@@ -66,7 +70,13 @@ const previousPage = () => {
         </Link>
       </div> */}
       {/* Table */}
-      <div className="overflow-x-auto w-full mt-2">
+      {isLoading ? (<div className="h-[500px] w-full mt-[100px] justify-center flex items-center">
+        <RotateLoader
+          color={'#00A264'}
+          loading={isLoading}
+          size={10}
+        />
+      </div>) : (<div className="overflow-x-auto w-full mt-2">
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
           <div className="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
             {/* <div>
@@ -161,16 +171,16 @@ const previousPage = () => {
                     {item?.email}
                   </th>
                   <td className="p-2">
-                  {item?.mobileNumber}
+                    {item?.mobileNumber}
                   </td>
                   <td className="p-2">
-                  {item?.message}
+                    {item?.message}
                   </td>
                   <td className="p-2">
-                  {item?.createdDate?moment(item?.createdDate).format('YYYY-MM-DD'):''}
+                    {item?.createdDate ? moment(item?.createdDate).format('YYYY-MM-DD') : ''}
                   </td>
                   <td className="p-2 flex justify-center items-center gap-2">
-                  {/* <Link href={`#`} className="font-medium text-blue-600 dark:text-blue-500 hover:underline" onClick={() => { setIsPopupViewOpen(true); setResourceDetail(item); }}><FaEye /></Link>
+                    {/* <Link href={`#`} className="font-medium text-blue-600 dark:text-blue-500 hover:underline" onClick={() => { setIsPopupViewOpen(true); setResourceDetail(item); }}><FaEye /></Link>
                     <Link href={`#`} className="font-medium text-green-600 dark:text-green-500 hover:underline" onClick={() => { setIsPopupEditOpen(true); setResourceDetail(item); }}><FaEdit /></Link> */}
                     <Link href={`#`} className="font-medium text-red-600 dark:text-red-500 hover:underline" onClick={() => { setIsPopupDeleteOpen(true); setEmailDetail(item); }}><FaTrash /></Link>
                   </td>
@@ -182,7 +192,7 @@ const previousPage = () => {
             </tbody>
           </table>
         </div>
-      </div>
+      </div>)}
 
       {/* Popup Form */}
       {/* {isPopupViewOpen && (
@@ -291,7 +301,7 @@ const previousPage = () => {
                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
               </svg>
               <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this email?</h3>
-              <button data-modal-hide="popup-modal" type="button" className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center" onClick={()=>handleDelete(emailDetail?.id)}>
+              <button data-modal-hide="popup-modal" type="button" className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center" onClick={() => handleDelete(emailDetail?.id)}>
                 Yes, I'm sure
               </button>
               <button data-modal-hide="popup-modal" type="button" className="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" onClick={() => setIsPopupDeleteOpen(false)}>No, cancel</button>

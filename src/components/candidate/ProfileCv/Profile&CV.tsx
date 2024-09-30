@@ -7,6 +7,7 @@ import { RiArrowDownSLine } from "react-icons/ri";
 import { X } from "lucide-react";
 import { FaStar } from "react-icons/fa";
 import { GetProfileDetail } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import { toast } from "react-toastify";
 
 const ProfileCV = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,12 +20,7 @@ const ProfileCV = () => {
     attitude: 0,
     acceptability: 0,
   });
-const [profileDetail,setProfileDetail] = useState<any>(
-  {
-    name:'',
-    email:''
-  }
-)
+const [profileDetail,setProfileDetail] = useState<any>()
   const [date, setDate] = useState("");
   const [feedback, setFeedback] = useState("");
 
@@ -36,7 +32,13 @@ const [profileDetail,setProfileDetail] = useState<any>(
     let id = await localStorage.getItem('id')
     setProfileDetail({name:localStorage.getItem('firstName')+' '+localStorage.getItem('lastName'),email:localStorage.getItem('email')})
     GetProfileDetail(id,(res:any)=>{
-      console.log('data here',res)
+      if (res?.status==200) {
+        setProfileDetail(res?.data)
+      }else{
+        toast.error('No data found')
+      }
+      console.log('data here iam',res)
+
     })
   }
   
@@ -91,10 +93,10 @@ const [profileDetail,setProfileDetail] = useState<any>(
           </div>
           <div className="flex flex-col gap-[6px]">
             <h1 className="font-semibold text-[24px] leading-[36px]">
-              {profileDetail?.name}
+              {profileDetail?.firstName +' '+ profileDetail?.lastName}
             </h1>
             <p className="text-[#00A264] font-medium text-[16px] leading-[24px]">
-              Captain
+              {profileDetail?.rank}
             </p>
             <div className="flex items-center gap-2">
               <Image
@@ -108,7 +110,7 @@ const [profileDetail,setProfileDetail] = useState<any>(
               <p className="font-semibold text-[15px] leading-[21px]">
                 About :
                 <span className="font-normal ml-1 text-[15px] leading-[21px]">
-                  Lorem Ipsum is simply dummy text of
+                  {profileDetail?.aboutMe}
                 </span>
               </p>
             </div>

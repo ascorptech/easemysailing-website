@@ -1,12 +1,23 @@
 "use client";
-import { AddProfileData } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/ProfileCVService";
+import { AddProfileData, GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import CircularProgress from "../CircularProgress";
 
-const MyJobRequirements = () => {
-  
+type MjrComplete = {
+  percentage: number;
+  color: string;
+};
+
+type Props = {
+  mjrComplete: MjrComplete; // mjrComplete is an object with percentage and color
+  setMjrComplete: React.Dispatch<React.SetStateAction<MjrComplete>>; // setMjrComplete is a function to update mjrComplete
+  userDetail:any
+};
+
+const MyJobRequirements = ({mjrComplete,setMjrComplete,userDetail}:Props) => {
+  const [rankDrop,setRankDrop]=useState<any>([])
   const [availabilityDate, setAvailabilityDate] = useState("");
   const [currentPosition, setCurrentPosition] = useState("");
   const [alternatePosition, setAlternatePosition] = useState("");
@@ -31,20 +42,47 @@ const MyJobRequirements = () => {
 
   const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
   let color;
-  if (percentage <= 30) {
-    color = "red"; 
-  } else if (percentage <= 70) {
-    color = "orange"; 
-  } else {
-    color = "green";
-  }
+  // setMjrComplete({...mjrComplete,percentage:percentage})
+  useEffect(() => {
+    console.log('user',userDetail)
+    if (percentage <= 30) {
+      setMjrComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: '#FF0000' // Update the color field
+      }));
+      color = "red"; 
+    } else if (percentage <= 70) {
+      setMjrComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: '#FF9900' // Update the color field
+      }));
+      color = "#FF9900"; 
+    } else {
+      setMjrComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: '#00A264' // Update the color field
+      }));
+      color = "green";
+    }
+  }, [percentage,color])
+
+  useEffect(() => {
+    GetDropdownDetails('rank',(res:any)=>{
+      setRankDrop(res?.data?.values)
+    })
+  }, [])
+  
+  
+  
 
   const handleSubmit = (e: React.FormEvent) => {
     // try {
     e.preventDefault(); 
 
     if (
-      !availabilityDate ||
       !currentPosition ||
       !alternatePosition ||
       !preferredVesselType ||
@@ -54,14 +92,22 @@ const MyJobRequirements = () => {
       toast.error("Please fill in all required fields.");
       return;
     }
-
+    // let formData = new FormData()
+    // formData.append('userId', userDetail?.userId)
+    // formData.append('currentPosition', currentPosition)
+    // formData.append('alternatePosition', alternatePosition)
+    // formData.append('preferredVesselType', preferredVesselType)
+    // formData.append('alternateVesselType', alternateVesselType)
+    // availabilityDate&&formData.append('availabilityDate', availabilityDate)
+    // formData.append('notAvailable', available=='Yes'?'true':'false')
     let formData = {
-      availabilityDate,
-      currentPosition,
-      alternatePosition,
-      preferredVesselType,
-      alternateVesselType,
-      available,
+      userId:userDetail?.userId,
+      availabilityDate:availabilityDate?availabilityDate:'',
+      currentPosition:currentPosition,
+      alternatePosition:alternatePosition,
+      preferredVesselType:preferredVesselType,
+      alternateVesselType:alternateVesselType,
+      available:available=='Yes'?'true':'false',
     };
     console.log(formData);
     AddProfileData(formData, AddaddressdataDB);
@@ -70,9 +116,9 @@ const MyJobRequirements = () => {
   const AddaddressdataDB = (result: any) => {
     console.log(result);
     if (result?.status == 200) {
-      toast.success("address submited successfully");
+      toast.success("Job requirements submited successfully");
     } else {
-      toast.error("address not submited ");
+      toast.error("Job requirements not submited ");
     }
   };
 
@@ -85,7 +131,7 @@ const MyJobRequirements = () => {
         {/* <MyJob percentage={percentage} color="#FF9900" /> */}
        {/* <CircularProgress percentage={percentage} /> */}
        {/* <CircularProgress percentage={Math.round(percentage)} />  */}
-       <CircularProgress percentage={Math.round(percentage)} color={color} /> 
+       {/* <CircularProgress percentage={Math.round(percentage)} color={color} />  */}
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-2  gap-4">
           <div>
@@ -100,9 +146,12 @@ const MyJobRequirements = () => {
               <option value="" disabled>
                 Current Position/Rank
               </option>
-              <option value="Captain">Captain</option>
+              {rankDrop&& rankDrop?.map((rank:any,index:number)=>(
+                <option key={index} value={rank}>{rank}</option>
+              ))}
+              {/* <option value="Captain">Captain</option>
               <option value="Captain2">Captain2</option>
-              <option value="Training3">Training3</option>
+              <option value="Training3">Training3</option> */}
             </select>
           </div>
 
@@ -118,9 +167,9 @@ const MyJobRequirements = () => {
               <option value="" disabled>
                 Alternate Position/Rank
               </option>
-              <option value="Chemical Tanker1">Chemical Tanker1</option>
-              <option value="Chemical Tanker2">Chemical Tanker2</option>
-              <option value="Chemical Tanker3">Chemical Tanker3</option>
+              {rankDrop&& rankDrop?.map((rank:any,index:number)=>(
+                <option key={index} value={rank}>{rank}</option>
+              ))}
             </select>
           </div>
 
@@ -136,9 +185,9 @@ const MyJobRequirements = () => {
               <option value="" disabled>
                 Preferred Vessel Type
               </option>
-              <option value="Training1">Training1</option>
-              <option value="Training2">Training2</option>
-              <option value="Training3">Training3</option>
+              {rankDrop&& rankDrop?.map((rank:any,index:number)=>(
+                <option key={index} value={rank}>{rank}</option>
+              ))}
             </select>
           </div>
 
@@ -154,9 +203,9 @@ const MyJobRequirements = () => {
               <option value="" disabled>
                 Alternate Vessel Type
               </option>
-              <option value="Training1">Training1</option>
-              <option value="Training2">Training2</option>
-              <option value="Training3">Training3</option>
+              {rankDrop&& rankDrop?.map((rank:any,index:number)=>(
+                <option key={index} value={rank}>{rank}</option>
+              ))}
             </select>
           </div>
 

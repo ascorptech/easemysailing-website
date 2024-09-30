@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import CircularProgress from "./CircularProgress";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MyJobRequirements from "./MyJobRequirements/MyJobRequirements";
 import PersonalDetails from "./PersonalDetalis/PersonalDetalis";
 import Refrences from "./Refrences/Refrences";
@@ -24,11 +24,13 @@ import Education from "./Education/Education";
 import AcademicDetails from "./AcademicDetails/AcademicDetails";
 import ProfessionalSkills from "./ProfessionalSkills/ProfessionalSkills";
 import VettingServices from "./VettingServices/VettingServices";
+import { GetProfileDetail } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import { toast } from "react-toastify";
 
 
 
 const MyJob = () => {
-
+  const [profileDetail,setProfileDetail] = useState<any>()
 
   const [isOpen, setIsOpen] = useState(false); // State to toggle
   const [pDOpen, setPDOpen] = useState(false);
@@ -36,7 +38,18 @@ const MyJob = () => {
   const [oPOpen, setOPOpen] = useState(false);
   const [licensesOpen, setLicensesOpen] = useState(false);
   const [academicOpen, setAcademicOpen] = useState(false);
-
+  const [mjrComplete, setMjrComplete] = useState<any>(
+    {
+      percentage: 0,
+      color: '#FF0000'
+    }
+  )
+  const [personalComplete, setPersonalComplete] = useState<any>(
+    {
+      percentage: 0,
+      color: '#FF0000'
+    }
+  )
 
 
   const [nKOpen, setNKOpen] = useState(false);
@@ -66,6 +79,23 @@ const MyJob = () => {
 
   const [sTCWOpen, setSTCWOpen] = useState(false);
 
+  useEffect(() => {
+    fetchDetails()
+  }, [])
+
+  const fetchDetails=async()=>{
+    let id = await localStorage.getItem('id')
+    GetProfileDetail(id,(res:any)=>{
+      if (res?.status==200) {
+        setProfileDetail(res?.data)
+      }else{
+        toast.error('No data found')
+      }
+      console.log('data here iam',res)
+
+    })
+  }
+
 
   const toggleCollapse = () => {
     setIsOpen(!isOpen); // Toggle open/close
@@ -88,7 +118,7 @@ const MyJob = () => {
   const hendleLicenses = () => {
     setLicensesOpen(!licensesOpen);
   };
-  
+
 
   const hendleContactDetails = () => {
     setCDOpen(!cDOpen);
@@ -141,15 +171,15 @@ const MyJob = () => {
   };
 
 
-  
+
 
   return (
     <div className=" mx-6 mt-4  ">
       <div className=" flex justify-between     ">
         <div className=" w-[50%] ">
           <div className="    ">
-            <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2  border-r-8 border-[#FF9900]">
-              
+            <div className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2  border-r-8 border-[${mjrComplete?.color}]`}>
+
               <h2 className=""> My Job Requirements</h2>{" "}
               <div className="flex items-center justify-center gap-1">
                 <span className="ml-2 cursor-pointer" onClick={toggleCollapse}>
@@ -185,15 +215,15 @@ const MyJob = () => {
                     </svg>
                   )}
                 </span>
-                <CircularProgress percentage={70} color="#FF9900" />
+                <CircularProgress percentage={mjrComplete?.percentage} color={mjrComplete.color} />
               </div>
             </div>{" "}
             <div className=" h-screen overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory ">
-              {isOpen && <MyJobRequirements  />}
+              {isOpen && <MyJobRequirements mjrComplete={mjrComplete} setMjrComplete={setMjrComplete} userDetail={profileDetail} />}
 
               {/* PersonalDetails start */}
 
-              <div className="flex justify-between items-center rounded-md   bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
+              {/* <div className="flex justify-between items-center rounded-md   bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
                 <h1 className="">
                   Next Of Kin Details
                 </h1>
@@ -237,10 +267,10 @@ const MyJob = () => {
                   <CircularProgress percentage={100} color="#FF0000" />
                 </div>
               </div>
-              {nKOpen && <NextOfKinDetails />}
+              {nKOpen && <NextOfKinDetails />} */}
               {/* {nKOpen && <NextOfKinDetails />} */}
 
-              <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
+              {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
                 <Link href="#" className="">
                   Languages
                 </Link>
@@ -285,10 +315,10 @@ const MyJob = () => {
                 </div>
               </div>
 
-              {languageOpen && <Languages />}
+              {languageOpen && <Languages />} */}
 
               {/* OnlinePresence start */}
-              <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
+              {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
                 <h1 className="">Online Presence</h1>
                 <div className="flex items-center justify-center gap-1">
                   <span
@@ -331,11 +361,11 @@ const MyJob = () => {
                 </div>
               </div>
 
-              {oPOpen && <OnlinePresence />}
+              {oPOpen && <OnlinePresence />} */}
               {/* OnlinePresence end */}
 
               {/* OnlinePresence start */}
-              <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
+              {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
                 <h1 className="">Licenses</h1>
                 <div className="flex items-center justify-center gap-1">
                   <span
@@ -378,10 +408,10 @@ const MyJob = () => {
                 </div>
               </div>
 
-              {licensesOpen && <Licenses />}
+              {licensesOpen && <Licenses />} */}
 
 
-              <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
+              {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
                 <h1 className="">ECDIS</h1>
                 <div className="flex items-center justify-center gap-1">
                   <span
@@ -424,133 +454,133 @@ const MyJob = () => {
                 </div>
               </div>
 
-              {eCDISOpen  && <Ecdis />}
+              {eCDISOpen && <Ecdis />} */}
 
-              <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#00A264] mt-3">
-              <h2 className="">Medical Certificates</h2>
-              <div className="flex items-center justify-center gap-1">
-                <span className="ml-2 cursor-pointer" onClick={handleMedical}>
-                  {madicalOpen ? (
-                    <svg
-                      className="w-6 h-6 transform rotate-180 transition-transform"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
-                  ) : (
-                    <svg
-                      className="w-6 h-6 transition-transform"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
-                  )}
-                </span>
-                <CircularProgress percentage={90} color="#00A264" />
+              {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#00A264] mt-3">
+                <h2 className="">Medical Certificates</h2>
+                <div className="flex items-center justify-center gap-1">
+                  <span className="ml-2 cursor-pointer" onClick={handleMedical}>
+                    {madicalOpen ? (
+                      <svg
+                        className="w-6 h-6 transform rotate-180 transition-transform"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    ) : (
+                      <svg
+                        className="w-6 h-6 transition-transform"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    )}
+                  </span>
+                  <CircularProgress percentage={90} color="#00A264" />
+                </div>
               </div>
-            </div>
 
-            {madicalOpen && <MedicalCertificates />}
+              {madicalOpen && <MedicalCertificates />} */}
 
-            <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#00A264] mt-3">
-              <h2 className="">Academic Details</h2>
-              <div className="flex items-center justify-center gap-1">
-                <span className="ml-2 cursor-pointer"  onClick={() => setAcademicOpen(!academicOpen)}>
-                  {!academicOpen ? (
-                    <svg
-                      className="w-6 h-6 transform rotate-180 transition-transform"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
-                  ) : (
-                    <svg
-                      className="w-6 h-6 transition-transform"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
-                  )}
-                </span>
-                <CircularProgress percentage={90} color="#00A264" />
+              {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#00A264] mt-3">
+                <h2 className="">Academic Details</h2>
+                <div className="flex items-center justify-center gap-1">
+                  <span className="ml-2 cursor-pointer" onClick={() => setAcademicOpen(!academicOpen)}>
+                    {!academicOpen ? (
+                      <svg
+                        className="w-6 h-6 transform rotate-180 transition-transform"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    ) : (
+                      <svg
+                        className="w-6 h-6 transition-transform"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    )}
+                  </span>
+                  <CircularProgress percentage={90} color="#00A264" />
+                </div>
               </div>
-            </div>
 
-            {academicOpen&& <AcademicDetails />}
+              {academicOpen && <AcademicDetails />} */}
 
-            <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF9900] mt-3">
-              <h2 className="">SeaGoing Experience </h2>
-              <div className="flex items-center justify-center gap-1">
-                <span className="ml-2 cursor-pointer" onClick={handleSea}>
-                  {seaOpen ? (
-                    <svg
-                      className="w-6 h-6 transform rotate-180 transition-transform"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
-                  ) : (
-                    <svg
-                      className="w-6 h-6 transition-transform"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
-                  )}
-                </span>
-                <CircularProgress percentage={82} color="#FF9900" />
+              {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF9900] mt-3">
+                <h2 className="">SeaGoing Experience </h2>
+                <div className="flex items-center justify-center gap-1">
+                  <span className="ml-2 cursor-pointer" onClick={handleSea}>
+                    {seaOpen ? (
+                      <svg
+                        className="w-6 h-6 transform rotate-180 transition-transform"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    ) : (
+                      <svg
+                        className="w-6 h-6 transition-transform"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    )}
+                  </span>
+                  <CircularProgress percentage={82} color="#FF9900" />
+                </div>
               </div>
-            </div>
 
-            {seaOpen && <SeaGoingService />}
+              {seaOpen && <SeaGoingService />} */}
 
               {/* OnlinePresence end */}
 
@@ -602,12 +632,12 @@ const MyJob = () => {
 
               {/*Address Details start */}
 
-              <div
+              {/* <div
                 className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF9900] mt-3"
                 onClick={handlePreSeaDetails}
               >
                 <Link href="#" className="">
-                Off Shore Requirements
+                  Off Shore Requirements
                 </Link>
                 <div className="flex items-center justify-center gap-1">
                   <span className="ml-2 cursor-pointer">
@@ -647,9 +677,9 @@ const MyJob = () => {
                 </div>
               </div>
 
-              {preOpen && <PreSeaTrainigDetails />}
+              {preOpen && <PreSeaTrainigDetails />} */}
 
-              
+
 
               {/* <div
                 className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF9900] mt-3"
@@ -746,7 +776,7 @@ const MyJob = () => {
           {/* PersonalDetails start */}
 
           <div
-            className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2  border-r-8 border-[#FF9900] "
+            className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2  border-r-8 border-[${personalComplete?.color}]`}
             onClick={hendletoggle}
           >
             <h2 className="">Personal Details</h2>
@@ -785,16 +815,16 @@ const MyJob = () => {
                 )}
               </span>
 
-              <CircularProgress percentage={100} color="#00A264" />
+              <CircularProgress percentage={personalComplete?.percentage} color={personalComplete?.color} />
             </div>
           </div>
           <div className=" h-screen overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory ">
-            {pDOpen && <PersonalDetails />}
+            {pDOpen && <PersonalDetails userDetail={profileDetail}/>}
             {/* PersonalDetails end */}
 
             {/* Aboutme  start*/}
 
-            <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#00A264] mt-3">
+            {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#00A264] mt-3">
               <h2 className="">About Me</h2>
               <div className="flex items-center justify-center gap-1">
                 <span className="ml-2 cursor-pointer" onClick={hendleAboutMe}>
@@ -833,11 +863,11 @@ const MyJob = () => {
                 <CircularProgress percentage={100} color="#00A264" />
               </div>
             </div>
-            {aboutMeOpen && <AboutMe />}
+            {aboutMeOpen && <AboutMe />} */}
             {/* about me end */}
 
             {/* conatact Details start */}
-            <div
+            {/* <div
               className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3"
               onClick={hendleContactDetails}
             >
@@ -882,11 +912,11 @@ const MyJob = () => {
               </div>
             </div>
 
-            {cDOpen && <ContactDetails />}
+            {cDOpen && <ContactDetails />} */}
             {/* constact details end */}
 
             {/* travel documents */}
-            <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
+            {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
               <h1 className="">Travel Documents</h1>
               <div className="flex items-center justify-center gap-1">
                 <span
@@ -928,55 +958,55 @@ const MyJob = () => {
                 <CircularProgress percentage={20} color="#FF0000" />
               </div>
             </div>
-            {authOpen && <TravelDocuments />}
+            {authOpen && <TravelDocuments />} */}
 
 
-            <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
-                <h1 className="">STCW Training</h1>
-                <div className="flex items-center justify-center gap-1">
-                  <span
-                    className="ml-2 cursor-pointer"
-                    onClick={() => setSTCWOpen(!sTCWOpen)}
-                  >
-                    {sTCWOpen ? (
-                      <svg
-                        className="w-6 h-6 transform rotate-180 transition-transform"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M19 9l-7 7-7-7"
-                        />
-                      </svg>
-                    ) : (
-                      <svg
-                        className="w-6 h-6 transition-transform"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M19 9l-7 7-7-7"
-                        />
-                      </svg>
-                    )}
-                  </span>
-                  <CircularProgress percentage={100} color="#FF0000" />
-                </div>
+            {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
+              <h1 className="">STCW Training</h1>
+              <div className="flex items-center justify-center gap-1">
+                <span
+                  className="ml-2 cursor-pointer"
+                  onClick={() => setSTCWOpen(!sTCWOpen)}
+                >
+                  {sTCWOpen ? (
+                    <svg
+                      className="w-6 h-6 transform rotate-180 transition-transform"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      className="w-6 h-6 transition-transform"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  )}
+                </span>
+                <CircularProgress percentage={100} color="#FF0000" />
               </div>
+            </div>
 
-              {sTCWOpen  && <StcwTraining />}
+            {sTCWOpen && <StcwTraining />} */}
 
-              <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
+            {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
               <h2 className="">Additional Trainings</h2>
               <div className="flex items-center justify-center gap-1">
                 <span
@@ -1019,12 +1049,12 @@ const MyJob = () => {
               </div>
             </div>
 
-            {aCOpen && <AdditionalTraining />}
+            {aCOpen && <AdditionalTraining />} */}
 
-            <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#00A264] mt-3">
+            {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#00A264] mt-3">
               <h2 className="">Education</h2>
               <div className="flex items-center justify-center gap-1">
-                <span className="ml-2 cursor-pointer"  onClick={() => setEducationOpen(!educationOpen)}>
+                <span className="ml-2 cursor-pointer" onClick={() => setEducationOpen(!educationOpen)}>
                   {educationOpen ? (
                     <svg
                       className="w-6 h-6 transform rotate-180 transition-transform"
@@ -1061,12 +1091,12 @@ const MyJob = () => {
               </div>
             </div>
 
-            {educationOpen && <Education />}
+            {educationOpen && <Education />} */}
 
-            <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#00A264] mt-3">
+            {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#00A264] mt-3">
               <h2 className="">Professional SKills</h2>
               <div className="flex items-center justify-center gap-1">
-                <span className="ml-2 cursor-pointer"  onClick={() => setProfessionalOpen(!professionalOpen)}>
+                <span className="ml-2 cursor-pointer" onClick={() => setProfessionalOpen(!professionalOpen)}>
                   {professionalOpen ? (
                     <svg
                       className="w-6 h-6 transform rotate-180 transition-transform"
@@ -1103,56 +1133,56 @@ const MyJob = () => {
               </div>
             </div>
 
-            {professionalOpen && <ProfessionalSkills />}
+            {professionalOpen && <ProfessionalSkills />} */}
 
 
-            <div
-                className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#00A264] mt-3"
-                onClick={handleReferences}
-              >
-                <Link href="#" className="">
-                  References
-                </Link>
-                <div className="flex items-center justify-center gap-1">
-                  <span className="ml-2 cursor-pointer">
-                    {refOpen ? (
-                      <svg
-                        className="w-6 h-6 transform rotate-180 transition-transform"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M19 9l-7 7-7-7"
-                        />
-                      </svg>
-                    ) : (
-                      <svg
-                        className="w-6 h-6 transition-transform"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M19 9l-7 7-7-7"
-                        />
-                      </svg>
-                    )}
-                  </span>
-                  <CircularProgress percentage={100} color="#00A264" />
-                </div>
+            {/* <div
+              className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#00A264] mt-3"
+              onClick={handleReferences}
+            >
+              <Link href="#" className="">
+                References
+              </Link>
+              <div className="flex items-center justify-center gap-1">
+                <span className="ml-2 cursor-pointer">
+                  {refOpen ? (
+                    <svg
+                      className="w-6 h-6 transform rotate-180 transition-transform"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      className="w-6 h-6 transition-transform"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  )}
+                </span>
+                <CircularProgress percentage={100} color="#00A264" />
               </div>
-              {refOpen && <Refrences />}
+            </div>
+            {refOpen && <Refrences />} */}
 
-            <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#00A264] mt-3">
+            {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#00A264] mt-3">
               <h2 className="">Vetting Service</h2>
               <div className="flex items-center justify-center gap-1">
                 <span className="ml-2 cursor-pointer" onClick={hendleModular}>
@@ -1191,13 +1221,13 @@ const MyJob = () => {
                 <CircularProgress percentage={100} color="#00A264" />
               </div>
             </div>
-            {mCOpen && <VettingServices />}
+            {mCOpen && <VettingServices />} */}
 
-          
 
-           
 
-            
+
+
+
 
             {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
               <h2 className="">Offshore Requirements</h2>
@@ -1285,7 +1315,7 @@ const MyJob = () => {
         </div>
       </div>
 
-      
+
     </div>
   );
 };

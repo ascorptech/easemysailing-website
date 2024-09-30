@@ -56,7 +56,7 @@ const ResourcesList = (props: Props) => {
       />
     </div>):( <div className=" w-full">
       {/* <Heading7 /> */}
-      <div className="mt-2 w-[97.2%] xl:w-[90%] mx-auto flex sm:flex-row flex-col border shadow-md rounded-md">
+      <div className="mt-2 w-[97.2%] xl:w-[87%] mx-auto flex sm:flex-row flex-col border shadow-md rounded-md">
         <div className="flex sm:w-[50%] w-full p-4">
           <div className="relative w-full border">
             <Image

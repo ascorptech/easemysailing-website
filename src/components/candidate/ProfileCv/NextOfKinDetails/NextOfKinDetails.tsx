@@ -3,8 +3,12 @@ import React from "react";
 import { useState } from "react";
 import CircularProgress from "../CircularProgress";
 
+type Props={
+  userDetail:any
+}
 
-const NextOfKinDetails = () => {
+
+const NextOfKinDetails = ({userDetail}:Props) => {
   const [nextKinName, setNextKinName] = useState("");
   const [nextKinShip, setNextKinShip] = useState("");
   const [nextKinAddre, setNextKinAddre] = useState("");

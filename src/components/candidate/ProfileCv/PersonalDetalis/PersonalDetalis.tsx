@@ -1,14 +1,18 @@
 "use client";
-import { AddProfileData } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/ProfileCVService";
+import { AddProfileData, GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import Image from "next/image";
 import { IoIosClose } from "react-icons/io";
 import CircularProgress from "../CircularProgress";
 
-const PersonalDetails = () => {
+type Props={
+  userDetail:any
+}
+
+const PersonalDetails = ({userDetail}:Props) => {
   const [firstName, setFirstName] = useState("");
   const [middleName, setmidddleName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -18,6 +22,7 @@ const PersonalDetails = () => {
   const [countryOfBirth, setCountryOfBirth] = useState("");
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [image, setImage] = useState<any>(null);
+  const [genderDrop,setGenderDrop] = useState<any>([])
 
   
   const [gender, setGender] = useState("");
@@ -42,6 +47,29 @@ const PersonalDetails = () => {
   ].filter(Boolean).length;
 
   // const totalFields = available === "Yes" ? 6 : 5;
+
+  useEffect(() => {
+    if (userDetail) {
+      setFirstName(userDetail.firstName);
+      setmidddleName(userDetail.middleName);
+      setLastName(userDetail.lastName);
+      setDate(userDetail.dateOfBirth);
+      setCityName(userDetail.cityOfBirth);
+      setReligionName(userDetail.religionName);
+      setCountryOfBirth(userDetail.countryOfBirth);
+      setSelectedImage(userDetail.image);
+      setGender(userDetail.gender);
+      setMarital(userDetail.maritalStatus);
+      setNationality(userDetail.nationality);
+      }
+  }, [])
+
+  useEffect(() => {
+    GetDropdownDetails('gender',(res:any)=>{
+      setGenderDrop(res?.data?.values)
+    })
+  }, [])
+  
 
   const percentage = (filledFields / totalFields) * 100;
   // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;

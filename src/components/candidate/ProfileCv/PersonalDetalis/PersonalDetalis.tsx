@@ -192,7 +192,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
               {" "}
               <label
                 htmlFor="photo"
-                className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[openSans]  "
+                className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px]  "
               >
                 Photo
               </label>

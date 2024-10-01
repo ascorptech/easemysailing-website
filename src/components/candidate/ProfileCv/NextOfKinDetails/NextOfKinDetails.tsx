@@ -96,15 +96,13 @@ const NextOfKinDetails = ({
       nextKinChildren
     }
     console.log(data)
-    AddProfileData(data, AddNextKinDetailsDB)
+    // AddNextOfDetails(data, AddNextKinDetailsDB)
   };
 
   const AddNextKinDetailsDB = (result:any) => {
     console.log(result);
     if(result?.status == 200){
-      toast.success("NextKin details submited successfully");
-    }else {
-      toast.error("NextKin details not submited successfully")
+      toast.success("NextKin details submited")
     }
   }
 

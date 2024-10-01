@@ -1,5 +1,5 @@
 "use client";
-import { AddProfileData, GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import { AddProfileData, GetDropdownDetails,GetProfileDetail } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
 import React, { useEffect } from "react";
 import { useState } from "react";
@@ -13,7 +13,7 @@ type PersonalComplete = {
   color: string;
 };
 type Props={
-  personalComplete: PersonalComplete; // mjrComplete is an object with percentage and color
+  personalComplete: PersonalComplete; 
   setPersonalComplete: React.Dispatch<React.SetStateAction<PersonalComplete>>; // setMjrComplete is a function to update mjrComplete
   userDetail:any
 }
@@ -30,6 +30,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
   const [image, setImage] = useState<any>(null);
   const [genderDrop,setGenderDrop] = useState<any>([])
   const [martialStatusDrop,setMartialStatusDrop] = useState<any>([])
+  const [disabled,setDisabled] = useState(true)
 
   
   const [gender, setGender] = useState("");
@@ -62,7 +63,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
       setLastName(userDetail.lastName);
       setDate(userDetail.dateOfBirth);
       setCityName(userDetail.cityOfBirth);
-      setReligionName(userDetail.religionName);
+      setReligionName(userDetail.religion);
       setCountryOfBirth(userDetail.countryOfBirth);
       setSelectedImage(userDetail.image);
       setGender(userDetail.gender);
@@ -113,27 +114,29 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
   const handleSubmit = async (e: React.FormEvent) => {
     // try {
     e.preventDefault(); // Prevent default form submission
-
-    let formData = {
-      firstName,
-      middleName,
-      lastName,
-      date,
-      cityBirth,
-      religionName,
-      countryOfBirth,
-      gender,
-      marital,
-    };
-    console.log(formData);
-    AddProfileData(formData, AddaddressdataDB);
+    let formData = new FormData();
+    // formData.append('userId',userDetail?.userId);
+    formData.append('firstName',firstName);
+    middleName&&formData.append('middleName',middleName);
+    formData.append('lastName',lastName);
+    formData.append('dateOfBirth',date);
+    formData.append('cityOfBirth',cityBirth);
+    formData.append('religion',religionName);
+    formData.append('countryOfBirth',countryOfBirth);
+    formData.append('gender',gender);
+    formData.append('maritalStatus',marital);
+    formData.append('nationality',nationality);
+    AddProfileData(userDetail?.userId,formData, AddaddressdataDB);
   };
   const AddaddressdataDB = (result: any) => {
     console.log(result);
     if (result?.status == 200) {
-      toast.success("address submited successfully");
+      toast.success("Personal detail submited successfully");
+      setTimeout(() => {
+        window.location.reload()
+      }, 1000);
     } else {
-      toast.error("address not submited ");
+      toast.error("Personal detail not submited ");
     }
 
     //   const data = await AddProfileData(formData);
@@ -155,6 +158,11 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
   };
   const removeSelectedImage = () => {
     setSelectedImage(null); // Remove the selected image
+  };
+
+  const handleEdit = () => {
+    setDisabled(!disabled)
+    // toast.info("You are now in edit mode. Make your changes.");
   };
 
   return (
@@ -215,7 +223,6 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
                   alt="Selected"
                   className="relative h-full w-full object-cover rounded-full border"
                 />
-                {/* Close button for removing the image */}
                 <button
                   type="button"
                   className="absolute top-0 right-0 bg-white rounded-full text-red-500 h-5 w-5  "
@@ -223,9 +230,6 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
                 >
                   <IoIosClose className="text-xl w-full h-full" />
                 </button>
-                {/* <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-                     File Selected: {selectedImage}
-                   </p> */}
               </div>
             ) : (
               <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
@@ -250,7 +254,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
                 onChange={(e) => setFirstName(e.target.value)}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter First Name"
-                required
+                disabled={disabled}
               />
               {/* </div> */}
             </div>
@@ -269,7 +273,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
                 onChange={(e) => setmidddleName(e.target.value)}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter middle Name"
-                required
+                disabled={disabled}
               />
               {/* </div> */}
             </div>
@@ -289,7 +293,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
                 onChange={(e) => setLastName(e.target.value)}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Last Name"
-                required
+                disabled={disabled}
               />
               {/* </div> */}
             </div>
@@ -304,7 +308,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={gender}
                 onChange={(e) => setGender(e.target.value)}
-                required
+                disabled={disabled}
               >
                 <option value="">Select gender</option>
                 {genderDrop&& genderDrop?.map((gen:any,index:number)=>(
@@ -322,6 +326,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
+                disabled={disabled}
               />
             </div>
             {/* </div> */}
@@ -338,12 +343,12 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={countryOfBirth}
                 onChange={(e) => setCountryOfBirth(e.target.value)}
-                required
+                disabled={disabled}
               >
                 <option value="">Select country</option>
-                <option value="india">India</option>
-                <option value="australia">Australia</option>
-                <option value="england">England</option>
+                <option value="India">India</option>
+                <option value="Australia">Australia</option>
+                <option value="England">England</option>
               </select>
             </div>
 
@@ -362,7 +367,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
                 onChange={(e) => setCityName(e.target.value)}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter your city"
-                required
+                disabled={disabled}
               />
              
             </div>
@@ -380,11 +385,12 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={nationality}
                 onChange={(e) => setNationality(e.target.value)}
+                disabled={disabled}
               >
                 <option value="">Select nationality</option>
-                <option value="indian">Indian</option>
-                <option value="bangladeshi">Bangladeshi</option>
-                <option value="english">English</option>
+                <option value="Indian">Indian</option>
+                <option value="Bangladeshi">Bangladeshi</option>
+                <option value="English">English</option>
               </select>
             </div>
             {/* Relision */}
@@ -403,7 +409,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
                 onChange={(e) => setReligionName(e.target.value)}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Religion Name"
-                required
+                disabled={disabled}
               />
               {/* </div> */}
             </div>
@@ -416,7 +422,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={marital}
                 onChange={(e) => setMarital(e.target.value)}
-                required
+                disabled={disabled}
               >
                 <option value="">Select Marital Status</option>
                 {martialStatusDrop&& martialStatusDrop?.map((status:any,index:number)=>(
@@ -436,12 +442,13 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
             >
               Save
             </button>
-            <button
-              type="submit"
-              className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
-            >
-              Edit
-            </button>
+            <Link
+          href={'#'}
+            onClick={handleEdit}
+            className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
+          >
+            Edit
+          </Link>
           </div>
         </div>
       </form>

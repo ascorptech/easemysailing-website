@@ -1,8 +1,18 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const AdditionalTraining = () => {
+type AdditionalComplete = {
+  percentage: number;
+  color: string;
+};
+type Props={
+  additionalComplete: AdditionalComplete ; 
+  setAdditionalComplete: React.Dispatch<React.SetStateAction<AdditionalComplete >>; // setMjrComplete is a function to update mjrComplete
+  userDetail:any
+}
+
+const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetail}:Props) => {
   const [number, setNumber] = useState("");
   const [issuedate, setIssueDate] = useState("");
   const [exdate, setExDate] = useState("");
@@ -17,6 +27,68 @@ const AdditionalTraining = () => {
   const [eCDISNumber, setECDISNumber] = useState("");
   const [issuedate1, setIssueDate1] = useState("");
   const [exdate1, setExDate1] = useState("");
+  const [countryCertifi, setCountryCertifi] = useState("");
+  const [countryIC, setCountryIC] = useState("");
+  const [neverExpCheck, setNeverExpCheck] = useState(false);
+  const [capacity, setCapacity] = useState("");
+  const [level, setLevel] = useState("");
+  const [ typeOfTest, setTypeOfTest] = useState("");
+  const [issuingCountry, setIssuingCountry] = useState("");
+  const [neverChecked1, setNeverChecked1] = useState(false);
+  
+  const totalFields = 19;
+  const filledFields = [
+    number,
+    issuedate,
+    exdate,
+    selectedFile,
+    selectedFiles,
+    trainingCenter,
+    trainingCenter1,
+    result,
+    eCDISNumber,
+    issuedate1,
+    exdate1,
+    countryCertifi,
+    countryIC,
+    neverExpCheck,
+    capacity,
+    level,
+    typeOfTest,
+    issuingCountry,
+    neverChecked1
+    
+  ].filter(Boolean).length;
+
+
+  const percentage = (filledFields / totalFields) * 100;
+  // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
+  let color;
+  useEffect(() => {
+    console.log('user',userDetail)
+    if (percentage <= 30) {
+      setAdditionalComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: '#FF0000' // Update the color field
+      }));
+      color = "red"; 
+    } else if (percentage <= 70) {
+      setAdditionalComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: '#FF9900' // Update the color field
+      }));
+      color = "#FF9900"; 
+    } else {
+      setAdditionalComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: '#00A264' // Update the color field
+      }));
+      color = "green";
+    }
+  }, [percentage,color])
 
   //   const handleFileChange = (event: any) => {
   //     setSelectedFile(event.target.files[0]);
@@ -40,20 +112,22 @@ const AdditionalTraining = () => {
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <div className="grid grid-cols-2 gap-4">
         <div className="">
-          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="option4">
+          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="optionce">
             Certification
           </label>
           <select
-            id="option4"
+            id="optionce"
             className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
+            value={countryCertifi}
+                  onChange={(e) => setCountryCertifi(e.target.value)}
           >
             <option value="" disabled selected>
             Certification
             </option>
-            <option value="">Training1</option>
-            <option value="">Training2</option>
-            <option value="">Training3</option>
+            <option value="training1">Training1</option>
+            <option value="training2">Training2</option>
+            <option value="training3">Training3</option>
           </select>
         </div>
 
@@ -77,31 +151,33 @@ const AdditionalTraining = () => {
 
 
           <div className=" ">
-          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="options1">
+          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="optionsIC">
           Issuing Country
           </label>
           <select
-            id="options1"
+            id="optionsIC"
             className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
+            value={countryIC}
+            onChange={(e) => setCountryIC(e.target.value)}
           >
             <option value="" disabled selected>
               Issuing Country
             </option>
-            <option value="">India</option>
-            <option value="">Us</option>
-            <option value="">England</option>
+            <option value="India">India</option>
+            <option value="us">Us</option>
+            <option value="England">England</option>
           </select>
         </div>
         
         {/* <div className=""> */}
 
         <div className="   ">
-          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="number1">
+          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="numberA">
             Enter Number
           </label>
           <input
-            id="number1"
+            id="numberA"
             type="number"
             value={number}
             onChange={(e) => setNumber(e.target.value)}
@@ -161,45 +237,45 @@ const AdditionalTraining = () => {
       </div> */}
        <div className=" flex items-center  gap-4">
             <input
-              id="neverExpires"
+              id="neverExpires1"
               type="checkbox"
               className="border focus:ring-[#00A264]  text-[#00A264] checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
-              //   value={exdate}
-              //   onChange={(e) => setExDate(e.target.value)}
+                checked={neverExpCheck}
+                onChange={(e) => setNeverExpCheck(!neverExpCheck)}
             />
             <label
               className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
-              htmlFor="neverExpires"
+              htmlFor="neverExpires1"
             >
               Never Expires
             </label>
           </div>
 <div className="grid col-span-2">
       <div className="flex gap-6 items-center justify-center">
+        <div>
         <label
-          htmlFor="file-upload3"
+          htmlFor="file-upload03"
           className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[openSans]  "
         >
           Attachment Document
         </label>
         <input
-          id="file-upload3"
+          id="file-upload03"
           type="file"
           className="hidden"
           onChange={handleFileChange}
         />
-        {/* {selectedFile && (
-          <p className="mt-4 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-            File Selected: {selectedFile.name}
-          </p>
-        )} */}
-         {selectedFiles ? (
+        </div>
+        <div>
+       
+         {selectedFile ? (
               <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-                File Selected: {selectedFiles.name}
+                File Selected: {selectedFile.name}
               </p>
             ) : (
               <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">No file selected</p>
             )}
+            </div>
       </div>
       </div>
 
@@ -218,20 +294,22 @@ const AdditionalTraining = () => {
             <h1 className="text-center font-bold">PROFESSIONAL KNOWLEDGE TEST</h1>
             </div>
           <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="option2">
+            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="option02">
              Capacity
             </label>
             <select
-              id="option2"
+              id="option02"
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
+              value={capacity}
+              onChange={(e) => setCapacity(e.target.value)}
             >
               <option value="" disabled selected>
               Capacity
               </option>
-              <option value="">1</option>
-              <option value="">2</option>
-              <option value="">3</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
             </select>
           </div>
 
@@ -244,13 +322,15 @@ const AdditionalTraining = () => {
               id="level"
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
+              value={level}
+              onChange={(e) => setLevel(e.target.value)}
             >
               <option value="" disabled selected>
             Level
               </option>
-              <option value="">1</option>
-              <option value="">2</option>
-              <option value="">3</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
             </select>
           </div>
 
@@ -280,13 +360,15 @@ const AdditionalTraining = () => {
               id="typeoftest"
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
+              value={typeOfTest}
+              onChange={(e) => setTypeOfTest(e.target.value)}
             >
               <option value="" disabled selected>
               Type of Test
               </option>
-              <option value="">1</option>
-              <option value="">2</option>
-              <option value="">3</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
             </select>
           </div>
 
@@ -318,13 +400,15 @@ const AdditionalTraining = () => {
               id="optionT1"
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
+              value={issuingCountry}
+              onChange={(e) => setIssuingCountry(e.target.value)}
             >
               <option value="" disabled selected>
                 Issuing Country
               </option>
-              <option value="">India</option>
-              <option value="">Us</option>
-              <option value="">England</option>
+              <option value="india">India</option>
+              <option value="Us">Us</option>
+              <option value="england">England</option>
             </select>
           </div>
           {/* <div className=""> */}
@@ -382,8 +466,8 @@ const AdditionalTraining = () => {
               id="neverExpires2"
               type="checkbox"
               className="border focus:ring-[#00A264]  text-[#00A264] checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
-              //   value={exdate}
-              //   onChange={(e) => setExDate(e.target.value)}
+               checked={neverChecked1}
+                onChange={(e) => setNeverChecked1(!neverChecked1)}
             />
             <label
               className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
@@ -394,11 +478,12 @@ const AdditionalTraining = () => {
           </div>
       <div className="grid col-span-2">
           <div className="flex gap-4 items-center justify-center ">
+            <div>
             <label
               htmlFor="file-upload2"
               className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] text-[14px] leading-[19.07px] font-[openSans]  focus:outline-none focus:ring-2 "
             >
-              Attach Docoment
+              Attachment Docoment
             </label>
             <input
               id="file-upload2"
@@ -406,6 +491,8 @@ const AdditionalTraining = () => {
               className="hidden"
               onChange={handleFileChanges}
             />
+            </div>
+            <div>
             {selectedFiles ? (
               <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
                 File Selected: {selectedFiles.name}
@@ -413,6 +500,7 @@ const AdditionalTraining = () => {
             ) : (
               <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">No file selected</p>
             )}
+            </div>
           </div>
         </div>
         </div>

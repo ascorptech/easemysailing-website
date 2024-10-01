@@ -1,8 +1,19 @@
 "use client";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
-import { useState } from "react";
-const ProfessionalSkills = () => {
+type ProfessionalComplete = {
+  percentage: number;
+  color: string;
+};
+type Props={
+  professionalComplete:ProfessionalComplete; 
+  setProfessionalComplete: React.Dispatch<React.SetStateAction<ProfessionalComplete>>; // setMjrComplete is a function to update mjrComplete
+  userDetail:any
+}
+
+
+const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, userDetail}:Props) => {
   const [maker, setMaker] = useState("");
   const [sWL, setSWL] = useState("");
   const [city, setCity] = useState("");
@@ -26,6 +37,52 @@ const ProfessionalSkills = () => {
   //   const handleFileChange = (event: any) => {
   //     setSelectedFile(event.target.files[0]);
   //   };
+
+  const totalFields = 11;
+  const filledFields = [
+    maker,
+    sWL,
+    cAvailable,
+    classApproved,
+    classApproved,
+    date,
+    vdate,
+    description, 
+    selectedFile,
+    inspection
+    
+  ].filter(Boolean).length;
+
+  const percentage = (filledFields / totalFields) * 100;
+  // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
+  let color;
+  useEffect(() => {
+    console.log('user',userDetail)
+    if (percentage <= 30) {
+      setProfessionalComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: '#FF0000' // Update the color field
+      }));
+      color = "red"; 
+    } else if (percentage <= 70) {
+      setProfessionalComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: '#FF9900' // Update the color field
+      }));
+      color = "#FF9900"; 
+    } else {
+      setProfessionalComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: '#00A264' // Update the color field
+      }));
+      color = "green";
+    }
+  }, [percentage,color])
+
+
 
   const handleFileChange = (event: any) => {
     const file = event.target.files?.[0];

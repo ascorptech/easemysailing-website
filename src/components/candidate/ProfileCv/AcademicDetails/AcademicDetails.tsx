@@ -1,11 +1,22 @@
 "use client";
 import Link from "next/link";
 
-import { useState } from "react";
-const AcademicDetails = () => {
+import { useEffect, useState } from "react";
+
+type AcademicComplete = {
+  percentage: number;
+  color: string;
+};
+type Props={
+  academicComplete: AcademicComplete; 
+  setAcademicComplete: React.Dispatch<React.SetStateAction<AcademicComplete>>; // setMjrComplete is a function to update mjrComplete
+  userDetail:any
+}
+
+const AcademicDetails = ({academicComplete, setAcademicComplete, userDetail}:Props) => {
 
     const [degree, setDegree] = useState("");
-    const [percentage, setPercentage] = useState("");
+    const [percentage2, setPercentage2] = useState("");
 
   const [startdate, setStartDate] = useState("");
   const [enddate, setEndDate] = useState("");
@@ -13,7 +24,43 @@ const AcademicDetails = () => {
 
 const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
-  
+const totalFields = 5;
+const filledFields = [
+  degree,
+  percentage2,
+  startdate,
+  enddate,
+  selectedFile,
+].filter(Boolean).length;
+
+const percentage = (filledFields / totalFields) * 100;
+// const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
+let color;
+useEffect(() => {
+  console.log('user',userDetail)
+  if (percentage <= 30) {
+    setAcademicComplete((prevState) => ({
+      ...prevState, // Spread the previous state to keep any other properties
+      percentage: percentage, // Update the percentage field
+      color: '#FF0000' // Update the color field
+    }));
+    color = "red"; 
+  } else if (percentage <= 70) {
+    setAcademicComplete((prevState) => ({
+      ...prevState, // Spread the previous state to keep any other properties
+      percentage: percentage, // Update the percentage field
+      color: '#FF9900' // Update the color field
+    }));
+    color = "#FF9900"; 
+  } else {
+    setAcademicComplete((prevState) => ({
+      ...prevState, // Spread the previous state to keep any other properties
+      percentage: percentage, // Update the percentage field
+      color: '#00A264' // Update the color field
+    }));
+    color = "green";
+  }
+}, [percentage,color])
 
 
 
@@ -52,8 +99,8 @@ const [selectedFile, setSelectedFile] = useState<File | null>(null);
           <input
             id="number"
             type="number"
-            value={percentage}
-            onChange={(e) => setPercentage(e.target.value)}
+            value={percentage2}
+            onChange={(e) => setPercentage2(e.target.value)}
             className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             placeholder=""
             required

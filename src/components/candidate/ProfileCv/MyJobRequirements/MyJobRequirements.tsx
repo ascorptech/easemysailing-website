@@ -83,6 +83,8 @@ const MyJobRequirements = ({ mjrComplete, setMjrComplete, userDetail }: Props) =
     }
   }, [percentage, color])
 
+  
+
   useEffect(() => {
     GetDropdownDetails('rank', (res: any) => {
       setRankDrop(res?.data?.values)

@@ -1,13 +1,24 @@
 "use client";
 import { AddProfileData } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 
 import { useState } from "react";
 import { toast } from "react-toastify";
 import CircularProgress from "../CircularProgress";
 
-const ContactDetails = () => {
+type ContactComplete = {
+  percentage: number;
+  color: string;
+};
+type Props={
+  contactComplete: ContactComplete; // mjrComplete is an object with percentage and color
+  setContactComplete: React.Dispatch<React.SetStateAction<ContactComplete>>; // setMjrComplete is a function to update mjrComplete
+  userDetail:any
+}
+
+
+const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props) => {
   const [address, setAddress] = useState("");
   const [number, setNumber] = useState("");
   const [addInfo, setAddInfo] = useState("");
@@ -44,13 +55,31 @@ const ContactDetails = () => {
   const percentage = (filledFields / totalFields) * 100;
   // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
   let color;
-  if (percentage <= 30) {
-    color = "red";
-  } else if (percentage <= 70) {
-    color = "orange";
-  } else {
-    color = "green";
-  }
+  useEffect(() => {
+    console.log('user',userDetail)
+    if (percentage <= 30) {
+      setContactComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: '#FF0000' // Update the color field
+      }));
+      color = "red"; 
+    } else if (percentage <= 70) {
+      setContactComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: '#FF9900' // Update the color field
+      }));
+      color = "#FF9900"; 
+    } else {
+      setContactComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: '#00A264' // Update the color field
+      }));
+      color = "green";
+    }
+  }, [percentage,color])
 
   const handlesubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -80,8 +109,6 @@ const ContactDetails = () => {
 
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
-      <CircularProgress percentage={Math.round(percentage)} color={color} />
-
       <form onSubmit={handlesubmit}>
         <div className="">
           <div className=" flex flex-col  px-4 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] gap-4">

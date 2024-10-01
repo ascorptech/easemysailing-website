@@ -26,6 +26,7 @@ import ProfessionalSkills from "./ProfessionalSkills/ProfessionalSkills";
 import VettingServices from "./VettingServices/VettingServices";
 import { GetProfileDetail } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import { toast } from "react-toastify";
+import { FaPercentage } from "react-icons/fa";
 
 
 
@@ -48,6 +49,67 @@ const MyJob = () => {
     {
       percentage: 0,
       color: '#FF0000'
+    }
+  )
+  const [nextofComplete, setNextOfComplete] = useState<any>(
+    {
+      percentage: 0,
+      color: '#FF0000'
+    }
+  )
+  const [languageComplete, setLanguageComplete] = useState<any>(
+    {
+      percentage: 0,
+      color: '#FF0000'
+    }
+  )
+  const [onlinePresenceComplete, setOnlinePresenceComplete] = useState<any>(
+    {
+      percentage: 0,
+      color: '#FF0000'
+    }
+  )
+  const [licensesComplete, setLicensesComplete] = useState<any>(
+    {
+      percentage: 0,
+      color: '#FF0000'
+    }
+  )
+  const [aboutMeComplete, setAboutMeComplete] = useState<any>(
+    {
+      percentage: 0,
+      color: '#FF0000'
+    }
+  )
+  const [contactComplete, setContactComplete] = useState<any> (
+    {
+      percentage: 0,
+      color:'#FF0000'
+    }
+  )
+  const [travelComplete, setTravelComplete] = useState<any> (
+    {
+      percentage: 0,
+      color:'#FF0000'
+    }
+  )
+
+  const [sTCWComplete, setSTCWComplete] = useState<any> (
+    {
+      percentage: 0,
+      color:'#FF0000'
+    }
+  )
+  const [eCDISComplete, setECDISComplete] = useState<any> (
+    {
+      percentage: 0,
+      color:'#FF0000'
+    }
+  )
+  const [medicalComplete, setMedicalComplete] = useState<any> (
+    {
+      percentage: 0,
+      color:'#FF0000'
     }
   )
 
@@ -83,7 +145,7 @@ const MyJob = () => {
     fetchDetails()
   }, [])
 
-  const fetchDetails=async()=>{
+  const fetchDetails = async()=>{
     let id = await localStorage.getItem('id')
     GetProfileDetail(id,(res:any)=>{
       if (res?.status==200) {
@@ -175,9 +237,10 @@ const MyJob = () => {
 
   return (
     <div className=" mx-6 mt-4  ">
-      <div className=" flex justify-between     ">
+      <div className=" flex justify-between">
+        
         <div className=" w-[50%] ">
-          <div className="    ">
+          <div className="">
             <div className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2  border-r-8 border-[${mjrComplete?.color}]`}>
 
               <h2 className=""> My Job Requirements</h2>{" "}
@@ -217,13 +280,13 @@ const MyJob = () => {
                 </span>
                 <CircularProgress percentage={Math.round(mjrComplete?.percentage)} color={mjrComplete.color} />
               </div>
-            </div>{" "}
+            </div>
             <div className=" h-screen overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory ">
               {isOpen && <MyJobRequirements mjrComplete={mjrComplete} setMjrComplete={setMjrComplete} userDetail={profileDetail} />}
 
               {/* PersonalDetails start */}
 
-              {/* <div className="flex justify-between items-center rounded-md   bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
+              <div className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2   border-r-8 border-[${nextofComplete?.color}] mt-3`}>
                 <h1 className="">
                   Next Of Kin Details
                 </h1>
@@ -264,13 +327,13 @@ const MyJob = () => {
                       </svg>
                     )}
                   </span>
-                  <CircularProgress percentage={100} color="#FF0000" />
+                  <CircularProgress percentage={Math.round(nextofComplete?.percentage)} color={nextofComplete?.color} />
                 </div>
               </div>
-              {nKOpen && <NextOfKinDetails />} */}
               {/* {nKOpen && <NextOfKinDetails />} */}
+              {nKOpen && <NextOfKinDetails personalComplete={nextofComplete} setPersonalComplete={setNextOfComplete} userDetail={profileDetail}/>}
 
-              {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
+              <div className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${languageComplete?.color}] mt-3`}>
                 <Link href="#" className="">
                   Languages
                 </Link>
@@ -311,14 +374,16 @@ const MyJob = () => {
                       </svg>
                     )}
                   </span>
-                  <CircularProgress percentage={100} color="#FF0000" />
+                  <CircularProgress percentage={Math.round(languageComplete?.percentage)} color={languageComplete.color} />
                 </div>
               </div>
 
-              {languageOpen && <Languages />} */}
+              {languageOpen && <Languages  languageComplete={languageComplete}
+              setLanguageComplete={setLanguageComplete}
+              userDetail={profileDetail}/>}
 
               {/* OnlinePresence start */}
-              {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
+              <div className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${onlinePresenceComplete?.color}] mt-3`}>
                 <h1 className="">Online Presence</h1>
                 <div className="flex items-center justify-center gap-1">
                   <span
@@ -357,15 +422,15 @@ const MyJob = () => {
                       </svg>
                     )}
                   </span>
-                  <CircularProgress percentage={100} color="#FF0000" />
+                  <CircularProgress percentage={Math.round(onlinePresenceComplete?.percentage)} color={onlinePresenceComplete.color} />
                 </div>
               </div>
 
-              {oPOpen && <OnlinePresence />} */}
+              {oPOpen && <OnlinePresence onlinePresenceComplete={onlinePresenceComplete} setOnlinePresenceComplete={setOnlinePresenceComplete} userDetail={profileDetail}/>}
               {/* OnlinePresence end */}
 
               {/* OnlinePresence start */}
-              {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
+              <div className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${licensesComplete?.color}] mt-3`}>
                 <h1 className="">Licenses</h1>
                 <div className="flex items-center justify-center gap-1">
                   <span
@@ -404,14 +469,14 @@ const MyJob = () => {
                       </svg>
                     )}
                   </span>
-                  <CircularProgress percentage={100} color="#FF0000" />
+                  <CircularProgress percentage={Math.round(licensesComplete?.percentage)} color={licensesComplete.color} />
                 </div>
               </div>
 
-              {licensesOpen && <Licenses />} */}
+              {licensesOpen && <Licenses  licensesComplete={licensesComplete} setLicensesComplete={setLicensesComplete} userDetail={profileDetail}/>}
 
 
-              {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
+              <div className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${eCDISComplete?.color}] mt-3`}>
                 <h1 className="">ECDIS</h1>
                 <div className="flex items-center justify-center gap-1">
                   <span
@@ -450,13 +515,13 @@ const MyJob = () => {
                       </svg>
                     )}
                   </span>
-                  <CircularProgress percentage={100} color="#FF0000" />
+                  <CircularProgress percentage={Math.round(eCDISComplete?.percentage)} color={eCDISComplete.color} />
                 </div>
               </div>
 
-              {eCDISOpen && <Ecdis />} */}
+              {eCDISOpen && <Ecdis eCDISComplete={eCDISComplete} setECDISComplete={setECDISComplete} userDetail={profileDetail} />}
 
-              {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#00A264] mt-3">
+              <div className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${medicalComplete?.color}] mt-3`}>
                 <h2 className="">Medical Certificates</h2>
                 <div className="flex items-center justify-center gap-1">
                   <span className="ml-2 cursor-pointer" onClick={handleMedical}>
@@ -492,11 +557,11 @@ const MyJob = () => {
                       </svg>
                     )}
                   </span>
-                  <CircularProgress percentage={90} color="#00A264" />
+                  <CircularProgress percentage={Math.round(medicalComplete?.percentage)} color={medicalComplete.color} />
                 </div>
               </div>
 
-              {madicalOpen && <MedicalCertificates />} */}
+              {madicalOpen && <MedicalCertificates medicalComplete={medicalComplete} setMedicalComplete={setMedicalComplete} userDetail={profileDetail}/>}
 
               {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#00A264] mt-3">
                 <h2 className="">Academic Details</h2>
@@ -824,7 +889,7 @@ const MyJob = () => {
 
             {/* Aboutme  start*/}
 
-            {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#00A264] mt-3">
+            <div className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${aboutMeComplete?.color}] mt-3`}>
               <h2 className="">About Me</h2>
               <div className="flex items-center justify-center gap-1">
                 <span className="ml-2 cursor-pointer" onClick={hendleAboutMe}>
@@ -860,22 +925,22 @@ const MyJob = () => {
                     </svg>
                   )}
                 </span>
-                <CircularProgress percentage={100} color="#00A264" />
+                <CircularProgress  percentage={Math.round(aboutMeComplete?.percentage)} color={aboutMeComplete?.color}  />
               </div>
             </div>
-            {aboutMeOpen && <AboutMe />} */}
+            {aboutMeOpen && <AboutMe aboutMeComplete={aboutMeComplete} setAboutMeComplete={setAboutMeComplete} userDetail={profileDetail}/>}
             {/* about me end */}
 
             {/* conatact Details start */}
-            {/* <div
-              className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3"
-              onClick={hendleContactDetails}
+            <div
+              className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${contactComplete?.color}] mt-3`}
+             
             >
-              <Link href="#" className="">
+              <h2  className="">
                 Contact Details
-              </Link>
+              </h2>
               <div className="flex items-center justify-center gap-1">
-                <span className="ml-2 cursor-pointer">
+                <span className="ml-2 cursor-pointer"  onClick={hendleContactDetails}>
                   {cDOpen ? (
                     <svg
                       className="w-6 h-6 transform rotate-180 transition-transform"
@@ -908,15 +973,15 @@ const MyJob = () => {
                     </svg>
                   )}
                 </span>
-                <CircularProgress percentage={100} color="#FF0000" />
+                <CircularProgress percentage={Math.round(contactComplete?.percentage)} color={contactComplete.color} />
               </div>
             </div>
 
-            {cDOpen && <ContactDetails />} */}
+            {cDOpen && <ContactDetails  contactComplete={contactComplete} setContactComplete={setContactComplete} userDetail={profileDetail}/>}
             {/* constact details end */}
 
             {/* travel documents */}
-            {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
+            <div className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${travelComplete?.color}] mt-3`}>
               <h1 className="">Travel Documents</h1>
               <div className="flex items-center justify-center gap-1">
                 <span
@@ -955,13 +1020,13 @@ const MyJob = () => {
                     </svg>
                   )}
                 </span>
-                <CircularProgress percentage={20} color="#FF0000" />
+                <CircularProgress percentage={Math.round(travelComplete?.percentage)} color={travelComplete.color} />
               </div>
             </div>
-            {authOpen && <TravelDocuments />} */}
+            {authOpen && <TravelDocuments travelComplete={travelComplete} setTravelComplete={setTravelComplete}  userDetail={profileDetail}/>}
 
 
-            {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
+            <div className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${sTCWComplete?.color}] mt-3`}>
               <h1 className="">STCW Training</h1>
               <div className="flex items-center justify-center gap-1">
                 <span
@@ -1000,11 +1065,11 @@ const MyJob = () => {
                     </svg>
                   )}
                 </span>
-                <CircularProgress percentage={100} color="#FF0000" />
+                <CircularProgress percentage={Math.round(sTCWComplete?.percentage)} color={sTCWComplete.color}/>
               </div>
             </div>
 
-            {sTCWOpen && <StcwTraining />} */}
+            {sTCWOpen && <StcwTraining sTCWComplete={sTCWComplete} setSTCWComplete={setSTCWComplete}  userDetail={profileDetail}/>}
 
             {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
               <h2 className="">Additional Trainings</h2>

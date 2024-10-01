@@ -24,11 +24,12 @@ const page = (props: Props) => {
   });
   const [podcastDetail, setPodcastDetail] = useState<any>()
   const [podcastList, setPodcastList] = useState([])
+  const [totalPages, setTotalPages] = useState(1)
   const [selectedImage, setSelectedImage] = useState<any>(null);
   const [image, setImage] = useState<any>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [currentPage, setCurrentPage] = useState(1);
   const [isOpen, setIsOpen] = useState<boolean>(false)
+  const [currentPage, setCurrentPage] = useState(0);
   const [resourcesPerPage,setResourcesPerPage] = useState(10);
 
   const [letterCount, setLetterCount] = useState(0);
@@ -38,17 +39,20 @@ const page = (props: Props) => {
   // Pagination: Calculate current page resources
   const indexOfLastResource = currentPage * resourcesPerPage;
   const indexOfFirstResource = indexOfLastResource - resourcesPerPage;
-  const currentPodcasts = podcastList?.length?podcastList?.toReversed().slice(indexOfFirstResource, indexOfLastResource):[];
+  const currentPodcasts = podcastList?.length?podcastList?.slice(indexOfFirstResource, indexOfLastResource):[];
 
   const nextPage = () => {
-    if (currentPage < Math.ceil(podcastList?.length?podcastList?.length:0 / resourcesPerPage)) {
+    if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
+      GetPodcastList(currentPage+1,resourcesPerPage,fetchPodcast)
+
     }
   };
 
   const previousPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
+      GetPodcastList(currentPage-1,resourcesPerPage,fetchPodcast)
     }
   };
 
@@ -119,7 +123,7 @@ const page = (props: Props) => {
   const AddPodcastDataCB = (result: any) => {
     console.log(result);
     if (result?.status == 200) {
-      GetPodcastList(fetchPodcast)
+      GetPodcastList(currentPage,resourcesPerPage,fetchPodcast)
       setImage(null)
       setSelectedImage(null)
       setPodcastData({
@@ -147,7 +151,7 @@ const page = (props: Props) => {
 
   const PutPodcastDataCB = (result: any) => {
     if (result?.status == 200) {
-      GetPodcastList(fetchPodcast)
+      GetPodcastList(currentPage,resourcesPerPage,fetchPodcast)
       setImage(null)
       setSelectedImage(null)
       setPodcastDetail({
@@ -164,12 +168,12 @@ const page = (props: Props) => {
 
   useEffect(() => {
     setIsLoading(true)
-    GetPodcastList(fetchPodcast)
+    GetPodcastList(currentPage,resourcesPerPage,fetchPodcast)
   }, [])
 
   const fetchPodcast = (result: any) => {
     if (result?.status == 200) {
-      setPodcastList(result?.data);
+      setPodcastList(result?.data?.content);
     }
     else {
       setPodcastList([])
@@ -185,12 +189,16 @@ const page = (props: Props) => {
   const DeletePodcastCB = (result: any) => {
     console.log(result)
     if (result?.status == 204) {
-      GetPodcastList(fetchPodcast)
+      GetPodcastList(currentPage,resourcesPerPage,fetchPodcast)
       toast.success('Podcast deleted successfully')
     } else {
       toast.error('Podcast not deleted')
     }
     setIsPopupDeleteOpen(false);
+  }
+
+  const onChangePage = (pageLimit:any)=>{
+    GetPodcastList(currentPage,pageLimit,fetchPodcast)
   }
 
   return (
@@ -261,7 +269,7 @@ const page = (props: Props) => {
               </div> : null}
             </div>
             <div>
-              <select className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" value={resourcesPerPage} onChange={(ro:any)=>setResourcesPerPage(ro.target.value)}>
+              <select className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" value={resourcesPerPage} onChange={(ro:any)=>{setResourcesPerPage(ro.target.value);onChangePage(ro.target.value)}}>
                 <option value="10">10</option>
                 <option value="20">20</option>
                 <option value="50">50</option>
@@ -299,7 +307,7 @@ const page = (props: Props) => {
               </tr>
             </thead>
             <tbody>
-              {currentPodcasts?.length ? currentPodcasts?.map((item: any) => (
+              {podcastList?.length ? podcastList?.map((item: any) => (
                 <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" key={item?.id}>
                   {/* <td className="w-4 p-4">
                     <div className="flex items-center">
@@ -320,10 +328,10 @@ const page = (props: Props) => {
                   <th scope="row" className="p-2 font-medium text-gray-900 whitespace-nowrap dark:text-white text-wrap">
                     {item?.title.slice(0, 20)}
                   </th>
-                  <td className="p-2">
+                  <td className="p-2 font-medium text-gray-900 whitespace-wrap dark:text-white text-wrap">
                     <Link href={item?.videoLink} target="_blank">{item?.videoLink}</Link>
                   </td>
-                  <td className="p-2">
+                  <td className="p-2 font-medium text-gray-900 whitespace-wrap dark:text-white text-wrap">
                     {item?.createdDate ? moment(item?.createdDate).format('YYYY-MM-DD') : ''}
                   </td>
                   <td className="p-2 flex justify-center items-center gap-2">
@@ -362,6 +370,7 @@ const page = (props: Props) => {
                   accept="image/*"
                   className="block w-full border rounded-lg h-12 text-sm text-gray-500 file:mr-4 file:py-[15px] file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-gray-200 file:text-gray-700 hover:file:bg-gray-100"
                   onChange={handleImageChange}
+                  required
                 />
                 {selectedImage && (
                   <div className=" relative mt-4 h-20 w-20 ">
@@ -619,17 +628,17 @@ const page = (props: Props) => {
         <button
           onClick={previousPage}
           className="bg-[#00A264] text-white px-4 py-2 rounded"
-          disabled={currentPage === 1}
+          disabled={currentPage === 0}
         >
           Previous
         </button>
         <span>
-          Page {currentPage} of {Math.ceil(podcastList.length?podcastList.length:1 / resourcesPerPage)}
+          Page {currentPage+1} of {totalPages}
         </span>
         <button
           onClick={nextPage}
           className="bg-[#00A264] text-white px-4 py-2 rounded"
-          disabled={currentPage >= Math.ceil(podcastList.length / resourcesPerPage)}
+          disabled={currentPage+1 >= totalPages}
         >
           Next
         </button>

@@ -30,9 +30,10 @@ const page = (props: Props) => {
   const [image, setImage] = useState<any>(null);
   const [resourceDetail, setResourceDetail] = useState<any>()
   const [resourcesList, setResourcesList] = useState([])
+  const [totalPages, setTotalPages] = useState(1)
   const [isLoading, setIsLoading] = useState<boolean>(false)
   // Pagination state
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(0);
   const [resourcesPerPage,setResourcesPerPage] = useState(10);
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [letterCount, setLetterCount] = useState(0);
@@ -42,17 +43,19 @@ const page = (props: Props) => {
   // Pagination: Calculate current page resources
   const indexOfLastResource = currentPage * resourcesPerPage;
   const indexOfFirstResource = indexOfLastResource - resourcesPerPage;
-  const currentResources = resourcesList.length?resourcesList?.toReversed().slice(indexOfFirstResource, indexOfLastResource):[];
+  const currentResources = resourcesList.length?resourcesList?.slice(indexOfFirstResource, indexOfLastResource):[];
 
   const nextPage = () => {
-    if (currentPage < Math.ceil(resourcesList.length / resourcesPerPage)) {
+    if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
+      GetResourcesList(currentPage+1,resourcesPerPage,fetchResources)
     }
   };
 
   const previousPage = () => {
-    if (currentPage > 1) {
+    if (currentPage > 0) {
       setCurrentPage(currentPage - 1);
+      GetResourcesList(currentPage-1,resourcesPerPage,fetchResources)
     }
   };
 
@@ -158,7 +161,7 @@ const page = (props: Props) => {
 
   const AddResourcesDataCB = (result: any) => {
     if (result?.status == 200) {
-      GetResourcesList(fetchResources)
+      GetResourcesList(currentPage,resourcesPerPage,fetchResources)
       setResourceData({ title: null,authorName:null, description: "" });
       setSelectedImage(null);
       setLetterCount(0);
@@ -171,12 +174,13 @@ const page = (props: Props) => {
 
   useEffect(() => {
     setIsLoading(true)
-    GetResourcesList(fetchResources)
+    GetResourcesList(currentPage,resourcesPerPage,fetchResources)
   }, [])
 
   const fetchResources = (result: any) => {
     if (result?.status == 200) {
-      setResourcesList(result.data);
+      setResourcesList(result.data?.content);
+      setTotalPages(result.data?.totalPages)
     } else {
       setResourcesList([])
       toast.success('No Record Found')
@@ -199,7 +203,7 @@ const page = (props: Props) => {
 
   const PutPodcastDataCB = (result: any) => {
     if (result?.status == 200) {
-      GetResourcesList(fetchResources)
+      GetResourcesList(currentPage,resourcesPerPage,fetchResources)
       toast.success('Resource updated successfully')
     } else {
       toast.error('Resource not updated')
@@ -214,14 +218,14 @@ const page = (props: Props) => {
     let data:any = {
       
     }
-    // let formData = new FormData()
-    // formData.append('publish', status==true?'false':'true')
-    PutChnagePublishResourcesData(id,status==true?'false':'true',data, PutChnagePublishResourcesDataCB)
+    let formData = new FormData()
+    formData.append('publish', status==true?'false':'true')
+    PutChnagePublishResourcesData(id,formData, PutChnagePublishResourcesDataCB)
   }
 
   const PutChnagePublishResourcesDataCB = (result: any) => {
     if (result?.status == 200) {
-      GetResourcesList(fetchResources)
+      GetResourcesList(currentPage,resourcesPerPage,fetchResources)
       toast.success('Resource updated successfully')
     } else {
       toast.error('Resource not updated')
@@ -231,12 +235,16 @@ const page = (props: Props) => {
 
   const DeletePodcastCB = (result: any) => {
     if (result?.status == 204) {
-      GetResourcesList(fetchResources)
+      GetResourcesList(currentPage,resourcesPerPage,fetchResources)
       toast.success('Resource deleted successfully')
     } else {
       toast.error('Resource not deleted')
     }
     setIsPopupDeleteOpen(false);
+  }
+
+  const onChangePage = (pageLimit:any)=>{
+    GetResourcesList(currentPage,pageLimit,fetchResources)
   }
 
   return (
@@ -307,7 +315,7 @@ const page = (props: Props) => {
               </div> : null}
             </div>
             <div>
-              <select className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" value={resourcesPerPage} onChange={(ro:any)=>setResourcesPerPage(ro.target.value)}>
+              <select className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" value={resourcesPerPage} onChange={(ro:any)=>{setResourcesPerPage(ro.target.value);onChangePage(ro.target.value)}}>
                 <option value="10">10</option>
                 <option value="20">20</option>
                 <option value="50">50</option>
@@ -353,7 +361,7 @@ const page = (props: Props) => {
               </tr>
             </thead>
             <tbody>
-              {currentResources?.length ? currentResources?.map((item: any) => (
+              {resourcesList?.length ? resourcesList?.map((item: any) => (
                 <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" key={item?.id}>
                   {/* <td className="w-4 p-4">
                     <div className="flex items-center">
@@ -374,13 +382,13 @@ const page = (props: Props) => {
                   <th scope="row" className="p-2 font-medium text-gray-900 whitespace-wrap dark:text-white text-wrap">
                     {item?.title.slice(0, 20)}
                   </th>
-                  <td className="p-2">
+                  <td className="p-2 font-medium text-gray-900 whitespace-wrap dark:text-white text-wrap">
                     {item?.authorName}
                   </td>
-                  <td className="p-2">
+                  <td className="p-2 font-medium text-gray-900 whitespace-wrap dark:text-white text-wrap">
                     {item?.createdDate ? moment(item?.createdDate).format('YYYY-MM-DD') : ''}
                   </td>
-                  <td className="p-2">
+                  <td className="p-2 font-medium text-gray-900 whitespace-wrap dark:text-white text-wrap">
                     {item?.publish ? 'Publised' : 'UnPublished'}
                   </td>
                   <td className="p-2 flex justify-center items-center gap-2">
@@ -391,7 +399,7 @@ const page = (props: Props) => {
                   </td>
                 </tr>
               )) : <tr>
-                <td colSpan={4} className="text-center">No Data Found</td>
+                <td colSpan={5} className="text-center">No Data Found</td>
               </tr>}
 
             </tbody>
@@ -446,7 +454,7 @@ const page = (props: Props) => {
                   Word Count: {letterCount}\4000
                 </div>
               </div>
-              <div className="mb-4">
+              <div className="mb-6">
                 <label htmlFor="image" className="block text-gray-700 mb-2">
                   Choose Image
                 </label>
@@ -457,7 +465,9 @@ const page = (props: Props) => {
                   accept="image/*"
                   className="block w-full border rounded-lg h-12 text-sm text-gray-500 file:mr-4 file:py-[15px] file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-gray-200 file:text-gray-700 hover:file:bg-gray-100"
                   onChange={handleImageChange}
+                  required
                 />
+                <span className="text-gray-500 text-sm float-right mb-4">Kindly use 1920px X 1020px image</span>
                 {selectedImage && (
                   <div className=" relative mt-4 h-20 w-20 ">
                     <Image
@@ -603,8 +613,8 @@ const page = (props: Props) => {
                   type="text"
                   id="authorName"
                   name="authorName"
-                  value={resourceDetail.authorName=='null'||!resourceDetail.authorName?resourceDetail.authorName:''}
-                  onChange={handleInputChange}
+                  value={resourceDetail.authorName}
+                  onChange={handleEditInputChange}
                   className="w-full px-3 py-2 border h-12 border-gray-300 rounded"
                   placeholder="Enter author name"
                 />
@@ -696,17 +706,17 @@ const page = (props: Props) => {
         <button
           onClick={previousPage}
           className="bg-[#00A264] text-white px-4 py-2 rounded"
-          disabled={currentPage === 1}
+          disabled={currentPage === 0}
         >
           Previous
         </button>
         <span>
-          Page {currentPage} of {Math.ceil(resourcesList.length?resourcesList.length:1 / resourcesPerPage)}
+          Page {currentPage+1} of {totalPages}
         </span>
         <button
           onClick={nextPage}
           className="bg-[#00A264] text-white px-4 py-2 rounded"
-          disabled={currentPage >= Math.ceil(resourcesList.length / resourcesPerPage)}
+          disabled={currentPage+1 >= totalPages}
         >
           Next
         </button>

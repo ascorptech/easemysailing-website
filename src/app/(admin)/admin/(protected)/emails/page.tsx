@@ -12,8 +12,9 @@ type Props = {}
 const page = (props: Props) => {
   const [isPopupDeleteOpen, setIsPopupDeleteOpen] = useState(false);
   const [emailsList, setEmailsList] = useState<any>([])
+  const [totalPages, setTotalPages] = useState(1)
   const [emailDetail, setEmailDetail] = useState<any>({})
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(0);
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [resourcesPerPage,setResourcesPerPage] = useState(10);
   const [isOpen, setIsOpen] = useState<boolean>(false)
@@ -25,24 +26,27 @@ const page = (props: Props) => {
   const currentEmails = emailsList.length?emailsList?.slice(indexOfFirstResource, indexOfLastResource):[];
 
   const nextPage = () => {
-    if (currentPage < Math.ceil(emailsList.length / resourcesPerPage)) {
+    if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
+      GetEmailsList(currentPage+1,resourcesPerPage,fetchResources)
     }
   };
 
   const previousPage = () => {
-    if (currentPage > 1) {
+    if (currentPage > 0) {
       setCurrentPage(currentPage - 1);
+      GetEmailsList(currentPage-1,resourcesPerPage,fetchResources)
     }
   };
 
   useEffect(() => {
     setIsLoading(true)
-    GetEmailsList(fetchResources)
+    GetEmailsList(currentPage,resourcesPerPage,fetchResources)
   }, [])
 
   const fetchResources = (result: any) => {
-    setEmailsList(result.data);
+    setEmailsList(result.data?.content);
+    setTotalPages(result.data?.totalPages)
     setIsLoading(false)
   }
 
@@ -52,12 +56,15 @@ const page = (props: Props) => {
 
   const DeletePodcastCB = (result: any) => {
     if (result?.status == 204) {
-      GetEmailsList(fetchResources)
+      GetEmailsList(currentPage,resourcesPerPage,fetchResources)
       toast.success('Email deleted successfully')
     } else {
       toast.error('Email not deleted')
     }
     setIsPopupDeleteOpen(false);
+  }
+  const onChangePage = (pageLimit:any)=>{
+    GetEmailsList(currentPage,pageLimit,fetchResources)
   }
   return (
     <div className="mt-4 mx-auto flex w-[90%] flex-col">
@@ -127,7 +134,7 @@ const page = (props: Props) => {
               </div> : null}
             </div>
             <div>
-              <select className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" value={resourcesPerPage} onChange={(ro:any)=>setResourcesPerPage(ro.target.value)}>
+              <select className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" value={resourcesPerPage} onChange={(ro:any)=>{setResourcesPerPage(ro.target.value);onChangePage(ro.target.value)}}>
                 <option value="10">10</option>
                 <option value="20">20</option>
                 <option value="50">50</option>
@@ -173,7 +180,7 @@ const page = (props: Props) => {
               </tr>
             </thead>
             <tbody>
-              {currentEmails?.length ? currentEmails?.map((item: any) => (
+              {emailsList?.length ? emailsList?.map((item: any) => (
                 <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" key={item?.id}>
                   <th scope="row" className="p-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {item?.name}
@@ -325,17 +332,17 @@ const page = (props: Props) => {
         <button
           onClick={previousPage}
           className="bg-[#00A264] text-white px-4 py-2 rounded"
-          disabled={currentPage === 1}
+          disabled={currentPage === 0}
         >
           Previous
         </button>
         <span>
-          Page {currentPage} of {Math.ceil(emailsList.length?emailsList.length:1 / resourcesPerPage)}
+          Page {currentPage+1} of {totalPages}
         </span>
         <button
           onClick={nextPage}
           className="bg-[#00A264] text-white px-4 py-2 rounded"
-          disabled={currentPage >= Math.ceil(emailsList.length / resourcesPerPage)}
+          disabled={currentPage+1 >= totalPages}
         >
           Next
         </button>

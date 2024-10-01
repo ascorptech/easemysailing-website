@@ -50,7 +50,7 @@ const page = (props: Props) => {
   };
 
   const previousPage = () => {
-    if (currentPage > 1) {
+    if (currentPage > 0) {
       setCurrentPage(currentPage - 1);
       GetPodcastList(currentPage-1,resourcesPerPage,fetchPodcast)
     }
@@ -174,6 +174,7 @@ const page = (props: Props) => {
   const fetchPodcast = (result: any) => {
     if (result?.status == 200) {
       setPodcastList(result?.data?.content);
+      setTotalPages(result.data?.totalPages)
     }
     else {
       setPodcastList([])
@@ -273,7 +274,7 @@ const page = (props: Props) => {
                 <option value="10">10</option>
                 <option value="20">20</option>
                 <option value="50">50</option>
-                <option value="100">1O0</option>
+                <option value="100">100</option>
               </select>
             </div>
             </div>

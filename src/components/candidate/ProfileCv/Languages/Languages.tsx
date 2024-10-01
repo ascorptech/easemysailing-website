@@ -1,11 +1,20 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import CircularProgress from "../CircularProgress";
+type LanguageComplete = {
+  percentage: number;
+  color: string;
+};
+type Props={
+  languageComplete: LanguageComplete; 
+  setLanguageComplete: React.Dispatch<React.SetStateAction<LanguageComplete>>; 
+  userDetail:any
+}
 
-const Languages = () => {
+const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) => {
   // State for form fields
   const [language1, setLanguage1] = useState("");
   const [addiLanguage, setAddiLanguage] = useState("");
@@ -47,16 +56,33 @@ const Languages = () => {
   ].filter(Boolean).length;
 
   const percentage = (filledFields / totalFields) * 100;
-
+  // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
   let color;
-  if (percentage <= 30) {
-    color = "red";
-  } else if (percentage <= 70) {
-    color = "orange";
-  } else {
-    color = "green";
-  }
-
+  useEffect(() => {
+    console.log('user',userDetail)
+    if (percentage <= 30) {
+      setLanguageComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: '#FF0000' // Update the color field
+      }));
+      color = "red"; 
+    } else if (percentage <= 70) {
+      setLanguageComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: '#FF9900' // Update the color field
+      }));
+      color = "#FF9900"; 
+    } else {
+      setLanguageComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: '#00A264' // Update the color field
+      }));
+      color = "green";
+    }
+  }, [percentage,color])
   const handleSubmit = (e: React.FormEvent) => {
     // try {
     e.preventDefault(); 
@@ -73,7 +99,7 @@ const Languages = () => {
 
   return (
     <div className="container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
-          <CircularProgress percentage={Math.round(percentage)} color={color} /> 
+          
 
       <form onSubmit={handleSubmit}>
           {/* NATIVE LANGUAGE*/}

@@ -1,9 +1,19 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import CircularProgress from "../CircularProgress";
 
-const AboutMe = () => {
+type AboutMeComplete = {
+  percentage: number;
+  color: string;
+};
+type Props={
+  aboutMeComplete: AboutMeComplete; // mjrComplete is an object with percentage and color
+  setAboutMeComplete: React.Dispatch<React.SetStateAction<AboutMeComplete>>; // setMjrComplete is a function to update mjrComplete
+  userDetail:any
+}
+
+const AboutMe = ({aboutMeComplete, setAboutMeComplete, userDetail}: Props) => {
     const [personality, setPersonality] = useState("");
     const [additional, setAdditional] = useState("");
     const [myFuture, setMyFuture] = useState("");
@@ -25,13 +35,31 @@ const AboutMe = () => {
   const percentage = (filledFields / totalFields) * 100;
   // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
   let color;
-  if (percentage <= 30) {
-    color = "red";
-  } else if (percentage <= 70) {
-    color = "orange";
-  } else {
-    color = "green";
-  }
+  useEffect(() => {
+    console.log('user',userDetail)
+    if (percentage <= 30) {
+      setAboutMeComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: '#FF0000' // Update the color field
+      }));
+      color = "red"; 
+    } else if (percentage <= 70) {
+      setAboutMeComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: '#FF9900' // Update the color field
+      }));
+      color = "#FF9900"; 
+    } else {
+      setAboutMeComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: '#00A264' // Update the color field
+      }));
+      color = "green";
+    }
+  }, [percentage,color])
 
   const handleSubmit = async (e: React.FormEvent) => {
     
@@ -40,7 +68,7 @@ const AboutMe = () => {
 
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
-          <CircularProgress percentage={Math.round(percentage)} color={color} /> 
+         
 
       <form onSubmit={handleSubmit}>
         {/* next of About me */}

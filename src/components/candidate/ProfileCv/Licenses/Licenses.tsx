@@ -1,14 +1,24 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-const Licenses = () => {
+
+type LicensesComplete = {
+  percentage: number;
+  color: string;
+};
+type Props={
+  licensesComplete: LicensesComplete; // mjrComplete is an object with percentage and color
+  setLicensesComplete: React.Dispatch<React.SetStateAction<LicensesComplete>>; // setMjrComplete is a function to update mjrComplete
+  userDetail:any
+}
+
+const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
   // State for form fields
   const [number, setNumber] = useState("");
-  const [nextKinShip, setNextKinShip] = useState("");
-  const [nextKinAddre, setNextKinAddre] = useState("");
+ 
   const [idoNotACoC, setIdoNotACoC] = useState("");
   const [areaLimitation, setAreaLimitation] = useState("");
   const [capacity, setCapacity] = useState("");
@@ -22,15 +32,18 @@ const Licenses = () => {
   const [otherLimitation, setOtherLimitation] = useState("");
   const [issueDate, setIssueDate] = useState("");
   const [expiryDate, setExpiryDate] = useState("");
+  
+  const [gMexpiryDate, setGMExpiryDate] = useState("");
+
+  const [gMissueDate, setGMIssueDate] = useState("");
+
+  
 
   const [issuingCountry, setIssuingCountry] = useState("");
 
-  const [availabilityDate, setAvailabilityDate] = useState("");
   const [certificateNo, setCertificateNo] = useState("");
   const [issueAuthority, setIssueAuthority] = useState("");
   const [sTCWRegulation, setSTCWRegulation] = useState("");
-  const [alternateVesselType, setAlternateVesselType] = useState("");
-  const [available, setAvailable] = useState("");
   const [certificateType, setCertificateType] = useState("");
   const [separately, setSeparately] = useState("");
 
@@ -45,6 +58,68 @@ const Licenses = () => {
   const [selectedFile2, setSelectedFile2] = useState<File | null>(null);
 
   // Salary expectation states
+
+  const totalFields = 25;
+  const filledFields = [
+    number,
+    idoNotACoC,
+    areaLimitation,
+    capacity,
+    areaLimitation,
+    issuingOption,
+    typeOption,
+    number1,
+    wRegulation,
+    otherLimitation,
+    issueDate,
+    expiryDate,
+    issuingCountry,
+    certificateNo,
+    issueAuthority,
+    sTCWRegulation,
+    certificateType,
+    separately,
+    sTCWRegulationOption,
+    capacityOption,
+    issueDateOption,
+    expiryDateOption,
+    selectedFile,
+    selectedFile1,
+    selectedFile2,
+    gMexpiryDate,
+    gMissueDate
+  ].filter(Boolean).length;
+
+  const percentage = (filledFields / totalFields) * 100;
+  // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
+  let color;
+  useEffect(() => {
+    console.log('user',userDetail)
+    if (percentage <= 30) {
+      setLicensesComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: '#FF0000' // Update the color field
+      }));
+      color = "red"; 
+    } else if (percentage <= 70) {
+      setLicensesComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: '#FF9900' // Update the color field
+      }));
+      color = "#FF9900"; 
+    } else {
+      setLicensesComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: '#00A264' // Update the color field
+      }));
+      color = "green";
+    }
+  }, [percentage,color])
+
+
 
   const handleSubmit = (e: React.FormEvent) => {
     // try {
@@ -357,8 +432,8 @@ const Licenses = () => {
               <input
                 type="date"
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                value={issueDate}
-                onChange={(e) => setIssueDate(e.target.value)}
+                value={gMissueDate}
+                onChange={(e) => setGMIssueDate(e.target.value)}
               />
             </div>
             <div>
@@ -368,8 +443,8 @@ const Licenses = () => {
               <input
                 type="date"
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                value={expiryDate}
-                onChange={(e) => setExpiryDate(e.target.value)}
+                value={gMexpiryDate}
+                onChange={(e) => setGMExpiryDate(e.target.value)}
               />
             </div>
           </div>

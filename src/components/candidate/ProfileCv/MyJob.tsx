@@ -50,7 +50,36 @@ const MyJob = () => {
       color: '#FF0000'
     }
   )
-
+  const [nextofComplete, setNextOfComplete] = useState<any>(
+    {
+      percentage: 0,
+      color: '#FF0000'
+    }
+  )
+  const [languageComplete, setLanguageComplete] = useState<any>(
+    {
+      percentage: 0,
+      color: '#FF0000'
+    }
+  )
+  const [onlinePresenceComplete, setOnlinePresenceComplete] = useState<any>(
+    {
+      percentage: 0,
+      color: '#FF0000'
+    }
+  )
+  const [licensesComplete, setLicensesComplete] = useState<any>(
+    {
+      percentage: 0,
+      color: '#FF0000'
+    }
+  )
+  const [aboutMeComplete, setAboutMeComplete] = useState<any>(
+    {
+      percentage: 0,
+      color: '#FF0000'
+    }
+  )
 
   const [nKOpen, setNKOpen] = useState(false);
   const [cDOpen, setCDOpen] = useState(false);
@@ -83,7 +112,7 @@ const MyJob = () => {
     fetchDetails()
   }, [])
 
-  const fetchDetails=async()=>{
+  const fetchDetails = async()=>{
     let id = await localStorage.getItem('id')
     GetProfileDetail(id,(res:any)=>{
       if (res?.status==200) {
@@ -175,9 +204,10 @@ const MyJob = () => {
 
   return (
     <div className=" mx-6 mt-4  ">
-      <div className=" flex justify-between     ">
+      <div className=" flex justify-between">
+        
         <div className=" w-[50%] ">
-          <div className="    ">
+          <div className="">
             <div className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2  border-r-8 border-[${mjrComplete?.color}]`}>
 
               <h2 className=""> My Job Requirements</h2>{" "}
@@ -223,7 +253,7 @@ const MyJob = () => {
 
               {/* PersonalDetails start */}
 
-              {/* <div className="flex justify-between items-center rounded-md   bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
+              <div className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2   border-r-8 border-[${nextofComplete?.color}] mt-3`}>
                 <h1 className="">
                   Next Of Kin Details
                 </h1>
@@ -264,13 +294,13 @@ const MyJob = () => {
                       </svg>
                     )}
                   </span>
-                  <CircularProgress percentage={100} color="#FF0000" />
+                  <CircularProgress percentage={Math.round(nextofComplete?.percentage)} color={nextofComplete?.color} />
                 </div>
               </div>
-              {nKOpen && <NextOfKinDetails />} */}
               {/* {nKOpen && <NextOfKinDetails />} */}
+              {nKOpen && <NextOfKinDetails personalComplete={nextofComplete} setPersonalComplete={setNextOfComplete} userDetail={profileDetail}/>}
 
-              {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
+              <div className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${languageComplete?.color}] mt-3`}>
                 <Link href="#" className="">
                   Languages
                 </Link>
@@ -311,14 +341,16 @@ const MyJob = () => {
                       </svg>
                     )}
                   </span>
-                  <CircularProgress percentage={100} color="#FF0000" />
+                  <CircularProgress percentage={Math.round(languageComplete?.percentage)} color={languageComplete.color} />
                 </div>
               </div>
 
-              {languageOpen && <Languages />} */}
+              {languageOpen && <Languages  languageComplete={languageComplete}
+              setLanguageComplete={setLanguageComplete}
+              userDetail={profileDetail}/>}
 
               {/* OnlinePresence start */}
-              {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
+              <div className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${onlinePresenceComplete?.color}] mt-3`}>
                 <h1 className="">Online Presence</h1>
                 <div className="flex items-center justify-center gap-1">
                   <span
@@ -357,15 +389,15 @@ const MyJob = () => {
                       </svg>
                     )}
                   </span>
-                  <CircularProgress percentage={100} color="#FF0000" />
+                  <CircularProgress percentage={Math.round(onlinePresenceComplete?.percentage)} color={onlinePresenceComplete.color} />
                 </div>
               </div>
 
-              {oPOpen && <OnlinePresence />} */}
+              {oPOpen && <OnlinePresence onlinePresenceComplete={onlinePresenceComplete} setOnlinePresenceComplete={setOnlinePresenceComplete} userDetail={profileDetail}/>}
               {/* OnlinePresence end */}
 
               {/* OnlinePresence start */}
-              {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
+              <div className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${licensesComplete?.color}] mt-3`}>
                 <h1 className="">Licenses</h1>
                 <div className="flex items-center justify-center gap-1">
                   <span
@@ -404,11 +436,11 @@ const MyJob = () => {
                       </svg>
                     )}
                   </span>
-                  <CircularProgress percentage={100} color="#FF0000" />
+                  <CircularProgress percentage={Math.round(licensesComplete?.percentage)} color={licensesComplete.color} />
                 </div>
               </div>
 
-              {licensesOpen && <Licenses />} */}
+              {licensesOpen && <Licenses  licensesComplete={licensesComplete} setLicensesComplete={setLicensesComplete} userDetail={profileDetail}/>}
 
 
               {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
@@ -824,7 +856,7 @@ const MyJob = () => {
 
             {/* Aboutme  start*/}
 
-            {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#00A264] mt-3">
+            <div className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${aboutMeComplete?.color}] mt-3`}>
               <h2 className="">About Me</h2>
               <div className="flex items-center justify-center gap-1">
                 <span className="ml-2 cursor-pointer" onClick={hendleAboutMe}>
@@ -860,10 +892,10 @@ const MyJob = () => {
                     </svg>
                   )}
                 </span>
-                <CircularProgress percentage={100} color="#00A264" />
+                <CircularProgress  percentage={Math.round(aboutMeComplete?.percentage)} color={aboutMeComplete?.color}  />
               </div>
             </div>
-            {aboutMeOpen && <AboutMe />} */}
+            {aboutMeOpen && <AboutMe aboutMeComplete={aboutMeComplete} setAboutMeComplete={setAboutMeComplete} userDetail={profileDetail}/>}
             {/* about me end */}
 
             {/* conatact Details start */}

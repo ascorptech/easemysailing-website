@@ -131,9 +131,9 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
   const AddaddressdataDB = (result: any) => {
     console.log(result);
     if (result?.status == 200) {
-      toast.success("address submited successfully");
+      toast.success("personal details submited successfully");
     } else {
-      toast.error("address not submited ");
+      toast.error("Personal details not submited ");
     }
 
     //   const data = await AddProfileData(formData);

@@ -1,11 +1,20 @@
 "use client";
 import { AddProfileData } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import CircularProgress from "../CircularProgress";
+type OnlinePresenceComplete = {
+  percentage: number;
+  color: string;
+};
+type Props={
+  onlinePresenceComplete:OnlinePresenceComplete; // mjrComplete is an object with percentage and color
+  setOnlinePresenceComplete: React.Dispatch<React.SetStateAction<OnlinePresenceComplete>>; // setMjrComplete is a function to update mjrComplete
+  userDetail:any
+}
 
-const OnlinePresence = () => {
+const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDetail}:Props) => {
   // State for form fields
 
   const [whatsApp, setWhatsApp] = useState(false);
@@ -31,20 +40,37 @@ const OnlinePresence = () => {
     other
     
   ].filter(Boolean).length;
-
+  
   // const totalFields = available === "Yes" ? 6 : 5;
 
   const percentage = (filledFields / totalFields) * 100;
   // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
   let color;
-  if (percentage <= 30) {
-    color = "red";
-  } else if (percentage <= 70) {
-    color = "orange";
-  } else {
-    color = "green";
-  }
-
+  useEffect(() => {
+    console.log('user',userDetail)
+    if (percentage <= 30) {
+      setOnlinePresenceComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: '#FF0000' // Update the color field
+      }));
+      color = "red"; 
+    } else if (percentage <= 70) {
+      setOnlinePresenceComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: '#FF9900' // Update the color field
+      }));
+      color = "#FF9900"; 
+    } else {
+      setOnlinePresenceComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: '#00A264' // Update the color field
+      }));
+      color = "green";
+    }
+  }, [percentage,color])
 
   const handleSubmit = (e: React.FormEvent) => {
     // try {
@@ -55,7 +81,7 @@ const OnlinePresence = () => {
 
   return (
     <div className="container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
-            <CircularProgress percentage={Math.round(percentage)} color={color} />
+          
 
       <form onSubmit={handleSubmit}>
         {/* <div className="  "> */}

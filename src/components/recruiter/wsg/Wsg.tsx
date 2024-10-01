@@ -8,10 +8,7 @@ function Wsg() {
   const [isOpen3, setIsOpen3] = useState(false);
   const [isOpen4, setIsOpen4] = useState(false);
 
-  // const toggleDropdown = () => {
-  //   setIsOpen(!isOpen);
-  //   setgameOpen(!gameOpen);
-  // };
+  
   const toggleDropdown1 = () => setIsOpen1(!isOpen1);
   const toggleDropdown2 = () => setIsOpen2(!isOpen2);
   const toggleDropdown3 = () => setIsOpen3(!isOpen3);
@@ -19,6 +16,7 @@ function Wsg() {
 
   return (
     <div>
+      {/* **********Token************/}
       <div className="px-4 pt-4  ">
         <div
           className="flex h-10 p-3 rounded-sm justify-between bg-[#00965C] items-center cursor-pointer"

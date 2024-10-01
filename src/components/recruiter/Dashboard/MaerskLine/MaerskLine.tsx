@@ -177,11 +177,14 @@ const MaerskLine: React.FC = () => {
           <div className=" bg-gray-100 shadow-slate-600 shadow-inner  rounded-[50px] p-4  ">
             <div className="flex justify-between items-center text-white font-semibold text-lg bg-[#00A264] rounded-lg w-full p-2 mt-4">
               <div className="flex items-center ">
-                <img
+              <Image
+                  priority
+                  height={20}
+                  width={20}
                   src="../Images/artificial.png"
                   alt="image not found"
                   className="w-12 h-12 "
-                ></img>
+                />
                 <h3 className="underline ml-2">EMS Matches</h3>
               </div>
               <p className="font-extrabold">59</p>
@@ -189,11 +192,14 @@ const MaerskLine: React.FC = () => {
 
             <div className=" flex justify-between items-center  font-semibold text-lg bg-white rounded-lg w-full p-2 mt-5">
               <div className="flex items-center ">
-                <img
+              <Image
+                  priority
+                  height={20}
+                  width={20}
                   src="../Images/Customer.png"
                   alt="image not found"
                   className="w-12 h-12 "
-                ></img>
+                />
                 <h3 className=" ml-2 text-red-600">
                   You are missing
                   <p className="text-[#00A264] underline font-semibold mt-[-4px]">
@@ -213,7 +219,10 @@ const MaerskLine: React.FC = () => {
           <div className="space-y-4 ">
             <div className="flex justify-between items-center  bg-[#D3EAEA] p-[10px] rounded-lg">
               <div className="flex items-center space-x-2">
-                <img
+              <Image
+                  priority
+                  height={20}
+                  width={20}
                   src="../images/visitor.png"
                   alt="Salary Icon"
                   className="w-6 h-6"
@@ -227,7 +236,10 @@ const MaerskLine: React.FC = () => {
 
             <div className="flex justify-between items-center   bg-[#D3EAEA] p-[10px] rounded-lg">
               <div className="flex items-center space-x-2 ">
-                <img
+              <Image
+                  priority
+                  height={20}
+                  width={20}
                   src="../Images/jobOffer.png"
                   alt="Rank Icon"
                   className="w-6 h-6"
@@ -241,7 +253,10 @@ const MaerskLine: React.FC = () => {
 
             <div className="flex justify-between items-center   bg-[#D3EAEA] p-[10px] rounded-lg">
               <div className="flex items-center space-x-2 ">
-                <img
+              <Image
+                  priority
+                  height={20}
+                  width={20}
                   src="../Images/Resume.png"
                   alt="Ship Type Icon"
                   className="w-6 h-6"
@@ -255,7 +270,10 @@ const MaerskLine: React.FC = () => {
 
             <div className="flex justify-between items-center   bg-[#D3EAEA]  p-[10px] rounded-lg">
               <div className="flex items-center space-x-2 ">
-                <img
+              <Image
+                  priority
+                  height={20}
+                  width={20}
                   src="../Images/attachment.png"
                   alt="Rank Icon"
                   className="w-6 h-6"
@@ -269,7 +287,10 @@ const MaerskLine: React.FC = () => {
 
             <div className="flex justify-between items-center  bg-[#D3EAEA]  p-[10px] rounded-lg">
               <div className="flex items-center space-x-2 ">
-                <img
+              <Image
+                  priority
+                  height={20}
+                  width={20}
                   src="../Images/EDUEms.png"
                   alt="Rank Icon"
                   className="w-6 h-6"
@@ -346,10 +367,13 @@ const MaerskLine: React.FC = () => {
                 }`}
               >
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                  <img
+                <Image
+                  priority
+                  height={20}
+                  width={20}
                     src="./Images/ship-user.png"
                     className=" text-[#00A264]"
-                  ></img>
+                  />
                 </div>
                 <div className="ml-4">
                   <h3 className="text-md font-bold text-gray-800 ">

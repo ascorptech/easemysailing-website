@@ -38,10 +38,10 @@ const page = (props: Props) => {
   // Pagination: Calculate current page resources
   const indexOfLastResource = currentPage * resourcesPerPage;
   const indexOfFirstResource = indexOfLastResource - resourcesPerPage;
-  const currentPodcasts = podcastList.toReversed().slice(indexOfFirstResource, indexOfLastResource);
+  const currentPodcasts = podcastList?.length?podcastList?.toReversed().slice(indexOfFirstResource, indexOfLastResource):[];
 
   const nextPage = () => {
-    if (currentPage < Math.ceil(podcastList.length / resourcesPerPage)) {
+    if (currentPage < Math.ceil(podcastList?.length?podcastList?.length:0 / resourcesPerPage)) {
       setCurrentPage(currentPage + 1);
     }
   };
@@ -624,7 +624,7 @@ const page = (props: Props) => {
           Previous
         </button>
         <span>
-          Page {currentPage} of {Math.ceil(podcastList.length / resourcesPerPage)}
+          Page {currentPage} of {Math.ceil(podcastList.length?podcastList.length:1 / resourcesPerPage)}
         </span>
         <button
           onClick={nextPage}

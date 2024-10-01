@@ -42,7 +42,7 @@ const page = (props: Props) => {
   // Pagination: Calculate current page resources
   const indexOfLastResource = currentPage * resourcesPerPage;
   const indexOfFirstResource = indexOfLastResource - resourcesPerPage;
-  const currentResources = resourcesList.toReversed().slice(indexOfFirstResource, indexOfLastResource);
+  const currentResources = resourcesList.length?resourcesList?.toReversed().slice(indexOfFirstResource, indexOfLastResource):[];
 
   const nextPage = () => {
     if (currentPage < Math.ceil(resourcesList.length / resourcesPerPage)) {
@@ -212,11 +212,11 @@ const page = (props: Props) => {
   }
   const handleChnagePublish = (id: any,status:any) => {
     let data:any = {
-      publish:status==true?'false':'true'
+      
     }
-    let formData = new FormData()
-    formData.append('publish', status==true?'false':'true')
-    PutChnagePublishResourcesData(id,data, PutChnagePublishResourcesDataCB)
+    // let formData = new FormData()
+    // formData.append('publish', status==true?'false':'true')
+    PutChnagePublishResourcesData(id,status==true?'false':'true',data, PutChnagePublishResourcesDataCB)
   }
 
   const PutChnagePublishResourcesDataCB = (result: any) => {
@@ -701,7 +701,7 @@ const page = (props: Props) => {
           Previous
         </button>
         <span>
-          Page {currentPage} of {Math.ceil(resourcesList.length / resourcesPerPage)}
+          Page {currentPage} of {Math.ceil(resourcesList.length?resourcesList.length:1 / resourcesPerPage)}
         </span>
         <button
           onClick={nextPage}

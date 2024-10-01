@@ -22,7 +22,7 @@ const page = (props: Props) => {
   // Pagination: Calculate current page resources
   const indexOfLastResource = currentPage * resourcesPerPage;
   const indexOfFirstResource = indexOfLastResource - resourcesPerPage;
-  const currentEmails = emailsList.slice(indexOfFirstResource, indexOfLastResource);
+  const currentEmails = emailsList.length?emailsList?.slice(indexOfFirstResource, indexOfLastResource):[];
 
   const nextPage = () => {
     if (currentPage < Math.ceil(emailsList.length / resourcesPerPage)) {
@@ -330,7 +330,7 @@ const page = (props: Props) => {
           Previous
         </button>
         <span>
-          Page {currentPage} of {Math.ceil(emailsList.length / resourcesPerPage)}
+          Page {currentPage} of {Math.ceil(emailsList.length?emailsList.length:1 / resourcesPerPage)}
         </span>
         <button
           onClick={nextPage}

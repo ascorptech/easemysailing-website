@@ -31,9 +31,9 @@ export const PutResourcesData = async(id:any,data:any,cb:any)=>{
         return cb(error?.response)
     }
 }
-export const PutChnagePublishResourcesData = async(id:any,data:any,cb:any)=>{
+export const PutChnagePublishResourcesData = async(id:any,status:any,data:any,cb:any)=>{
     try {
-        let url:any=`${PUBLISHCHNAGERESOURCES}/${id}`
+        let url:any=`${PUBLISHCHNAGERESOURCES}/${id}/${status}`
         const response = await patchReq(url,data);
         return cb(response)
     } catch (error:any) {

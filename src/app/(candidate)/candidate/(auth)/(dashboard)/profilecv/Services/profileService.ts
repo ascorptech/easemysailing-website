@@ -24,9 +24,10 @@ export const GetDropdownDetails = async(key:any,cb:any)=>{
     }
 }
 
-export const AddProfileData = async(data:any ,cb:any)=>{
+export const AddProfileData = async(userId:any,data:any ,cb:any)=>{
     try {
-        const response = await putReq(PUTPROFILE,data)
+        let url = `${PUTPROFILE}/${userId}`
+        const response = await patchReq(url,data)
         return cb(response)
     } catch (error:any) {
         console.log('err',error)

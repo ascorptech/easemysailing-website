@@ -12,7 +12,7 @@ import {
   MediaEmbed,
   Paragraph,
   Table,
-  Undo
+  Undo,
 } from 'ckeditor5';
 import 'ckeditor5/ckeditor5.css';
 
@@ -58,6 +58,9 @@ const QuillEditor: React.FC<QuillEditorProps> = ({ content, setContent }) => {
         initialData: '',
       } }
       onChange={handleEditorChange}
+      onReady={(editor:any) => {
+        editor.ui.view.editable.element.style.minHeight = "200px";
+     }}
     />
   );
 };

@@ -206,9 +206,9 @@ const handlePhoneChange = (value: string, country: any) => {
               onSubmit={handleSubmit}
               className="w-[70%]"
             >
-              <div className="mb-1 mt-2 flex flex-wrap w-full lg:flex-nowrap space-x-2">
+              <div className="mb-1 mt-2 flex flex-wrap w-full lg:flex-nowrap lg:space-x-2">
                 <div className="w-full lg:w-[50%] mb-2">
-                  {" "}
+          
                   <label
                     className="block mb-1 text-[16px] leading-[24px] font-[500] text-[#333333]"
                     htmlFor="userName"
@@ -221,7 +221,7 @@ const handlePhoneChange = (value: string, country: any) => {
                       type="text"
                       value={firstName}
                       onChange={(e) => setFirstName(e.target.value.trim())}
-                      className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline font-[opensans]"
+                      className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline "
                       placeholder="Enter First Name"
                       required
                     />

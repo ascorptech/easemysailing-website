@@ -104,7 +104,8 @@ const ResourceDetailsPage: React.FC = () => {
             <div>
               <h2 className="font-bold text-xl mt-4">{resourceDetail?.title}</h2>
               {/* <p className=" text-sm text-justify  mt-4">{resourceDetail?.description?.replace(/<[^>]+>/g, '')}</p> */}
-              <p className=" text-sm text-justify  mt-4">{cleanDescText(resourceDetail?.description)}</p>
+              {/* <p className=" text-sm text-justify  mt-4">{cleanDescText(resourceDetail?.description)}</p> */}
+              <div dangerouslySetInnerHTML={{__html:resourceDetail?.description}} className=" text-sm text-justify  mt-4" />
             </div>
 
             {/* <h1 className=" my-4  font-bold text-xl">Drop Your Comment</h1>

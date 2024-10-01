@@ -1,5 +1,5 @@
 export default{
-    GETRESOURCES:'/api/resources',
+    GETRESOURCES:'/api/resources/published',
     GETRESOURCEDETAIL:'/api/resources',
     GETRECENTRESOURCEBYID:'/api/resources/exclude',
 }

@@ -96,7 +96,7 @@ const [profileDetail,setProfileDetail] = useState<any>()
               {profileDetail?.firstName +' '+ profileDetail?.lastName}
             </h1>
             <p className="text-[#00A264] font-medium text-[16px] leading-[24px]">
-              {profileDetail?.rank}
+              {profileDetail?.jobRequirements?.currentPosition}
             </p>
             <div className="flex items-center gap-2">
               <Image

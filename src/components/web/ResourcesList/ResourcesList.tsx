@@ -76,9 +76,10 @@ const ResourcesList = (props: Props) => {
           <h2 className="text-black-500  font-bold">
             {currentItems[0]?.title}
           </h2>
-          <p className="text-gray-500 text-sm text-justify ">
+          {/* <p className="text-gray-500 text-sm text-justify ">
             {currentItems[0]?.description?.replace(/<[^>]+>/g, '').slice(0, 1000)}
-          </p>
+          </p> */}
+          <div dangerouslySetInnerHTML={{__html:currentItems[0]?.description?.slice(0, 1000)}} className="text-gray-500 text-sm text-justify "/>
           <Link
             href={`/resources/${currentItems[0]?.id}`}
             className="h-8 lg:w-[25%] xl:w-[20%] w-[40%] mt-2 bg-green-700 text-white py-1 px-4 rounded-lg text-sm justify-center items-center flex "
@@ -110,14 +111,15 @@ const ResourcesList = (props: Props) => {
                   {item?.title}
                 </span>
               </div>
-              <div className="text-gray-500 text-sm text-justify mb-2">
+              {/* <div className="text-gray-500 text-sm text-justify mb-2">
                 {" "}
                 {item?.description?.replace(/<[^>]+>/g, '').slice(0, limit)}{" "}
-              </div>
+              </div> */}
+              <div dangerouslySetInnerHTML={{__html:item?.description?.slice(0, limit)}} className="text-gray-500 text-sm text-justify mb-2" />
 
               <Link
                 href={`/resources/${item?.id}`}
-                className="h-8 mt-2 bg-green-700 text-white py-1 px-4 rounded-lg text-sm "
+                className="h-8 mt-2 bg-green-700 text-white py-1 px-4 rounded-lg text-sm"
               >
                 Read more
               </Link>

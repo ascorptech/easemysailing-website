@@ -96,7 +96,7 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
     };
 
     // console.log(data);
-    AddProfileData(data, AddaddressdataDB);
+    // AddProfileData(data, AddaddressdataDB);
   };
   const AddaddressdataDB = (result: any) => {
     console.log(result);

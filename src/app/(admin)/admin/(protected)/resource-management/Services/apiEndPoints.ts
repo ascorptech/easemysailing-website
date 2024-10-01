@@ -3,4 +3,5 @@ export default{
     POSTRESOURCES:'/api/resources',
     PUTRESOURCES:'/api/resources',
     DELETERESOURCES:'/api/resources',
+    PUBLISHCHNAGERESOURCES:'/api/resources',
 }

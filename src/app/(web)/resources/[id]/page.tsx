@@ -99,7 +99,7 @@ const ResourceDetailsPage: React.FC = () => {
             </div>
             <div className="flex gap-4 mt-0 ">
               <p className="text-green-600">{moment(resourceDetail?.createdDate).format('YYYY-MM-DD')}</p>
-              <p className="font-semibold">By Gwen Stacy</p>
+              <p className="font-semibold">{resourceDetail?.authorName?resourceDetail?.authorName:'Amit Dubey'}</p>
             </div>
             <div>
               <h2 className="font-bold text-xl mt-4">{resourceDetail?.title}</h2>
@@ -198,7 +198,7 @@ const ResourceDetailsPage: React.FC = () => {
                         {item?.title}
                       </h2>
                       <p className="text-green-600   mt-0">
-                        {moment(item?.createdDate).format('YYYY-MM-DD')} By gwen stacy
+                        {moment(item?.createdDate).format('YYYY-MM-DD')} By {item?.authorName?item?.authorName:'Amit Dubey'}
                       </p>
                     </div>
                   </Link>

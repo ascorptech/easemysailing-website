@@ -18,9 +18,9 @@ export default function SignupContent() {
             Starts From
             <span className="text-[#00A264]"> Here</span>
           </h1>
-          <div className="w-full sm:w-[90%] md:w-[80%] lg:w-[70%]">
+          {/* <div className="w-full sm:w-[90%] md:w-[80%] lg:w-[70%]">
             <Searchbar />
-          </div>
+          </div> */}
 
           <div className="mt-10">
             <div className="flex flex-col lg:flex-row lg:w-[384px] gap-4 sm:gap-6 lg:gap-8 justify-center items-center mt-4 lg:mt-1">

@@ -3,9 +3,10 @@ import apiEndPoints from "./apiEndPoints";
 
 const {GETPOSDCAST,POSTPODCAST,DELETEPODCAST,PUTPODCAST} = apiEndPoints
 
-export const GetPodcastList = async(cb:any)=>{
+export const GetPodcastList = async(page:any,pageLimit:any,cb:any)=>{
     try {
-        const response = await getReq(GETPOSDCAST);
+        let url = `${GETPOSDCAST}?page=${page}&size=${pageLimit}&sort=ASC`
+        const response = await getReq(url);
         return cb(response)
     } catch (error:any) {
         console.log('err',error)

@@ -24,23 +24,57 @@ const [profileDetail,setProfileDetail] = useState<any>()
   const [date, setDate] = useState("");
   const [feedback, setFeedback] = useState("");
 
+  // useEffect(() => {
+  //   fetchDetails()
+  // }, [])
   useEffect(() => {
-    fetchDetails()
-  }, [])
+    const id = localStorage.getItem('id');
+    if (!id) {
+      toast.error('User ID is missing');
+      return;
+    }
+    fetchDetails();
+  }, []);
 
-  const fetchDetails=async()=>{
-    let id = await localStorage.getItem('id')
-    setProfileDetail({name:localStorage.getItem('firstName')+' '+localStorage.getItem('lastName'),email:localStorage.getItem('email')})
-    GetProfileDetail(id,(res:any)=>{
-      if (res?.status==200) {
-        setProfileDetail(res?.data)
-      }else{
-        toast.error('No data found')
+  // const fetchDetails=async()=>{
+  //   let id = await localStorage.getItem('id')
+  //   setProfileDetail({name:localStorage.getItem('firstName')+' '+localStorage.getItem('lastName'),email:localStorage.getItem('email')})
+  //   GetProfileDetail(id,(res:any)=>{
+  //     if (res?.status==200) {
+  //       setProfileDetail(res?.data)
+  //     }else{
+  //       toast.error('No data found')
+  //     }
+  //     console.log('data here iam',res)
+
+  //   })
+  // }
+
+  const fetchDetails = async () => {
+    const id = localStorage.getItem('id');
+    if (!id) {
+      toast.error('No user ID found');
+      return;
+    }
+  
+    console.log("Fetching details for ID:", id);
+  
+    setProfileDetail({
+      name: `${localStorage.getItem('firstName')} ${localStorage.getItem('lastName')}`,
+      email: localStorage.getItem('email'),
+    });
+  
+    GetProfileDetail(id, (res: any) => {
+      if (res?.status === 200) {
+        console.log('API response data:', res.data);
+        setProfileDetail(res.data);
+      } else {
+        toast.error('No data found');
       }
       console.log('data here iam',res)
-
-    })
-  }
+    });
+  };
+  
   
 
   const handleRating = (key: string, value: number) => {
@@ -93,10 +127,13 @@ const [profileDetail,setProfileDetail] = useState<any>()
           </div>
           <div className="flex flex-col gap-[6px]">
             <h1 className="font-semibold text-[24px] leading-[36px]">
-              {profileDetail?.firstName +' '+ profileDetail?.lastName}
+              {/* {profileDetail?.firstName +' '+ profileDetail?.lastName} */}
+              {profileDetail?.firstName ? `${profileDetail.firstName} ${profileDetail.lastName}` : 'Loading...'}
+
             </h1>
             <p className="text-[#00A264] font-medium text-[16px] leading-[24px]">
-              {profileDetail?.rank}
+              {/* {profileDetail?.rank} */}
+              {profileDetail?.rank || 'Rank not available'}
             </p>
             <div className="flex items-center gap-2">
               <Image

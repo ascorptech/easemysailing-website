@@ -1,8 +1,20 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const MedicalCertificates = () => {
+type MedicalComplete = {
+  percentage: number;
+  color: string;
+};
+
+type Props = {
+  medicalComplete: MedicalComplete; // mjrComplete is an object with percentage and color
+  setMedicalComplete: React.Dispatch<React.SetStateAction<MedicalComplete>>;
+  userDetail: any;
+};
+
+
+const MedicalCertificates = ({medicalComplete, setMedicalComplete,userDetail}:Props) => {
   const [number, setNumber] = useState("");
   const [issuedate, setIssueDate] = useState("");
   const [exdate, setExDate] = useState("");
@@ -12,10 +24,10 @@ const MedicalCertificates = () => {
 
   const [medicalPhysician, setMedicalPhysician] = useState("");
 
-  const [trainingCenter1, setTrainingCenter1] = useState("");
+
   const [result, setResult] = useState("");
 
-  const [eCDISNumber, setECDISNumber] = useState("");
+  const [medicalNumber, setMedicalNumber] = useState("");
   const [medicalCenter, setMedicalCenter] = useState("");
 
   const [testCenter, setTestCenter] = useState("");
@@ -24,9 +36,83 @@ const MedicalCertificates = () => {
 
   const [trainingCenter, setTrainingCenter] = useState("");
 
+  const [expires1, setExpires1] = useState(false);
+  const [expires2, setExpires2] = useState(false);
+ 
+  const [issuingOptions, setIssuingOptions] = useState("");
+  const [ types2Options, setTypes2Options] = useState("");
+  const [ typeOptions, setTypeOptions] = useState("");
+  const [ issuingCountryOpt, setIssuingCountryOpt] = useState("");
+  const [ medicalType, setMedicalType] = useState("");
+  const [ vaccinationIssue, setVaccinationIssue] = useState("");
+  const [ covidOptions, setCovidOptions] = useState("");
+  const [ vaccinationExpiry, setVaccinationExpiry] = useState("");
+  const [expiresMedical, setExpiresMedical] = useState(false);
+
+ 
   //   const handleFileChange = (event: any) => {
   //     setSelectedFile(event.target.files[0]);
-  //   };
+  //   };medicalType
+
+
+  const totalFields = 13;
+  const filledFields = [
+    number,
+    issuedate,
+    exdate,
+    selectedFile,
+    selectedFiles,
+    medicalPhysician,
+    result,
+    medicalNumber,
+    medicalCenter,
+    testCenter,
+    issuedate1,
+    exdate1,
+    trainingCenter,
+    expires1,
+    expires2,
+    issuingOptions,
+    types2Options,
+    typeOptions,
+    issuingCountryOpt,
+    medicalType,
+    vaccinationIssue,
+    covidOptions,
+    vaccinationExpiry,
+    expiresMedical
+  ].filter(Boolean).length;
+
+  // const totalFields = available === "Yes" ? 6 : 5;
+
+  const percentage = (filledFields / totalFields) * 100;
+  // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
+  let color;
+  useEffect(() => {
+    console.log("user", userDetail);
+    if (percentage <= 30) {
+      setMedicalComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: "#FF0000", // Update the color field
+      }));
+      color = "red";
+    } else if (percentage <= 70) {
+      setMedicalComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: "#FF9900", // Update the color field
+      }));
+      color = "#FF9900";
+    } else {
+      setMedicalComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: "#00A264", // Update the color field
+      }));
+      color = "green";
+    }
+  }, [percentage, color]);
 
   const handleFileChange = (event: any) => {
     const file = event.target.files?.[0];
@@ -48,26 +134,29 @@ const MedicalCertificates = () => {
       </div>
       <div className="grid grid-cols-2 gap-4">
         <div className="">
-          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="type">
+          <label className="text-[14px] leading-[19.07px]  text-[#333333] " htmlFor="types">
             Type
           </label>
           <select
-            id="type"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            id="types"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
+            value={types2Options}
+            onChange={(e) => setTypes2Options(e.target.value)}
+            
           >
             <option value="" disabled selected>
               Type
             </option>
-            <option value="">Training1</option>
-            <option value="">Training2</option>
-            <option value="">Training3</option>
+            <option value="training1">Training1</option>
+            <option value="training2">Training2</option>
+            <option value="training3">Training3</option>
           </select>
         </div>
 
         <div className="   ">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+            className="text-[14px] leading-[19.07px]  text-[#333333]"
             htmlFor="medicalnumber"
           >
             Number
@@ -77,7 +166,7 @@ const MedicalCertificates = () => {
             type="number"
             value={number}
             onChange={(e) => setNumber(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
             placeholder=""
             required
           />
@@ -85,22 +174,24 @@ const MedicalCertificates = () => {
 
         <div className=" ">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+            className="text-[14px] leading-[19.07px]  text-[#333333] "
             htmlFor="medicalIssuing"
           >
             Issuing Country
           </label>
           <select
             id="medicalIssuing"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
+            value={issuingOptions}
+                onChange={(e) => setIssuingOptions(e.target.value)}
           >
             <option value="" disabled selected>
               Issuing Country
             </option>
-            <option value="">India</option>
-            <option value="">Us</option>
-            <option value="">England</option>
+            <option value="India">India</option>
+            <option value="Us">Us</option>
+            <option value="England">England</option>
           </select>
         </div>
 
@@ -108,7 +199,7 @@ const MedicalCertificates = () => {
 
         <div className="   ">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+            className="text-[14px] leading-[19.07px]  text-[#333333] "
             htmlFor="issuringCity"
           >
             Issuring City
@@ -118,7 +209,7 @@ const MedicalCertificates = () => {
             type="text"
             value={trainingCenter}
             onChange={(e) => setTrainingCenter(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
             placeholder=""
             required
           />
@@ -126,7 +217,7 @@ const MedicalCertificates = () => {
 
         <div className="   ">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+            className="text-[14px] leading-[19.07px]  text-[#333333]"
             htmlFor="medicalcenter"
           >
             Medical Center
@@ -136,7 +227,7 @@ const MedicalCertificates = () => {
             type="text"
             value={result}
             onChange={(e) => setResult(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
             placeholder=""
             required
           />
@@ -145,7 +236,7 @@ const MedicalCertificates = () => {
         {/* </div> */}
         <div className="">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+            className="text-[14px] leading-[19.07px]  text-[#333333]"
             htmlFor="issuemedical"
           >
             Issue Date
@@ -153,7 +244,7 @@ const MedicalCertificates = () => {
           <input
             id="issuemedical"
             type="date"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             value={issuedate}
             onChange={(e) => setIssueDate(e.target.value)}
           />
@@ -162,7 +253,7 @@ const MedicalCertificates = () => {
 
         <div className="">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]  "
+            className="text-[14px] leading-[19.07px]  text-[#333333]  "
             htmlFor="expirymedical"
           >
             Expiry Date
@@ -171,7 +262,7 @@ const MedicalCertificates = () => {
             <input
               id="expirymedical"
               type="date"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={exdate}
               onChange={(e) => setExDate(e.target.value)}
             />
@@ -181,37 +272,44 @@ const MedicalCertificates = () => {
           <input
             id="nevermedical"
             type="checkbox"
-            className="border focus:ring-[#00A264]  checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
-            //   value={exdate}
-            //   onChange={(e) => setExDate(e.target.value)}
+            className="border focus:ring-[#00A264]  checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] text-[14px] leading-[19.07px]  text-[#333333]"
+            checked={expires1}
+            onChange={() => setExpires1(!expires1)}
           />
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+            className="text-[14px] leading-[19.07px]  text-[#333333]"
             htmlFor="nevermedical"
           >
             Never Expires
           </label>
           {/* </div> */}
         </div>
+        <div className="grid col-span-2 justify-center items-center">
 
         <div className="flex gap-6 items-center  my-6">
+          <div>
           <label
             htmlFor="medicalfile-upload3"
-            className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[openSans]  "
+            className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px]   "
           >
             Attachment Document
           </label>
+          
           <input
             id="medicalfile-upload3"
             type="file"
             className="hidden"
             onChange={handleFileChange}
           />
+          </div>
+          <div>
           {selectedFile ? (
-            <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">File Selected: {selectedFile.name}</p>
+            <p className="text-[14px] leading-[19.07px]  text-[#333333]">File Selected: {selectedFile.name}</p>
           ) : (
-            <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">No file selected</p>
+            <p className="text-[14px] leading-[19.07px]  text-[#333333]">No file selected</p>
           )}
+          </div>
+        </div>
         </div>
 
       
@@ -221,28 +319,30 @@ const MedicalCertificates = () => {
         </div>
         <div className="">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+            className="text-[14px] leading-[19.07px]  text-[#333333]"
             htmlFor="medicaltype"
           >
             Type
           </label>
           <select
             id="medicaltype"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
+            value={typeOptions}
+                onChange={(e) => setTypeOptions(e.target.value)}
           >
             <option value="" disabled selected>
               Type
             </option>
-            <option value="">1</option>
-            <option value="">2</option>
-            <option value="">3</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
           </select>
         </div>
 
         <div className="   ">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+            className="text-[14px] leading-[19.07px]  text-[#333333] "
             htmlFor="medicalNumber1"
           >
             Enter Number
@@ -250,9 +350,9 @@ const MedicalCertificates = () => {
           <input
             id="medicalNumber1"
             type="number"
-            value={eCDISNumber}
-            onChange={(e) => setECDISNumber(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            value={medicalNumber}
+            onChange={(e) => setMedicalNumber(e.target.value)}
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             placeholder=""
             required
           />
@@ -260,29 +360,32 @@ const MedicalCertificates = () => {
 
         <div className=" ">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+            className="text-[14px] leading-[19.07px]  text-[#333333] "
             htmlFor="Issuingmedical"
           >
             Issuing Country
           </label>
           <select
             id="Issuingmedical"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
+            value={issuingCountryOpt}
+                onChange={(e) => setIssuingCountryOpt(e.target.value)}
+
           >
             <option value="" disabled selected>
               Issuing Country
             </option>
-            <option value="">India</option>
-            <option value="">Us</option>
-            <option value="">England</option>
+            <option value="India">India</option>
+            <option value="us">Us</option>
+            <option value="england">England</option>
           </select>
         </div>
         {/* <div className=""> */}
 
         <div className="   ">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+            className="text-[14px] leading-[19.07px]  text-[#333333] "
             htmlFor="issuringCitymedical"
           >
             Issuring City
@@ -292,7 +395,7 @@ const MedicalCertificates = () => {
             type="text"
             value={medicalCenter}
             onChange={(e) => setMedicalCenter(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             placeholder=""
             required
           />
@@ -300,7 +403,7 @@ const MedicalCertificates = () => {
 
         <div className="   ">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+            className="text-[14px] leading-[19.07px]  text-[#333333] "
             htmlFor="medicaltestcenter"
           >
             Test Center
@@ -310,7 +413,7 @@ const MedicalCertificates = () => {
             type="text"
             value={testCenter}
             onChange={(e) => setTestCenter(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
             placeholder=""
             required
           />
@@ -318,13 +421,13 @@ const MedicalCertificates = () => {
 
         
         <div className="">
-          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]" htmlFor="issuedatem">
+          <label className="text-[14px] leading-[19.07px]  text-[#333333]" htmlFor="issuedatem">
             Issue Date
           </label>
           <input
             id="issuedatem"
             type="date"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             value={issuedate1}
             onChange={(e) => setIssueDate1(e.target.value)}
           />
@@ -332,7 +435,7 @@ const MedicalCertificates = () => {
 
         <div className="">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+            className="text-[14px] leading-[19.07px]  text-[#333333] "
             htmlFor="expiryDatemedical"
           >
             Expiry Date
@@ -341,7 +444,7 @@ const MedicalCertificates = () => {
           <input
             id="expiryDatemedical"
             type="date"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             value={exdate1}
             onChange={(e) => setExDate1(e.target.value)}
           />
@@ -350,24 +453,25 @@ const MedicalCertificates = () => {
           <input
             id="neverExpiresmedical"
             type="checkbox"
-            className="border focus:ring-[#00A264] text-[14px] leading-[19.07px] font-[openSans] text-[#333333]  checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
-            //   value={exdate}
-            //   onChange={(e) => setExDate(e.target.value)}
+            className="border focus:ring-[#00A264] text-[14px] leading-[19.07px]  text-[#333333]  checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
+            checked={expires2}
+                onChange={() => setExpires2(!expires2)}
           />
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+            className="text-[14px] leading-[19.07px]  text-[#333333]"
             htmlFor="neverExpiresmedical"
           >
             Never Expires
           </label>
         </div>
 
-        <div className=" text-center grid col-span-2 w-[60%]  ">
+        <div className=" text-center grid col-span-2 mt-3"><div className="flex items-center justify-center gap-4">
+          <div>
           <label
             htmlFor="file-uploadmedical"
-            className="cursor-pointer   bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 "
+            className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2  text-[14px] leading-[19.07px]   "
           >
-            Attach Docoment
+             Attachment Docoment
           </label>
           <input
             id="file-uploadmedical"
@@ -375,11 +479,14 @@ const MedicalCertificates = () => {
             className="hidden"
             onChange={handleFileChanges}
           />
+          </div><div>
           {selectedFiles ? (
-            <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">File Selected: {selectedFiles.name}</p>
+            <p className="text-[14px] leading-[19.07px]  text-[#333333]">File Selected: {selectedFiles.name}</p>
           ) : (
-            <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">No file selected</p>
+            <p className="text-[14px] leading-[19.07px]  text-[#333333]">No file selected</p>
           )}
+          </div>
+        </div>
         </div>
 
     
@@ -390,46 +497,51 @@ const MedicalCertificates = () => {
 
         <div className="">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
-            htmlFor="medicaltype"
+            className="text-[14px] leading-[19.07px]  text-[#333333] "
+            htmlFor="medicaltypes"
           >
             Type
           </label>
           <select
-            id="medicaltype"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            id="medicaltypes"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
+            value={medicalType}
+                onChange={(e) => setMedicalType(e.target.value)}
+
           >
             <option value="" disabled selected>
               Type
             </option>
-            <option value="">1</option>
-            <option value="">2</option>
-            <option value="">3</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
           </select>
         </div>
 
         <div className="">
-          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="covid">
+          <label className="text-[14px] leading-[19.07px]  text-[#333333] " htmlFor="covid">
             Covid Caccine Name Country
           </label>
           <select
             id="covid"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
+            value={covidOptions}
+            onChange={(e) => setCovidOptions(e.target.value)}
           >
             <option value="" disabled selected>
               Covid Caccine Name Country
             </option>
-            <option value="">1</option>
-            <option value="">2</option>
-            <option value="">3</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
           </select>
         </div>
 
         <div className="   ">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+            className="text-[14px] leading-[19.07px]  text-[#333333] "
             htmlFor="medicalcenter"
           >
             Medical Center Physician
@@ -439,7 +551,7 @@ const MedicalCertificates = () => {
             type="text"
             value={medicalPhysician}
             onChange={(e) => setMedicalPhysician(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             placeholder=""
             required
           />
@@ -447,7 +559,7 @@ const MedicalCertificates = () => {
 
         <div className="">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+            className="text-[14px] leading-[19.07px]  text-[#333333]"
             htmlFor="vaccinedate1"
           >
             Vaccination Date1
@@ -455,15 +567,15 @@ const MedicalCertificates = () => {
           <input
             id="vaccinedate1"
             type="date"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-            // value={issuedate1}
-            // onChange={(e) => setIssueDate1(e.target.value)}
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+             value={vaccinationIssue}
+             onChange={(e) => setVaccinationIssue(e.target.value)}
           />
         </div>
 
         <div className="">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]  "
+            className="text-[14px] leading-[19.07px]  text-[#333333]  "
             htmlFor="vaccinedate2"
           >
             Vaccination Date
@@ -472,9 +584,9 @@ const MedicalCertificates = () => {
           <input
             id="vaccinedate2"
             type="date"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-            // value={exdate1}
-            // onChange={(e) => setExDate1(e.target.value)}
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+             value={vaccinationExpiry}
+             onChange={(e) => setVaccinationExpiry(e.target.value)}
           />
         </div>
 
@@ -485,7 +597,7 @@ const MedicalCertificates = () => {
           <input
             id="issuedatem"
             type="date"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             value={issuedate1}
             onChange={(e) => setIssueDate1(e.target.value)}
           />
@@ -493,7 +605,7 @@ const MedicalCertificates = () => {
 
         <div className="">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+            className="text-[14px] leading-[19.07px]  text-[#333333] "
             htmlFor="expiryDatemedical"
           >
             Expiry Date
@@ -502,7 +614,7 @@ const MedicalCertificates = () => {
           <input
             id="expiryDatemedical"
             type="date"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             value={exdate1}
             onChange={(e) => setExDate1(e.target.value)}
           />
@@ -512,11 +624,11 @@ const MedicalCertificates = () => {
             id="neverExpiresmedical"
             type="checkbox"
             className="border focus:ring-[#00A264]  text-[#00A264] checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
-            //   value={exdate}
-            //   onChange={(e) => setExDate(e.target.value)}
+            checked={expiresMedical}
+            onChange={() => setExpiresMedical(!expiresMedical)}
           />
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+            className="text-[14px] leading-[19.07px]  text-[#333333]"
             htmlFor="neverExpiresmedical"
           >
             Never Expires
@@ -527,9 +639,9 @@ const MedicalCertificates = () => {
       <div className="flex gap-6 items-center  mt-4 justify-center ">
         <label
           htmlFor="file-uploadmedicalvaccine"
-          className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2  text-[14px] leading-[19.07px] font-[openSans] "
+          className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2  text-[14px] leading-[19.07px]  "
         >
-          Attach Docoment
+           Attachment Docoment
         </label>
         <input
           id="file-uploadmedicalvaccine"
@@ -540,7 +652,7 @@ const MedicalCertificates = () => {
         {selectedFiles ? (
           <p className="text-gray-700">File Selected: {selectedFiles.name}</p>
         ) : (
-          <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">No file selected</p>
+          <p className="text-[14px] leading-[19.07px]  text-[#333333]">No file selected</p>
         )}
       </div>
 
@@ -551,13 +663,13 @@ const MedicalCertificates = () => {
       <div className="flex gap-2 mb-4 mt-4">
         <Link
           href="#"
-          className="border text-[14px] leading-[19.07px] font-[openSans]  border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
+          className="border text-[14px] leading-[19.07px]   border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
         >
           Save
         </Link>
         <Link
           href="#"
-          className="border text-[14px] leading-[19.07px] font-[openSans] text-[#333333] border-[#00A264]  p-2 rounded-lg px-8"
+          className="border text-[14px] leading-[19.07px]  text-[#333333] border-[#00A264]  p-2 rounded-lg px-8"
         >
           Edit
         </Link>

@@ -1,5 +1,5 @@
 "use client";
-import { AddProfileData, GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import { AddProfileData, GetDropdownDetails,GetProfileDetail } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
 import React, { useEffect } from "react";
 import { useState } from "react";
@@ -125,12 +125,12 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
       gender,
       marital,
     };
-    console.log(formData);
+    console.log('Submitting form data:', formData);
     AddProfileData(formData, AddaddressdataDB);
   };
   const AddaddressdataDB = (result: any) => {
-    console.log(result);
-    if (result?.status == 200) {
+    console.log('API result:',result);
+    if (result?.status === 200) {
       toast.success("personal details submited successfully");
     } else {
       toast.error("Personal details not submited ");

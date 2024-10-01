@@ -1,7 +1,9 @@
 "use client";
 import React, { useEffect } from "react";
+import { AddProfileData, GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+
 import { useState } from "react";
-import CircularProgress from "../CircularProgress";
+import { toast } from "react-toastify";
 
 type PersonalComplete = {
   percentage: number;
@@ -63,9 +65,48 @@ const NextOfKinDetails = ({
     }
   }, [percentage, color]);
 
+  useEffect(() => {
+    if(userDetail){
+      setNextKinName(userDetail.nextKinName);
+      setNextKinAddre(userDetail.nextKinAddre);
+      setNextKinChildren(userDetail.nextKinChildren);
+      setNextKinShip(userDetail.nextKinShip)
+      
+    }
+  }, [])
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if(
+      !nextKinName ||
+      !nextKinName ||
+      !nextKinShip ||
+      !nextKinAddre ||
+      !nextKinChildren
+    )
+    {
+      toast.error("Please fill in all required fields.");
+      return;
+    }
+
+    let data={
+      nextKinName,
+      nextKinAddre,
+      nextKinShip,
+      nextKinChildren
+    }
+    console.log(data)
+    AddProfileData(data, AddNextKinDetailsDB)
   };
+
+  const AddNextKinDetailsDB = (result:any) => {
+    console.log(result);
+    if(result?.status == 200){
+      toast.success("NextKin details submited successfully");
+    }else {
+      toast.error("NextKin details not submited successfully")
+    }
+  }
 
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
@@ -93,7 +134,7 @@ const NextOfKinDetails = ({
                 onChange={(e) => setNextKinName(e.target.value)}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder=""
-                required
+               
               />
               {/* </div> */}
             </div>

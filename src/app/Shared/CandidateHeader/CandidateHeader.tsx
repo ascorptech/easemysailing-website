@@ -35,7 +35,7 @@ const Header: React.FC<HeaderProps> = ({ sidebarToggle, setSidebarToggle }) => {
       </div>
 
       <div className="flex items-center p-[3px]">
-        <div className="border-4 w-24  rounded-lg mr-6">
+        {/* <div className="border-4 w-24  rounded-lg mr-6">
           <Link
             href="#"
             className="bg-white flex items-center justify-center  rounded-2xl font-bold gap-1 text-xl"
@@ -49,10 +49,10 @@ const Header: React.FC<HeaderProps> = ({ sidebarToggle, setSidebarToggle }) => {
             />
             50
           </Link>
-        </div>
+        </div> */}
 
         <ul className="flex items-center gap-2">
-          <li className="flex items-center gap-2 cursor-pointer">
+          {/* <li className="flex items-center gap-2 cursor-pointer">
             <Link href="#" className="">
               <Image
                 src="/images/candidate/doller.png"
@@ -65,8 +65,8 @@ const Header: React.FC<HeaderProps> = ({ sidebarToggle, setSidebarToggle }) => {
             <Link href="#" className=" underline text-lg">
               Subscription
             </Link>
-          </li>
-          <li>
+          </li> */}
+          {/* <li>
             <Link href="#" className="w-36 h-36">
               <Image
                 src="/images/candidate/notification.png"
@@ -76,8 +76,8 @@ const Header: React.FC<HeaderProps> = ({ sidebarToggle, setSidebarToggle }) => {
                 className="text-green-600 text-xl p-2 "
               />
             </Link>
-          </li>
-          <li>
+          </li> */}
+          {/* <li>
             <Link href="#" className="w-36 h-36">
               <Image
                 src="/images/candidate/card.png"
@@ -87,7 +87,7 @@ const Header: React.FC<HeaderProps> = ({ sidebarToggle, setSidebarToggle }) => {
                 className="text-green-600 text-xl p-2 "
               />
             </Link>
-          </li>
+          </li> */}
         </ul>
         <div className="ml-[5px] mr-11 cursor-pointer flex items-center">
           <Image

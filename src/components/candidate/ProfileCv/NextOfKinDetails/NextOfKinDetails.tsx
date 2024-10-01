@@ -96,7 +96,7 @@ const NextOfKinDetails = ({
       nextKinChildren
     }
     console.log(data)
-    // AddNextOfDetails(data, AddNextKinDetailsDB)
+     AddNextOfDetails(data, AddNextKinDetailsDB)
   };
 
   const AddNextKinDetailsDB = (result:any) => {

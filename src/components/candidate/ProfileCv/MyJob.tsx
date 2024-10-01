@@ -736,7 +736,7 @@ const MyJob = () => {
 
               {/*Address Details start */}
 
-              <div
+              {/* <div
                 className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF9900] mt-3"
                 onClick={handlePreSeaDetails}
               >
@@ -781,7 +781,7 @@ const MyJob = () => {
                 </div>
               </div>
 
-              {preOpen && <PreSeaTrainigDetails />}
+              {preOpen && <PreSeaTrainigDetails />} */}
 
 
 
@@ -1241,7 +1241,7 @@ const MyJob = () => {
 
 
             <div
-              className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#00A264] mt-3`}
+              className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${refrencesComplete?.color}] mt-3`}
               onClick={handleReferences}
             >
               <Link href="#" className="">
@@ -1287,7 +1287,7 @@ const MyJob = () => {
             {refOpen && <Refrences refrencesComplete={refrencesComplete} setRefrencesComplete={setRefrencesComplete}  userDetail={profileDetail}/>}
            
 
-            <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#00A264] mt-3">
+            {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#00A264] mt-3">
               <h2 className="">Vetting Service</h2>
               <div className="flex items-center justify-center gap-1">
                 <span className="ml-2 cursor-pointer" onClick={hendleModular}>
@@ -1326,7 +1326,7 @@ const MyJob = () => {
                 <CircularProgress percentage={100} color="#00A264" />
               </div>
             </div>
-            {mCOpen && <VettingServices />}
+            {mCOpen && <VettingServices />} */}
 
 
 

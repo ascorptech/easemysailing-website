@@ -38,8 +38,9 @@ const Refrences = ({
   const [country, setCountry] = useState("");
   const [ nearestAirport, setNearestAirport] = useState("");
   const [ countryCode1, setCountryCode1] = useState("");
+  const [ document2, setDocument2] = useState("");
 
-
+  const [ issueDate1, setIssueDate1] = useState("");
 
 
   const totalFields = 19;
@@ -62,7 +63,9 @@ const Refrences = ({
     countryCode,
     country,
     nearestAirport,
-     countryCode1
+     countryCode1,
+     document2,
+     issueDate1
   ].filter(Boolean).length;
 
   const percentage = (filledFields / totalFields) * 100;
@@ -210,8 +213,8 @@ const Refrences = ({
                 <input
                   id="number"
                   type="date"
-                  value={date}
-                  onChange={(e) => setDate(e.target.value)}
+                  value={issueDate1}
+                  onChange={(e) => setIssueDate1(e.target.value)}
                   className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
@@ -222,16 +225,16 @@ const Refrences = ({
             <div className="w-full ">
               <label
                 className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
-                htmlFor="street"
+                htmlFor="document2"
               >
                 Document
               </label>
               <div className="relative flex items-center  ">
                 <input
-                  id="street"
+                  id="document2"
                   type="text"
-                  value={companyName}
-                  onChange={(e) => setCompanyName(e.target.value)}
+                  value={document2}
+                  onChange={(e) => setDocument2(e.target.value)}
                   className="border rounded-lg w-full py-[7px] text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required

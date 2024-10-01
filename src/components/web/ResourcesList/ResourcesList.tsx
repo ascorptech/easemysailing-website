@@ -17,13 +17,13 @@ const ResourcesList = (props: Props) => {
   const itemsPerPage = 6; // Number of items per page
 
   // Calculate total pages
-  const totalPages = Math.ceil(resourcesList.length / itemsPerPage);
+  const totalPages = Math.ceil(resourcesList?.length / itemsPerPage);
 
   // Get items for the current page
-  const currentItems = resourcesList.toReversed().slice(
+  const currentItems = resourcesList.length ?resourcesList?.toReversed().slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
-  );
+  ):[];
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {

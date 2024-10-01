@@ -195,7 +195,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
               )}
             </div> */}
           {/* <div className="mb-4"> */}
-          <div className="flex gap-4 items-center justify-around mt-3 mb-6">
+          {/* <div className="flex gap-4 items-center justify-around mt-3 mb-6">
             <div>
               {" "}
               <label
@@ -236,7 +236,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
                 No file selected
               </p>
             )}
-          </div>
+          </div> */}
 
           <div className="grid grid-cols-2 gap-4    ">
             <div className="w-full ">

@@ -10,6 +10,7 @@ const LoginHeader = () => {
         <div className="w-44 h-12 sm:w-52 sm:h-[53px] ">
           <Link href="/">
             <Image
+            priority
               src="/images/logo_1.png"
               alt="EaseMySailing Logo"
               className="object-contain h-full w-full "

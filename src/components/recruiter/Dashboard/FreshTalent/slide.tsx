@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import React, { useRef, useEffect } from "react";
 
 interface FreshTalent {
@@ -113,7 +114,10 @@ const Slide: React.FC = () => {
             className="bg-white  border rounded-lg  p-4  flex flex-col items-center text-center  shadow-xl ]  "
           >
             <div className="w-[95px] h-[95px] p-1 bg-white  ">
-              <img
+              <Image
+              width={40}
+              height={40}
+              priority
                 src="./Images/avtar.png"
                 alt="Maersk Line"
                 className="h-full w-full "

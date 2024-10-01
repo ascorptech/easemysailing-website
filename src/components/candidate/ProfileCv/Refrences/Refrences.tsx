@@ -4,6 +4,16 @@ import React from "react";
 
 import { useState } from "react";
 
+type RefrencesComplete = {
+  percentage: number;
+  color: string;
+};
+type Props={
+  additionalComplete: RefrencesComplete ; 
+  setAdditionalComplete: React.Dispatch<React.SetStateAction<RefrencesComplete >>;
+  userDetail:any
+}
+
 const Refrences = () => {
   const [date, setDate] = useState("");
   const [companyName, setCompanyName] = useState("");

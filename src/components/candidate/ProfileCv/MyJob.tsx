@@ -136,6 +136,21 @@ const MyJob = () => {
       color:'#FF0000'
     }
   )
+  const [seaGoingServiceComplete, setSeaGoingServiceComplete] = useState<any> (
+    {
+      percentage: 0,
+      color:'#FF0000'
+    }
+    
+  )
+
+  const [refrencesComplete, setRefrencesComplete] = useState<any> (
+    {
+      percentage: 0,
+      color:'#FF0000'
+    }
+    
+  )
 
 
   const [nKOpen, setNKOpen] = useState(false);
@@ -629,7 +644,7 @@ const MyJob = () => {
 
               {academicOpen && <AcademicDetails academicComplete={academicComplete} setAcademicComplete={setAcademicComplete}  userDetail={profileDetail} />}
 
-              {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF9900] mt-3">
+              <div className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${seaGoingServiceComplete?.color}] mt-3`}>
                 <h2 className="">SeaGoing Experience </h2>
                 <div className="flex items-center justify-center gap-1">
                   <span className="ml-2 cursor-pointer" onClick={handleSea}>
@@ -665,11 +680,11 @@ const MyJob = () => {
                       </svg>
                     )}
                   </span>
-                  <CircularProgress percentage={82} color="#FF9900" />
+                  <CircularProgress percentage={Math.round(seaGoingServiceComplete?.percentage)} color={seaGoingServiceComplete.color} />
                 </div>
               </div>
 
-              {seaOpen && <SeaGoingService />} */}
+              {seaOpen && <SeaGoingService seaGoingServiceComplete={seaGoingServiceComplete} setSeaGoingServiceComplete={setSeaGoingServiceComplete}  userDetail={profileDetail} />}
 
               {/* OnlinePresence end */}
 
@@ -1225,8 +1240,8 @@ const MyJob = () => {
             {professionalOpen && <ProfessionalSkills professionalComplete={professionalComplete} setProfessionalComplete={setProfessionalComplete}  userDetail={profileDetail}/>}
 
 
-            {/* <div
-              className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#00A264] mt-3"
+            <div
+              className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#00A264] mt-3`}
               onClick={handleReferences}
             >
               <Link href="#" className="">
@@ -1266,10 +1281,11 @@ const MyJob = () => {
                     </svg>
                   )}
                 </span>
-                <CircularProgress percentage={100} color="#00A264" />
+                <CircularProgress percentage={Math.round(refrencesComplete?.percentage)} color={refrencesComplete.color} />
               </div>
             </div>
-            {refOpen && <Refrences />} */}
+            {/* {refOpen && <Refrences refrencesComplete={refrencesComplete} setRefrencesComplete={setRefrencesComplete}  userDetail={profileDetail}/>} */}
+            {refOpen && <Refrences />}
 
             {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#00A264] mt-3">
               <h2 className="">Vetting Service</h2>

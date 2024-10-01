@@ -8,7 +8,7 @@ type ProfessionalComplete = {
 };
 type Props={
   professionalComplete:ProfessionalComplete; 
-  setProfessionalComplete: React.Dispatch<React.SetStateAction<ProfessionalComplete>>; // setMjrComplete is a function to update mjrComplete
+  setProfessionalComplete: React.Dispatch<React.SetStateAction<ProfessionalComplete>>; 
   userDetail:any
 }
 
@@ -16,35 +16,64 @@ type Props={
 const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, userDetail}:Props) => {
   const [maker, setMaker] = useState("");
   const [sWL, setSWL] = useState("");
-  const [city, setCity] = useState("");
+  const [skill, setSkill] = useState("");
+  const [level1, setLevel1] = useState("");
+  const [bulkCargo, setBulkCargo] = useState("");  
+  const [generalCargo, setGeneralCargo] = useState("");
+  const [tankerCargo, setTankerCargo] = useState("");
+  const [woodProducts, setWoodProducts] = useState("");
+  const [stowage, setStowage] = useState("");
+  const [typeProfessional, setTypeProfessional] = useState("");
+  const [skillmetal, setSkillmetal] = useState("");
+  const [levelMetal, setLevelMetal] = useState("");
+  const [typeTank, setTypeTank] = useState("");
+
+
+  const [regionalAgreement, setRegionalAgreement] = useState("");
+  
+  const [port, setPort] = useState("");
+  const [port1, setPort1] = useState("");
+
 
   const [cAvailable, setCAvailable] = useState("");
   const [classApproved, setClassApproved] = useState("");
   const [date, setDate] = useState("");
   const [vdate, setVDate] = useState("");
-
+  
+  const [tradingArea, setTradingArea] = useState("");
   const [description, setDescription] = useState("");
 
 
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [selectedFiles, setSelectedFiles] = useState<File | null>(null);
+ 
 
   const [inspection, setInspection] = useState("");
-  const [eCDISNumber, setECDISNumber] = useState("");
-  const [issuedate1, setIssueDate1] = useState("");
-  const [exdate1, setExDate1] = useState("");
 
-  //   const handleFileChange = (event: any) => {
-  //     setSelectedFile(event.target.files[0]);
-  //   };
 
-  const totalFields = 11;
+
+
+  const totalFields = 25;
   const filledFields = [
     maker,
     sWL,
+    skill,
+    level1,
+    bulkCargo,
+    tankerCargo,
+    generalCargo,
+    woodProducts,
+    stowage,
+    typeProfessional,
+    skillmetal,
+    levelMetal,
+    typeTank,
     cAvailable,
     classApproved,
     classApproved,
+    port,
+    port1,
+    tradingArea,
+    regionalAgreement,
     date,
     vdate,
     description, 
@@ -54,29 +83,29 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
   ].filter(Boolean).length;
 
   const percentage = (filledFields / totalFields) * 100;
-  // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
+ 
   let color;
   useEffect(() => {
     console.log('user',userDetail)
     if (percentage <= 30) {
       setProfessionalComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: '#FF0000' // Update the color field
+        ...prevState, 
+        percentage: percentage, 
+        color: '#FF0000' 
       }));
       color = "red"; 
     } else if (percentage <= 70) {
       setProfessionalComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: '#FF9900' // Update the color field
+        ...prevState, 
+        percentage: percentage, 
+        color: '#FF9900' 
       }));
       color = "#FF9900"; 
     } else {
       setProfessionalComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: '#00A264' // Update the color field
+        ...prevState, 
+        percentage: percentage, 
+        color: '#00A264'
       }));
       color = "green";
     }
@@ -91,49 +120,48 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
     }
   };
 
-  const handleFileChanges = (event: any) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      setSelectedFiles(file);
-    }
-  };
+
 
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <h1 className="font-bold text-center">COMPUTER SKILLS</h1>
       <div className="grid grid-cols-2 gap-4">
       <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="option1">
+            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="Skill">
             Skill
             </label>
             <select
-              id="option1"
+              id="Skill"
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
+              value={skill}
+              onChange={(e) => setSkill(e.target.value)}
             >
               <option value="" disabled selected>
               Skill
               </option>
-              <option value="">Skill1</option>
-              <option value="">Skill2</option>
-              <option value="">Skill3</option>
+              <option value="skill">Skill1</option>
+              <option value="skill">Skill2</option>
+              <option value="skill">Skill3</option>
             </select>
           </div>
           <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="option1">
+            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="level1">
             Level
             </label>
             <select
-              id="option1"
+              id="level1"
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
+              value={level1}
+              onChange={(e) => setLevel1(e.target.value)}
             >
               <option value="" disabled selected>
               Level
               </option>
-              <option value="">Level1</option>
-              <option value="">Level2</option>
-              <option value="">Level3</option>
+              <option value="level1">Level1</option>
+              <option value="level2">Level2</option>
+              <option value="level3">Level3</option>
             </select>
           </div>
           <div className="grid col-span-2">
@@ -142,91 +170,101 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
           </div>
 
           <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="option1">
+            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="bulkCargo">
             Bulk Cargo
             </label>
             <select
-              id="option1"
+              id="bulkCargo"
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
+              value={bulkCargo}
+                  onChange={(e) => setBulkCargo(e.target.value)}
             >
               <option value="" disabled selected>
               Bulk Cargo
               </option>
-              <option value="">Bulk Cargo1</option>
-              <option value="">Bulk Cargo2</option>
-              <option value="">Bulk Cargo3</option>
+              <option value="bulk cargo1">Bulk Cargo1</option>
+              <option value="bulk cargo2">Bulk Cargo2</option>
+              <option value="bulk cargo3">Bulk Cargo3</option>
             </select>
           </div>
           <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="option1">
+            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="tankerCargo">
             Tanker Cargo
             </label>
             <select
-              id="option1"
+              id="tankerCargo"
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
+              value={tankerCargo}
+              onChange={(e) => setTankerCargo(e.target.value)}
             >
               <option value="" disabled selected>
               Tanker Cargo
               </option>
-              <option value="">Tanker Cargo1</option>
-              <option value="">Tanker Cargo2</option>
-              <option value="">Tanker Cargo3</option>
+              <option value="Tanker Cargo1">Tanker Cargo1</option>
+              <option value="Tanker Cargo2">Tanker Cargo2</option>
+              <option value="Tanker Cargo3">Tanker Cargo3</option>
             </select>
           </div>
 
 
           <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="option1">
+            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="generalCargo">
             General Cargo
             </label>
             <select
-              id="option1"
+              id="generalCargo"
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
+              value={generalCargo}
+                  onChange={(e) => setGeneralCargo(e.target.value)}
             >
               <option value="" disabled selected>
               General Cargo
               </option>
-              <option value="">General Cargo1</option>
-              <option value="">General Cargo2</option>
-              <option value="">General Cargo3</option>
+              <option value="General Cargo1">General Cargo1</option>
+              <option value="General Cargo2">General Cargo2</option>
+              <option value="General Cargo3">General Cargo3</option>
             </select>
           </div>
           <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="option1">
+            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="woodProducts">
             Wood Products
             </label>
             <select
-              id="option1"
+              id="woodProducts"
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
+              value={woodProducts}
+                  onChange={(e) => setWoodProducts(e.target.value)}
             >
               <option value="" disabled selected>
               Wood Products
               </option>
-              <option value="">Wood Products1</option>
-              <option value="">Wood Products2</option>
-              <option value="">Wood Products3</option>
+              <option value="wood Products1">Wood Products1</option>
+              <option value="wood Products2 ">Wood Products2</option>
+              <option value="wood Products3">Wood Products3</option>
             </select>
           </div>
 
           <div className=" grid col-span-2">
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="option1">
+            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="stowage">
             Stowage and Lashing Experience
             </label>
             <select
-              id="option1"
+              id="stowage"
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
+              value={stowage}
+                  onChange={(e) => setStowage(e.target.value)}
             >
               <option value="" disabled selected>
               Stowage and Lashing Experience
               </option>
-              <option value="">Wood Products1</option>
-              <option value="">Wood Products2</option>
-              <option value="">Wood Products3</option>
+              <option value="Wood Products1">Wood Products1</option>
+              <option value="Wood Products2">Wood Products2</option>
+              <option value="Wood Products3">Wood Products3</option>
             </select>
           </div>
 
@@ -234,20 +272,22 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
             <h1 className="text-center font-bold">CARGO GEAR EXPERIENCE</h1>
           </div>
           <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="option1">
+            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="typeProfessional">
             Type
             </label>
             <select
-              id="option1"
+              id="typeProfessional"
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
+              value={typeProfessional}
+              onChange={(e) => setTypeProfessional(e.target.value)}
             >
               <option value="" disabled selected>
               Type
               </option>
-              <option value="">Type1</option>
-              <option value="">Type2</option>
-              <option value="">Type3</option>
+              <option value="type1">Type1</option>
+              <option value="type2">Type2</option>
+              <option value="type3">Type3</option>
             </select>
           </div>
 
@@ -294,37 +334,41 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
         <div className="grid col-span-2"><h1 className="text-center font-bold">METAL WORKING SKILLS</h1></div>
 
         <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="option1">
+            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="skillmetal">
             Skill
             </label>
             <select
-              id=""
+              id="skillmetal"
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
+              value={skillmetal}
+              onChange={(e) => setSkillmetal(e.target.value)}
             >
               <option value="" disabled selected>
               Skill
               </option>
-              <option value="">Type1</option>
-              <option value="">Type2</option>
-              <option value="">Type3</option>
+              <option value="type1">Type1</option>
+              <option value="type2">Type2</option>
+             
             </select>
           </div>
           <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="option1">
+            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="levelMetal">
             Level
             </label>
             <select
-              id=""
+              id="levelMetal"
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
+              value={levelMetal}
+              onChange={(e) => setLevelMetal(e.target.value)}
             >
               <option value="" disabled selected>
               Level
               </option>
-              <option value="">Type1</option>
-              <option value="">Type2</option>
-              <option value="">Type3</option>
+              <option value="t">Type1</option>
+              <option value="t2">Type2</option>
+              <option value="t3">Type3</option>
             </select>
           </div>
          
@@ -403,57 +447,63 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
       <div className="grid col-span-2">
         <h1 className="text-center font-bold" >TANK COATING TYPE EXPERIENCE</h1>
         <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="option1">
+            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="typeTank">
             Type
             </label>
             <select
-              id=""
+              id="typeTank"
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
+              value={typeTank}
+              onChange={(e) => setTypeTank(e.target.value)}
             >
               <option value="" disabled selected>
               Type
               </option>
-              <option value="">Type1</option>
-              <option value="">Type2</option>
-              <option value="">Type3</option>
+              <option value="t1">Type1</option>
+              <option value="t2">Type2</option>
+              <option value="t3">Type3</option>
             </select>
           </div>
       </div>
 
-      <div className="grid col-span-2"><h1>PORT STATE CONTROL EXPERIENCE</h1></div>
+      <div className="grid col-span-2"><h1 className="font-bold text-center">PORT STATE CONTROL EXPERIENCE</h1></div>
       <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="option1">
+            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="regionalAgreement">
             Regional Agreement
             </label>
             <select
-              id=""
+              id="regionalAgreement"
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
+              value={regionalAgreement}
+              onChange={(e) => setRegionalAgreement(e.target.value)}
             >
               <option value="" disabled selected>
               Regional Agreement
               </option>
-              <option value="">Type1</option>
-              <option value="">Type2</option>
-              <option value="">Type3</option>
+              <option value="type1">Type1</option>
+              <option value="type2">Type2</option>
+              <option value="type3">Type3</option>
             </select>
           </div>
           <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="option1">
+            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="port">
             Port
             </label>
             <select
-              id=""
+              id="port"
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
+              value={port}
+              onChange={(e) => setPort(e.target.value)}
             >
               <option value="" disabled selected>
               Port
               </option>
-              <option value="">Port1</option>
-              <option value="">Port2</option>
-              <option value="">Port3</option>
+              <option value="port1">Port1</option>
+              <option value="port2">Port2</option>
+              <option value="port3">Port3</option>
             </select>
           </div>
           <div className="">
@@ -507,20 +557,22 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
           />
         </div>
           <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="option1">
+            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="port1">
             Port
             </label>
             <select
-              id=""
+              id="port1"
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
+              value={port1}
+              onChange={(e) => setPort1(e.target.value)}
             >
               <option value="" disabled selected>
               Port
               </option>
-              <option value="">Port1</option>
-              <option value="">Port2</option>
-              <option value="">Port3</option>
+              <option value="port1">Port1</option>
+              <option value="port2">Port2</option>
+              <option value="port3">Port3</option>
             </select>
           </div>
           <div className="">
@@ -557,20 +609,22 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
         <div className="grid col-span-2"><h1 className="text-center font-bold ">TRADING AREA EXPERIENCE</h1>
 
         <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="option1">
+            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="tradingArea">
             Trading Area
             </label>
             <select
-              id=""
+              id="tradingArea"
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
+              value={tradingArea}
+              onChange={(e) => setTradingArea(e.target.value)}
             >
               <option value="" disabled selected>
               Trading Area
               </option>
-              <option value="">Port1</option>
-              <option value="">Port2</option>
-              <option value="">Port3</option>
+              <option value="port1">Port1</option>
+              <option value="port2">Port2</option>
+              <option value="port3">Port3</option>
             </select>
           </div>
          </ div>

@@ -23,12 +23,12 @@ export default function Home() {
 
       {/* <Signup /> */}
       <SignupContent />
-      <Companies />
+      {/* <Companies /> */}
       <NumberContent />
-      <Findout />
-      <Navigation />
+      {/* <Findout /> */}
+      {/* <Navigation /> */}
       <Sailors />
-      <PartnersSection />
+      {/* <PartnersSection /> */}
       <ClientSection />
       <Aimergee />
       {/* <Status/> */}

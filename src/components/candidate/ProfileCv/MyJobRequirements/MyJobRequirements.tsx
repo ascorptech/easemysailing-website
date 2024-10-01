@@ -13,21 +13,35 @@ type MjrComplete = {
 type Props = {
   mjrComplete: MjrComplete; // mjrComplete is an object with percentage and color
   setMjrComplete: React.Dispatch<React.SetStateAction<MjrComplete>>; // setMjrComplete is a function to update mjrComplete
-  userDetail:any
+  userDetail: any
 };
 
-const MyJobRequirements = ({mjrComplete,setMjrComplete,userDetail}:Props) => {
-  const [rankDrop,setRankDrop]=useState<any>([])
+const MyJobRequirements = ({ mjrComplete, setMjrComplete, userDetail }: Props) => {
+  const [rankDrop, setRankDrop] = useState<any>([])
   const [availabilityDate, setAvailabilityDate] = useState("");
   const [currentPosition, setCurrentPosition] = useState("");
   const [alternatePosition, setAlternatePosition] = useState("");
   const [preferredVesselType, setPreferredVesselType] = useState("");
   const [alternateVesselType, setAlternateVesselType] = useState("");
   const [available, setAvailable] = useState("");
- 
+  const [disabled, setDisabled] = useState(true)
 
 
- 
+
+  useEffect(() => {
+    if (userDetail) {
+      setCurrentPosition(userDetail?.jobRequirements?.currentPosition)
+      setAlternatePosition(userDetail?.jobRequirements?.alternatePosition)
+      setPreferredVesselType(userDetail?.jobRequirements?.preferredVesselType)
+      setAlternateVesselType(userDetail?.jobRequirements?.alternateVesselType)
+      setAvailabilityDate(userDetail?.jobRequirements?.availabilityDate)
+      setAvailable(!userDetail?.jobRequirements?.notAvailable ? 'No' : 'Yes')
+    }
+  }, [])
+
+
+
+
   const filledFields = [
     currentPosition,
     alternatePosition,
@@ -35,30 +49,30 @@ const MyJobRequirements = ({mjrComplete,setMjrComplete,userDetail}:Props) => {
     alternateVesselType,
     available,
     availabilityDate,
-  ].filter(Boolean).length; 
+  ].filter(Boolean).length;
 
-  const totalFields = available === "Yes" ? 6 : 5; 
+  const totalFields = available === "Yes" ? 6 : 5;
 
 
   const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
   let color;
   // setMjrComplete({...mjrComplete,percentage:percentage})
   useEffect(() => {
-    console.log('user',userDetail)
+    console.log('user', userDetail)
     if (percentage <= 30) {
       setMjrComplete((prevState) => ({
         ...prevState, // Spread the previous state to keep any other properties
         percentage: percentage, // Update the percentage field
         color: '#FF0000' // Update the color field
       }));
-      color = "#FF0000"; 
+      color = "#FF0000";
     } else if (percentage <= 70) {
       setMjrComplete((prevState) => ({
         ...prevState, // Spread the previous state to keep any other properties
         percentage: percentage, // Update the percentage field
         color: '#FF9900' // Update the color field
       }));
-      color = "#FF9900"; 
+      color = "#FF9900";
     } else {
       setMjrComplete((prevState) => ({
         ...prevState, // Spread the previous state to keep any other properties
@@ -67,20 +81,20 @@ const MyJobRequirements = ({mjrComplete,setMjrComplete,userDetail}:Props) => {
       }));
       color = "green";
     }
-  }, [percentage,color])
+  }, [percentage, color])
 
   useEffect(() => {
-    GetDropdownDetails('rank',(res:any)=>{
+    GetDropdownDetails('rank', (res: any) => {
       setRankDrop(res?.data?.values)
     })
   }, [])
-  
-  
-  
+
+
+
 
   const handleSubmit = (e: React.FormEvent) => {
     // try {
-    e.preventDefault(); 
+    e.preventDefault();
 
     if (
       !currentPosition ||
@@ -92,46 +106,52 @@ const MyJobRequirements = ({mjrComplete,setMjrComplete,userDetail}:Props) => {
       toast.error("Please fill in all required fields.");
       return;
     }
-    // let formData = new FormData()
+    let formData = new FormData()
     // formData.append('userId', userDetail?.userId)
-    // formData.append('currentPosition', currentPosition)
-    // formData.append('alternatePosition', alternatePosition)
-    // formData.append('preferredVesselType', preferredVesselType)
-    // formData.append('alternateVesselType', alternateVesselType)
-    // availabilityDate&&formData.append('availabilityDate', availabilityDate)
-    // formData.append('notAvailable', available=='Yes'?'true':'false')
-    let formData = {
-      userId:userDetail?.userId,
-      availabilityDate:availabilityDate?availabilityDate:'',
-      currentPosition:currentPosition,
-      alternatePosition:alternatePosition,
-      preferredVesselType:preferredVesselType,
-      alternateVesselType:alternateVesselType,
-      available:available=='Yes'?'true':'false',
-    };
+
+    // let data = {
+    //   jobRequirements: {
+    //     availabilityDate: availabilityDate ? availabilityDate : '',
+    //     currentPosition: currentPosition,
+    //     alternatePosition: alternatePosition,
+    //     preferredVesselType: preferredVesselType,
+    //     alternateVesselType: alternateVesselType,
+    //     notAvailable: available == 'Yes' ? 'true' : 'false',
+    //   }
+    // };
+    formData.append('currentPosition', currentPosition)
+    formData.append('alternatePosition', alternatePosition)
+    formData.append('preferredVesselType', preferredVesselType)
+    formData.append('alternateVesselType', alternateVesselType)
+    availabilityDate&&formData.append('availabilityDate', availabilityDate)
+    formData.append('notAvailable', available=='Yes'?'true':'false')
     console.log(formData);
-    AddProfileData(formData, AddaddressdataDB);
+    AddProfileData(userDetail?.userId, formData, AddaddressdataDB);
   };
 
   const AddaddressdataDB = (result: any) => {
     console.log(result);
     if (result?.status == 200) {
       toast.success("Job requirements submited successfully");
+      setTimeout(() => {
+        window.location.reload()
+      }, 1000);
     } else {
       toast.error("Job requirements not submited ");
     }
   };
 
   const handleEdit = () => {
-    toast.info("You are now in edit mode. Make your changes.");
+    setDisabled(!disabled)
+    // toast.info("You are now in edit mode. Make your changes.");
   };
 
   return (
     <div className="container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
-        {/* <MyJob percentage={percentage} color="#FF9900" /> */}
-       {/* <CircularProgress percentage={percentage} /> */}
-       {/* <CircularProgress percentage={Math.round(percentage)} />  */}
-       {/* <CircularProgress percentage={Math.round(percentage)} color={color} />  */}
+      {/* <MyJob percentage={percentage} color="#FF9900" /> */}
+      {/* <CircularProgress percentage={percentage} /> */}
+      {/* <CircularProgress percentage={Math.round(percentage)} />  */}
+      {/* <CircularProgress percentage={Math.round(percentage)} color={color} />  */}
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-2  gap-4">
           <div>
@@ -142,11 +162,12 @@ const MyJobRequirements = ({mjrComplete,setMjrComplete,userDetail}:Props) => {
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={currentPosition}
               onChange={(e) => setCurrentPosition(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled>
                 Current Position/Rank
               </option>
-              {rankDrop&& rankDrop?.map((rank:any,index:number)=>(
+              {rankDrop && rankDrop?.map((rank: any, index: number) => (
                 <option key={index} value={rank}>{rank}</option>
               ))}
               {/* <option value="Captain">Captain</option>
@@ -163,11 +184,12 @@ const MyJobRequirements = ({mjrComplete,setMjrComplete,userDetail}:Props) => {
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={alternatePosition}
               onChange={(e) => setAlternatePosition(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled>
                 Alternate Position/Rank
               </option>
-              {rankDrop&& rankDrop?.map((rank:any,index:number)=>(
+              {rankDrop && rankDrop?.map((rank: any, index: number) => (
                 <option key={index} value={rank}>{rank}</option>
               ))}
             </select>
@@ -181,11 +203,12 @@ const MyJobRequirements = ({mjrComplete,setMjrComplete,userDetail}:Props) => {
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={preferredVesselType}
               onChange={(e) => setPreferredVesselType(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled>
                 Preferred Vessel Type
               </option>
-              {rankDrop&& rankDrop?.map((rank:any,index:number)=>(
+              {rankDrop && rankDrop?.map((rank: any, index: number) => (
                 <option key={index} value={rank}>{rank}</option>
               ))}
             </select>
@@ -199,11 +222,12 @@ const MyJobRequirements = ({mjrComplete,setMjrComplete,userDetail}:Props) => {
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={alternateVesselType}
               onChange={(e) => setAlternateVesselType(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled>
                 Alternate Vessel Type
               </option>
-              {rankDrop&& rankDrop?.map((rank:any,index:number)=>(
+              {rankDrop && rankDrop?.map((rank: any, index: number) => (
                 <option key={index} value={rank}>{rank}</option>
               ))}
             </select>
@@ -223,6 +247,7 @@ const MyJobRequirements = ({mjrComplete,setMjrComplete,userDetail}:Props) => {
                   setAvailabilityDate(""); // Clear availability date if "No" is selected
                 }
               }}
+              disabled={disabled}
             >
               <option value="" disabled>
                 Availability
@@ -241,6 +266,7 @@ const MyJobRequirements = ({mjrComplete,setMjrComplete,userDetail}:Props) => {
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={availabilityDate}
                 onChange={(e) => setAvailabilityDate(e.target.value)}
+                disabled={disabled}
               />
             </div>
           )}
@@ -253,13 +279,13 @@ const MyJobRequirements = ({mjrComplete,setMjrComplete,userDetail}:Props) => {
           >
             Save
           </button>
-          <button
-            type="submit"
+          <Link
+            href={'#'}
             onClick={handleEdit}
             className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
           >
             Edit
-          </button>
+          </Link>
         </div>
       </form>
     </div>

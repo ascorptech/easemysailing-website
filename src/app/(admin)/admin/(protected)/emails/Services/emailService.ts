@@ -3,9 +3,10 @@ import apiEndPoints from "./apiEndPoints";
 
 const {GETEMAILSLIST,DELETEEMAILSLIST} = apiEndPoints
 
-export const GetEmailsList = async(cb:any)=>{
+export const GetEmailsList = async(page:any,pageLimit:any,cb:any)=>{
     try {
-        const response = await getReq(GETEMAILSLIST);
+        let url = `${GETEMAILSLIST}?page=${page}&size=${pageLimit}&sort=ASC`
+        const response = await getReq(url);
         return cb(response)
     } catch (error:any) {
         console.log('err',error)

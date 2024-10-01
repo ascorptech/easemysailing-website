@@ -6,39 +6,51 @@ import Image from "next/image";
 import RotateLoader from "react-spinners/RotateLoader";
 
 const PodcastList = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12;
+  const [currentPage, setCurrentPage] = useState(0);
+  // const itemsPerPage = 12;
   const [podcasts, setPodcasts] = useState<any>([]);
   const [selected, setSelected] = useState<any>();
   const [ModalOpen, setModalOpen] = useState(false);
   const [isLoading,setIsLoading] = useState<boolean>(false)
+  const [resourcesPerPage,setResourcesPerPage] = useState(10);
+  const [totalPages, setTotalPages] = useState(1)
+
 
   useEffect(() => {
     setIsLoading(true)
-    GetPodcastList(GetPodcastListCB);
-  }, []);
+    GetPodcastList(currentPage,resourcesPerPage,fetchPodcast)
+  }, [])
 
-  const GetPodcastListCB = (res: any) => {
-    setPodcasts(res?.data);
-    setSelected(res?.data[0]);
+  const fetchPodcast = (result: any) => {
+    if (result?.status == 200) {
+      setPodcasts(result?.data?.content);
+      setSelected(result?.data?.content[0]);
+      setTotalPages(result.data?.totalPages)
+    }
+    else {
+      setPodcasts([])
+      // toast.success('No Record Found')
+    }
     setIsLoading(false)
-  };
+  }
 
-  const totalPages = Math.ceil(podcasts?.length / itemsPerPage);
   const currentItems = podcasts?.length?podcasts?.toReversed()?.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
+    (currentPage - 1) * resourcesPerPage,
+    currentPage * resourcesPerPage
   ):[];
 
-  const handleNextPage = () => {
+  const nextPage = () => {
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
+      GetPodcastList(currentPage+1,resourcesPerPage,fetchPodcast)
+
     }
   };
 
-  const handlePreviousPage = () => {
-    if (currentPage > 1) {
+  const previousPage = () => {
+    if (currentPage > 0) {
       setCurrentPage(currentPage - 1);
+      GetPodcastList(currentPage-1,resourcesPerPage,fetchPodcast)
     }
   };
 
@@ -91,7 +103,7 @@ const PodcastList = () => {
       </div>
 
       <div className="grid lg:grid-cols-3 lg:gap-5 lg:py-4 grid-cols-1 gap-5 lg:mt-5 mt-3 sm:grid-cols-2">
-        {currentItems?.map((item: any, index: any) => (
+        {podcasts?.map((item: any, index: any) => (
          <div key={index} className="flex flex-col shadow-md w-full border-2 rounded-lg mb-8 cursor-pointer"
          onClick={() => openModal(item)}
          >
@@ -110,23 +122,21 @@ const PodcastList = () => {
       </div>
 
       {/* Pagination Controls */}
-      <div className="flex justify-center items-center text-sm mt-4 mb-4">
+      <div className="flex justify-center gap-4 items-center mt-4">
         <button
-          onClick={handlePreviousPage}
-          className="px-2 py-1 mr-2 bg-[#00A264] text-white rounded-lg"
-          disabled={currentPage === 1}
+          onClick={previousPage}
+          className="bg-[#00A264] text-white px-4 py-2 rounded"
+          disabled={currentPage === 0}
         >
           Previous
         </button>
-
-        <span className="text-[#00A264]">
-          Page {currentPage} of {totalPages}
+        <span>
+          Page {currentPage+1} of {totalPages}
         </span>
-
         <button
-          onClick={handleNextPage}
-          className="px-2 py-1 ml-2 bg-[#00A264] text-white rounded-lg"
-          disabled={currentPage === totalPages}
+          onClick={nextPage}
+          className="bg-[#00A264] text-white px-4 py-2 rounded"
+          disabled={currentPage+1 >= totalPages}
         >
           Next
         </button>

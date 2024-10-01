@@ -3,8 +3,8 @@ import Interview from "../interview/Interview";
 
 const Aimergee = () => {
   return (
-    <div className=" bg-[url('/ocean.png')]  ">
-      <div className=" bg-[#021527] bg-opacity-80  ">
+    <div className=" bg-[url('/ocean.png')] object-contain">
+      <div className=" bg-[#021527] bg-opacity-0  ">
         
         <Interview />
         <Articles />

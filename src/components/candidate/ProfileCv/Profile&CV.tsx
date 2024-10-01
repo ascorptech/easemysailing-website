@@ -655,7 +655,7 @@ const [profileDetail,setProfileDetail] = useState<any>()
             </p>
           </div>
 
-          <div className="flex gap-2">
+          {/* <div className="flex gap-2">
             {" "}
             <Image
              priority
@@ -671,9 +671,9 @@ const [profileDetail,setProfileDetail] = useState<any>()
                 1K+ reviews
               </span>
             </p>
-          </div>
+          </div> */}
         </div>
-        <div className="flex flex-col items-center ">
+        {/* <div className="flex flex-col items-center ">
           <Link
             href="#"
             className="rounded-lg  bg-[#00A264] flex p-2 px-4 text-white"
@@ -695,7 +695,7 @@ const [profileDetail,setProfileDetail] = useState<any>()
           onClick={handleAddClick} >
             Rate Employer
           </Link>
-        </div>
+        </div> */}
       </div>
 
 

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { ResourceCardProps, Resource } from "../data/resources";
 import Heading7 from "@/components/web/resource_page/heading7/Heading7";
+import Image from "next/image";
 
 const ResourceList: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -38,7 +39,10 @@ const ResourceList: React.FC = () => {
           <div key={item.id} className="flex  bg-white p-4 flex-shrink-0 ">
             <div className="relative bg-white border rounded-lg p-5  shadow-md  w-auto ">
               <div className=" flex mb-2">
-                <img
+                <Image
+              priority
+              width={20}
+              height={20}
                   src={item.logoSrc}
                   alt={`${item.title} logo`}
                   className="w-full h-auto"

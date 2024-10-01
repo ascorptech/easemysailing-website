@@ -3,10 +3,10 @@
 import Link from "next/link";
 import CircularProgress from "@/components/candidate/ProfileCv/CircularProgress";
 import { useEffect, useState } from "react";
-import MyJobRequirements from "@/components/candidate/ProfileCv/MyJobRequirements/MyJobRequirements";
+import CompanyParticular from "./CompanyParticular/CompanyParticular";
 import { GetProfileDetail } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import { toast } from "react-toastify";
-import PersonalDetails from "@/components/candidate/ProfileCv/PersonalDetalis/PersonalDetalis";
+import ITFOther from "./Itf&other/ITFOther";
 import NextOfKinDetails from "@/components/candidate/ProfileCv/NextOfKinDetails/NextOfKinDetails";
 import Languages from "@/components/candidate/ProfileCv/Languages/Languages";
 import OnlinePresence from "@/components/candidate/ProfileCv/OnlinePresence/OnlinePresence";
@@ -168,7 +168,7 @@ const MyJob = () => {
           <div className="    ">
             <div className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2  border-r-8 border-[${mjrComplete?.color}]`}>
 
-              <h2 className=""> My Job Requirements</h2>{" "}
+              <h2 className=""> Company Particulars</h2>{" "}
               <div className="flex items-center justify-center gap-1">
                 <span className="ml-2 cursor-pointer" onClick={toggleCollapse}>
                   {isOpen ? (
@@ -207,13 +207,13 @@ const MyJob = () => {
               </div>
             </div>{" "}
             <div className=" h-screen overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory ">
-              {isOpen && <MyJobRequirements mjrComplete={mjrComplete} setMjrComplete={setMjrComplete} userDetail={profileDetail} />}
+              {isOpen && <CompanyParticular mjrComplete={mjrComplete} setMjrComplete={setMjrComplete} userDetail={profileDetail} />}
 
-              {/* PersonalDetails start */}
+              {/* Fleet Details */}
 
               <div className="flex justify-between items-center rounded-md   bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
                 <h1 className="">
-                  Next Of Kin Details
+                Fleet Details
                 </h1>
                 <div className="flex items-center justify-center gap-1">
                   <span
@@ -260,7 +260,7 @@ const MyJob = () => {
 
               <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
                 <Link href="#" className="">
-                  Languages
+                  Login Credentials
                 </Link>
                 <div className="flex items-center justify-center gap-1">
                   <span
@@ -307,7 +307,7 @@ const MyJob = () => {
 
               {/* OnlinePresence start */}
               <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
-                <h1 className="">Online Presence</h1>
+                <h1 className="">Testimonials</h1>
                 <div className="flex items-center justify-center gap-1">
                   <span
                     className="ml-2 cursor-pointer"
@@ -615,8 +615,8 @@ const MyJob = () => {
                   <CircularProgress percentage={100} color="#00A264" />
                 </div>
               </div>
-              {pDOpen && <PersonalDetails />} */}
-              {/* PersonalDetails end */}
+              {pDOpen && <ITF />} */}
+              {/* ITF end */}
 
               {/*Address Details start */}
 
@@ -713,7 +713,7 @@ const MyJob = () => {
                   <CircularProgress percentage={100} color="#FF9900" />
                 </div>
               </div>
-              {easeOpen && <MyJobRequirements />} */}
+              {easeOpen && <CompanyParticular />} */}
             </div>
           </div>
         </div>
@@ -761,13 +761,13 @@ const MyJob = () => {
             </div>
           </div> */}
 
-          {/* PersonalDetails start */}
+          {/* ITF start */}
 
           <div
             className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2  border-r-8 border-[${personalComplete?.color}]`}
            
           >
-            <h2 className="">Personal Details</h2>
+            <h2 className="">ITF and Other Accredations</h2>
             <div className="flex items-center justify-center gap-1">
               <span className="ml-2 cursor-pointer"  onClick={hendletoggle}>
                 {pDOpen ? (
@@ -807,13 +807,13 @@ const MyJob = () => {
             </div>
           </div>
           <div className=" h-screen overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory ">
-            {pDOpen && <PersonalDetails personalComplete={personalComplete} setPersonalComplete={setPersonalComplete} userDetail={profileDetail}/>}
-            {/* PersonalDetails end */}
+            {pDOpen && <ITFOther personalComplete={personalComplete} setPersonalComplete={setPersonalComplete} userDetail={profileDetail}/>}
+            {/* ITF end */}
 
             {/* Aboutme  start*/}
 
             <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#00A264] mt-3">
-              <h2 className="">About Me</h2>
+              <h2 className="">Crew Recruitments</h2>
               <div className="flex items-center justify-center gap-1">
                 <span className="ml-2 cursor-pointer" onClick={hendleAboutMe}>
                   {aboutMeOpen ? (
@@ -860,7 +860,7 @@ const MyJob = () => {
               onClick={hendleContactDetails}
             >
               <Link href="#" className="">
-                Contact Details
+                Crew Training
               </Link>
               <div className="flex items-center justify-center gap-1">
                 <span className="ml-2 cursor-pointer">
@@ -905,7 +905,7 @@ const MyJob = () => {
 
             {/* travel documents */}
             <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
-              <h1 className="">Travel Documents</h1>
+              <h1 className="">Crew Welfare Initiative</h1>
               <div className="flex items-center justify-center gap-1">
                 <span
                   className="ml-2 cursor-pointer"
@@ -1257,7 +1257,7 @@ const MyJob = () => {
               </div>
             </div>
 
-            {offshoreOpen && <MyJobRequirements />} */}
+            {offshoreOpen && <CompanyParticular />} */}
 
             {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#00A264] mt-3">
               <h2 className="">Family Details (NOK)</h2>
@@ -1298,7 +1298,7 @@ const MyJob = () => {
                 <CircularProgress percentage={99} color="#00A264" />
               </div>
             </div>
-            {fDOpen && <MyJobRequirements />} */}
+            {fDOpen && <CompanyParticular />} */}
           </div>
         </div>
       </div>

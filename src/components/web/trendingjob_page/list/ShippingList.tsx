@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 // /components/ShippingList.tsx
 import React, { useState } from "react";
 
@@ -339,7 +340,10 @@ const ShippingList: React.FC = () => {
             <h3 className="flex justify-between  items-center text-base font-semibold mb-2">
               {item.name}
               <div className="justify-center mb-4">
-                <img
+              <Image
+                  priority
+                  height={20}
+                  width={20}
                   src={item.logoSrc}
                   alt={`${item.name} logo`}
                   className="h-8"

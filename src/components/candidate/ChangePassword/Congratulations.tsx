@@ -1,5 +1,6 @@
 import React from "react";
 import { X } from "lucide-react";
+import Image from "next/image";
 
 interface CongratulationsProps {
   isOpen: boolean;
@@ -23,11 +24,14 @@ const Congratulations: React.FC<CongratulationsProps> = ({
         </button>
 
         <div className="flex justify-center items-center w-[60px] h-[60px]  rounded-full border-2 border-green-500 text-green-600 ml-32">
-          <img
+          <Image
+          priority
+          height={20}
+          width={20}
             className="w-[40px] h-[40px] "
             src="./Images/Congratulations.png"
             alt=""
-          ></img>
+          />
         </div>
         <h2 className="font-bold text-2xl mb-2">Congratulations</h2>
         <p className="text-sm mb-8">

@@ -5,6 +5,7 @@ import Link from "next/link";
 import Heading4 from "@/components/web/mentoring/heading4/Heading4";
 import { CaptainData } from "../data/CaptainData";
 import { GrLocation } from "react-icons/gr";
+import Image from "next/image";
 
 const MentoringList: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -42,7 +43,10 @@ const MentoringList: React.FC = () => {
           >
             <div className="flex border rounded-lg  bg-green-100 w-32 h-32 transform-gpu mr-5 sm:mr-6 ">
               <div className="flex justify-center  w-32 h-[125px] ">
-                <img
+                <Image
+                priority
+                width={20}
+                height={20}
                   src={item.logoSrc}
                   alt={`${item.name} logo`}
                   className="w-full h-full  -translate-y-2 translate-x-3   border rounded-md"

@@ -80,12 +80,12 @@ const ProfileDetails = () => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(interval);
-          setUploading(true); // Hide upload progress after completion
+          setUploading(false); // Hide upload progress after completion
           return 100;
         }
         return prev + 10;
       });
-    }, 300);
+    }, 200);
   };
 
   // To trigger file input on icon click

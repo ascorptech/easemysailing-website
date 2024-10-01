@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import React, { useRef, useEffect } from "react";
 import { PiCaretRightThin, PiCaretLeftThin } from "react-icons/pi";
 
@@ -90,7 +91,10 @@ const Card = () => {
         {cards?.map((card) => (
           <div key={card.id} className="snap-center flex flex-col items-center">
             <div className="w-[197.58px] h-[197.98px] bg-white rounded-full shadow-md">
-              <img
+            <Image
+                  priority
+                  height={20}
+                  width={20}
                 src={card.logo}
                 alt={card.company}
                 className="w-full h-full rounded-full"

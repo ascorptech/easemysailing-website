@@ -22,10 +22,13 @@ const MentoringDetailPage: React.FC = () => {
       <div className="flex pl-[10rem] bg-green-100 py-6 border mt-[60px]">
         <div className="flex border rounded-lg  bg-green-400 h-40 transform-gpu mr-4">
           <div className="justify-center mb-4">
-            <img
+            <Image
+            priority
+            width={20}
+            height={20}
               src={item.logoSrc}
               alt={`${item.name} logo`}
-              className="h-36 ml-4 mb-5 border rounded-md"
+              className="h-36 w-full ml-4 mb-5 border rounded-md"
             />
           </div>
         </div>
@@ -58,6 +61,7 @@ const MentoringDetailPage: React.FC = () => {
         </div>
         <div className=" w-[20rem]">
           <Image
+          property=""
             src="/profile.png" // Replace with your image path
             alt="right Image"
             width={500} // Set to match the height

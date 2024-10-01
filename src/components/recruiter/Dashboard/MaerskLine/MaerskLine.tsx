@@ -368,9 +368,11 @@ const MaerskLine: React.FC = () => {
               >
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
                 <Image
+
                   priority
                   height={20}
                   width={20}
+                  alt=""
                     src="./Images/ship-user.png"
                     className=" text-[#00A264]"
                   />

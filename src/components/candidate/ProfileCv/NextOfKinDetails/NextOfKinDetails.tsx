@@ -25,6 +25,7 @@ const NextOfKinDetails = ({
   const [nextKinShip, setNextKinShip] = useState("");
   const [nextKinAddre, setNextKinAddre] = useState("");
   const [nextKinChildren, setNextKinChildren] = useState("");
+  
 
   const totalFields = 4;
   const filledFields = [
@@ -96,8 +97,17 @@ const NextOfKinDetails = ({
       nextKinChildren
     }
     console.log(data)
-    AddProfileData(data, AddNextKinDetailsDB)
+    // AddProfileData(data, AddNextKinDetailsDB)
   };
+
+  // useEffect(() => {
+  //   GetDropdownDetails('additionalLanguage', (res: any) => {
+  //     setLanguageLevel(res?.data?.values)
+  //   })
+  //   GetDropdownDetails('shipType', (res: any) => {
+  //     // setShipTypeDrop(res?.data?.values)
+  //   })
+  // }, [])
 
   const AddNextKinDetailsDB = (result:any) => {
     console.log(result);

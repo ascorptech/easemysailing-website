@@ -18,6 +18,7 @@ type Props = {
 
 const MyJobRequirements = ({ mjrComplete, setMjrComplete, userDetail }: Props) => {
   const [rankDrop, setRankDrop] = useState<any>([])
+  const [shipTypeDrop, setShipTypeDrop] = useState<any>([])
   const [availabilityDate, setAvailabilityDate] = useState("");
   const [currentPosition, setCurrentPosition] = useState("");
   const [alternatePosition, setAlternatePosition] = useState("");
@@ -88,6 +89,9 @@ const MyJobRequirements = ({ mjrComplete, setMjrComplete, userDetail }: Props) =
   useEffect(() => {
     GetDropdownDetails('rank', (res: any) => {
       setRankDrop(res?.data?.values)
+    })
+    GetDropdownDetails('shipType', (res: any) => {
+      setShipTypeDrop(res?.data?.values)
     })
   }, [])
 
@@ -170,7 +174,7 @@ const MyJobRequirements = ({ mjrComplete, setMjrComplete, userDetail }: Props) =
                 Current Position/Rank
               </option>
               {rankDrop && rankDrop?.map((rank: any, index: number) => (
-                <option key={index} value={rank}>{rank}</option>
+                <option key={index} value={rank}>{rank?.toUpperCase()}</option>
               ))}
               {/* <option value="Captain">Captain</option>
               <option value="Captain2">Captain2</option>
@@ -192,7 +196,7 @@ const MyJobRequirements = ({ mjrComplete, setMjrComplete, userDetail }: Props) =
                 Alternate Position/Rank
               </option>
               {rankDrop && rankDrop?.map((rank: any, index: number) => (
-                <option key={index} value={rank}>{rank}</option>
+                <option key={index} value={rank}>{rank?.toUpperCase()}</option>
               ))}
             </select>
           </div>
@@ -210,8 +214,8 @@ const MyJobRequirements = ({ mjrComplete, setMjrComplete, userDetail }: Props) =
               <option value="" disabled>
                 Preferred Vessel Type
               </option>
-              {rankDrop && rankDrop?.map((rank: any, index: number) => (
-                <option key={index} value={rank}>{rank}</option>
+              {shipTypeDrop && shipTypeDrop?.map((ship: any, index: number) => (
+                <option key={index} value={ship}>{ship?.toUpperCase()}</option>
               ))}
             </select>
           </div>
@@ -229,8 +233,8 @@ const MyJobRequirements = ({ mjrComplete, setMjrComplete, userDetail }: Props) =
               <option value="" disabled>
                 Alternate Vessel Type
               </option>
-              {rankDrop && rankDrop?.map((rank: any, index: number) => (
-                <option key={index} value={rank}>{rank}</option>
+              {shipTypeDrop && shipTypeDrop?.map((ship: any, index: number) => (
+                <option key={index} value={ship}>{ship?.toUpperCase()}</option>
               ))}
             </select>
           </div>

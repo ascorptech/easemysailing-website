@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import CircularProgress from "../CircularProgress";
+import { GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 type LanguageComplete = {
   percentage: number;
   color: string;
@@ -21,7 +22,9 @@ const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) =>
   const [languageLavel, setLanguageLavel] = useState("");
   const [englishLavel, setEnglishLavel] = useState("");
   const [languageTests, setLanguageTests] = useState("");
-
+  const [languageLevelDrop, setLanguageLevelDrop] = useState<any>([]);
+  const [languageDrop, setLanguageDrop] = useState<any>([]);
+  const [countryDrop, setCountryDrop] = useState<any>([]);
   const [testCenter, setTestCenter] = useState("");
   const [typeofTest, setTypeofTest] = useState("");
   const [result, setResult] = useState("");
@@ -34,7 +37,19 @@ const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) =>
  
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
-
+  useEffect(() => {
+    GetDropdownDetails('additionalLanguage', (res: any) => {
+      setLanguageLevelDrop(res?.data?.values)
+    })
+    GetDropdownDetails('country', (res: any) => {
+      // console.log('County',res?.data)
+      setCountryDrop(res?.data?.values)
+    })
+    GetDropdownDetails('language', (res: any) => {
+      // console.log('lang',res?.data)
+      setLanguageDrop(res?.data?.values)
+    })
+  }, [])
 
 
 
@@ -117,9 +132,9 @@ const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) =>
                 <option value="" disabled>
                 Language
                 </option>
-                <option value="Captain">Captain</option>
-                <option value="Captain2">Captain2</option>
-                <option value="Training3">Training3</option>
+                {languageDrop && languageDrop?.map((lang: any, index: number) => (
+                <option key={index} value={lang}>{lang?.toUpperCase()}</option>
+              ))}
               </select>
             </div>
           </div>
@@ -138,9 +153,9 @@ const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) =>
               <option value="" disabled>
               Language
               </option>
-              <option value="Chemical Tanker1">Chemical Tanker1</option>
-              <option value="Chemical Tanker2">Chemical Tanker2</option>
-              <option value="Chemical Tanker3">Chemical Tanker3</option>
+              {languageDrop && languageDrop?.map((lang: any, index: number) => (
+                <option key={index} value={lang}>{lang?.toUpperCase()}</option>
+              ))}
             </select>
           </div>
 
@@ -156,9 +171,9 @@ const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) =>
             >
               <option value="" disabled>
               Level              </option>
-              <option value="level1">Level1</option>
-              <option value="level2">Level2</option>
-              <option value="level3">Level3</option>
+              {languageLevelDrop && languageLevelDrop?.map((lang: any, index: number) => (
+                <option key={index} value={lang}>{lang?.toUpperCase()}</option>
+              ))}
             </select>
           </div>
           </div></div>
@@ -178,9 +193,9 @@ const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) =>
               <option value="" disabled>
               Level
               </option>
-              <option value="Training1">Training1</option>
-              <option value="Training2">Training2</option>
-              <option value="Training3">Training3</option>
+              {languageLevelDrop && languageLevelDrop?.map((lang: any, index: number) => (
+                <option key={index} value={lang}>{lang?.toUpperCase()}</option>
+              ))}
             </select>
           </div>
           </div>
@@ -204,9 +219,9 @@ const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) =>
               <option value="" disabled>
               Language
               </option>
-              <option value="Language1">Language1</option>
-              <option value="Language2">Language2</option>
-              <option value="Language3">Language3</option>
+              {languageDrop && languageDrop?.map((lang: any, index: number) => (
+                <option key={index} value={lang}>{lang?.toUpperCase()}</option>
+              ))}
             </select>
           </div>
 
@@ -279,8 +294,9 @@ const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) =>
               <option value="" disabled>
                 Issuing Country
               </option>
-              <option value="Yes">Yes</option>
-              <option value="No">No</option>
+              {countryDrop && countryDrop?.map((country: any, index: number) => (
+                <option key={index} value={country}>{country?.toUpperCase()}</option>
+              ))}
             </select>
           </div>
 

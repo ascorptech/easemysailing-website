@@ -575,8 +575,9 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
                   <option value="" disabled>
                     Type
                   </option>
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
+                  {edorTyDrop && edorTyDrop?.map((endor: any, index: number) => (
+                <option key={index} value={endor}>{endor?.toUpperCase()}</option>
+              ))}
                 </select>
               </div>
               <div>
@@ -627,8 +628,8 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
                   <option value="" disabled>
                     Capacity
                   </option>
-                  {countryDrop && countryDrop?.map((country: any, index: number) => (
-                <option key={index} value={country}>{country?.toUpperCase()}</option>
+                  {capacityDrop && capacityDrop?.map((cap: any, index: number) => (
+                <option key={index} value={cap}>{cap?.toUpperCase()}</option>
               ))}
                 </select>
               </div>
@@ -644,8 +645,8 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
                   <option value="" disabled>
                     STCW Regulation
                   </option>
-                  {countryDrop && countryDrop?.map((country: any, index: number) => (
-                <option key={index} value={country}>{country?.toUpperCase()}</option>
+                  {stcwRegDrop && stcwRegDrop?.map((stcw: any, index: number) => (
+                <option key={index} value={stcw}>{stcw?.toUpperCase()}</option>
               ))}
                 </select>
               </div>

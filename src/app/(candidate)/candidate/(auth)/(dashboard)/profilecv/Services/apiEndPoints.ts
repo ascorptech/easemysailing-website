@@ -11,4 +11,5 @@ export default{
     POSTONLINEPRASENCE:'/api/online-presence',
     POSTLICENSES:'/api/v1/licenses',
     POSTSEADETAILS: '/api/v1/offshore-requirements',
+    POSTSEAGOING: '/api/v1/seagoing-experiences',
 }

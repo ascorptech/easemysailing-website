@@ -1,4 +1,5 @@
 "use client";
+import { GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -24,6 +25,29 @@ const SeaGoingService = ({seaGoingServiceComplete, setSeaGoingServiceComplete,us
   const [rank, setRank] = useState("");
   const [gearless, setGearless] = useState("");
   const [inertGas,  setInertGas] = useState("");
+  const [imoDrop,  setImoDrop] = useState([]);
+  const [rankDrop, setRankDrop] = useState<any>([])
+  const [engineDrop, setEngineDrop] = useState<any>([])
+
+  useEffect(() => {
+    GetDropdownDetails('MEDICALFITNESSTYPE', (res: any) => {
+      setImoDrop(res?.data?.values)
+    })
+    GetDropdownDetails('rank', (res: any) => {
+      setRankDrop(res?.data?.values)
+    })
+    GetDropdownDetails('DRUG&ALCOHOLTEST', (res: any) => {
+      setEngineDrop(res?.data?.values)
+    })
+    // GetDropdownDetails('COVID19VACCINE', (res: any) => {
+    //   console.log('vac',res?.data)
+    //   setVaccineTypeDrop(res?.data?.values)
+    // })
+    // GetDropdownDetails('country', (res: any) => {
+    //   // console.log('County',res?.data)
+    //   setCountryDrop(res?.data?.values)
+    // })
+  }, [])
 
 
   const totalFields = 11;
@@ -73,7 +97,10 @@ const SeaGoingService = ({seaGoingServiceComplete, setSeaGoingServiceComplete,us
   }, [percentage,color])
  
  
-
+  const handleSubmit = (e: React.FormEvent) => {
+    // try {
+    e.preventDefault();
+  };
 
 
  
@@ -81,7 +108,8 @@ const SeaGoingService = ({seaGoingServiceComplete, setSeaGoingServiceComplete,us
 
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
-      <h1 className="text-center font-bold my-2" >PASSPORT DETAILS</h1>
+      <form onSubmit={handleSubmit}>
+      <h1 className=" font-bold my-2" >PASSPORT DETAILS</h1>
       <div className="grid grid-cols-2 gap-4">
         <div className="">
           <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="imo">
@@ -97,8 +125,9 @@ const SeaGoingService = ({seaGoingServiceComplete, setSeaGoingServiceComplete,us
             <option value="" disabled selected>
               IMO
             </option>
-            <option value="trainig1">Training1</option>
-            <option value="training2">Training2</option>
+            {imoDrop && imoDrop?.map((im: any, index: number) => (
+                <option key={index} value={im}>{im?.toUpperCase()}</option>
+              ))}
             
           </select>
         </div>
@@ -136,9 +165,9 @@ const SeaGoingService = ({seaGoingServiceComplete, setSeaGoingServiceComplete,us
             <option value="" disabled selected>
               Rank
             </option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
+            {rankDrop && rankDrop?.map((rank: any, index: number) => (
+                <option key={index} value={rank}>{rank?.toUpperCase()}</option>
+              ))}
           </select>
         </div>
 
@@ -160,7 +189,7 @@ const SeaGoingService = ({seaGoingServiceComplete, setSeaGoingServiceComplete,us
             />
           </div>
 
-          <div className=" grid col-span-2 text-center my-2"> <h1 className="font-bold"> Seaman Experience Details</h1></div>
+          <div className=" grid col-span-2  my-2"> <h1 className="font-bold"> Seaman Experience Details</h1></div>
 
           <div className="">
             <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="enginemake">
@@ -176,9 +205,9 @@ const SeaGoingService = ({seaGoingServiceComplete, setSeaGoingServiceComplete,us
               <option value="" disabled selected>
                 Engine Make
               </option>
-              <option value="engine1">Engine 1</option>
-              <option value="engine2">Engine 2</option>
-              <option value="engine3">Engine 3</option>
+              {engineDrop && engineDrop?.map((eng: any, index: number) => (
+                <option key={index} value={eng}>{eng?.toUpperCase()}</option>
+              ))}
             </select>
           </div>
 
@@ -312,12 +341,12 @@ const SeaGoingService = ({seaGoingServiceComplete, setSeaGoingServiceComplete,us
       {/* fifth section */}
 
       <div className="flex gap-2 mb-4 mt-4">
-        <Link
-          href="#"
+        <button
+          type="submit"
           className="border border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
         >
           Save
-        </Link>
+        </button>
         <Link
           href="#"
           className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
@@ -325,6 +354,7 @@ const SeaGoingService = ({seaGoingServiceComplete, setSeaGoingServiceComplete,us
           Edit
         </Link>
       </div>
+      </form>
     </div>
   );
 };

@@ -71,12 +71,16 @@ useEffect(() => {
     }
   };
 
-
+  const handleSubmit = (e: React.FormEvent) => {
+    // try {
+    e.preventDefault();
+  };
 
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
+        <form onSubmit={handleSubmit}>
          {/* <div className=" flex flex-col items-center"> */}
-         <h1 className="font-bold text-center">Qualification</h1>
+         <h1 className="font-bold ">Qualification</h1>
       <div className="grid grid-cols-2 gap-4">
 
         <div className="   ">
@@ -111,7 +115,7 @@ useEffect(() => {
         {/* <div className=""> */}
 
        
-        <h1 className="font-bold text-center mt-3">Passing Year </h1>
+        <h1 className="font-bold  mt-3">Passing Year </h1>
         <div className="grid grid-cols-2 gap-4">
 
         {/* </div> */}
@@ -186,12 +190,12 @@ useEffect(() => {
       {/* Third section */}
 
       <div className="flex gap-2 mb-4 mt-4">
-        <Link
-          href="#"
+        <button
+          type="submit"
           className="border border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
         >
           Save
-        </Link>
+        </button>
         <Link
           href="#"
           className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
@@ -199,6 +203,7 @@ useEffect(() => {
           Edit
         </Link>
       </div>
+      </form>
     </div>
   );
 };

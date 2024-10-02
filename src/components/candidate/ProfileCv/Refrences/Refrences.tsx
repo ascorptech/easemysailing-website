@@ -97,10 +97,18 @@ const Refrences = ({
     }
   }, [percentage, color]);
 
+  
+  const handleSubmit = (e: React.FormEvent) => {
+    // try {
+    e.preventDefault();
+  };
+
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
+
+<form onSubmit={handleSubmit}>
       <div className="">
-        <div className="text-center my-4">
+        <div className=" my-2">
           <h1 className="font-bold">
             EVALUATION REPORT AND REFERENCE/RECOMMENDATION LETTERS
           </h1>
@@ -186,7 +194,7 @@ const Refrences = ({
             </div>
           </div>
 
-          <h1 className="text-center font-bold my-4">CRIMINAL RECORD</h1>
+          <h1 className="font-bold my-2">CRIMINAL RECORD</h1>
 
           <div className="flex items-center justify-between gap-2  ">
             <div className="flex flex-col w-full  ">
@@ -243,7 +251,7 @@ const Refrences = ({
             </div>
           </div>
 
-          <h1 className="text-center font-bold my-4">REFERENCE CONTACTS</h1>
+          <h1 className="font-bold my-2">REFERENCE CONTACTS</h1>
 
           {/* third section start*/}
           <div className="flex items-center justify-between gap-2  ">
@@ -509,12 +517,12 @@ const Refrences = ({
         </div>
 
         <div className="flex gap-2 mb-4 mt-4 ml-3">
-          <Link
-            href="#"
+          <button
+            type="submit"
             className="border border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
           >
             Save
-          </Link>
+          </button>
           <Link
             href="#"
             className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
@@ -523,6 +531,7 @@ const Refrences = ({
           </Link>
         </div>
       </div>
+      </form>
     </div>
   );
 };

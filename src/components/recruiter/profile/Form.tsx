@@ -255,7 +255,7 @@ const MyJob = () => {
                   <CircularProgress percentage={100} color="#FF0000" />
                 </div>
               </div>
-              {nKOpen && <NextOfKinDetails userDetail={undefined} />}
+              {/* {nKOpen && <NextOfKinDetails userDetail={undefined} />} */}
               {/* {nKOpen && <NextOfKinDetails />} */}
 
               <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
@@ -303,7 +303,7 @@ const MyJob = () => {
                 </div>
               </div>
 
-              {languageOpen && <Languages />} 
+              {/* {languageOpen && <Languages />}  */}
 
               {/* OnlinePresence start */}
               <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
@@ -349,7 +349,7 @@ const MyJob = () => {
                 </div>
               </div>
 
-              {oPOpen && <OnlinePresence />}
+              {/* {oPOpen && <OnlinePresence />} */}
               {/* OnlinePresence end */}
 
               {/* OnlinePresence start */}
@@ -851,7 +851,7 @@ const MyJob = () => {
                 <CircularProgress percentage={100} color="#00A264" />
               </div>
             </div>
-            {aboutMeOpen && <AboutMe />}
+            {/* {aboutMeOpen && <AboutMe />} */}
             {/* about me end */}
 
             {/* conatact Details start */}
@@ -900,7 +900,7 @@ const MyJob = () => {
               </div>
             </div>
 
-            {cDOpen && <ContactDetails />}
+            {/* {cDOpen && <ContactDetails />} */}
             {/* constact details end */}
 
             {/* travel documents */}
@@ -946,7 +946,7 @@ const MyJob = () => {
                 <CircularProgress percentage={20} color="#FF0000" />
               </div>
             </div>
-            {authOpen && <TravelDocuments />}
+            {/* {authOpen && <TravelDocuments />} */}
 
 
             {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">

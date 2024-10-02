@@ -1,5 +1,5 @@
 "use client";
-import { AddProfileData } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import { AddContactData, AddProfileData, GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
 import React, { useEffect } from "react";
 
@@ -11,14 +11,14 @@ type ContactComplete = {
   percentage: number;
   color: string;
 };
-type Props={
+type Props = {
   contactComplete: ContactComplete; // mjrComplete is an object with percentage and color
   setContactComplete: React.Dispatch<React.SetStateAction<ContactComplete>>; // setMjrComplete is a function to update mjrComplete
-  userDetail:any
+  userDetail: any
 }
 
 
-const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props) => {
+const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Props) => {
   const [address, setAddress] = useState("");
   const [number, setNumber] = useState("");
   const [addInfo, setAddInfo] = useState("");
@@ -29,10 +29,31 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
   const [indNumber, setIndNumber] = useState("");
   const [cityName, setCityName] = useState("");
   const [phoneNumber1, setPhoneNumber1] = useState("");
-  const [rCountrycode, setRCountrycode] = useState("");
-  const [mCountrycode, setMCountrycode] = useState("");
+  const [rCountrycode, setRCountrycode] = useState("+91");
+  const [mCountrycode, setMCountrycode] = useState("+91");
   const [country1, setCountry1] = useState("");
   const [nACountrycode, setNACountrycode] = useState("");
+  const [countryDrop, setCountryDrop] = useState<any>([]);
+  const [countryCodeDrop, setCountryCodeDrop] = useState<any>([]);
+
+  useEffect(() => {
+    console.log('userDetail',userDetail)
+    if (userDetail) {
+      setEmail(userDetail?.email)
+    }
+  }, [])
+
+
+  useEffect(() => {
+    GetDropdownDetails('country', (res: any) => {
+      // console.log('County',res?.data)
+      setCountryDrop(res?.data?.values)
+    })
+    GetDropdownDetails('countryCode', (res: any) => {
+      // console.log('County',res?.data)
+      setCountryCodeDrop(res?.data?.values)
+    })
+  }, [])
 
   const totalFields = 12;
   const filledFields = [
@@ -56,21 +77,21 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
   // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
   let color;
   useEffect(() => {
-    console.log('user',userDetail)
+    console.log('user', userDetail)
     if (percentage <= 30) {
       setContactComplete((prevState) => ({
         ...prevState, // Spread the previous state to keep any other properties
         percentage: percentage, // Update the percentage field
         color: '#FF0000' // Update the color field
       }));
-      color = "red"; 
+      color = "red";
     } else if (percentage <= 70) {
       setContactComplete((prevState) => ({
         ...prevState, // Spread the previous state to keep any other properties
         percentage: percentage, // Update the percentage field
         color: '#FF9900' // Update the color field
       }));
-      color = "#FF9900"; 
+      color = "#FF9900";
     } else {
       setContactComplete((prevState) => ({
         ...prevState, // Spread the previous state to keep any other properties
@@ -79,31 +100,39 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
       }));
       color = "green";
     }
-  }, [percentage,color])
+  }, [percentage, color])
 
   const handlesubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     let data = {
-      address,
-      number,
-      addInfo,
-      postalCode,
-      state,
-      phoneNumber,
-      email,
-      indNumber,
-      cityName,
-    };
+      "id": userDetail?.userId,
+      "street": "string",
+      "address": address,
+      "number": "string",
+      "additionalInfo": addInfo,
+      "postalCode": postalCode,
+      "zipcode": postalCode,
+      "city": cityName,
+      "state": state,
+      "country": country1,
+      "nearestAirport": nACountrycode,
+      "mobileCountryCode": mCountrycode,
+      "mobilePhoneNumber": phoneNumber,
+      "directLineCountryCode": rCountrycode,
+      "directLinePhoneNumber": phoneNumber1,
+      "emailAddress": email,
+      "indosNumber": indNumber
+    }
 
     // console.log(data);
-    // AddProfileData(data, AddaddressdataDB);
+    AddContactData(data, AddaddressdataDB);
   };
   const AddaddressdataDB = (result: any) => {
     console.log(result);
-    if (result?.status == 200) {
-      toast.success("address submited successfully");
+    if (result?.status == 200||result?.status==201) {
+      toast.success("Contact submited successfully");
     } else {
-      toast.error("address not submited ");
+      toast.error("Contact not submited ");
     }
   };
 
@@ -246,9 +275,9 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
                   <option value="" disabled>
                     country
                   </option>
-                  <option value="india">India</option>
-                  <option value="austrelia">Austrelia</option>
-                  <option value="england">England</option>
+                  {countryDrop && countryDrop?.map((country: any, index: number) => (
+                    <option key={index} value={country}>{country?.toUpperCase()}</option>
+                  ))}
                 </select>
               </div>
             </div>
@@ -267,15 +296,15 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
                 <option value="" disabled>
                   country
                 </option>
-                <option value="India">India</option>
-                <option value="Austrelia">Austrelia</option>
-                <option value="England">England</option>
+                {countryDrop && countryDrop?.map((country: any, index: number) => (
+                    <option key={index} value={country}>{country?.toUpperCase()}</option>
+                  ))}
               </select>
             </div>
 
             {/* counstry and city section start*/}
 
-            <div className="grid col-span-2 text-center">
+            <div className="grid col-span-2 ">
               <h1 className="font-bold">MOBILE PHONE</h1>
             </div>
 
@@ -289,9 +318,9 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
                   value={mCountrycode}
                   onChange={(e) => setMCountrycode(e.target.value)}
                 >
-                  <option value="+91">+91</option>
-                  <option value="+50">+50</option>
-                  <option value="+08">+08</option>
+                  {countryCodeDrop && countryCodeDrop?.map((code: any, index: number) => (
+                    <option key={index} value={code}>{code?.toUpperCase()}</option>
+                  ))}
                 </select>
               </div>
 
@@ -315,7 +344,7 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
                 </div>
               </div>
             </div>
-            <div className="grid col-span-2 text-center">
+            <div className="grid col-span-2">
               <h1 className="font-bold">DIRECT LINE</h1>
             </div>
             <div className="flex items-center justify-between gap-4  ">
@@ -328,9 +357,9 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
                   value={rCountrycode}
                   onChange={(e) => setRCountrycode(e.target.value)}
                 >
-                  <option value="+91">+91</option>
-                  <option value="+50">+50</option>
-                  <option value="+08">+08</option>
+                  {countryCodeDrop && countryCodeDrop?.map((code: any, index: number) => (
+                    <option key={index} value={code}>{code?.toUpperCase()}</option>
+                  ))}
                 </select>
               </div>
 

@@ -108,8 +108,14 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
     }
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    // try {
+    e.preventDefault();
+  };
+
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
+       <form onSubmit={handleSubmit}>
       <div className="grid grid-cols-2 gap-4">
         <div className="">
           <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="optionce">
@@ -291,7 +297,7 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
 
 
         <div className="grid col-span-2 "> 
-            <h1 className="text-center font-bold">PROFESSIONAL KNOWLEDGE TEST</h1>
+            <h1 className=" font-bold">PROFESSIONAL KNOWLEDGE TEST</h1>
             </div>
           <div className="">
             <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="option02">
@@ -509,12 +515,12 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
       {/* Third section */}
 
       <div className="flex gap-2 mb-4 mt-4">
-        <Link
-          href="#"
+        <button
+          type="submit"
           className="border text-[14px] leading-[19.07px] font-[poppins]  border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
         >
           Save
-        </Link>
+        </button>
         <Link
           href="#"
           className="border border-[#00A264]  p-2 rounded-lg px-8 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
@@ -522,6 +528,7 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
           Edit
         </Link>
       </div>
+      </form>
     </div>
   );
 };

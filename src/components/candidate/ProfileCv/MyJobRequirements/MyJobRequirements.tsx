@@ -27,8 +27,6 @@ const MyJobRequirements = ({ mjrComplete, setMjrComplete, userDetail }: Props) =
   const [available, setAvailable] = useState("");
   const [disabled, setDisabled] = useState(true)
 
-
-
   useEffect(() => {
     if (userDetail) {
       setCurrentPosition(userDetail?.jobRequirements?.currentPosition)
@@ -39,9 +37,6 @@ const MyJobRequirements = ({ mjrComplete, setMjrComplete, userDetail }: Props) =
       setAvailable(!userDetail?.jobRequirements?.notAvailable ? 'No' : 'Yes')
     }
   }, [])
-
-
-
 
   const filledFields = [
     currentPosition,
@@ -99,7 +94,6 @@ const MyJobRequirements = ({ mjrComplete, setMjrComplete, userDetail }: Props) =
 
 
   const handleSubmit = (e: React.FormEvent) => {
-    // try {
     e.preventDefault();
 
     if (
@@ -112,28 +106,21 @@ const MyJobRequirements = ({ mjrComplete, setMjrComplete, userDetail }: Props) =
       toast.error("Please fill in all required fields.");
       return;
     }
-    // let formData = new FormData()
-    // formData.append('userId', userDetail?.userId)
 
-    let data = {
-     
-        availabilityDate: availabilityDate ? availabilityDate : '',
+    let data:any = {
+        
         currentPosition: currentPosition,
         alternatePosition: alternatePosition,
         preferredVesselType: preferredVesselType,
         alternateVesselType: alternateVesselType,
         notAvailable: available == 'Yes' ? 'true' : 'false',
-        profileId:
-     
+        profileId:userDetail?.userId
     };
-    // formData.append('currentPosition', currentPosition)
-    // formData.append('alternatePosition', alternatePosition)
-    // formData.append('preferredVesselType', preferredVesselType)
-    // formData.append('alternateVesselType', alternateVesselType)
-    // availabilityDate&&formData.append('availabilityDate', availabilityDate)
-    // formData.append('notAvailable', available=='Yes'?'true':'false')
-    // console.log(formData);
-    AddMyJobData(?.data, AddmyJobdataDB);
+    if (availabilityDate) {
+      data.availabilityDate = availabilityDate ? availabilityDate : ''
+    }
+    
+    AddMyJobData(data, AddmyJobdataDB);
   };
 
   const AddmyJobdataDB = (result: any) => {

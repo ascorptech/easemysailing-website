@@ -71,9 +71,9 @@ const MyJobRequirements = ({ mjrComplete, setMjrComplete, userDetail }: Props) =
       color = "#FF9900";
     } else {
       setMjrComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: '#00A264' // Update the color field
+        ...prevState, 
+        percentage: percentage, 
+        color: '#00A264' 
       }));
       color = "green";
     }
@@ -108,13 +108,12 @@ const MyJobRequirements = ({ mjrComplete, setMjrComplete, userDetail }: Props) =
     }
 
     let data:any = {
-        
         currentPosition: currentPosition,
         alternatePosition: alternatePosition,
         preferredVesselType: preferredVesselType,
         alternateVesselType: alternateVesselType,
-        notAvailable: available == 'Yes' ? 'true' : 'false',
-        profileId:userDetail?.userId
+        notAvailable: available == 'yes' ? 'true' : 'false',
+        // profileId:userDetail?.userId
     };
     if (availabilityDate) {
       data.availabilityDate = availabilityDate ? availabilityDate : ''
@@ -126,11 +125,13 @@ const MyJobRequirements = ({ mjrComplete, setMjrComplete, userDetail }: Props) =
   const AddmyJobdataDB = (result: any) => {
     console.log(result);
     if (result?.status == 200) {
+      console.log(result)
       toast.success("Job requirements submited successfully");
       setTimeout(() => {
         window.location.reload()
       }, 1000);
     } else {
+      console.log(result)
       toast.error("Job requirements not submited ");
     }
   };

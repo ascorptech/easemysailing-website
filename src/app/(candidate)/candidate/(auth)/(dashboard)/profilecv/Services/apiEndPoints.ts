@@ -4,5 +4,6 @@ export default{
     GETENUMS:'/v1/enums',
     POSTMYJOB:'/api/job-requirements',
     GETMYJOB:'/api/job-requirements',
-    POSTNEXTOF:'/api/next-of-kin-details'
+    POSTNEXTOF:'/api/next-of-kin-details',
+    POSTLANGUAGE:'/api/v1/languages'
 }

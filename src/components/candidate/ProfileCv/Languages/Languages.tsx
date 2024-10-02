@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import CircularProgress from "../CircularProgress";
-import { GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import { AddLanguageData, GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 type LanguageComplete = {
   percentage: number;
   color: string;
@@ -101,9 +101,54 @@ const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) =>
   const handleSubmit = (e: React.FormEvent) => {
     // try {
     e.preventDefault(); 
+    let formData = new FormData();
+
+    {
+      formData.append('Id', userDetail?.userId);
+      formData.append('nativeLanguage',language1);
+      formData.append('additionalLanguage',addiLanguage);
+    formData.append('additionalLanguageLevel',languageLavel);
+    formData.append('englishLevel',englishLavel);
+    formData.append('testLanguage',languageTests);
+    formData.append('testCenter',testCenter);
+    formData.append('testType',typeofTest);
+    formData.append('testResult',result);
+    formData.append('issuingCountry',issuingCountry);
+    formData.append('dateOfTest', dateofTest);
+    // formData.append('documentUrl',selectedFile);
+
+     
+    }
+
+
+    // formData.append('userId',userDetail?.userId);
+    
+    // formData.append('lastName',lastName);
+    // formData.append('dateOfBirth',date);
+    // formData.append('cityOfBirth',cityBirth);
+    // formData.append('religion',religionName);
+    // formData.append('countryOfBirth',countryOfBirth);
+    // formData.append('gender',gender);
+    // formData.append('maritalStatus',marital);
+    // formData.append('nationality',nationality);
+
+    
+
+    AddLanguageData(userDetail?.userId,formData,  AddLanguagedataDB);
   };
 
- 
+  const AddLanguagedataDB = (result: any) => {
+    console.log(result);
+    if (result?.status == 200) {
+      toast.success("Personal detail submited successfully");
+      setTimeout(() => {
+        window.location.reload()
+      }, 1000);
+    } else {
+      toast.error("Personal detail not submited ");
+    }
+  };
+
 
   const handleFileChange = (event: any) => {
     const file = event.target.files?.[0];

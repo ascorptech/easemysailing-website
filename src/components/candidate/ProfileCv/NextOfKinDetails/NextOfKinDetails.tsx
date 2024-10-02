@@ -106,7 +106,7 @@ const NextOfKinDetails = ({
   };
   const AddNextOfKindataDB = (result: any) => {
     console.log(result);
-    if (result?.status == 200) {
+    if (result?.status == 200 || result?.status == 201) {
       console.log(result)
       toast.success("Next Of Kin Details submited successfully");
       setTimeout(() => {

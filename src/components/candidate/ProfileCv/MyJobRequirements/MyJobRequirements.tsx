@@ -28,6 +28,7 @@ const MyJobRequirements = ({ mjrComplete, setMjrComplete, userDetail }: Props) =
   const [disabled, setDisabled] = useState(true)
 
   useEffect(() => {
+    console.log('userDetail',userDetail)
     if (userDetail) {
       setCurrentPosition(userDetail?.jobRequirements?.currentPosition)
       setAlternatePosition(userDetail?.jobRequirements?.alternatePosition)
@@ -108,12 +109,12 @@ const MyJobRequirements = ({ mjrComplete, setMjrComplete, userDetail }: Props) =
     }
 
     let data:any = {
+        id:userDetail?.userId,
         currentPosition: currentPosition,
         alternatePosition: alternatePosition,
         preferredVesselType: preferredVesselType,
         alternateVesselType: alternateVesselType,
         notAvailable: available == 'yes' ? 'true' : 'false',
-        // profileId:userDetail?.userId
     };
     if (availabilityDate) {
       data.availabilityDate = availabilityDate ? availabilityDate : ''

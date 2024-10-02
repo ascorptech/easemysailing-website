@@ -1,5 +1,6 @@
 "use client";
 
+import { GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
@@ -56,6 +57,22 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
   const [selectedFile1, setSelectedFile1] = useState<File | null>(null);
 
   const [selectedFile2, setSelectedFile2] = useState<File | null>(null);
+  const [countryDrop, setCountryDrop] = useState<any>([]);
+  const [capacityDrop, setCapacityDrop] = useState<any>([]);
+
+  useEffect(() => {
+    GetDropdownDetails('capacity', (res: any) => {
+      setCapacityDrop(res?.data?.values)
+    })
+    GetDropdownDetails('country', (res: any) => {
+      // console.log('County',res?.data)
+      setCountryDrop(res?.data?.values)
+    })
+    // GetDropdownDetails('language', (res: any) => {
+    //   // console.log('lang',res?.data)
+    //   setLanguageDrop(res?.data?.values)
+    // })
+  }, [])
 
   // Salary expectation states
 
@@ -196,9 +213,9 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
                 <option value="" disabled>
                   Issuing Country
                 </option>
-                <option value="Chemical Tanker1">Chemical Tanker1</option>
-                <option value="Chemical Tanker2">Chemical Tanker2</option>
-                <option value="Chemical Tanker3">Chemical Tanker3</option>
+                {countryDrop && countryDrop?.map((country: any, index: number) => (
+                <option key={index} value={country}>{country?.toUpperCase()}</option>
+              ))}
               </select>
             </div>
 
@@ -235,9 +252,9 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
                 <option value="" disabled>
                   Capacity{" "}
                 </option>
-                <option value="level1">Level1</option>
-                <option value="level2">Level2</option>
-                <option value="level3">Level3</option>
+                {capacityDrop && capacityDrop?.map((cap: any, index: number) => (
+                <option key={index} value={cap}>{cap?.toUpperCase()}</option>
+              ))}
               </select>
             </div>
             <div>
@@ -252,9 +269,9 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
                 <option value="" disabled>
                   STCW Regulation{" "}
                 </option>
-                <option value="level1">Level1</option>
-                <option value="level2">Level2</option>
-                <option value="level3">Level3</option>
+                {countryDrop && countryDrop?.map((country: any, index: number) => (
+                <option key={index} value={country}>{country?.toUpperCase()}</option>
+              ))}
               </select>
             </div>
             <div className=" w-full">
@@ -366,9 +383,9 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
                 <option value="" disabled>
                   Issuing Country
                 </option>
-                <option value="Language1">Language1</option>
-                <option value="Language2">Language2</option>
-                <option value="Language3">Language3</option>
+                {countryDrop && countryDrop?.map((country: any, index: number) => (
+                <option key={index} value={country}>{country?.toUpperCase()}</option>
+              ))}
               </select>
             </div>
 
@@ -403,8 +420,9 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
                 <option value="" disabled>
                   Capacity
                 </option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
+                {capacityDrop && capacityDrop?.map((cap: any, index: number) => (
+                <option key={index} value={cap}>{cap?.toUpperCase()}</option>
+              ))}
               </select>
             </div>
 
@@ -420,8 +438,9 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
                 <option value="" disabled>
                   STCW Regulation
                 </option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
+                {countryDrop && countryDrop?.map((country: any, index: number) => (
+                <option key={index} value={country}>{country?.toUpperCase()}</option>
+              ))}
               </select>
             </div>
 
@@ -487,9 +506,9 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
                 <option value="" disabled>
                   Not Issued Separately
                 </option>
-                <option value="Training1">Training1</option>
-                <option value="Training2">Training2</option>
-                <option value="Training3">Training3</option>
+                {countryDrop && countryDrop?.map((country: any, index: number) => (
+                <option key={index} value={country}>{country?.toUpperCase()}</option>
+              ))}
               </select>
             </div>
           </div>
@@ -525,8 +544,9 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
                   <option value="" disabled>
                     Issuing Country
                   </option>
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
+                  {countryDrop && countryDrop?.map((country: any, index: number) => (
+                <option key={index} value={country}>{country?.toUpperCase()}</option>
+              ))}
                 </select>
               </div>
               <div>
@@ -560,8 +580,9 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
                   <option value="" disabled>
                     Capacity
                   </option>
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
+                  {countryDrop && countryDrop?.map((country: any, index: number) => (
+                <option key={index} value={country}>{country?.toUpperCase()}</option>
+              ))}
                 </select>
               </div>
               <div>
@@ -576,8 +597,9 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
                   <option value="" disabled>
                     STCW Regulation
                   </option>
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
+                  {countryDrop && countryDrop?.map((country: any, index: number) => (
+                <option key={index} value={country}>{country?.toUpperCase()}</option>
+              ))}
                 </select>
               </div>
               <div>

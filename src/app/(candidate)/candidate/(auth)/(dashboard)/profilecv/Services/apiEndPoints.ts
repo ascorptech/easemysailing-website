@@ -10,5 +10,5 @@ export default{
     POSTCONTACT:'/api/v1/contact-details',
     POSTONLINEPRASENCE:'/api/online-presence',
     POSTLICENSES:'/api/v1/licenses',
-
+    POSTSEADETAILS: '/api/v1/offshore-requirements',
 }

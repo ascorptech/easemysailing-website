@@ -95,7 +95,7 @@ export const AddContactData = async(data:any ,cb:any)=>{
 export const AddNextOfData = async(data:any ,cb:any)=>{
     try {
         console.log('Data to be submitted:', data);
-        const response = await postReq(POSTNEXTOF,data)
+        const response = await putReq(POSTNEXTOF,data)
         console.log('API response:', response);
         return cb(response)
     } catch (error:any) {

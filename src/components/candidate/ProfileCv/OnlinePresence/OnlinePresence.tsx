@@ -1,5 +1,8 @@
 "use client";
-import { AddOnlinePresenceData, AddProfileData } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import {
+  AddOnlinePresenceData,
+  AddProfileData,
+} from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
@@ -59,7 +62,6 @@ const OnlinePresence = ({
     facebook && facebookId,
     instagram && instagramId,
     other && otherId,
-
   ].filter(Boolean).length;
 
   const percentage = (filledFields / totalFields) * 100;
@@ -95,47 +97,45 @@ const OnlinePresence = ({
     // try {
     e.preventDefault();
     let data = {
-      id: userDetail?.userId,
-      whatsapp: whatsApp,
-      weChat: weChat,
-      facebookMessenger: facebookMess,
-      telegram: telegram,
-      viber: viber,
-      whatsappNumber: whatsAppId,
-      weChatNumber: weChatId,
-      facebookMessengerId:facebookMessId,
-      telegramNumber: telegramId,
-      viberNumber:viberId,
-      skypeId: skypeId,
-      linkedIn: linkedIn,
-      facebook:facebook,
-      instagram: instagram,
-      other:other,
-      linkedInProfileUrl: linkedIn,
-      facebookProfileUrl: facebookId,
-      instagramProfileUrl: instagramId,
-      otherSocialMediaName: otherId,
-      otherSocialMediaContact: ""
-    }
+      "id": userDetail?.userId,
+      "whatsapp": whatsApp,
+      "weChat": weChat,
+      "facebookMessenger": facebookMess,
+      "telegram": telegram,
+      "viber": viber,
+      "whatsappNumber": whatsAppId,
+      "weChatNumber": weChatId,
+      "facebookMessengerId": facebookMessId,
+      "telegramNumber": telegramId,
+     " viberNumber": viberId,
+      "skypeId": skypeId,
+      "linkedIn": linkedIn,
+      "facebook": facebook,
+     " instagram": instagram,
+      "other": other,
+      "linkedInProfileUrl": linkedIn,
+      "facebookProfileUrl": facebookId,
+     " instagramProfileUrl": instagramId,
+      "otherSocialMediaName": otherId,
+     " otherSocialMediaContact": "",
+    };
 
-    AddOnlinePresenceData(data, AddOnlinePresenceDataCB)
+    AddOnlinePresenceData(data, AddOnlinePresenceDataCB);
   };
 
-  const AddOnlinePresenceDataCB = (result:any) => {
-    console.log('res',result)
-    if (result?.status == 200||result?.status == 201) {
-      console.log(result)
+  const AddOnlinePresenceDataCB = (result: any) => {
+    console.log("res", result);
+    if (result?.status == 200 || result?.status == 201) {
+      console.log(result);
       toast.success("Online Presence submited successfully");
       setTimeout(() => {
-        window.location.reload()
+        window.location.reload();
       }, 1000);
     } else {
-      console.log(result)
+      console.log(result);
       toast.error("Online Presence not submited ");
     }
-  }
-
-
+  };
 
   return (
     <div className="container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
@@ -144,7 +144,7 @@ const OnlinePresence = ({
         <div className="my-5 ">
           <h1 className="mb-2  font-bold">Messengers in Use</h1>
           <div className="flex  gap-2 ">
-            <div className="w-[24%]">
+            <div className="w-[18%]">
               <input
                 type="checkbox"
                 checked={whatsApp}
@@ -175,7 +175,7 @@ const OnlinePresence = ({
               )}
             </div>
 
-            <div className="w-[24%]">
+            <div className="w-[18%]">
               <div>
                 {" "}
                 <input
@@ -206,7 +206,7 @@ const OnlinePresence = ({
               )}
             </div>
 
-            <div className="w-[24%]">
+            <div className="w-[18%]">
               <div>
                 {" "}
                 <input
@@ -234,7 +234,7 @@ const OnlinePresence = ({
 
             {/* <div className="my-5"> */}
             {/* <h1 className="mb-2">Preferred Contract Type</h1> */}
-            <div className="w-[20%]">
+            <div className="w-[18%]">
               <div>
                 <input
                   type="checkbox"
@@ -261,7 +261,7 @@ const OnlinePresence = ({
               )}
             </div>
 
-            <div className="w-[20%]">
+            <div className="w-[18%]">
               <div>
                 <input
                   type="checkbox"
@@ -270,7 +270,7 @@ const OnlinePresence = ({
                   className="ml-4"
                 />
                 <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
-                Viber
+                  Viber
                 </label>
               </div>
 

@@ -174,7 +174,7 @@ const PreSeaTrainigDetails = ({
 
   const AddSeaDetailsDataDB = (result: any) => {
     console.log(result);
-    if (result?.status == 200) {
+    if (result?.status == 200 || result?.status == 201) {
       toast.success("Sea detail submited successfully");
       setTimeout(() => {
         window.location.reload()

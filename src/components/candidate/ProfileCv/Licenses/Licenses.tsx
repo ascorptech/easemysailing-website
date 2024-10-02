@@ -1,6 +1,6 @@
 "use client";
 
-import { GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import { AddLicensesData, GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
@@ -53,10 +53,10 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
   const [issueDateOption, setIssueDateOption] = useState("");
   const [expiryDateOption, setExpiryDateOption] = useState("");
 
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [selectedFile1, setSelectedFile1] = useState<File | null>(null);
+  const [selectedFile, setSelectedFile] = useState<any>(null);
+  const [selectedFile1, setSelectedFile1] = useState<any>(null);
 
-  const [selectedFile2, setSelectedFile2] = useState<File | null>(null);
+  const [selectedFile2, setSelectedFile2] = useState<any>(null);
   const [countryDrop, setCountryDrop] = useState<any>([]);
   const [capacityDrop, setCapacityDrop] = useState<any>([]);
   const [stcwRegDrop, setStcWRegDrop] = useState<any>([]);
@@ -82,13 +82,12 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
 
   // Salary expectation states
 
-  const totalFields = 25;
+  const totalFields = 26;
   const filledFields = [
     number,
     idoNotACoC,
     areaLimitation,
     capacity,
-    areaLimitation,
     issuingOption,
     typeOption,
     number1,
@@ -146,20 +145,63 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     // try {
-    e.preventDefault(); // Prevent default form submission
+    e.preventDefault();
+    let formData = new FormData () ;
+    {
+      formData.append('cocIssuingAuthority',issueAuthority)
+      formData.append('cocCertificateNumber',certificateNo)
+      formData.append('cocCertificateType',certificateType)
+      formData.append('cocCapacity',idoNotACoC)
+      formData.append('cocStcwRegulation',sTCWRegulation)
+      formData.append('cocAreaLimitation', areaLimitation)
+      formData.append('cocOtherLimitation',otherLimitation) 
+      formData.append('cocIssueDate',issueDate)
+      formData.append('cocExpiryDate',expiryDate)
+      formData.append('cocDocument', selectedFile);
+
+      formData.append('gmdssIssuingCountry',issuingCountry)
+      formData.append('gmdssNumber',number)
+      formData.append('gmdssCapacity',capacity)
+      formData.append('gmdssStcwRegulation',wRegulation)
+      formData.append('gmdssIssueDate',gMissueDate)
+      formData.append('gmdssExpiryDate',gMexpiryDate) 
+      formData.append('gmdssDocument', selectedFile1);
+
+      // formData.append('gmdssDocumentExt',)
+      formData.append('endorsementsNotIssuedSeparately',separately)
+      formData.append('endorsementType',typeOption)
+      formData.append('endorsementIssuingCountry',issuingOption)
+      formData.append('endorsementNumber',number1)
+      formData.append('endorsementCapacity',capacityOption)
+      formData.append('endorsementStcwRegulation',sTCWRegulationOption) 
+      formData.append('endorsementIssueDate',issueDateOption) 
+      formData.append('endorsementExpiryDate',expiryDateOption) 
+      formData.append('endorsementDocument', selectedFile2);
+    }
+    AddLicensesData(userDetail?.userId, formData, AddLicensesdataDB );
   };
 
-  // const AddaddressdataDB = (result:any)=> {
-  //   console.log(result)
+  const AddLicensesdataDB = (result: any) => {
+    console.log(result);
+    if (result?.status == 200) {
+      toast.success("Licenses submited successfully");
+      setTimeout(() => {
+        window.location.reload()
+      }, 1000);
+    } else {
+      toast.error("Licenses detail not submited ");
+    }
+  };
 
-  // }
-
+  
   const handleFileChange = (event: any) => {
     const file = event.target.files?.[0];
     if (file) {
       setSelectedFile(file);
     }
   };
+
+
 
   const handleFileChange1 = (event: any) => {
     const file = event.target.files?.[0];

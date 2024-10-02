@@ -1,5 +1,5 @@
 "use client";
-import { AddProfileData } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import { AddOnlinePresenceData, AddProfileData } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
@@ -31,6 +31,11 @@ const OnlinePresence = ({
   const [facebookMessId, setFacebookMessId] = useState("");
   const [telegram, setTelegram] = useState(false);
   const [telegramId, setTelegramId] = useState("");
+
+  const [viber, setViber] = useState(false);
+
+  const [viberId, setViberId] = useState("");
+
   const [skypeId, setSkypeId] = useState("");
   const [linkedIn, setLinkedIn] = useState(false);
   const [linkedInId, setLinkedInId] = useState("");
@@ -48,11 +53,13 @@ const OnlinePresence = ({
     weChat && weChatId,
     facebookMess && facebookMessId,
     telegram && telegramId,
+    viber && viberId,
     skypeId,
     linkedIn && linkedInId,
     facebook && facebookId,
     instagram && instagramId,
     other && otherId,
+
   ].filter(Boolean).length;
 
   const percentage = (filledFields / totalFields) * 100;
@@ -87,7 +94,48 @@ const OnlinePresence = ({
   const handleSubmit = (e: React.FormEvent) => {
     // try {
     e.preventDefault();
+    let data = {
+      id: userDetail?.userId,
+      whatsapp: whatsApp,
+      weChat: weChat,
+      facebookMessenger: facebookMess,
+      telegram: telegram,
+      viber: viber,
+      whatsappNumber: whatsAppId,
+      weChatNumber: weChatId,
+      facebookMessengerId:facebookMessId,
+      telegramNumber: telegramId,
+      viberNumber:viberId,
+      skypeId: skypeId,
+      linkedIn: linkedIn,
+      facebook:facebook,
+      instagram: instagram,
+      other:other,
+      linkedInProfileUrl: linkedIn,
+      facebookProfileUrl: facebookId,
+      instagramProfileUrl: instagramId,
+      otherSocialMediaName: otherId,
+      otherSocialMediaContact: ""
+    }
+
+    AddOnlinePresenceData(data, AddOnlinePresenceDataCB)
   };
+
+  const AddOnlinePresenceDataCB = (result:any) => {
+    console.log('res',result)
+    if (result?.status == 200||result?.status == 201) {
+      console.log(result)
+      toast.success("Online Presence submited successfully");
+      setTimeout(() => {
+        window.location.reload()
+      }, 1000);
+    } else {
+      console.log(result)
+      toast.error("Online Presence not submited ");
+    }
+  }
+
+
 
   return (
     <div className="container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
@@ -186,7 +234,7 @@ const OnlinePresence = ({
 
             {/* <div className="my-5"> */}
             {/* <h1 className="mb-2">Preferred Contract Type</h1> */}
-            <div className="w-[24%]">
+            <div className="w-[20%]">
               <div>
                 <input
                   type="checkbox"
@@ -208,6 +256,33 @@ const OnlinePresence = ({
                     placeholder="Enter Telegram Id"
                     value={telegramId}
                     onChange={(e) => setTelegramId(e.target.value)}
+                  />
+                </div>
+              )}
+            </div>
+
+            <div className="w-[20%]">
+              <div>
+                <input
+                  type="checkbox"
+                  checked={viber}
+                  onChange={() => setViber(!viber)}
+                  className="ml-4"
+                />
+                <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                Viber
+                </label>
+              </div>
+
+              {viber && (
+                <div className="mt-4 flex flex-col ">
+                  <input
+                    id="viberId"
+                    type="text"
+                    className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder="Enter viber Id"
+                    value={viberId}
+                    onChange={(e) => setViberId(e.target.value)}
                   />
                 </div>
               )}

@@ -98,6 +98,8 @@ const Languages = ({ languageComplete, setLanguageComplete, userDetail }: Props)
       color = "green";
     }
   }, [percentage, color])
+
+
   const handleSubmit = (e: React.FormEvent) => {
     // try {
     e.preventDefault();
@@ -115,20 +117,22 @@ const Languages = ({ languageComplete, setLanguageComplete, userDetail }: Props)
       formData.append('issuingCountry', issuingCountry);
       formData.append('dateOfTest', dateofTest);
       formData.append('document', selectedFile);
+     
     }
-
     AddLanguageData(userDetail?.userId, formData, AddLanguagedataDB);
+
+   
   };
 
   const AddLanguagedataDB = (result: any) => {
     console.log(result);
     if (result?.status == 200) {
-      toast.success("Personal detail submited successfully");
+      toast.success("Language detail submited successfully");
       setTimeout(() => {
         window.location.reload()
       }, 1000);
     } else {
-      toast.error("Personal detail not submited ");
+      toast.error("Language detail not submited ");
     }
   };
 

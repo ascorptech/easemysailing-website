@@ -7,5 +7,8 @@ export default{
     POSTNEXTOF:'/api/next-of-kin-details',
     POSTLANGUAGE:'/api/v1/languages',
     POSTABOUTME:'/api/v1/aboutme',
-    POSTCONTACT:'/api/v1/contact-details'
+    POSTCONTACT:'/api/v1/contact-details',
+    POSTONLINEPRASENCE:'/api/online-presence',
+    POSTLICENSES:'/api/v1/licenses',
+
 }

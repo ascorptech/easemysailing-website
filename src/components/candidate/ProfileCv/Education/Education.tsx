@@ -91,13 +91,19 @@ const Education = ({educationComplete, setEducationComplete, userDetail}:Props) 
     }
   };
 
+
+  const handleSubmit = (e: React.FormEvent) => {
+    // try {
+    e.preventDefault();
+  };
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
-      <h1 className="font-bold text-center">COMPUTER SKILLS</h1>
+      <form onSubmit={handleSubmit}>
+      <h1 className="font-bold ">COMPUTER SKILLS</h1>
       <div className="grid grid-cols-2 gap-4">
         <div className="   ">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
             htmlFor="number"
           >
             School / College / University{" "}
@@ -107,14 +113,14 @@ const Education = ({educationComplete, setEducationComplete, userDetail}:Props) 
             type="number"
             value={university}
             onChange={(e) => setUniversity(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             placeholder="Enter Number"
             required
           />
         </div>
         <div className="   ">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
             htmlFor="number"
           >
             Subject
@@ -124,7 +130,7 @@ const Education = ({educationComplete, setEducationComplete, userDetail}:Props) 
             type="number"
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
             placeholder=""
             required
           />
@@ -132,7 +138,7 @@ const Education = ({educationComplete, setEducationComplete, userDetail}:Props) 
 
         <div className="   ">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
             htmlFor="number"
           >
             City{" "}
@@ -142,7 +148,7 @@ const Education = ({educationComplete, setEducationComplete, userDetail}:Props) 
             type="number"
             value={city}
             onChange={(e) => setCity(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             placeholder=""
             required
           />
@@ -150,7 +156,7 @@ const Education = ({educationComplete, setEducationComplete, userDetail}:Props) 
 
         <div className="   ">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
             htmlFor="percentage"
           >
             Percentage{" "}
@@ -160,7 +166,7 @@ const Education = ({educationComplete, setEducationComplete, userDetail}:Props) 
             type="number"
             value={percentage1}
             onChange={(e) => setPercentage1(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             placeholder=""
             required
           />
@@ -171,7 +177,7 @@ const Education = ({educationComplete, setEducationComplete, userDetail}:Props) 
         <div className="flex gap-6 items-center  ">
           <label
             htmlFor="file-upload"
-            className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[openSans]  "
+            className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[poppins]  "
           >
             Attachment Document
           </label>
@@ -189,7 +195,7 @@ const Education = ({educationComplete, setEducationComplete, userDetail}:Props) 
             File Selected: {selectedFile.name}
           </p>
         ) : (
-          <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+          <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
             No file selected
           </p>
         )}
@@ -199,12 +205,12 @@ const Education = ({educationComplete, setEducationComplete, userDetail}:Props) 
       {/* Third section */}
 
       <div className="flex gap-2 mb-4 mt-4">
-        <Link
-          href="#"
+        <button
+          type="submit"
           className="border border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
         >
           Save
-        </Link>
+        </button>
         <Link
           href="#"
           className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
@@ -212,6 +218,7 @@ const Education = ({educationComplete, setEducationComplete, userDetail}:Props) 
           Edit
         </Link>
       </div>
+      </form>
     </div>
   );
 };

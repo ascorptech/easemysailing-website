@@ -135,9 +135,15 @@ const TravelDocuments = ({
     }
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    // try {
+    e.preventDefault();
+  };
+
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
-      <h1 className="text-center font-bold">PASSPORT DETAILS</h1>
+       <form onSubmit={handleSubmit}>
+      <h1 className=" font-bold">PASSPORT DETAILS</h1>
       <div className="grid grid-cols-2 gap-4">
         <div className="">
           <label
@@ -273,7 +279,7 @@ const TravelDocuments = ({
 
         {/* second section */}
         <div className=" grid col-span-2 ">
-          <h1 className="font-bold text-center">SEAMAN'S BOOK/ID</h1>
+          <h1 className="font-bold ">SEAMAN'S BOOK/ID</h1>
         </div>
 
         {/* <div className="grid grid-cols-2 gap-4"> */}
@@ -402,7 +408,7 @@ const TravelDocuments = ({
 
         {/* third section */}
 
-        <div className=" grid col-span-2 text-center my-4">
+        <div className=" grid col-span-2  my-2">
           <h1 className="font-bold ">VISA</h1>
         </div>
 
@@ -503,7 +509,7 @@ const TravelDocuments = ({
                   File Selected: {selectedFileVisa.name}
                 </p>
               ) : (
-                <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+                <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                   No file selected
                 </p>
               )}
@@ -514,21 +520,21 @@ const TravelDocuments = ({
 
         {/* forth section */}
 
-        <div className="grid col-span-2  text-center">
+        <div className="grid col-span-2 ">
           <h1 className="font-bold ">RESIDENCE PERMIT</h1>
         </div>
 
         {/* <div className="grid grid-cols-2 gap-4"> */}
         <div className="">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
             htmlFor="issuingcou"
           >
             Issuing Country
           </label>
           <select
             id="issuingcou"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
             value={issuingCountry}
             onChange={(e) => setIssuingCountry(e.target.value)}
@@ -627,12 +633,12 @@ const TravelDocuments = ({
       {/* fifth section */}
 
       <div className="flex gap-2 mb-4 mt-4">
-        <Link
-          href="#"
+        <button
+          type="submit"
           className="border border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
         >
           Save
-        </Link>
+        </button>
         <Link
           href="#"
           className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
@@ -640,6 +646,7 @@ const TravelDocuments = ({
           Edit
         </Link>
       </div>
+      </form>
     </div>
   );
 };

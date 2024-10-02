@@ -32,7 +32,6 @@ import { FaPercentage } from "react-icons/fa";
 
 const MyJob = () => {
   const [profileDetail,setProfileDetail] = useState<any>()
-  const [MyJobRequirement, setMyJobRequirement ] = useState<any>()
 
   const [isOpen, setIsOpen] = useState(false); // State to toggle
   const [pDOpen, setPDOpen] = useState(false);
@@ -182,8 +181,7 @@ const MyJob = () => {
   const [sTCWOpen, setSTCWOpen] = useState(false);
 
   useEffect(() => {
-    fetchDetails(),
-    fetchMyJob()
+    fetchDetails()
   }, [])
 
   const fetchDetails = async()=>{
@@ -198,23 +196,6 @@ const MyJob = () => {
 
     })
   }
-
-
-  // myjob requirement
-
-  const fetchMyJob = async()=>{
-    let id = await localStorage.getItem('id')
-    GetMyjob(id,(res:any)=>{
-      if (res?.status==200) {
-        setMyJobRequirement(res?.data)
-      }else{
-        toast.error('No data found')
-      }
-      console.log('data here iam',res)
-
-    })
-  }
-
 
   const toggleCollapse = () => {
     setIsOpen(!isOpen); // Toggle open/close
@@ -339,7 +320,7 @@ const MyJob = () => {
               </div>
             </div>
             <div className=" h-screen overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory ">
-              {isOpen && <MyJobRequirements mjrComplete={mjrComplete} setMjrComplete={setMjrComplete} userDetail={MyJobRequirement} />}
+              {isOpen && <MyJobRequirements mjrComplete={mjrComplete} setMjrComplete={setMjrComplete} userDetail={profileDetail} />}
 
               {/* PersonalDetails start */}
 

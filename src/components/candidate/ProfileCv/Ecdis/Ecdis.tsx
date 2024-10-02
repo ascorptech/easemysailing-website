@@ -1,4 +1,5 @@
 "use client";
+import { GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
 
 import { useEffect, useState } from "react";
@@ -29,6 +30,19 @@ const [selectedFiles, setSelectedFiles] = useState<File | null>(null);
   const [issuedate1, setIssueDate1] = useState("");
   const [exdate1, setExDate1] = useState("");
   const [checkBox1, setCheckBox1] = useState(false);
+  const [countryDrop, setCountryDrop] = useState<any>([]);
+  const [trainDrop, setTrainDrop] = useState<any>([]);
+
+  useEffect(() => {
+    GetDropdownDetails('country', (res: any) => {
+      // console.log('County',res?.data)
+      setCountryDrop(res?.data?.values)
+    })
+    GetDropdownDetails('country', (res: any) => {
+      // console.log('County',res?.data)
+      setTrainDrop(res?.data?.values)
+    })
+  }, [])
 
 
 //   const handleFileChange = (event: any) => {
@@ -94,12 +108,17 @@ const totalFields = 8;
     }
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    // try {
+    e.preventDefault();
+  };
+
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
+       <form onSubmit={handleSubmit}>
      
-      <div className=" flex flex-col items-center">
-        <h1 className="font-bold">ECDIS</h1>
-        
+      <div className=" flex flex-col">
+        <h1 className="text-left font-bold">ECDIS</h1>
 
         <div className="grid grid-cols-2 gap-4">
           <div className="">
@@ -116,9 +135,9 @@ const totalFields = 8;
               <option value="" disabled selected>
                 Training
               </option>
-              <option value="Training1">Training1</option>
-              <option value="Training1">Training2</option>
-              <option value="Training1">Training3</option>
+              {trainDrop && trainDrop?.map((train: any, index: number) => (
+                <option key={index} value={train}>{train?.toUpperCase()}</option>
+              ))}
             </select>
           </div>
           <div className="   ">
@@ -153,9 +172,9 @@ const totalFields = 8;
               <option value="" disabled selected>
                 Issuing Country
               </option>
-              <option value="India">India</option>
-              <option value="us">Us</option>
-              <option value="England">England</option>
+              {countryDrop && countryDrop?.map((country: any, index: number) => (
+                <option key={index} value={country}>{country?.toUpperCase()}</option>
+              ))}
             </select>
           </div>
           {/* <div className=""> */}
@@ -267,12 +286,12 @@ const totalFields = 8;
       {/* Third section */}
 
       <div className="flex gap-2 mb-4 mt-4">
-        <Link
-          href="#"
+        <button
+          type="submit"
           className="border border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
         >
           Save
-        </Link>
+        </button>
         <Link
           href="#"
           className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
@@ -280,6 +299,7 @@ const totalFields = 8;
           Edit
         </Link>
       </div>
+      </form>
     </div>
   );
 };

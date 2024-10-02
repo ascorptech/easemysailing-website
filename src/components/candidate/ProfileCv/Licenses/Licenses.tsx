@@ -1,5 +1,6 @@
 "use client";
 
+import { GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
@@ -56,6 +57,28 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
   const [selectedFile1, setSelectedFile1] = useState<File | null>(null);
 
   const [selectedFile2, setSelectedFile2] = useState<File | null>(null);
+  const [countryDrop, setCountryDrop] = useState<any>([]);
+  const [capacityDrop, setCapacityDrop] = useState<any>([]);
+  const [stcwRegDrop, setStcWRegDrop] = useState<any>([]);
+  const [edorTyDrop, setEndorTyDrop] = useState<any>([]);
+
+  useEffect(() => {
+    GetDropdownDetails('capacity', (res: any) => {
+      setCapacityDrop(res?.data?.values)
+    })
+    GetDropdownDetails('country', (res: any) => {
+      // console.log('County',res?.data)
+      setCountryDrop(res?.data?.values)
+    })
+    GetDropdownDetails('STCWRegulation', (res: any) => {
+      // console.log('lang',res?.data)
+      setStcWRegDrop(res?.data?.values)
+    })
+    GetDropdownDetails('EndorsmentType', (res: any) => {
+      // console.log('lang',res?.data)
+      setEndorTyDrop(res?.data?.values)
+    })
+  }, [])
 
   // Salary expectation states
 
@@ -157,11 +180,11 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
       <form onSubmit={handleSubmit}>
        
         <div className="mb-3">
-          <h1 className="font-bold  text-center ">CERTIFICATE OF COMPETENCY</h1>
+          <h1 className="font-bold  text-left ">CERTIFICATE OF COMPETENCY</h1>
          
           <div className="w-full ">
             <label
-              className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1 "
+              className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1 "
               htmlFor="cityName"
             >
               I do not have a CoC
@@ -172,7 +195,7 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
               type="text"
               value={idoNotACoC}
               onChange={(e) => setIdoNotACoC(e.target.value)}
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder=""
               required
             />
@@ -185,26 +208,26 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
           
           <div className="grid grid-cols-2 gap-4  ">
             <div>
-              <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Issue Authority
               </label>
               <select
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={issueAuthority}
                 onChange={(e) => setIssueAuthority(e.target.value)}
               >
                 <option value="" disabled>
                   Issuing Country
                 </option>
-                <option value="Chemical Tanker1">Chemical Tanker1</option>
-                <option value="Chemical Tanker2">Chemical Tanker2</option>
-                <option value="Chemical Tanker3">Chemical Tanker3</option>
+                {countryDrop && countryDrop?.map((country: any, index: number) => (
+                <option key={index} value={country}>{country?.toUpperCase()}</option>
+              ))}
               </select>
             </div>
 
             <div className="w-full ">
               <label
-                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1 "
+                className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1 "
                 htmlFor="cityName"
               >
                 Certificate No
@@ -215,7 +238,7 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
                 type="text"
                 value={certificateNo}
                 onChange={(e) => setCertificateNo(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Number"
                 required
               />
@@ -224,42 +247,42 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
 
             {/* Preferred Vessel Type */}
             <div>
-              <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Certificate Type
               </label>
               <select
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={certificateType}
                 onChange={(e) => setCertificateType(e.target.value)}
               >
                 <option value="" disabled>
                   Capacity{" "}
                 </option>
-                <option value="level1">Level1</option>
-                <option value="level2">Level2</option>
-                <option value="level3">Level3</option>
+                {capacityDrop && capacityDrop?.map((cap: any, index: number) => (
+                <option key={index} value={cap}>{cap?.toUpperCase()}</option>
+              ))}
               </select>
             </div>
             <div>
-              <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 STCW Regulation
               </label>
               <select
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={sTCWRegulation}
                 onChange={(e) => setSTCWRegulation(e.target.value)}
               >
                 <option value="" disabled>
                   STCW Regulation{" "}
                 </option>
-                <option value="level1">Level1</option>
-                <option value="level2">Level2</option>
-                <option value="level3">Level3</option>
+                {stcwRegDrop && stcwRegDrop?.map((stc: any, index: number) => (
+                <option key={index} value={stc}>{stc?.toUpperCase()}</option>
+              ))}
               </select>
             </div>
             <div className=" w-full">
               <label
-                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
+                className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                 htmlFor="cityName"
               >
                 Area Limitation
@@ -270,7 +293,7 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
                 type="text"
                 value={areaLimitation}
                 onChange={(e) => setAreaLimitation(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder=""
                 required
               />
@@ -278,7 +301,7 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
             </div>
             <div className=" w-full">
               <label
-                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
+                className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                 htmlFor="cityName"
               >
                 Other Limitation
@@ -289,7 +312,7 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
                 type="text"
                 value={otherLimitation}
                 onChange={(e) => setOtherLimitation(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder=""
                 required
               />
@@ -297,23 +320,23 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
             </div>
 
             <div>
-              <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Issue Date
               </label>
               <input
                 type="date"
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={issueDate}
                 onChange={(e) => setIssueDate(e.target.value)}
               />
             </div>
             <div>
-              <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Expiry Date
               </label>
               <input
                 type="date"
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={expiryDate}
                 onChange={(e) => setExpiryDate(e.target.value)}
               />
@@ -323,7 +346,7 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
           <div className="flex gap-6 items-center  my-6 justify-center">
             <label
               htmlFor="medicalfile-upload3"
-              className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[openSans]  "
+              className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[poppins]  "
             >
               Attachment Document
             </label>
@@ -334,11 +357,11 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
               onChange={handleFileChange}
             />
             {selectedFile ? (
-              <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 File Selected: {selectedFile.name}
               </p>
             ) : (
-              <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 No file selected
               </p>
             )}
@@ -350,31 +373,31 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
         {/* LANGUAGE TESTS */}
 
         <div className="mb-3">
-          <h1 className="text-center font-bold ">
+          <h1 className="text-left font-bold ">
             GENERAL OPERATOR CERTIFICATE (GMDSS)
           </h1>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Issuing Country
               </label>
               <select
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={issuingCountry}
                 onChange={(e) => setIssuingCountry(e.target.value)}
               >
                 <option value="" disabled>
                   Issuing Country
                 </option>
-                <option value="Language1">Language1</option>
-                <option value="Language2">Language2</option>
-                <option value="Language3">Language3</option>
+                {countryDrop && countryDrop?.map((country: any, index: number) => (
+                <option key={index} value={country}>{country?.toUpperCase()}</option>
+              ))}
               </select>
             </div>
 
             <div className="w-full ">
               <label
-                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1 "
+                className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1 "
                 htmlFor="cityName"
               >
                 Number
@@ -385,64 +408,66 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
                 type="text"
                 value={number}
                 onChange={(e) => setNumber(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder=""
                 required
               />
               {/* </div> */}
             </div>
             <div>
-              <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Capacity
               </label>
               <select
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={capacity}
                 onChange={(e) => setCapacity(e.target.value)}
               >
                 <option value="" disabled>
                   Capacity
                 </option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
+                {capacityDrop && capacityDrop?.map((cap: any, index: number) => (
+                <option key={index} value={cap}>{cap?.toUpperCase()}</option>
+              ))}
               </select>
             </div>
 
             <div>
-              <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 STCW Regulation
               </label>
               <select
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={wRegulation}
                 onChange={(e) => setWRegulation(e.target.value)}
               >
                 <option value="" disabled>
                   STCW Regulation
                 </option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
+                {stcwRegDrop && stcwRegDrop?.map((stc: any, index: number) => (
+                <option key={index} value={stc}>{stc?.toUpperCase()}</option>
+              ))}
               </select>
             </div>
 
             <div>
-              <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Issue Date
               </label>
               <input
                 type="date"
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={gMissueDate}
                 onChange={(e) => setGMIssueDate(e.target.value)}
               />
             </div>
             <div>
-              <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Expiry Date
               </label>
               <input
                 type="date"
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={gMexpiryDate}
                 onChange={(e) => setGMExpiryDate(e.target.value)}
               />
@@ -452,7 +477,7 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
           <div className="flex gap-6 items-center  my-6 justify-center">
             <label
               htmlFor="medicalfile-upload3"
-              className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[openSans]  "
+              className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[poppins]  "
             >
               Attachment Document
             </label>
@@ -463,33 +488,33 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
               onChange={handleFileChange1}
             />
             {selectedFile1 ? (
-              <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 File Selected: {selectedFile1.name}
               </p>
             ) : (
-              <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 No file selected
               </p>
             )}
           </div>
 
           <div className="mb-3">
-            <h1 className="font-bold text-center ">ENDORSEMENTS</h1>
+            <h1 className="font-bold text-left ">ENDORSEMENTS</h1>
             <div>
-              <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Not Issued Separately
               </label>
               <select
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={separately}
                 onChange={(e) => setSeparately(e.target.value)}
               >
                 <option value="" disabled>
                   Not Issued Separately
                 </option>
-                <option value="Training1">Training1</option>
-                <option value="Training2">Training2</option>
-                <option value="Training3">Training3</option>
+                {edorTyDrop && edorTyDrop?.map((endor: any, index: number) => (
+                <option key={index} value={endor}>{endor?.toUpperCase()}</option>
+              ))}
               </select>
             </div>
           </div>
@@ -498,11 +523,11 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
             
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+                <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                   Type
                 </label>
                 <select
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={typeOption}
                   onChange={(e) => setTypeOption(e.target.value)}
                 >
@@ -514,24 +539,25 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
                 </select>
               </div>
               <div>
-                <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+                <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                   Issuing Country
                 </label>
                 <select
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={issuingOption}
                   onChange={(e) => setIssuingOption(e.target.value)}
                 >
                   <option value="" disabled>
                     Issuing Country
                   </option>
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
+                  {countryDrop && countryDrop?.map((country: any, index: number) => (
+                <option key={index} value={country}>{country?.toUpperCase()}</option>
+              ))}
                 </select>
               </div>
               <div>
                 <label
-                  className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1 "
+                  className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1 "
                   htmlFor=""
                 >
                   Number
@@ -541,7 +567,7 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
                   type="text"
                   value={number1}
                   onChange={(e) => setNumber1(e.target.value)}
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
@@ -549,55 +575,57 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
               </div>
 
               <div>
-                <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+                <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                   Capacity
                 </label>
                 <select
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={capacityOption}
                   onChange={(e) => setCapacityOption(e.target.value)}
                 >
                   <option value="" disabled>
                     Capacity
                   </option>
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
+                  {countryDrop && countryDrop?.map((country: any, index: number) => (
+                <option key={index} value={country}>{country?.toUpperCase()}</option>
+              ))}
                 </select>
               </div>
               <div>
-                <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+                <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                   STCW Regulation
                 </label>
                 <select
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={sTCWRegulationOption}
                   onChange={(e) => setSTCWRegulationOption(e.target.value)}
                 >
                   <option value="" disabled>
                     STCW Regulation
                   </option>
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
+                  {countryDrop && countryDrop?.map((country: any, index: number) => (
+                <option key={index} value={country}>{country?.toUpperCase()}</option>
+              ))}
                 </select>
               </div>
               <div>
-                <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+                <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                   Issue Date
                 </label>
                 <input
                   type="date"
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={issueDateOption}
                   onChange={(e) => setIssueDateOption(e.target.value)}
                 />
               </div>
               <div>
-                <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+                <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                   Expiry Date
                 </label>
                 <input
                   type="date"
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={expiryDateOption}
                   onChange={(e) => setExpiryDateOption(e.target.value)}
                 />
@@ -610,7 +638,7 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
           <div className="flex gap-6 items-center  my-6 justify-center">
             <label
               htmlFor="medicalfile-upload3"
-              className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[openSans]  "
+              className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[poppins]  "
             >
               Attachment Document
             </label>
@@ -621,11 +649,11 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
               onChange={handleFileChange2}
             />
             {selectedFile2 ? (
-              <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 File Selected: {selectedFile2.name}
               </p>
             ) : (
-              <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 No file selected
               </p>
             )}

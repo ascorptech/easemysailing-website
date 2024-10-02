@@ -244,7 +244,7 @@ const handlePhoneChange = (value: string, country: any) => {
                       type="text"
                       value={lastName}
                       onChange={(e) => setLastName(e.target.value.trim())}
-                      className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline font-[opensans]"
+                      className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline font-[poppins]"
                       placeholder="Enter Last Name"
                       required
                     />
@@ -270,7 +270,7 @@ const handlePhoneChange = (value: string, country: any) => {
                     // onChange={(e) => setEmail(e.target.value.trim())}
                      onChange={(e) => setEmail(e.target.value.toLowerCase())} 
                       // pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                    className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline font-[opensans]"
+                    className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline font-[poppins]"
                     placeholder="Email"
                     required
                   />
@@ -301,7 +301,7 @@ const handlePhoneChange = (value: string, country: any) => {
                       autoFocus: false,
                     }}
                
-                    inputClass={`!w-full !h-[42px] !leading-[21.79px] !text-[16px] !text-[#333333]  ${!isValidPhone && '!border-2 !border-red-500  '} !rounded-lg focus:!outline-none focus:!shadow-outline font-[opensans]`}
+                    inputClass={`!w-full !h-[42px] !leading-[21.79px] !text-[16px] !text-[#333333]  ${!isValidPhone && '!border-2 !border-red-500  '} !rounded-lg focus:!outline-none focus:!shadow-outline font-[poppins]`}
 
                      
                     
@@ -335,7 +335,7 @@ const handlePhoneChange = (value: string, country: any) => {
                       setPassword(e.target.value);
                       setPasswordError("");
                     }}
-                    className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline font-[opensans]"
+                    className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline font-[poppins]"
                     placeholder="Password"
                     required
                   />
@@ -365,7 +365,7 @@ const handlePhoneChange = (value: string, country: any) => {
                     type={showCpassword ? "text" : "password"}
                     value={cPassword}
                     onChange={(e) => setCpassword(e.target.value.trim())}
-                    className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline font-[opensans]"
+                    className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline font-[poppins]"
                     placeholder="Confirm Password"
                     required
                   />

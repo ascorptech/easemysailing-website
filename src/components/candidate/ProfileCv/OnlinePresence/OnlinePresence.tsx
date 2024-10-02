@@ -8,13 +8,19 @@ type OnlinePresenceComplete = {
   percentage: number;
   color: string;
 };
-type Props={
-  onlinePresenceComplete:OnlinePresenceComplete; // mjrComplete is an object with percentage and color
-  setOnlinePresenceComplete: React.Dispatch<React.SetStateAction<OnlinePresenceComplete>>; // setMjrComplete is a function to update mjrComplete
-  userDetail:any
-}
+type Props = {
+  onlinePresenceComplete: OnlinePresenceComplete; // mjrComplete is an object with percentage and color
+  setOnlinePresenceComplete: React.Dispatch<
+    React.SetStateAction<OnlinePresenceComplete>
+  >; // setMjrComplete is a function to update mjrComplete
+  userDetail: any;
+};
 
-const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDetail}:Props) => {
+const OnlinePresence = ({
+  onlinePresenceComplete,
+  setOnlinePresenceComplete,
+  userDetail,
+}: Props) => {
   // State for form fields
 
   const [whatsApp, setWhatsApp] = useState(false);
@@ -48,53 +54,47 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
     instagram && instagramId,
     other && otherId,
   ].filter(Boolean).length;
-  
- 
 
   const percentage = (filledFields / totalFields) * 100;
- 
+
   let color;
   useEffect(() => {
-    console.log('user',userDetail)
+    console.log("user", userDetail);
     if (percentage <= 30) {
       setOnlinePresenceComplete((prevState) => ({
-        ...prevState, 
-        percentage: percentage, 
-        color: '#FF0000'
+        ...prevState,
+        percentage: percentage,
+        color: "#FF0000",
       }));
-      color = "red"; 
+      color = "red";
     } else if (percentage <= 70) {
       setOnlinePresenceComplete((prevState) => ({
-        ...prevState, 
-        percentage: percentage, 
-        color: '#FF9900' 
+        ...prevState,
+        percentage: percentage,
+        color: "#FF9900",
       }));
-      color = "#FF9900"; 
+      color = "#FF9900";
     } else {
       setOnlinePresenceComplete((prevState) => ({
-        ...prevState, 
-        percentage: percentage, 
-        color: '#00A264' 
+        ...prevState,
+        percentage: percentage,
+        color: "#00A264",
       }));
       color = "green";
     }
-  }, [percentage,color])
+  }, [percentage, color]);
 
   const handleSubmit = (e: React.FormEvent) => {
     // try {
-    e.preventDefault(); 
+    e.preventDefault();
   };
-
- 
 
   return (
     <div className="container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
-          
-
       <form onSubmit={handleSubmit}>
         {/* <div className="  "> */}
         <div className="my-5 ">
-          <h1 className="mb-2 text-center font-bold">Messengers in Use</h1>
+          <h1 className="mb-2  font-bold">Messengers in Use</h1>
           <div className="flex  gap-2 ">
             <div className="w-[24%]">
               <input
@@ -102,142 +102,122 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
                 checked={whatsApp}
                 onChange={() => setWhatsApp(!whatsApp)}
               />
-              <label className="p-2 text-[14px] leading-[19.07px]  text-[#333333]">
+              <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 WhatsApp
               </label>
 
-
-               {/* Conditionally render WhatsApp input box */}
-          {whatsApp && (
-            <div className="mt-4 flex flex-col ">
-              {/* <label
-                className="p-2 text-[14px] leading-[19.07px]  text-[#333333]"
+              {/* Conditionally render WhatsApp input box */}
+              {whatsApp && (
+                <div className="mt-4 flex flex-col ">
+                  {/* <label
+                className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
                 htmlFor="whatsAppId"
               >
                 WhatsApp Number
               </label> */}
-              <input
-                id="whatsAppId"
-                type="text"
-                className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                placeholder="Enter WhatsApp No."
-                value={whatsAppId}
-                onChange={(e) => setWhatsAppId(e.target.value)}
-                
-              />
-            </div>
-          )}
+                  <input
+                    id="whatsAppId"
+                    type="text"
+                    className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder="Enter WhatsApp No."
+                    value={whatsAppId}
+                    onChange={(e) => setWhatsAppId(e.target.value)}
+                  />
+                </div>
+              )}
             </div>
 
-            
             <div className="w-[24%]">
               <div>
-              {" "}
-              <input
-                type="checkbox"
-                checked={weChat}
-                onChange={() =>
-                  setWeChat(!weChat)
-                }
-                className="ml-4"
-              />
-              <label className="p-2 text-[14px] leading-[19.07px]  text-[#333333]">
-                WeChat
-              </label>
+                {" "}
+                <input
+                  type="checkbox"
+                  checked={weChat}
+                  onChange={() => setWeChat(!weChat)}
+                  className="ml-4"
+                />
+                <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                  WeChat
+                </label>
               </div>
               {weChat && (
-            <div className="mt-4 flex flex-col ">
-              {/* <label
-                className="p-2 text-[14px] leading-[19.07px]  text-[#333333]"
+                <div className="mt-4 flex flex-col ">
+                  {/* <label
+                className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
                 htmlFor="whatsAppId"
               >
                 WeChat Number
               </label> */}
-              <input
-                id="whatsAppId"
-                type="text"
-                value={weChatId}
-                onChange={(e) => setWeChatId(e.target.value)}
-                className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                placeholder="Enter WeChat Id"
-              
-              />
-            </div>
-          )}
+                  <input
+                    id="whatsAppId"
+                    type="text"
+                    className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder="Enter WeChat Id"
+                  />
+                </div>
+              )}
             </div>
 
             <div className="w-[24%]">
               <div>
-              {" "}
-              <input
-                type="checkbox"
-                checked={facebookMess}
-                onChange={() => setFacebookMess(!facebookMess)}
-              />
-              <label className="p-2 text-[14px] leading-[19.07px]  text-[#333333]">
-                Facebook 
-              </label>
+                {" "}
+                <input
+                  type="checkbox"
+                  checked={facebookMess}
+                  onChange={() => setFacebookMess(!facebookMess)}
+                />
+                <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                  Facebook
+                </label>
               </div>
               {facebookMess && (
-            <div className="mt-4 flex flex-col ">
-              
-              <input
-                id="whatsAppId"
-                type="text"
-                className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                placeholder="Enter Facebook Id"
-                value={facebookMessId}
-                onChange={(e) => setFacebookMessId(e.target.value)}
-               
-              />
-            </div>
-          )}
+                <div className="mt-4 flex flex-col ">
+                  <input
+                    id="whatsAppId"
+                    type="text"
+                    className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder="Enter Facebook Id"
+                    value={facebookMessId}
+                    onChange={(e) => setFacebookMessId(e.target.value)}
+                  />
+                </div>
+              )}
             </div>
 
             {/* <div className="my-5"> */}
             {/* <h1 className="mb-2">Preferred Contract Type</h1> */}
             <div className="w-[24%]">
               <div>
-              <input
-                type="checkbox"
-                checked={telegram}
-                onChange={() =>
-                  setTelegram(!telegram)
-                }
-                className="ml-4"
-              />
-              <label className="p-2 text-[14px] leading-[19.07px]  text-[#333333]">
-                Telegram
-              </label>
+                <input
+                  type="checkbox"
+                  checked={telegram}
+                  onChange={() => setTelegram(!telegram)}
+                  className="ml-4"
+                />
+                <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                  Telegram
+                </label>
+              </div>
+
+              {telegram && (
+                <div className="mt-4 flex flex-col ">
+                  <input
+                    id="whatsAppId"
+                    type="text"
+                    className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder="Enter Telegram Id"
+                    value={telegramId}
+                    onChange={(e) => setTelegramId(e.target.value)}
+                  />
+                </div>
+              )}
             </div>
-
-            {telegram && (
-            <div className="mt-4 flex flex-col ">
-              
-              <input
-                id="whatsAppId"
-                type="text"
-                className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                placeholder="Enter Telegram Id"
-                value={telegramId}
-                onChange={(e) => setTelegramId(e.target.value)}
-
-              />
-            </div>
-          )}
           </div>
-          </div>
-
-         
         </div>
-         
-        
-
-          
 
         <div>
           <label
-            className="p-2 text-[14px] leading-[19.07px]  text-[#333333]"
+            className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
             htmlFor="skypeId"
           >
             Skype ID
@@ -247,123 +227,110 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
             type="text"
             value={skypeId}
             onChange={(e) => setSkypeId(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             required
           />
         </div>
 
         <div className="my-5">
-          <h1 className="mb-2 text-center font-bold">
-            Social Media Channels in Use
-          </h1>
+          <h1 className="mb-2    font-bold">Social Media Channels in Use</h1>
           <div className="flex gap-2">
             <div className="w-[24%]">
               <div>
-              <input
-                type="checkbox"
-                checked={linkedIn}
-                onChange={() => setLinkedIn(!linkedIn)}
-              />
-              <label className="p-2 text-[14px] leading-[19.07px]  text-[#333333]">
-                LinkedIn
-              </label>
-            </div>
-            {linkedIn && (
-            <div className="mt-4 flex flex-col ">
-             
-              <input
-             
-                type="text"
-                className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                placeholder="Enter Linkdin Id "
-                value={linkedInId}
-                  onChange={(e) => setLinkedInId(e.target.value)}
-              />
-            </div>
-          )}
+                <input
+                  type="checkbox"
+                  checked={linkedIn}
+                  onChange={() => setLinkedIn(!linkedIn)}
+                />
+                <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                  LinkedIn
+                </label>
+              </div>
+              {linkedIn && (
+                <div className="mt-4 flex flex-col ">
+                  <input
+                    type="text"
+                    className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder="Enter Linkdin Id "
+                    value={linkedInId}
+                    onChange={(e) => setLinkedInId(e.target.value)}
+                  />
+                </div>
+              )}
             </div>
             <div className="w-[24%]">
               <div>
-              <input
-                type="checkbox"
-                checked={facebook}
-                onChange={() =>
-                  setFacebook(!facebook)
-                }
-                className="ml-4"
-              />
-              <label className="p-2 text-[14px] leading-[19.07px]  text-[#333333]">
-                Facebook
-              </label>
+                <input
+                  type="checkbox"
+                  checked={facebook}
+                  onChange={() => setFacebook(!facebook)}
+                  className="ml-4"
+                />
+                <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                  Facebook
+                </label>
               </div>
               {facebook && (
-            <div className="mt-4 flex flex-col ">
-              
-              <input
-                
-                type="text"
-                className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                placeholder="Enter Facebook Id"
-                value={facebookId}
-                  onChange={(e) => setFacebookId(e.target.value)}
-              />
-            </div>
-          )}
-            </div>
-            <div className="w-[24%]"><div>
-              <input
-                type="checkbox"
-                checked={instagram}
-                onChange={() =>
-                  setInstagram(!instagram)
-                }
-                className="ml-4"
-              />
-              <label className="p-2 text-[14px] leading-[19.07px]  text-[#333333]">
-                Instagram
-              </label>
-              </div>
-              {instagram && (
-            <div className="mt-4 flex flex-col ">
-              
-              <input
-                id="whatsAppId"
-                type="text"
-                className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                placeholder="Enter Instagram Id"
-                value={instagramId}
-                onChange={(e) => setInstagramId(e.target.value)}
-              />
-            </div>
-          )}
+                <div className="mt-4 flex flex-col ">
+                  <input
+                    type="text"
+                    className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder="Enter Facebook Id"
+                    value={facebookId}
+                    onChange={(e) => setFacebookId(e.target.value)}
+                  />
+                </div>
+              )}
             </div>
             <div className="w-[24%]">
               <div>
-              <input
-                type="checkbox"
-                checked={other}
-                onChange={() =>
-                  setOther(!other)
-                }
-                className="ml-4"
-              />
-              <label className="p-2 text-[14px] leading-[19.07px]  text-[#333333]">
-                Other
-              </label>
+                <input
+                  type="checkbox"
+                  checked={instagram}
+                  onChange={() => setInstagram(!instagram)}
+                  className="ml-4"
+                />
+                <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                  Instagram
+                </label>
+              </div>
+              {instagram && (
+                <div className="mt-4 flex flex-col ">
+                  <input
+                    id="whatsAppId"
+                    type="text"
+                    className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder="Enter Instagram Id"
+                    value={instagramId}
+                    onChange={(e) => setInstagramId(e.target.value)}
+                  />
+                </div>
+              )}
             </div>
-            {other && (
-            <div className="mt-4 flex flex-col ">
-             
-              <input
-                id=""
-                type="text"
-                className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                placeholder=""
-                value={otherId}
-                onChange={(e) => setOtherId(e.target.value)}
-              />
-            </div>
-          )}
+            <div className="w-[24%]">
+              <div>
+                <input
+                  type="checkbox"
+                  checked={other}
+                  onChange={() => setOther(!other)}
+                  className="ml-4"
+                />
+                <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                  Other
+                </label>
+              </div>
+              {other && (
+                <div className="mt-4 flex flex-col ">
+                  <input
+                    id=""
+                    type="text"
+                    className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder=""
+                    value={otherId}
+                    onChange={(e) => setOtherId(e.target.value)}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>

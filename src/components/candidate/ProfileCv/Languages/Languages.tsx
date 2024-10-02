@@ -119,13 +119,13 @@ const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) =>
       <form onSubmit={handleSubmit}>
           {/* NATIVE LANGUAGE*/}
           <div className="mb-3">
-            <h1 className="font-bold  text-center ">NATIVE LANGUAGE</h1>
+            <h1 className="font-bold   ">NATIVE LANGUAGE</h1>
             <div>
-              <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Language
               </label>
               <select
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={language1}
                 onChange={(e) => setLanguage1(e.target.value)}
               >
@@ -139,14 +139,14 @@ const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) =>
             </div>
           </div>
 
-          <div className="mb-3"> <h1 className="font-bold text-center  ">ADDITIONAL LANGUAGE</h1>
+          <div className="mb-3"> <h1 className="font-bold   ">ADDITIONAL LANGUAGE</h1>
           <div className="grid grid-cols-2 gap-4  "> 
           <div>
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
             Language
             </label>
             <select
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={addiLanguage}
               onChange={(e) => setAddiLanguage(e.target.value)}
             >
@@ -161,11 +161,11 @@ const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) =>
 
           {/* Preferred Vessel Type */}
           <div>
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
             Level
             </label>
             <select
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={languageLavel}
               onChange={(e) => setLanguageLavel(e.target.value)}
             >
@@ -180,13 +180,13 @@ const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) =>
           
          
 
-          <div className="mb-3"><h1 className="font-bold text-center ">ENGLISH LEVEL</h1>
+          <div className="mb-3"><h1 className="font-bold  ">ENGLISH LEVEL</h1>
           <div>
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               Level
             </label>
             <select
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={englishLavel}
               onChange={(e) => setEnglishLavel(e.target.value)}
             >
@@ -204,15 +204,15 @@ const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) =>
 
 
           <div className="mb-3">
-            <h1 className="text-center font-bold ">LANGUAGE TESTS</h1>
+            <h1 className=" font-bold ">LANGUAGE TESTS</h1>
             <div className="grid grid-cols-2 gap-4">
             <div>
-            <label htmlFor="languagetest" className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+            <label htmlFor="languagetest" className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               Language
             </label>
             <select
             id="languagetest"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={languageTests}
               onChange={(e) => setLanguageTests(e.target.value)}
             >
@@ -227,7 +227,7 @@ const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) =>
 
           <div className="w-full ">
               <label
-                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1 "
+                className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1 "
                 htmlFor="testcenter"
               >
                Test Center
@@ -238,7 +238,7 @@ const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) =>
                 type="text"
                 value={testCenter}
                 onChange={(e) => setTestCenter(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder=""
                 required
               />
@@ -246,7 +246,7 @@ const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) =>
             </div>
             <div className="w-full">
               <label
-                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1 "
+                className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1 "
                 htmlFor="cityName"
               >
                 Type of Test
@@ -257,7 +257,7 @@ const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) =>
                   type="text"
                   value={typeofTest}
                   onChange={(e) => setTypeofTest(e.target.value)}
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
@@ -265,7 +265,7 @@ const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) =>
             </div>
             <div className=" w-full">
               <label
-                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
+                className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                 htmlFor="result1"
               >
                 Result
@@ -275,19 +275,19 @@ const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) =>
                   type="text"
                   value={result}
                   onChange={(e) => setResult(e.target.value)}
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
             </div>
 
             <div>
-            <label htmlFor="issuingcountry" className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+            <label htmlFor="issuingcountry" className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               Issuing Country
             </label>
             <select
             id="issuingcountry"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={issuingCountry}
               onChange={(e) => setIssuingCountry(e.target.value)}
             >
@@ -302,13 +302,13 @@ const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) =>
 
 
           <div>
-            <label htmlFor="dateofTest" className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+            <label htmlFor="dateofTest" className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               Date of Test
             </label>
             <input
             id="dateofTest"
               type="date"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={dateofTest}
               onChange={(e) => setDateofTest(e.target.value)}
             />
@@ -326,7 +326,7 @@ const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) =>
           <div className="flex gap-6 items-center  my-6 justify-center">
           <label
             htmlFor="medicalfile-upload3"
-            className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[openSans]  "
+            className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[poppins]  "
           >
             Attachment Document
           </label>
@@ -337,9 +337,9 @@ const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) =>
             onChange={handleFileChange}
           />
           {selectedFile ? (
-            <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">File Selected: {selectedFile.name}</p>
+            <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">File Selected: {selectedFile.name}</p>
           ) : (
-            <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">No file selected</p>
+            <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">No file selected</p>
           )}
         </div>
 

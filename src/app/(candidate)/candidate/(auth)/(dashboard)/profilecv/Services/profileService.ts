@@ -54,7 +54,7 @@ export const GetMyjob = async(id:any,cb:any)=>{
 export const AddMyJobData = async(data:any ,cb:any)=>{
     try {
         console.log('Data to be submitted:', data);
-        const response = await postReq(POSTMYJOB,data)
+        const response = await putReq(POSTMYJOB,data)
         console.log('API response:', response);
         return cb(response)
     } catch (error:any) {

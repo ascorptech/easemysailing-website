@@ -87,7 +87,7 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
         {/* <div className="  "> */}
         <div className="my-5 ">
           <h1 className="mb-2 text-center font-bold">Messengers in Use</h1>
-          <div className="flex  gap-1 ">
+          <div className="flex  gap-2 ">
             <div className="w-[24%]">
               <input
                 type="checkbox"
@@ -168,12 +168,7 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
               </div>
               {facebookMess && (
             <div className="mt-4 flex flex-col ">
-              {/* <label
-                className="p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
-                htmlFor="whatsAppId"
-              >
-                facebookMess Number
-              </label> */}
+              
               <input
                 id="whatsAppId"
                 type="text"
@@ -259,12 +254,7 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
             </div>
             {linkedIn && (
             <div className="mt-4 flex flex-col ">
-              {/* <label
-                className="p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
-                htmlFor="whatsAppId"
-              >
-                facebookMess Number
-              </label> */}
+             
               <input
              
                 type="text"
@@ -291,12 +281,7 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
               </div>
               {facebook && (
             <div className="mt-4 flex flex-col ">
-              {/* <label
-                className="p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
-                htmlFor="whatsAppId"
-              >
-                facebookMess Number
-              </label> */}
+              
               <input
                 
                 type="text"
@@ -322,12 +307,7 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
               </div>
               {instagram && (
             <div className="mt-4 flex flex-col ">
-              {/* <label
-                className="p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
-                htmlFor="whatsAppId"
-              >
-                facebookMess Number
-              </label> */}
+              
               <input
                 id="whatsAppId"
                 type="text"
@@ -354,12 +334,7 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
             </div>
             {other && (
             <div className="mt-4 flex flex-col ">
-              {/* <label
-                className="p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
-                htmlFor="whatsAppId"
-              >
-                facebookMess Number
-              </label> */}
+             
               <input
                 id=""
                 type="text"

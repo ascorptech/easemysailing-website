@@ -95,7 +95,7 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="contact mt-14">
+    <div className="-z-20 mt-14">
       <div className="grid lg:grid-cols-2 lg:gap-24 md:mx-24 mx-8 my-10">
         <div className="bg-gray-200 p-8 rounded-xl">
           <h1 className=" text-2xl font-bold mb-2">

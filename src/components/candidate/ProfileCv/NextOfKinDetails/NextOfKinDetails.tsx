@@ -4,6 +4,7 @@ import { AddProfileData, GetDropdownDetails } from "@/app/(candidate)/candidate/
 
 import { useState } from "react";
 import { toast } from "react-toastify";
+import Link from "next/link";
 
 type PersonalComplete = {
   percentage: number;
@@ -25,6 +26,9 @@ const NextOfKinDetails = ({
   const [nextKinShip, setNextKinShip] = useState("");
   const [nextKinAddre, setNextKinAddre] = useState("");
   const [nextKinChildren, setNextKinChildren] = useState("");
+  const [disabled,setDisabled] = useState(true)
+
+  
 
   const totalFields = 4;
   const filledFields = [
@@ -78,7 +82,7 @@ const NextOfKinDetails = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if(
-      !nextKinName ||
+      
       !nextKinName ||
       !nextKinShip ||
       !nextKinAddre ||
@@ -89,25 +93,49 @@ const NextOfKinDetails = ({
       return;
     }
 
-    let data={
-      nextKinName,
-      nextKinAddre,
-      nextKinShip,
-      nextKinChildren
-    }
-    console.log(data)
-    AddProfileData(data, AddNextKinDetailsDB)
+    let formData= new FormData() 
+      formData.append('nextKinName',nextKinName);
+      formData.append('nextKinAddre', nextKinAddre);
+      formData.append('nextKinShip', nextKinShip);
+      formData.append('nextKinChildren',nextKinChildren);
+      console.log(formData);
+      AddProfileData(userDetail?.userId,formData, AddNextOfKinDetailsDB);
+      // AddProfileData(data, AddNextKinDetailsDB)
   };
 
-  const AddNextKinDetailsDB = (result:any) => {
-    console.log(result);
-    if(result?.status == 200){
-      toast.success("NextKin details submited successfully");
-    }else {
-      toast.error("NextKin details not submited successfully")
-    }
-  }
 
+  const AddNextOfKinDetailsDB = (result: any) => {
+    console.log(result);
+    if (result?.status == 200) {
+      toast.success("nextOfKin detail submited successfully");
+      setTimeout(() => {
+        window.location.reload()
+      }, 1000);
+    } else {
+      toast.error("nextOfKin  detail not submited ");
+    }
+  };
+  // useEffect(() => {
+  //   GetDropdownDetails('additionalLanguage', (res: any) => {
+  //     setLanguageLevel(res?.data?.values)
+  //   })
+  //   GetDropdownDetails('shipType', (res: any) => {
+  //     // setShipTypeDrop(res?.data?.values)
+  //   })
+  // }, [])
+
+  // const AddNextKinDetailsDB = (result:any) => {
+  //   console.log(result);
+  //   if(result?.status == 200){
+  //     toast.success("NextKin details submited")
+  //   }
+  // }
+
+
+  const handleEdit = () => {
+    setDisabled(!disabled)
+    // toast.info("You are now in edit mode. Make your changes.");
+  };
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
@@ -121,7 +149,7 @@ const NextOfKinDetails = ({
           <div className="grid grid-cols-2 gap-4">
             <div className="w-full ">
               <label
-                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1 "
+                className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1 "
                 htmlFor="NextofKinName"
               >
                 Next of Kin Name
@@ -132,15 +160,16 @@ const NextOfKinDetails = ({
                 type="text"
                 value={nextKinName}
                 onChange={(e) => setNextKinName(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder=""
+                disabled={disabled}
                
               />
               {/* </div> */}
             </div>
             <div className="w-full">
               <label
-                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1 "
+                className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1 "
                 htmlFor="nextofkineship"
               >
                 Next of Kin Relation Ship
@@ -151,15 +180,15 @@ const NextOfKinDetails = ({
                 type="text"
                 value={nextKinShip}
                 onChange={(e) => setNextKinShip(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder=""
-                required
+                disabled={disabled}
               />
               {/* </div> */}
             </div>
             <div className=" w-full">
               <label
-                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
+                className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                 htmlFor="nextofkinaddres"
               >
                 Next of Kin Address
@@ -170,16 +199,16 @@ const NextOfKinDetails = ({
                 type="text"
                 value={nextKinAddre}
                 onChange={(e) => setNextKinAddre(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder=""
-                required
+                disabled={disabled}
               />
               {/* </div> */}
             </div>
 
             <div className=" w-full">
               <label
-                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
+                className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                 htmlFor="numberofchildren"
               >
                 Number of Children
@@ -190,9 +219,9 @@ const NextOfKinDetails = ({
                 type="text"
                 value={nextKinChildren}
                 onChange={(e) => setNextKinChildren(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder=""
-                required
+                disabled={disabled}
               />
               {/* </div> */}
             </div>
@@ -206,12 +235,13 @@ const NextOfKinDetails = ({
           >
             Save
           </button>
-          <button
-            type="submit"
+          <Link
+            href={'#'}
+            onClick={handleEdit}
             className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
           >
             Edit
-          </button>
+          </Link>
         </div>
       </form>
     </div>

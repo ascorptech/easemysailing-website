@@ -1,3 +1,5 @@
+
+
 import Link from "next/link";
 import { MdDashboard } from "react-icons/md";
 import { FaFileLines } from "react-icons/fa6";
@@ -13,15 +15,15 @@ import { RiExchangeDollarLine } from "react-icons/ri";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
-
-
 interface sidebarProps {
   sidebarToggle: boolean;
 }
 
 const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
-   const pathname = usePathname();
-   console.log("path", pathname);
+  const pathname = usePathname();
+  console.log("path", pathname);
+
+ 
   return (
     <div
       className={`${
@@ -31,7 +33,7 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
       <div className="w-44 h-12 sm:w-52 sm:h-[53px] ml-3 ">
         <Link href="#">
           <Image
-          priority
+            priority
             src="/images/logo_1.png"
             alt="EaseMySailing Logo"
             className="object-contain h-full w-full "
@@ -54,21 +56,25 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
             Dashboard
           </Link>
         </li>
-        <li className={
+        <li
+          className={
             pathname === "/recruiter/profile"
               ? "mb-2 rounded py-2 bg-green-600 text-white font-semibold"
               : "mb-1 rounded py-2  hover:bg-green-600 hover:text-white"
-          }>
+          }
+        >
           <Link href="/recruiter/profile">
             <IoBag className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />{" "}
             Company Profile
           </Link>
         </li>
-        <li className={
+        <li
+          className={
             pathname === "/recruiter/subscription"
               ? "mb-2 rounded py-2 bg-green-600 text-white font-semibold"
               : "mb-1 rounded py-2  hover:bg-green-600 hover:text-white"
-          }>
+          }
+        >
           <Link href="/recruiter/subscription">
             <FaFileLines className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             Subscription
@@ -135,29 +141,40 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
             EMSRecruit
           </Link>
         </li>
-        <li className="mb-2 rounded py-2  hover:bg-green-600 hover:text-white">
-          <Link href="#">
+        <li className={
+            pathname === "/recruiter/transaction"
+              ? "mb-2 rounded py-2 bg-green-600 text-white font-semibold"
+              : "mb-1 rounded py-2  hover:bg-green-600 hover:text-white"
+          }>
+          <Link href="/recruiter/transaction">
             <FiLogOut className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             Transactions
           </Link>
         </li>
-        <li className={
+        <li
+          className={
             pathname === "/recruiter/contactus"
               ? "mb-2 rounded py-2 bg-green-600 text-white font-semibold"
               : "mb-1 rounded py-2  hover:bg-green-600 hover:text-white"
-          }>
+          }
+        >
           <Link href="/recruiter/contactus">
             <RiContactsBook3Line className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             Contact Us
           </Link>
         </li>
-        <li className=" rounded py-2  hover:bg-green-600 hover:text-white">
-          <Link href="#">
+        <li className={
+            pathname === "/recruiter/logout"
+              ? "mb-2 rounded py-2 bg-green-600 text-white font-semibold"
+              : "mb-1 rounded py-2  hover:bg-green-600 hover:text-white"
+          }>
+          <Link href="/recruiter/logout" >
             <FiLogOut className="inline-block w-6 h-6 mr-1 ml-2 mt-[-5px] " />
             Logout
           </Link>
         </li>
       </ul>
+      
     </div>
   );
 };

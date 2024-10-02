@@ -80,7 +80,7 @@ const AboutMe = ({aboutMeComplete, setAboutMeComplete, userDetail}: Props) => {
               <div className="flex flex-col gap-4">
                 <div className=" ">
                   <label
-                    className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
+                    className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                     htmlFor="personality"
                   >
                     My Personality and professional Attitude
@@ -91,7 +91,7 @@ const AboutMe = ({aboutMeComplete, setAboutMeComplete, userDetail}: Props) => {
                       type="text"
                       value={personality}
                       onChange={(e) => setPersonality(e.target.value)}
-                      className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                      className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                       placeholder=""
                       required
                     />
@@ -99,7 +99,7 @@ const AboutMe = ({aboutMeComplete, setAboutMeComplete, userDetail}: Props) => {
                 </div>
                 <div className="">
                   <label
-                    className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
+                    className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                     htmlFor="additional"
                   >
                     Additional Information about my past Sea Service
@@ -110,7 +110,7 @@ const AboutMe = ({aboutMeComplete, setAboutMeComplete, userDetail}: Props) => {
                       type="text"
                       value={additional}
                       onChange={(e) => setAdditional(e.target.value)}
-                      className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                      className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                       placeholder=""
                       required
                     />
@@ -118,7 +118,7 @@ const AboutMe = ({aboutMeComplete, setAboutMeComplete, userDetail}: Props) => {
                 </div>
                 <div className=" ">
                   <label
-                    className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
+                    className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                     htmlFor="future"
                   >
                     My Future Aims and Expectations
@@ -129,7 +129,7 @@ const AboutMe = ({aboutMeComplete, setAboutMeComplete, userDetail}: Props) => {
                       type="text"
                       value={myFuture}
                       onChange={(e) => setMyFuture(e.target.value)}
-                      className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                      className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                       placeholder=""
                       required
                     />
@@ -138,7 +138,7 @@ const AboutMe = ({aboutMeComplete, setAboutMeComplete, userDetail}: Props) => {
 
                 <div className=" ">
                   <label
-                    className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
+                    className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                     htmlFor="action"
                   >
                     Criminal action.
@@ -149,7 +149,7 @@ const AboutMe = ({aboutMeComplete, setAboutMeComplete, userDetail}: Props) => {
                       type="text"
                       value={criminal}
                       onChange={(e) => setCriminal(e.target.value)}
-                      className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                      className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                       placeholder="Yes/No"
                       required
                     />

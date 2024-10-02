@@ -37,7 +37,7 @@ const VettingServices = () => {
                 checked={whatsApp}
                 onChange={() => setWhatsApp(!whatsApp)}
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               In Progress
               </label>
             </div>
@@ -51,7 +51,7 @@ const VettingServices = () => {
                 }
                 className="ml-4"
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               Done
               </label>
             </div>
@@ -63,7 +63,7 @@ const VettingServices = () => {
                 checked={facebookMess}
                 onChange={() => setFacebookMess(!facebookMess)}
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               Not Applicable
               </label>
             </div>
@@ -83,7 +83,7 @@ const VettingServices = () => {
                 checked={whatsApp}
                 onChange={() => setWhatsApp(!whatsApp)}
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               In Progress
               </label>
             </div>
@@ -97,7 +97,7 @@ const VettingServices = () => {
                 }
                 className="ml-4"
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               Done
               </label>
             </div>
@@ -109,7 +109,7 @@ const VettingServices = () => {
                 checked={facebookMess}
                 onChange={() => setFacebookMess(!facebookMess)}
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               Not Applicable
               </label>
             </div>
@@ -132,7 +132,7 @@ const VettingServices = () => {
                 checked={whatsApp}
                 onChange={() => setWhatsApp(!whatsApp)}
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               In Progress
               </label>
             </div>
@@ -146,7 +146,7 @@ const VettingServices = () => {
                 }
                 className="ml-4"
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               Done
               </label>
             </div>
@@ -158,7 +158,7 @@ const VettingServices = () => {
                 checked={facebookMess}
                 onChange={() => setFacebookMess(!facebookMess)}
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Not Applicable
               </label>
             </div>
@@ -177,7 +177,7 @@ const VettingServices = () => {
                 checked={whatsApp}
                 onChange={() => setWhatsApp(!whatsApp)}
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 In Progress
               </label>
             </div>
@@ -191,7 +191,7 @@ const VettingServices = () => {
                 }
                 className="ml-4"
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               Done
               </label>
             </div>
@@ -203,7 +203,7 @@ const VettingServices = () => {
                 checked={facebookMess}
                 onChange={() => setFacebookMess(!facebookMess)}
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               Not Applicable
               </label>
             </div>
@@ -220,7 +220,7 @@ const VettingServices = () => {
                 checked={whatsApp}
                 onChange={() => setWhatsApp(!whatsApp)}
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 In Progress
               </label>
             </div>
@@ -234,7 +234,7 @@ const VettingServices = () => {
                 }
                 className="ml-4"
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               Done
               </label>
             </div>
@@ -246,7 +246,7 @@ const VettingServices = () => {
                 checked={facebookMess}
                 onChange={() => setFacebookMess(!facebookMess)}
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               Not Applicable
               </label>
             </div>
@@ -263,7 +263,7 @@ const VettingServices = () => {
                 checked={whatsApp}
                 onChange={() => setWhatsApp(!whatsApp)}
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               In Progress
               </label>
             </div>
@@ -277,7 +277,7 @@ const VettingServices = () => {
                 }
                 className="ml-4"
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               Done
               </label>
             </div>
@@ -289,7 +289,7 @@ const VettingServices = () => {
                 checked={facebookMess}
                 onChange={() => setFacebookMess(!facebookMess)}
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Not Applicable
               </label>
             </div>
@@ -307,7 +307,7 @@ const VettingServices = () => {
                 checked={whatsApp}
                 onChange={() => setWhatsApp(!whatsApp)}
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               In Progress
               </label>
             </div>
@@ -321,7 +321,7 @@ const VettingServices = () => {
                 }
                 className="ml-4"
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               Done
               </label>
             </div>
@@ -333,7 +333,7 @@ const VettingServices = () => {
                 checked={facebookMess}
                 onChange={() => setFacebookMess(!facebookMess)}
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               Not Applicable
               </label>
             </div>
@@ -348,7 +348,7 @@ const VettingServices = () => {
                 }
                 className="ml-4"
               />
-              <label className="p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               Optional
               </label>
             </div>
@@ -364,7 +364,7 @@ const VettingServices = () => {
                 checked={whatsApp}
                 onChange={() => setWhatsApp(!whatsApp)}
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 In Progress
               </label>
             </div>
@@ -378,7 +378,7 @@ const VettingServices = () => {
                 }
                 className="ml-4"
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
             Done
               </label>
             </div>
@@ -390,7 +390,7 @@ const VettingServices = () => {
                 checked={facebookMess}
                 onChange={() => setFacebookMess(!facebookMess)}
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Not Applicable
               </label>
             </div>
@@ -405,7 +405,7 @@ const VettingServices = () => {
                 }
                 className="ml-4"
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Optional
               </label>
             </div>
@@ -421,7 +421,7 @@ const VettingServices = () => {
                 checked={whatsApp}
                 onChange={() => setWhatsApp(!whatsApp)}
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 In Progress
               </label>
             </div>
@@ -435,7 +435,7 @@ const VettingServices = () => {
                 }
                 className="ml-4"
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
             Done
               </label>
             </div>
@@ -447,7 +447,7 @@ const VettingServices = () => {
                 checked={facebookMess}
                 onChange={() => setFacebookMess(!facebookMess)}
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Not Applicable
               </label>
             </div>
@@ -462,7 +462,7 @@ const VettingServices = () => {
                 }
                 className="ml-4"
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Optional
               </label>
             </div>
@@ -479,7 +479,7 @@ const VettingServices = () => {
                 checked={whatsApp}
                 onChange={() => setWhatsApp(!whatsApp)}
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 In Progress
               </label>
             </div>
@@ -493,7 +493,7 @@ const VettingServices = () => {
                 }
                 className="ml-4"
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
             Done
               </label>
             </div>
@@ -505,7 +505,7 @@ const VettingServices = () => {
                 checked={facebookMess}
                 onChange={() => setFacebookMess(!facebookMess)}
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Not Applicable
               </label>
             </div>
@@ -520,7 +520,7 @@ const VettingServices = () => {
                 }
                 className="ml-4"
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Optional
               </label>
             </div>
@@ -544,7 +544,7 @@ const VettingServices = () => {
                 checked={whatsApp}
                 onChange={() => setWhatsApp(!whatsApp)}
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 In Progress
               </label>
             </div>
@@ -558,7 +558,7 @@ const VettingServices = () => {
                 }
                 className="ml-4"
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
             Done
               </label>
             </div>
@@ -570,7 +570,7 @@ const VettingServices = () => {
                 checked={facebookMess}
                 onChange={() => setFacebookMess(!facebookMess)}
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Not Applicable
               </label>
             </div>
@@ -585,7 +585,7 @@ const VettingServices = () => {
                 }
                 className="ml-4"
               />
-              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Optional
               </label>
             </div>

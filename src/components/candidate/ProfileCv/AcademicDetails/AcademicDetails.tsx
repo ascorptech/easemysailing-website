@@ -1,11 +1,22 @@
 "use client";
 import Link from "next/link";
 
-import { useState } from "react";
-const AcademicDetails = () => {
+import { useEffect, useState } from "react";
+
+type AcademicComplete = {
+  percentage: number;
+  color: string;
+};
+type Props={
+  academicComplete: AcademicComplete; 
+  setAcademicComplete: React.Dispatch<React.SetStateAction<AcademicComplete>>; // setMjrComplete is a function to update mjrComplete
+  userDetail:any
+}
+
+const AcademicDetails = ({academicComplete, setAcademicComplete, userDetail}:Props) => {
 
     const [degree, setDegree] = useState("");
-    const [percentage, setPercentage] = useState("");
+    const [percentage2, setPercentage2] = useState("");
 
   const [startdate, setStartDate] = useState("");
   const [enddate, setEndDate] = useState("");
@@ -13,7 +24,43 @@ const AcademicDetails = () => {
 
 const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
-  
+const totalFields = 5;
+const filledFields = [
+  degree,
+  percentage2,
+  startdate,
+  enddate,
+  selectedFile,
+].filter(Boolean).length;
+
+const percentage = (filledFields / totalFields) * 100;
+// const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
+let color;
+useEffect(() => {
+  console.log('user',userDetail)
+  if (percentage <= 30) {
+    setAcademicComplete((prevState) => ({
+      ...prevState, // Spread the previous state to keep any other properties
+      percentage: percentage, // Update the percentage field
+      color: '#FF0000' // Update the color field
+    }));
+    color = "red"; 
+  } else if (percentage <= 70) {
+    setAcademicComplete((prevState) => ({
+      ...prevState, // Spread the previous state to keep any other properties
+      percentage: percentage, // Update the percentage field
+      color: '#FF9900' // Update the color field
+    }));
+    color = "#FF9900"; 
+  } else {
+    setAcademicComplete((prevState) => ({
+      ...prevState, // Spread the previous state to keep any other properties
+      percentage: percentage, // Update the percentage field
+      color: '#00A264' // Update the color field
+    }));
+    color = "green";
+  }
+}, [percentage,color])
 
 
 
@@ -33,28 +80,28 @@ const [selectedFile, setSelectedFile] = useState<File | null>(null);
       <div className="grid grid-cols-2 gap-4">
 
         <div className="   ">
-          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="">
+          <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="">
           Degree       </label>
           <input
             
             type="number"
             value={degree}
             onChange={(e) => setDegree(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
             placeholder=""
             required
           />
         </div>
 
         <div className="   ">
-          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="number">
+          <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="number">
           Percentage       </label>
           <input
             id="number"
             type="number"
-            value={percentage}
-            onChange={(e) => setPercentage(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            value={percentage2}
+            onChange={(e) => setPercentage2(e.target.value)}
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             placeholder=""
             required
           />
@@ -69,13 +116,13 @@ const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
         {/* </div> */}
         <div className="">
-          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]" htmlFor="issue">
+          <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]" htmlFor="issue">
           Start Date
           </label>
           <input
             id="issue"
             type="date"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             value={startdate}
             onChange={(e) => setStartDate(e.target.value)}
           />
@@ -85,14 +132,14 @@ const [selectedFile, setSelectedFile] = useState<File | null>(null);
       
 
       <div className="">
-        <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]  " htmlFor="expiryDate">
+        <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]  " htmlFor="expiryDate">
           End Date
         </label>
         {/* <div className="flex items-center gap-4 mt-2"> */}
           <input
             id="expiryDate"
             type="date"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             value={enddate}
             onChange={(e) => setEndDate(e.target.value)}
           />
@@ -110,7 +157,7 @@ const [selectedFile, setSelectedFile] = useState<File | null>(null);
       <div className="flex gap-6 items-center  ">
         <label
           htmlFor="file-upload"
-          className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[openSans]  "
+          className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[poppins]  "
         >
           Attachment Document
         </label>
@@ -127,7 +174,7 @@ const [selectedFile, setSelectedFile] = useState<File | null>(null);
               File Selected: {selectedFile.name}
             </p>
             ) : (
-              <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">No file selected</p>
+              <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">No file selected</p>
             )}
       </div>
       

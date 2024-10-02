@@ -503,7 +503,7 @@ const TravelDocuments = ({
                   File Selected: {selectedFileVisa.name}
                 </p>
               ) : (
-                <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+                <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                   No file selected
                 </p>
               )}
@@ -521,14 +521,14 @@ const TravelDocuments = ({
         {/* <div className="grid grid-cols-2 gap-4"> */}
         <div className="">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
             htmlFor="issuingcou"
           >
             Issuing Country
           </label>
           <select
             id="issuingcou"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
             value={issuingCountry}
             onChange={(e) => setIssuingCountry(e.target.value)}

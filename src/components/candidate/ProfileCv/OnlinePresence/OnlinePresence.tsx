@@ -87,18 +87,41 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
         {/* <div className="  "> */}
         <div className="my-5 ">
           <h1 className="mb-2 text-center font-bold">Messengers in Use</h1>
-          <div className="flex justify-between items-center ">
-            <div>
+          <div className="flex  gap-2 ">
+            <div className="w-[24%]">
               <input
                 type="checkbox"
                 checked={whatsApp}
                 onChange={() => setWhatsApp(!whatsApp)}
               />
-              <label className="p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-                Whats App
+              <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                WhatsApp
               </label>
+
+
+               {/* Conditionally render WhatsApp input box */}
+          {whatsApp && (
+            <div className="mt-4 flex flex-col ">
+              {/* <label
+                className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                htmlFor="whatsAppId"
+              >
+                WhatsApp Number
+              </label> */}
+              <input
+                id="whatsAppId"
+                type="text"
+                className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                placeholder="Enter WhatsApp No."
+                required
+              />
             </div>
-            <div>
+          )}
+            </div>
+
+            
+            <div className="w-[24%]">
+              <div>
               {" "}
               <input
                 type="checkbox"
@@ -108,26 +131,59 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
                 }
                 className="ml-4"
               />
-              <label className="p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 WeChat
               </label>
+              </div>
+              {weChat && (
+            <div className="mt-4 flex flex-col ">
+              {/* <label
+                className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                htmlFor="whatsAppId"
+              >
+                WeChat Number
+              </label> */}
+              <input
+                id="whatsAppId"
+                type="text"
+                className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                placeholder="Enter WeChat Id"
+                required
+              />
+            </div>
+          )}
             </div>
 
-            <div>
+            <div className="w-[24%]">
+              <div>
               {" "}
               <input
                 type="checkbox"
                 checked={facebookMess}
                 onChange={() => setFacebookMess(!facebookMess)}
               />
-              <label className="p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
-                Facebook Messenger
+              <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                Facebook 
               </label>
+              </div>
+              {facebookMess && (
+            <div className="mt-4 flex flex-col ">
+              
+              <input
+                id="whatsAppId"
+                type="text"
+                className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                placeholder="Enter Facebook Id"
+                required
+              />
+            </div>
+          )}
             </div>
 
             {/* <div className="my-5"> */}
             {/* <h1 className="mb-2">Preferred Contract Type</h1> */}
-            <div>
+            <div className="w-[24%]">
+              <div>
               <input
                 type="checkbox"
                 checked={telegram}
@@ -136,16 +192,36 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
                 }
                 className="ml-4"
               />
-              <label className="p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Telegram
               </label>
             </div>
+
+            {telegram && (
+            <div className="mt-4 flex flex-col ">
+              
+              <input
+                id="whatsAppId"
+                type="text"
+                className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                placeholder="Enter Telegram Id"
+                required
+              />
+            </div>
+          )}
           </div>
+          </div>
+
          
         </div>
+         
+        
+
+          
+
         <div>
           <label
-            className="p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+            className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
             htmlFor="skypeId"
           >
             Skype ID
@@ -155,7 +231,7 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
             type="text"
             value={skypeId}
             onChange={(e) => setSkypeId(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             required
           />
         </div>
@@ -164,18 +240,33 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
           <h1 className="mb-2 text-center font-bold">
             Social Media Channels in Use
           </h1>
-          <div className="flex justify-between">
-            <div>
+          <div className="flex gap-2">
+            <div className="w-[24%]">
+              <div>
               <input
                 type="checkbox"
                 checked={linkedIn}
                 onChange={() => setLinkedIn(!linkedIn)}
               />
-              <label className="p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 LinkedIn
               </label>
             </div>
-            <div>
+            {linkedIn && (
+            <div className="mt-4 flex flex-col ">
+             
+              <input
+             
+                type="text"
+                className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                placeholder="Enter Linkdin Id "
+                required
+              />
+            </div>
+          )}
+            </div>
+            <div className="w-[24%]">
+              <div>
               <input
                 type="checkbox"
                 checked={facebook}
@@ -184,11 +275,24 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
                 }
                 className="ml-4"
               />
-              <label className="p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Facebook
               </label>
+              </div>
+              {facebook && (
+            <div className="mt-4 flex flex-col ">
+              
+              <input
+                
+                type="text"
+                className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                placeholder="Enter Facebook Id"
+                required
+              />
             </div>
-            <div>
+          )}
+            </div>
+            <div className="w-[24%]"><div>
               <input
                 type="checkbox"
                 checked={instagram}
@@ -197,11 +301,25 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
                 }
                 className="ml-4"
               />
-              <label className="p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Instagram
               </label>
+              </div>
+              {instagram && (
+            <div className="mt-4 flex flex-col ">
+              
+              <input
+                id="whatsAppId"
+                type="text"
+                className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                placeholder="Enter Instagram Id"
+                required
+              />
             </div>
-            <div>
+          )}
+            </div>
+            <div className="w-[24%]">
+              <div>
               <input
                 type="checkbox"
                 checked={other}
@@ -210,9 +328,22 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
                 }
                 className="ml-4"
               />
-              <label className="p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Other
               </label>
+            </div>
+            {other && (
+            <div className="mt-4 flex flex-col ">
+             
+              <input
+                id=""
+                type="text"
+                className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                placeholder=""
+                required
+              />
+            </div>
+          )}
             </div>
           </div>
         </div>

@@ -49,7 +49,7 @@ const PreSeaTrainigDetails = () => {
       <div className="grid grid-cols-2 gap-4">
         <div className="   ">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
             htmlFor="permanent"
           >
             Permanent (per day)
@@ -59,21 +59,21 @@ const PreSeaTrainigDetails = () => {
             type="text"
             value={permanect}
             onChange={(e) => setPermanect(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             placeholder=""
             required
           />
         </div>
         <div className="">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
             htmlFor="option"
           >
             Currency
           </label>
           <select
             id="option"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
           >
             <option value="" disabled selected>
@@ -87,7 +87,7 @@ const PreSeaTrainigDetails = () => {
 
         <div className="   ">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
             htmlFor="salaryis"
           >
             Salary is Negotiable
@@ -97,7 +97,7 @@ const PreSeaTrainigDetails = () => {
             type="text"
             value={salary}
             onChange={(e) => setSalary(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             placeholder="Yes/No"
             required
           />
@@ -109,14 +109,14 @@ const PreSeaTrainigDetails = () => {
         </div>
         <div className=" ">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
             htmlFor="minBoard"
           >
             Min. Time on Board (weeks)
           </label>
           <select
             id="minBoard"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
           >
             <option value="" disabled selected>
@@ -130,14 +130,14 @@ const PreSeaTrainigDetails = () => {
 
         <div className=" ">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
             htmlFor="maxBoard"
           >
             Max. Time on Board (weeks)
           </label>
           <select
             id="maxBoard"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
           >
             <option value="" disabled selected>
@@ -151,14 +151,14 @@ const PreSeaTrainigDetails = () => {
 
         <div className=" ">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
             htmlFor="minHome"
           >
             Min. Time at Home (weeks)
           </label>
           <select
             id="minHome"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
           >
             <option value="" disabled selected>
@@ -172,14 +172,14 @@ const PreSeaTrainigDetails = () => {
 
         <div className=" ">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
             htmlFor="maxHome"
           >
             Max. Time at Home (weeks)
           </label>
           <select
             id="maxHome"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
           >
             <option value="" disabled selected>
@@ -198,14 +198,14 @@ const PreSeaTrainigDetails = () => {
         </div>
         <div className=" ">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
             htmlFor="certificate1"
           >
             Certificate
           </label>
           <select
             id="certificate1"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
           >
             <option value="" disabled selected>
@@ -219,7 +219,7 @@ const PreSeaTrainigDetails = () => {
 
         <div className="   ">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
             htmlFor="trainingCenter"
           >
             Training Center
@@ -229,21 +229,21 @@ const PreSeaTrainigDetails = () => {
             type="text"
             value={trainingCenter}
             onChange={(e) => setTrainingCenter(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
             placeholder=""
             required
           />
         </div>
         <div className=" ">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
             htmlFor="issuingCountry"
           >
             Issuing Country
           </label>
           <select
             id="issuingCountry"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
           >
             <option value="" disabled selected>
@@ -257,7 +257,7 @@ const PreSeaTrainigDetails = () => {
 
         <div className="   ">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
             htmlFor="number01"
           >
             Number
@@ -267,7 +267,7 @@ const PreSeaTrainigDetails = () => {
             type="text"
             value={number}
             onChange={(e) => setNumber(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             placeholder=""
             required
           />
@@ -276,7 +276,7 @@ const PreSeaTrainigDetails = () => {
         {/* </div> */}
         <div className="">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
             htmlFor="issue01"
           >
             Issue Date
@@ -284,14 +284,14 @@ const PreSeaTrainigDetails = () => {
           <input
             id="issue01"
             type="date"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             value={issuedate}
             onChange={(e) => setIssueDate(e.target.value)}
           />
         </div>
         <div>
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]  "
+            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]  "
             htmlFor="expiryDate"
           >
             Expiry Date
@@ -300,7 +300,7 @@ const PreSeaTrainigDetails = () => {
           <input
             id="expiryDate"
             type="date"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             value={exdate}
             onChange={(e) => setExDate(e.target.value)}
           />
@@ -311,12 +311,12 @@ const PreSeaTrainigDetails = () => {
           <input
             id="neverExpires01"
             type="checkbox"
-            className="border focus:ring-[#00A264] text-[14px] leading-[19.07px] font-[openSans] text-[#333333]  checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264]"
+            className="border focus:ring-[#00A264] text-[14px] leading-[19.07px] font-[poppins] text-[#333333]  checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264]"
             //   value={exdate}
             //   onChange={(e) => setExDate(e.target.value)}
           />
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
             htmlFor="neverExpires01"
           >
             Never Expires
@@ -327,7 +327,7 @@ const PreSeaTrainigDetails = () => {
           <div className="flex gap-4 items-center justify-center ">
             <label
               htmlFor="file-upload"
-              className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[openSans]"
+              className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[poppins]"
             >
               Attachment Document
             </label>
@@ -349,7 +349,7 @@ const PreSeaTrainigDetails = () => {
                   File Selected: {selectedFile.name}
                 </p>
               ) : (
-                <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+                <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                   No file selected
                 </p>
               )}
@@ -363,11 +363,11 @@ const PreSeaTrainigDetails = () => {
 
         {/* <div className="grid grid-cols-2 gap-4"> */}
         <div className="">
-          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] ">
+          <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] ">
             Pump Type
           </label>
           <select
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
           >
             <option value="" disabled selected>
@@ -379,40 +379,40 @@ const PreSeaTrainigDetails = () => {
           </select>
         </div>
         <div className="   ">
-          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] ">
+          <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] ">
             Crew Manager
           </label>
           <input
             type="text"
             value={crewManager}
             onChange={(e) => setCrewManager(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
             placeholder=""
             required
           />
         </div>
         <div className="   ">
-          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] ">
+          <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] ">
             Technical Manager
           </label>
           <input
             type="text"
             value={technicalManager}
             onChange={(e) => setTechnicalManager(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
             placeholder=""
             required
           />
         </div>
         <div className="   ">
-          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] ">
+          <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] ">
             Operator
           </label>
           <input
             type="text"
             value={operator}
             onChange={(e) => setOperator(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
             placeholder=""
             required
           />
@@ -422,42 +422,42 @@ const PreSeaTrainigDetails = () => {
           <h1 className="text-center font-bold">Company Name/Ship type</h1>
         </div>
         <div className="   ">
-          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] ">
+          <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] ">
             Vessel Type
           </label>
           <input
             type="text"
             value={vesselType}
             onChange={(e) => setVesselType(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
             placeholder=""
             required
           />
         </div>
 
         <div className="   ">
-          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] ">
+          <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] ">
             Vessel Type - Commercial Specification
           </label>
           <input
             type="text"
             value={commercialSpecification}
             onChange={(e) => setCommercialSpecification(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
             placeholder=""
             required
           />
         </div>
 
         <div className="   ">
-          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] ">
+          <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] ">
             Vessel Type - Design Specification
           </label>
           <input
             type="text"
             value={designSpecification}
             onChange={(e) => setDesignSpecification(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             placeholder=""
             required
           />
@@ -467,14 +467,14 @@ const PreSeaTrainigDetails = () => {
           <h1 className="text-center font-bold">OFFSHORE SPECIFIC SKILLS</h1>
 
           <div className="   ">
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] ">
+            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] ">
               DP hours
             </label>
             <input
               type="text"
               value={dPHours}
               onChange={(e) => setDPHours(e.target.value)}
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder=""
               required
             />
@@ -487,14 +487,14 @@ const PreSeaTrainigDetails = () => {
 
         <div className=" ">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
             htmlFor="vesseltype"
           >
             Vessel type
           </label>
           <select
             id="vesseltype"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
           >
             <option value="" disabled selected>
@@ -508,14 +508,14 @@ const PreSeaTrainigDetails = () => {
 
         <div className=" ">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
             htmlFor="rank01"
           >
             Rank
           </label>
           <select
             id="rank01"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
           >
             <option value="" disabled selected>
@@ -530,7 +530,7 @@ const PreSeaTrainigDetails = () => {
 
         <div className="   ">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
             htmlFor="numberOfrig"
           >
             Number of rig moves
@@ -540,21 +540,21 @@ const PreSeaTrainigDetails = () => {
             type="number"
             value={numberOfrig}
             onChange={(e) => setNumberOfrig(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
             placeholder=""
             required
           />
         </div>
         <div className=" ">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
             htmlFor="moveditem"
           >
             Moved item
           </label>
           <select
             id="moveditem"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
           >
             <option value="" disabled selected>
@@ -567,14 +567,14 @@ const PreSeaTrainigDetails = () => {
         </div>
         <div className=" ">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
             htmlFor=" waterdepth"
           >
             Water depth
           </label>
           <select
             id="waterdepth"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
           >
             <option value="" disabled selected>
@@ -588,14 +588,14 @@ const PreSeaTrainigDetails = () => {
 
         <div className=" ">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
             htmlFor="tradingarea"
           >
             Trading area
           </label>
           <select
             id="tradingarea"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
           >
             <option value="" disabled selected>
@@ -609,14 +609,14 @@ const PreSeaTrainigDetails = () => {
 
         <div className="grid col-span-2 ">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
             htmlFor="winchDrive"
           >
             Winch Drive Experience
           </label>
           <select
             id="winchDrive"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
           >
             <option value="" disabled selected>

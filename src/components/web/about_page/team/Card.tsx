@@ -1,7 +1,7 @@
 "use client";
-import Image from "next/image";
 import React, { useRef, useEffect } from "react";
 import { PiCaretRightThin, PiCaretLeftThin } from "react-icons/pi";
+import Image from "next/image";
 
 interface Card {
   id: number;

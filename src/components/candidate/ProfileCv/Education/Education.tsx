@@ -4,8 +4,18 @@
 "use client";
 import Link from "next/link";
 
-import { useState } from "react";
-const Education = () => {
+import { useEffect, useState } from "react";
+type EducationComplete = {
+  percentage: number;
+  color: string;
+};
+type Props={
+  educationComplete: EducationComplete; 
+  setEducationComplete: React.Dispatch<React.SetStateAction<EducationComplete>>; // setMjrComplete is a function to update mjrComplete
+  userDetail:any
+}
+
+const Education = ({educationComplete, setEducationComplete, userDetail}:Props) => {
   const [university, setUniversity] = useState("");
   const [subject, setSubject] = useState("");
   const [city, setCity] = useState("");
@@ -20,11 +30,52 @@ const Education = () => {
   const [trainingCenter, setTrainingCenter] = useState("");
   const [eCDISNumber, setECDISNumber] = useState("");
   const [issuedate1, setIssueDate1] = useState("");
-  const [exdate1, setExDate1] = useState("");
+  const [percentage1, setPercentage1] = useState("");
 
-  //   const handleFileChange = (event: any) => {
-  //     setSelectedFile(event.target.files[0]);
-  //   };
+  
+
+
+  const totalFields = 5;
+  const filledFields = [
+    university,
+    subject,
+    city,
+    selectedFile,
+    percentage1
+   
+  ].filter(Boolean).length;
+
+
+  const percentage = (filledFields / totalFields) * 100;
+  // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
+  let color;
+  useEffect(() => {
+    console.log('user',userDetail)
+    if (percentage <= 30) {
+      setEducationComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: '#FF0000' // Update the color field
+      }));
+      color = "red"; 
+    } else if (percentage <= 70) {
+      setEducationComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: '#FF9900' // Update the color field
+      }));
+      color = "#FF9900"; 
+    } else {
+      setEducationComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: '#00A264' // Update the color field
+      }));
+      color = "green";
+    }
+  }, [percentage,color])
+
+
 
   const handleFileChange = (event: any) => {
     const file = event.target.files?.[0];
@@ -46,7 +97,7 @@ const Education = () => {
       <div className="grid grid-cols-2 gap-4">
         <div className="   ">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
             htmlFor="number"
           >
             School / College / University{" "}
@@ -56,14 +107,14 @@ const Education = () => {
             type="number"
             value={university}
             onChange={(e) => setUniversity(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             placeholder="Enter Number"
             required
           />
         </div>
         <div className="   ">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
             htmlFor="number"
           >
             Subject
@@ -73,7 +124,7 @@ const Education = () => {
             type="number"
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
             placeholder=""
             required
           />
@@ -81,7 +132,7 @@ const Education = () => {
 
         <div className="   ">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
             htmlFor="number"
           >
             City{" "}
@@ -91,7 +142,7 @@ const Education = () => {
             type="number"
             value={city}
             onChange={(e) => setCity(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             placeholder=""
             required
           />
@@ -99,17 +150,17 @@ const Education = () => {
 
         <div className="   ">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
-            htmlFor="number"
+            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+            htmlFor="percentage"
           >
             Percentage{" "}
           </label>
           <input
-            id="number"
+            id="percentage"
             type="number"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            value={percentage1}
+            onChange={(e) => setPercentage1(e.target.value)}
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             placeholder=""
             required
           />
@@ -120,7 +171,7 @@ const Education = () => {
         <div className="flex gap-6 items-center  ">
           <label
             htmlFor="file-upload"
-            className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[openSans]  "
+            className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[poppins]  "
           >
             Attachment Document
           </label>
@@ -138,7 +189,7 @@ const Education = () => {
             File Selected: {selectedFile.name}
           </p>
         ) : (
-          <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+          <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
             No file selected
           </p>
         )}

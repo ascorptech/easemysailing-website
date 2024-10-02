@@ -24,7 +24,7 @@ import Education from "./Education/Education";
 import AcademicDetails from "./AcademicDetails/AcademicDetails";
 import ProfessionalSkills from "./ProfessionalSkills/ProfessionalSkills";
 import VettingServices from "./VettingServices/VettingServices";
-import { GetProfileDetail } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import { GetProfileDetail,GetMyjob } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import { toast } from "react-toastify";
 import { FaPercentage } from "react-icons/fa";
 
@@ -32,6 +32,7 @@ import { FaPercentage } from "react-icons/fa";
 
 const MyJob = () => {
   const [profileDetail,setProfileDetail] = useState<any>()
+  const [MyJobRequirement, setMyJobRequirement ] = useState<any>()
 
   const [isOpen, setIsOpen] = useState(false); // State to toggle
   const [pDOpen, setPDOpen] = useState(false);
@@ -181,7 +182,8 @@ const MyJob = () => {
   const [sTCWOpen, setSTCWOpen] = useState(false);
 
   useEffect(() => {
-    fetchDetails()
+    fetchDetails(),
+    fetchMyJob()
   }, [])
 
   const fetchDetails = async()=>{
@@ -189,6 +191,22 @@ const MyJob = () => {
     GetProfileDetail(id,(res:any)=>{
       if (res?.status==200) {
         setProfileDetail(res?.data)
+      }else{
+        toast.error('No data found')
+      }
+      console.log('data here iam',res)
+
+    })
+  }
+
+
+  // myjob requirement
+
+  const fetchMyJob = async()=>{
+    let id = await localStorage.getItem('id')
+    GetMyjob(id,(res:any)=>{
+      if (res?.status==200) {
+        setMyJobRequirement(res?.data)
       }else{
         toast.error('No data found')
       }
@@ -321,7 +339,7 @@ const MyJob = () => {
               </div>
             </div>
             <div className=" h-screen overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory ">
-              {isOpen && <MyJobRequirements mjrComplete={mjrComplete} setMjrComplete={setMjrComplete} userDetail={profileDetail} />}
+              {isOpen && <MyJobRequirements mjrComplete={mjrComplete} setMjrComplete={setMjrComplete} userDetail={MyJobRequirement} />}
 
               {/* PersonalDetails start */}
 

@@ -1,5 +1,5 @@
 "use client";
-import { AddProfileData, GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import { AddProfileData, GetDropdownDetails, AddMyJobData } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
@@ -112,30 +112,31 @@ const MyJobRequirements = ({ mjrComplete, setMjrComplete, userDetail }: Props) =
       toast.error("Please fill in all required fields.");
       return;
     }
-    let formData = new FormData()
+    // let formData = new FormData()
     // formData.append('userId', userDetail?.userId)
 
-    // let data = {
-    //   jobRequirements: {
-    //     availabilityDate: availabilityDate ? availabilityDate : '',
-    //     currentPosition: currentPosition,
-    //     alternatePosition: alternatePosition,
-    //     preferredVesselType: preferredVesselType,
-    //     alternateVesselType: alternateVesselType,
-    //     notAvailable: available == 'Yes' ? 'true' : 'false',
-    //   }
-    // };
-    formData.append('currentPosition', currentPosition)
-    formData.append('alternatePosition', alternatePosition)
-    formData.append('preferredVesselType', preferredVesselType)
-    formData.append('alternateVesselType', alternateVesselType)
-    availabilityDate&&formData.append('availabilityDate', availabilityDate)
-    formData.append('notAvailable', available=='Yes'?'true':'false')
-    console.log(formData);
-    AddProfileData(userDetail?.userId, formData, AddaddressdataDB);
+    let data = {
+     
+        availabilityDate: availabilityDate ? availabilityDate : '',
+        currentPosition: currentPosition,
+        alternatePosition: alternatePosition,
+        preferredVesselType: preferredVesselType,
+        alternateVesselType: alternateVesselType,
+        notAvailable: available == 'Yes' ? 'true' : 'false',
+        profileId:
+     
+    };
+    // formData.append('currentPosition', currentPosition)
+    // formData.append('alternatePosition', alternatePosition)
+    // formData.append('preferredVesselType', preferredVesselType)
+    // formData.append('alternateVesselType', alternateVesselType)
+    // availabilityDate&&formData.append('availabilityDate', availabilityDate)
+    // formData.append('notAvailable', available=='Yes'?'true':'false')
+    // console.log(formData);
+    AddMyJobData(?.data, AddmyJobdataDB);
   };
 
-  const AddaddressdataDB = (result: any) => {
+  const AddmyJobdataDB = (result: any) => {
     console.log(result);
     if (result?.status == 200) {
       toast.success("Job requirements submited successfully");

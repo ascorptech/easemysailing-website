@@ -1,7 +1,11 @@
 "use client";
-import { GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import {
+  AddMedicalData,
+  GetDropdownDetails,
+} from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 type MedicalComplete = {
   percentage: number;
@@ -23,12 +27,12 @@ const MedicalCertificates = ({
   const [issuedate, setIssueDate] = useState("");
   const [exdate, setExDate] = useState("");
 
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [selectedFiles, setSelectedFiles] = useState<File | null>(null);
-
+  const [selectedFile, setSelectedFile] = useState<any>(null);
+  const [selectedFiles, setSelectedFiles] = useState<any>(null);
+  const [selectedFilesCovid, setSelectedFilesCovid] = useState<any>(null);
   const [medicalPhysician, setMedicalPhysician] = useState("");
 
-  const [result, setResult] = useState("");
+  const [fMedicalcenter, setFMedicalcenter] = useState("");
 
   const [medicalNumber, setMedicalNumber] = useState("");
   const [medicalCenter, setMedicalCenter] = useState("");
@@ -39,10 +43,10 @@ const MedicalCertificates = ({
   const [issuedateCovid, setIssueDateCovid] = useState("");
   const [exdateCovid, setExDateCovid] = useState("");
 
-  const [trainingCenter, setTrainingCenter] = useState("");
+  const [issuingCity, setIssuingCity] = useState("");
 
-  const [expires1, setExpires1] = useState(false);
-  const [expires2, setExpires2] = useState(false);
+  const [expires1, setExpires1] = useState<any>(false);
+  const [expires2, setExpires2] = useState<any>(false);
 
   const [issuingOptions, setIssuingOptions] = useState("");
   const [types2Options, setTypes2Options] = useState("");
@@ -52,50 +56,48 @@ const MedicalCertificates = ({
   const [vaccinationIssue, setVaccinationIssue] = useState("");
   const [covidOptions, setCovidOptions] = useState("");
   const [vaccinationExpiry, setVaccinationExpiry] = useState("");
-  const [expiresMedical, setExpiresMedical] = useState(false);
-  const [veccinationCheck, setVeccinationCheck] = useState(false);
+  const [expiresMedical, setExpiresMedical] = useState<any>(false);
+  const [veccinationCheck, setVeccinationCheck] = useState<any>(false);
   const [medicalType1, setMedicalType1] = useState("");
   const [vaccination1, setVaccination1] = useState("");
 
   const [vaccinationexp, setVaccinationexp] = useState("");
-  const [selectedFiles1, setSelectedFiles1] = useState("");
+ 
+  const [selectedFilesOthers, setSelectedFilesOthers] = useState<any>("");
+  
 
-  const [veccinationCheckFlag, setVeccinationCheckFlag] = useState(false);
+  const [veccinationCheckFlag, setVeccinationCheckFlag] = useState<any>(false);
   const [medicalTypeFlag, setMedicalTypeFlag] = useState("");
   const [vaccinationFlag, setVaccinationFlag] = useState("");
 
   const [vaccinationexpFlag, setVaccinationexpFlag] = useState("");
-  const [selectedFilesFlag, setSelectedFilesFlag] = useState("");
-  const [typeDrop,setTypeDrop] = useState<any>([])
-  const [drugDrop,setDrugDrop] = useState<any>([])
-  const [vaccineTypeDrop,setVaccineTypeDrop] = useState<any>([])
-  const [otherVaccineTypeDrop,setOtherVaccineTypeDrop] = useState<any>([])
+  const [selectedFilesFlag, setSelectedFilesFlag] = useState<any>("");
+  const [typeDrop, setTypeDrop] = useState<any>([]);
+  const [drugDrop, setDrugDrop] = useState<any>([]);
+  const [vaccineTypeDrop, setVaccineTypeDrop] = useState<any>([]);
+  const [otherVaccineTypeDrop, setOtherVaccineTypeDrop] = useState<any>([]);
   const [countryDrop, setCountryDrop] = useState<any>([]);
 
   useEffect(() => {
-    GetDropdownDetails('MEDICALFITNESSTYPE', (res: any) => {
-      setTypeDrop(res?.data?.values)
-    })
-    GetDropdownDetails('DRUG&ALCOHOLTEST', (res: any) => {
-      setDrugDrop(res?.data?.values)
-    })
-    GetDropdownDetails('COVID19VACCINE', (res: any) => {
-      console.log('vac',res?.data)
-      setVaccineTypeDrop(res?.data?.values)
-    })
-    GetDropdownDetails('OTHERVACCINATION', (res: any) => {
-      console.log('vac',res?.data)
-      setOtherVaccineTypeDrop(res?.data?.values)
-    })
-    GetDropdownDetails('country', (res: any) => {
+    GetDropdownDetails("MEDICALFITNESSTYPE", (res: any) => {
+      setTypeDrop(res?.data?.values);
+    });
+    GetDropdownDetails("DRUG&ALCOHOLTEST", (res: any) => {
+      setDrugDrop(res?.data?.values);
+    });
+    GetDropdownDetails("COVID19VACCINE", (res: any) => {
+      console.log("vac", res?.data);
+      setVaccineTypeDrop(res?.data?.values);
+    });
+    GetDropdownDetails("OTHERVACCINATION", (res: any) => {
+      console.log("vac", res?.data);
+      setOtherVaccineTypeDrop(res?.data?.values);
+    });
+    GetDropdownDetails("country", (res: any) => {
       // console.log('County',res?.data)
-      setCountryDrop(res?.data?.values)
-    })
-  }, [])
-
-  //   const handleFileChange = (event: any) => {
-  //     setSelectedFile(event.target.files[0]);
-  //   };medicalType
+      setCountryDrop(res?.data?.values);
+    });
+  }, []);
 
   const totalFields = 36;
   const filledFields = [
@@ -104,14 +106,15 @@ const MedicalCertificates = ({
     exdate,
     selectedFile,
     selectedFiles,
+    selectedFilesCovid,
     medicalPhysician,
-    result,
+    fMedicalcenter,
     medicalNumber,
     medicalCenter,
     testCenter,
     issuedate1,
     exdate1,
-    trainingCenter,
+    issuingCity,
     expires1,
     expires2,
     issuingOptions,
@@ -127,7 +130,7 @@ const MedicalCertificates = ({
     medicalType1,
     vaccination1,
     vaccinationexp,
-    selectedFiles1,
+    selectedFilesOthers,
     veccinationCheckFlag,
     medicalTypeFlag,
     vaccinationFlag,
@@ -137,32 +140,30 @@ const MedicalCertificates = ({
     issuedateCovid,
   ].filter(Boolean).length;
 
-  // const totalFields = available === "Yes" ? 6 : 5;
-
   const percentage = (filledFields / totalFields) * 100;
-  // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
+
   let color;
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
       setMedicalComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#FF0000", // Update the color field
+        ...prevState,
+        percentage: percentage,
+        color: "#FF0000",
       }));
       color = "red";
     } else if (percentage <= 70) {
       setMedicalComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#FF9900", // Update the color field
+        ...prevState,
+        percentage: percentage,
+        color: "#FF9900",
       }));
       color = "#FF9900";
     } else {
       setMedicalComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#00A264", // Update the color field
+        ...prevState,
+        percentage: percentage,
+        color: "#00A264",
       }));
       color = "green";
     }
@@ -182,10 +183,16 @@ const MedicalCertificates = ({
     }
   };
 
-  const handleFileChanges1 = (event: any) => {
+  const handleFileChangesOthers = (event: any) => {
     const file = event.target.files?.[0];
     if (file) {
-      setSelectedFiles1(file);
+      setSelectedFilesOthers(file);
+    }
+  };
+  const handleFileChangesCovid = (event: any) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      setSelectedFilesCovid(file);
     }
   };
   const handleFileChangesFlag = (event: any) => {
@@ -196,8 +203,68 @@ const MedicalCertificates = ({
   };
 
   const handleSubmit = (e: React.FormEvent) => {
-    // try {
     e.preventDefault();
+
+    let formData = new FormData();
+    formData.append("fitnessType", types2Options);
+    formData.append("fitnessNumber", number);
+    formData.append("fitnessIssuingCountry", issuingOptions);
+    formData.append("fitnessIssuingCity", issuingCity);
+    formData.append("fitnessMedicalCenter", fMedicalcenter);
+    formData.append("fitnessIssueDate", issuedate);
+    formData.append("fitnessExpiryDate", exdate);
+    formData.append("fitnessNeverExpires", expires1);
+    formData.append("fitnessDocument", selectedFile);
+
+    formData.append("drugTestType", typeOptions);
+    formData.append("drugTestNumber", medicalNumber);
+    formData.append("drugTestIssuingCountry", issuingCountryOpt);
+    formData.append("drugTestIssuingCity", medicalCenter);
+    formData.append("drugTestCenter", testCenter);
+    formData.append("drugTestIssueDate", issuedate1);
+    formData.append("drugTestExpiryDate", exdate1);
+    formData.append("drugTestNeverExpires", expires2);
+    formData.append("drugTestDocument", selectedFiles);
+
+    formData.append("covidVaccineType", medicalType);
+    formData.append("covidVaccineCountry", covidOptions);
+    formData.append("covidVaccineMedicalCenter", medicalPhysician);
+    formData.append("covidVaccineDate1", vaccinationIssue);
+    formData.append("covidVaccineExpiryDate1", vaccinationExpiry);
+    // missing covid19 expiry data
+    formData.append("covidVaccineNeverExpires1", expiresMedical);
+    formData.append("covidVaccineDocument1", selectedFilesCovid);
+
+    formData.append("covidVaccineDate2", issuedateCovid);
+    formData.append("covidVaccineExpiryDate2", exdateCovid);
+    formData.append("covidVaccineNeverExpires2", "");
+
+    formData.append("covidVaccineDocument2", "");
+
+    formData.append("otherVaccinationType", medicalType1);
+    formData.append("otherVaccinationDate", vaccination1);
+    formData.append("otherVaccinationExpiryDate", vaccinationexp);
+    formData.append("otherVaccinationNeverExpires", veccinationCheck);
+    formData.append("otherVaccinationDocument", selectedFilesOthers);
+
+    formData.append("flagMedicalType", medicalTypeFlag);
+    formData.append("flagMedicalVaccinationDate", vaccinationFlag);
+    formData.append("flagMedicalExpiryDate", vaccinationexpFlag);
+    formData.append("flagMedicalNeverExpires", veccinationCheckFlag);
+    formData.append("flagMedicalDocument", selectedFilesFlag);
+    AddMedicalData(userDetail?.userId, formData, AddmedicalDataDB);
+  };
+
+  const AddmedicalDataDB = (result: any) => {
+    console.log(result);
+    if (result?.status == 200) {
+      toast.success("medical  submited successfully");
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+    } else {
+      toast.error("Medical detail not submited ");
+    }
   };
 
   return (
@@ -224,9 +291,12 @@ const MedicalCertificates = ({
               <option value="" disabled selected>
                 Type
               </option>
-              {typeDrop && drugDrop?.map((type: any, index: number) => (
-                <option key={index} value={type}>{type?.toUpperCase()}</option>
-              ))}
+              {typeDrop &&
+                drugDrop?.map((type: any, index: number) => (
+                  <option key={index} value={type}>
+                    {type?.toUpperCase()}
+                  </option>
+                ))}
             </select>
           </div>
 
@@ -265,9 +335,12 @@ const MedicalCertificates = ({
               <option value="" disabled selected>
                 Issuing Country
               </option>
-              {countryDrop && countryDrop?.map((country: any, index: number) => (
-                <option key={index} value={country}>{country?.toUpperCase()}</option>
-              ))}
+              {countryDrop &&
+                countryDrop?.map((country: any, index: number) => (
+                  <option key={index} value={country}>
+                    {country?.toUpperCase()}
+                  </option>
+                ))}
             </select>
           </div>
 
@@ -283,8 +356,8 @@ const MedicalCertificates = ({
             <input
               id="issuringCity"
               type="text"
-              value={trainingCenter}
-              onChange={(e) => setTrainingCenter(e.target.value)}
+              value={issuingCity}
+              onChange={(e) => setIssuingCity(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder=""
               required
@@ -301,8 +374,8 @@ const MedicalCertificates = ({
             <input
               id="medicalcenter"
               type="text"
-              value={result}
-              onChange={(e) => setResult(e.target.value)}
+              value={fMedicalcenter}
+              onChange={(e) => setFMedicalcenter(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder=""
               required
@@ -411,9 +484,12 @@ const MedicalCertificates = ({
               <option value="" disabled selected>
                 Type
               </option>
-              {drugDrop && drugDrop?.map((drug: any, index: number) => (
-                <option key={index} value={drug}>{drug?.toUpperCase()}</option>
-              ))}
+              {drugDrop &&
+                drugDrop?.map((drug: any, index: number) => (
+                  <option key={index} value={drug}>
+                    {drug?.toUpperCase()}
+                  </option>
+                ))}
             </select>
           </div>
 
@@ -452,9 +528,12 @@ const MedicalCertificates = ({
               <option value="" disabled selected>
                 Issuing Country
               </option>
-              {countryDrop && countryDrop?.map((country: any, index: number) => (
-                <option key={index} value={country}>{country?.toUpperCase()}</option>
-              ))}
+              {countryDrop &&
+                countryDrop?.map((country: any, index: number) => (
+                  <option key={index} value={country}>
+                    {country?.toUpperCase()}
+                  </option>
+                ))}
             </select>
           </div>
           {/* <div className=""> */}
@@ -594,9 +673,12 @@ const MedicalCertificates = ({
               <option value="" disabled selected>
                 Type
               </option>
-              {vaccineTypeDrop && vaccineTypeDrop?.map((typ: any, index: number) => (
-                <option key={index} value={typ}>{typ?.toUpperCase()}</option>
-              ))}
+              {vaccineTypeDrop &&
+                vaccineTypeDrop?.map((typ: any, index: number) => (
+                  <option key={index} value={typ}>
+                    {typ?.toUpperCase()}
+                  </option>
+                ))}
             </select>
           </div>
 
@@ -617,9 +699,12 @@ const MedicalCertificates = ({
               <option value="" disabled selected>
                 Covid Caccine Name Country
               </option>
-              {countryDrop && countryDrop?.map((country: any, index: number) => (
-                <option key={index} value={country}>{country?.toUpperCase()}</option>
-              ))}
+              {countryDrop &&
+                countryDrop?.map((country: any, index: number) => (
+                  <option key={index} value={country}>
+                    {country?.toUpperCase()}
+                  </option>
+                ))}
             </select>
           </div>
 
@@ -662,7 +747,7 @@ const MedicalCertificates = ({
               className="text-[14px] leading-[19.07px]  text-[#333333]  "
               htmlFor="vaccinedate2"
             >
-              Vaccination Date
+              Vaccination Expiry Date1
             </label>
 
             <input
@@ -679,7 +764,7 @@ const MedicalCertificates = ({
               className="text-[16px] leading-[21.79px]"
               htmlFor="issuedatemCovid"
             >
-              Issue Date
+              Vaccination Date2
             </label>
             <input
               id="issuedatemCovid"
@@ -695,7 +780,7 @@ const MedicalCertificates = ({
               className="text-[14px] leading-[19.07px]  text-[#333333] "
               htmlFor="expiryDatemedicalCovid"
             >
-              Expiry Date
+              Vaccination Expiry Date2
             </label>
 
             <input
@@ -735,13 +820,13 @@ const MedicalCertificates = ({
                   id="file-uploadmedicalvaccine"
                   type="file"
                   className="hidden"
-                  onChange={handleFileChanges}
+                  onChange={handleFileChangesCovid}
                 />
               </div>
               <div>
-                {selectedFiles ? (
+                {selectedFilesCovid ? (
                   <p className="text-gray-700">
-                    File Selected: {selectedFiles.name}
+                    File Selected: {selectedFilesCovid.name}
                   </p>
                 ) : (
                   <p className="text-[14px] leading-[19.07px]  text-[#333333]">
@@ -775,9 +860,12 @@ const MedicalCertificates = ({
               <option value="" disabled selected>
                 Type
               </option>
-              {otherVaccineTypeDrop && otherVaccineTypeDrop?.map((vac: any, index: number) => (
-                <option key={index} value={vac}>{vac?.toUpperCase()}</option>
-              ))}
+              {otherVaccineTypeDrop &&
+                otherVaccineTypeDrop?.map((vac: any, index: number) => (
+                  <option key={index} value={vac}>
+                    {vac?.toUpperCase()}
+                  </option>
+                ))}
             </select>
           </div>
 
@@ -833,22 +921,22 @@ const MedicalCertificates = ({
             <div className="flex gap-6 items-center  mt-4 justify-center ">
               <div>
                 <label
-                  htmlFor="file-uploadmedicalvaccine1"
+                  htmlFor="file-uploadmedicalvaccine"
                   className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2  text-[14px] leading-[19.07px]  "
                 >
                   Attachment Docoment
                 </label>
                 <input
-                  id="file-uploadmedicalvaccine1"
+                  id="file-uploadmedicalvaccine"
                   type="file"
                   className="hidden"
-                  onChange={handleFileChanges1}
+                  onChange={handleFileChangesOthers}
                 />
               </div>
               <div>
-                {selectedFiles1 ? (
+                {selectedFilesOthers ? (
                   <p className="text-gray-700">
-                    File Selected: {selectedFiles1}
+                    File Selected: {selectedFilesOthers.name}
                   </p>
                 ) : (
                   <p className="text-[14px] leading-[19.07px]  text-[#333333]">
@@ -954,7 +1042,7 @@ const MedicalCertificates = ({
               <div>
                 {selectedFilesFlag ? (
                   <p className="text-gray-700">
-                    File Selected: {selectedFilesFlag}
+                    File Selected: {selectedFilesFlag.name}
                   </p>
                 ) : (
                   <p className="text-[14px] leading-[19.07px]  text-[#333333]">

@@ -167,7 +167,6 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
       formData.append('gmdssExpiryDate',gMexpiryDate) 
       formData.append('gmdssDocument', selectedFile1);
 
-      // formData.append('gmdssDocumentExt',)
       formData.append('endorsementsNotIssuedSeparately',separately)
       formData.append('endorsementType',typeOption)
       formData.append('endorsementIssuingCountry',issuingOption)
@@ -183,7 +182,7 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
 
   const AddLicensesdataDB = (result: any) => {
     console.log(result);
-    if (result?.status == 200) {
+    if (result?.status == 200 ||result?.status == 201) {
       toast.success("Licenses submited successfully");
       setTimeout(() => {
         window.location.reload()

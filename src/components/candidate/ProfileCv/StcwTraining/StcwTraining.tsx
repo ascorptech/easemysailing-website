@@ -84,7 +84,7 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
 
 <form onSubmit={handleSubmit}>
       {/* <div className=" flex flex-col items-center"> */}
-      <h1 className="font-bold ">ECDIS</h1>
+     
       <div className="grid grid-cols-2 gap-4">
         <div className="">
           <label

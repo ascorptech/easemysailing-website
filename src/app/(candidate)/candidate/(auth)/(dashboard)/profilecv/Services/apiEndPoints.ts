@@ -10,5 +10,8 @@ export default{
     POSTCONTACT:'/api/v1/contact-details',
     POSTONLINEPRASENCE:'/api/online-presence',
     POSTLICENSES:'/api/v1/licenses',
+    POSTECDIS:'/api/v1/ecdis-training',
+    POSTMEDICAL:'/api/v1/medical-certificates'
+    
 
 }

@@ -124,7 +124,7 @@ const VettingServices = () => {
 
 
         <div className="my-5 ">
-          <h1 className="mb-2 text-center ">Verification of medical certificates and/or medical centers</h1>
+          <h1 className="mb-2  ">Verification of medical certificates and/or medical centers</h1>
           <div className="flex justify-between ">
             <div>
               <input
@@ -169,7 +169,7 @@ const VettingServices = () => {
         </div>
 
         <div className="my-5 ">
-          <h1 className="mb-2 text-center ">Identity check via video call</h1>
+          <h1 className="mb-2  ">Identity check via video call</h1>
           <div className="flex justify-between ">
             <div>
               <input
@@ -212,7 +212,7 @@ const VettingServices = () => {
         </div>
 
         <div className="my-5 ">
-          <h1 className="mb-2 text-center ">English level assessment via video call</h1>
+          <h1 className="mb-2 ">English level assessment via video call</h1>
           <div className="flex justify-between ">
             <div>
               <input
@@ -255,7 +255,7 @@ const VettingServices = () => {
         
         </div>
         <div className="my-5 ">
-          <h1 className="mb-2 text-center ">Plausibility check of Seagoing Experience</h1>
+          <h1 className="mb-2  ">Plausibility check of Seagoing Experience</h1>
           <div className="flex justify-between ">
             <div>
               <input
@@ -299,7 +299,7 @@ const VettingServices = () => {
         </div>
 
         <div className="my-5 ">
-          <h1 className="mb-2 text-center ">Verification of STCW Training Certificates</h1>
+          <h1 className="mb-2  ">Verification of STCW Training Certificates</h1>
           <div className="flex justify-between ">
             <div>
               <input
@@ -356,7 +356,7 @@ const VettingServices = () => {
         
         </div>
         <div className="my-5 ">
-          <h1 className="mb-2 text-center ">Verification of Additional Trainings</h1>
+          <h1 className="mb-2  ">Verification of Additional Trainings</h1>
           <div className="flex justify-between ">
             <div>
               <input
@@ -413,7 +413,7 @@ const VettingServices = () => {
         
         </div>
         <div className="my-5 ">
-          <h1 className="mb-2 text-center">Verification of Flag State Certificates</h1>
+          <h1 className="mb-2 ">Verification of Flag State Certificates</h1>
           <div className="flex justify-between ">
             <div>
               <input
@@ -471,7 +471,7 @@ const VettingServices = () => {
         </div>
 
         <div className="my-5 ">
-          <h1 className="mb-2 text-center ">Verification of ECDIS type specific trainings (if applicable)</h1>
+          <h1 className="mb-2  ">Verification of ECDIS type specific trainings (if applicable)</h1>
           <div className="flex justify-between ">
             <div>
               <input
@@ -534,7 +534,7 @@ const VettingServices = () => {
         
 
         <div className="my-5">
-          <h1 className="mb-2 text-center ">
+          <h1 className="mb-2 ">
           Verification of Engine specific trainings (if applicable)
           </h1>
           <div className="flex justify-between ">

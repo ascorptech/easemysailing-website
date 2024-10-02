@@ -119,7 +119,7 @@ const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) =>
       <form onSubmit={handleSubmit}>
           {/* NATIVE LANGUAGE*/}
           <div className="mb-3">
-            <h1 className="font-bold  text-center ">NATIVE LANGUAGE</h1>
+            <h1 className="font-bold   ">NATIVE LANGUAGE</h1>
             <div>
               <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Language
@@ -139,7 +139,7 @@ const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) =>
             </div>
           </div>
 
-          <div className="mb-3"> <h1 className="font-bold text-center  ">ADDITIONAL LANGUAGE</h1>
+          <div className="mb-3"> <h1 className="font-bold   ">ADDITIONAL LANGUAGE</h1>
           <div className="grid grid-cols-2 gap-4  "> 
           <div>
             <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
@@ -180,7 +180,7 @@ const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) =>
           
          
 
-          <div className="mb-3"><h1 className="font-bold text-center ">ENGLISH LEVEL</h1>
+          <div className="mb-3"><h1 className="font-bold  ">ENGLISH LEVEL</h1>
           <div>
             <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               Level
@@ -204,7 +204,7 @@ const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) =>
 
 
           <div className="mb-3">
-            <h1 className="text-center font-bold ">LANGUAGE TESTS</h1>
+            <h1 className=" font-bold ">LANGUAGE TESTS</h1>
             <div className="grid grid-cols-2 gap-4">
             <div>
             <label htmlFor="languagetest" className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">

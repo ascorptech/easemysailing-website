@@ -120,11 +120,15 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
     }
   };
 
-
+  const handleSubmit = (e: React.FormEvent) => {
+    // try {
+    e.preventDefault();
+  };
 
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
-      <h1 className="font-bold text-center">COMPUTER SKILLS</h1>
+       <form onSubmit={handleSubmit}>
+      <h1 className="font-bold ">COMPUTER SKILLS</h1>
       <div className="grid grid-cols-2 gap-4">
       <div className="">
             <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="Skill">
@@ -165,7 +169,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
             </select>
           </div>
           <div className="grid col-span-2">
-          <h1 className="font-bold text-center">CARGO EXPERIENCE</h1>
+          <h1 className="font-bold ">CARGO EXPERIENCE</h1>
 
           </div>
 
@@ -269,7 +273,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
           </div>
 
           <div className="grid col-span-2">
-            <h1 className="text-center font-bold">CARGO GEAR EXPERIENCE</h1>
+            <h1 className=" font-bold">CARGO GEAR EXPERIENCE</h1>
           </div>
           <div className="">
             <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="typeProfessional">
@@ -331,7 +335,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
           />
         </div>
 
-        <div className="grid col-span-2"><h1 className="text-center font-bold">METAL WORKING SKILLS</h1></div>
+        <div className="grid col-span-2"><h1 className=" font-bold">METAL WORKING SKILLS</h1></div>
 
         <div className="">
             <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="skillmetal">
@@ -445,7 +449,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
       </div>
 
       <div className="grid col-span-2">
-        <h1 className="text-center font-bold" >TANK COATING TYPE EXPERIENCE</h1>
+        <h1 className=" font-bold" >TANK COATING TYPE EXPERIENCE</h1>
         <div className="">
             <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="typeTank">
             Type
@@ -467,7 +471,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
           </div>
       </div>
 
-      <div className="grid col-span-2"><h1 className="font-bold text-center">PORT STATE CONTROL EXPERIENCE</h1></div>
+      <div className="grid col-span-2"><h1 className="font-bold ">PORT STATE CONTROL EXPERIENCE</h1></div>
       <div className="">
             <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="regionalAgreement">
             Regional Agreement
@@ -538,7 +542,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
           />
         </div>
 
-        <div className="grid col-span-2"><h1 className="text-center font-bold">VETTING INSPECTION EXPERIENCE</h1></div>
+        <div className="grid col-span-2"><h1 className=" font-bold">VETTING INSPECTION EXPERIENCE</h1></div>
         <div className="   ">
           <label
             className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
@@ -606,7 +610,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
             required
           />
         </div>
-        <div className="grid col-span-2"><h1 className="text-center font-bold ">TRADING AREA EXPERIENCE</h1>
+        <div className="grid col-span-2"><h1 className="font-bold ">TRADING AREA EXPERIENCE</h1>
 
         <div className="">
             <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="tradingArea">
@@ -634,12 +638,12 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
       {/* Third section */}
 
       <div className="flex gap-2 mb-4 mt-4">
-        <Link
-          href="#"
+        <button
+          type="submit"
           className="border border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
         >
           Save
-        </Link>
+        </button>
         <Link
           href="#"
           className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
@@ -647,6 +651,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
           Edit
         </Link>
       </div>
+      </form>
     </div>
   );
 };

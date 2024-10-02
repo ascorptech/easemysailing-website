@@ -97,7 +97,10 @@ const SeaGoingService = ({seaGoingServiceComplete, setSeaGoingServiceComplete,us
   }, [percentage,color])
  
  
-
+  const handleSubmit = (e: React.FormEvent) => {
+    // try {
+    e.preventDefault();
+  };
 
 
  
@@ -105,7 +108,8 @@ const SeaGoingService = ({seaGoingServiceComplete, setSeaGoingServiceComplete,us
 
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
-      <h1 className="text-center font-bold my-2" >PASSPORT DETAILS</h1>
+      <form onSubmit={handleSubmit}>
+      <h1 className=" font-bold my-2" >PASSPORT DETAILS</h1>
       <div className="grid grid-cols-2 gap-4">
         <div className="">
           <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="imo">
@@ -185,7 +189,7 @@ const SeaGoingService = ({seaGoingServiceComplete, setSeaGoingServiceComplete,us
             />
           </div>
 
-          <div className=" grid col-span-2 text-center my-2"> <h1 className="font-bold"> Seaman Experience Details</h1></div>
+          <div className=" grid col-span-2  my-2"> <h1 className="font-bold"> Seaman Experience Details</h1></div>
 
           <div className="">
             <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="enginemake">
@@ -337,12 +341,12 @@ const SeaGoingService = ({seaGoingServiceComplete, setSeaGoingServiceComplete,us
       {/* fifth section */}
 
       <div className="flex gap-2 mb-4 mt-4">
-        <Link
-          href="#"
+        <button
+          type="submit"
           className="border border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
         >
           Save
-        </Link>
+        </button>
         <Link
           href="#"
           className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
@@ -350,6 +354,7 @@ const SeaGoingService = ({seaGoingServiceComplete, setSeaGoingServiceComplete,us
           Edit
         </Link>
       </div>
+      </form>
     </div>
   );
 };

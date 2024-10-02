@@ -33,6 +33,7 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
   const [mCountrycode, setMCountrycode] = useState("");
   const [country1, setCountry1] = useState("");
   const [nACountrycode, setNACountrycode] = useState("");
+  const [countryDrop, setCountryDrop] = useState<any>([]);
 
   const totalFields = 12;
   const filledFields = [
@@ -275,7 +276,7 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
 
             {/* counstry and city section start*/}
 
-            <div className="grid col-span-2 text-center">
+            <div className="grid col-span-2 ">
               <h1 className="font-bold">MOBILE PHONE</h1>
             </div>
 
@@ -315,7 +316,7 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
                 </div>
               </div>
             </div>
-            <div className="grid col-span-2 text-center">
+            <div className="grid col-span-2">
               <h1 className="font-bold">DIRECT LINE</h1>
             </div>
             <div className="flex items-center justify-between gap-4  ">

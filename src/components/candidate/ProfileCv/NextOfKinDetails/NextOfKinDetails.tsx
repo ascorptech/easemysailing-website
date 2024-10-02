@@ -142,7 +142,7 @@ const NextOfKinDetails = ({
         {/* next of kin details */}
 
         <div className="flex flex-col ">
-          <h1 className="text-center font-semibold mb-2">
+          <h1 className=" font-semibold mb-2">
             NEXT OF KIN DETAILS
           </h1>
 

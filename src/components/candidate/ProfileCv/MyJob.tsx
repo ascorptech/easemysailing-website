@@ -151,6 +151,20 @@ const MyJob = () => {
     }
     
   )
+  const [preSeaTrainigComplete, setPreSeaTrainigComplete] = useState<any> (
+    {
+      percentage: 0,
+      color:'#FF0000'
+    }
+    
+  )
+  const [vettingServicesComplete, setVettingServicesComplete] = useState<any> (
+    {
+      percentage: 0,
+      color:'#FF0000'
+    }
+    
+  )
 
 
   const [nKOpen, setNKOpen] = useState(false);
@@ -735,15 +749,15 @@ const MyJob = () => {
 
               {/*Address Details start */}
 
-              {/* <div
-                className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF9900] mt-3"
-                onClick={handlePreSeaDetails}
+              <div
+                className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${preSeaTrainigComplete?.color}] mt-3`}
+               
               >
-                <Link href="#" className="">
+                <h2  className="">
                   Off Shore Requirements
-                </Link>
+                </h2>
                 <div className="flex items-center justify-center gap-1">
-                  <span className="ml-2 cursor-pointer">
+                  <span className="ml-2 cursor-pointer"  onClick={handlePreSeaDetails}>
                     {preOpen ? (
                       <svg
                         className="w-6 h-6 transform rotate-180 transition-transform"
@@ -776,11 +790,11 @@ const MyJob = () => {
                       </svg>
                     )}
                   </span>
-                  <CircularProgress percentage={90} color="#FF9900" />
+                  <CircularProgress percentage={Math.round( preSeaTrainigComplete?.percentage)} color={ preSeaTrainigComplete.color}  />
                 </div>
               </div>
 
-              {preOpen && <PreSeaTrainigDetails />} */}
+              {preOpen && <PreSeaTrainigDetails  preSeaTrainigComplete={ preSeaTrainigComplete} setPreSeaTrainigComplete={setPreSeaTrainigComplete}  userDetail={profileDetail}/>}
 
 
 
@@ -1286,7 +1300,7 @@ const MyJob = () => {
             {refOpen && <Refrences refrencesComplete={refrencesComplete} setRefrencesComplete={setRefrencesComplete}  userDetail={profileDetail}/>}
            
 
-            {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#00A264] mt-3">
+            <div className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${vettingServicesComplete?.color}] mt-3`}>
               <h2 className="">Vetting Service</h2>
               <div className="flex items-center justify-center gap-1">
                 <span className="ml-2 cursor-pointer" onClick={hendleModular}>
@@ -1322,10 +1336,10 @@ const MyJob = () => {
                     </svg>
                   )}
                 </span>
-                <CircularProgress percentage={100} color="#00A264" />
+                <CircularProgress percentage={Math.round(vettingServicesComplete?.percentage)} color={vettingServicesComplete.color}  />
               </div>
             </div>
-            {mCOpen && <VettingServices />} */}
+            {mCOpen && <VettingServices vettingServicesComplete={vettingServicesComplete} setVettingServicesComplete={setVettingServicesComplete} userDetail={profileDetail}  />}
 
 
 

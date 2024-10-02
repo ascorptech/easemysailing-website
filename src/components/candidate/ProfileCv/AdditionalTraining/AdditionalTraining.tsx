@@ -516,7 +516,7 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
 
       <div className="flex gap-2 mb-4 mt-4">
         <button
-          type="button"
+          type="submit"
           className="border text-[14px] leading-[19.07px] font-[poppins]  border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
         >
           Save

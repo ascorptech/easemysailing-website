@@ -1,5 +1,5 @@
 "use client";
-import { AddProfileData } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import { AddProfileData, GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
 import React, { useEffect } from "react";
 
@@ -34,6 +34,14 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
   const [country1, setCountry1] = useState("");
   const [nACountrycode, setNACountrycode] = useState("");
   const [countryDrop, setCountryDrop] = useState<any>([]);
+
+
+  useEffect(() => {
+    GetDropdownDetails('country', (res: any) => {
+      // console.log('County',res?.data)
+      setCountryDrop(res?.data?.values)
+    })
+  }, [])
 
   const totalFields = 12;
   const filledFields = [
@@ -247,9 +255,9 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
                   <option value="" disabled>
                     country
                   </option>
-                  <option value="india">India</option>
-                  <option value="austrelia">Austrelia</option>
-                  <option value="england">England</option>
+                  {countryDrop && countryDrop?.map((country: any, index: number) => (
+                <option key={index} value={country}>{country?.toUpperCase()}</option>
+              ))}
                 </select>
               </div>
             </div>

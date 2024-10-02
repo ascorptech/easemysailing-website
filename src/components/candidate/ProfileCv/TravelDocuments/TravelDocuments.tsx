@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { useEffect, useState } from "react";
 import CircularProgress from "../CircularProgress";
+import { GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 
 type TravelDocumentsComplete = {
   percentage: number;
@@ -46,6 +47,14 @@ const TravelDocuments = ({
   const [flagState, setFlagState] = useState("");
   const [issueDateVisa, setIssueDateVisa] = useState("");
   const [expryDateVisa, setExpryDateVisa] = useState("");
+  const [countryDrop, setCountryDrop] = useState<any>([]);
+
+  useEffect(() => {
+    GetDropdownDetails('country', (res: any) => {
+      // console.log('County',res?.data)
+      setCountryDrop(res?.data?.values)
+    })
+  }, [])
 
   const totalFields = 22;
   const filledFields = [
@@ -162,9 +171,9 @@ const TravelDocuments = ({
             <option value="" disabled selected>
               Passport
             </option>
-            <option value="training1">Training1</option>
-            <option value="traingig2">Training2</option>
-            <option value="training3">Training3</option>
+            {countryDrop && countryDrop?.map((country: any, index: number) => (
+                <option key={index} value={country}>{country?.toUpperCase()}</option>
+              ))}
           </select>
         </div>
 
@@ -240,9 +249,9 @@ const TravelDocuments = ({
             <option value="" disabled selected>
               Biometric
             </option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
+            {countryDrop && countryDrop?.map((country: any, index: number) => (
+                <option key={index} value={country}>{country?.toUpperCase()}</option>
+              ))}
           </select>
         </div>
 
@@ -300,9 +309,9 @@ const TravelDocuments = ({
             <option value="" disabled selected>
               Flag State
             </option>
-            <option value="Flag State1">Flag State1</option>
-            <option value="Flag State2">Flag State2</option>
-            <option value="Flag State3">Flag State3</option>
+            {countryDrop && countryDrop?.map((country: any, index: number) => (
+                <option key={index} value={country}>{country?.toUpperCase()}</option>
+              ))}
           </select>
         </div>
         <div className="   ">
@@ -430,9 +439,9 @@ const TravelDocuments = ({
             <option value="" disabled selected>
               Issue Authority
             </option>
-            <option value="Issue Authority1">Issue Authority1</option>
-            <option value="Issue Authority2">Issue Authority2</option>
-            <option value="Issue Authority3">Issue Authority3</option>
+            {countryDrop && countryDrop?.map((country: any, index: number) => (
+                <option key={index} value={country}>{country?.toUpperCase()}</option>
+              ))}
           </select>
         </div>
         <div className="   ">
@@ -542,9 +551,9 @@ const TravelDocuments = ({
             <option value="" disabled selected>
               Issuing Country
             </option>
-            <option value="issuing country1">Issuing Country1</option>
-            <option value="issuing country2">Issuing Country2</option>
-            <option value="issuing country3">Issuing Country3</option>
+            {countryDrop && countryDrop?.map((country: any, index: number) => (
+                <option key={index} value={country}>{country?.toUpperCase()}</option>
+              ))}
           </select>
         </div>
         <div className="">

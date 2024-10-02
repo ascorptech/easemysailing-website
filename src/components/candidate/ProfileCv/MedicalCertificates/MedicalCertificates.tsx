@@ -1,4 +1,5 @@
 "use client";
+import { GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -48,6 +49,28 @@ const MedicalCertificates = ({medicalComplete, setMedicalComplete,userDetail}:Pr
   const [ covidOptions, setCovidOptions] = useState("");
   const [ vaccinationExpiry, setVaccinationExpiry] = useState("");
   const [expiresMedical, setExpiresMedical] = useState(false);
+  const [typeDrop,setTypeDrop] = useState<any>([])
+  const [drugDrop,setDrugDrop] = useState<any>([])
+  const [vaccineTypeDrop,setVaccineTypeDrop] = useState<any>([])
+  const [countryDrop, setCountryDrop] = useState<any>([]);
+
+
+  useEffect(() => {
+    GetDropdownDetails('MEDICALFITNESSTYPE', (res: any) => {
+      setTypeDrop(res?.data?.values)
+    })
+    GetDropdownDetails('DRUG&ALCOHOLTEST', (res: any) => {
+      setDrugDrop(res?.data?.values)
+    })
+    GetDropdownDetails('COVID19VACCINE', (res: any) => {
+      console.log('vac',res?.data)
+      setVaccineTypeDrop(res?.data?.values)
+    })
+    GetDropdownDetails('country', (res: any) => {
+      // console.log('County',res?.data)
+      setCountryDrop(res?.data?.values)
+    })
+  }, [])
 
  
   //   const handleFileChange = (event: any) => {
@@ -148,9 +171,9 @@ const MedicalCertificates = ({medicalComplete, setMedicalComplete,userDetail}:Pr
             <option value="" disabled selected>
               Type
             </option>
-            <option value="training1">Training1</option>
-            <option value="training2">Training2</option>
-            <option value="training3">Training3</option>
+            {typeDrop && typeDrop?.map((typ: any, index: number) => (
+                <option key={index} value={typ}>{typ?.toUpperCase()}</option>
+              ))}
           </select>
         </div>
 
@@ -189,9 +212,9 @@ const MedicalCertificates = ({medicalComplete, setMedicalComplete,userDetail}:Pr
             <option value="" disabled selected>
               Issuing Country
             </option>
-            <option value="India">India</option>
-            <option value="Us">Us</option>
-            <option value="England">England</option>
+            {countryDrop && countryDrop?.map((country: any, index: number) => (
+                <option key={index} value={country}>{country?.toUpperCase()}</option>
+              ))}
           </select>
         </div>
 
@@ -334,9 +357,9 @@ const MedicalCertificates = ({medicalComplete, setMedicalComplete,userDetail}:Pr
             <option value="" disabled selected>
               Type
             </option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
+            {drugDrop && drugDrop?.map((drug: any, index: number) => (
+                <option key={index} value={drug}>{drug?.toUpperCase()}</option>
+              ))}
           </select>
         </div>
 
@@ -376,9 +399,9 @@ const MedicalCertificates = ({medicalComplete, setMedicalComplete,userDetail}:Pr
             <option value="" disabled selected>
               Issuing Country
             </option>
-            <option value="India">India</option>
-            <option value="us">Us</option>
-            <option value="england">England</option>
+            {countryDrop && countryDrop?.map((country: any, index: number) => (
+                <option key={index} value={country}>{country?.toUpperCase()}</option>
+              ))}
           </select>
         </div>
         {/* <div className=""> */}
@@ -513,15 +536,15 @@ const MedicalCertificates = ({medicalComplete, setMedicalComplete,userDetail}:Pr
             <option value="" disabled selected>
               Type
             </option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
+            {vaccineTypeDrop && vaccineTypeDrop?.map((typ: any, index: number) => (
+                <option key={index} value={typ}>{typ?.toUpperCase()}</option>
+              ))}
           </select>
         </div>
 
         <div className="">
           <label className="text-[14px] leading-[19.07px]  text-[#333333] " htmlFor="covid">
-            Covid Caccine Name Country
+            Covid Vaccine Name Country
           </label>
           <select
             id="covid"
@@ -531,11 +554,11 @@ const MedicalCertificates = ({medicalComplete, setMedicalComplete,userDetail}:Pr
             onChange={(e) => setCovidOptions(e.target.value)}
           >
             <option value="" disabled selected>
-              Covid Caccine Name Country
+              Covid Vaccine Name Country
             </option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
+            {countryDrop && countryDrop?.map((country: any, index: number) => (
+                <option key={index} value={country}>{country?.toUpperCase()}</option>
+              ))}
           </select>
         </div>
 

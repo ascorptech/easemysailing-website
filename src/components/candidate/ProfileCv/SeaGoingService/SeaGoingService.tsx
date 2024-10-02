@@ -1,4 +1,5 @@
 "use client";
+import { GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -24,6 +25,29 @@ const SeaGoingService = ({seaGoingServiceComplete, setSeaGoingServiceComplete,us
   const [rank, setRank] = useState("");
   const [gearless, setGearless] = useState("");
   const [inertGas,  setInertGas] = useState("");
+  const [imoDrop,  setImoDrop] = useState([]);
+  const [rankDrop, setRankDrop] = useState<any>([])
+  const [engineDrop, setEngineDrop] = useState<any>([])
+
+  useEffect(() => {
+    GetDropdownDetails('MEDICALFITNESSTYPE', (res: any) => {
+      setImoDrop(res?.data?.values)
+    })
+    GetDropdownDetails('rank', (res: any) => {
+      setRankDrop(res?.data?.values)
+    })
+    GetDropdownDetails('DRUG&ALCOHOLTEST', (res: any) => {
+      setEngineDrop(res?.data?.values)
+    })
+    // GetDropdownDetails('COVID19VACCINE', (res: any) => {
+    //   console.log('vac',res?.data)
+    //   setVaccineTypeDrop(res?.data?.values)
+    // })
+    // GetDropdownDetails('country', (res: any) => {
+    //   // console.log('County',res?.data)
+    //   setCountryDrop(res?.data?.values)
+    // })
+  }, [])
 
 
   const totalFields = 11;
@@ -97,8 +121,9 @@ const SeaGoingService = ({seaGoingServiceComplete, setSeaGoingServiceComplete,us
             <option value="" disabled selected>
               IMO
             </option>
-            <option value="trainig1">Training1</option>
-            <option value="training2">Training2</option>
+            {imoDrop && imoDrop?.map((im: any, index: number) => (
+                <option key={index} value={im}>{im?.toUpperCase()}</option>
+              ))}
             
           </select>
         </div>
@@ -136,9 +161,9 @@ const SeaGoingService = ({seaGoingServiceComplete, setSeaGoingServiceComplete,us
             <option value="" disabled selected>
               Rank
             </option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
+            {rankDrop && rankDrop?.map((rank: any, index: number) => (
+                <option key={index} value={rank}>{rank?.toUpperCase()}</option>
+              ))}
           </select>
         </div>
 
@@ -176,9 +201,9 @@ const SeaGoingService = ({seaGoingServiceComplete, setSeaGoingServiceComplete,us
               <option value="" disabled selected>
                 Engine Make
               </option>
-              <option value="engine1">Engine 1</option>
-              <option value="engine2">Engine 2</option>
-              <option value="engine3">Engine 3</option>
+              {engineDrop && engineDrop?.map((eng: any, index: number) => (
+                <option key={index} value={eng}>{eng?.toUpperCase()}</option>
+              ))}
             </select>
           </div>
 

@@ -2,6 +2,8 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import CircularProgress from "../CircularProgress";
+import { AddAboutMeData } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import { toast } from "react-toastify";
 
 type AboutMeComplete = {
   percentage: number;
@@ -64,7 +66,31 @@ const AboutMe = ({aboutMeComplete, setAboutMeComplete, userDetail}: Props) => {
   const handleSubmit = async (e: React.FormEvent) => {
     
     e.preventDefault(); 
+
+    let data = {
+      "id": userDetail?.userId,
+      "personalityAndProfessionalAttitude": personality,
+      "additionalSeaServiceInfo": additional,
+      "futureAimsAndExpectations": myFuture,
+      "employmentDeclaration": criminal
+    }
+
+    AddAboutMeData(data,AddAboutMeDataCB)
   };
+
+  const AddAboutMeDataCB = (result:any)=>{
+    console.log('res',result)
+    if (result?.status == 200||result?.status == 201) {
+      console.log(result)
+      toast.success("About me submited successfully");
+      setTimeout(() => {
+        window.location.reload()
+      }, 1000);
+    } else {
+      console.log(result)
+      toast.error("About me not submited ");
+    }
+  }
 
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">

@@ -5,5 +5,7 @@ export default{
     POSTMYJOB:'/api/job-requirements',
     GETMYJOB:'/api/job-requirements',
     POSTNEXTOF:'/api/next-of-kin-details',
-    POSTLANGUAGE:'/api/v1/languages'
+    POSTLANGUAGE:'/api/v1/languages',
+    POSTABOUTME:'/api/v1/aboutme',
+    POSTCONTACT:'/api/v1/contact-details'
 }

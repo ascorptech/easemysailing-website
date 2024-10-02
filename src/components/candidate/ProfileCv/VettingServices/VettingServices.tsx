@@ -19,20 +19,95 @@ type Props = {
 const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, userDetail}:Props) => {
   // State for form fields
 
-  const [whatsApp, setWhatsApp] = useState(false);
-  const [weChat, setWeChat] = useState(false);
-  const [facebookMess, setFacebookMess] = useState(false);
-  const [telegram, setTelegram] = useState(false);
-  const [skypeId, setSkypeId] = useState("");
-  const [linkedIn, setLinkedIn] = useState(false);
-  const [facebook, setFacebook] = useState(false);
-  const [instagram, setInstagram] = useState(false);
-  const [other, setOther] = useState(false);
+  const [inProgress, setInProgress] = useState(false);
+  const [done, setDone] = useState(false);
+  const [notApplicable, setNotApplicable] = useState(false);
+  const [inProgress1, setInProgress1] = useState(false);
+  const [done1, setDone1] = useState(false);
+  const [notApplicable1, setNotApplicable1] = useState(false);
+  const [inProgress2, setInProgress2] = useState(false);
+  const [done2, setDone2] = useState(false);
+  const [notApplicable2, setNotApplicable2] = useState(false);
+  const [inProgress3, setInProgress3] = useState(false);
+  const [done3, setDone3] = useState(false);
+  const [notApplicable3, setNotApplicable3] = useState(false);
+  const [inProgress4, setInProgress4] = useState(false);
+  const [done4, setDone4] = useState(false);
+  const [notApplicable4, setNotApplicable4] = useState(false);
+  const [inProgress5, setInProgress5] = useState(false);
+  const [done5, setDone5] = useState(false);
+  const [notApplicable5, setNotApplicable5] = useState(false);
+  const [inProgress6, setInProgress6] = useState(false);
+  const [done6, setDone6] = useState(false);
+  const [notApplicable6, setNotApplicable6] = useState(false)
+  
+  const [inProgress7, setInProgress7] = useState(false);
+
+  const [done7, setDone7] = useState(false);
+  const [notApplicable7, setNotApplicable7] = useState(false);
+  const [inProgress8, setInProgress8] = useState(false);
+  const [optional, setOptional] = useState(false);
+  const [optional1, setOptional1] = useState(false);
+  const [optional2, setOptional2] = useState(false);
+  const [optional3, setOptional3] = useState(false);
+  const [optional4, setOptional4] = useState(false);
 
 
-  const totalFields = 4;
+  const [done8, setDone8] = useState(false);
+  const [notApplicable8, setNotApplicable8] = useState(false);
+  const [inProgress9, setInProgress9] = useState(false);
+
+  const [done9, setDone9] = useState(false);
+  const [notApplicable9, setNotApplicable9] = useState(false);
+  const [inProgress10, setInProgress10] = useState(false);
+
+  const [done10, setDone10] = useState(false);
+  const [notApplicable10, setNotApplicable10] = useState(false);
+
+
+
+
+
+  const totalFields = 38;
   const filledFields = [
-    whatsApp,
+    inProgress,
+    done,
+    notApplicable,
+    inProgress1,
+    done1,
+    notApplicable1,
+    inProgress2,
+    done2,
+    notApplicable2,
+    inProgress3,
+    done3,
+    notApplicable3,
+    inProgress4,
+    done4,
+    notApplicable4,
+    inProgress5,
+    done5,
+    notApplicable5,
+    inProgress6,
+    done6,
+    notApplicable6,
+    inProgress7,
+    done7,
+    notApplicable7,
+    inProgress8,
+    done8,
+    notApplicable8,
+    inProgress9,
+    done9,
+    notApplicable9,
+    inProgress10,
+    done10,
+    notApplicable10,
+    optional,
+    optional1,
+    optional2,
+    optional3,
+    optional4
   
   ].filter(Boolean).length;
 
@@ -84,8 +159,8 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
             <div>
               <input
                 type="checkbox"
-                checked={whatsApp}
-                onChange={() => setWhatsApp(!whatsApp)}
+                checked={inProgress}
+                onChange={() => setInProgress(!inProgress)}
               />
               <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               In Progress
@@ -95,9 +170,9 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
               {" "}
               <input
                 type="checkbox"
-                checked={weChat}
+                checked={done}
                 onChange={() =>
-                  setWeChat(!weChat)
+                  setDone(!done)
                 }
                 className="ml-4"
               />
@@ -110,8 +185,8 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
               {" "}
               <input
                 type="checkbox"
-                checked={facebookMess}
-                onChange={() => setFacebookMess(!facebookMess)}
+                checked={notApplicable}
+                onChange={() => setNotApplicable(!notApplicable)}
               />
               <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               Not Applicable
@@ -130,8 +205,8 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
             <div>
               <input
                 type="checkbox"
-                checked={whatsApp}
-                onChange={() => setWhatsApp(!whatsApp)}
+                checked={inProgress1}
+                onChange={() => setInProgress1(!inProgress1)}
               />
               <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               In Progress
@@ -141,9 +216,9 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
               {" "}
               <input
                 type="checkbox"
-                checked={weChat}
+                checked={done1}
                 onChange={() =>
-                  setWeChat(!weChat)
+                  setDone1(!done1)
                 }
                 className="ml-4"
               />
@@ -156,8 +231,8 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
               {" "}
               <input
                 type="checkbox"
-                checked={facebookMess}
-                onChange={() => setFacebookMess(!facebookMess)}
+                checked={notApplicable1}
+                onChange={() => setNotApplicable1(!notApplicable1)}
               />
               <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               Not Applicable
@@ -179,8 +254,8 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
             <div>
               <input
                 type="checkbox"
-                checked={whatsApp}
-                onChange={() => setWhatsApp(!whatsApp)}
+                checked={inProgress2}
+                onChange={() => setInProgress2(!inProgress2)}
               />
               <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               In Progress
@@ -190,9 +265,9 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
               {" "}
               <input
                 type="checkbox"
-                checked={weChat}
+                checked={done2}
                 onChange={() =>
-                  setWeChat(!weChat)
+                  setDone2(!done2)
                 }
                 className="ml-4"
               />
@@ -205,8 +280,8 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
               {" "}
               <input
                 type="checkbox"
-                checked={facebookMess}
-                onChange={() => setFacebookMess(!facebookMess)}
+                checked={notApplicable2}
+                onChange={() => setNotApplicable2(!notApplicable2)}
               />
               <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Not Applicable
@@ -224,8 +299,8 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
             <div>
               <input
                 type="checkbox"
-                checked={whatsApp}
-                onChange={() => setWhatsApp(!whatsApp)}
+                checked={inProgress3}
+                onChange={() => setInProgress3(!inProgress3)}
               />
               <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 In Progress
@@ -235,9 +310,9 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
               {" "}
               <input
                 type="checkbox"
-                checked={weChat}
+                checked={done3}
                 onChange={() =>
-                  setWeChat(!weChat)
+                  setDone3(!done3)
                 }
                 className="ml-4"
               />
@@ -250,8 +325,8 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
               {" "}
               <input
                 type="checkbox"
-                checked={facebookMess}
-                onChange={() => setFacebookMess(!facebookMess)}
+                checked={notApplicable3}
+                onChange={() => setNotApplicable3(!notApplicable3)}
               />
               <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               Not Applicable
@@ -267,8 +342,8 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
             <div>
               <input
                 type="checkbox"
-                checked={whatsApp}
-                onChange={() => setWhatsApp(!whatsApp)}
+                checked={inProgress4}
+                onChange={() => setInProgress4(!inProgress4)}
               />
               <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 In Progress
@@ -278,9 +353,9 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
               {" "}
               <input
                 type="checkbox"
-                checked={weChat}
+                checked={done4}
                 onChange={() =>
-                  setWeChat(!weChat)
+                  setDone4(!done4)
                 }
                 className="ml-4"
               />
@@ -293,8 +368,8 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
               
               <input
                 type="checkbox"
-                checked={facebookMess}
-                onChange={() => setFacebookMess(!facebookMess)}
+                checked={notApplicable4}
+                onChange={() => setNotApplicable4(!notApplicable4)}
               />
               <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               Not Applicable
@@ -310,8 +385,8 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
             <div>
               <input
                 type="checkbox"
-                checked={whatsApp}
-                onChange={() => setWhatsApp(!whatsApp)}
+                checked={inProgress5}
+                onChange={() => setInProgress5(!inProgress5)}
               />
               <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               In Progress
@@ -321,9 +396,9 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
               {" "}
               <input
                 type="checkbox"
-                checked={weChat}
+                checked={done5}
                 onChange={() =>
-                  setWeChat(!weChat)
+                  setDone5(!done5)
                 }
                 className="ml-4"
               />
@@ -336,8 +411,8 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
               {" "}
               <input
                 type="checkbox"
-                checked={facebookMess}
-                onChange={() => setFacebookMess(!facebookMess)}
+                checked={notApplicable5}
+                onChange={() => setNotApplicable5(!notApplicable5)}
               />
               <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Not Applicable
@@ -354,8 +429,8 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
             <div>
               <input
                 type="checkbox"
-                checked={whatsApp}
-                onChange={() => setWhatsApp(!whatsApp)}
+                checked={inProgress6}
+                onChange={() => setInProgress6(!inProgress6)}
               />
               <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               In Progress
@@ -365,9 +440,9 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
               {" "}
               <input
                 type="checkbox"
-                checked={weChat}
+                checked={done6}
                 onChange={() =>
-                  setWeChat(!weChat)
+                  setDone6(!done6)
                 }
                 className="ml-4"
               />
@@ -380,8 +455,8 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
               {" "}
               <input
                 type="checkbox"
-                checked={facebookMess}
-                onChange={() => setFacebookMess(!facebookMess)}
+                checked={notApplicable6}
+                onChange={() => setNotApplicable6(!notApplicable6)}
               />
               <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               Not Applicable
@@ -392,9 +467,9 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
             <div>
               <input
                 type="checkbox"
-                checked={telegram}
+                checked={optional}
                 onChange={() =>
-                  setTelegram(!telegram)
+                  setOptional(!optional)
                 }
                 className="ml-4"
               />
@@ -411,8 +486,8 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
             <div>
               <input
                 type="checkbox"
-                checked={whatsApp}
-                onChange={() => setWhatsApp(!whatsApp)}
+                checked={inProgress7}
+                onChange={() => setInProgress7(!inProgress7)}
               />
               <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 In Progress
@@ -422,9 +497,9 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
               {" "}
               <input
                 type="checkbox"
-                checked={weChat}
+                checked={done7}
                 onChange={() =>
-                  setWeChat(!weChat)
+                  setDone7(!done7)
                 }
                 className="ml-4"
               />
@@ -437,8 +512,8 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
               {" "}
               <input
                 type="checkbox"
-                checked={facebookMess}
-                onChange={() => setFacebookMess(!facebookMess)}
+                checked={notApplicable7}
+                onChange={() => setNotApplicable7(!notApplicable7)}
               />
               <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Not Applicable
@@ -449,9 +524,9 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
             <div>
               <input
                 type="checkbox"
-                checked={telegram}
+                checked={optional1}
                 onChange={() =>
-                  setTelegram(!telegram)
+                  setOptional1(!optional1)
                 }
                 className="ml-4"
               />
@@ -468,8 +543,8 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
             <div>
               <input
                 type="checkbox"
-                checked={whatsApp}
-                onChange={() => setWhatsApp(!whatsApp)}
+                checked={inProgress8}
+                onChange={() => setInProgress8(!inProgress8)}
               />
               <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 In Progress
@@ -479,9 +554,9 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
               {" "}
               <input
                 type="checkbox"
-                checked={weChat}
+                checked={done8}
                 onChange={() =>
-                  setWeChat(!weChat)
+                  setDone8(!done8)
                 }
                 className="ml-4"
               />
@@ -494,8 +569,8 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
               {" "}
               <input
                 type="checkbox"
-                checked={facebookMess}
-                onChange={() => setFacebookMess(!facebookMess)}
+                checked={notApplicable8}
+                onChange={() => setNotApplicable8(!notApplicable8)}
               />
               <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Not Applicable
@@ -506,9 +581,9 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
             <div>
               <input
                 type="checkbox"
-                checked={telegram}
+                checked={optional2}
                 onChange={() =>
-                  setTelegram(!telegram)
+                  setOptional2(!optional2)
                 }
                 className="ml-4"
               />
@@ -526,8 +601,8 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
             <div>
               <input
                 type="checkbox"
-                checked={whatsApp}
-                onChange={() => setWhatsApp(!whatsApp)}
+                checked={inProgress9}
+                onChange={() => setInProgress7(!inProgress9)}
               />
               <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 In Progress
@@ -537,9 +612,9 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
               {" "}
               <input
                 type="checkbox"
-                checked={weChat}
+                checked={done9}
                 onChange={() =>
-                  setWeChat(!weChat)
+                  setDone9(!done9)
                 }
                 className="ml-4"
               />
@@ -552,8 +627,8 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
               {" "}
               <input
                 type="checkbox"
-                checked={facebookMess}
-                onChange={() => setFacebookMess(!facebookMess)}
+                checked={notApplicable9}
+                onChange={() => setNotApplicable9(!notApplicable9)}
               />
               <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Not Applicable
@@ -564,9 +639,9 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
             <div>
               <input
                 type="checkbox"
-                checked={telegram}
+                checked={optional3}
                 onChange={() =>
-                  setTelegram(!telegram)
+                  setOptional3(!optional3)
                 }
                 className="ml-4"
               />
@@ -591,8 +666,8 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
             <div>
               <input
                 type="checkbox"
-                checked={whatsApp}
-                onChange={() => setWhatsApp(!whatsApp)}
+                checked={inProgress10}
+                onChange={() => setInProgress10(!inProgress10)}
               />
               <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 In Progress
@@ -602,9 +677,9 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
               {" "}
               <input
                 type="checkbox"
-                checked={weChat}
+                checked={done10}
                 onChange={() =>
-                  setWeChat(!weChat)
+                  setDone10(!done10)
                 }
                 className="ml-4"
               />
@@ -617,8 +692,8 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
               {" "}
               <input
                 type="checkbox"
-                checked={facebookMess}
-                onChange={() => setFacebookMess(!facebookMess)}
+                checked={notApplicable10}
+                onChange={() => setNotApplicable10(!notApplicable10)}
               />
               <label className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Not Applicable
@@ -629,9 +704,9 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
             <div>
               <input
                 type="checkbox"
-                checked={telegram}
+                checked={optional4}
                 onChange={() =>
-                  setTelegram(!telegram)
+                  setOptional4(!optional4)
                 }
                 className="ml-4"
               />

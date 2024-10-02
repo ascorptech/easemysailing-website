@@ -1,7 +1,7 @@
 import { deleteReq, getReq, patchReq, postReq, putReq } from "@/RootServices";
 import apiEndPoints from "./apiEndPoints";
 
-const {GETPROFILE,PUTPROFILE,GETENUMS,POSTMYJOB,GETMYJOB,POSTNEXTOF,POSTLANGUAGE,POSTABOUTME,POSTCONTACT,POSTONLINEPRASENCE,POSTLICENSES,POSTSEADETAILS  } = apiEndPoints
+const {GETPROFILE,PUTPROFILE,GETENUMS,POSTMYJOB,GETMYJOB,POSTNEXTOF,POSTLANGUAGE,POSTABOUTME,POSTCONTACT,POSTONLINEPRASENCE,POSTLICENSES,POSTSEADETAILS,POSTSEAGOING  } = apiEndPoints
 
 
 export const GetProfileDetail = async(id:any,cb:any)=>{
@@ -161,4 +161,16 @@ export const AddSeaDetailsData = async(userId:any,data:any ,cb:any)=>{
         console.log('err',error)
         return cb(error?.response)
     } 
+}
+// seagoing experiences
+export const AddSeagoingData = async(data:any ,cb:any)=>{
+    try {
+        console.log('Data to be submitted:', data);
+        const response = await postReq(POSTSEAGOING,data)
+        console.log('API response:', response);
+        return cb(response)
+    } catch (error:any) {
+        console.log('err',error)
+        return cb(error?.response)
+    }
 }

@@ -1,7 +1,7 @@
 import { deleteReq, getReq, patchReq, postReq, putReq } from "@/RootServices";
 import apiEndPoints from "./apiEndPoints";
 
-const {GETPROFILE,PUTPROFILE,GETENUMS,POSTMYJOB,GETMYJOB } = apiEndPoints
+const {GETPROFILE,PUTPROFILE,GETENUMS,POSTMYJOB,GETMYJOB,POSTABOUTME,POSTCONTACT } = apiEndPoints
 
 export const GetProfileDetail = async(id:any,cb:any)=>{
     try {
@@ -55,6 +55,31 @@ export const AddMyJobData = async(data:any ,cb:any)=>{
     try {
         console.log('Data to be submitted:', data);
         const response = await putReq(POSTMYJOB,data)
+        console.log('API response:', response);
+        return cb(response)
+    } catch (error:any) {
+        console.log('err',error)
+        return cb(error?.response)
+    }
+}
+
+// About Me
+export const AddAboutMeData = async(data:any ,cb:any)=>{
+    try {
+        console.log('Data to be submitted:', data);
+        const response = await postReq(POSTABOUTME,data)
+        console.log('API response:', response);
+        return cb(response)
+    } catch (error:any) {
+        console.log('err',error)
+        return cb(error?.response)
+    }
+}
+// Contact
+export const AddContactData = async(data:any ,cb:any)=>{
+    try {
+        console.log('Data to be submitted:', data);
+        const response = await postReq(POSTCONTACT,data)
         console.log('API response:', response);
         return cb(response)
     } catch (error:any) {

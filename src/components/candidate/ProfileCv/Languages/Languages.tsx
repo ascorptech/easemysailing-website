@@ -9,13 +9,13 @@ type LanguageComplete = {
   percentage: number;
   color: string;
 };
-type Props={
-  languageComplete: LanguageComplete; 
-  setLanguageComplete: React.Dispatch<React.SetStateAction<LanguageComplete>>; 
-  userDetail:any
+type Props = {
+  languageComplete: LanguageComplete;
+  setLanguageComplete: React.Dispatch<React.SetStateAction<LanguageComplete>>;
+  userDetail: any
 }
 
-const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) => {
+const Languages = ({ languageComplete, setLanguageComplete, userDetail }: Props) => {
   // State for form fields
   const [language1, setLanguage1] = useState("");
   const [addiLanguage, setAddiLanguage] = useState("");
@@ -33,9 +33,9 @@ const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) =>
 
   const [issuingCountry, setIssuingCountry] = useState("");
   const [dateofTest, setDateofTest] = useState("");
-  
- 
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+
+
+  const [selectedFile, setSelectedFile] = useState<any>(null);
 
   useEffect(() => {
     GetDropdownDetails('additionalLanguage', (res: any) => {
@@ -54,10 +54,10 @@ const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) =>
 
 
 
-  const totalFields =11;
+  const totalFields = 11;
   const filledFields = [
-    language1, 
-    addiLanguage, 
+    language1,
+    addiLanguage,
     languageLavel,
     englishLavel,
     languageTests,
@@ -67,28 +67,28 @@ const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) =>
     issuingCountry,
     dateofTest,
     selectedFile,
-   
+
   ].filter(Boolean).length;
 
   const percentage = (filledFields / totalFields) * 100;
   // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
   let color;
   useEffect(() => {
-    console.log('user',userDetail)
+    console.log('user', userDetail)
     if (percentage <= 30) {
       setLanguageComplete((prevState) => ({
         ...prevState, // Spread the previous state to keep any other properties
         percentage: percentage, // Update the percentage field
         color: '#FF0000' // Update the color field
       }));
-      color = "red"; 
+      color = "red";
     } else if (percentage <= 70) {
       setLanguageComplete((prevState) => ({
         ...prevState, // Spread the previous state to keep any other properties
         percentage: percentage, // Update the percentage field
         color: '#FF9900' // Update the color field
       }));
-      color = "#FF9900"; 
+      color = "#FF9900";
     } else {
       setLanguageComplete((prevState) => ({
         ...prevState, // Spread the previous state to keep any other properties
@@ -97,44 +97,27 @@ const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) =>
       }));
       color = "green";
     }
-  }, [percentage,color])
+  }, [percentage, color])
   const handleSubmit = (e: React.FormEvent) => {
     // try {
-    e.preventDefault(); 
+    e.preventDefault();
     let formData = new FormData();
 
     {
-      formData.append('Id', userDetail?.userId);
-      formData.append('nativeLanguage',language1);
-      formData.append('additionalLanguage',addiLanguage);
-    formData.append('additionalLanguageLevel',languageLavel);
-    formData.append('englishLevel',englishLavel);
-    formData.append('testLanguage',languageTests);
-    formData.append('testCenter',testCenter);
-    formData.append('testType',typeofTest);
-    formData.append('testResult',result);
-    formData.append('issuingCountry',issuingCountry);
-    formData.append('dateOfTest', dateofTest);
-    // formData.append('documentUrl',selectedFile);
-
-     
+      formData.append('nativeLanguage', language1);
+      formData.append('additionalLanguage', addiLanguage);
+      formData.append('additionalLanguageLevel', languageLavel);
+      formData.append('englishLevel', englishLavel);
+      formData.append('testLanguage', languageTests);
+      formData.append('testCenter', testCenter);
+      formData.append('testType', typeofTest);
+      formData.append('testResult', result);
+      formData.append('issuingCountry', issuingCountry);
+      formData.append('dateOfTest', dateofTest);
+      formData.append('document', selectedFile);
     }
 
-
-    // formData.append('userId',userDetail?.userId);
-    
-    // formData.append('lastName',lastName);
-    // formData.append('dateOfBirth',date);
-    // formData.append('cityOfBirth',cityBirth);
-    // formData.append('religion',religionName);
-    // formData.append('countryOfBirth',countryOfBirth);
-    // formData.append('gender',gender);
-    // formData.append('maritalStatus',marital);
-    // formData.append('nationality',nationality);
-
-    
-
-    AddLanguageData(userDetail?.userId,formData,  AddLanguagedataDB);
+    AddLanguageData(userDetail?.userId, formData, AddLanguagedataDB);
   };
 
   const AddLanguagedataDB = (result: any) => {
@@ -159,73 +142,73 @@ const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) =>
 
   return (
     <div className="container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
-          
+
 
       <form onSubmit={handleSubmit}>
-          {/* NATIVE LANGUAGE*/}
-          <div className="mb-3">
-            <h1 className="font-bold   ">NATIVE LANGUAGE</h1>
-            <div>
-              <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
-                Language
-              </label>
-              <select
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                value={language1}
-                onChange={(e) => setLanguage1(e.target.value)}
-              >
-                <option value="" disabled>
-                Language
-                </option>
-                {languageDrop && languageDrop?.map((lang: any, index: number) => (
-                <option key={index} value={lang}>{lang?.toUpperCase()}</option>
-              ))}
-              </select>
-            </div>
-          </div>
-
-          <div className="mb-3"> <h1 className="font-bold   ">ADDITIONAL LANGUAGE</h1>
-          <div className="grid grid-cols-2 gap-4  "> 
+        {/* NATIVE LANGUAGE*/}
+        <div className="mb-3">
+          <h1 className="font-bold   ">NATIVE LANGUAGE</h1>
           <div>
             <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
-            Language
+              Language
             </label>
             <select
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              value={addiLanguage}
-              onChange={(e) => setAddiLanguage(e.target.value)}
+              value={language1}
+              onChange={(e) => setLanguage1(e.target.value)}
             >
               <option value="" disabled>
-              Language
+                Language
               </option>
               {languageDrop && languageDrop?.map((lang: any, index: number) => (
                 <option key={index} value={lang}>{lang?.toUpperCase()}</option>
               ))}
             </select>
           </div>
+        </div>
 
-          {/* Preferred Vessel Type */}
-          <div>
-            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
-            Level
-            </label>
-            <select
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              value={languageLavel}
-              onChange={(e) => setLanguageLavel(e.target.value)}
-            >
-              <option value="" disabled>
-              Level              </option>
-              {languageLevelDrop && languageLevelDrop?.map((lang: any, index: number) => (
-                <option key={index} value={lang}>{lang?.toUpperCase()}</option>
-              ))}
-            </select>
-          </div>
+        <div className="mb-3"> <h1 className="font-bold   ">ADDITIONAL LANGUAGE</h1>
+          <div className="grid grid-cols-2 gap-4  ">
+            <div>
+              <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                Language
+              </label>
+              <select
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                value={addiLanguage}
+                onChange={(e) => setAddiLanguage(e.target.value)}
+              >
+                <option value="" disabled>
+                  Language
+                </option>
+                {languageDrop && languageDrop?.map((lang: any, index: number) => (
+                  <option key={index} value={lang}>{lang?.toUpperCase()}</option>
+                ))}
+              </select>
+            </div>
+
+            {/* Preferred Vessel Type */}
+            <div>
+              <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                Level
+              </label>
+              <select
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                value={languageLavel}
+                onChange={(e) => setLanguageLavel(e.target.value)}
+              >
+                <option value="" disabled>
+                  Level              </option>
+                {languageLevelDrop && languageLevelDrop?.map((lang: any, index: number) => (
+                  <option key={index} value={lang}>{lang?.toUpperCase()}</option>
+                ))}
+              </select>
+            </div>
           </div></div>
-          
-         
 
-          <div className="mb-3"><h1 className="font-bold  ">ENGLISH LEVEL</h1>
+
+
+        <div className="mb-3"><h1 className="font-bold  ">ENGLISH LEVEL</h1>
           <div>
             <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               Level
@@ -236,46 +219,46 @@ const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) =>
               onChange={(e) => setEnglishLavel(e.target.value)}
             >
               <option value="" disabled>
-              Level
+                Level
               </option>
               {languageLevelDrop && languageLevelDrop?.map((lang: any, index: number) => (
                 <option key={index} value={lang}>{lang?.toUpperCase()}</option>
               ))}
             </select>
           </div>
-          </div>
+        </div>
 
-          {/* LANGUAGE TESTS */}
+        {/* LANGUAGE TESTS */}
 
 
-          <div className="mb-3">
-            <h1 className=" font-bold ">LANGUAGE TESTS</h1>
-            <div className="grid grid-cols-2 gap-4">
+        <div className="mb-3">
+          <h1 className=" font-bold ">LANGUAGE TESTS</h1>
+          <div className="grid grid-cols-2 gap-4">
             <div>
-            <label htmlFor="languagetest" className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
-              Language
-            </label>
-            <select
-            id="languagetest"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              value={languageTests}
-              onChange={(e) => setLanguageTests(e.target.value)}
-            >
-              <option value="" disabled>
-              Language
-              </option>
-              {languageDrop && languageDrop?.map((lang: any, index: number) => (
-                <option key={index} value={lang}>{lang?.toUpperCase()}</option>
-              ))}
-            </select>
-          </div>
+              <label htmlFor="languagetest" className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                Language
+              </label>
+              <select
+                id="languagetest"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                value={languageTests}
+                onChange={(e) => setLanguageTests(e.target.value)}
+              >
+                <option value="" disabled>
+                  Language
+                </option>
+                {languageDrop && languageDrop?.map((lang: any, index: number) => (
+                  <option key={index} value={lang}>{lang?.toUpperCase()}</option>
+                ))}
+              </select>
+            </div>
 
-          <div className="w-full ">
+            <div className="w-full ">
               <label
                 className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1 "
                 htmlFor="testcenter"
               >
-               Test Center
+                Test Center
               </label>
               {/* <div className="relative flex items-center  "> */}
               <input
@@ -297,15 +280,15 @@ const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) =>
                 Type of Test
               </label>
               {/* <div className="relative flex items-center  "> */}
-                <input
-                  id="cityName"
-                  type="text"
-                  value={typeofTest}
-                  onChange={(e) => setTypeofTest(e.target.value)}
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                  placeholder=""
-                  required
-                />
+              <input
+                id="cityName"
+                type="text"
+                value={typeofTest}
+                onChange={(e) => setTypeofTest(e.target.value)}
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                placeholder=""
+                required
+              />
               {/* </div> */}
             </div>
             <div className=" w-full">
@@ -315,60 +298,60 @@ const Languages = ({languageComplete, setLanguageComplete, userDetail}:Props) =>
               >
                 Result
               </label>
-                <input
-                  id="result1"
-                  type="text"
-                  value={result}
-                  onChange={(e) => setResult(e.target.value)}
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                  placeholder=""
-                  required
-                />
+              <input
+                id="result1"
+                type="text"
+                value={result}
+                onChange={(e) => setResult(e.target.value)}
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                placeholder=""
+                required
+              />
             </div>
 
             <div>
-            <label htmlFor="issuingcountry" className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
-              Issuing Country
-            </label>
-            <select
-            id="issuingcountry"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              value={issuingCountry}
-              onChange={(e) => setIssuingCountry(e.target.value)}
-            >
-              <option value="" disabled>
+              <label htmlFor="issuingcountry" className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Issuing Country
-              </option>
-              {countryDrop && countryDrop?.map((country: any, index: number) => (
-                <option key={index} value={country}>{country?.toUpperCase()}</option>
-              ))}
-            </select>
+              </label>
+              <select
+                id="issuingcountry"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                value={issuingCountry}
+                onChange={(e) => setIssuingCountry(e.target.value)}
+              >
+                <option value="" disabled>
+                  Issuing Country
+                </option>
+                {countryDrop && countryDrop?.map((country: any, index: number) => (
+                  <option key={index} value={country}>{country?.toUpperCase()}</option>
+                ))}
+              </select>
+            </div>
+
+
+            <div>
+              <label htmlFor="dateofTest" className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                Date of Test
+              </label>
+              <input
+                id="dateofTest"
+                type="date"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                value={dateofTest}
+                onChange={(e) => setDateofTest(e.target.value)}
+              />
+            </div>
+
+
+            {/* Available */}
+
           </div>
 
+        </div>
 
-          <div>
-            <label htmlFor="dateofTest" className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
-              Date of Test
-            </label>
-            <input
-            id="dateofTest"
-              type="date"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              value={dateofTest}
-              onChange={(e) => setDateofTest(e.target.value)}
-            />
-          </div>
-          
+        {/* Attachment Document */}
 
-          {/* Available */}
-          
-          </div>
-
-          </div>
-
-          {/* Attachment Document */}
-
-          <div className="flex gap-6 items-center  my-6 justify-center">
+        <div className="flex gap-6 items-center  my-6 justify-center">
           <label
             htmlFor="medicalfile-upload3"
             className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[poppins]  "

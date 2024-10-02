@@ -13,7 +13,7 @@ const ProfileStatus: React.FC = () => {
           <div className=" relative  text-center h-[92px] w-[92px] ">
             <Image
              priority
-              src="/Images/robin.png"
+              src="/images/robin.png"
               alt="Avatar"
               width={800}
               height={800}
@@ -162,7 +162,7 @@ const ProfileStatus: React.FC = () => {
               <div className="flex items-center space-x-2">
                 <Image
                 priority
-                  src="/Images/candidate/Salary.png"
+                  src="/images/candidate/Salary.png"
                   alt="Salary Icon"
                   width={500}
                   height={500}
@@ -177,7 +177,7 @@ const ProfileStatus: React.FC = () => {
               <div className="flex items-center space-x-2 ">
                 <Image
                 priority
-                  src="/Images/candidate/rank.png"
+                  src="/images/candidate/rank.png"
                   alt="Rank Icon"
                   width={500}
                   height={500}
@@ -192,7 +192,7 @@ const ProfileStatus: React.FC = () => {
               <div className="flex items-center space-x-2 ">
                 <Image
                 priority
-                  src="/Images/candidate/ship-boat.png"
+                  src="/images/candidate/ship-boat.png"
                   alt="Ship Type Icon"
                   width={500}
                   height={500}

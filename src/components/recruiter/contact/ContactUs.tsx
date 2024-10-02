@@ -8,8 +8,9 @@ import { toast } from "react-toastify";
 import { AddContactData } from "@/app/(web)/contact/Services/contactService";
 import PhoneInput from "react-phone-input-2"; // Import the phone input component
 import "react-phone-input-2/lib/style.css";
+import Image from "next/image";
 
-const Contact = () => {
+const ContactUs = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -49,7 +50,7 @@ const Contact = () => {
       newErrors.phone = "Phone number is required";
       formIsValid = false;
     } else if (/^\d{13}$/.test(phone)) {
-      console.log('phone',phone.length)
+      console.log("phone", phone.length);
       newErrors.phone = "Phone number must be 10 digits";
       formIsValid = false;
     }
@@ -94,16 +95,11 @@ const Contact = () => {
   };
 
   return (
-    <div className="contact mt-14">
-      <div className="flex justify-center items-center h-[8rem] bg-green-100 bg-[url('/images/Rectangle1.png')] ">
-        <h1 className="text-[46px] leading-[69px] text-[#00A264] font-bold">
-          Get in touch
-        </h1>
-      </div>
+    <div className="-z-20 mt-14">
       <div className="grid lg:grid-cols-2 lg:gap-24 md:mx-24 mx-8 my-10">
         <div className="bg-gray-200 p-8 rounded-xl">
-          <h1 className="text-center mb-2">
-            For questions and assistance, reach out to us.
+          <h1 className=" text-2xl font-bold mb-2">
+            For any queries and assistance, reach out to us.{" "}
           </h1>
           <form onSubmit={handleSubmit}>
             {/* Name Input */}
@@ -141,43 +137,21 @@ const Contact = () => {
             {/* Phone Number with Country Code */}
             <div className="mb-[7px]">
               <div className="relative flex items-center">
-                {/* Country Code Dropdown */}
-                {/* <select
-                  value={countryCode}
-                  onChange={(e) => setCountryCode(e.target.value)}
-                  className="border h-10  rounded-lg px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
-                >
-                  <option value="+91">IN +91 </option>
-                  <option value="+1">US +1 </option>
-                  <option value="+93">AF +93 </option>
-                  
-
-                  {/* Add more country codes as needed */}
-                {/* </select> */}
-
-                {/* Phone Input */}
-                {/* <input
-                  id="phone"
-                  type="text"
-                  value={phone}
-                  maxLength={10}
-                  onChange={(e) => setPhone(e.target.value)}
-                  className="border lg:h-10 rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm ml-2"
-                  placeholder="Phone Number"
-                  required
-                /> */}
                 <PhoneInput
                   country={"in"} //default country
                   value={phone}
                   // maxLength={10}
                   // onChange={(e) => setPhone(e.target.value.trim())}
-                  onChange={(phone) => {console.log('p',phone); setPhone(phone)}}
+                  onChange={(phone) => {
+                    console.log("p", phone);
+                    setPhone(phone);
+                  }}
                   inputProps={{
                     name: "phone",
                     required: true,
                     autoFocus: false,
                   }}
-                  inputClass="!w-full !h-[42px] !leading-[21.79px] !text-[16px] !text-[#333333] !border !rounded-lg focus:!outline-none focus:!shadow-outline font-[poppins] "
+                  inputClass="!w-full !h-[42px] !leading-[21.79px] !text-[16px] !text-[#333333] !border !rounded-lg focus:!outline-none focus:!shadow-outline font-[opensans] "
                   containerClass="w-full"
                 />
                 {/* <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-[#00A264] text-white mr-7 rounded-l-md">
@@ -218,25 +192,14 @@ const Contact = () => {
 
         {/* Contact Info Section */}
         <div>
-          <div className="flex items-center bg-white shadow-lg border p-3 mt-3 rounded-xl">
-            <div className="w-16 h-16 flex items-center justify-center text-[#00A264] text-3xl">
-              <GrLocation />
-            </div>
-            <div className="lg:ml-4 ml-6">
-              <h2 className="font-bold text-lg">Address</h2>
-              <p className="text-sm">
-                Noida, Gautam Buddha Nagar, Uttar Pradesh, India -201301
-              </p>
-            </div>
-          </div>
-
           <div className="items-center bg-white shadow-lg border flex py-3 px-1 lg:px-3 mt-3 rounded-xl">
             <div className="w-16 h-16 flex items-center justify-center text-[#00A264] text-3xl">
               <FiPhoneCall />
             </div>
             <div className="ml-3 lg:ml-4">
               <h2 className="font-bold text-lg">Call us on</h2>
-              <p className="text-sm">(+91) - 7055-70-5555</p>
+              <p className="text-sm">+1 (XXX) XXX-XXXX
+              </p>
             </div>
           </div>
 
@@ -246,7 +209,45 @@ const Contact = () => {
             </div>
             <div className="ml-3">
               <h2 className="font-bold text-lg">Mail Us</h2>
-              <p className="text-sm">business@EaseMySailing.com</p>
+              <p className="text-sm">easemysailing@gmail.com</p>
+            </div>
+          </div>
+
+          {/* third section */}
+
+          <div className="flex  items-center bg-white shadow-lg border p-3 mt-3 rounded-xl">
+            <div className="lg:ml-4 flex justify-center items-center ml-6">
+              <h2 className="font-bold text-lg">Follow Us:</h2>
+              <div className="w-16 h-16 flex  items-center justify-center text-[#00A264] text-3xl">
+                <Image
+                priority
+                width={1000}
+                height={1000}
+                src={"/fbr.png"}
+                alt="image not found"
+                className="w-12 h-12"
+                />
+              </div>
+              <div className="w-16 h-16 flex  items-center justify-center text-[#00A264] text-3xl">
+                <Image
+                priority
+                width={1000}
+                height={1000}
+                src={"/instar.png"}
+                alt="image not found"
+                className="w-12 h-12"
+                />
+              </div>
+              <div className="w-16 h-16 flex  items-center justify-center text-[#00A264] text-3xl">
+                <Image
+                priority
+                width={1000}
+                height={1000}
+                src={"/x.png"}
+                alt="image not found"
+                className="w-12 h-12"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -255,4 +256,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default ContactUs;

@@ -110,7 +110,7 @@ const MaerskLine: React.FC = () => {
           <div className="flex items-center justify-around ml-2  pb-1">
             <div className=" relative  text-center h-[74px] w-[74px] ">
               <Image
-                src="/Images/MaerskLine.jpeg"
+                src="/images/MaerskLine.jpeg"
                 alt="Avatar"
                 width={500}
                 height={500}
@@ -148,7 +148,7 @@ const MaerskLine: React.FC = () => {
             <div>
               <div className="w-[103px] h-[103px]">
                 <Image
-                  src="/Images/Premium.png"
+                  src="/images/Premium.png"
                   alt="Avatar"
                   width={500}
                   height={500}
@@ -197,7 +197,7 @@ const MaerskLine: React.FC = () => {
                   priority
                   height={20}
                   width={20}
-                    src="../Images/jobOffer.png"
+                    src="/images/jobOffer.png"
                     alt="Rank Icon"
                     className="w-6 h-6"
                   />
@@ -214,7 +214,7 @@ const MaerskLine: React.FC = () => {
                   priority
                   height={20}
                   width={20}
-                    src="../Images/Resume.png"
+                    src="/images/Resume.png"
                     alt="Ship Type Icon"
                     className="w-6 h-6"
                   />
@@ -231,7 +231,7 @@ const MaerskLine: React.FC = () => {
                   priority
                   height={20}
                   width={20}
-                    src="../Images/attachment.png"
+                    src="/images/attachment.png"
                     alt="Rank Icon"
                     className="w-6 h-6"
                   />
@@ -248,7 +248,7 @@ const MaerskLine: React.FC = () => {
                   priority
                   height={20}
                   width={20}
-                    src="../Images/EDUEms.png"
+                    src="/images/EDUEms.png"
                     alt="Rank Icon"
                     className="w-6 h-6"
                   />
@@ -272,7 +272,7 @@ const MaerskLine: React.FC = () => {
                   priority
                   height={20}
                   width={20}
-                src="../Images/artificial.png"
+                src="/images/artificial.png"
                 alt="image not found"
                 className="ml-2 w-6 h-6 "
               />
@@ -287,7 +287,7 @@ const MaerskLine: React.FC = () => {
                   priority
                   height={20}
                   width={20}
-                src="../Images/Customer.png"
+                src="/images/Customer.png"
                 alt="image not found"
                 className="ml-2 w-6 h-6 "
               />
@@ -349,7 +349,7 @@ const MaerskLine: React.FC = () => {
                   priority
                   height={20}
                   width={20}
-                    src="../Images/artificial.png"
+                    src="/images/artificial.png"
                     alt="image not found"
                     className="ml-2 w-6 h-6 "
                   />
@@ -371,7 +371,7 @@ const MaerskLine: React.FC = () => {
                   priority
                   height={20}
                   width={20}
-                    src="../Images/jobOffer.png"
+                    src="/images/jobOffer.png"
                     alt="Rank Icon"
                     className="w-6 h-6"
                   />
@@ -397,7 +397,7 @@ const MaerskLine: React.FC = () => {
                   priority
                   height={20}
                   width={20}
-                    src="../Images/Resume.png"
+                    src="/images/Resume.png"
                     alt="Ship Type Icon"
                     className="w-6 h-6 ml-1"
                   />
@@ -416,7 +416,7 @@ const MaerskLine: React.FC = () => {
                   priority
                   height={20}
                   width={20}
-                    src="../Images/attachment.png"
+                    src="/images/attachment.png"
                     alt="Rank Icon"
                     className="w-6 h-6 ml-2"
                   />
@@ -475,7 +475,7 @@ const MaerskLine: React.FC = () => {
                   height={20}
                   width={20}
                   alt="ship user"
-                    src="./Images/ship-user.png"
+                    src="/images/ship-user.png"
                     className=" text-[#00A264]"
                   />
                 </div>

@@ -118,7 +118,7 @@ const Slide: React.FC = () => {
               priority
               height={20}
               width={20}
-                src="./Images/avtar.png"
+                src="/images/avatar.webp"
                 alt="Maersk Line"
                 className="h-full w-full "
               />

@@ -621,7 +621,7 @@ const MyJob = () => {
                   <span className="ml-2 cursor-pointer" onClick={() => setAcademicOpen(!academicOpen)}>
                     {!academicOpen ? (
                       <svg
-                        className="w-6 h-6 transform rotate-180 transition-transform"
+                        className="w-6 h-6 transform  transition-transform"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -636,7 +636,7 @@ const MyJob = () => {
                       </svg>
                     ) : (
                       <svg
-                        className="w-6 h-6 transition-transform"
+                        className="w-6 h-6 rotate-180 transition-transform"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -661,9 +661,9 @@ const MyJob = () => {
                 <h2 className="">SeaGoing Experience </h2>
                 <div className="flex items-center justify-center gap-1">
                   <span className="ml-2 cursor-pointer" onClick={handleSea}>
-                    {seaOpen ? (
+                    {!seaOpen ? (
                       <svg
-                        className="w-6 h-6 transform rotate-180 transition-transform"
+                        className="w-6 h-6 transform  transition-transform"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -678,7 +678,7 @@ const MyJob = () => {
                       </svg>
                     ) : (
                       <svg
-                        className="w-6 h-6 transition-transform"
+                        className="w-6 h-6 transition-transform rotate-180"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"

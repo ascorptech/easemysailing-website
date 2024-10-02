@@ -1,4 +1,5 @@
 "use client";
+import { GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -35,6 +36,19 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
   const [ typeOfTest, setTypeOfTest] = useState("");
   const [issuingCountry, setIssuingCountry] = useState("");
   const [neverChecked1, setNeverChecked1] = useState(false);
+  const [additionalTraDrop, setAdditionalTraDrop] = useState([]);
+  const [countryDrop, setCountryDrop] = useState<any>([]);
+
+
+  useEffect(() => {
+    GetDropdownDetails('AdditionalTrainings', (res: any) => {
+      setAdditionalTraDrop(res?.data?.values)
+    })
+    GetDropdownDetails('country', (res: any) => {
+      // console.log('County',res?.data)
+      setCountryDrop(res?.data?.values)
+    })
+  }, [])
   
   const totalFields = 19;
   const filledFields = [
@@ -131,9 +145,9 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
             <option value="" disabled selected>
             Certification
             </option>
-            <option value="training1">Training1</option>
-            <option value="training2">Training2</option>
-            <option value="training3">Training3</option>
+            {additionalTraDrop && additionalTraDrop?.map((addi: any, index: number) => (
+                <option key={index} value={addi}>{addi?.toUpperCase()}</option>
+              ))}
           </select>
         </div>
 
@@ -170,9 +184,9 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
             <option value="" disabled selected>
               Issuing Country
             </option>
-            <option value="India">India</option>
-            <option value="us">Us</option>
-            <option value="England">England</option>
+            {countryDrop && countryDrop?.map((country: any, index: number) => (
+                  <option key={index} value={country}>{country?.toUpperCase()}</option>
+                ))}
           </select>
         </div>
         
@@ -412,9 +426,9 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
               <option value="" disabled selected>
                 Issuing Country
               </option>
-              <option value="india">India</option>
-              <option value="Us">Us</option>
-              <option value="england">England</option>
+              {countryDrop && countryDrop?.map((country: any, index: number) => (
+                  <option key={index} value={country}>{country?.toUpperCase()}</option>
+                ))}
             </select>
           </div>
           {/* <div className=""> */}

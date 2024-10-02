@@ -537,7 +537,7 @@ const [profileDetail,setProfileDetail] = useState<any>()
             <div className="flex items-center gap-2">
               <Image
                priority
-                src="/images/candidate/profileCv/vector1.png"
+                src="/vector1.png"
                 alt="logo not found"
                 width={30}
                 height={30}

@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
-import { AddProfileData, GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import { AddProfileData, GetDropdownDetails,AddNextOfData } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 
 import { useState } from "react";
 import { toast } from "react-toastify";
@@ -92,29 +92,56 @@ const NextOfKinDetails = ({
       toast.error("Please fill in all required fields.");
       return;
     }
-
-    let formData= new FormData() 
-      formData.append('nextKinName',nextKinName);
-      formData.append('nextKinAddre', nextKinAddre);
-      formData.append('nextKinShip', nextKinShip);
-      formData.append('nextKinChildren',nextKinChildren);
-      console.log(formData);
-      AddProfileData(userDetail?.userId,formData, AddNextOfKinDetailsDB);
-      // AddProfileData(data, AddNextKinDetailsDB)
+    let data:any = {
+      id:userDetail?.userId,
+      nextOfKinName:nextKinName ,
+      nextOfKinRelationship: nextKinShip,
+      nextOfKinAddress: nextKinAddre,
+      numberOfChildren: nextKinChildren,
+     
   };
+  AddNextOfData(data, AddNextOfKindataDB);
 
-
-  const AddNextOfKinDetailsDB = (result: any) => {
+  
+  };
+  const AddNextOfKindataDB = (result: any) => {
     console.log(result);
     if (result?.status == 200) {
-      toast.success("nextOfKin detail submited successfully");
+      console.log(result)
+      toast.success("Next Of Kin Details submited successfully");
       setTimeout(() => {
         window.location.reload()
       }, 1000);
     } else {
-      toast.error("nextOfKin  detail not submited ");
+      console.log(result)
+      toast.error("Next Of Kin Details not submited ");
     }
   };
+  
+
+
+    // let formData= new FormData() 
+    //   formData.append('nextKinName',nextKinName);
+    //   formData.append('nextKinAddre', nextKinAddre);
+    //   formData.append('nextKinShip', nextKinShip);
+    //   formData.append('nextKinChildren',nextKinChildren);
+    //   console.log(formData);
+    //   AddProfileData(userDetail?.userId,formData, AddNextOfKinDetailsDB);
+      // AddProfileData(data, AddNextKinDetailsDB)
+  // };
+
+
+  // const AddNextOfKinDetailsDB = (result: any) => {
+  //   console.log(result);
+  //   if (result?.status == 200) {
+  //     toast.success("nextOfKin detail submited successfully");
+  //     setTimeout(() => {
+  //       window.location.reload()
+  //     }, 1000);
+  //   } else {
+  //     toast.error("nextOfKin  detail not submited ");
+  //   }
+  // };
   // useEffect(() => {
   //   GetDropdownDetails('additionalLanguage', (res: any) => {
   //     setLanguageLevel(res?.data?.values)

@@ -377,8 +377,8 @@ const page = (props: Props) => {
                   <div className=" relative mt-4 h-20 w-20 ">
                     <Image
                     priority
-                    width={40}
                     height={20}
+                    width={20}
                       src={selectedImage}
                       alt="Selected"
                       className="relative h-full w-full object-cover rounded-lg border"
@@ -540,8 +540,8 @@ const page = (props: Props) => {
                   <div className=" relative mt-4 h-20 w-20 ">
                     <Image
                     priority
-                    width={40}
-                    height={40}
+                    height={20}
+                    width={20}
                       src={selectedImage}
                       alt="Selected"
                       className="relative h-full w-full object-cover rounded-lg border"

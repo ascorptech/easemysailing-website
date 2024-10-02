@@ -91,11 +91,10 @@ const Card = () => {
         {cards?.map((card) => (
           <div key={card.id} className="snap-center flex flex-col items-center">
             <div className="w-[197.58px] h-[197.98px] bg-white rounded-full shadow-md">
-              <Image
-              width={40}
-              height={40}
-              priority
-
+            <Image
+                  priority
+                  height={20}
+                  width={20}
                 src={card.logo}
                 alt={card.company}
                 className="w-full h-full rounded-full"

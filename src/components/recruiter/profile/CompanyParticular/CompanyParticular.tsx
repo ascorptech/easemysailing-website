@@ -3,7 +3,7 @@ import { AddProfileData, GetDropdownDetails } from "@/app/(candidate)/candidate/
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-
+import CircularProgress from "../CircularProgress";
 
 type MjrComplete = {
   percentage: number;
@@ -16,9 +16,8 @@ type Props = {
   userDetail: any
 };
 
-const MyJobRequirements = ({ mjrComplete, setMjrComplete, userDetail }: Props) => {
+const CompanyParticular = ({ mjrComplete, setMjrComplete, userDetail }: Props) => {
   const [rankDrop, setRankDrop] = useState<any>([])
-  const [shipTypeDrop, setShipTypeDrop] = useState<any>([])
   const [availabilityDate, setAvailabilityDate] = useState("");
   const [currentPosition, setCurrentPosition] = useState("");
   const [alternatePosition, setAlternatePosition] = useState("");
@@ -84,14 +83,9 @@ const MyJobRequirements = ({ mjrComplete, setMjrComplete, userDetail }: Props) =
     }
   }, [percentage, color])
 
-  
-
   useEffect(() => {
     GetDropdownDetails('rank', (res: any) => {
       setRankDrop(res?.data?.values)
-    })
-    GetDropdownDetails('shipType', (res: any) => {
-      setShipTypeDrop(res?.data?.values)
     })
   }, [])
 
@@ -174,7 +168,7 @@ const MyJobRequirements = ({ mjrComplete, setMjrComplete, userDetail }: Props) =
                 Current Position/Rank
               </option>
               {rankDrop && rankDrop?.map((rank: any, index: number) => (
-                <option key={index} value={rank}>{rank?.toUpperCase()}</option>
+                <option key={index} value={rank}>{rank}</option>
               ))}
               {/* <option value="Captain">Captain</option>
               <option value="Captain2">Captain2</option>
@@ -196,7 +190,7 @@ const MyJobRequirements = ({ mjrComplete, setMjrComplete, userDetail }: Props) =
                 Alternate Position/Rank
               </option>
               {rankDrop && rankDrop?.map((rank: any, index: number) => (
-                <option key={index} value={rank}>{rank?.toUpperCase()}</option>
+                <option key={index} value={rank}>{rank}</option>
               ))}
             </select>
           </div>
@@ -214,8 +208,8 @@ const MyJobRequirements = ({ mjrComplete, setMjrComplete, userDetail }: Props) =
               <option value="" disabled>
                 Preferred Vessel Type
               </option>
-              {shipTypeDrop && shipTypeDrop?.map((ship: any, index: number) => (
-                <option key={index} value={ship}>{ship?.toUpperCase()}</option>
+              {rankDrop && rankDrop?.map((rank: any, index: number) => (
+                <option key={index} value={rank}>{rank}</option>
               ))}
             </select>
           </div>
@@ -233,8 +227,8 @@ const MyJobRequirements = ({ mjrComplete, setMjrComplete, userDetail }: Props) =
               <option value="" disabled>
                 Alternate Vessel Type
               </option>
-              {shipTypeDrop && shipTypeDrop?.map((ship: any, index: number) => (
-                <option key={index} value={ship}>{ship?.toUpperCase()}</option>
+              {rankDrop && rankDrop?.map((rank: any, index: number) => (
+                <option key={index} value={rank}>{rank}</option>
               ))}
             </select>
           </div>
@@ -298,4 +292,4 @@ const MyJobRequirements = ({ mjrComplete, setMjrComplete, userDetail }: Props) =
   );
 };
 
-export default MyJobRequirements;
+export default CompanyParticular;

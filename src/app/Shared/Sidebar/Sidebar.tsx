@@ -54,7 +54,7 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
           </Link>
         </li>
         <li className="mb-1 rounded py-2  hover:bg-green-600 hover:text-white">
-          <Link href="#">
+          <Link href="/recruiter/profile">
             <IoBag className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />{" "}
             Company Profile
           </Link>

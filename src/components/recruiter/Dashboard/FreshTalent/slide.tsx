@@ -115,9 +115,9 @@ const Slide: React.FC = () => {
           >
             <div className="w-[95px] h-[95px] p-1 bg-white  ">
               <Image
-              width={40}
-              height={40}
               priority
+              height={20}
+              width={20}
                 src="./Images/avtar.png"
                 alt="Maersk Line"
                 className="h-full w-full "

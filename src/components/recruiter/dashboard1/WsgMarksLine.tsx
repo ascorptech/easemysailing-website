@@ -176,10 +176,10 @@ const MaerskLine: React.FC = () => {
             <div className="space-y-4 ">
               <div className="flex justify-between items-center  bg-[#D3EAEA] px-[10px] py-[10px] rounded-lg">
                 <div className="flex items-center space-x-2">
-                  <Image priority
-                  width={40}
-                  height={40}
-
+                  <Image
+                  priority
+                  height={20}
+                  width={20}
                     src="../Images/visitor.png"
                     alt="Salary Icon"
                     className="w-6 h-6"
@@ -194,9 +194,9 @@ const MaerskLine: React.FC = () => {
               <div className="flex justify-between items-center   bg-[#D3EAEA] p-[10px] rounded-lg">
                 <div className="flex items-center space-x-2 ">
                   <Image
-                  width={40}
-                  height={40}
                   priority
+                  height={20}
+                  width={20}
                     src="../Images/jobOffer.png"
                     alt="Rank Icon"
                     className="w-6 h-6"
@@ -210,10 +210,10 @@ const MaerskLine: React.FC = () => {
 
               <div className="flex justify-between items-center   bg-[#D3EAEA] p-[10px] rounded-lg">
                 <div className="flex items-center space-x-2 ">
-                  <Image
-                  width={40}
-                  height={40}
+                <Image
                   priority
+                  height={20}
+                  width={20}
                     src="../Images/Resume.png"
                     alt="Ship Type Icon"
                     className="w-6 h-6"
@@ -227,10 +227,10 @@ const MaerskLine: React.FC = () => {
 
               <div className="flex justify-between items-center   bg-[#D3EAEA]  p-[10px] rounded-lg">
                 <div className="flex items-center space-x-2 ">
-                  <Image
-                  width={40}
-                  height={40}
+                <Image
                   priority
+                  height={20}
+                  width={20}
                     src="../Images/attachment.png"
                     alt="Rank Icon"
                     className="w-6 h-6"
@@ -244,10 +244,10 @@ const MaerskLine: React.FC = () => {
 
               <div className="flex justify-between items-center  bg-[#D3EAEA]  p-[10px] rounded-lg">
                 <div className="flex items-center space-x-2 ">
-                  <Image
-                  width={40}
-                  height={40}
+                <Image
                   priority
+                  height={20}
+                  width={20}
                     src="../Images/EDUEms.png"
                     alt="Rank Icon"
                     className="w-6 h-6"
@@ -268,7 +268,10 @@ const MaerskLine: React.FC = () => {
         <div className=" bg-gray-100 shadow-slate-600 shadow-inner rounded-[50px] p-3  ">
           <div className="flex justify-between items-center text-white font-semibold text-lg bg-[#00A264] rounded-lg w-full p-1 mt-6">
             <div className="flex items-center ">
-              <Image
+            <Image
+                  priority
+                  height={20}
+                  width={20}
                 src="../Images/artificial.png"
                 alt="image not found"
                 className="ml-2 w-6 h-6 "
@@ -280,10 +283,10 @@ const MaerskLine: React.FC = () => {
 
           <div className=" flex justify-between items-center  font-semibold text-lg bg-white rounded-lg w-full p-1 mt-2">
             <div className="flex items-center ">
-              <Image 
-              width={40}
-              height={40}
-              priority
+            <Image
+                  priority
+                  height={20}
+                  width={20}
                 src="../Images/Customer.png"
                 alt="image not found"
                 className="ml-2 w-6 h-6 "
@@ -342,9 +345,10 @@ const MaerskLine: React.FC = () => {
 
               <div className="flex justify-between items-center py-3 px-2 text-white font-semibold text-lg bg-[#00A264] rounded-lg w-full  mt-6">
                 <div className="flex items-center ">
-                  <Image width={40}
-                  height={40}
+                <Image
                   priority
+                  height={20}
+                  width={20}
                     src="../Images/artificial.png"
                     alt="image not found"
                     className="ml-2 w-6 h-6 "
@@ -363,10 +367,10 @@ const MaerskLine: React.FC = () => {
 
               <div className="flex justify-center items-center   bg-[#f7fafa] p-[10px] rounded-lg">
                 <div className="flex items-center space-x-2 ">
-                  <Image 
-                  width={40}
-                  height={40}
+                <Image
                   priority
+                  height={20}
+                  width={20}
                     src="../Images/jobOffer.png"
                     alt="Rank Icon"
                     className="w-6 h-6"
@@ -389,10 +393,10 @@ const MaerskLine: React.FC = () => {
 
               <div className="flex justify-center items-center   bg-[#f9fafa] py-3 px-2 rounded-lg">
                 <div className="flex items-center space-x-2 ">
-                  <Image
-                  width={40}
-                  height={40}
+                <Image
                   priority
+                  height={20}
+                  width={20}
                     src="../Images/Resume.png"
                     alt="Ship Type Icon"
                     className="w-6 h-6 ml-1"
@@ -408,8 +412,10 @@ const MaerskLine: React.FC = () => {
 
               <div className="flex justify-between items-center   bg-[#f9fcfc]  px-2 py-3 rounded-lg">
                 <div className="flex items-center space-x-2 ">
-                  <Image width={40}
-                  height={40}
+                <Image
+                  priority
+                  height={20}
+                  width={20}
                     src="../Images/attachment.png"
                     alt="Rank Icon"
                     className="w-6 h-6 ml-2"
@@ -464,13 +470,13 @@ const MaerskLine: React.FC = () => {
                 }`}
               >
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                  <Image 
-                  width={40}
-                  height={40}
+                <Image
                   priority
+                  height={20}
+                  width={20}
+                  alt="ship user"
                     src="./Images/ship-user.png"
-                    className="w-full h-full text-[#00A264]"
-                    alt=""
+                    className=" text-[#00A264]"
                   />
                 </div>
                 <div className="ml-4">

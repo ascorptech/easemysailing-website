@@ -137,9 +137,9 @@ const Slides2: React.FC = () => {
           >
             <div className="w-[90px] h-[90px] p-2 bg-white  ">
               <Image
-              width={40}
-              height={40}
               priority
+              height={20}
+              width={20}
                 src="./Images/avtar.png"
                 alt="Maersk Line"
                 className="h-full w-full "

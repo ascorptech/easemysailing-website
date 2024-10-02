@@ -13,12 +13,12 @@ type PersonalComplete = {
   color: string;
 };
 type Props={
-  personalComplete: PersonalComplete; 
+  personalComplete: PersonalComplete; // mjrComplete is an object with percentage and color
   setPersonalComplete: React.Dispatch<React.SetStateAction<PersonalComplete>>; // setMjrComplete is a function to update mjrComplete
   userDetail:any
 }
 
-const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props) => {
+const ITFOther = ({personalComplete,setPersonalComplete,userDetail}:Props) => {
   const [firstName, setFirstName] = useState("");
   const [middleName, setmidddleName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -455,4 +455,4 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
     </div>
   );
 };
-export default PersonalDetails;
+export default ITFOther;

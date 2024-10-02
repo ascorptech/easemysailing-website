@@ -28,8 +28,9 @@ export const GetDropdownDetails = async(key:any,cb:any)=>{
 
 export const AddProfileData = async(userId:any,data:any ,cb:any)=>{
     try {
-        let url = `${PUTPROFILE}/${userId}`
-        const response = await patchReq(url,data)
+        console.log('Data to be submitted:', data);
+        const response = await putReq(PUTPROFILE,data)
+        console.log('API response:', response);
         return cb(response)
     } catch (error:any) {
         console.log('err',error)

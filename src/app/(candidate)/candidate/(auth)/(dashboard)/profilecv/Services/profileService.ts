@@ -1,7 +1,7 @@
 import { deleteReq, getReq, patchReq, postReq, putReq } from "@/RootServices";
 import apiEndPoints from "./apiEndPoints";
 
-const {GETPROFILE,PUTPROFILE,GETENUMS,POSTMYJOB,GETMYJOB,POSTNEXTOF,POSTLANGUAGE,POSTABOUTME,POSTCONTACT  } = apiEndPoints
+const {GETPROFILE,PUTPROFILE,GETENUMS,POSTMYJOB,GETMYJOB,POSTNEXTOF,POSTLANGUAGE,POSTABOUTME,POSTCONTACT,POSTTRAVELDOCUMENT,POSTSTCWTRAINING,POSTPROFESSIONALSKILL,POSTREFERENCE  } = apiEndPoints
 
 
 export const GetProfileDetail = async(id:any,cb:any)=>{
@@ -111,6 +111,62 @@ export const AddLanguageData = async(userId:any,data:any ,cb:any)=>{
     try {
         console.log('Data to be submitted:', data);
         const response = await postReq(POSTLANGUAGE,data)
+        console.log('API response:', response);
+        return cb(response)
+    } catch (error:any) {
+        console.log('err',error)
+        return cb(error?.response)
+    }
+}
+//Travel Document
+
+export const AddTravelDocumentData = async(userId:any,passportBiometric:any,seamansBookNeverExpires:any,data:any ,cb:any)=>{
+    try {
+        console.log('Data to be submitted:', data);
+        let url = `${POSTTRAVELDOCUMENT}/${userId}/${passportBiometric}/${seamansBookNeverExpires}`
+        const response = await postReq(url,data)
+        console.log('API response:', response);
+        return cb(response)
+    } catch (error:any) {
+        console.log('err',error)
+        return cb(error?.response)
+    }
+}
+//STCW Training
+
+export const AddStcwData = async(userId:any,neverExpires:any,data:any ,cb:any)=>{
+    try {
+        console.log('Data to be submitted:', data);
+        let url = `${POSTSTCWTRAINING}/${userId}/${neverExpires}`
+        const response = await postReq(url,data)
+        console.log('API response:', response);
+        return cb(response)
+    } catch (error:any) {
+        console.log('err',error)
+        return cb(error?.response)
+    }
+}
+//Professional Skill
+
+export const AddProfessionalSkillData = async(userId:any,metalWorkingCertificateAvailable:any,metalWorkingClassApproved:any,data:any ,cb:any)=>{
+    try {
+        console.log('Data to be submitted:', data);
+        let url = `${POSTPROFESSIONALSKILL}/${userId}/${metalWorkingCertificateAvailable}/${metalWorkingClassApproved}`
+        const response = await postReq(url,data)
+        console.log('API response:', response);
+        return cb(response)
+    } catch (error:any) {
+        console.log('err',error)
+        return cb(error?.response)
+    }
+}
+//References
+
+export const AddReferencesData = async(userId:any,consentGiven:any,data:any ,cb:any)=>{
+    try {
+        console.log('Data to be submitted:', data);
+        let url = `${POSTREFERENCE}/${userId}/${consentGiven}`
+        const response = await postReq(url,data)
         console.log('API response:', response);
         return cb(response)
     } catch (error:any) {

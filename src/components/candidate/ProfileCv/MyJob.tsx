@@ -1255,13 +1255,13 @@ const MyJob = () => {
 
             <div
               className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${refrencesComplete?.color}] mt-3`}
-              onClick={handleReferences}
+              
             >
-              <Link href="#" className="">
+              <h2 className="">
                 References
-              </Link>
+              </h2>
               <div className="flex items-center justify-center gap-1">
-                <span className="ml-2 cursor-pointer">
+                <span className="ml-2 cursor-pointer" onClick={handleReferences}>
                   {refOpen ? (
                     <svg
                       className="w-6 h-6 transform rotate-180 transition-transform"

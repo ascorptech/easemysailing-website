@@ -18,27 +18,35 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
   // State for form fields
 
   const [whatsApp, setWhatsApp] = useState(false);
+  const [whatsAppId, setWhatsAppId] = useState("");
   const [weChat, setWeChat] = useState(false);
+  const [weChatId, setWeChatId] = useState("");
   const [facebookMess, setFacebookMess] = useState(false);
+  const [facebookMessId, setFacebookMessId] = useState("");
   const [telegram, setTelegram] = useState(false);
+  const [telegramId, setTelegramId] = useState("");
   const [skypeId, setSkypeId] = useState("");
   const [linkedIn, setLinkedIn] = useState(false);
+  const [linkedInId, setLinkedInId] = useState("");
   const [facebook, setFacebook] = useState(false);
+  const [facebookId, setFacebookId] = useState("");
   const [instagram, setInstagram] = useState(false);
+  const [instagramId, setInstagramId] = useState("");
   const [other, setOther] = useState(false);
+  const [otherId, setOtherId] = useState("");
 
   const totalFields = 9;
+
   const filledFields = [
-    whatsApp,
-    weChat,
-    facebookMess,
-    telegram,
+    whatsApp && whatsAppId,
+    weChat && weChatId,
+    facebookMess && facebookMessId,
+    telegram && telegramId,
     skypeId,
-    linkedIn,
-    facebook,
-    instagram,
-    other
-    
+    linkedIn && linkedInId,
+    facebook && facebookId,
+    instagram && instagramId,
+    other && otherId,
   ].filter(Boolean).length;
   
   // const totalFields = available === "Yes" ? 6 : 5;
@@ -113,7 +121,9 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
                 type="text"
                 className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter WhatsApp No."
-                required
+                value={whatsAppId}
+                onChange={(e) => setWhatsAppId(e.target.value)}
+                
               />
             </div>
           )}
@@ -146,9 +156,11 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
               <input
                 id="whatsAppId"
                 type="text"
+                value={weChatId}
+                onChange={(e) => setWeChatId(e.target.value)}
                 className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter WeChat Id"
-                required
+              
               />
             </div>
           )}
@@ -174,7 +186,9 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
                 type="text"
                 className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Facebook Id"
-                required
+                value={facebookMessId}
+                onChange={(e) => setFacebookMessId(e.target.value)}
+               
               />
             </div>
           )}
@@ -205,7 +219,9 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
                 type="text"
                 className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Telegram Id"
-                required
+                value={telegramId}
+                onChange={(e) => setTelegramId(e.target.value)}
+
               />
             </div>
           )}
@@ -260,7 +276,8 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
                 type="text"
                 className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Linkdin Id "
-                required
+                value={linkedInId}
+                  onChange={(e) => setLinkedInId(e.target.value)}
               />
             </div>
           )}
@@ -287,7 +304,8 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
                 type="text"
                 className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Facebook Id"
-                required
+                value={facebookId}
+                  onChange={(e) => setFacebookId(e.target.value)}
               />
             </div>
           )}
@@ -313,7 +331,8 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
                 type="text"
                 className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Instagram Id"
-                required
+                value={instagramId}
+                onChange={(e) => setInstagramId(e.target.value)}
               />
             </div>
           )}
@@ -340,7 +359,8 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
                 type="text"
                 className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder=""
-                required
+                value={otherId}
+                onChange={(e) => setOtherId(e.target.value)}
               />
             </div>
           )}

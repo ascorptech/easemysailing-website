@@ -84,12 +84,12 @@ const SeaGoingService = ({seaGoingServiceComplete, setSeaGoingServiceComplete,us
       <h1 className="text-center font-bold my-2" >PASSPORT DETAILS</h1>
       <div className="grid grid-cols-2 gap-4">
         <div className="">
-          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="imo">
+          <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="imo">
             IMO
           </label>
           <select
           id="imo"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
             value={imo}
                   onChange={(e) => setImo(e.target.value)}
@@ -105,7 +105,7 @@ const SeaGoingService = ({seaGoingServiceComplete, setSeaGoingServiceComplete,us
 
         <div className="   ">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
             htmlFor="vesselname"
           >
             Vessel Name
@@ -115,7 +115,7 @@ const SeaGoingService = ({seaGoingServiceComplete, setSeaGoingServiceComplete,us
             type="text"
             value={number}
             onChange={(e) => setNumber(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             placeholder=""
             required
           />
@@ -123,12 +123,12 @@ const SeaGoingService = ({seaGoingServiceComplete, setSeaGoingServiceComplete,us
 
 
         <div className=" ">
-          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]" htmlFor="rank1">
+          <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]" htmlFor="rank1">
             Rank
           </label>
           <select
           id="rank1"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
             value={rank}
             onChange={(e) => setRank(e.target.value)}
@@ -144,7 +144,7 @@ const SeaGoingService = ({seaGoingServiceComplete, setSeaGoingServiceComplete,us
 
         <div className="   ">
             <label
-              className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+              className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
               htmlFor="tonnage"
             >
               Tonnage
@@ -154,7 +154,7 @@ const SeaGoingService = ({seaGoingServiceComplete, setSeaGoingServiceComplete,us
               type="text"
               value={trainingCenter}
               onChange={(e) => setTrainingCenter(e.target.value)}
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder=""
               required
             />
@@ -163,12 +163,12 @@ const SeaGoingService = ({seaGoingServiceComplete, setSeaGoingServiceComplete,us
           <div className=" grid col-span-2 text-center my-2"> <h1 className="font-bold"> Seaman Experience Details</h1></div>
 
           <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="enginemake">
+            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="enginemake">
               Engine Make
             </label>
             <select
             id="enginemake"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
               value={enginemake}
               onChange={(e) => setEnginemake(e.target.value)}
@@ -186,13 +186,13 @@ const SeaGoingService = ({seaGoingServiceComplete, setSeaGoingServiceComplete,us
 
         {/* </div> */}
         <div className="">
-          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]" htmlFor="issue">
+          <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]" htmlFor="issue">
             Embarkation Date
           </label>
           <input
             id="issue"
             type="date"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             value={embarkationdate}
             onChange={(e) => setEmbarkationDate(e.target.value)}
           />
@@ -204,7 +204,7 @@ const SeaGoingService = ({seaGoingServiceComplete, setSeaGoingServiceComplete,us
 
         <div className="">
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]  "
+            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]  "
             htmlFor="expiryDate"
           >
              Disembarkation date
@@ -212,7 +212,7 @@ const SeaGoingService = ({seaGoingServiceComplete, setSeaGoingServiceComplete,us
           <input
             id="expiryDate"
             type="date"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             value={ disembarkationDate}
             onChange={(e) => setDisembarkationDate(e.target.value)}
           />
@@ -220,7 +220,7 @@ const SeaGoingService = ({seaGoingServiceComplete, setSeaGoingServiceComplete,us
           
           <div className="   ">
             <label
-              className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+              className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
               htmlFor="netSeagoingDays"
             >
               Net Seagoing Days
@@ -230,19 +230,19 @@ const SeaGoingService = ({seaGoingServiceComplete, setSeaGoingServiceComplete,us
               type="text"
               value={seagoingNumber}
               onChange={(e) => setSeagoingNumber(e.target.value)}
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder=""
               required
             />
           </div>
 
             <div className=" ">
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="ecdis">
+            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="ecdis">
               ECDIS
             </label>
             <select
               id="ecdis"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
               value={eCDIS}
               onChange={(e) => setECDIS(e.target.value)}
@@ -258,7 +258,7 @@ const SeaGoingService = ({seaGoingServiceComplete, setSeaGoingServiceComplete,us
 
             <div className="  ">
             <label
-              className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+              className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
               htmlFor="Gearless"
             >
               Gearless
@@ -268,7 +268,7 @@ const SeaGoingService = ({seaGoingServiceComplete, setSeaGoingServiceComplete,us
               type="text"
               value={ gearless}
               onChange={(e) => setGearless(e.target.value)}
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder=""
               required
             />
@@ -276,7 +276,7 @@ const SeaGoingService = ({seaGoingServiceComplete, setSeaGoingServiceComplete,us
 
           <div className="  ">
             <label
-              className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+              className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
               htmlFor="inertGasSysterm"
             >
               Inert Gas Systerm
@@ -286,7 +286,7 @@ const SeaGoingService = ({seaGoingServiceComplete, setSeaGoingServiceComplete,us
               type="text"
               value={inertGas}
               onChange={(e) => setInertGas(e.target.value)}
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder=""
               required
             />

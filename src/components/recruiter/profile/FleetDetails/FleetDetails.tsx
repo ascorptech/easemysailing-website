@@ -64,7 +64,7 @@ const FleetDetails = ({fleetComplete, setfleetComplete,userDetail}:Props) => {
           <div className="grid grid-cols-2 gap-4">
             <div className="w-full ">
               <label
-                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1 "
+                className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1 "
                 htmlFor="NextofKinName"
               >
                Next of Kin Name
@@ -75,7 +75,7 @@ const FleetDetails = ({fleetComplete, setfleetComplete,userDetail}:Props) => {
                 type="text"
                 value={nextKinName}
                 onChange={(e) => setNextKinName(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder=""
                 required
               />
@@ -83,7 +83,7 @@ const FleetDetails = ({fleetComplete, setfleetComplete,userDetail}:Props) => {
             </div>
             <div className="w-full">
               <label
-                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1 "
+                className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1 "
                 htmlFor="nextofkineship"
               >
                 Next of Kin Relation Ship
@@ -94,7 +94,7 @@ const FleetDetails = ({fleetComplete, setfleetComplete,userDetail}:Props) => {
                   type="text"
                   value={nextKinShip}
                   onChange={(e) => setNextKinShip(e.target.value)}
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
@@ -102,7 +102,7 @@ const FleetDetails = ({fleetComplete, setfleetComplete,userDetail}:Props) => {
             </div>
             <div className=" w-full">
               <label
-                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
+                className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                 htmlFor="nextofkinaddres"
               >
                 Next of Kin Address
@@ -113,7 +113,7 @@ const FleetDetails = ({fleetComplete, setfleetComplete,userDetail}:Props) => {
                   type="text"
                   value={nextKinAddre}
                   onChange={(e) => setNextKinAddre(e.target.value)}
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
@@ -122,7 +122,7 @@ const FleetDetails = ({fleetComplete, setfleetComplete,userDetail}:Props) => {
 
             <div className=" w-full">
               <label
-                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
+                className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                 htmlFor="numberofchildren"
               >
                 Number of Children
@@ -133,7 +133,7 @@ const FleetDetails = ({fleetComplete, setfleetComplete,userDetail}:Props) => {
                   type="text"
                   value={nextKinChildren}
                   onChange={(e) => setNextKinChildren(e.target.value)}
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />

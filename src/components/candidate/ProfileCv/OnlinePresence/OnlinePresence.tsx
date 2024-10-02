@@ -94,7 +94,7 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
                 checked={whatsApp}
                 onChange={() => setWhatsApp(!whatsApp)}
               />
-              <label className="p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 WhatsApp
               </label>
 
@@ -103,7 +103,7 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
           {whatsApp && (
             <div className="mt-4 flex flex-col ">
               {/* <label
-                className="p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+                className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
                 htmlFor="whatsAppId"
               >
                 WhatsApp Number
@@ -111,7 +111,7 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
               <input
                 id="whatsAppId"
                 type="text"
-                className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter WhatsApp No."
                 required
               />
@@ -131,14 +131,14 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
                 }
                 className="ml-4"
               />
-              <label className="p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 WeChat
               </label>
               </div>
               {weChat && (
             <div className="mt-4 flex flex-col ">
               {/* <label
-                className="p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+                className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
                 htmlFor="whatsAppId"
               >
                 WeChat Number
@@ -146,7 +146,7 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
               <input
                 id="whatsAppId"
                 type="text"
-                className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter WeChat Id"
                 required
               />
@@ -162,7 +162,7 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
                 checked={facebookMess}
                 onChange={() => setFacebookMess(!facebookMess)}
               />
-              <label className="p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Facebook 
               </label>
               </div>
@@ -172,7 +172,7 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
               <input
                 id="whatsAppId"
                 type="text"
-                className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Facebook Id"
                 required
               />
@@ -192,7 +192,7 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
                 }
                 className="ml-4"
               />
-              <label className="p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Telegram
               </label>
             </div>
@@ -203,7 +203,7 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
               <input
                 id="whatsAppId"
                 type="text"
-                className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Telegram Id"
                 required
               />
@@ -221,7 +221,7 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
 
         <div>
           <label
-            className="p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+            className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
             htmlFor="skypeId"
           >
             Skype ID
@@ -231,7 +231,7 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
             type="text"
             value={skypeId}
             onChange={(e) => setSkypeId(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             required
           />
         </div>
@@ -248,7 +248,7 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
                 checked={linkedIn}
                 onChange={() => setLinkedIn(!linkedIn)}
               />
-              <label className="p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 LinkedIn
               </label>
             </div>
@@ -258,7 +258,7 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
               <input
              
                 type="text"
-                className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Linkdin Id "
                 required
               />
@@ -275,7 +275,7 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
                 }
                 className="ml-4"
               />
-              <label className="p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Facebook
               </label>
               </div>
@@ -285,7 +285,7 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
               <input
                 
                 type="text"
-                className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Facebook Id"
                 required
               />
@@ -301,7 +301,7 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
                 }
                 className="ml-4"
               />
-              <label className="p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Instagram
               </label>
               </div>
@@ -311,7 +311,7 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
               <input
                 id="whatsAppId"
                 type="text"
-                className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Instagram Id"
                 required
               />
@@ -328,7 +328,7 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
                 }
                 className="ml-4"
               />
-              <label className="p-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Other
               </label>
             </div>
@@ -338,7 +338,7 @@ const OnlinePresence = ({onlinePresenceComplete,setOnlinePresenceComplete,userDe
               <input
                 id=""
                 type="text"
-                className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder=""
                 required
               />

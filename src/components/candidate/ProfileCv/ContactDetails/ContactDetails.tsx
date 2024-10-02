@@ -111,12 +111,12 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handlesubmit}>
         <div className="">
-          <div className=" flex flex-col  px-4 text-[14px] leading-[19.07px] font-[openSans] text-[#333333] gap-4">
+          <div className=" flex flex-col  px-4 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] gap-4">
             <div className="flex items-center justify-between gap-4  ">
               {" "}
               <div className="w-[50%] ">
                 <label
-                  className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
+                  className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                   htmlFor="street"
                 >
                   Street
@@ -127,7 +127,7 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
                   type="text"
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
-                  className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder="Enter your address"
                   required
                 />
@@ -135,7 +135,7 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
               </div>
               <div className="w-[50%] ">
                 <label
-                  className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
+                  className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                   htmlFor="number"
                 >
                   Number
@@ -146,7 +146,7 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
                     type="text"
                     value={number}
                     onChange={(e) => setNumber(e.target.value)}
-                    className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter middle Name"
                     required
                   />
@@ -156,7 +156,7 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
 
             <div className=" ">
               <label
-                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
+                className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                 htmlFor="addinfo"
               >
                 Add. Info (c/o etc.)
@@ -167,7 +167,7 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
                   type="text"
                   value={addInfo}
                   onChange={(e) => setAddInfo(e.target.value)}
-                  className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder="Enter Last Name"
                   required
                 />
@@ -176,7 +176,7 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
 
             <div className="flex items-center gap-4">
               <div className="w-[50%]">
-                <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2 ">
+                <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 ">
                   Postal Code/ZIP Code
                 </label>
                 <div className="relative flex items-center  ">
@@ -185,7 +185,7 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
                     type="number"
                     value={postalCode}
                     onChange={(e) => setPostalCode(e.target.value)}
-                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter ZipCode"
                     required
                   />
@@ -193,7 +193,7 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
               </div>
               <div className="w-[50%] ">
                 <label
-                  className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
+                  className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                   htmlFor="cityName"
                 >
                   City
@@ -204,7 +204,7 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
                     type="text"
                     value={cityName}
                     onChange={(e) => setCityName(e.target.value)}
-                    className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter your city"
                     required
                   />
@@ -217,7 +217,7 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
             <div className="flex items-center gap-4 w-full">
               <div className="w-[50%]">
                 <label
-                  className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2 "
+                  className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 "
                   htmlFor="state"
                 >
                   State/Province
@@ -228,18 +228,18 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
                     type="text"
                     value={state}
                     onChange={(e) => setState(e.target.value)}
-                    className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder=""
                     required
                   />
                 </div>
               </div>
               <div className="flex flex-col w-[50%]  ">
-                <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2 ">
+                <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 ">
                   Country
                 </label>{" "}
                 <select
-                  className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={country1}
                   onChange={(e) => setCountry1(e.target.value)}
                 >
@@ -256,11 +256,11 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
             {/* airport  */}
 
             <div className="flex flex-col">
-              <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2 ">
+              <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 ">
                 Nearest Airport
               </label>
               <select
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={nACountrycode}
                 onChange={(e) => setNACountrycode(e.target.value)}
               >
@@ -281,11 +281,11 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
 
             <div className="flex items-center justify-between gap-4 ">
               <div className="flex flex-col  ">
-                <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2 ">
+                <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 ">
                   Country Code
                 </label>
                 <select
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={mCountrycode}
                   onChange={(e) => setMCountrycode(e.target.value)}
                 >
@@ -297,7 +297,7 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
 
               <div className="w-[75%] ">
                 <label
-                  className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
+                  className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                   htmlFor="number"
                 >
                   Phone Number
@@ -308,7 +308,7 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
                     type="text"
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
-                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder=""
                     required
                   />
@@ -320,11 +320,11 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
             </div>
             <div className="flex items-center justify-between gap-4  ">
               <div className="flex flex-col  ">
-                <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2 ">
+                <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 ">
                   Country Code
                 </label>
                 <select
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={rCountrycode}
                   onChange={(e) => setRCountrycode(e.target.value)}
                 >
@@ -336,7 +336,7 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
 
               <div className="w-[75%] ">
                 <label
-                  className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
+                  className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                   htmlFor="phonenumber2"
                 >
                   Phone Number
@@ -347,7 +347,7 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
                     type="text"
                     value={phoneNumber1}
                     onChange={(e) => setPhoneNumber1(e.target.value)}
-                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder=""
                     required
                   />
@@ -358,7 +358,7 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
             <div className="flex items-center justify-between gap-4  ">
               <div className="flex flex-col w-[50%] ">
                 <label
-                  className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2 "
+                  className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 "
                   htmlFor="emails"
                 >
                   Email
@@ -369,7 +369,7 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder=""
                     required
                   />
@@ -378,7 +378,7 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
 
               <div className="w-[50%] ">
                 <label
-                  className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
+                  className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                   htmlFor="inumber"
                 >
                   INDoS Number
@@ -389,7 +389,7 @@ const ContactDetails = ({contactComplete, setContactComplete, userDetail}:Props)
                     type="text"
                     value={indNumber}
                     onChange={(e) => setIndNumber(e.target.value)}
-                    className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder=""
                     required
                   />

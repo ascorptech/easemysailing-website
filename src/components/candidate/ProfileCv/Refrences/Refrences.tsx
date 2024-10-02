@@ -109,14 +109,14 @@ const Refrences = ({
           <div className="flex items-center justify-between gap-2  ">
             <div className=" w-[25%]">
               <label
-                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
+                className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                 htmlFor="issued"
               >
                 Issued
               </label>
               <select
                 id="issued"
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={issued}
                 onChange={(e) => setIssued(e.target.value)}
               >
@@ -128,7 +128,7 @@ const Refrences = ({
 
             <div className="w-[25%] ">
               <label
-                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
+                className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                 htmlFor="issuedate1"
               >
                 Issue Date
@@ -139,7 +139,7 @@ const Refrences = ({
                   type="date"
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder="Enter middle Name"
                   required
                 />
@@ -148,7 +148,7 @@ const Refrences = ({
 
             <div className="w-[25%] ">
               <label
-                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
+                className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                 htmlFor="vessel"
               >
                 Vessel/Company Name
@@ -159,7 +159,7 @@ const Refrences = ({
                   type="text"
                   value={companyName}
                   onChange={(e) => setCompanyName(e.target.value)}
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
@@ -167,7 +167,7 @@ const Refrences = ({
             </div>
             <div className="w-[25%] ">
               <label
-                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
+                className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                 htmlFor="document1"
               >
                 Document
@@ -178,7 +178,7 @@ const Refrences = ({
                   type="text"
                   value={document1}
                   onChange={(e) => setDocument1(e.target.value)}
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
@@ -190,10 +190,10 @@ const Refrences = ({
 
           <div className="flex items-center justify-between gap-2  ">
             <div className="flex flex-col w-full  ">
-              <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2 " htmlFor="issuingcountry1">
+              <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 " htmlFor="issuingcountry1">
                 Issuing Country
               </label>
-              <select id="issuingcountry1" className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]" 
+              <select id="issuingcountry1" className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]" 
               value={issuingCountry}
               onChange={(e) => setIssuingCountry(e.target.value)} >
                 <option value="india">India</option>
@@ -204,7 +204,7 @@ const Refrences = ({
 
             <div className="w-full">
               <label
-                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
+                className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                 htmlFor="number"
               >
                 Issue Date
@@ -215,7 +215,7 @@ const Refrences = ({
                   type="date"
                   value={issueDate1}
                   onChange={(e) => setIssueDate1(e.target.value)}
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
@@ -224,7 +224,7 @@ const Refrences = ({
 
             <div className="w-full ">
               <label
-                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
+                className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                 htmlFor="document2"
               >
                 Document
@@ -235,7 +235,7 @@ const Refrences = ({
                   type="text"
                   value={document2}
                   onChange={(e) => setDocument2(e.target.value)}
-                  className="border rounded-lg w-full py-[7px] text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
+                  className="border rounded-lg w-full py-[7px] text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
@@ -250,7 +250,7 @@ const Refrences = ({
             {" "}
             <div className="w-[25%] ">
               <label
-                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
+                className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                 htmlFor="firstName"
               >
                 First Name
@@ -261,7 +261,7 @@ const Refrences = ({
                   type="text"
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
@@ -269,7 +269,7 @@ const Refrences = ({
             </div>
             <div className="w-[25%] ">
               <label
-                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
+                className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                 htmlFor="lastName"
               >
                 Last Name
@@ -280,7 +280,7 @@ const Refrences = ({
                   type="text"
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
@@ -288,7 +288,7 @@ const Refrences = ({
             </div>
             <div className="w-[25%] ">
               <label
-                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
+                className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                 htmlFor="street1"
               >
                 Vessel/Company Name
@@ -299,17 +299,17 @@ const Refrences = ({
                   type="text"
                   value={companyName1}
                   onChange={(e) => setCompanyName1(e.target.value)}
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
               </div>
             </div>
             <div className="flex flex-col w-[25%]  ">
-              <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2 " htmlFor="contryCode">
+              <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 " htmlFor="contryCode">
                 Country Code
               </label>
-              <select id="countryCode" className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]" value={countryCode}
+              <select id="countryCode" className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]" value={countryCode}
                   onChange={(e) => setCountryCode(e.target.value)} >
                 <option value="45440">45440</option>
                 <option value="02458">02458</option>
@@ -322,7 +322,7 @@ const Refrences = ({
 
           <div className=" ">
             <label
-              className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
+              className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
               htmlFor="addinfo"
             >
               Add. Info (c/o etc.)
@@ -333,7 +333,7 @@ const Refrences = ({
                 type="text"
                 value={addInfo}
                 onChange={(e) => setAddInfo(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder=""
                 required
               />
@@ -342,7 +342,7 @@ const Refrences = ({
 
           <div className="flex items-center gap-4">
             <div className="w-[50%]">
-              <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2 " htmlFor="postalcode">
+              <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 " htmlFor="postalcode">
                 Postal Code/ZIP Code
               </label>
               <div className="relative flex items-center  ">
@@ -351,7 +351,7 @@ const Refrences = ({
                   type="number"
                   value={postalCode}
                   onChange={(e) => setPostalCode(e.target.value)}
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder="Enter ZipCode"
                   required
                 />
@@ -359,7 +359,7 @@ const Refrences = ({
             </div>
             <div className="w-[50%] ">
               <label
-                className="blocktext-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
+                className="blocktext-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                 htmlFor="cityName1"
               >
                 City
@@ -370,7 +370,7 @@ const Refrences = ({
                   type="text"
                   value={cityName}
                   onChange={(e) => setCityName(e.target.value)}
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
@@ -383,7 +383,7 @@ const Refrences = ({
           <div className="flex items-center gap-4 w-full">
             <div className="w-[50%]">
               <label
-                className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2 "
+                className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 "
                 htmlFor="state"
               >
                 State/Province
@@ -394,17 +394,17 @@ const Refrences = ({
                   type="text"
                   value={state}
                   onChange={(e) => setState(e.target.value)}
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
               </div>
             </div>
             <div className="flex flex-col w-[50%]  ">
-              <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2 " htmlFor="country">
+              <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 " htmlFor="country">
                 Country
               </label>{" "}
-              <select id="country" className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              <select id="country" className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}>
                 <option value="maile1">India</option>
@@ -417,10 +417,10 @@ const Refrences = ({
           {/* airport  */}
 
           <div className="flex flex-col">
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2 ">
+            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 ">
               Nearest Airport
             </label>
-            <select id="NearestAirport" className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"   
+            <select id="NearestAirport" className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"   
             value={nearestAirport}
                   onChange={(e) => setNearestAirport(e.target.value)}>
               <option value="maile1">India</option>
@@ -433,10 +433,10 @@ const Refrences = ({
 
           <div className="flex items-center justify-between gap-4  ">
             <div className="flex flex-col  ">
-              <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2 " htmlFor="countryCode1">
+              <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 " htmlFor="countryCode1">
                 Country Code
               </label>
-              <select id="countryCode1" className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"   value={countryCode1}
+              <select id="countryCode1" className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"   value={countryCode1}
                   onChange={(e) => setCountryCode1(e.target.value)}>
                 <option value="maile1">+91</option>
                 <option value="maile2">+50</option>
@@ -446,7 +446,7 @@ const Refrences = ({
 
             <div className="w-[75%] ">
               <label
-                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
+                className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                 htmlFor="number"
               >
                 Phone Number
@@ -457,7 +457,7 @@ const Refrences = ({
                   type="text"
                   value={phoneNumber}
                   onChange={(e) => setPhoneNumber(e.target.value)}
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
@@ -468,7 +468,7 @@ const Refrences = ({
           <div className="flex items-center justify-between gap-4  ">
             <div className="flex flex-col w-[50%] ">
               <label
-                className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-2 "
+                className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 "
                 htmlFor="email"
               >
                 Email
@@ -479,7 +479,7 @@ const Refrences = ({
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />
@@ -488,7 +488,7 @@ const Refrences = ({
 
             <div className="w-[50%] ">
               <label
-                className="block text-[14px] leading-[19.07px] font-[openSans] text-[#333333] mb-1"
+                className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                 htmlFor="inumber"
               >
                 INDoS Number
@@ -499,7 +499,7 @@ const Refrences = ({
                   type="text"
                   value={indNumber}
                   onChange={(e) => setIndNumber(e.target.value)}
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
                   required
                 />

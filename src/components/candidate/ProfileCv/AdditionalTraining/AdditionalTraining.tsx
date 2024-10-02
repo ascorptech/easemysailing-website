@@ -112,12 +112,12 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <div className="grid grid-cols-2 gap-4">
         <div className="">
-          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="optionce">
+          <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="optionce">
             Certification
           </label>
           <select
             id="optionce"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
             value={countryCertifi}
                   onChange={(e) => setCountryCertifi(e.target.value)}
@@ -133,7 +133,7 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
 
         <div className="   ">
             <label
-              className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+              className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
               htmlFor="trainingC1"
             >
               Training Center
@@ -143,7 +143,7 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
               type="text"
               value={trainingCenter}
               onChange={(e) => setTrainingCenter(e.target.value)}
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder=""
               required
             />
@@ -151,12 +151,12 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
 
 
           <div className=" ">
-          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="optionsIC">
+          <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="optionsIC">
           Issuing Country
           </label>
           <select
             id="optionsIC"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             name="options"
             value={countryIC}
             onChange={(e) => setCountryIC(e.target.value)}
@@ -173,7 +173,7 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
         {/* <div className=""> */}
 
         <div className="   ">
-          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="numberA">
+          <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="numberA">
             Enter Number
           </label>
           <input
@@ -181,7 +181,7 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
             type="number"
             value={number}
             onChange={(e) => setNumber(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             placeholder=""
             required
           />
@@ -191,13 +191,13 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
 
         {/* </div> */}
         <div className="">
-          <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]" htmlFor="issue3">
+          <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]" htmlFor="issue3">
             Issue Date
           </label>
           <input
             id="issue3"
             type="date"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             value={issuedate}
             onChange={(e) => setIssueDate(e.target.value)}
           />
@@ -205,14 +205,14 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
       {/* </div> */}
 
       <div className="">
-        <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]  " htmlFor="expiryDate3">
+        <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]  " htmlFor="expiryDate3">
           Expiry Date
         </label>
         <div className="flex items-center gap-4 ">
           <input
             id="expiryDate3"
             type="date"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             value={exdate}
             onChange={(e) => setExDate(e.target.value)}
           />
@@ -223,12 +223,12 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
           <input
             id="neverExpires1"
             type="checkbox"
-            className="border focus:ring-[#00A264]  checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+            className="border focus:ring-[#00A264]  checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
             //   value={exdate}
             //   onChange={(e) => setExDate(e.target.value)}
           />
           <label
-            className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
             htmlFor="neverExpires1"
           >
             Never Expires
@@ -244,7 +244,7 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
                 onChange={(e) => setNeverExpCheck(!neverExpCheck)}
             />
             <label
-              className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+              className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
               htmlFor="neverExpires1"
             >
               Never Expires
@@ -255,7 +255,7 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
         <div>
         <label
           htmlFor="file-upload03"
-          className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[openSans]  "
+          className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[poppins]  "
         >
           Attachment Document
         </label>
@@ -269,11 +269,11 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
         <div>
        
          {selectedFile ? (
-              <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 File Selected: {selectedFile.name}
               </p>
             ) : (
-              <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">No file selected</p>
+              <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">No file selected</p>
             )}
             </div>
       </div>
@@ -294,12 +294,12 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
             <h1 className="text-center font-bold">PROFESSIONAL KNOWLEDGE TEST</h1>
             </div>
           <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="option02">
+            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="option02">
              Capacity
             </label>
             <select
               id="option02"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
               value={capacity}
               onChange={(e) => setCapacity(e.target.value)}
@@ -315,12 +315,12 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
 
 
           <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="level">
+            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="level">
              Level
             </label>
             <select
               id="level"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
               value={level}
               onChange={(e) => setLevel(e.target.value)}
@@ -336,7 +336,7 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
 
           <div className="   ">
             <label
-              className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+              className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
               htmlFor="trainingCe"
             >
               Training Center
@@ -346,19 +346,19 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
               type="text"
               value={trainingCenter1}
               onChange={(e) => setTrainingCenter1(e.target.value)}
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder=""
               required
             />
           </div>
 
           <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="typeoftest">
+            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="typeoftest">
              Type of Test
             </label>
             <select
               id="typeoftest"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
               value={typeOfTest}
               onChange={(e) => setTypeOfTest(e.target.value)}
@@ -375,7 +375,7 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
 
           <div className="   ">
             <label
-              className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+              className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
               htmlFor="result"
             >
               Result
@@ -385,7 +385,7 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
               type="text"
               value={result}
               onChange={(e) => setResult(e.target.value)}
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder=""
               required
             />
@@ -393,12 +393,12 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
          
 
           <div className=" ">
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] " htmlFor="optionT1">
+            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="optionT1">
               Issuing Country
             </label>
             <select
               id="optionT1"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
               value={issuingCountry}
               onChange={(e) => setIssuingCountry(e.target.value)}
@@ -415,7 +415,7 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
 
           <div className="   ">
             <label
-              className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333] "
+              className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
               htmlFor="proNumber1"
             >
               Enter Number
@@ -425,7 +425,7 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
               type="number"
               value={eCDISNumber}
               onChange={(e) => setECDISNumber(e.target.value)}
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder=""
               required
             />
@@ -433,13 +433,13 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
 
           {/* </div> */}
           <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]" htmlFor="issue2">
+            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]" htmlFor="issue2">
               Issue Date
             </label>
             <input
               id="issue2"
               type="date"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={issuedate1}
               onChange={(e) => setIssueDate1(e.target.value)}
             />
@@ -447,7 +447,7 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
 
           <div className="">
             <label
-              className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]  "
+              className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]  "
               htmlFor="expiryDate2"
             >
               Expiry Date
@@ -456,7 +456,7 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
             <input
               id="expiryDate2"
               type="date"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={exdate1}
               onChange={(e) => setExDate1(e.target.value)}
             />
@@ -470,7 +470,7 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
                 onChange={(e) => setNeverChecked1(!neverChecked1)}
             />
             <label
-              className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+              className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
               htmlFor="neverExpires2"
             >
               Never Expires
@@ -481,7 +481,7 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
             <div>
             <label
               htmlFor="file-upload2"
-              className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] text-[14px] leading-[19.07px] font-[openSans]  focus:outline-none focus:ring-2 "
+              className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] text-[14px] leading-[19.07px] font-[poppins]  focus:outline-none focus:ring-2 "
             >
               Attachment Docoment
             </label>
@@ -494,11 +494,11 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
             </div>
             <div>
             {selectedFiles ? (
-              <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 File Selected: {selectedFiles.name}
               </p>
             ) : (
-              <p className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">No file selected</p>
+              <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">No file selected</p>
             )}
             </div>
           </div>
@@ -511,13 +511,13 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
       <div className="flex gap-2 mb-4 mt-4">
         <Link
           href="#"
-          className="border text-[14px] leading-[19.07px] font-[openSans]  border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
+          className="border text-[14px] leading-[19.07px] font-[poppins]  border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
         >
           Save
         </Link>
         <Link
           href="#"
-          className="border border-[#00A264]  p-2 rounded-lg px-8 text-[14px] leading-[19.07px] font-[openSans] text-[#333333]"
+          className="border border-[#00A264]  p-2 rounded-lg px-8 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
         >
           Edit
         </Link>

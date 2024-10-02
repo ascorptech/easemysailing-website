@@ -155,11 +155,11 @@ const CompanyParticular = ({ mjrComplete, setMjrComplete, userDetail }: Props) =
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-2  gap-4">
           <div>
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               Current Position/Rank
             </label>
             <select
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={currentPosition}
               onChange={(e) => setCurrentPosition(e.target.value)}
               disabled={disabled}
@@ -177,11 +177,11 @@ const CompanyParticular = ({ mjrComplete, setMjrComplete, userDetail }: Props) =
           </div>
 
           <div>
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               Alternate Position/Rank
             </label>
             <select
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={alternatePosition}
               onChange={(e) => setAlternatePosition(e.target.value)}
               disabled={disabled}
@@ -196,11 +196,11 @@ const CompanyParticular = ({ mjrComplete, setMjrComplete, userDetail }: Props) =
           </div>
 
           <div>
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               Preferred Vessel Type
             </label>
             <select
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={preferredVesselType}
               onChange={(e) => setPreferredVesselType(e.target.value)}
               disabled={disabled}
@@ -215,11 +215,11 @@ const CompanyParticular = ({ mjrComplete, setMjrComplete, userDetail }: Props) =
           </div>
 
           <div>
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               Alternate Vessel Type
             </label>
             <select
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={alternateVesselType}
               onChange={(e) => setAlternateVesselType(e.target.value)}
               disabled={disabled}
@@ -234,11 +234,11 @@ const CompanyParticular = ({ mjrComplete, setMjrComplete, userDetail }: Props) =
           </div>
 
           <div>
-            <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               Availability
             </label>
             <select
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={available}
               // onChange={(e) => setAvailable(e.target.value)}
               onChange={(e) => {
@@ -258,12 +258,12 @@ const CompanyParticular = ({ mjrComplete, setMjrComplete, userDetail }: Props) =
           </div>
           {available === "Yes" && (
             <div>
-              <label className="text-[14px] leading-[19.07px] font-[openSans] text-[#333333]">
+              <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 Availability Date
               </label>
               <input
                 type="date"
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[openSans] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={availabilityDate}
                 onChange={(e) => setAvailabilityDate(e.target.value)}
                 disabled={disabled}

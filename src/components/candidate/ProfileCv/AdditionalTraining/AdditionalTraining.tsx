@@ -38,9 +38,21 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
   const [neverChecked1, setNeverChecked1] = useState(false);
   const [additionalTraDrop, setAdditionalTraDrop] = useState([]);
   const [countryDrop, setCountryDrop] = useState<any>([]);
+  const [capacityDrop, setCapacityDrop] = useState<any>([]);
+  const [levelDrop, setLevelDrop] = useState<any>([]);
+  const [levelTestDrop, setLevelTestDrop] = useState<any>([]);
 
 
   useEffect(() => {
+    GetDropdownDetails('ProfessionalKnowledgeLevel', (res: any) => {
+      setLevelDrop(res?.data?.values)
+    })
+    GetDropdownDetails('ProfessionalKnowledgeTest', (res: any) => {
+      setLevelTestDrop(res?.data?.values)
+    })
+    GetDropdownDetails('capacity', (res: any) => {
+      setCapacityDrop(res?.data?.values)
+    })
     GetDropdownDetails('AdditionalTrainings', (res: any) => {
       setAdditionalTraDrop(res?.data?.values)
     })
@@ -327,9 +339,9 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
               <option value="" disabled selected>
               Capacity
               </option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
+              {capacityDrop && capacityDrop?.map((cap: any, index: number) => (
+                <option key={index} value={cap}>{cap?.toUpperCase()}</option>
+              ))}
             </select>
           </div>
 
@@ -348,9 +360,9 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
               <option value="" disabled selected>
             Level
               </option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
+              {levelDrop && levelDrop?.map((lev: any, index: number) => (
+                  <option key={index} value={lev}>{lev?.toUpperCase()}</option>
+                ))}
             </select>
           </div>
 
@@ -386,9 +398,9 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
               <option value="" disabled selected>
               Type of Test
               </option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
+              {levelTestDrop && levelTestDrop?.map((levTest: any, index: number) => (
+                  <option key={index} value={levTest}>{levTest?.toUpperCase()}</option>
+                ))}
             </select>
           </div>
 
@@ -497,13 +509,13 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
             </label>
           </div>
       <div className="grid col-span-2">
-          <div className="flex gap-4 items-center justify-center ">
+          <div className="flex gap-4 items-center justify-start ">
             <div>
             <label
               htmlFor="file-upload2"
               className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] text-[14px] leading-[19.07px] font-[poppins]  focus:outline-none focus:ring-2 "
             >
-              Attachment Docoment
+              Attachment Document
             </label>
             <input
               id="file-upload2"

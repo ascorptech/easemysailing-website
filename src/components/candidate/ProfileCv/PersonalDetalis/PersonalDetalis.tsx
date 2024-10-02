@@ -31,13 +31,19 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
   const [genderDrop,setGenderDrop] = useState<any>([])
   const [martialStatusDrop,setMartialStatusDrop] = useState<any>([])
   const [disabled,setDisabled] = useState(true)
-
-  
+  const [countryDrop, setCountryDrop] = useState<any>([]);
   const [gender, setGender] = useState("");
 
   const [marital, setMarital] = useState("");
 
   const [nationality, setNationality] = useState("");
+
+  useEffect(() => {
+    GetDropdownDetails('country', (res: any) => {
+      // console.log('County',res?.data)
+      setCountryDrop(res?.data?.values)
+    })
+  }, [])
 
   const totalFields = 11;
   const filledFields = [
@@ -346,9 +352,9 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
                 disabled={disabled}
               >
                 <option value="">Select country</option>
-                <option value="India">India</option>
-                <option value="Australia">Australia</option>
-                <option value="England">England</option>
+                {countryDrop && countryDrop?.map((country: any, index: number) => (
+                    <option key={index} value={country}>{country?.toUpperCase()}</option>
+                  ))}
               </select>
             </div>
 
@@ -388,9 +394,9 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
                 disabled={disabled}
               >
                 <option value="">Select nationality</option>
-                <option value="Indian">Indian</option>
-                <option value="Bangladeshi">Bangladeshi</option>
-                <option value="English">English</option>
+                {countryDrop && countryDrop?.map((country: any, index: number) => (
+                    <option key={index} value={country}>{country?.toUpperCase()}</option>
+                  ))}
               </select>
             </div>
             {/* Relision */}

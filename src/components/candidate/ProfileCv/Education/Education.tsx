@@ -2,6 +2,7 @@
 
 
 "use client";
+import { GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
 
 import { useEffect, useState } from "react";
@@ -30,9 +31,16 @@ const Education = ({educationComplete, setEducationComplete, userDetail}:Props) 
   const [trainingCenter, setTrainingCenter] = useState("");
   const [eCDISNumber, setECDISNumber] = useState("");
   const [issuedate1, setIssueDate1] = useState("");
-  const [percentage1, setPercentage1] = useState("");
+  const [issuingCountry, setIssuingCountry] = useState("");
+  const [countryDrop, setCountryDrop] = useState<any>([]);
 
-  
+  useEffect(() => {
+
+    GetDropdownDetails('country', (res: any) => {
+      // console.log('County',res?.data)
+      setCountryDrop(res?.data?.values)
+    })
+  }, [])
 
 
   const totalFields = 5;
@@ -41,7 +49,7 @@ const Education = ({educationComplete, setEducationComplete, userDetail}:Props) 
     subject,
     city,
     selectedFile,
-    percentage1
+    issuingCountry
    
   ].filter(Boolean).length;
 
@@ -99,35 +107,35 @@ const Education = ({educationComplete, setEducationComplete, userDetail}:Props) 
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
-      <h1 className="font-bold ">COMPUTER SKILLS</h1>
+      <h1 className="font-bold ">Education</h1>
       <div className="grid grid-cols-2 gap-4">
         <div className="   ">
           <label
             className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
-            htmlFor="number"
+            htmlFor="university"
           >
             School / College / University{" "}
           </label>
           <input
-            id="number"
-            type="number"
+            id="university"
+            type="text"
             value={university}
             onChange={(e) => setUniversity(e.target.value)}
             className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-            placeholder="Enter Number"
+            placeholder="Enter University"
             required
           />
         </div>
         <div className="   ">
           <label
             className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
-            htmlFor="number"
+            htmlFor="subject"
           >
             Subject
           </label>
           <input
-            id="number"
-            type="number"
+            id="subject"
+            type="text"
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
             className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
@@ -135,6 +143,25 @@ const Education = ({educationComplete, setEducationComplete, userDetail}:Props) 
             required
           />
         </div>
+        <div className=" ">
+            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="optionT1">
+              Issuing Country
+            </label>
+            <select
+              id="optionT1"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              name="options"
+              value={issuingCountry}
+              onChange={(e) => setIssuingCountry(e.target.value)}
+            >
+              <option value="" disabled selected>
+                Issuing Country
+              </option>
+              {countryDrop && countryDrop?.map((country: any, index: number) => (
+                  <option key={index} value={country}>{country?.toUpperCase()}</option>
+                ))}
+            </select>
+          </div>
 
         <div className="   ">
           <label
@@ -153,28 +180,10 @@ const Education = ({educationComplete, setEducationComplete, userDetail}:Props) 
             required
           />
         </div>
-
-        <div className="   ">
-          <label
-            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
-            htmlFor="percentage"
-          >
-            Percentage{" "}
-          </label>
-          <input
-            id="percentage"
-            type="number"
-            value={percentage1}
-            onChange={(e) => setPercentage1(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-            placeholder=""
-            required
-          />
-        </div>
       </div>
 
-      <div className="flex items-center justify-center gap-4 my-6">
-        <div className="flex gap-6 items-center  ">
+      {/* <div className="flex items-center justify-start gap-4 my-6">
+        <div className="flex gap-6 items-center ">
           <label
             htmlFor="file-upload"
             className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[poppins]  "
@@ -189,7 +198,6 @@ const Education = ({educationComplete, setEducationComplete, userDetail}:Props) 
           />
          
         </div>
-        {/* <div> */}
         {selectedFile ? (
           <p className="mt-4 text-gray-700">
             File Selected: {selectedFile.name}
@@ -199,8 +207,7 @@ const Education = ({educationComplete, setEducationComplete, userDetail}:Props) 
             No file selected
           </p>
         )}
-        {/* </div> */}
-      </div>
+      </div> */}
 
       {/* Third section */}
 

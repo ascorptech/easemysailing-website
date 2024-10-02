@@ -59,6 +59,7 @@ const Licenses = ({licensesComplete,setLicensesComplete,userDetail}:Props) => {
   const [selectedFile2, setSelectedFile2] = useState<File | null>(null);
   const [countryDrop, setCountryDrop] = useState<any>([]);
   const [capacityDrop, setCapacityDrop] = useState<any>([]);
+  const [stcwRegDrop, setCapacitDrop] = useState<any>([]);
 
   useEffect(() => {
     GetDropdownDetails('capacity', (res: any) => {

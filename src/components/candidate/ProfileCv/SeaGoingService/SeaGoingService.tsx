@@ -2,6 +2,7 @@
 import { AddSeagoingData, GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 type SeaGoingServiceComplete = {
   percentage: number;
@@ -119,7 +120,14 @@ const SeaGoingService = ({
 
     AddSeagoingData(data, AddSeagoingDatacb);
   };
-
+  const AddSeagoingDatacb = (result: any) => {
+    console.log(result);
+    if (result?.status == 200||result?.status==201) {
+      toast.success("Sea Going Detaila submited successfully");
+    } else {
+      toast.error("Sea Going Detaila  not submited ");
+    }
+  };
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>

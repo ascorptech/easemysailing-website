@@ -1,10 +1,22 @@
 "use client";
 import { AddProfileData } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-const VettingServices = () => {
+type VettingServicesComplete = {
+  percentage: number;
+  color: string;
+};
+
+type Props = {
+  vettingServicesComplete: VettingServicesComplete; // mjrComplete is an object with percentage and color
+  setVettingServicesComplete: React.Dispatch<React.SetStateAction<VettingServicesComplete>>;
+  userDetail: any;
+};
+
+
+const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, userDetail}:Props) => {
   // State for form fields
 
   const [whatsApp, setWhatsApp] = useState(false);
@@ -16,6 +28,44 @@ const VettingServices = () => {
   const [facebook, setFacebook] = useState(false);
   const [instagram, setInstagram] = useState(false);
   const [other, setOther] = useState(false);
+
+
+  const totalFields = 4;
+  const filledFields = [
+    whatsApp,
+  
+  ].filter(Boolean).length;
+
+  // const totalFields = available === "Yes" ? 6 : 5;
+
+  const percentage = (filledFields / totalFields) * 100;
+  // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
+  let color;
+  useEffect(() => {
+    console.log("user", userDetail);
+    if (percentage <= 30) {
+      setVettingServicesComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: "#FF0000", // Update the color field
+      }));
+      color = "red";
+    } else if (percentage <= 70) {
+      setVettingServicesComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: "#FF9900", // Update the color field
+      }));
+      color = "#FF9900";
+    } else {
+      setVettingServicesComplete((prevState) => ({
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: "#00A264", // Update the color field
+      }));
+      color = "green";
+    }
+  }, [percentage, color]);
 
   const handleSubmit = (e: React.FormEvent) => {
     // try {

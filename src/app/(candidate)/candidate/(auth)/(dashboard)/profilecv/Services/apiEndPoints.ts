@@ -7,6 +7,8 @@ export default{
     POSTNEXTOF:'/api/next-of-kin-details',
     POSTLANGUAGE:'/api/v1/languages',
     POSTABOUTME:'/api/v1/aboutme',
+    POSTECDIS:'/api/v1/ecdis-training',
+    POSTMEDICAL:'/api/v1/medical-certificates',
     POSTCONTACT:'/api/v1/contact-details',
     POSTONLINEPRASENCE:'/api/online-presence',
     POSTLICENSES:'/api/v1/licenses',

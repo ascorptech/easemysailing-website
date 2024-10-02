@@ -4,13 +4,13 @@ export default function AddOn() {
   return (
     <div className="mx-8 w-[85%] mt-5 ml-20">
       <div>
-        <h1 className="text-2xl font-semibold">Recruitment</h1>
+        <h1 className="text-2xl font-semibold">Add on Services</h1>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[110px] mt-3">
         {/* Card 1 */}
         <div className="bg-white shadow-md   rounded-lg">
           <div className="bg-[url('/cardbg.png')] h-[122px] text-center rounded-t-lg p-4">
-            <h2 className="text-2xl font-bold">Basic Plan</h2>
+            <h2 className="text-2xl font-bold">Add on Services</h2>
             <p className="text-green-600 text-3xl font-extrabold">
               $0.00<span className="text-lg text-black font-normal">/Year</span>
             </p>
@@ -35,7 +35,7 @@ export default function AddOn() {
           </ul>
           <div className="my-5 text-base w-36 mx-auto">
             <button className="bg-[#00A264] text-white py-3  rounded-md w-full">
-              Currently Active
+              Get Started
             </button>
           </div>
         </div>
@@ -43,7 +43,7 @@ export default function AddOn() {
         {/* Card 2 */}
         <div className="bg-white shadow-md rounded-lg">
           <div className="bg-[url('/cardbg.png')] h-[122px] text-center rounded-t-lg p-4">
-            <h2 className="text-2xl font-bold">Advanced Plan</h2>
+            <h2 className="text-2xl font-bold">Add on Services</h2>
             <p className="text-green-600 text-3xl font-extrabold">
               $24.99
               <span className="text-lg font-normal text-black ">/Year</span>
@@ -77,7 +77,7 @@ export default function AddOn() {
         {/* Card 3 */}
         <div className="bg-white shadow-md rounded-lg">
           <div className="bg-[url('/cardbg.png')] h-[122px] text-center rounded-t-lg p-4">
-            <h2 className="text-2xl font-bold">Super Plan</h2>
+            <h2 className="text-2xl font-bold">Recharge CVs</h2>
             <p className="text-green-600 text-3xl font-extrabold">
               $24.99
               <span className="text-lg font-normal text-black ">/Month</span>

@@ -59,7 +59,7 @@ const MedicalCertificates = ({
   const [vaccination1, setVaccination1] = useState("");
 
   const [vaccinationexp, setVaccinationexp] = useState("");
- 
+
   const [selectedFilesOthers, setSelectedFilesOthers] = useState<any>("");
   
 

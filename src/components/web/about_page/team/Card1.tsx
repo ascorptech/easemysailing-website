@@ -15,31 +15,31 @@ const Card = () => {
   const cards: Card[] = [
     {
       id: 1,
-      logo: "/Team/manish.png",
+      logo: "/images/team/manish.png",
       company: "Capt. Manish Arora",
       designation:'Marine Operations Expert'
     },
     {
       id: 2,
-      logo: "/Team/prachi.png",
+      logo: "/images/team/prachi.png",
       company: "Prachi Rathi",
       designation:'Digital Transformation Leader'
     },
     {
       id: 3,
-      logo: "/Team/satish.png",
+      logo: "/images/team/satish.png",
       company: "Dr. Satish Ojha",
       designation:'Professor, IIM-Bodh Gaya'
     },
     {
       id: 4,
-      logo: "/Team/archna.png",
+      logo: "/images/team/archna.png",
       company: "Puneet Saxena",
       designation:'Regulatory Compliance Expert'
     },
     {
       id: 5,
-      logo: "/Team/satish.png",
+      logo: "/images/team/satish.png",
       company: "Capt. Pankaj Ranjan",
       designation:'Maritime Leader & Industry Expert'
     },
@@ -92,8 +92,8 @@ const Card = () => {
             <div className="w-[197.58px] h-[197.98px] bg-white rounded-full shadow-md">
             <Image
                   priority
-                  height={20}
-                  width={20}
+                  height={5000}
+                  width={5000}
                 src={card.logo}
                 alt={card.company}
                 className="w-full h-full rounded-full"

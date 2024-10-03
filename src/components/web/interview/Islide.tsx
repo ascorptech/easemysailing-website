@@ -48,7 +48,7 @@ const Islide = () => {
   useEffect(() => {
     GetRecentPodcast((res: any) => {
       console.log(res);
-      if (res.status == 200) {
+      if (res?.status == 200) {
         setPodcasts(res?.data)
       }
     })

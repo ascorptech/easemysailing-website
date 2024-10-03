@@ -7,7 +7,7 @@ interface Card {
   id: number;
   logo: string;
   company: string;
-  designation:string;
+  designation: string;
 }
 
 const Card = () => {
@@ -16,33 +16,33 @@ const Card = () => {
   const cards: Card[] = [
     {
       id: 1,
-      logo: "/Team/amit.png",
+      logo: "/images/team/amit.png",
       company: "Amit Dubey",
-      designation:'Strategy and Inovation'
+      designation: 'Strategy and Inovation'
     },
     {
       id: 2,
-      logo: "/Team/archna.png",
+      logo: "/images/team/archna.png",
       company: "Archna Gauba",
-      designation:'Marketing and Sales'
+      designation: 'Marketing and Sales'
     },
     {
       id: 3,
-      logo: "/Team/arun.png",
+      logo: "/images/team/arun.png",
       company: "Arun Tiwari",
-      designation:'Technology & Operation'
+      designation: 'Technology & Operation'
     },
     {
       id: 4,
-      logo: "/Team/archna.png",
+      logo: "/images/team/archna.png",
       company: "Capt. MG",
-      designation:'Finance and Administration'
+      designation: 'Finance and Administration'
     },
     {
       id: 5,
-      logo: "/Team/satish.png",
+      logo: "/images/team/satish.png",
       company: "Oda Dink",
-      designation:'Maritime Leader & Industry Expert'
+      designation: 'Maritime Leader & Industry Expert'
     },
   ];
 
@@ -91,10 +91,10 @@ const Card = () => {
         {cards?.map((card) => (
           <div key={card.id} className="snap-center flex flex-col items-center">
             <div className="w-[197.58px] h-[197.98px] bg-white rounded-full shadow-md">
-            <Image
-                  priority
-                  height={20}
-                  width={20}
+              <Image
+                priority
+                height={5000}
+                width={5000}
                 src={card.logo}
                 alt={card.company}
                 className="w-full h-full rounded-full"
@@ -108,7 +108,6 @@ const Card = () => {
           </div>
         ))}
       </div>
-
       {/* Right Arrow */}
       <button
         onClick={scrollRight}

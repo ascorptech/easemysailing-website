@@ -1,5 +1,8 @@
 "use client";
-import { AddSeagoingData, GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import {
+  AddSeagoingData,
+  GetDropdownDetails,
+} from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
@@ -104,30 +107,37 @@ const SeaGoingService = ({
     // try {
     e.preventDefault();
     let data = {
-      id: userDetail?.userId,
-      vesselName:vercelName,
-      imoNumber:imo,
-      disembarkationDate:disembarkationDate,
-      tonnage:tonnage,
-      rank:rank,
-      engineMake:enginemake,
-      ecdis:eCDIS,
-      embarkationDate:embarkationdate,
-      netSeagoingDays:seagoingNumber,
-      gearless:gearless,
-      inertGasSystem:inertGas,
+      " id": userDetail?.userId,
+      "vesselName": vercelName,
+      "imoNumber": imo,
+      "disembarkationDate": disembarkationDate,
+      " tonnage": tonnage,
+      "rank": rank,
+      "engineMake": enginemake,
+      "ecdis": eCDIS,
+      "embarkationDate": embarkationdate,
+      "netSeagoingDays": seagoingNumber,
+      "gearless": gearless,
+      " inertGasSystem": inertGas,
     };
 
     AddSeagoingData(data, AddSeagoingDatacb);
   };
-  const AddSeagoingDatacb = (result: any) => {
-    console.log(result);
-    if (result?.status == 200||result?.status==201) {
+
+
+  const AddSeagoingDatacb = (result:any)=>{
+    console.log('res',result)
+    if (result?.status == 200||result?.status == 201) {
+      console.log(result)
       toast.success("Sea Going Detaila submited successfully");
+      setTimeout(() => {
+        window.location.reload()
+      }, 1000);
     } else {
-      toast.error("Sea Going Detaila  not submited ");
+      console.log(result)
+      toast.error("Sea Going Detaila  not submited");
     }
-  };
+  }
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>

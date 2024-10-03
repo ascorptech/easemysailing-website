@@ -93,11 +93,11 @@ const NextOfKinDetails = ({
       return;
     }
     let data:any = {
-      id:userDetail?.userId,
-      nextOfKinName:nextKinName ,
-      nextOfKinRelationship: nextKinShip,
-      nextOfKinAddress: nextKinAddre,
-      numberOfChildren: nextKinChildren,
+      "id":userDetail?.userId,
+      "nextOfKinName":nextKinName ,
+      "nextOfKinRelationship": nextKinShip,
+      "nextOfKinAddress": nextKinAddre,
+      "numberOfChildren": nextKinChildren,
      
   };
   AddNextOfData(data, AddNextOfKindataDB);

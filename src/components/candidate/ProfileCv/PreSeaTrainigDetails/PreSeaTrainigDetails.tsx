@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import {AddSeaDetailsData } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import { AddSeaDetailsData } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
@@ -53,7 +53,6 @@ const PreSeaTrainigDetails = ({
   const [currency, setCurrency] = useState("");
   const [neverExpires, setNeverExpires] = useState<any>(false);
 
-
   //   const handleFileChange = (event: any) => {
   //     setSelectedFile(event.target.files[0]);
   //   };
@@ -89,7 +88,7 @@ const PreSeaTrainigDetails = ({
     maxTimeonBoard,
     timeonBoard,
     currency,
-    neverExpires
+    neverExpires,
   ].filter(Boolean).length;
 
   // const totalFields = available === "Yes" ? 6 : 5;
@@ -133,59 +132,58 @@ const PreSeaTrainigDetails = ({
   const handleSubmit = (e: React.FormEvent) => {
     // try {
     e.preventDefault();
-    let formData =new FormData();
+    let formData = new FormData();
 
     {
-      formData.append('permanentPerDay', permanect      );
-      formData.append('issueDate', issuedate);
-      formData.append('expiryDate', exdate);
-      formData.append('document', selectedFile);
-      formData.append('trainingCenter',trainingCenter);
-      formData.append('salaryNegotiable', salary);
-      formData.append('certificateNumber', number);
-      formData.append('crewManager', crewManager);
-      formData.append('technicalManager',  technicalManager);
-      formData.append('operator',  operator);
-      formData.append('document', vesselType);
-      formData.append('vesselTypeCommercialSpecification',commercialSpecification      );
-      formData.append('vesselTypeDesignSpecification', designSpecification);
-      formData.append('dpHours',  dPHours);
-      formData.append('rigMoveNumber',numberOfrig);
-      formData.append('winchDriveExperience',winchDrive);
-      formData.append('tradingArea', tradingArea);
-      formData.append('waterDepth',  waterDepth);
-      formData.append('movedItem', moveditem);
-      formData.append('rigMoveRank',  rank);
-      formData.append('rigMoveVesselType',  vesselType1);
-      formData.append('pumpType',pumpType);
-      formData.append('issuingCountry', issuingCountry);
-      formData.append('certificate',   certificate);
-      formData.append('maxTimeAtHomeWeeks',maxTimeonHome);
-      formData.append('minTimeAtHomeWeeks', minTimeonHome);
-      formData.append('maxTimeOnBoardWeeks', maxTimeonBoard);
-      formData.append('minTimeOnBoardWeeks',   timeonBoard);
-      formData.append('currency',currency); 
-      formData.append('neverExpires',neverExpires); 
-
-
+      formData.append("permanentPerDay", permanect);
+      formData.append("issueDate", issuedate);
+      formData.append("expiryDate", exdate);
+      formData.append("document", selectedFile);
+      formData.append("trainingCenter", trainingCenter);
+      formData.append("salaryNegotiable", salary);
+      formData.append("certificateNumber", number);
+      formData.append("crewManager", crewManager);
+      formData.append("technicalManager", technicalManager);
+      formData.append("operator", operator);
+      formData.append("document", vesselType);
+      formData.append(
+        "vesselTypeCommercialSpecification",
+        commercialSpecification
+      );
+      formData.append("vesselTypeDesignSpecification", designSpecification);
+      formData.append("dpHours", dPHours);
+      formData.append("rigMoveNumber", numberOfrig);
+      formData.append("winchDriveExperience", winchDrive);
+      formData.append("tradingArea", tradingArea);
+      formData.append("waterDepth", waterDepth);
+      formData.append("movedItem", moveditem);
+      formData.append("rigMoveRank", rank);
+      formData.append("rigMoveVesselType", vesselType1);
+      formData.append("pumpType", pumpType);
+      formData.append("issuingCountry", issuingCountry);
+      formData.append("certificate", certificate);
+      formData.append("maxTimeAtHomeWeeks", maxTimeonHome);
+      formData.append("minTimeAtHomeWeeks", minTimeonHome);
+      formData.append("maxTimeOnBoardWeeks", maxTimeonBoard);
+      formData.append("minTimeOnBoardWeeks", timeonBoard);
+      formData.append("currency", currency);
+      formData.append("neverExpires", neverExpires);
     }
-    AddSeaDetailsData(userDetail?.userId, formData, AddSeaDetailsDataDB)
+    AddSeaDetailsData(userDetail?.userId, formData, AddSeaDetailsDataDB);
   };
 
   const AddSeaDetailsDataDB = (result: any) => {
     console.log(result);
-    if (result?.status == 200) {
+    if (result?.status == 200 || result?.status == 201) {
       toast.success("Sea detail submited successfully");
       setTimeout(() => {
-        window.location.reload()
+        window.location.reload();
       }, 1000);
     } else {
       toast.error("Sea detail not submited ");
     }
   };
 
-
-  
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
@@ -495,7 +493,7 @@ const PreSeaTrainigDetails = ({
                 className="hidden"
                 onChange={handleFileChange}
               />
-            
+
               {/* </div> */}
               <div>
                 {selectedFile ? (

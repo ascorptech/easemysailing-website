@@ -142,7 +142,9 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
        <form onSubmit={handleSubmit}>
+       <h2 className="font-bold">Additional Trainings</h2>
       <div className="grid grid-cols-2 gap-4">
+
         <div className="">
           <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="optionce">
             Certification
@@ -283,7 +285,7 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
             </label>
           </div>
 <div className="grid col-span-2">
-      <div className="flex gap-6 items-center justify-center">
+      <div className="flex gap-6 items-center ">
         <div>
         <label
           htmlFor="file-upload03"

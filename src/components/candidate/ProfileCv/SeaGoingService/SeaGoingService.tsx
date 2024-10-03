@@ -141,7 +141,7 @@ const SeaGoingService = ({
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
-        <h1 className=" font-bold my-2">PASSPORT DETAILS</h1>
+        <h1 className=" font-bold my-2">SeaGoing Experience</h1>
         <div className="grid grid-cols-2 gap-4">
           <div className="">
             <label

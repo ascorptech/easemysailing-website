@@ -156,7 +156,7 @@ useEffect(() => {
       {/* </div> */}
 
 
-      <div className="flex items-center justify-center gap-4 my-6">
+      <div className="flex items-center  gap-4 my-6">
 
       <div className="flex gap-6 items-center  ">
         <label

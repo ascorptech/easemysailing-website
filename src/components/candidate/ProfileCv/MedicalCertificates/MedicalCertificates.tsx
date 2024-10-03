@@ -430,7 +430,7 @@ const MedicalCertificates = ({
             </label>
             {/* </div> */}
           </div>
-          <div className="grid col-span-2 justify-center items-center">
+          <div className="grid col-span-2  items-center">
             <div className="flex gap-6 items-center  my-6">
               <div>
                 <label
@@ -620,7 +620,7 @@ const MedicalCertificates = ({
           </div>
 
           <div className=" text-center grid col-span-2 mt-3">
-            <div className="flex items-center justify-center gap-4">
+            <div className="flex items-center  gap-4">
               <div>
                 <label
                   htmlFor="file-uploadmedical"
@@ -805,7 +805,7 @@ const MedicalCertificates = ({
           </div>
 
           <div className="grid col-span-2">
-            <div className="flex gap-6 items-center  mt-4 justify-center ">
+            <div className="flex gap-6 items-center  mt-4  ">
               <div>
                 <label
                   htmlFor="file-uploadmedicalvaccine"
@@ -915,7 +915,7 @@ const MedicalCertificates = ({
           </div>
 
           <div className="grid col-span-2">
-            <div className="flex gap-6 items-center  mt-4 justify-center ">
+            <div className="flex gap-6 items-center  mt-4  ">
               <div>
                 <label
                   htmlFor="file-uploadmedicalvaccine"
@@ -1021,7 +1021,7 @@ const MedicalCertificates = ({
           </div>
 
           <div className="grid col-span-2">
-            <div className="flex gap-6 items-center  mt-4 justify-center ">
+            <div className="flex gap-6 items-center  mt-4  ">
               <div>
                 <label
                   htmlFor="file-uploadmedicalvaccineflag"

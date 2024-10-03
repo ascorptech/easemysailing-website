@@ -138,6 +138,7 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
 
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
+      <h2 className="font-bold">Contact Details</h2>
       <form onSubmit={handlesubmit}>
         <div className="">
           <div className=" flex flex-col  px-4 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] gap-4">

@@ -6,6 +6,7 @@ import {
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
 type SeaGoingServiceComplete = {
   percentage: number;
@@ -19,11 +20,19 @@ type Props = {
   userDetail: any;
 };
 
+type SeaGoingFiled={
+  imo:string,
+  VersalName: string;
+}
+
 const SeaGoingService = ({
   seaGoingServiceComplete,
   setSeaGoingServiceComplete,
   userDetail,
 }: Props) => {
+  const [fields, setFields] = useState<SeaGoingFiled[]>([
+    { imo: "", VersalName: "" }
+  ]);
   const [vercelName, setVercelName] = useState("");
   const [embarkationdate, setEmbarkationDate] = useState("");
   const [disembarkationDate, setDisembarkationDate] = useState("");
@@ -59,10 +68,13 @@ const SeaGoingService = ({
     // })
   }, []);
 
-  const totalFields = 11;
+  // const totalFields = 11;
+  const totalFields = fields.length * 2 + 9;
   const filledFields = [
-    vercelName,
-    imo,
+    ...fields.map((field) => field.imo),
+    ...fields.map((field) => field.VersalName),
+    // vercelName,
+    // imo,
     disembarkationDate,
     tonnage,
     rank,
@@ -138,11 +150,36 @@ const SeaGoingService = ({
       toast.error("Sea Going Detaila  not submited");
     }
   }
+
+  const handleFieldChange = (index: number, name: string, value: string) => {
+    const updatedFields = fields.map((field, i) =>
+      i === index ? { ...field, [name]: value } : field
+    );
+    setFields(updatedFields);
+  };
+
+  const addField = () => {
+    setFields([...fields, { imo: "", VersalName: "" }]);
+  };
+
+  const removeField = () => {
+    if (fields.length > 1) {
+      setFields(fields.slice(0, -1));
+    }
+  };
+
+
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
         <h1 className=" font-bold my-2">SeaGoing Experience</h1>
-        <div className="grid grid-cols-2 gap-4">
+        
+        {fields.map((field, index) =>(
+        <div key={index} className="grid grid-cols-2 gap-4">
+          
+          
+          
+
           <div className="">
             <label
               className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
@@ -186,6 +223,23 @@ const SeaGoingService = ({
               required
             />
           </div>
+
+          <div className="flex justify-start items-center gap-4">
+              {index === fields.length - 1 && (
+                
+
+                <AiOutlinePlus className="text-green-600 cursor-pointer" onClick={addField} />
+              )}
+              {fields.length > 1 && index === fields.length - 1 && (
+
+<AiOutlineMinus className="text-red-600 cursor-pointer" onClick={ removeField} />
+               
+              )}
+            </div>
+            </div>
+        ) )}
+        <div className=" grid grid-cols-2 gap-4">
+        
 
           <div className=" ">
             <label

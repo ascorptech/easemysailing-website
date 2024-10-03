@@ -196,7 +196,7 @@ const TravelDocuments = ({
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
-        <h1 className=" font-bold">PASSPORT DETAILS</h1>
+        <h1 className=" font-bold">Passport Details </h1>
         <div className="grid grid-cols-2 gap-4">
           <div className="">
             <label
@@ -423,8 +423,7 @@ const TravelDocuments = ({
               id="neverExpires"
               type="checkbox"
               className="border focus:ring-[#00A264]  text-[#00A264] checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
-              // value={checkBox}
-              //  onChange={(e) => (true)}
+              
               checked={checkBox}
               onChange={() => setCheckBox(!checkBox)}
             />
@@ -585,7 +584,7 @@ const TravelDocuments = ({
           {/* forth section */}
 
           <div className="grid col-span-2 ">
-            <h1 className="font-bold ">RESIDENCE PERMIT</h1>
+            <h1 className="font-bold ">Residence Permit</h1>
           </div>
 
           {/* <div className="grid grid-cols-2 gap-4"> */}

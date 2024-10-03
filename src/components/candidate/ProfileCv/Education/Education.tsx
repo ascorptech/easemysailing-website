@@ -21,12 +21,11 @@ const Education = ({educationComplete, setEducationComplete, userDetail}:Props) 
   const [subject, setSubject] = useState("");
   const [city, setCity] = useState("");
 
-  const [number, setNumber] = useState("");
-  const [issuedate, setIssueDate] = useState("");
-  const [exdate, setExDate] = useState("");
+ 
+
 
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [selectedFiles, setSelectedFiles] = useState<File | null>(null);
+ 
 
   const [trainingCenter, setTrainingCenter] = useState("");
   const [eCDISNumber, setECDISNumber] = useState("");
@@ -92,12 +91,7 @@ const Education = ({educationComplete, setEducationComplete, userDetail}:Props) 
     }
   };
 
-  const handleFileChanges = (event: any) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      setSelectedFiles(file);
-    }
-  };
+  
 
 
   const handleSubmit = (e: React.FormEvent) => {

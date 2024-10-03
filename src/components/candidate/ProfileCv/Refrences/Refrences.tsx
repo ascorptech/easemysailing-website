@@ -1,9 +1,10 @@
 "use client";
-import { GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import { AddReferencesData, GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
 import React, { useEffect } from "react";
 
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 type RefrencesComplete = {
   percentage: number;
@@ -25,21 +26,21 @@ const Refrences = ({
   const [companyName1, setCompanyName1] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [addInfo, setAddInfo] = useState("");
-  const [postalCode, setPostalCode] = useState("");
-  const [state, setState] = useState("");
+ 
+  // const [postalCode, setPostalCode] = useState("");
+ 
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
-  const [indNumber, setIndNumber] = useState("");
-  const [cityName, setCityName] = useState("");
+  const [consentGiven, setConsentGiven] = useState("");
+  // const [cityName, setCityName] = useState("");
   const [issued, setIssued] = useState("");
-  const [document1, setDocument1] = useState("");
+  // const [document1, setDocument1] = useState("");
   const [issuingCountry, setIssuingCountry] = useState("");
-  const [countryCode, setCountryCode] = useState("");
-  const [country, setCountry] = useState("");
-  const [ nearestAirport, setNearestAirport] = useState("");
+  // const [countryCode, setCountryCode] = useState("");
+  // const [country, setCountry] = useState("");
+ 
   const [ countryCode1, setCountryCode1] = useState("");
-  const [ document2, setDocument2] = useState("");
+  // const [ document2, setDocument2] = useState("");
   const [selectedFile, setSelectedFile] = useState<any>(null);
   const [selectedFile1, setSelectedFile1] = useState<any>(null);
 
@@ -61,28 +62,19 @@ const Refrences = ({
   }, [])
 
 
-  const totalFields = 19;
+  const totalFields = 14;
   const filledFields = [
     date,
     companyName,
     companyName1,
     firstName,
     lastName,
-    addInfo,
-    postalCode,
-    state,
     phoneNumber,
     email,
-    indNumber,
-    cityName,
+    consentGiven,
     issued,
-    document1,
     issuingCountry,
-    countryCode,
-    country,
-    nearestAirport,
      countryCode1,
-     document2,
      issueDate1,
      selectedFile,
      selectedFile1
@@ -137,9 +129,35 @@ const Refrences = ({
   const handleSubmit = (e: React.FormEvent) => {
     // try {
     e.preventDefault();
+let formData = new FormData();
+formData.append('issueDate',date)
+formData.append('vesselOrCompanyName',companyName)
+formData.append('referenceCompany',companyName1)
+formData.append('referenceFirstName',firstName)
+formData.append('referenceLastName',lastName)
+formData.append('referencePhoneNumber',phoneNumber)
+formData.append('referenceEmail',email)
 
-    // AddReferencesData(userDetail?.userId,)
+formData.append('issuedBy',issued)
+formData.append('issuingCountry',issuingCountry)
+formData.append('referenceCountryCode',countryCode1)
+formData.append('criminalRecordIssueDate', issueDate1)
+formData.append('document', selectedFile)
+formData.append('criminalRecordDocument',selectedFile1)
+AddReferencesData(userDetail?.userId,consentGiven, formData, AddReferencesDataCB )
+   
   };
+
+  const AddReferencesDataCB = (result:any)=>{
+    if (result?.status == 200||result?.status==201) {
+      toast.success("Refrences submited successfully");
+      setTimeout(() => {
+        window.location.reload()
+      }, 1000);
+    } else {
+      toast.error("Refrences  not submited ");
+    }
+  }
 
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
@@ -473,14 +491,14 @@ const Refrences = ({
                 className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                 htmlFor="inumber"
               >
-                 Number
+                 ConsentGiven
               </label>
               <div className="relative flex items-center  ">
                 <input
                   id="inumber"
                   type="text"
-                  value={indNumber}
-                  onChange={(e) => setIndNumber(e.target.value)}
+                  value={consentGiven}
+                  onChange={(e) => setConsentGiven(e.target.value)}
                   className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder="yes/No"
                   required

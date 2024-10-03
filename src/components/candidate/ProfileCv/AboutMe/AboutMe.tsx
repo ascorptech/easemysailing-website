@@ -101,7 +101,7 @@ const AboutMe = ({aboutMeComplete, setAboutMeComplete, userDetail}: Props) => {
 
         <div>
             <div className="flex flex-col gap-4 ">
-              <h1 className=" font-semibold mb-2">ABOUT ME</h1>
+              <h1 className=" font-semibold mb-2">About Me</h1>
 
               <div className="flex flex-col gap-4">
                 <div className=" ">

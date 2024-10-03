@@ -1,5 +1,6 @@
 "use client";
-import { GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import { AddAdditionalData, GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -7,13 +8,19 @@ type AdditionalComplete = {
   percentage: number;
   color: string;
 };
-type Props={
-  additionalComplete: AdditionalComplete ; 
-  setAdditionalComplete: React.Dispatch<React.SetStateAction<AdditionalComplete >>; // setMjrComplete is a function to update mjrComplete
-  userDetail:any
-}
+type Props = {
+  additionalComplete: AdditionalComplete;
+  setAdditionalComplete: React.Dispatch<
+    React.SetStateAction<AdditionalComplete>
+  >; // setMjrComplete is a function to update mjrComplete
+  userDetail: any;
+};
 
-const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetail}:Props) => {
+const AdditionalTraining = ({
+  additionalComplete,
+  setAdditionalComplete,
+  userDetail,
+}: Props) => {
   const [number, setNumber] = useState("");
   const [issuedate, setIssueDate] = useState("");
   const [exdate, setExDate] = useState("");
@@ -33,7 +40,7 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
   const [neverExpCheck, setNeverExpCheck] = useState(false);
   const [capacity, setCapacity] = useState("");
   const [level, setLevel] = useState("");
-  const [ typeOfTest, setTypeOfTest] = useState("");
+  const [typeOfTest, setTypeOfTest] = useState("");
   const [issuingCountry, setIssuingCountry] = useState("");
   const [neverChecked1, setNeverChecked1] = useState(false);
   const [additionalTraDrop, setAdditionalTraDrop] = useState([]);
@@ -42,26 +49,27 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
   const [levelDrop, setLevelDrop] = useState<any>([]);
   const [levelTestDrop, setLevelTestDrop] = useState<any>([]);
 
+  const [showFields, setShowFields] = useState(true);
 
   useEffect(() => {
-    GetDropdownDetails('ProfessionalKnowledgeLevel', (res: any) => {
-      setLevelDrop(res?.data?.values)
-    })
-    GetDropdownDetails('ProfessionalKnowledgeTest', (res: any) => {
-      setLevelTestDrop(res?.data?.values)
-    })
-    GetDropdownDetails('capacity', (res: any) => {
-      setCapacityDrop(res?.data?.values)
-    })
-    GetDropdownDetails('AdditionalTrainings', (res: any) => {
-      setAdditionalTraDrop(res?.data?.values)
-    })
-    GetDropdownDetails('country', (res: any) => {
+    GetDropdownDetails("ProfessionalKnowledgeLevel", (res: any) => {
+      setLevelDrop(res?.data?.values);
+    });
+    GetDropdownDetails("ProfessionalKnowledgeTest", (res: any) => {
+      setLevelTestDrop(res?.data?.values);
+    });
+    GetDropdownDetails("capacity", (res: any) => {
+      setCapacityDrop(res?.data?.values);
+    });
+    GetDropdownDetails("AdditionalTrainings", (res: any) => {
+      setAdditionalTraDrop(res?.data?.values);
+    });
+    GetDropdownDetails("country", (res: any) => {
       // console.log('County',res?.data)
-      setCountryDrop(res?.data?.values)
-    })
-  }, [])
-  
+      setCountryDrop(res?.data?.values);
+    });
+  }, []);
+
   const totalFields = 19;
   const filledFields = [
     number,
@@ -82,39 +90,37 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
     level,
     typeOfTest,
     issuingCountry,
-    neverChecked1
-    
+    neverChecked1,
   ].filter(Boolean).length;
-
 
   const percentage = (filledFields / totalFields) * 100;
   // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
   let color;
   useEffect(() => {
-    console.log('user',userDetail)
+    console.log("user", userDetail);
     if (percentage <= 30) {
       setAdditionalComplete((prevState) => ({
         ...prevState, // Spread the previous state to keep any other properties
         percentage: percentage, // Update the percentage field
-        color: '#FF0000' // Update the color field
+        color: "#FF0000", // Update the color field
       }));
-      color = "red"; 
+      color = "red";
     } else if (percentage <= 70) {
       setAdditionalComplete((prevState) => ({
         ...prevState, // Spread the previous state to keep any other properties
         percentage: percentage, // Update the percentage field
-        color: '#FF9900' // Update the color field
+        color: "#FF9900", // Update the color field
       }));
-      color = "#FF9900"; 
+      color = "#FF9900";
     } else {
       setAdditionalComplete((prevState) => ({
         ...prevState, // Spread the previous state to keep any other properties
         percentage: percentage, // Update the percentage field
-        color: '#00A264' // Update the color field
+        color: "#00A264", // Update the color field
       }));
       color = "green";
     }
-  }, [percentage,color])
+  }, [percentage, color]);
 
   //   const handleFileChange = (event: any) => {
   //     setSelectedFile(event.target.files[0]);
@@ -137,35 +143,44 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
   const handleSubmit = (e: React.FormEvent) => {
     // try {
     e.preventDefault();
+
+    let formData = new FormData();
+    
   };
 
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
-       <form onSubmit={handleSubmit}>
-       <h2 className="font-bold">Additional Trainings</h2>
-      <div className="grid grid-cols-2 gap-4">
+      <form onSubmit={handleSubmit}>
+        <h2 className="font-bold">Additional Trainings</h2>
 
-        <div className="">
-          <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="optionce">
-            Certification
-          </label>
-          <select
-            id="optionce"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-            name="options"
-            value={countryCertifi}
-                  onChange={(e) => setCountryCertifi(e.target.value)}
-          >
-            <option value="" disabled selected>
-            Certification
-            </option>
-            {additionalTraDrop && additionalTraDrop?.map((addi: any, index: number) => (
-                <option key={index} value={addi}>{addi?.toUpperCase()}</option>
-              ))}
-          </select>
-        </div>
+        <div className="grid grid-cols-2 gap-4">
+          <div className="">
+            <label
+              className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+              htmlFor="optionce"
+            >
+              Certification
+            </label>
+            <select
+              id="optionce"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              name="options"
+              value={countryCertifi}
+              onChange={(e) => setCountryCertifi(e.target.value)}
+            >
+              <option value="" disabled selected>
+                Certification
+              </option>
+              {additionalTraDrop &&
+                additionalTraDrop?.map((addi: any, index: number) => (
+                  <option key={index} value={addi}>
+                    {addi?.toUpperCase()}
+                  </option>
+                ))}
+            </select>
+          </div>
 
-        <div className="   ">
+          <div className="   ">
             <label
               className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
               htmlFor="trainingC1"
@@ -183,74 +198,86 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
             />
           </div>
 
-
           <div className=" ">
-          <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="optionsIC">
-          Issuing Country
-          </label>
-          <select
-            id="optionsIC"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-            name="options"
-            value={countryIC}
-            onChange={(e) => setCountryIC(e.target.value)}
-          >
-            <option value="" disabled selected>
+            <label
+              className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+              htmlFor="optionsIC"
+            >
               Issuing Country
-            </option>
-            {countryDrop && countryDrop?.map((country: any, index: number) => (
-                  <option key={index} value={country}>{country?.toUpperCase()}</option>
+            </label>
+            <select
+              id="optionsIC"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              name="options"
+              value={countryIC}
+              onChange={(e) => setCountryIC(e.target.value)}
+            >
+              <option value="" disabled selected>
+                Issuing Country
+              </option>
+              {countryDrop &&
+                countryDrop?.map((country: any, index: number) => (
+                  <option key={index} value={country}>
+                    {country?.toUpperCase()}
+                  </option>
                 ))}
-          </select>
-        </div>
-        
-        {/* <div className=""> */}
-
-        <div className="   ">
-          <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="numberA">
-            Enter Number
-          </label>
-          <input
-            id="numberA"
-            type="number"
-            value={number}
-            onChange={(e) => setNumber(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-            placeholder=""
-            required
-          />
-        </div>
-
-       
-
-        {/* </div> */}
-        <div className="">
-          <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]" htmlFor="issue3">
-            Issue Date
-          </label>
-          <input
-            id="issue3"
-            type="date"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-            value={issuedate}
-            onChange={(e) => setIssueDate(e.target.value)}
-          />
-        </div>
-      {/* </div> */}
-
-      <div className="">
-        <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]  " htmlFor="expiryDate3">
-          Expiry Date
-        </label>
-        <div className="flex items-center gap-4 ">
-          <input
-            id="expiryDate3"
-            type="date"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-            value={exdate}
-            onChange={(e) => setExDate(e.target.value)}
-          />
+            </select>
           </div>
+
+          {/* <div className=""> */}
+
+          <div className="   ">
+            <label
+              className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+              htmlFor="numberA"
+            >
+              Enter Number
+            </label>
+            <input
+              id="numberA"
+              type="number"
+              value={number}
+              onChange={(e) => setNumber(e.target.value)}
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              placeholder=""
+              required
+            />
+          </div>
+
+          {/* </div> */}
+          <div className="">
+            <label
+              className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+              htmlFor="issue3"
+            >
+              Issue Date
+            </label>
+            <input
+              id="issue3"
+              type="date"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              value={issuedate}
+              onChange={(e) => setIssueDate(e.target.value)}
+            />
+          </div>
+          {/* </div> */}
+
+          <div className="">
+            <label
+              className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]  "
+              htmlFor="expiryDate3"
+            >
+              Expiry Date
+            </label>
+            <div className="flex items-center gap-4 ">
+              <input
+                id="expiryDate3"
+                type="date"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                value={exdate}
+                onChange={(e) => setExDate(e.target.value)}
+              />
+            </div>
           </div>
           {/* <div className="flex items-center gap-4">
 
@@ -269,13 +296,13 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
           </label>
        
       </div> */}
-       <div className=" flex items-center  gap-4">
+          <div className=" flex items-center  gap-4">
             <input
               id="neverExpires1"
               type="checkbox"
               className="border focus:ring-[#00A264]  text-[#00A264] checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
-                checked={neverExpCheck}
-                onChange={(e) => setNeverExpCheck(!neverExpCheck)}
+              checked={neverExpCheck}
+              onChange={(e) => setNeverExpCheck(!neverExpCheck)}
             />
             <label
               className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
@@ -284,52 +311,55 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
               Never Expires
             </label>
           </div>
-<div className="grid col-span-2">
-      <div className="flex gap-6 items-center ">
-        <div>
-        <label
-          htmlFor="file-upload03"
-          className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[poppins]  "
-        >
-          Attachment Document
-        </label>
-        <input
-          id="file-upload03"
-          type="file"
-          className="hidden"
-          onChange={handleFileChange}
-        />
-        </div>
-        <div>
-       
-         {selectedFile ? (
-              <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
-                File Selected: {selectedFile.name}
-              </p>
-            ) : (
-              <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">No file selected</p>
-            )}
+          <div className="grid col-span-2">
+            <div className="flex gap-6 items-center ">
+              <div>
+                <label
+                  htmlFor="file-upload03"
+                  className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[poppins]  "
+                >
+                  Attachment Document
+                </label>
+                <input
+                  id="file-upload03"
+                  type="file"
+                  className="hidden"
+                  onChange={handleFileChange}
+                />
+              </div>
+              <div>
+                {selectedFile ? (
+                  <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                    File Selected: {selectedFile.name}
+                  </p>
+                ) : (
+                  <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                    No file selected
+                  </p>
+                )}
+              </div>
             </div>
-      </div>
-      </div>
+          </div>
 
-      {/* second section */}
-      {/* <div className=" flex flex-col items-center"> */}
-        {/* <h1 className="font-bold">ECDIS</h1> */}
+          {/* second section */}
+          {/* <div className=" flex flex-col items-center"> */}
+          {/* <h1 className="font-bold">ECDIS</h1> */}
 
-        {/* <div className="grid grid-cols-2 gap-4"> */}
+          {/* <div className="grid grid-cols-2 gap-4"> */}
 
-{/* </div> */}
+          {/* </div> */}
 
-{/* PROFESSIONAL KNOWLEDGE TEST  */}
+          {/* PROFESSIONAL KNOWLEDGE TEST  */}
 
-
-        <div className="grid col-span-2 "> 
+          <div className="grid col-span-2 ">
             <h1 className=" font-bold">PROFESSIONAL KNOWLEDGE TEST</h1>
-            </div>
+          </div>
           <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="option02">
-             Capacity
+            <label
+              className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+              htmlFor="option02"
+            >
+              Capacity
             </label>
             <select
               id="option02"
@@ -339,18 +369,23 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
               onChange={(e) => setCapacity(e.target.value)}
             >
               <option value="" disabled selected>
-              Capacity
+                Capacity
               </option>
-              {capacityDrop && capacityDrop?.map((cap: any, index: number) => (
-                <option key={index} value={cap}>{cap?.toUpperCase()}</option>
-              ))}
+              {capacityDrop &&
+                capacityDrop?.map((cap: any, index: number) => (
+                  <option key={index} value={cap}>
+                    {cap?.toUpperCase()}
+                  </option>
+                ))}
             </select>
           </div>
 
-
           <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="level">
-             Level
+            <label
+              className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+              htmlFor="level"
+            >
+              Level
             </label>
             <select
               id="level"
@@ -360,10 +395,13 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
               onChange={(e) => setLevel(e.target.value)}
             >
               <option value="" disabled selected>
-            Level
+                Level
               </option>
-              {levelDrop && levelDrop?.map((lev: any, index: number) => (
-                  <option key={index} value={lev}>{lev?.toUpperCase()}</option>
+              {levelDrop &&
+                levelDrop?.map((lev: any, index: number) => (
+                  <option key={index} value={lev}>
+                    {lev?.toUpperCase()}
+                  </option>
                 ))}
             </select>
           </div>
@@ -387,8 +425,11 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
           </div>
 
           <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="typeoftest">
-             Type of Test
+            <label
+              className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+              htmlFor="typeoftest"
+            >
+              Type of Test
             </label>
             <select
               id="typeoftest"
@@ -398,14 +439,16 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
               onChange={(e) => setTypeOfTest(e.target.value)}
             >
               <option value="" disabled selected>
-              Type of Test
+                Type of Test
               </option>
-              {levelTestDrop && levelTestDrop?.map((levTest: any, index: number) => (
-                  <option key={index} value={levTest}>{levTest?.toUpperCase()}</option>
+              {levelTestDrop &&
+                levelTestDrop?.map((levTest: any, index: number) => (
+                  <option key={index} value={levTest}>
+                    {levTest?.toUpperCase()}
+                  </option>
                 ))}
             </select>
           </div>
-
 
           <div className="   ">
             <label
@@ -424,10 +467,12 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
               required
             />
           </div>
-         
 
           <div className=" ">
-            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="optionT1">
+            <label
+              className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+              htmlFor="optionT1"
+            >
               Issuing Country
             </label>
             <select
@@ -440,8 +485,11 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
               <option value="" disabled selected>
                 Issuing Country
               </option>
-              {countryDrop && countryDrop?.map((country: any, index: number) => (
-                  <option key={index} value={country}>{country?.toUpperCase()}</option>
+              {countryDrop &&
+                countryDrop?.map((country: any, index: number) => (
+                  <option key={index} value={country}>
+                    {country?.toUpperCase()}
+                  </option>
                 ))}
             </select>
           </div>
@@ -467,7 +515,10 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
 
           {/* </div> */}
           <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]" htmlFor="issue2">
+            <label
+              className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+              htmlFor="issue2"
+            >
               Issue Date
             </label>
             <input
@@ -500,8 +551,8 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
               id="neverExpires2"
               type="checkbox"
               className="border focus:ring-[#00A264]  text-[#00A264] checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
-               checked={neverChecked1}
-                onChange={(e) => setNeverChecked1(!neverChecked1)}
+              checked={neverChecked1}
+              onChange={(e) => setNeverChecked1(!neverChecked1)}
             />
             <label
               className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
@@ -510,52 +561,53 @@ const AdditionalTraining = ({additionalComplete, setAdditionalComplete,userDetai
               Never Expires
             </label>
           </div>
-      <div className="grid col-span-2">
-          <div className="flex gap-4 items-center justify-start ">
-            <div>
-            <label
-              htmlFor="file-upload2"
-              className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] text-[14px] leading-[19.07px] font-[poppins]  focus:outline-none focus:ring-2 "
-            >
-              Attachment Document
-            </label>
-            <input
-              id="file-upload2"
-              type="file"
-              className="hidden"
-              onChange={handleFileChanges}
-            />
-            </div>
-            <div>
-            {selectedFiles ? (
-              <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
-                File Selected: {selectedFiles.name}
-              </p>
-            ) : (
-              <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">No file selected</p>
-            )}
+          <div className="grid col-span-2">
+            <div className="flex gap-4 items-center justify-start ">
+              <div>
+                <label
+                  htmlFor="file-upload2"
+                  className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] text-[14px] leading-[19.07px] font-[poppins]  focus:outline-none focus:ring-2 "
+                >
+                  Attachment Document
+                </label>
+                <input
+                  id="file-upload2"
+                  type="file"
+                  className="hidden"
+                  onChange={handleFileChanges}
+                />
+              </div>
+              <div>
+                {selectedFiles ? (
+                  <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                    File Selected: {selectedFiles.name}
+                  </p>
+                ) : (
+                  <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                    No file selected
+                  </p>
+                )}
+              </div>
             </div>
           </div>
         </div>
+
+        {/* Third section */}
+
+        <div className="flex gap-2 mb-4 mt-4">
+          <button
+            type="submit"
+            className="border text-[14px] leading-[19.07px] font-[poppins]  border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
+          >
+            Save
+          </button>
+          <Link
+            href="#"
+            className="border border-[#00A264]  p-2 rounded-lg px-8 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+          >
+            Edit
+          </Link>
         </div>
-      {/* </div> */}
-
-      {/* Third section */}
-
-      <div className="flex gap-2 mb-4 mt-4">
-        <button
-          type="submit"
-          className="border text-[14px] leading-[19.07px] font-[poppins]  border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
-        >
-          Save
-        </button>
-        <Link
-          href="#"
-          className="border border-[#00A264]  p-2 rounded-lg px-8 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
-        >
-          Edit
-        </Link>
-      </div>
       </form>
     </div>
   );

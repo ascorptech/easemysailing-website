@@ -210,7 +210,7 @@ const MedicalCertificates = ({
     formData.append("fitnessMedicalCenter", fMedicalcenter);
     formData.append("fitnessIssueDate", issuedate);
     formData.append("fitnessExpiryDate", exdate);
-    formData.append("fitnessNeverExpires", expires1);
+    // formData.append("fitnessNeverExpires", expires1);
     formData.append("fitnessDocument", selectedFile);
 
     formData.append("drugTestType", typeOptions);
@@ -220,7 +220,7 @@ const MedicalCertificates = ({
     formData.append("drugTestCenter", testCenter);
     formData.append("drugTestIssueDate", issuedate1);
     formData.append("drugTestExpiryDate", exdate1);
-    formData.append("drugTestNeverExpires", expires2);
+    // formData.append("drugTestNeverExpires", expires2);
     formData.append("drugTestDocument", selectedFiles);
 
     formData.append("covidVaccineType", medicalType);
@@ -229,27 +229,28 @@ const MedicalCertificates = ({
     formData.append("covidVaccineDate1", vaccinationIssue);
     formData.append("covidVaccineExpiryDate1", vaccinationExpiry);
     // missing covid19 expiry data
-    formData.append("covidVaccineNeverExpires1", expiresMedical);
+    // formData.append("covidVaccineNeverExpires1", expiresMedical);
     formData.append("covidVaccineDocument1", selectedFilesCovid);
 
     formData.append("covidVaccineDate2", issuedateCovid);
     formData.append("covidVaccineExpiryDate2", exdateCovid);
-    formData.append("covidVaccineNeverExpires2", "");
+    // formData.append("covidVaccineNeverExpires2", expires2);
 
     formData.append("covidVaccineDocument2", "");
 
     formData.append("otherVaccinationType", medicalType1);
     formData.append("otherVaccinationDate", vaccination1);
     formData.append("otherVaccinationExpiryDate", vaccinationexp);
-    formData.append("otherVaccinationNeverExpires", veccinationCheck);
+    // formData.append("otherVaccinationNeverExpires", veccinationCheck);
     formData.append("otherVaccinationDocument", selectedFilesOthers);
 
     formData.append("flagMedicalType", medicalTypeFlag);
     formData.append("flagMedicalVaccinationDate", vaccinationFlag);
     formData.append("flagMedicalExpiryDate", vaccinationexpFlag);
-    formData.append("flagMedicalNeverExpires", veccinationCheckFlag);
+    // formData.append("flagMedicalNeverExpires", veccinationCheckFlag);
     formData.append("flagMedicalDocument", selectedFilesFlag);
-    AddMedicalData(userDetail?.userId, formData, AddmedicalDataDB);
+
+    AddMedicalData(userDetail?.userId,veccinationCheck,veccinationCheckFlag,expires1,expiresMedical,expires2, formData, AddmedicalDataDB);
   };
 
   const AddmedicalDataDB = (result: any) => {
@@ -268,7 +269,7 @@ const MedicalCertificates = ({
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
         <div>
-          <h1 className=" font-bold">MEDICAL FITNESS</h1>
+          <h1 className="font-bold"> Medical Fitness</h1>
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div className="">
@@ -462,7 +463,7 @@ const MedicalCertificates = ({
           </div>
 
           <div className="grid col-span-2 ">
-            <h1 className=" font-bold">DRUG & ALCOHOL TEST</h1>
+            <h1 className=" font-bold">Drug & Alcohol Test </h1>
           </div>
           <div className="">
             <label
@@ -650,7 +651,7 @@ const MedicalCertificates = ({
           </div>
 
           <div className="grid col-span-2 ">
-            <h1 className="font-bold ">COVID-19 VACCINE</h1>
+            <h1 className="font-bold ">COVID-19 Vaccine</h1>
           </div>
 
           <div className="">
@@ -837,7 +838,7 @@ const MedicalCertificates = ({
           {/* other caccination section */}
 
           <div className="grid col-span-2 ">
-            <h1 className="font-bold ">OTHER VACCINATION</h1>
+            <h1 className="font-bold ">Other Vaccination</h1>
           </div>
 
           <div className="">

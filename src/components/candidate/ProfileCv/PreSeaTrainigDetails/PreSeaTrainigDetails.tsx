@@ -187,7 +187,7 @@ const PreSeaTrainigDetails = ({
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
-        <h1 className=" font-bold">SALARY EXPECTATION</h1>
+        <h1 className=" font-bold">  Salary Expectation</h1>
         <div className="grid grid-cols-2 gap-4">
           <div className="   ">
             <label
@@ -249,7 +249,7 @@ const PreSeaTrainigDetails = ({
 
           <div className="grid col-span-2">
             {" "}
-            <h1 className=" font-bold">ROTATION EXPECTATION </h1>
+            <h1 className=" font-bold"> Rotation Expectation</h1>
           </div>
           <div className=" ">
             <label
@@ -346,7 +346,7 @@ const PreSeaTrainigDetails = ({
 
           <div className="grid col-span-2">
             {" "}
-            <h1 className="font-bold">OFFSHORE SPECIFIC TRAININGS</h1>
+            <h1 className="font-bold">OFFSHOOffSho RE Specific Trainings</h1>
           </div>
           <div className=" ">
             <label
@@ -480,7 +480,7 @@ const PreSeaTrainigDetails = ({
           </div>
 
           <div className="grid col-span-2">
-            <div className="flex gap-4 items-center justify-center ">
+            <div className="flex gap-4 items-center  ">
               <label
                 htmlFor="file-upload"
                 className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[poppins]"
@@ -577,7 +577,7 @@ const PreSeaTrainigDetails = ({
           </div>
 
           <div className="grid col-span-2">
-            <h1 className="text-center font-bold">Company Name/Ship type</h1>
+            <h1 className=" font-bold">Company Name/Ship type</h1>
           </div>
           <div className="   ">
             <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] ">
@@ -622,7 +622,7 @@ const PreSeaTrainigDetails = ({
           </div>
 
           <div className="grid col-span-2">
-            <h1 className=" font-bold">OFFSHORE SPECIFIC SKILLS</h1>
+            <h1 className=" font-bold"> Offshore Specific Skills</h1>
 
             <div className="   ">
               <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] ">

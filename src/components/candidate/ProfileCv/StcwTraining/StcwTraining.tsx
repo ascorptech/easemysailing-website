@@ -29,6 +29,8 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
   const [sTCHTrainOption, setSTCHTrainOption] = useState<any>("");
   const [countryDrop, setCountryDrop] = useState<any>([]);
 
+
+
   useEffect(() => {
     GetDropdownDetails('STCHTraining', (res: any) => {
       setSTCHTrainOption(res?.data?.values)
@@ -120,6 +122,10 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
       <form onSubmit={handleSubmit}>
         <div className=" flex flex-col">
           <h1 className="text-left font-bold">STCW Training</h1>
+ 
+        <div>
+
+
           <div className="grid grid-cols-2 gap-4">
             <div className="">
               <label
@@ -281,9 +287,12 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
             </Link>
           </div>
         </div>
+
+        </div>
       </form>
     </div>
   );
 };
 
 export default StcwTraining;
+

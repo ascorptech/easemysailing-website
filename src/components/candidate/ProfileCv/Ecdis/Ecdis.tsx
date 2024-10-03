@@ -119,11 +119,11 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail }: Props) => {
     formData.append("certificateNumber", eCDISNumber);
     formData.append("issueDate", issuedate1);
     formData.append("expiryDate", exdate1);
-    formData.append("neverExpires", checkBox1);
+    // formData.append("neverExpires", );
 
     formData.append("document", selectedFiles);
 
-    AddEcdisData(userDetail?.userId, formData, AddEcdisdataDB);
+    AddEcdisData(userDetail?.userId,checkBox1, formData, AddEcdisdataDB);
   };
 
   const AddEcdisdataDB = (result: any) => {

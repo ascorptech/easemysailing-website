@@ -40,6 +40,10 @@ const Refrences = ({
   const [ nearestAirport, setNearestAirport] = useState("");
   const [ countryCode1, setCountryCode1] = useState("");
   const [ document2, setDocument2] = useState("");
+  const [selectedFile, setSelectedFile] = useState<any>(null);
+  const [selectedFile1, setSelectedFile1] = useState<any>(null);
+
+
 
   const [ issueDate1, setIssueDate1] = useState("");
   const [countryDrop, setCountryDrop] = useState<any>([]);
@@ -79,7 +83,9 @@ const Refrences = ({
     nearestAirport,
      countryCode1,
      document2,
-     issueDate1
+     issueDate1,
+     selectedFile,
+     selectedFile1
   ].filter(Boolean).length;
 
   const percentage = (filledFields / totalFields) * 100;
@@ -111,6 +117,22 @@ const Refrences = ({
     }
   }, [percentage, color]);
 
+  const handleFileChange = (event: any) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      setSelectedFile(file);
+    }
+  };
+
+  const handleFileChange1 = (event: any) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      setSelectedFile1(file);
+    }
+  };
+
+
+
   
   const handleSubmit = (e: React.FormEvent) => {
     // try {
@@ -124,14 +146,14 @@ const Refrences = ({
 
 <form onSubmit={handleSubmit}>
       <div className="">
-        <div className=" my-2">
+        {/* <div className=" my-2"> */}
           <h1 className="font-bold">
             EVALUATION REPORT AND REFERENCE/RECOMMENDATION LETTERS
           </h1>
-        </div>
-        <div className=" flex flex-col  px-4  gap-4">
-          <div className="flex items-center justify-between gap-2  ">
-            <div className=" w-[25%]">
+        {/* </div> */}
+        <div className=" mt-4">
+          <div className=" grid grid-cols-3 gap-4   ">
+            <div className=" ">
               <label
                 className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                 htmlFor="issued"
@@ -150,14 +172,14 @@ const Refrences = ({
               </select>
             </div>
 
-            <div className="w-[25%] ">
+            <div className=" ">
               <label
                 className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                 htmlFor="issuedate1"
               >
                 Issue Date
               </label>
-              <div className="relative flex items-center  ">
+              {/* <div className="relative flex items-center  "> */}
                 <input
                   id="issuedate1"
                   type="date"
@@ -167,17 +189,17 @@ const Refrences = ({
                   placeholder="Enter middle Name"
                   required
                 />
-              </div>
+              {/* </div> */}
             </div>
 
-            <div className="w-[25%] ">
+            <div className=" ">
               <label
                 className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                 htmlFor="vessel"
               >
                 Vessel/Company Name
               </label>
-              <div className="relative flex items-center  ">
+              {/* <div className="relative flex items-center  "> */}
                 <input
                   id="vessel"
                   type="text"
@@ -187,9 +209,10 @@ const Refrences = ({
                   placeholder=""
                   required
                 />
-              </div>
+              {/* </div> */}
             </div>
-            <div className="w-[25%] ">
+            
+            {/* <div className="w-[25%] ">
               <label
                 className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                 htmlFor="document1"
@@ -207,13 +230,44 @@ const Refrences = ({
                   required
                 />
               </div>
+            </div> */}
+
+            <div className="grid col-span-3">
+            <div className="flex items-center justify-start gap-4 my-6">
+            <div className="  ">
+              <label
+                htmlFor="file-upload"
+                className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px]   "
+              >
+                Attachment Document
+              </label>
+              <input
+                id="file-upload"
+                type="file"
+                className="hidden"
+                onChange={handleFileChange}
+              />
+              
             </div>
+            <div>
+            {selectedFile ? (
+              <p className="mt-4 text-gray-700">
+                File Selected: {selectedFile.name}
+              </p>
+            ) : (
+              <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                No file selected
+              </p>
+            )}
+          </div>
+          </div>
+          </div>
           </div>
 
           <h1 className="font-bold my-2">CRIMINAL RECORD</h1>
 
-          <div className="flex items-center justify-between gap-2  ">
-            <div className="flex flex-col w-full  ">
+          <div className="grid grid-cols-2 gap-4  ">
+            <div className="  ">
               <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 " htmlFor="issuingcountry1">
                 Issuing Country
               </label>
@@ -226,7 +280,7 @@ const Refrences = ({
               </select>
             </div>
 
-            <div className="w-full">
+            <div className="">
               <label
                 className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                 htmlFor="number"
@@ -244,42 +298,60 @@ const Refrences = ({
                   required
                 />
               </div>
+
+
+
+             
+            </div>
+            <div className="grid col-span-2 ">
+            <div className="flex gap-4  my-4">
+            <div className="  ">
+              <label
+                htmlFor="file-upload"
+                className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px]   "
+              >
+                Attachment Document
+              </label>
+              <input
+                id="file-upload"
+                type="file"
+                className="hidden"
+                onChange={handleFileChange1}
+              />
+              
+            </div>
+            <div>
+            {selectedFile1 ? (
+              <p className="mt-4 text-gray-700">
+                File Selected: {selectedFile1.name}
+              </p>
+            ) : (
+              <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                No file selected
+              </p>
+            )}
+          </div>
+          </div>
+              </div>
+
             </div>
 
-            <div className="w-full ">
-              <label
-                className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
-                htmlFor="document2"
-              >
-                Document
-              </label>
-              <div className="relative flex items-center  ">
-                <input
-                  id="document2"
-                  type="text"
-                  value={document2}
-                  onChange={(e) => setDocument2(e.target.value)}
-                  className="border rounded-lg w-full py-[7px] text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-none focus:shadow-outline border-[#00A264]"
-                  placeholder=""
-                  required
-                />
-              </div>
-            </div>
-          </div>
+            
+          
 
           <h1 className="font-bold my-2">REFERENCE CONTACTS</h1>
 
           {/* third section start*/}
-          <div className="flex items-center justify-between gap-2  ">
-            {" "}
-            <div className="w-[25%] ">
+          <div className="grid grid-cols-3 gap-4">
+           
+            <div className=" ">
               <label
                 className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                 htmlFor="firstName"
               >
                 First Name
               </label>
-              <div className="relative flex items-center  ">
+              {/* <div className="relative flex items-center  "> */}
                 <input
                   id="firstName"
                   type="text"
@@ -289,16 +361,17 @@ const Refrences = ({
                   placeholder=""
                   required
                 />
-              </div>
+              {/* </div> */}
             </div>
-            <div className="w-[25%] ">
+
+            <div className="">
               <label
                 className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                 htmlFor="lastName"
               >
                 Last Name
               </label>
-              <div className="relative flex items-center  ">
+              {/* <div className="relative flex items-center  "> */}
                 <input
                   id="lastName"
                   type="text"
@@ -308,16 +381,16 @@ const Refrences = ({
                   placeholder=""
                   required
                 />
-              </div>
+              {/* </div> */}
             </div>
-            <div className="w-[25%] ">
+            <div className="">
               <label
                 className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                 htmlFor="street1"
               >
-                Vessel/Company Name
+                Company 
               </label>
-              <div className="relative flex items-center  ">
+              {/* <div className="relative flex items-center  "> */}
                 <input
                   id="street1"
                   type="text"
@@ -327,136 +400,17 @@ const Refrences = ({
                   placeholder=""
                   required
                 />
-              </div>
+              {/* </div> */}
             </div>
-            <div className="flex flex-col w-[25%]  ">
-              <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 " htmlFor="contryCode">
-                Country Code
-              </label>
-              <select id="countryCode" className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]" value={countryCode}
-                  onChange={(e) => setCountryCode(e.target.value)} >
-                {countryCodeDrop && countryCodeDrop?.map((code: any, index: number) => (
-                    <option key={index} value={code}>{code?.toUpperCase()}</option>
-                  ))}
-              </select>
-            </div>
+
           </div>
 
-          {/* third section end */}
+        
 
-          <div className=" ">
-            <label
-              className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
-              htmlFor="addinfo"
-            >
-              Add. Info (c/o etc.)
-            </label>
-            <div className="relative flex items-center  ">
-              <input
-                id="addinfo"
-                type="text"
-                value={addInfo}
-                onChange={(e) => setAddInfo(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                placeholder=""
-                required
-              />
-            </div>
-          </div>
+         
 
-          <div className="flex items-center gap-4">
-            <div className="w-[50%]">
-              <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 " htmlFor="postalcode">
-                Postal Code/ZIP Code
-              </label>
-              <div className="relative flex items-center  ">
-                <input
-                  id="postalcode"
-                  type="number"
-                  value={postalCode}
-                  onChange={(e) => setPostalCode(e.target.value)}
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                  placeholder="Enter ZipCode"
-                  required
-                />
-              </div>
-            </div>
-            <div className="w-[50%] ">
-              <label
-                className="blocktext-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
-                htmlFor="cityName1"
-              >
-                City
-              </label>
-              <div className="relative flex items-center  ">
-                <input
-                  id="cityName1"
-                  type="text"
-                  value={cityName}
-                  onChange={(e) => setCityName(e.target.value)}
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                  placeholder=""
-                  required
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* state section */}
-
-          <div className="flex items-center gap-4 w-full">
-            <div className="w-[50%]">
-              <label
-                className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 "
-                htmlFor="state"
-              >
-                State/Province
-              </label>
-              <div className="relative flex items-center  ">
-                <input
-                  id="state"
-                  type="text"
-                  value={state}
-                  onChange={(e) => setState(e.target.value)}
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                  placeholder=""
-                  required
-                />
-              </div>
-            </div>
-            <div className="flex flex-col w-[50%]  ">
-              <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 " htmlFor="country">
-                Country
-              </label>{" "}
-              <select id="country" className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                value={country}
-                onChange={(e) => setCountry(e.target.value)}>
-                {countryDrop && countryDrop?.map((country: any, index: number) => (
-                    <option key={index} value={country}>{country?.toUpperCase()}</option>
-                  ))}
-              </select>
-            </div>
-          </div>
-
-          {/* airport  */}
-
-          <div className="flex flex-col">
-            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 ">
-              Nearest Airport
-            </label>
-            <select id="NearestAirport" className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"   
-            value={nearestAirport}
-                  onChange={(e) => setNearestAirport(e.target.value)}>
-              {countryDrop && countryDrop?.map((country: any, index: number) => (
-                    <option key={index} value={country}>{country?.toUpperCase()}</option>
-                  ))}
-            </select>
-          </div>
-
-          {/* counstry and city section start*/}
-
-          <div className="flex items-center justify-between gap-4  ">
-            <div className="flex flex-col  ">
+          <div className="flex items-center justify-between gap-4  my-3 ">
+            <div className="w-[40%]  ">
               <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 " htmlFor="countryCode1">
                 Country Code
               </label>
@@ -468,7 +422,7 @@ const Refrences = ({
               </select>
             </div>
 
-            <div className="w-[75%] ">
+            <div className="w-full ">
               <label
                 className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                 htmlFor="number"
@@ -487,17 +441,15 @@ const Refrences = ({
                 />
               </div>
             </div>
-          </div>
 
-          <div className="flex items-center justify-between gap-4  ">
-            <div className="flex flex-col w-[50%] ">
+            <div className="flex flex-col w-full ">
               <label
                 className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 "
                 htmlFor="email"
               >
                 Email
               </label>
-              <div className="relative flex items-center  ">
+              {/* <div className="relative flex items-center  "> */}
                 <input
                   id="email"
                   type="email"
@@ -507,15 +459,21 @@ const Refrences = ({
                   placeholder=""
                   required
                 />
-              </div>
+              {/* </div> */}
             </div>
 
-            <div className="w-[50%] ">
+
+          </div>
+
+          <div className="flex items-center justify-between mt-2  ">
+           
+
+            <div className="w-full  ">
               <label
                 className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                 htmlFor="inumber"
               >
-                INDoS Number
+                 Number
               </label>
               <div className="relative flex items-center  ">
                 <input
@@ -524,7 +482,7 @@ const Refrences = ({
                   value={indNumber}
                   onChange={(e) => setIndNumber(e.target.value)}
                   className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                  placeholder=""
+                  placeholder="yes/No"
                   required
                 />
               </div>

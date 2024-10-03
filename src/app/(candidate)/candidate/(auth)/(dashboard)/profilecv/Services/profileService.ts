@@ -1,7 +1,8 @@
 import { deleteReq, getReq, patchReq, postReq, putReq } from "@/RootServices";
 import apiEndPoints from "./apiEndPoints";
 
-const {GETPROFILE,PUTPROFILE,GETENUMS,POSTMYJOB,GETMYJOB,POSTNEXTOF,POSTLANGUAGE,POSTABOUTME,POSTCONTACT,POSTONLINEPRASENCE,POSTLICENSES,POSTSEADETAILS,POSTSEAGOING ,POSTMEDICAL,POSTECDIS } = apiEndPoints
+const {GETPROFILE,PUTPROFILE,GETENUMS,POSTMYJOB,GETMYJOB,POSTNEXTOF,POSTLANGUAGE,POSTABOUTME,POSTCONTACT,POSTONLINEPRASENCE,POSTLICENSES,POSTSEADETAILS,POSTSEAGOING ,POSTMEDICAL,POSTECDIS,POSTTRAVELDOCUMENT,POSTSTCWTRAINING,POSTPROFESSIONALSKILL,POSTREFERENCE } = apiEndPoints
+
 
 
 export const GetProfileDetail = async(id:any,cb:any)=>{
@@ -118,14 +119,13 @@ export const AddLanguageData = async(userId:any,data:any ,cb:any)=>{
         return cb(error?.response)
     }
 }
-  
+//Travel Document
 
-//Online Presence
-
-export const AddOnlinePresenceData = async(data:any ,cb:any)=>{
+export const AddTravelDocumentData = async(userId:any,passportBiometric:any,seamansBookNeverExpires:any,data:any ,cb:any)=>{
     try {
         console.log('Data to be submitted:', data);
-        const response = await postReq(POSTONLINEPRASENCE,data)
+        let url = `${POSTTRAVELDOCUMENT}/${userId}/${passportBiometric}/${seamansBookNeverExpires}`
+        const response = await postReq(url,data)
         console.log('API response:', response);
         return cb(response)
     } catch (error:any) {
@@ -133,15 +133,13 @@ export const AddOnlinePresenceData = async(data:any ,cb:any)=>{
         return cb(error?.response)
     }
 }
+//STCW Training
 
-
-//Licenses
-
-
-export const AddLicensesData = async(userId:any,data:any ,cb:any)=>{
+export const AddStcwData = async(userId:any,neverExpires:any,data:any ,cb:any)=>{
     try {
         console.log('Data to be submitted:', data);
-        const response = await postReq(POSTLICENSES,data)
+        let url = `${POSTSTCWTRAINING}/${userId}/${neverExpires}`
+        const response = await postReq(url,data)
         console.log('API response:', response);
         return cb(response)
     } catch (error:any) {
@@ -149,32 +147,33 @@ export const AddLicensesData = async(userId:any,data:any ,cb:any)=>{
         return cb(error?.response)
     }
 }
-// Off Shore Requirements
+//Professional Skill
 
-export const AddSeaDetailsData = async(userId:any,data:any ,cb:any)=>{
+export const AddProfessionalSkillData = async(userId:any,metalWorkingCertificateAvailable:any,metalWorkingClassApproved:any,data:any ,cb:any)=>{
     try {
         console.log('Data to be submitted:', data);
-        const response = await postReq(POSTSEADETAILS,data)
+        let url = `${POSTPROFESSIONALSKILL}/${userId}/${metalWorkingCertificateAvailable}/${metalWorkingClassApproved}`
+        const response = await postReq(url,data)
         console.log('API response:', response);
         return cb(response)
     } catch (error:any) {
         console.log('err',error)
         return cb(error?.response)
-    } 
+    }
 }
+//References
 
-
-//ECDIS 
-export const AddEcdisData = async(userId:any,data:any ,cb:any)=>{
+export const AddReferencesData = async(userId:any,consentGiven:any,data:any ,cb:any)=>{
     try {
         console.log('Data to be submitted:', data);
-        const response = await postReq(POSTECDIS,data)
+        let url = `${POSTREFERENCE}/${userId}/${consentGiven}`
+        const response = await postReq(url,data)
         console.log('API response:', response);
         return cb(response)
     } catch (error:any) {
         console.log('err',error)
         return cb(error?.response)
-    } 
+    }
 }
 
 
@@ -207,3 +206,63 @@ export const AddSeagoingData = async(data:any ,cb:any)=>{
         return cb(error?.response)
     }
 }
+
+//Online Presence
+
+export const AddOnlinePresenceData = async(data:any ,cb:any)=>{
+    try {
+        console.log('Data to be submitted:', data);
+        const response = await postReq(POSTONLINEPRASENCE,data)
+        console.log('API response:', response);
+        return cb(response)
+    } catch (error:any) {
+        console.log('err',error)
+        return cb(error?.response)
+    }
+}
+
+
+//Licenses
+
+
+export const AddLicensesData = async(userId:any,data:any ,cb:any)=>{
+    try {
+        console.log('Data to be submitted:', data);
+        const response = await postReq(POSTLICENSES,data)
+        console.log('API response:', response);
+        return cb(response)
+    } catch (error:any) {
+        console.log('err',error)
+        return cb(error?.response)
+    }
+}
+
+
+// Off Shore Requirements
+
+export const AddSeaDetailsData = async(userId:any,data:any ,cb:any)=>{
+    try {
+        console.log('Data to be submitted:', data);
+        const response = await postReq(POSTSEADETAILS,data)
+        console.log('API response:', response);
+        return cb(response)
+    } catch (error:any) {
+        console.log('err',error)
+        return cb(error?.response)
+    } 
+}
+
+
+//ECDIS 
+export const AddEcdisData = async(userId:any,data:any ,cb:any)=>{
+    try {
+        console.log('Data to be submitted:', data);
+        const response = await postReq(POSTECDIS,data)
+        console.log('API response:', response);
+        return cb(response)
+    } catch (error:any) {
+        console.log('err',error)
+        return cb(error?.response)
+    } 
+}
+

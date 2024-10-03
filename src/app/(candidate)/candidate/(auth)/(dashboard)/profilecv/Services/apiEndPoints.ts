@@ -14,4 +14,8 @@ export default{
     POSTLICENSES:'/api/v1/licenses',
     POSTSEADETAILS: '/api/v1/offshore-requirements',
     POSTSEAGOING: '/api/v1/seagoing-experiences',
+    POSTTRAVELDOCUMENT:'/api/v1/travel-documents',
+    POSTSTCWTRAINING:'/api/v1/stcw-training',
+    POSTPROFESSIONALSKILL:'/api/v1/professional-skills',
+    POSTREFERENCE:'/api/v1/references',
 }

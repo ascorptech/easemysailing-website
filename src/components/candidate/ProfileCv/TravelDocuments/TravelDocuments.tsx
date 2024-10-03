@@ -3,7 +3,8 @@ import Link from "next/link";
 
 import { useEffect, useState } from "react";
 import CircularProgress from "../CircularProgress";
-import { GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import { AddTravelDocumentData, GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import { toast } from "react-toastify";
 
 type TravelDocumentsComplete = {
   percentage: number;
@@ -31,11 +32,11 @@ const TravelDocuments = ({
   const [issueDate2, setIssueDate2] = useState("");
   const [expDate2, setExpDate2] = useState("");
 
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [selectedFiles, setSelectedFiles] = useState<File | null>(null);
-  const [selectedFileVisa, setSelectedFileVisa] = useState<File | null>(null);
+  const [selectedFile, setSelectedFile] = useState<any>(null);
+  const [selectedFiles, setSelectedFiles] = useState<any>(null);
+  const [selectedFileVisa, setSelectedFileVisa] = useState<any>(null);
   const [selectedFileResidence, setSelectedFileResidence] =
-    useState<File | null>(null);
+    useState<any>(null);
 
   const [trainingCenter, setTrainingCenter] = useState("");
   const [issuedate1, setIssueDate1] = useState("");
@@ -147,7 +148,42 @@ const TravelDocuments = ({
   const handleSubmit = (e: React.FormEvent) => {
     // try {
     e.preventDefault();
+
+    let formData = new FormData()
+    formData.append('passportNumber', number);
+    formData.append('passportIssuingCountry', issuingAuthority);
+    formData.append('passportIssueDate', issuedate);
+    formData.append('passportExpiryDate', exdate);
+    formData.append('seamansBookNumber', trainingCenter);
+    formData.append('seamansBookIssuingCountry', flagState);
+    formData.append('seamansBookIssueDate', issuedate1);
+    formData.append('seamansBookExpiryDate', exdate1);
+    formData.append('visaIssuingCountry', isssueAuthority);
+    formData.append('visaNumber', visaNumber);
+    formData.append('visaIssueDate', issueDateVisa);
+    formData.append('visaExpiryDate', expryDateVisa);
+    formData.append('residencePermitIssuingCountry', issuingCountry);
+    formData.append('residencePermitNumber', permitNumber);
+    formData.append('residencePermitIssueDate', issueDate2);
+    formData.append('residencePermitExpiryDate', expDate2);
+    formData.append('passportDocument', selectedFile);
+    formData.append('seamansBookDocument', selectedFiles);
+    formData.append('visaDocument', selectedFileVisa);
+    formData.append('residencePermitDocument', selectedFileResidence);
+
+    AddTravelDocumentData(userDetail?.userId,biometric,checkBox,formData,AddTravelDocumentDataCB)
   };
+
+  const AddTravelDocumentDataCB = (result:any)=>{
+    if (result?.status == 200||result?.status==201) {
+      toast.success("Travel document submited successfully");
+      setTimeout(() => {
+        window.location.reload()
+      }, 1000);
+    } else {
+      toast.error("Travel document not submited ");
+    }
+  }
 
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">

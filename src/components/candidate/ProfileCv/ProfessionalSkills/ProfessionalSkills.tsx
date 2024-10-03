@@ -1,6 +1,8 @@
 "use client";
+import { AddProfessionalSkillData, GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 type ProfessionalComplete = {
   percentage: number;
@@ -42,12 +44,22 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
   
   const [tradingArea, setTradingArea] = useState("");
   const [description, setDescription] = useState("");
+  const [description1, setDescription1] = useState("");
 
 
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [selectedFile, setSelectedFile] = useState<any>(null);
  
 
   const [inspection, setInspection] = useState("");
+
+  // useEffect(() => {
+  //   GetDropdownDetails('gender',(res:any)=>{
+  //     setGenderDrop(res?.data?.values)
+  //   })
+  //   GetDropdownDetails('martialStatus',(res:any)=>{
+  //     setMartialStatusDrop(res?.data?.values)
+  //   })
+  // }, [])
 
 
 
@@ -77,6 +89,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
     date,
     vdate,
     description, 
+    description1, 
     selectedFile,
     inspection
     
@@ -123,7 +136,47 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
   const handleSubmit = (e: React.FormEvent) => {
     // try {
     e.preventDefault();
+
+    let formData = new FormData()
+    // formData.append('document', selectedFile);
+    formData.append('computerSkill', skill);
+    formData.append('computerSkillLevel', level1);
+    formData.append('bulkCargo', bulkCargo);
+    formData.append('tankerCargo', tankerCargo);
+    formData.append('generalCargo', generalCargo);
+    formData.append('woodProducts', woodProducts);
+    formData.append('stowageLashingExperience', stowage);
+    formData.append('cargoGearType', typeProfessional);
+    formData.append('cargoGearMaker', maker);
+    formData.append('cargoGearSWL', sWL);
+    formData.append('metalWorkingSkill',skillmetal);
+    formData.append('metalWorkingSkillLevel',levelMetal);
+    formData.append('tankCoatingType',typeTank);
+    formData.append('portStateRegionalAgreement',regionalAgreement);
+    formData.append('portStatePort',port);
+    formData.append('portStateDate',date);
+    formData.append('portStateFindings',description);
+    formData.append('vettingInspectionBy',inspection);
+    formData.append('vettingPort',port1);
+    formData.append('vettingDate',vdate);
+    formData.append('vettingFindings',description1);
+    formData.append('tradingArea',tradingArea);
+    // formData.append('document',selectedFile);
+
+    AddProfessionalSkillData(userDetail?.userId,cAvailable,classApproved,formData,AddProfessionalSkillDataCB)
   };
+
+  const AddProfessionalSkillDataCB = (result:any)=>{
+    console.log(result);
+    if (result?.status == 200) {
+      toast.success("Professional skill submited successfully");
+      setTimeout(() => {
+        window.location.reload()
+      }, 1000);
+    } else {
+      toast.error("Professional skill not submited ");
+    }
+  }
 
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
@@ -294,12 +347,6 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
               <option value="type3">Type3</option>
             </select>
           </div>
-
-
-
-
-       
-       
         <div className="   ">
           <label
             className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
@@ -413,9 +460,6 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
           />
         </div>
 
-
-
-      
       <div className="grid col-span-2">
 
       <div className="flex items-center justify-center gap-4 my-6">
@@ -603,8 +647,8 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
           <input
             
             type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            value={description1}
+            onChange={(e) => setDescription1(e.target.value)}
             className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
             placeholder="Yes/No"
             required

@@ -7,14 +7,15 @@ import Link from "next/link";
 
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-type CompanyParticular = {
+
+type CompanyComplete = {
   percentage: number;
   color: string;
 };
 
 type Props = {
-  companyParticular: CompanyParticular; // mjrComplete is an object with percentage and color
-  setCompanyParticular: React.Dispatch<React.SetStateAction<CompanyParticular>>;
+  companyParticular: CompanyComplete; // mjrComplete is an object with percentage and color
+  setCompanyParticular: React.Dispatch<React.SetStateAction<CompanyComplete>>;
   // userDetail: any;
 };
 
@@ -142,7 +143,7 @@ const CompanyParticular = ({ companyParticular, setCompanyParticular }: Props) =
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
         <div className=" flex flex-col">
-          <h1 className="text-left font-bold">Company Particular</h1>
+          <h1 className="text-left font-bold">Company</h1>
 
           <div className="grid grid-cols-2 gap-4">
 
@@ -151,7 +152,7 @@ const CompanyParticular = ({ companyParticular, setCompanyParticular }: Props) =
                 className="text-[14px] leading-[19.07px]  text-[#333333] "
                 htmlFor="trainings"
               >
-                Training
+                Training 
               </label>
               <select
                 id="trainings"

@@ -26,6 +26,8 @@ const Form = () => {
   const [oPOpen, setOPOpen] = useState(false);
   const [licensesOpen, setLicensesOpen] = useState(false);
   const [academicOpen, setAcademicOpen] = useState(false);
+
+  
   const [companyParticular, setCompanyParticular] = useState<any>(
     {
       percentage: 0,

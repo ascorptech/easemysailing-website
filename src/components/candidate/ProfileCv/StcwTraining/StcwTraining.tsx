@@ -1,8 +1,9 @@
 "use client";
-import { GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import { AddStcwData, GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
 
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 type STCWComplete = {
   percentage: number;
@@ -20,7 +21,7 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
   const [issuedate, setIssueDate] = useState("");
   const [exdate, setExDate] = useState("");
 
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [selectedFile, setSelectedFile] = useState<any>(null);
 
   const [trainingCountry, setTrainingCountry] = useState("");
   const [training, setTraining] = useState("");
@@ -91,7 +92,28 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
   const handleSubmit = (e: React.FormEvent) => {
     // try {
     e.preventDefault();
+
+    let formData = new FormData();
+    formData.append("document", selectedFile);
+    formData.append("trainingName", training);
+    formData.append("issuingCountry", trainingCountry);
+    formData.append("certificateNumber", number);
+    formData.append("issueDate", issuedate);
+    formData.append("expiryDate", exdate);
+
+    AddStcwData(userDetail?.userId,neverExpires,formData,AddStcwDataCB)
   };
+
+  const AddStcwDataCB = (result:any)=>{
+    if (result?.status == 200||result?.status==201) {
+      toast.success("STCW Training submited successfully");
+      setTimeout(() => {
+        window.location.reload()
+      }, 1000);
+    } else {
+      toast.error("STCW Training not submited ");
+    }
+  }
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
 

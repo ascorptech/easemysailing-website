@@ -1,4 +1,5 @@
 "use client";
+import { GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
 import React, { useEffect } from "react";
 
@@ -41,6 +42,19 @@ const Refrences = ({
   const [ document2, setDocument2] = useState("");
 
   const [ issueDate1, setIssueDate1] = useState("");
+  const [countryDrop, setCountryDrop] = useState<any>([]);
+  const [countryCodeDrop, setCountryCodeDrop] = useState<any>([]);
+
+  useEffect(() => {
+    GetDropdownDetails('country', (res: any) => {
+      // console.log('County',res?.data)
+      setCountryDrop(res?.data?.values)
+    })
+    GetDropdownDetails('countryCode', (res: any) => {
+      // console.log('County',res?.data)
+      setCountryCodeDrop(res?.data?.values)
+    })
+  }, [])
 
 
   const totalFields = 19;
@@ -101,6 +115,8 @@ const Refrences = ({
   const handleSubmit = (e: React.FormEvent) => {
     // try {
     e.preventDefault();
+
+    // AddReferencesData(userDetail?.userId,)
   };
 
   return (
@@ -204,9 +220,9 @@ const Refrences = ({
               <select id="issuingcountry1" className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]" 
               value={issuingCountry}
               onChange={(e) => setIssuingCountry(e.target.value)} >
-                <option value="india">India</option>
-                <option value="Austrelia">Austrelia</option>
-                <option value="england">England</option>
+               {countryDrop && countryDrop?.map((country: any, index: number) => (
+                    <option key={index} value={country}>{country?.toUpperCase()}</option>
+                  ))}
               </select>
             </div>
 
@@ -319,9 +335,9 @@ const Refrences = ({
               </label>
               <select id="countryCode" className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]" value={countryCode}
                   onChange={(e) => setCountryCode(e.target.value)} >
-                <option value="45440">45440</option>
-                <option value="02458">02458</option>
-                <option value="02453">010203</option>
+                {countryCodeDrop && countryCodeDrop?.map((code: any, index: number) => (
+                    <option key={index} value={code}>{code?.toUpperCase()}</option>
+                  ))}
               </select>
             </div>
           </div>
@@ -415,9 +431,9 @@ const Refrences = ({
               <select id="country" className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}>
-                <option value="maile1">India</option>
-                <option value="maile2">Austrelia</option>
-                <option value="maile3">England</option>
+                {countryDrop && countryDrop?.map((country: any, index: number) => (
+                    <option key={index} value={country}>{country?.toUpperCase()}</option>
+                  ))}
               </select>
             </div>
           </div>
@@ -431,9 +447,9 @@ const Refrences = ({
             <select id="NearestAirport" className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"   
             value={nearestAirport}
                   onChange={(e) => setNearestAirport(e.target.value)}>
-              <option value="maile1">India</option>
-              <option value="maile2">Austrelia</option>
-              <option value="maile3">England</option>
+              {countryDrop && countryDrop?.map((country: any, index: number) => (
+                    <option key={index} value={country}>{country?.toUpperCase()}</option>
+                  ))}
             </select>
           </div>
 
@@ -446,9 +462,9 @@ const Refrences = ({
               </label>
               <select id="countryCode1" className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"   value={countryCode1}
                   onChange={(e) => setCountryCode1(e.target.value)}>
-                <option value="maile1">+91</option>
-                <option value="maile2">+50</option>
-                <option value="maile3">+08</option>
+                {countryCodeDrop && countryCodeDrop?.map((code: any, index: number) => (
+                    <option key={index} value={code}>{code?.toUpperCase()}</option>
+                  ))}
               </select>
             </div>
 

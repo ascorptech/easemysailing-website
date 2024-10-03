@@ -42,7 +42,7 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail }: Props) => {
       // console.log('County',res?.data)
       setCountryDrop(res?.data?.values);
     });
-    GetDropdownDetails("country", (res: any) => {
+    GetDropdownDetails("ecdisEquipment", (res: any) => {
       // console.log('County',res?.data)
       setTrainDrop(res?.data?.values);
     });

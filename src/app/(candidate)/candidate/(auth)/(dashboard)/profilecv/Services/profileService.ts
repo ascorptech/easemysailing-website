@@ -1,7 +1,7 @@
 import { deleteReq, getReq, patchReq, postReq, putReq } from "@/RootServices";
 import apiEndPoints from "./apiEndPoints";
 
-const {GETPROFILE,PUTPROFILE,GETENUMS,POSTMYJOB,GETMYJOB,POSTNEXTOF,POSTLANGUAGE,POSTABOUTME,POSTCONTACT,POSTONLINEPRASENCE,POSTLICENSES,POSTSEADETAILS,POSTSEAGOING  } = apiEndPoints
+const {GETPROFILE,PUTPROFILE,GETENUMS,POSTMYJOB,GETMYJOB,POSTNEXTOF,POSTLANGUAGE,POSTABOUTME,POSTCONTACT,POSTONLINEPRASENCE,POSTLICENSES,POSTSEADETAILS,POSTSEAGOING ,POSTMEDICAL,POSTECDIS } = apiEndPoints
 
 
 export const GetProfileDetail = async(id:any,cb:any)=>{
@@ -162,6 +162,39 @@ export const AddSeaDetailsData = async(userId:any,data:any ,cb:any)=>{
         return cb(error?.response)
     } 
 }
+
+
+//ECDIS 
+export const AddEcdisData = async(userId:any,data:any ,cb:any)=>{
+    try {
+        console.log('Data to be submitted:', data);
+        const response = await postReq(POSTECDIS,data)
+        console.log('API response:', response);
+        return cb(response)
+    } catch (error:any) {
+        console.log('err',error)
+        return cb(error?.response)
+    } 
+}
+
+
+
+//medical 
+
+export const AddMedicalData = async(userId:any,data:any ,cb:any)=>{
+    try {
+        console.log('Data to be submitted:', data);
+        const response = await postReq(POSTMEDICAL,data)
+        console.log('API response:', response);
+        return cb(response)
+    } catch (error:any) {
+        console.log('err',error)
+        return cb(error?.response)
+    } 
+}
+
+
+
 // seagoing experiences
 export const AddSeagoingData = async(data:any ,cb:any)=>{
     try {

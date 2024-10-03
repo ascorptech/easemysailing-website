@@ -1,5 +1,5 @@
 "use client";
-import {AddMedicalData,GetDropdownDetails,} from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import {AddMedicalData, GetDropdownDetails,} from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
@@ -61,6 +61,7 @@ const MedicalCertificates = ({
   const [vaccinationexp, setVaccinationexp] = useState("");
 
   const [selectedFilesOthers, setSelectedFilesOthers] = useState<any>("");
+  
 
   const [veccinationCheckFlag, setVeccinationCheckFlag] = useState<any>(false);
   const [medicalTypeFlag, setMedicalTypeFlag] = useState("");

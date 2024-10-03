@@ -17,8 +17,8 @@ import TravelDocuments from "@/components/candidate/ProfileCv/TravelDocuments/Tr
 
 
 
-const MyJob = () => {
-  const [profileDetail,setProfileDetail] = useState<any>()
+const Form = () => {
+  // const [profileDetail,setProfileDetail] = useState<any>()
 
   const [isOpen, setIsOpen] = useState(false); // State to toggle
   const [pDOpen, setPDOpen] = useState(false);
@@ -26,18 +26,18 @@ const MyJob = () => {
   const [oPOpen, setOPOpen] = useState(false);
   const [licensesOpen, setLicensesOpen] = useState(false);
   const [academicOpen, setAcademicOpen] = useState(false);
-  const [mjrComplete, setMjrComplete] = useState<any>(
+  const [companyParticular, setCompanyParticular] = useState<any>(
     {
       percentage: 0,
       color: '#FF0000'
     }
   )
-  const [personalComplete, setPersonalComplete] = useState<any>(
-    {
-      percentage: 0,
-      color: '#FF0000'
-    }
-  )
+  // const [personalComplete, setPersonalComplete] = useState<any>(
+  //   {
+  //     percentage: 0,
+  //     color: '#FF0000'
+  //   }
+  // )
 
 
   const [nKOpen, setNKOpen] = useState(false);
@@ -67,22 +67,22 @@ const MyJob = () => {
 
   const [sTCWOpen, setSTCWOpen] = useState(false);
 
-  useEffect(() => {
-    fetchDetails()
-  }, [])
+  // useEffect(() => {
+  //   fetchDetails()
+  // }, [])
 
-  const fetchDetails=async()=>{
-    let id = await localStorage.getItem('id')
-    GetProfileDetail(id,(res:any)=>{
-      if (res?.status==200) {
-        setProfileDetail(res?.data)
-      }else{
-        toast.error('No data found')
-      }
-      console.log('data here iam',res)
+  // const fetchDetails=async()=>{
+  //   let id = await localStorage.getItem('id')
+  //   GetProfileDetail(id,(res:any)=>{
+  //     if (res?.status==200) {
+  //       setProfileDetail(res?.data)
+  //     }else{
+  //       toast.error('No data found')
+  //     }
+  //     console.log('data here iam',res)
 
-    })
-  }
+  //   })
+  // }
 
 
   const toggleCollapse = () => {
@@ -166,7 +166,7 @@ const MyJob = () => {
       <div className=" flex justify-between     ">
         <div className=" w-[50%] ">
           <div className="    ">
-            <div className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2  border-r-8 border-[${mjrComplete?.color}]`}>
+            <div className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2  border-r-8 border-[${companyParticular?.color}]`}>
 
               <h2 className=""> Company Particulars</h2>{" "}
               <div className="flex items-center justify-center gap-1">
@@ -203,11 +203,12 @@ const MyJob = () => {
                     </svg>
                   )}
                 </span>
-                <CircularProgress percentage={Math.round(mjrComplete?.percentage)} color={mjrComplete.color} />
+                {/* <CircularProgress percentage={0}/> */}
+                <CircularProgress percentage={Math.round(companyParticular?.percentage)} color={companyParticular.color} />
               </div>
             </div>{" "}
             <div className=" h-screen overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory ">
-              {isOpen && <CompanyParticular mjrComplete={mjrComplete} setMjrComplete={setMjrComplete} userDetail={profileDetail} />}
+              {isOpen && <CompanyParticular companyParticular={companyParticular} setCompanyParticular={setCompanyParticular} />}
 
               {/* Fleet Details */}
 
@@ -764,7 +765,7 @@ const MyJob = () => {
           {/* ITF start */}
 
           <div
-            className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2  border-r-8 border-[${personalComplete?.color}]`}
+            // className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2  border-r-8 border-[${personalComplete?.color}]`}
            
           >
             <h2 className="">ITF and Other Accredations</h2>
@@ -803,11 +804,11 @@ const MyJob = () => {
                 )}
               </span>
 
-              <CircularProgress percentage={Math.round(personalComplete?.percentage)} color={personalComplete?.color} />
+              {/* <CircularProgress percentage={Math.round(personalComplete?.percentage)} color={personalComplete?.color} /> */}
             </div>
           </div>
           <div className=" h-screen overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory ">
-            {pDOpen && <ITFOther personalComplete={personalComplete} setPersonalComplete={setPersonalComplete} userDetail={profileDetail}/>}
+            {/* {pDOpen && <ITFOther personalComplete={personalComplete} setPersonalComplete={setPersonalComplete} userDetail={profileDetail}/>} */}
             {/* ITF end */}
 
             {/* Aboutme  start*/}
@@ -1307,4 +1308,4 @@ const MyJob = () => {
     </div>
   );
 };
-export default MyJob;
+export default Form;

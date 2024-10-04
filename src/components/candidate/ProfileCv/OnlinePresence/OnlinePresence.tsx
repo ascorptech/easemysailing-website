@@ -49,6 +49,9 @@ const OnlinePresence = ({
   const [other, setOther] = useState(false);
   const [otherId, setOtherId] = useState("");
 
+  const [disabled,setDisabled] = useState(true)
+
+
   const totalFields = 9;
 
   const filledFields = [
@@ -137,6 +140,12 @@ const OnlinePresence = ({
     }
   };
 
+  const handleEdit = () => {
+    setDisabled(!disabled)
+    // toast.info("You are now in edit mode. Make your changes.");
+  };
+
+
   return (
     <div className="container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
@@ -149,6 +158,8 @@ const OnlinePresence = ({
                 type="checkbox"
                 checked={whatsApp}
                 onChange={() => setWhatsApp(!whatsApp)}
+                disabled={disabled}
+
               />
               <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 WhatsApp
@@ -170,6 +181,8 @@ const OnlinePresence = ({
                     placeholder="Enter WhatsApp No."
                     value={whatsAppId}
                     onChange={(e) => setWhatsAppId(e.target.value)}
+                    disabled={disabled}
+
                   />
                 </div>
               )}
@@ -183,6 +196,8 @@ const OnlinePresence = ({
                   checked={weChat}
                   onChange={() => setWeChat(!weChat)}
                   className="ml-4"
+                  disabled={disabled}
+
                 />
                 <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                   WeChat
@@ -201,6 +216,8 @@ const OnlinePresence = ({
                     type="text"
                     className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter WeChat Id"
+                    disabled={disabled}
+
                   />
                 </div>
               )}
@@ -213,6 +230,8 @@ const OnlinePresence = ({
                   type="checkbox"
                   checked={facebookMess}
                   onChange={() => setFacebookMess(!facebookMess)}
+                  disabled={disabled}
+
                 />
                 <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                   Facebook
@@ -227,6 +246,7 @@ const OnlinePresence = ({
                     placeholder="Enter Facebook Id"
                     value={facebookMessId}
                     onChange={(e) => setFacebookMessId(e.target.value)}
+                    disabled={disabled}
                   />
                 </div>
               )}
@@ -241,6 +261,8 @@ const OnlinePresence = ({
                   checked={telegram}
                   onChange={() => setTelegram(!telegram)}
                   className="ml-4"
+                  disabled={disabled}
+
                 />
                 <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                   Telegram
@@ -256,6 +278,8 @@ const OnlinePresence = ({
                     placeholder="Enter Telegram Id"
                     value={telegramId}
                     onChange={(e) => setTelegramId(e.target.value)}
+                    disabled={disabled}
+
                   />
                 </div>
               )}
@@ -268,6 +292,8 @@ const OnlinePresence = ({
                   checked={viber}
                   onChange={() => setViber(!viber)}
                   className="ml-4"
+                  disabled={disabled}
+
                 />
                 <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                   Viber
@@ -283,6 +309,8 @@ const OnlinePresence = ({
                     placeholder="Enter viber Id"
                     value={viberId}
                     onChange={(e) => setViberId(e.target.value)}
+                    disabled={disabled}
+
                   />
                 </div>
               )}
@@ -303,12 +331,14 @@ const OnlinePresence = ({
             value={skypeId}
             onChange={(e) => setSkypeId(e.target.value)}
             className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-            required
+            disabled={disabled}
+
           />
         </div>
 
+        {/* Channels in Use */}
         <div className="my-5">
-          <h1 className="mb-2    font-bold">Social Media Channels in Use</h1>
+          <h1 className="mb-2    font-bold">Social Media </h1>
           <div className="flex gap-2">
             <div className="w-[24%]">
               <div>
@@ -316,6 +346,8 @@ const OnlinePresence = ({
                   type="checkbox"
                   checked={linkedIn}
                   onChange={() => setLinkedIn(!linkedIn)}
+                  disabled={disabled}
+
                 />
                 <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                   LinkedIn
@@ -329,6 +361,8 @@ const OnlinePresence = ({
                     placeholder="Enter Linkdin Id "
                     value={linkedInId}
                     onChange={(e) => setLinkedInId(e.target.value)}
+                    disabled={disabled}
+
                   />
                 </div>
               )}
@@ -340,6 +374,8 @@ const OnlinePresence = ({
                   checked={facebook}
                   onChange={() => setFacebook(!facebook)}
                   className="ml-4"
+                  disabled={disabled}
+
                 />
                 <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                   Facebook
@@ -353,6 +389,8 @@ const OnlinePresence = ({
                     placeholder="Enter Facebook Id"
                     value={facebookId}
                     onChange={(e) => setFacebookId(e.target.value)}
+                    disabled={disabled}
+
                   />
                 </div>
               )}
@@ -364,6 +402,8 @@ const OnlinePresence = ({
                   checked={instagram}
                   onChange={() => setInstagram(!instagram)}
                   className="ml-4"
+                  disabled={disabled}
+
                 />
                 <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                   Instagram
@@ -378,6 +418,8 @@ const OnlinePresence = ({
                     placeholder="Enter Instagram Id"
                     value={instagramId}
                     onChange={(e) => setInstagramId(e.target.value)}
+                    disabled={disabled}
+
                   />
                 </div>
               )}
@@ -389,6 +431,8 @@ const OnlinePresence = ({
                   checked={other}
                   onChange={() => setOther(!other)}
                   className="ml-4"
+                  disabled={disabled}
+
                 />
                 <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                   Other
@@ -403,6 +447,8 @@ const OnlinePresence = ({
                     placeholder=""
                     value={otherId}
                     onChange={(e) => setOtherId(e.target.value)}
+                    disabled={disabled}
+
                   />
                 </div>
               )}
@@ -417,12 +463,13 @@ const OnlinePresence = ({
           >
             Save
           </button>
-          <button
-            type="submit"
+          <Link
+            href={'#'}
+            onClick={handleEdit}
             className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
           >
             Edit
-          </button>
+          </Link>
         </div>
       </form>
     </div>

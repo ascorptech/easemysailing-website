@@ -61,6 +61,8 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
   const [regionalAgDrop, setRegionalAgDrop] = useState<any>([]);
   const [portDrop, setPortDrop] = useState<any>([]);
   const [tradingAreaDrop, setTradingAreaDrop] = useState<any>([]);
+  const [disabled,setDisabled] = useState(true)
+
 
   useEffect(() => {
     GetDropdownDetails('ProfessionalKnowledgeTest',(res:any)=>{
@@ -224,10 +226,14 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
     }
   }
 
+  const handleEdit = () => {
+    setDisabled(!disabled)
+    // toast.info("You are now in edit mode. Make your changes.");
+  };
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
        <form onSubmit={handleSubmit}>
-      <h1 className="font-bold ">Professional Skills</h1>
+      <h1 className="font-bold ">Computer Skills</h1>
       <div className="grid grid-cols-2 gap-4">
       <div className="">
             <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="Skill">
@@ -239,6 +245,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
               name="options"
               value={skill}
               onChange={(e) => setSkill(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
               Select
@@ -261,6 +268,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
               name="options"
               value={level1}
               onChange={(e) => setLevel1(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
               Select
@@ -274,7 +282,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
             </select>
           </div>
           <div className="grid col-span-2">
-          <h1 className="font-bold ">CARGO EXPERIENCE</h1>
+          <h1 className="font-bold ">Cargo Experience </h1>
 
           </div>
 
@@ -287,7 +295,8 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
               value={bulkCargo}
-                  onChange={(e) => setBulkCargo(e.target.value)}
+              onChange={(e) => setBulkCargo(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
               Select
@@ -310,6 +319,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
               name="options"
               value={tankerCargo}
               onChange={(e) => setTankerCargo(e.target.value)}
+              disabled={disabled}
             >
                <option value="" disabled selected>
               Select
@@ -333,7 +343,8 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
               value={generalCargo}
-                  onChange={(e) => setGeneralCargo(e.target.value)}
+              onChange={(e) => setGeneralCargo(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
               Select
@@ -355,7 +366,8 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
               value={woodProducts}
-                  onChange={(e) => setWoodProducts(e.target.value)}
+              onChange={(e) => setWoodProducts(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
               Select
@@ -393,7 +405,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
           </div>
 
           <div className="grid col-span-2">
-            <h1 className=" font-bold">CARGO GEAR EXPERIENCE</h1>
+            <h1 className=" font-bold">Cargo Gear Experience</h1>
           </div>
           <div className="">
             <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="typeProfessional">
@@ -452,7 +464,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
           />
         </div>
 
-        <div className="grid col-span-2"><h1 className=" font-bold">METAL WORKING SKILLS</h1></div>
+        <div className="grid col-span-2"><h1 className=" font-bold">Metal Working Skills</h1></div>
 
         <div className="">
             <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="skillmetal">
@@ -570,7 +582,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
       </div>
 
       <div className="grid col-span-2">
-        <h1 className=" font-bold" >TANK COATING TYPE EXPERIENCE</h1>
+        <h1 className=" font-bold" >Tank Coating Type Experience</h1>
         <div className="">
             <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="typeTank">
             Type
@@ -595,7 +607,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
           </div>
       </div>
 
-      <div className="grid col-span-2"><h1 className="font-bold ">PORT STATE CONTROL EXPERIENCE</h1></div>
+      <div className="grid col-span-2"><h1 className="font-bold ">Port State Control Experience </h1></div>
       <div className="">
             <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="regionalAgreement">
             Regional Agreement
@@ -672,7 +684,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
           />
         </div>
 
-        <div className="grid col-span-2"><h1 className=" font-bold">VETTING INSPECTION EXPERIENCE</h1></div>
+        <div className="grid col-span-2"><h1 className=" font-bold">Vetting Inspection</h1></div>
         <div className="   ">
           <label
             className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
@@ -743,7 +755,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
             required
           />
         </div>
-        <div className="grid col-span-2"><h1 className="font-bold ">TRADING AREA EXPERIENCE</h1>
+        <div className="grid col-span-2"><h1 className="font-bold ">Trading Area Experience</h1>
 
         <div className="">
             <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="tradingArea">

@@ -473,7 +473,7 @@ const VettingServices = ({vettingServicesComplete, setVettingServicesComplete, u
                 }
                 className="ml-4"
               />
-              <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+              <label className=" font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
               Optional
               </label>
             </div>

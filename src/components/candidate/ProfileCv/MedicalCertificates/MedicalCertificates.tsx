@@ -711,7 +711,7 @@ const MedicalCertificates = ({
               className="text-[14px] leading-[19.07px]  text-[#333333] "
               htmlFor="medicalcenter"
             >
-              Medical Center Physician
+              Medical Center / Physician
             </label>
             <input
               id="medicalcenter"
@@ -947,7 +947,7 @@ const MedicalCertificates = ({
 
           {/* Flag medical */}
           <div className="grid col-span-2 ">
-            <h1 className="font-bold ">FLAG MEDICAL </h1>
+            <h1 className="font-bold ">Flag Medical </h1>
           </div>
 
           <div className="">

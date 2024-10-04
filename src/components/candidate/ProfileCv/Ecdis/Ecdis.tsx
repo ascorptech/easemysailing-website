@@ -36,6 +36,8 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail }: Props) => {
   const [checkBox1, setCheckBox1] = useState<any>(false);
   const [countryDrop, setCountryDrop] = useState<any>([]);
   const [trainDrop, setTrainDrop] = useState<any>([]);
+  const [disabled,setDisabled] = useState(true)
+
 
   useEffect(() => {
     GetDropdownDetails("country", (res: any) => {
@@ -138,6 +140,12 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail }: Props) => {
     }
   };
 
+  const handleEdit = () => {
+    setDisabled(!disabled)
+    // toast.info("You are now in edit mode. Make your changes.");
+  };
+
+
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
@@ -158,6 +166,8 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail }: Props) => {
                 name="options"
                 value={trainings}
                 onChange={(e) => setTrainings(e.target.value)}
+                disabled={disabled}
+
               >
                 <option value="" disabled selected>
                   Training
@@ -184,7 +194,8 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail }: Props) => {
                 onChange={(e) => setTrainingCenter(e.target.value)}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
                 placeholder=""
-                required
+                disabled={disabled}
+
               />
             </div>
 
@@ -201,6 +212,8 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail }: Props) => {
                 name="options"
                 value={issuingCountry}
                 onChange={(e) => setIssuingCountry(e.target.value)}
+                disabled={disabled}
+
               >
                 <option value="" disabled selected>
                   Issuing Country
@@ -229,7 +242,8 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail }: Props) => {
                 onChange={(e) => setECDISNumber(e.target.value)}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Number"
-                required
+                disabled={disabled}
+
               />
             </div>
 
@@ -247,6 +261,8 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail }: Props) => {
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={issuedate1}
                 onChange={(e) => setIssueDate1(e.target.value)}
+                disabled={disabled}
+
               />
             </div>
 
@@ -264,6 +280,8 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail }: Props) => {
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={exdate1}
                 onChange={(e) => setExDate1(e.target.value)}
+                disabled={disabled}
+
               />
             </div>
             {/* <div className="flex  ">
@@ -288,6 +306,8 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail }: Props) => {
                 className="border focus:ring-[#00A264]  text-[#00A264] checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
                 checked={checkBox1}
                 onChange={(e) => setCheckBox1(!checkBox1)}
+                disabled={disabled}
+
               />
               <label
                 className="text-[14px] leading-[19.07px]  text-[#333333]"
@@ -302,6 +322,8 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail }: Props) => {
             <label
               htmlFor="file-upload1"
               className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  text-[14px] leading-[19.07px]   hover:bg-[#04714e] focus:outline-none focus:ring-2 "
+              
+
             >
               Attachment Docoment
             </label>
@@ -310,6 +332,7 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail }: Props) => {
               type="file"
               className="hidden"
               onChange={handleFileChanges}
+              disabled={disabled}
             />
             {selectedFiles ? (
               <p className="text-gray-700">
@@ -334,6 +357,7 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail }: Props) => {
           </button>
           <Link
             href="#"
+            onClick={handleEdit}
             className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
           >
             Edit

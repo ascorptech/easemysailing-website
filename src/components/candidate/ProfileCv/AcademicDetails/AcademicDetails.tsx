@@ -42,6 +42,8 @@ const AcademicDetails = ({
   const [issuedate1, setIssueDate1] = useState("");
   const [issuingCountry, setIssuingCountry] = useState("");
   const [countryDrop, setCountryDrop] = useState<any>([]);
+  const [disabled,setDisabled] = useState(true)
+
 
   const totalFields = fields.length * 2 + 7;
   const filledFields = [
@@ -114,6 +116,10 @@ const AcademicDetails = ({
     e.preventDefault();
   };
 
+  const handleEdit = () => {
+    setDisabled(!disabled)
+    // toast.info("You are now in edit mode. Make your changes.");
+  };
   return (
     <div className="container border-2 shadow-lg p-3 mt-[14px] mb-8">
       <form onSubmit={handleSubmit}>
@@ -133,7 +139,7 @@ const AcademicDetails = ({
                 }
                 className="border rounded-md w-full h-9 px-2 text-[14px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter degree"
-                required
+                disabled={disabled}
               />
             </div>
             <div>
@@ -148,7 +154,7 @@ const AcademicDetails = ({
                 }
                 className="border rounded-md w-full h-9 px-2 text-[14px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter percentage"
-                required
+                disabled={disabled}
               />
             </div>
             <div className="flex justify-start items-center gap-4">
@@ -156,12 +162,14 @@ const AcademicDetails = ({
                 <AiOutlinePlus
                   className="text-green-600 cursor-pointer"
                   onClick={addField}
+                  
                 />
               )}
               {fields.length > 1 && index === fields.length - 1 && (
                 <AiOutlineMinus
                   className="text-red-600 cursor-pointer"
                   onClick={removeField}
+                  
                 />
               )}
             </div>
@@ -179,6 +187,7 @@ const AcademicDetails = ({
               value={startdate}
               onChange={(e) => setStartDate(e.target.value)}
               className="border rounded-md w-full h-9 px-2 text-[14px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              disabled={disabled}
             />
           </div>
           <div>
@@ -190,6 +199,7 @@ const AcademicDetails = ({
               value={enddate}
               onChange={(e) => setEndDate(e.target.value)}
               className="border rounded-md w-full h-9 px-2 text-[14px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              disabled={disabled}
             />
           </div>
         </div>
@@ -207,6 +217,7 @@ const AcademicDetails = ({
               type="file"
               className="hidden"
               onChange={handleFileChange}
+              disabled={disabled}
             />
           </div>
           {selectedFile ? (
@@ -237,7 +248,7 @@ const AcademicDetails = ({
               onChange={(e) => setUniversity(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder="Enter University"
-              required
+              disabled={disabled}
             />
           </div>
           <div className="   ">
@@ -254,7 +265,7 @@ const AcademicDetails = ({
               onChange={(e) => setSubject(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder=""
-              required
+              disabled={disabled}
             />
           </div>
           <div className=" ">
@@ -262,7 +273,7 @@ const AcademicDetails = ({
               className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
               htmlFor="optionT1"
             >
-              Issuing Country
+               Country
             </label>
             <select
               id="optionT1"
@@ -270,6 +281,7 @@ const AcademicDetails = ({
               name="options"
               value={issuingCountry}
               onChange={(e) => setIssuingCountry(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
                 Issuing Country
@@ -297,7 +309,7 @@ const AcademicDetails = ({
               onChange={(e) => setCity(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder=""
-              required
+              disabled={disabled}
             />
           </div>
         </div>
@@ -311,6 +323,7 @@ const AcademicDetails = ({
           </button>
           <Link
             href="#"
+            onClick={handleEdit}
             className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
           >
             Edit

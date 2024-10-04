@@ -48,6 +48,8 @@ const AdditionalTraining = ({
   const [capacityDrop, setCapacityDrop] = useState<any>([]);
   const [levelDrop, setLevelDrop] = useState<any>([]);
   const [levelTestDrop, setLevelTestDrop] = useState<any>([]);
+  const [disabled,setDisabled] = useState(true)
+
 
   const [showFields, setShowFields] = useState(true);
 
@@ -147,6 +149,10 @@ const AdditionalTraining = ({
     let formData = new FormData();
     
   };
+  const handleEdits = () => {
+    setDisabled(!disabled)
+    // toast.info("You are now in edit mode. Make your changes.");
+  };
 
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
@@ -167,6 +173,7 @@ const AdditionalTraining = ({
               name="options"
               value={countryCertifi}
               onChange={(e) => setCountryCertifi(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
                 Certification
@@ -194,7 +201,7 @@ const AdditionalTraining = ({
               onChange={(e) => setTrainingCenter(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder=""
-              required
+              disabled={disabled}
             />
           </div>
 
@@ -211,6 +218,7 @@ const AdditionalTraining = ({
               name="options"
               value={countryIC}
               onChange={(e) => setCountryIC(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
                 Issuing Country
@@ -240,7 +248,7 @@ const AdditionalTraining = ({
               onChange={(e) => setNumber(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder=""
-              required
+              disabled={disabled}
             />
           </div>
 
@@ -258,6 +266,7 @@ const AdditionalTraining = ({
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={issuedate}
               onChange={(e) => setIssueDate(e.target.value)}
+              disabled={disabled}
             />
           </div>
           {/* </div> */}
@@ -276,6 +285,7 @@ const AdditionalTraining = ({
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={exdate}
                 onChange={(e) => setExDate(e.target.value)}
+                disabled={disabled}
               />
             </div>
           </div>
@@ -303,6 +313,7 @@ const AdditionalTraining = ({
               className="border focus:ring-[#00A264]  text-[#00A264] checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
               checked={neverExpCheck}
               onChange={(e) => setNeverExpCheck(!neverExpCheck)}
+              disabled={disabled}
             />
             <label
               className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
@@ -325,6 +336,7 @@ const AdditionalTraining = ({
                   type="file"
                   className="hidden"
                   onChange={handleFileChange}
+                  disabled={disabled}
                 />
               </div>
               <div>
@@ -367,6 +379,7 @@ const AdditionalTraining = ({
               name="options"
               value={capacity}
               onChange={(e) => setCapacity(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
                 Capacity
@@ -393,6 +406,7 @@ const AdditionalTraining = ({
               name="options"
               value={level}
               onChange={(e) => setLevel(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
                 Level
@@ -420,7 +434,7 @@ const AdditionalTraining = ({
               onChange={(e) => setTrainingCenter1(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder=""
-              required
+              disabled={disabled}
             />
           </div>
 
@@ -437,6 +451,7 @@ const AdditionalTraining = ({
               name="options"
               value={typeOfTest}
               onChange={(e) => setTypeOfTest(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
                 Type of Test
@@ -464,7 +479,7 @@ const AdditionalTraining = ({
               onChange={(e) => setResult(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder=""
-              required
+              disabled={disabled}
             />
           </div>
 
@@ -481,6 +496,7 @@ const AdditionalTraining = ({
               name="options"
               value={issuingCountry}
               onChange={(e) => setIssuingCountry(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
                 Issuing Country
@@ -509,7 +525,7 @@ const AdditionalTraining = ({
               onChange={(e) => setECDISNumber(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder=""
-              required
+              disabled={disabled}
             />
           </div>
 
@@ -527,6 +543,7 @@ const AdditionalTraining = ({
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={issuedate1}
               onChange={(e) => setIssueDate1(e.target.value)}
+              disabled={disabled}
             />
           </div>
 
@@ -544,6 +561,7 @@ const AdditionalTraining = ({
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={exdate1}
               onChange={(e) => setExDate1(e.target.value)}
+              disabled={disabled}
             />
           </div>
           <div className=" flex items-center justify-center gap-4">
@@ -553,6 +571,7 @@ const AdditionalTraining = ({
               className="border focus:ring-[#00A264]  text-[#00A264] checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
               checked={neverChecked1}
               onChange={(e) => setNeverChecked1(!neverChecked1)}
+              disabled={disabled}
             />
             <label
               className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
@@ -575,6 +594,7 @@ const AdditionalTraining = ({
                   type="file"
                   className="hidden"
                   onChange={handleFileChanges}
+                  disabled={disabled}
                 />
               </div>
               <div>
@@ -603,6 +623,7 @@ const AdditionalTraining = ({
           </button>
           <Link
             href="#"
+            onClick={handleEdits}
             className="border border-[#00A264]  p-2 rounded-lg px-8 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
           >
             Edit

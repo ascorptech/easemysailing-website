@@ -300,7 +300,7 @@ const TravelDocuments = ({
                 <option key={index} value={country}>{country?.toUpperCase()}</option>
               ))} */}
               <option value="yes">Yes</option>
-              <option value="No">Yes</option>
+              <option value="No">No</option>
             </select>
           </div>
 

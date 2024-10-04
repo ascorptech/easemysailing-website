@@ -166,7 +166,7 @@ AddReferencesData(userDetail?.userId,consentGiven, formData, AddReferencesDataCB
       <div className="">
         {/* <div className=" my-2"> */}
           <h1 className="font-bold">
-            EVALUATION REPORT AND REFERENCE/RECOMMENDATION LETTERS
+          Appraisal/ Evaluation Report And Reference /Recommendation Letters
           </h1>
         {/* </div> */}
         <div className=" mt-4">
@@ -230,25 +230,7 @@ AddReferencesData(userDetail?.userId,consentGiven, formData, AddReferencesDataCB
               {/* </div> */}
             </div>
             
-            {/* <div className="w-[25%] ">
-              <label
-                className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
-                htmlFor="document1"
-              >
-                Document
-              </label>
-              <div className="relative flex items-center  ">
-                <input
-                  id="document1"
-                  type="text"
-                  value={document1}
-                  onChange={(e) => setDocument1(e.target.value)}
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                  placeholder=""
-                  required
-                />
-              </div>
-            </div> */}
+           
 
             <div className="grid col-span-3">
             <div className="flex items-center justify-start gap-4 my-6">
@@ -282,7 +264,7 @@ AddReferencesData(userDetail?.userId,consentGiven, formData, AddReferencesDataCB
           </div>
           </div>
 
-          <h1 className="font-bold my-2">CRIMINAL RECORD</h1>
+          <h1 className="font-bold my-2">Criminal Record </h1>
 
           <div className="grid grid-cols-2 gap-4  ">
             <div className="  ">
@@ -357,7 +339,7 @@ AddReferencesData(userDetail?.userId,consentGiven, formData, AddReferencesDataCB
             
           
 
-          <h1 className="font-bold my-2">REFERENCE CONTACTS</h1>
+          <h1 className="font-bold my-2">Reference Contacts</h1>
 
           {/* third section start*/}
           <div className="grid grid-cols-3 gap-4">

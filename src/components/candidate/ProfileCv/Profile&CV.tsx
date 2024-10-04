@@ -523,8 +523,8 @@ const [profileDetail,setProfileDetail] = useState<any>()
                priority
                 src="/images/candidate/profileCv/user.png"
                 alt="logo not found"
-                width={30}
-                height={30}
+                width={300}
+                height={300}
                 className="object-contain w-[24px] h-[24px]"
               />
               <p className="font-semibold text-[15px] leading-[21px]">
@@ -539,8 +539,8 @@ const [profileDetail,setProfileDetail] = useState<any>()
                priority
                 src="/vector1.png"
                 alt="logo not found"
-                width={30}
-                height={30}
+                width={300}
+                height={300}
                 className="object-contain w-[24px] h-[24px]"
               />
               <p className="font-semibold text-[15px] leading-[21px]">

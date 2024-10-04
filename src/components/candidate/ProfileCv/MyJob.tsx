@@ -118,12 +118,12 @@ const MyJob = () => {
       color:'#FF0000'
     }
   )
-  const [educationComplete, setEducationComplete] = useState<any> (
-    {
-      percentage: 0,
-      color:'#FF0000'
-    }
-  )
+  // const [educationComplete, setEducationComplete] = useState<any> (
+  //   {
+  //     percentage: 0,
+  //     color:'#FF0000'
+  //   }
+  // )
   const [academicComplete, setAcademicComplete] = useState<any> (
     {
       percentage: 0,
@@ -1037,7 +1037,7 @@ const MyJob = () => {
 
             {aCOpen && <AdditionalTraining additionalComplete={additionalComplete} setAdditionalComplete={setAdditionalComplete}  userDetail={profileDetail} />}
 
-            <div className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${educationComplete?.color}] mt-3`}>
+            {/* <div className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${educationComplete?.color}] mt-3`}>
               <h2 className="">Education</h2>
               <div className="flex items-center justify-center gap-1">
                 <span className="ml-2 cursor-pointer" onClick={() => setEducationOpen(!educationOpen)}>
@@ -1075,9 +1075,9 @@ const MyJob = () => {
                 </span>
                 <CircularProgress percentage={Math.round(educationComplete?.percentage)} color={educationComplete.color} />
               </div>
-            </div>
+            </div> */}
 
-            {educationOpen && <Education educationComplete={educationComplete} setEducationComplete={setEducationComplete}  userDetail={profileDetail}/>}
+            {/* {educationOpen && <Education educationComplete={educationComplete} setEducationComplete={setEducationComplete}  userDetail={profileDetail}/>} */}
 
             <div className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${professionalComplete?.color}] mt-3`}>
               <h2 className="">Professional SKills</h2>

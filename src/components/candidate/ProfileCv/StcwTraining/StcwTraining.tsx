@@ -154,7 +154,7 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
                 className="text-[14px] leading-[19.07px]  text-[#333333] "
                 htmlFor="trainingcou"
               >
-                Training Country
+                Issuing Country
               </label>
               <select
                 id="trainingcou"

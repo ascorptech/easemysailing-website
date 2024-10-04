@@ -103,8 +103,11 @@ const SignIn = () => {
           document.cookie = `token=${response?.data?.token}; path=/admin`;
           localStorage.setItem("token", token);
           route.push("/admin/dashboard");
+          toast.success('Login Successfull')
+          setIsLoading(false)
         }else{
           toast.error('Invalid Email or Password')
+          setIsLoading(false)
         }
         
       }

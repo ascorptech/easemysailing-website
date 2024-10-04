@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import CompanyParticular from "./CompanyParticular/CompanyParticular";
 import { GetProfileDetail } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import { toast } from "react-toastify";
-import ITFOther from "./Itf&other/ITFOther";
 import NextOfKinDetails from "@/components/candidate/ProfileCv/NextOfKinDetails/NextOfKinDetails";
 import Languages from "@/components/candidate/ProfileCv/Languages/Languages";
 import OnlinePresence from "@/components/candidate/ProfileCv/OnlinePresence/OnlinePresence";
@@ -766,9 +765,9 @@ const Form = () => {
 
           {/* ITF start */}
 
-          <div
+         {/* <div
             // className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2  border-r-8 border-[${personalComplete?.color}]`}
-           
+
           >
             <h2 className="">ITF and Other Accredations</h2>
             <div className="flex items-center justify-center gap-1">
@@ -804,18 +803,18 @@ const Form = () => {
                     />
                   </svg>
                 )}
-              </span>
-
+              </span> 
+                <CircularProgress percentage={100} color="#00A264" />
               {/* <CircularProgress percentage={Math.round(personalComplete?.percentage)} color={personalComplete?.color} /> */}
-            </div>
-          </div>
+            {/* </div> */}
+           {/* </div> */}
           <div className=" h-screen overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory ">
             {/* {pDOpen && <ITFOther personalComplete={personalComplete} setPersonalComplete={setPersonalComplete} userDetail={profileDetail}/>} */}
             {/* ITF end */}
 
             {/* Aboutme  start*/}
 
-            <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#00A264] mt-3">
+            <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#00A264] ">
               <h2 className="">Crew Recruitments</h2>
               <div className="flex items-center justify-center gap-1">
                 <span className="ml-2 cursor-pointer" onClick={hendleAboutMe}>
@@ -952,8 +951,8 @@ const Form = () => {
             {/* {authOpen && <TravelDocuments />} */}
 
 
-            {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
-              <h1 className="">STCW Training</h1>
+            <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
+              <h1 className="">ITF and Other Accredations</h1>
               <div className="flex items-center justify-center gap-1">
                 <span
                   className="ml-2 cursor-pointer"
@@ -995,7 +994,7 @@ const Form = () => {
               </div>
             </div>
 
-            {sTCWOpen && <StcwTraining />} */}
+            {/* {sTCWOpen && <StcwTraining />} */}
 
             {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
               <h2 className="">Additional Trainings</h2>

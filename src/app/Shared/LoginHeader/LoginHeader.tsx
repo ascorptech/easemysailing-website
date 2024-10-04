@@ -53,7 +53,7 @@ const LoginHeader = () => {
                   className="flex justify-center items-center mr-4 bg-[#00A264] text-white p-2 rounded-full text-sm"
                 >
                   
-                  Back To Website
+                  Back to website
                 </Link>
                 {/* <Link
                   href="recruiter"

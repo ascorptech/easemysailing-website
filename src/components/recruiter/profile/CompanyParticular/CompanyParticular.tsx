@@ -46,12 +46,16 @@ const CompanyParticular = ({
   const [iFSC, setIfsc] = useState("");
   const [swiftCode, setSwiftCode] = useState("");
 
-  // const [mCountrycode, setMCountrycode] = useState("+91");
+  const [mCountrycode, setMCountrycode] = useState("+91");
+  const [countryCodeDrop, setCountryCodeDrop] = useState<any>([]);
+
+  const [mCountryTel, setMCountryTel] = useState("+91");
+  const [countryCodeTel, setCountryCodeTel] = useState<any>([]);
+
   // const [exdate1, setExDate1] = useState("");
   // const [checkBox1, setCheckBox1] = useState<any>(false);
   const [countryDrop, setCountryDrop] = useState<any>([]);
   // const [trainDrop, setTrainDrop] = useState<any>([]);
-  // const [countryCodeDrop, setCountryCodeDrop] = useState<any>([]);
 
   useEffect(() => {
     GetDropdownDetails("country", (res: any) => {
@@ -60,7 +64,9 @@ const CompanyParticular = ({
     });
     GetDropdownDetails("countryCode", (res: any) => {
       // console.log('County',res?.data)
-      // setCountryCodeDrop(res?.data?.values);
+      setCountryCodeDrop(res?.data?.values);
+      setCountryCodeTel(res?.data?.values);
+
     });
   }, []);
 
@@ -71,7 +77,7 @@ const CompanyParticular = ({
   //   });
   //   GetDropdownDetails("country", (res: any) => {
   //     // console.log('County',res?.data)
-  //     setTrainDrop(res?.data?.values);
+  //     // setTrainDrop(res?.data?.values);
   //   });
   // }, []);
 
@@ -261,9 +267,7 @@ const CompanyParticular = ({
                   onChange={handleFileChanges}
                 />
                 {cmpLogo ? (
-                  <p className="text-gray-700">
-                    File Selected: {cmpLogo.name}
-                  </p>
+                  <p className="text-gray-700">File Selected: {cmpLogo.name}</p>
                 ) : (
                   <p className="text-[14px] leading-[19.07px]  text-[#333333]">
                     No file selected
@@ -308,7 +312,7 @@ const CompanyParticular = ({
               />
             </div>
 
-            <div className="   ">
+            {/* <div className="   ">
               <label
                 className="text-[14px] leading-[19.07px]  text-[#333333] "
                 htmlFor="contactNo"
@@ -324,10 +328,48 @@ const CompanyParticular = ({
                 placeholder="Phone No."
                 required
               />
+            </div> */}
+            <div className="flex items-center justify-between gap-4 ">
+              <div className="flex flex-col  ">
+                <label className="text-[11.6px] leading-[22.07px]  text-[#333333] ">
+                  Country Code
+                </label>
+                <select
+                  className="border rounded-md w-full h-[37px]  px-2    text-[14px] leading-[19.07px] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  value={mCountrycode}
+                  onChange={(e) => setMCountrycode(e.target.value)}
+                >
+                  {countryCodeDrop &&
+                    countryCodeDrop?.map((code: any, index: number) => (
+                      <option key={index} value={code}>
+                        {code?.toUpperCase()}
+                      </option>
+                    ))}
+                </select>
+              </div>
+
+              <div className="w-[75%] ">
+                <label
+                  className="text-[13.7px] leading-[19.07px]  text-[#333333] "
+                  htmlFor="contactNo"
+                >
+                  Contact Person Phone Number
+                </label>
+                <input
+                  id="contactNo"
+                  type="number"
+                  value={personPhone}
+                  onChange={(e) => setPersonPhone(e.target.value)}
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+                  placeholder="Phone No."
+                  required
+                />
+              </div>
             </div>
+
             <div className="   ">
               <label
-                className="text-[14px] leading-[19.07px]  text-[#333333] "
+                className="text-[14px] leading-[19px]  text-[#333333] "
                 htmlFor="website"
               >
                 Company Website
@@ -338,65 +380,48 @@ const CompanyParticular = ({
                 value={cmpSite}
                 onChange={(e) => setCmpSite(e.target.value)}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-                placeholder="wrbsite"
+                placeholder="website"
                 required
               />
             </div>
 
-            <div className="   ">
-              <label
-                className="text-[14px] leading-[19.07px]  text-[#333333] "
-                htmlFor="telNo"
-              >
-                Company Tel
-              </label>
-              <input
-                id="telNo"
-                type="number"
-                value={cmpTel}
-                onChange={(e) => setCmpTel(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-                placeholder="Tel. no."
-                required
-              />
-            </div>
-
-            {/* <div className="flex items-center justify-between gap-4 ">
+            <div className="flex items-center justify-between gap-4 ">
               <div className="flex flex-col  ">
-                <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 ">
-                  Country Code
+              <label className="text-[11.6px] leading-[22.07px]  text-[#333333] ">
+              Country Code
                 </label>
                 <select
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                  value={mCountrycode}
-                  onChange={(e) => setMCountrycode(e.target.value)}
+                  className="border rounded-md w-full h-[37px]   px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  value={mCountryTel}
+                  onChange={(e) => setMCountryTel(e.target.value)}
                 >
-                  {countryCodeDrop && countryCodeDrop?.map((code: any, index: number) => (
-                    <option key={index} value={code}>{code?.toUpperCase()}</option>
-                  ))}
+                  {countryCodeTel &&
+                    countryCodeTel?.map((code: any, index: number) => (
+                      <option key={index} value={code}>
+                        {code?.toUpperCase()}
+                      </option>
+                    ))}
                 </select>
               </div>
 
               <div className="w-[75%] ">
                 <label
-                  className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
-                  htmlFor="number"
+                  className="text-[13.7px] leading-[19.07px]  text-[#333333] "
+                  htmlFor="telNo"
                 >
-                  Phone Number
+                  Company Tel
                 </label>
-                <div className="relative flex items-center  ">
-                  <input
-                    id="number"
-                    type="text"
-                    value={phoneNumber}
-                    onChange={(e) => setPhoneNumber(e.target.value)}
-                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    placeholder=""
-                    required
-                  />
-                </div>
+                <input
+                  id="telNo"
+                  type="number"
+                  value={cmpTel}
+                  onChange={(e) => setCmpTel(e.target.value)}
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+                  placeholder="Tel. no."
+                  required
+                />
               </div>
-            </div> */}
+            </div>
 
             <div className="   ">
               <label
@@ -580,9 +605,7 @@ const CompanyParticular = ({
                   onChange={handleFileChange}
                 />
                 {cmpAdd ? (
-                  <p className="text-gray-700">
-                    File Selected: {cmpAdd.name}
-                  </p>
+                  <p className="text-gray-700">File Selected: {cmpAdd.name}</p>
                 ) : (
                   <p className="text-[14px] leading-[19.07px]  text-[#333333]">
                     No file selected
@@ -770,19 +793,19 @@ const CompanyParticular = ({
             </div>
 
             <div className="flex gap-2 mb-4 mt-5">
-          <button
-            type="submit"
-            className="border border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
-          >
-            Save
-          </button>
-          <Link
-            href="#"
-            className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
-          >
-            Edit
-          </Link>
-        </div>
+              <button
+                type="submit"
+                className="border border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
+              >
+                Save
+              </button>
+              <Link
+                href="#"
+                className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
+              >
+                Edit
+              </Link>
+            </div>
 
             {/* <div className="flex  ">
             <input
@@ -799,7 +822,7 @@ const CompanyParticular = ({
               Never Expires
             </label>
           </div> */}
-          {/* <div className=" flex items-center  gap-4">
+            {/* <div className=" flex items-center  gap-4">
               <input
                 id="neverExpires"
                 type="checkbox"

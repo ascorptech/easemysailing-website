@@ -38,9 +38,10 @@ const SeaGoingService = ({
   const [imoDrop, setImoDrop] = useState([]);
   const [rankDrop, setRankDrop] = useState<any>([]);
   const [engineDrop, setEngineDrop] = useState<any>([]);
+  const [ecdisDrop, setEcdisDrop] = useState<any>([]);
 
   useEffect(() => {
-    GetDropdownDetails("MEDICALFITNESSTYPE", (res: any) => {
+    GetDropdownDetails("SEAGOINGEXP", (res: any) => {
       setImoDrop(res?.data?.values);
     });
     GetDropdownDetails("rank", (res: any) => {
@@ -49,10 +50,10 @@ const SeaGoingService = ({
     GetDropdownDetails("DRUG&ALCOHOLTEST", (res: any) => {
       setEngineDrop(res?.data?.values);
     });
-    // GetDropdownDetails('COVID19VACCINE', (res: any) => {
-    //   console.log('vac',res?.data)
-    //   setVaccineTypeDrop(res?.data?.values)
-    // })
+    GetDropdownDetails('ecdisEquipment', (res: any) => {
+      console.log('vac',res?.data)
+      setEcdisDrop(res?.data?.values)
+    })
     // GetDropdownDetails('country', (res: any) => {
     //   // console.log('County',res?.data)
     //   setCountryDrop(res?.data?.values)
@@ -141,7 +142,7 @@ const SeaGoingService = ({
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
-        <h1 className=" font-bold my-2">PASSPORT DETAILS</h1>
+        <h1 className=" font-bold my-2">SeaGoing Experience</h1>
         <div className="grid grid-cols-2 gap-4">
           <div className="">
             <label
@@ -158,7 +159,7 @@ const SeaGoingService = ({
               onChange={(e) => setImo(e.target.value)}
             >
               <option value="" disabled selected>
-                IMO
+                Select
               </option>
               {imoDrop &&
                 imoDrop?.map((im: any, index: number) => (
@@ -202,7 +203,7 @@ const SeaGoingService = ({
               onChange={(e) => setRank(e.target.value)}
             >
               <option value="" disabled selected>
-                Rank
+                Select
               </option>
               {rankDrop &&
                 rankDrop?.map((rank: any, index: number) => (
@@ -251,7 +252,7 @@ const SeaGoingService = ({
               onChange={(e) => setEnginemake(e.target.value)}
             >
               <option value="" disabled selected>
-                Engine Make
+                Select
               </option>
               {engineDrop &&
                 engineDrop?.map((eng: any, index: number) => (
@@ -333,11 +334,14 @@ const SeaGoingService = ({
               onChange={(e) => setECDIS(e.target.value)}
             >
               <option value="" disabled selected>
-                ECDIS
+                Select
               </option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
+              {ecdisDrop &&
+                ecdisDrop?.map((ecd: any, index: number) => (
+                  <option key={index} value={ecd}>
+                    {ecd?.toUpperCase()}
+                  </option>
+                ))}
             </select>
           </div>
 

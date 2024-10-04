@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { AddSeaDetailsData } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import { AddSeaDetailsData, GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
@@ -52,6 +52,50 @@ const PreSeaTrainigDetails = ({
   const [timeonBoard, setTimeonBoard] = useState("");
   const [currency, setCurrency] = useState("");
   const [neverExpires, setNeverExpires] = useState<any>(false);
+  const [currencyDrop,setCurrencyDrop] = useState<any>([])
+  const [trainingDrop,setTrainingDrop] = useState<any>([])
+  const [countryDrop,setCountryDrop] = useState<any>([])
+  const [imoDrop, setImoDrop] = useState([]);
+  const [shipTypeDrop, setShipTypeDrop] = useState<any>([])
+  const [rankDrop, setRankDrop] = useState<any>([])
+  const [rigMoveDrop, setRigMoveDrop] = useState<any>([])
+  const [rigMoveWaterDrop, setRigMoveWaterDrop] = useState<any>([])
+  const [tradingAreaDrop, setTradingAreaDrop] = useState<any>([])
+  const [winchDiveDrop, setWinchDiveDrop] = useState<any>([])
+
+  useEffect(() => {
+    GetDropdownDetails("countryCurrencyCode", (res: any) => {
+      setCurrencyDrop(res?.data?.values);
+    });
+    GetDropdownDetails("OFFSHORESPECIFICTRAININGS", (res: any) => {
+      setTrainingDrop(res?.data?.values);
+    });
+    GetDropdownDetails("shipType", (res: any) => {
+      setShipTypeDrop(res?.data?.values);
+    });
+    GetDropdownDetails('rank', (res: any) => {
+      setRankDrop(res?.data?.values)
+    })
+    GetDropdownDetails('country', (res: any) => {
+      // console.log('County',res?.data)
+      setCountryDrop(res?.data?.values)
+    })
+    GetDropdownDetails("SEAGOINGEXP", (res: any) => {
+      setImoDrop(res?.data?.values);
+    });
+    GetDropdownDetails("RigMoveExperiencemoveditem", (res: any) => {
+      setRigMoveDrop(res?.data?.values);
+    });
+    GetDropdownDetails("RigMoveExperiencewaterdepth", (res: any) => {
+      setRigMoveWaterDrop(res?.data?.values);
+    });
+    GetDropdownDetails("TRADINGAREAEXPERIENCE", (res: any) => {
+      setTradingAreaDrop(res?.data?.values);
+    });
+    GetDropdownDetails("WinchDriveExperience", (res: any) => {
+      setWinchDiveDrop(res?.data?.values);
+    });
+  }, []);
 
   //   const handleFileChange = (event: any) => {
   //     setSelectedFile(event.target.files[0]);
@@ -221,11 +265,14 @@ const PreSeaTrainigDetails = ({
               onChange={(e) => setCurrency(e.target.value)}
             >
               <option value="" disabled selected>
-                Currency
+                Select
               </option>
-              <option value="training1">Training1</option>
-              <option value="training2">Training2</option>
-              <option value="training3">Training3</option>
+              {currencyDrop &&
+                currencyDrop?.map((cu: any, index: number) => (
+                  <option key={index} value={cu}>
+                    {cu?.toUpperCase()}
+                  </option>
+                ))}
             </select>
           </div>
 
@@ -363,11 +410,14 @@ const PreSeaTrainigDetails = ({
               onChange={(e) => setCertificate(e.target.value)}
             >
               <option value="" disabled selected>
-                Certificate
+                Select
               </option>
-              <option value="1">India</option>
-              <option value="2">Us</option>
-              <option value="3">England</option>
+              {trainingDrop &&
+                trainingDrop?.map((train: any, index: number) => (
+                  <option key={index} value={train}>
+                    {train?.toUpperCase()}
+                  </option>
+                ))}
             </select>
           </div>
 
@@ -405,9 +455,12 @@ const PreSeaTrainigDetails = ({
               <option value="" disabled selected>
                 Issuing Country
               </option>
-              <option value="1">India</option>
-              <option value="2">Us</option>
-              <option value="3">England</option>
+              {countryDrop &&
+                  countryDrop?.map((country: any, index: number) => (
+                    <option key={index} value={country}>
+                      {country?.toUpperCase()}
+                    </option>
+                  ))}
             </select>
           </div>
 
@@ -529,11 +582,14 @@ const PreSeaTrainigDetails = ({
               onChange={(e) => setPumpType(e.target.value)}
             >
               <option value="" disabled selected>
-                Pump Type
+                Select
               </option>
-              <option value="1">Training1</option>
-              <option value="2">Training2</option>
-              <option value="3">Training3</option>
+              {imoDrop &&
+                imoDrop?.map((im: any, index: number) => (
+                  <option key={index} value={im}>
+                    {im?.toUpperCase()}
+                  </option>
+                ))}
             </select>
           </div>
           <div className="   ">
@@ -658,11 +714,11 @@ const PreSeaTrainigDetails = ({
               onChange={(e) => setVesselType1(e.target.value)}
             >
               <option value="" disabled selected>
-                Vessel type
+                Select
               </option>
-              <option value="1">India</option>
-              <option value="2">Us</option>
-              <option value="3">England</option>
+              {shipTypeDrop && shipTypeDrop?.map((ship: any, index: number) => (
+                <option key={index} value={ship}>{ship?.toUpperCase()}</option>
+              ))}
             </select>
           </div>
 
@@ -681,11 +737,11 @@ const PreSeaTrainigDetails = ({
               onChange={(e) => setRank(e.target.value)}
             >
               <option value="" disabled selected>
-                Rank
+                Select
               </option>
-              <option value="1">India</option>
-              <option value="2">Us</option>
-              <option value="3">England</option>
+              {rankDrop && rankDrop?.map((rank: any, index: number) => (
+                <option key={index} value={rank}>{rank?.toUpperCase()}</option>
+              ))}
             </select>
           </div>
           {/* <div className=""> */}
@@ -722,11 +778,11 @@ const PreSeaTrainigDetails = ({
               onChange={(e) => setMoveditem(e.target.value)}
             >
               <option value="" disabled selected>
-                Moved item
+                Select
               </option>
-              <option value="1">India</option>
-              <option value="2">Us</option>
-              <option value="3">England</option>
+              {rigMoveDrop && rigMoveDrop?.map((rigM: any, index: number) => (
+                <option key={index} value={rigM}>{rigM?.toUpperCase()}</option>
+              ))}
             </select>
           </div>
           <div className=" ">
@@ -744,11 +800,11 @@ const PreSeaTrainigDetails = ({
               onChange={(e) => setWaterDepth(e.target.value)}
             >
               <option value="" disabled selected>
-                Water depth
+                Select
               </option>
-              <option value="1">India</option>
-              <option value="2">Us</option>
-              <option value="3">England</option>
+              {rigMoveWaterDrop && rigMoveWaterDrop?.map((rigMW: any, index: number) => (
+                <option key={index} value={rigMW}>{rigMW?.toUpperCase()}</option>
+              ))}
             </select>
           </div>
 
@@ -767,11 +823,11 @@ const PreSeaTrainigDetails = ({
               onChange={(e) => setTradingArea(e.target.value)}
             >
               <option value="" disabled selected>
-                Trading area
+                Select
               </option>
-              <option value="1">India</option>
-              <option value="2">Us</option>
-              <option value="3">England</option>
+              {tradingAreaDrop && tradingAreaDrop?.map((tArea: any, index: number) => (
+                <option key={index} value={tArea}>{tArea?.toUpperCase()}</option>
+              ))}
             </select>
           </div>
 
@@ -792,9 +848,9 @@ const PreSeaTrainigDetails = ({
               <option value="" disabled selected>
                 Winch Drive Experience
               </option>
-              <option value="1">India</option>
-              <option value="2">Us</option>
-              <option value="3">England</option>
+              {winchDiveDrop && winchDiveDrop?.map((dive: any, index: number) => (
+                <option key={index} value={dive}>{dive?.toUpperCase()}</option>
+              ))}
             </select>
           </div>
         </div>

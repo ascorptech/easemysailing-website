@@ -42,7 +42,7 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail }: Props) => {
       // console.log('County',res?.data)
       setCountryDrop(res?.data?.values);
     });
-    GetDropdownDetails("country", (res: any) => {
+    GetDropdownDetails("ecdisEquipment", (res: any) => {
       // console.log('County',res?.data)
       setTrainDrop(res?.data?.values);
     });
@@ -303,7 +303,7 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail }: Props) => {
               htmlFor="file-upload1"
               className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  text-[14px] leading-[19.07px]   hover:bg-[#04714e] focus:outline-none focus:ring-2 "
             >
-              Attach Docoment
+              Attachment Docoment
             </label>
             <input
               id="file-upload1"

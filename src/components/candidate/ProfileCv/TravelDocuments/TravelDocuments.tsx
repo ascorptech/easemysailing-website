@@ -8,6 +8,7 @@ import {
   GetDropdownDetails,
 } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import { toast } from "react-toastify";
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 
 type TravelDocumentsComplete = {
   percentage: number;
@@ -51,6 +52,7 @@ const TravelDocuments = ({
   const [issueDateVisa, setIssueDateVisa] = useState("");
   const [expryDateVisa, setExpryDateVisa] = useState("");
   const [countryDrop, setCountryDrop] = useState<any>([]);
+  const [indNumber, setIndNumber] = useState("");
 
   useEffect(() => {
     GetDropdownDetails("country", (res: any) => {
@@ -63,8 +65,7 @@ const TravelDocuments = ({
   const filledFields = [
     number,
     issuedate,
-    exdate,
-    checkBox,
+    exdate || checkBox,
     isssueAuthority,
     issuingCountry,
     issueDate2,
@@ -83,6 +84,7 @@ const TravelDocuments = ({
     selectedFileResidence,
     issueDateVisa,
     expryDateVisa,
+    indNumber,
   ].filter(Boolean).length;
 
   // const totalFields = available === "Yes" ? 6 : 5;
@@ -196,7 +198,7 @@ const TravelDocuments = ({
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
-        <h1 className=" font-bold">Passport Details </h1>
+        <h1 className=" font-bold mb-4">Passport Details </h1>
         <div className="grid grid-cols-2 gap-4">
           <div className="">
             <label
@@ -337,7 +339,7 @@ const TravelDocuments = ({
 
           {/* second section */}
           <div className=" grid col-span-2 ">
-            <h1 className="font-bold ">SEAMAN'S BOOK/ID</h1>
+            <h1 className="font-bold ">Seaman's Book/Id</h1>
           </div>
 
           {/* <div className="grid grid-cols-2 gap-4"> */}
@@ -401,38 +403,41 @@ const TravelDocuments = ({
             />
           </div>
 
-          <div className="">
-            <label
-              className="text-[14px] leading-[19.07px]  text-[#333333] "
-              htmlFor="expdate"
-            >
-              Expiry Date
-            </label>
+          {!checkBox && (
+            <div className="">
+              <label
+                className="text-[14px] leading-[19.07px]  text-[#333333] "
+                htmlFor="expdate"
+              >
+                Expiry Date
+              </label>
 
-            <input
-              id="expdate"
-              type="date"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              value={exdate1}
-              onChange={(e) => setExDate1(e.target.value)}
-            />
-          </div>
+              <input
+                id="expdate"
+                type="date"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                value={exdate1}
+                onChange={(e) => setExDate1(e.target.value)}
+              />
+            </div>
+          )}
 
-          <div className=" flex items-center  gap-4">
-            <input
-              id="neverExpires"
-              type="checkbox"
-              className="border focus:ring-[#00A264]  text-[#00A264] checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
-              
-              checked={checkBox}
-              onChange={() => setCheckBox(!checkBox)}
-            />
-            <label
-              className="text-[14px] leading-[19.07px] text-[#333333]"
-              htmlFor="neverExpires"
-            >
-              Never Expires
-            </label>
+          <div className="grid col-span-2">
+            <div className=" flex items-center  gap-4 ">
+              <input
+                id="neverExpires"
+                type="checkbox"
+                className="border focus:ring-[#00A264]  text-[#00A264] checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
+                checked={checkBox}
+                onChange={() => setCheckBox(!checkBox)}
+              />
+              <label
+                className="text-[14px] leading-[19.07px] text-[#333333]"
+                htmlFor="neverExpires"
+              >
+                Never Expires
+              </label>
+            </div>
           </div>
 
           <div className="grid col-span-2 my-4">
@@ -469,7 +474,21 @@ const TravelDocuments = ({
           {/* third section */}
 
           <div className=" grid col-span-2  my-2">
-            <h1 className="font-bold ">VISA</h1>
+            <div className="flex items-center justify-between">
+              <h1 className="font-bold ">VISA</h1>
+              <div className="flex gap-2">
+                <AiOutlinePlus
+                  className="text-2xl cursor-pointer"
+                  // onClick={addFieldPair}
+                />
+                {/* {extraFields.length > 0 && ( */}
+                <AiOutlineMinus
+                  className="text-2xl cursor-pointer"
+                  // onClick={removeFieldPair}
+                />
+                {/* )} */}
+              </div>
+            </div>
           </div>
 
           {/* <div className="grid grid-cols-2 gap-4"> */}
@@ -692,6 +711,26 @@ const TravelDocuments = ({
                   </p>
                 )}
               </div>
+            </div>
+          </div>
+
+          <div className="w-full grid col-span-2 ">
+            <label
+              className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
+              htmlFor="inumber"
+            >
+              INDoS Number
+            </label>
+            <div className="relative flex items-center  ">
+              <input
+                id="inumber"
+                type="text"
+                value={indNumber}
+                onChange={(e) => setIndNumber(e.target.value)}
+                className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                placeholder=""
+                required
+              />
             </div>
           </div>
         </div>

@@ -1,8 +1,13 @@
 "use client";
-import { AddAdditionalData, GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import {
+  AddAdditionalData,
+  GetDropdownDetails,
+} from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import React from "react";
+import react, { useEffect, useState } from "react";
+import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
 type AdditionalComplete = {
   percentage: number;
@@ -21,6 +26,10 @@ const AdditionalTraining = ({
   setAdditionalComplete,
   userDetail,
 }: Props) => {
+  const [extraFields, setExtraFields] = useState<
+    { field1: string; field2: string }[]
+  >([]);
+
   const [number, setNumber] = useState("");
   const [issuedate, setIssueDate] = useState("");
   const [exdate, setExDate] = useState("");
@@ -48,8 +57,7 @@ const AdditionalTraining = ({
   const [capacityDrop, setCapacityDrop] = useState<any>([]);
   const [levelDrop, setLevelDrop] = useState<any>([]);
   const [levelTestDrop, setLevelTestDrop] = useState<any>([]);
-  const [disabled,setDisabled] = useState(true)
-
+  const [disabled, setDisabled] = useState(true);
 
   const [showFields, setShowFields] = useState(true);
 
@@ -72,11 +80,11 @@ const AdditionalTraining = ({
     });
   }, []);
 
-  const totalFields = 19;
+  const totalFields = 17 + extraFields.length * 2;
   const filledFields = [
     number,
     issuedate,
-    exdate,
+    exdate || neverExpCheck,
     selectedFile,
     selectedFiles,
     trainingCenter,
@@ -84,15 +92,15 @@ const AdditionalTraining = ({
     result,
     eCDISNumber,
     issuedate1,
-    exdate1,
+    exdate1 || neverChecked1,
     countryCertifi,
     countryIC,
-    neverExpCheck,
     capacity,
     level,
     typeOfTest,
     issuingCountry,
-    neverChecked1,
+    ,
+    ...extraFields.flatMap((field) => [field.field1, field.field2]),
   ].filter(Boolean).length;
 
   const percentage = (filledFields / totalFields) * 100;
@@ -147,17 +155,53 @@ const AdditionalTraining = ({
     e.preventDefault();
 
     let formData = new FormData();
-    
   };
   const handleEdits = () => {
-    setDisabled(!disabled)
+    setDisabled(!disabled);
     // toast.info("You are now in edit mode. Make your changes.");
+  };
+
+  // add plus and minus symbole
+
+  const addFieldPair = () => {
+    setExtraFields([...extraFields, { field1: "", field2: "" }]);
+  };
+
+  const removeFieldPair = () => {
+    if (extraFields.length > 0) {
+      setExtraFields(extraFields.slice(0, -1));
+    }
+  };
+
+  const handleExtraFieldChange = (
+    index: number,
+    value: string,
+    field: "field1" | "field2"
+  ) => {
+    const updatedFields = [...extraFields];
+    updatedFields[index][field] = value;
+    setExtraFields(updatedFields);
   };
 
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
-        <h2 className="font-bold">Additional Trainings</h2>
+        <div className="flex items-center justify-between">
+          <h2 className="font-bold">Additional Trainings</h2>
+
+          <div className="flex gap-2">
+            <AiOutlinePlus
+              className="text-2xl cursor-pointer"
+              // onClick={addFieldPair}
+            />
+            {/* {extraFields.length > 0 && ( */}
+            <AiOutlineMinus
+              className="text-2xl cursor-pointer"
+              // onClick={removeFieldPair}
+            />
+            {/* )} */}
+          </div>
+        </div>
 
         <div className="grid grid-cols-2 gap-4">
           <div className="">
@@ -271,14 +315,15 @@ const AdditionalTraining = ({
           </div>
           {/* </div> */}
 
-          <div className="">
-            <label
-              className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]  "
-              htmlFor="expiryDate3"
-            >
-              Expiry Date
-            </label>
-            <div className="flex items-center gap-4 ">
+          {!neverExpCheck && (
+            <div className="">
+              <label
+                className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]  "
+                htmlFor="expiryDate3"
+              >
+                Expiry Date
+              </label>
+
               <input
                 id="expiryDate3"
                 type="date"
@@ -288,7 +333,7 @@ const AdditionalTraining = ({
                 disabled={disabled}
               />
             </div>
-          </div>
+          )}
           {/* <div className="flex items-center gap-4">
 
           <input
@@ -306,21 +351,23 @@ const AdditionalTraining = ({
           </label>
        
       </div> */}
-          <div className=" flex items-center  gap-4">
-            <input
-              id="neverExpires1"
-              type="checkbox"
-              className="border focus:ring-[#00A264]  text-[#00A264] checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
-              checked={neverExpCheck}
-              onChange={(e) => setNeverExpCheck(!neverExpCheck)}
-              disabled={disabled}
-            />
-            <label
-              className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
-              htmlFor="neverExpires1"
-            >
-              Never Expires
-            </label>
+          <div className="grid col-span-2 my-3">
+            <div className=" flex items-center  gap-4">
+              <input
+                id="neverExpires1"
+                type="checkbox"
+                className="border focus:ring-[#00A264]  text-[#00A264] checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
+                checked={neverExpCheck}
+                onChange={(e) => setNeverExpCheck(!neverExpCheck)}
+                disabled={disabled}
+              />
+              <label
+                className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                htmlFor="neverExpires1"
+              >
+                Never Expires
+              </label>
+            </div>
           </div>
           <div className="grid col-span-2">
             <div className="flex gap-6 items-center ">
@@ -364,7 +411,22 @@ const AdditionalTraining = ({
           {/* PROFESSIONAL KNOWLEDGE TEST  */}
 
           <div className="grid col-span-2 ">
-            <h1 className=" font-bold">PROFESSIONAL KNOWLEDGE TEST</h1>
+            <div className="flex justify-between mt-3">
+              {" "}
+              <h1 className=" font-bold">Professional Knowledge Test</h1>
+              <div className="flex gap-2">
+                <AiOutlinePlus
+                  className="text-2xl cursor-pointer"
+                  onClick={addFieldPair}
+                />
+                {extraFields.length > 0 && (
+                  <AiOutlineMinus
+                    className="text-2xl cursor-pointer"
+                    onClick={removeFieldPair}
+                  />
+                )}
+              </div>
+            </div>
           </div>
           <div className="">
             <label
@@ -547,24 +609,27 @@ const AdditionalTraining = ({
             />
           </div>
 
-          <div className="">
-            <label
-              className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]  "
-              htmlFor="expiryDate2"
-            >
-              Expiry Date
-            </label>
+          {!neverChecked1 && (
+            <div className="">
+              <label
+                className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]  "
+                htmlFor="expiryDate2"
+              >
+                Expiry Date
+              </label>
 
-            <input
-              id="expiryDate2"
-              type="date"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              value={exdate1}
-              onChange={(e) => setExDate1(e.target.value)}
-              disabled={disabled}
-            />
-          </div>
-          <div className=" flex items-center justify-center gap-4">
+              <input
+                id="expiryDate2"
+                type="date"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                value={exdate1}
+                onChange={(e) => setExDate1(e.target.value)}
+                disabled={disabled}
+              />
+            </div>
+          )}
+
+          <div className=" flex items-center gap-2 mt-5">
             <input
               id="neverExpires2"
               type="checkbox"
@@ -580,6 +645,46 @@ const AdditionalTraining = ({
               Never Expires
             </label>
           </div>
+          {/* </div> */}
+
+          {/* add extra field */}
+          {/* {extraFields.map((field, index) => (
+              <React.Fragment key={index}>
+                <div className="w-full">
+                  <label
+                    className="block text-[14px] font-[poppins] text-[#333333] mb-1"
+                    htmlFor={`extraField1_${index}`}
+                  >
+                    Extra Field {index * 2 + 1}
+                  </label>
+                  <input
+                    id={`extraField1_${index}`}
+                    type="text"
+                    value={field.field1}
+                    onChange={(e) => handleExtraFieldChange(index, e.target.value, "field1")}
+                    className="border rounded-md w-full h-9 px-2 text-[14px] text-[#333333] focus:outline-[#00A264] border-[#00A264]"
+                    // disabled={disabled}
+                  />
+                </div>
+                <div className="w-full">
+                  <label
+                    className="block text-[14px] font-[poppins] text-[#333333] mb-1"
+                    htmlFor={`extraField2_${index}`}
+                  >
+                    Extra Field {index * 2 + 2}
+                  </label>
+                  <input
+                    id={`extraField2_${index}`}
+                    type="text"
+                    value={field.field2}
+                    onChange={(e) => handleExtraFieldChange(index, e.target.value, "field2")}
+                    className="border rounded-md w-full h-9 px-2 text-[14px] text-[#333333] focus:outline-[#00A264] border-[#00A264]"
+                    // disabled={disabled}
+                  />
+                </div>
+              </React.Fragment>
+            ))} */}
+
           <div className="grid col-span-2">
             <div className="flex gap-4 items-center justify-start ">
               <div>

@@ -5,8 +5,10 @@ import {
   GetDropdownDetails,
 } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import React,{ useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
+// import React from "react";
 
 type LicensesComplete = {
   percentage: number;
@@ -18,12 +20,17 @@ type Props = {
   userDetail: any;
 };
 
+
+
+
 const Licenses = ({
   licensesComplete,
   setLicensesComplete,
   userDetail,
 }: Props) => {
   // State for form fields
+  const [extraFields, setExtraFields] = useState<{ field1: string; field2: string }[]>([]); 
+
   const [number, setNumber] = useState("");
 
   const [idoNotACoC, setIdoNotACoC] = useState("");
@@ -50,7 +57,7 @@ const Licenses = ({
   const [issueAuthority, setIssueAuthority] = useState("");
   const [sTCWRegulation, setSTCWRegulation] = useState("");
   const [certificateType, setCertificateType] = useState("");
-  const [separately, setSeparately] = useState("");
+  const [separatelyCheckBox, setSeparatelyCheckBox] = useState<any>(false);
 
   const [sTCWRegulationOption, setSTCWRegulationOption] = useState("");
   const [capacityOption, setCapacityOption] = useState("");
@@ -88,7 +95,7 @@ const Licenses = ({
 
   // Salary expectation states
 
-  const totalFields = 26;
+  const totalFields = 26 + extraFields.length *2;
   const filledFields = [
     number,
     idoNotACoC,
@@ -106,7 +113,7 @@ const Licenses = ({
     issueAuthority,
     sTCWRegulation,
     certificateType,
-    separately,
+    separatelyCheckBox,
     sTCWRegulationOption,
     capacityOption,
     issueDateOption,
@@ -116,6 +123,7 @@ const Licenses = ({
     selectedFile2,
     gMexpiryDate,
     gMissueDate,
+    ...extraFields.flatMap((field) => [field.field1, field.field2]),
   ].filter(Boolean).length;
 
   const percentage = (filledFields / totalFields) * 100;
@@ -170,7 +178,7 @@ const Licenses = ({
       formData.append("gmdssExpiryDate", gMexpiryDate);
       formData.append("gmdssDocument", selectedFile1);
 
-      formData.append("endorsementsNotIssuedSeparately", separately);
+      formData.append("endorsementsNotIssuedSeparately", separatelyCheckBox);
       formData.append("endorsementType", typeOption);
       formData.append("endorsementIssuingCountry", issuingOption);
       formData.append("endorsementNumber", number1);
@@ -216,13 +224,48 @@ const Licenses = ({
     }
   };
 
+// add plus and minus symbole
+
+  const addFieldPair = () => {
+    setExtraFields([...extraFields, { field1: "", field2: "" }]);
+  };
+
+  const removeFieldPair = () => {
+    if (extraFields.length > 0) {
+      setExtraFields(extraFields.slice(0, -1));
+    }
+  };
+
+  const handleExtraFieldChange = (index: number, value: string, field: 'field1' | 'field2') => {
+    const updatedFields = [...extraFields];
+    updatedFields[index][field] = value;
+    setExtraFields(updatedFields);
+  };
+
+
   return (
     <div className="container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
         {/* <div className="mb-3"> */}
+        <div className="flex justify-between items-center">
         <h1 className="font-bold  text-left  ">Certificate Of Competency</h1>
-        {/* Checkbox to show/hide all input fields */}
-        <div className="flex items-center justify-end mb-4">
+        <div className="flex gap-2">
+              <AiOutlinePlus
+                className="text-2xl cursor-pointer"
+                onClick={addFieldPair}
+              />
+              {extraFields.length > 0 && (
+                <AiOutlineMinus
+                  className="text-2xl cursor-pointer"
+                  onClick={removeFieldPair}
+                />
+              )}
+            </div>
+        </div>
+
+
+      
+        <div className="flex items-center  my-4">
           <input
             type="checkbox"
             checked={showFields}
@@ -230,30 +273,13 @@ const Licenses = ({
             className="mr-2"
           />
           <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
-            {showFields ? "Hide" : "Show"} all input fields
+            I do not have a CoC
           </label>
         </div>
+        
 
         {showFields && (<div>
-          <div className="w-full ">
-            <label
-              className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1 "
-              htmlFor="cityName"
-            >
-              I do not have a CoC
-            </label>
-            {/* <div className="relative flex items-center  "> */}
-            <input
-              id="cityName"
-              type="text"
-              value={idoNotACoC}
-              onChange={(e) => setIdoNotACoC(e.target.value)}
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              placeholder=""
-              required
-            />
-            {/* </div> */}
-          </div>
+        
 
           <div className="mb-3">
             <div className="grid grid-cols-2 gap-4  ">
@@ -400,6 +426,43 @@ const Licenses = ({
                   onChange={(e) => setExpiryDate(e.target.value)}
                 />
               </div>
+              {extraFields.map((field, index) => (
+              <React.Fragment key={index}>
+                <div className="w-full">
+                  <label
+                    className="block text-[14px] font-[poppins] text-[#333333] mb-1"
+                    htmlFor={`extraField1_${index}`}
+                  >
+                    Extra Field {index * 2 + 1}
+                  </label>
+                  <input
+                    id={`extraField1_${index}`}
+                    type="text"
+                    value={field.field1}
+                    onChange={(e) => handleExtraFieldChange(index, e.target.value, "field1")}
+                    className="border rounded-md w-full h-9 px-2 text-[14px] text-[#333333] focus:outline-[#00A264] border-[#00A264]"
+                    // disabled={disabled}
+                  />
+                </div>
+                <div className="w-full">
+                  <label
+                    className="block text-[14px] font-[poppins] text-[#333333] mb-1"
+                    htmlFor={`extraField2_${index}`}
+                  >
+                    Extra Field {index * 2 + 2}
+                  </label>
+                  <input
+                    id={`extraField2_${index}`}
+                    type="text"
+                    value={field.field2}
+                    onChange={(e) => handleExtraFieldChange(index, e.target.value, "field2")}
+                    className="border rounded-md w-full h-9 px-2 text-[14px] text-[#333333] focus:outline-[#00A264] border-[#00A264]"
+                    // disabled={disabled}
+                  />
+                </div>
+              </React.Fragment>
+            ))}
+
             </div>
             {/* Attachment Document */}
             <div className="flex gap-6 items-center  my-6 ">
@@ -429,7 +492,7 @@ const Licenses = ({
 
           <div className="mb-3">
             <h1 className="text-left font-bold  ">
-              General Operator Certificate (GMDSS)
+            Global Maritime Distress and Safety System (GMDSS)
             </h1>
             <div className="grid grid-cols-2 gap-4">
               <div>
@@ -564,11 +627,21 @@ const Licenses = ({
 
             <div className="mb-3">
               <h1 className="font-bold text-left ">Endorsements</h1>
-              <div>
+              <div className="flex items-center gap-2 my-2">
+
+              <input
+                id="neverExpires"
+                type="checkbox"
+                className="border focus:ring-[#00A264]  text-[#00A264] checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
+                checked={separatelyCheckBox}
+                onChange={(e) => setSeparatelyCheckBox(!separatelyCheckBox)}
+                // disabled={disabled}
+
+              />
                 <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                   Not Issued Separately
                 </label>
-                <select
+                {/* <select
                   className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={separately}
                   onChange={(e) => setSeparately(e.target.value)}
@@ -582,7 +655,7 @@ const Licenses = ({
                         {endor?.toUpperCase()}
                       </option>
                     ))}
-                </select>
+                </select> */}
               </div>
             </div>
 

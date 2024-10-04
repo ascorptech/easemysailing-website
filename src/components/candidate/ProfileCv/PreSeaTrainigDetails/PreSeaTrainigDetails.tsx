@@ -322,11 +322,19 @@ const PreSeaTrainigDetails = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Min. Time on Board (weeks)
+                select 
               </option>
-              <option value="india">India</option>
-              <option value="us">Us</option>
-              <option value="enland">England</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="Other">Other</option>
             </select>
           </div>
 
@@ -346,11 +354,19 @@ const PreSeaTrainigDetails = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Max. Time on Board (weeks)
+                select 
               </option>
-              <option value="india">India</option>
-              <option value="us">Us</option>
-              <option value="england">England</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="Other">Other</option>
             </select>
           </div>
 
@@ -370,11 +386,19 @@ const PreSeaTrainigDetails = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Min. Time at Home (weeks)
+                select 
               </option>
-              <option value="1">India</option>
-              <option value="23">Us</option>
-              <option value="3">England</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="Other">Other</option>
             </select>
           </div>
 
@@ -394,11 +418,19 @@ const PreSeaTrainigDetails = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Max. Time at Home (weeks)
+                select 
               </option>
-              <option value="1">India</option>
-              <option value="2">Us</option>
-              <option value="3">England</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="Other">Other</option>
             </select>
           </div>
           {/* <div className=""> */}

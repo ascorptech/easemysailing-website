@@ -1,7 +1,7 @@
 import { deleteReq, getReq, patchReq, postReq, putReq } from "@/RootServices";
 import apiEndPoints from "./apiEndPoints";
 
-const {GETPROFILE,PUTPROFILE,GETENUMS,POSTMYJOB,GETMYJOB,POSTNEXTOF,POSTLANGUAGE,POSTABOUTME,POSTCONTACT,POSTONLINEPRASENCE,POSTLICENSES,POSTSEADETAILS,POSTSEAGOING ,POSTMEDICAL,POSTECDIS,POSTTRAVELDOCUMENT,POSTSTCWTRAINING,POSTPROFESSIONALSKILL,POSTREFERENCE,POSTADDITIIONAL } = apiEndPoints
+const {GETPROFILE,PUTPROFILE,GETENUMS,POSTMYJOB,GETMYJOB,POSTNEXTOF,POSTLANGUAGE,POSTABOUTME,POSTCONTACT,POSTONLINEPRASENCE,POSTLICENSES,POSTSEADETAILS,POSTSEAGOING ,POSTMEDICAL,POSTECDIS,POSTTRAVELDOCUMENT,POSTSTCWTRAINING,POSTPROFESSIONALSKILL,POSTREFERENCE,POSTADDITIIONAL,POSTVETTING } = apiEndPoints
 
 
 
@@ -181,10 +181,10 @@ export const AddReferencesData = async(userId:any,consentGiven:any,data:any ,cb:
 
 //medical 
 
-export const AddMedicalData = async(userId:any,data:any,fitnessNeverExpires:any,drugTestNeverExpires:any,covidVaccineNeverExpires1:any,otherVaccinationNeverExpires:any,flagMedicalNeverExpires:any ,cb:any)=>{
+export const AddMedicalData = async(userId:any,data:any ,cb:any)=>{
     try {
         console.log('Data to be submitted:', data);
-        let url = `${POSTMEDICAL}/${userId}/${fitnessNeverExpires}/${drugTestNeverExpires}/${covidVaccineNeverExpires1}/${otherVaccinationNeverExpires}/${flagMedicalNeverExpires}`
+        let url = `${POSTMEDICAL}/${userId}`
 
         const response = await postReq(url,data)
         console.log('API response:', response);
@@ -286,4 +286,19 @@ export const AddAdditionalData = async(userId:any,data:any ,neverExpires:any,cb:
         console.log('err',error)
         return cb(error?.response)
     } 
+}
+
+
+//Vetting Services
+
+export const AddVettingData = async(data:any ,cb:any)=>{
+    try {
+        console.log('Data to be submitted:', data);
+        const response = await putReq(POSTVETTING,data)
+        console.log('API response:', response);
+        return cb(response)
+    } catch (error:any) {
+        console.log('err',error)
+        return cb(error?.response)
+    }
 }

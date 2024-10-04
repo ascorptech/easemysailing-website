@@ -1,8 +1,12 @@
 "use client";
-import {AddMedicalData, GetDropdownDetails,} from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import {
+  AddMedicalData,
+  GetDropdownDetails,
+} from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
 type MedicalComplete = {
   percentage: number;
@@ -20,6 +24,10 @@ const MedicalCertificates = ({
   setMedicalComplete,
   userDetail,
 }: Props) => {
+  const [extraFields, setExtraFields] = useState<
+    { field1: string; field2: string }[]
+  >([]);
+
   const [number, setNumber] = useState("");
   const [issuedate, setIssueDate] = useState("");
   const [exdate, setExDate] = useState("");
@@ -61,7 +69,6 @@ const MedicalCertificates = ({
   const [vaccinationexp, setVaccinationexp] = useState("");
 
   const [selectedFilesOthers, setSelectedFilesOthers] = useState<any>("");
-  
 
   const [veccinationCheckFlag, setVeccinationCheckFlag] = useState<any>(false);
   const [medicalTypeFlag, setMedicalTypeFlag] = useState("");
@@ -96,11 +103,11 @@ const MedicalCertificates = ({
     });
   }, []);
 
-  const totalFields = 36;
+  const totalFields = 31 + extraFields.length * 2;
   const filledFields = [
     number,
     issuedate,
-    exdate,
+    exdate || expires1,
     selectedFile,
     selectedFiles,
     selectedFilesCovid,
@@ -110,10 +117,8 @@ const MedicalCertificates = ({
     medicalCenter,
     testCenter,
     issuedate1,
-    exdate1,
+    exdate1 || expires2,
     issuingCity,
-    expires1,
-    expires2,
     issuingOptions,
     types2Options,
     typeOptions,
@@ -122,19 +127,17 @@ const MedicalCertificates = ({
     vaccinationIssue,
     covidOptions,
     vaccinationExpiry,
-    expiresMedical,
-    veccinationCheck,
     medicalType1,
     vaccination1,
-    vaccinationexp,
+    vaccinationexp || veccinationCheck,
     selectedFilesOthers,
-    veccinationCheckFlag,
     medicalTypeFlag,
     vaccinationFlag,
-    vaccinationexpFlag,
+    vaccinationexpFlag || veccinationCheckFlag,
     selectedFilesFlag,
-    exdateCovid,
+    exdateCovid || expiresMedical,
     issuedateCovid,
+    ...extraFields.flatMap((field) => [field.field1, field.field2]),
   ].filter(Boolean).length;
 
   const percentage = (filledFields / totalFields) * 100;
@@ -250,7 +253,7 @@ const MedicalCertificates = ({
     // formData.append("flagMedicalNeverExpires", veccinationCheckFlag);
     formData.append("flagMedicalDocument", selectedFilesFlag);
 
-    AddMedicalData(userDetail?.userId,veccinationCheck,veccinationCheckFlag,expires1,expiresMedical,expires2, formData, AddmedicalDataDB);
+    AddMedicalData(userDetail?.userId, formData, AddmedicalDataDB);
   };
 
   const AddmedicalDataDB = (result: any) => {
@@ -263,6 +266,28 @@ const MedicalCertificates = ({
     } else {
       toast.error("Medical detail not submited ");
     }
+  };
+
+  // add plus and minus symbole
+
+  const addFieldPair = () => {
+    setExtraFields([...extraFields, { field1: "", field2: "" }]);
+  };
+
+  const removeFieldPair = () => {
+    if (extraFields.length > 0) {
+      setExtraFields(extraFields.slice(0, -1));
+    }
+  };
+
+  const handleExtraFieldChange = (
+    index: number,
+    value: string,
+    field: "field1" | "field2"
+  ) => {
+    const updatedFields = [...extraFields];
+    updatedFields[index][field] = value;
+    setExtraFields(updatedFields);
   };
 
   return (
@@ -398,14 +423,15 @@ const MedicalCertificates = ({
           </div>
           {/* </div> */}
 
-          <div className="">
-            <label
-              className="text-[14px] leading-[19.07px]  text-[#333333]  "
-              htmlFor="expirymedical"
-            >
-              Expiry Date
-            </label>
-            <div className="flex items-center gap-4 ">
+          {!expires1 && (
+            <div className="">
+              <label
+                className="text-[14px] leading-[19.07px]  text-[#333333]  "
+                htmlFor="expirymedical"
+              >
+                Expiry Date
+              </label>
+
               <input
                 id="expirymedical"
                 type="date"
@@ -414,8 +440,8 @@ const MedicalCertificates = ({
                 onChange={(e) => setExDate(e.target.value)}
               />
             </div>
-          </div>
-          <div className="flex items-center gap-4">
+          )}
+          <div className="flex items-center  gap-2 mt-5">
             <input
               id="nevermedical"
               type="checkbox"
@@ -588,23 +614,25 @@ const MedicalCertificates = ({
             />
           </div>
 
-          <div className="">
-            <label
-              className="text-[14px] leading-[19.07px]  text-[#333333] "
-              htmlFor="expiryDatemedical"
-            >
-              Expiry Date
-            </label>
+          {!expires2 && (
+            <div className="">
+              <label
+                className="text-[14px] leading-[19.07px]  text-[#333333] "
+                htmlFor="expiryDatemedical"
+              >
+                Expiry Date
+              </label>
 
-            <input
-              id="expiryDatemedical"
-              type="date"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              value={exdate1}
-              onChange={(e) => setExDate1(e.target.value)}
-            />
-          </div>
-          <div className=" flex items-center justify-center gap-4">
+              <input
+                id="expiryDatemedical"
+                type="date"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                value={exdate1}
+                onChange={(e) => setExDate1(e.target.value)}
+              />
+            </div>
+          )}
+          <div className=" flex items-center  gap-2 mt-5">
             <input
               id="neverExpiresmedical"
               type="checkbox"
@@ -685,7 +713,7 @@ const MedicalCertificates = ({
               className="text-[14px] leading-[19.07px]  text-[#333333] "
               htmlFor="covid"
             >
-              Covid Caccine Name Country
+              Covid Vaccine Name Country
             </label>
             <select
               id="covid"
@@ -695,7 +723,7 @@ const MedicalCertificates = ({
               onChange={(e) => setCovidOptions(e.target.value)}
             >
               <option value="" disabled selected>
-                Covid Caccine Name Country
+                Covid Vaccine Name Country
               </option>
               {countryDrop &&
                 countryDrop?.map((country: any, index: number) => (
@@ -729,7 +757,7 @@ const MedicalCertificates = ({
               className="text-[14px] leading-[19.07px]  text-[#333333]"
               htmlFor="vaccinedate1"
             >
-              Vaccination Date1
+              Vaccination Date First
             </label>
             <input
               id="vaccinedate1"
@@ -740,7 +768,7 @@ const MedicalCertificates = ({
             />
           </div>
 
-          <div className="">
+          {/* <div className="">
             <label
               className="text-[14px] leading-[19.07px]  text-[#333333]  "
               htmlFor="vaccinedate2"
@@ -755,14 +783,14 @@ const MedicalCertificates = ({
               value={vaccinationExpiry}
               onChange={(e) => setVaccinationExpiry(e.target.value)}
             />
-          </div>
+          </div> */}
 
           <div className="">
             <label
-              className="text-[16px] leading-[21.79px]"
+              className="text-[14px] leading-[19.07px]  text-[#333333]"
               htmlFor="issuedatemCovid"
             >
-              Vaccination Date2
+              Vaccination Date Second
             </label>
             <input
               id="issuedatemCovid"
@@ -773,23 +801,25 @@ const MedicalCertificates = ({
             />
           </div>
 
-          <div className="">
-            <label
-              className="text-[14px] leading-[19.07px]  text-[#333333] "
-              htmlFor="expiryDatemedicalCovid"
-            >
-              Vaccination Expiry Date2
-            </label>
+          {/* {!expiresMedical && (
+            <div className="">
+              <label
+                className="text-[14px] leading-[19.07px]  text-[#333333] "
+                htmlFor="expiryDatemedicalCovid"
+              >
+                Vaccination Expiry Date2
+              </label>
 
-            <input
-              id="expiryDatemedicalCovid"
-              type="date"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              value={exdateCovid}
-              onChange={(e) => setExDateCovid(e.target.value)}
-            />
-          </div>
-          <div className=" flex items-center justify-center gap-4">
+              <input
+                id="expiryDatemedicalCovid"
+                type="date"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                value={exdateCovid}
+                onChange={(e) => setExDateCovid(e.target.value)}
+              />
+            </div>
+          )}
+          <div className=" flex items-center gap-2 mt-5">
             <input
               id="neverExpiresmedical"
               type="checkbox"
@@ -803,7 +833,7 @@ const MedicalCertificates = ({
             >
               Never Expires
             </label>
-          </div>
+          </div> */}
 
           <div className="grid col-span-2">
             <div className="flex gap-6 items-center  mt-4  ">
@@ -838,7 +868,22 @@ const MedicalCertificates = ({
           {/* other caccination section */}
 
           <div className="grid col-span-2 ">
-            <h1 className="font-bold ">Other Vaccination</h1>
+            <div className="flex justify-between items-center">
+              <h1 className="font-bold ">Other Vaccination </h1>
+
+              <div className="flex gap-2">
+                <AiOutlinePlus
+                  className="text-2xl cursor-pointer"
+                  onClick={addFieldPair}
+                />
+                {extraFields.length > 0 && (
+                  <AiOutlineMinus
+                    className="text-2xl cursor-pointer"
+                    onClick={removeFieldPair}
+                  />
+                )}
+              </div>
+            </div>
           </div>
 
           <div className="">
@@ -883,23 +928,25 @@ const MedicalCertificates = ({
             />
           </div>
 
-          <div className="">
-            <label
-              className="text-[14px] leading-[19.07px]  text-[#333333] "
-              htmlFor="vaccinationexp"
-            >
-              Expiry Date
-            </label>
+          {!veccinationCheck && (
+            <div className="">
+              <label
+                className="text-[14px] leading-[19.07px]  text-[#333333] "
+                htmlFor="vaccinationexp"
+              >
+                Expiry Date
+              </label>
 
-            <input
-              id="vaccinationexp"
-              type="date"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              value={vaccinationexp}
-              onChange={(e) => setVaccinationexp(e.target.value)}
-            />
-          </div>
-          <div className=" flex items-center justify-center gap-4">
+              <input
+                id="vaccinationexp"
+                type="date"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                value={vaccinationexp}
+                onChange={(e) => setVaccinationexp(e.target.value)}
+              />
+            </div>
+          )}
+          <div className=" flex items-center  gap-2 mt-5">
             <input
               id="veccinationCheck"
               type="checkbox"
@@ -914,6 +961,47 @@ const MedicalCertificates = ({
               Never Expires
             </label>
           </div>
+
+          {extraFields.map((field, index) => (
+            <React.Fragment key={index}>
+              <div className="w-full">
+                <label
+                  className="block text-[14px] font-[poppins] text-[#333333] mb-1"
+                  htmlFor={`extraField1_${index}`}
+                >
+                  Extra Field {index * 2 + 1}
+                </label>
+                <input
+                  id={`extraField1_${index}`}
+                  type="text"
+                  value={field.field1}
+                  onChange={(e) =>
+                    handleExtraFieldChange(index, e.target.value, "field1")
+                  }
+                  className="border rounded-md w-full h-9 px-2 text-[14px] text-[#333333] focus:outline-[#00A264] border-[#00A264]"
+                  // disabled={disabled}
+                />
+              </div>
+              <div className="w-full">
+                <label
+                  className="block text-[14px] font-[poppins] text-[#333333] mb-1"
+                  htmlFor={`extraField2_${index}`}
+                >
+                  Extra Field {index * 2 + 2}
+                </label>
+                <input
+                  id={`extraField2_${index}`}
+                  type="text"
+                  value={field.field2}
+                  onChange={(e) =>
+                    handleExtraFieldChange(index, e.target.value, "field2")
+                  }
+                  className="border rounded-md w-full h-9 px-2 text-[14px] text-[#333333] focus:outline-[#00A264] border-[#00A264]"
+                  // disabled={disabled}
+                />
+              </div>
+            </React.Fragment>
+          ))}
 
           <div className="grid col-span-2">
             <div className="flex gap-6 items-center  mt-4  ">
@@ -989,23 +1077,25 @@ const MedicalCertificates = ({
             />
           </div>
 
-          <div className="">
-            <label
-              className="text-[14px] leading-[19.07px]  text-[#333333] "
-              htmlFor="vaccinationexpflag"
-            >
-              Expiry Date
-            </label>
+          {!veccinationCheckFlag && (
+            <div className="">
+              <label
+                className="text-[14px] leading-[19.07px]  text-[#333333] "
+                htmlFor="vaccinationexpflag"
+              >
+                Expiry Date
+              </label>
 
-            <input
-              id="vaccinationexpflag"
-              type="date"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              value={vaccinationexpFlag}
-              onChange={(e) => setVaccinationexpFlag(e.target.value)}
-            />
-          </div>
-          <div className=" flex items-center justify-center gap-4">
+              <input
+                id="vaccinationexpflag"
+                type="date"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                value={vaccinationexpFlag}
+                onChange={(e) => setVaccinationexpFlag(e.target.value)}
+              />
+            </div>
+          )}
+          <div className=" flex items-center  gap-2 mt-5">
             <input
               id="veccinationCheckflag"
               type="checkbox"

@@ -38,6 +38,9 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail }: Props) => {
   const [trainDrop, setTrainDrop] = useState<any>([]);
   const [disabled,setDisabled] = useState(true)
 
+  const [showFields, setShowFields] = useState(true);
+
+
 
   useEffect(() => {
     GetDropdownDetails("country", (res: any) => {
@@ -54,21 +57,21 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail }: Props) => {
   //     setSelectedFile(event.target.files[0]);
   //   };
 
-  const totalFields = 8;
+   const totalFields = 7;
   const filledFields = [
     trainings,
     trainingCenter,
     issuingCountry,
     issuedate1,
-    exdate1,
-    checkBox1,
+    exdate1 || checkBox1,
     selectedFiles,
     eCDISNumber,
   ].filter(Boolean).length;
 
-  // const totalFields = available === "Yes" ? 6 : 5;
+    // const totalFields = checkBox1=== "false" ? 7 : 6;
 
-  const percentage = (filledFields / totalFields) * 100;
+  // const percentage = (filledFields / totalFields) * 100;
+  const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
 
   let color;
   useEffect(() => {
@@ -233,7 +236,7 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail }: Props) => {
                 className="text-[14px] leading-[19.07px]  text-[#333333] "
                 htmlFor="eCDISNumber"
               >
-                Enter Number
+                Enter Certificate Number
               </label>
               <input
                 id="eCDISNumber"
@@ -241,7 +244,7 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail }: Props) => {
                 value={eCDISNumber}
                 onChange={(e) => setECDISNumber(e.target.value)}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                placeholder="Enter Number"
+                placeholder=""
                 disabled={disabled}
 
               />
@@ -266,7 +269,8 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail }: Props) => {
               />
             </div>
 
-            <div className="">
+
+            {!checkBox1 && (<div className="">
               <label
                 className="text-[14px] leading-[19.07px]  text-[#333333]  "
                 htmlFor="expiryDate1"
@@ -284,6 +288,7 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail }: Props) => {
 
               />
             </div>
+            )}
             {/* <div className="flex  ">
             <input
               id="neverExpires"
@@ -299,6 +304,7 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail }: Props) => {
               Never Expires
             </label>
           </div> */}
+          <div className="grid col-span-2">
             <div className=" flex items-center  gap-4">
               <input
                 id="neverExpires"
@@ -315,6 +321,7 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail }: Props) => {
               >
                 Never Expires
               </label>
+            </div>
             </div>
           </div>
 

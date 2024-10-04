@@ -123,7 +123,24 @@ const AcademicDetails = ({
   return (
     <div className="container border-2 shadow-lg p-3 mt-[14px] mb-8">
       <form onSubmit={handleSubmit}>
+
+        <div className="flex items-center justify-between">
         <h1 className="font-bold">Qualification</h1>
+
+
+        <div className="flex gap-2">
+              <AiOutlinePlus
+                className="text-2xl cursor-pointer"
+                // onClick={addFieldPair}
+              />
+              {/* {extraFields.length > 0 && ( */}
+                <AiOutlineMinus
+                  className="text-2xl cursor-pointer"
+                  // onClick={removeFieldPair}
+                />
+              {/* )} */}
+            </div>
+        </div>
 
         {fields.map((field, index) => (
           <div key={index} className="grid grid-cols-2 gap-4 mt-4">
@@ -157,7 +174,7 @@ const AcademicDetails = ({
                 disabled={disabled}
               />
             </div>
-            <div className="flex justify-start items-center gap-4">
+            {/* <div className="flex justify-start items-center gap-4">
               {index === fields.length - 1 && (
                 <AiOutlinePlus
                   className="text-green-600 cursor-pointer"
@@ -172,7 +189,7 @@ const AcademicDetails = ({
                   
                 />
               )}
-            </div>
+            </div> */}
           </div>
         ))}
 
@@ -231,7 +248,22 @@ const AcademicDetails = ({
           )}
         </div>
 
-        <h1 className="font-bold ">Education</h1>
+<div className="flex justify-between items-center">
+<h1 className="font-bold ">Education</h1>
+
+<div className="flex gap-2">
+              <AiOutlinePlus
+                className="text-2xl cursor-pointer"
+                // onClick={addFieldPair}
+              />
+              {/* {extraFields.length > 0 && ( */}
+                <AiOutlineMinus
+                  className="text-2xl cursor-pointer"
+                  // onClick={removeFieldPair}
+                />
+              {/* )} */}
+            </div>
+</div>
 
         <div className="grid grid-cols-2 gap-4">
           <div className="   ">

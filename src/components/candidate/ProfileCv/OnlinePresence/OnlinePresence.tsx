@@ -39,6 +39,8 @@ const OnlinePresence = ({
 
   const [viberId, setViberId] = useState("");
 
+  const [skypeIdChecked, setSkypeIdChecked] = useState(false);
+
   const [skypeId, setSkypeId] = useState("");
   const [linkedIn, setLinkedIn] = useState(false);
   const [linkedInId, setLinkedInId] = useState("");
@@ -52,7 +54,7 @@ const OnlinePresence = ({
   const [disabled,setDisabled] = useState(true)
 
 
-  const totalFields = 9;
+  const totalFields = 10;
 
   const filledFields = [
     whatsApp && whatsAppId,
@@ -60,7 +62,7 @@ const OnlinePresence = ({
     facebookMess && facebookMessId,
     telegram && telegramId,
     viber && viberId,
-    skypeId,
+    skypeId && skypeIdChecked,
     linkedIn && linkedInId,
     facebook && facebookId,
     instagram && instagramId,
@@ -151,9 +153,9 @@ const OnlinePresence = ({
       <form onSubmit={handleSubmit}>
         {/* <div className="  "> */}
         <div className="my-5 ">
-          <h1 className="mb-2  font-bold">Messengers in Use</h1>
-          <div className="flex  gap-2 ">
-            <div className="w-[18%]">
+          <h1 className="mb-2  font-bold">Social Media & Messanger in use</h1>
+          <div className="grid grid-cols-5  gap-2 ">
+            <div className="w-full">
               <input
                 type="checkbox"
                 checked={whatsApp}
@@ -188,14 +190,14 @@ const OnlinePresence = ({
               )}
             </div>
 
-            <div className="w-[18%]">
+            <div className="w-full">
               <div>
                 {" "}
                 <input
                   type="checkbox"
                   checked={weChat}
                   onChange={() => setWeChat(!weChat)}
-                  className="ml-4"
+                  className=""
                   disabled={disabled}
 
                 />
@@ -223,7 +225,7 @@ const OnlinePresence = ({
               )}
             </div>
 
-            <div className="w-[18%]">
+            <div className="w-full">
               <div>
                 {" "}
                 <input
@@ -254,13 +256,13 @@ const OnlinePresence = ({
 
             {/* <div className="my-5"> */}
             {/* <h1 className="mb-2">Preferred Contract Type</h1> */}
-            <div className="w-[18%]">
+            <div className="w-full">
               <div>
                 <input
                   type="checkbox"
                   checked={telegram}
                   onChange={() => setTelegram(!telegram)}
-                  className="ml-4"
+                  className=""
                   disabled={disabled}
 
                 />
@@ -285,13 +287,13 @@ const OnlinePresence = ({
               )}
             </div>
 
-            <div className="w-[18%]">
+            <div className="w-full">
               <div>
                 <input
                   type="checkbox"
                   checked={viber}
                   onChange={() => setViber(!viber)}
-                  className="ml-4"
+                  className=""
                   disabled={disabled}
 
                 />
@@ -315,32 +317,44 @@ const OnlinePresence = ({
                 </div>
               )}
             </div>
-          </div>
-        </div>
+          
+       
+<div>
 
-        <div>
-          <label
-            className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
-            htmlFor="skypeId"
-          >
-            Skype ID
-          </label>
+        <div className="w-full">
+                <input
+                  type="checkbox"
+                  checked={skypeIdChecked}
+                  onChange={() => setSkypeIdChecked(!skypeIdChecked)}
+                  className=""
+                  disabled={disabled}
+
+                />
+                <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                Skype ID
+                </label>
+              </div>
+       {skypeIdChecked && ( <div className="mt-4 flex flex-col ">
+          
           <input
             id="skypeId"
             type="text"
             value={skypeId}
             onChange={(e) => setSkypeId(e.target.value)}
             className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            placeholder="Enter Skype Id"
             disabled={disabled}
 
           />
         </div>
+        )}
+        </div>
 
         {/* Channels in Use */}
-        <div className="my-5">
-          <h1 className="mb-2    font-bold">Social Media </h1>
-          <div className="flex gap-2">
-            <div className="w-[24%]">
+        
+          
+          {/* <div className="flex gap-2"> */}
+            <div className="w-full">
               <div>
                 <input
                   type="checkbox"
@@ -367,18 +381,18 @@ const OnlinePresence = ({
                 </div>
               )}
             </div>
-            <div className="w-[24%]">
+            <div className="w-full">
               <div>
                 <input
                   type="checkbox"
                   checked={facebook}
                   onChange={() => setFacebook(!facebook)}
-                  className="ml-4"
+                  className=""
                   disabled={disabled}
 
                 />
                 <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
-                  Facebook
+                  Twitter
                 </label>
               </div>
               {facebook && (
@@ -386,7 +400,7 @@ const OnlinePresence = ({
                   <input
                     type="text"
                     className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    placeholder="Enter Facebook Id"
+                    placeholder="Enter Twitter Id"
                     value={facebookId}
                     onChange={(e) => setFacebookId(e.target.value)}
                     disabled={disabled}
@@ -395,13 +409,13 @@ const OnlinePresence = ({
                 </div>
               )}
             </div>
-            <div className="w-[24%]">
+            <div className="w-full">
               <div>
                 <input
                   type="checkbox"
                   checked={instagram}
                   onChange={() => setInstagram(!instagram)}
-                  className="ml-4"
+                  className=""
                   disabled={disabled}
 
                 />
@@ -424,13 +438,13 @@ const OnlinePresence = ({
                 </div>
               )}
             </div>
-            <div className="w-[24%]">
+            <div className="w-full">
               <div>
                 <input
                   type="checkbox"
                   checked={other}
                   onChange={() => setOther(!other)}
-                  className="ml-4"
+                  className=""
                   disabled={disabled}
 
                 />

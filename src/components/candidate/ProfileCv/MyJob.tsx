@@ -617,7 +617,7 @@ const MyJob = () => {
               {madicalOpen && <MedicalCertificates medicalComplete={medicalComplete} setMedicalComplete={setMedicalComplete} userDetail={profileDetail}/>}
 
               <div className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${academicComplete?.color}] mt-3`}>
-                <h2 className="">Academic Details</h2>
+                <h2 className="">Shor Job</h2>
                 <div className="flex items-center justify-center gap-1">
                   <span className="ml-2 cursor-pointer" onClick={() => setAcademicOpen(!academicOpen)}>
                     {!academicOpen ? (
@@ -903,7 +903,7 @@ const MyJob = () => {
 
             {/* travel documents */}
             <div className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${travelComplete?.color}] mt-3`}>
-              <h1 className="">Travel Documents</h1>
+              <h1 className="">Identity & Travel Documents</h1>
               <div className="flex items-center justify-center gap-1">
                 <span
                   className="ml-2 cursor-pointer"

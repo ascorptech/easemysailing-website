@@ -188,7 +188,16 @@ const SeaGoingService = ({
             >
               IMO
             </label>
-            <select
+            <input
+              id="imo"
+              type="text"
+              value={imo}
+              onChange={(e) => setImo(e.target.value)}
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              placeholder=""
+              required
+            />
+            {/* <select
               id="imo"
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
@@ -204,7 +213,7 @@ const SeaGoingService = ({
                     {im?.toUpperCase()}
                   </option>
                 ))}
-            </select>
+            </select> */}
           </div>
 
           <div className="   ">
@@ -298,7 +307,15 @@ const SeaGoingService = ({
             >
               Engine Make
             </label>
-            <select
+
+            <input
+              id="enginemake"
+              type="text"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              value={enginemake}
+              onChange={(e) => setEnginemake(e.target.value)}
+            />
+            {/* <select
               id="enginemake"
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
@@ -314,7 +331,7 @@ const SeaGoingService = ({
                     {eng?.toUpperCase()}
                   </option>
                 ))}
-            </select>
+            </select> */}
           </div>
 
           {/* <div className=""> */}

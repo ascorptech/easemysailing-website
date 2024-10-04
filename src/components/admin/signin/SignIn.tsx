@@ -198,11 +198,11 @@ const SignIn = () => {
                   <input
                     id="rememberMe"
                     type="checkbox"
-                    className="w-4 h-4 text-green-500 border-gray-300 rounded focus:ring-green-800"
+                    className="w-4 h-4 text-[#00A264] border-gray-300 rounded focus:ring-green-800"
                   />
                   <label
                     htmlFor="rememberMe"
-                    className="block ml-2 text-sm text-green-700"
+                    className="block ml-2 text-sm text-[#00A264]"
                   >
                     Remember me
                   </label>

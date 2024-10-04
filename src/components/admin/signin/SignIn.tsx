@@ -210,7 +210,7 @@ const SignIn = () => {
 
                 <Link
                   href="#"
-                  className="inline-block text-sm text-green-500 align-baseline hover:text-green-800 "
+                  className="inline-block text-sm text-[#00A264] align-baseline hover:text-green-800 "
                   onClick={openForgotPassword}
                 >
                   Forgot Password?

@@ -22,9 +22,9 @@ const SignIn = () => {
   const route = useRouter();
   // const [emailOrPhone, setEmailOrPhone] = useState("ems@admin.com");
   const [emailOrPhone, setEmailOrPhone] = useState(
-    "ajay.chaurasia25921@gmail.com"
+    ""
   );
-  const [password, setPassword] = useState("C@$R@k2020");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading,setIsLoading] = useState(false)
   const [isForgotPasswordOpen, setIsForgotPasswordOpen] = useState(false);
@@ -87,7 +87,7 @@ const SignIn = () => {
   const handleSubmit = async (e: any) => {
     try {
       e.preventDefault();
-
+      setIsLoading(true)
       let data = {
         email: emailOrPhone,
         password: password,

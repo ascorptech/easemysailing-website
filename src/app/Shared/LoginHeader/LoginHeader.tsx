@@ -49,7 +49,7 @@ const LoginHeader = () => {
           </div>
           <div className="flex relative items-center h-2 ">
                 <Link
-                  href={"/candidate"}
+                  href={"/"}
                   className="flex justify-center items-center mr-4 bg-[#00A264] text-white p-2 rounded-full text-sm"
                 >
                   

@@ -4,7 +4,7 @@ import React from "react";
 export default function page() {
   return (
     <div>
-      <SignUp route="candidate"/>
+      <SignUp route="recruiter"/>
     </div>
   );
 }

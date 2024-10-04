@@ -9,9 +9,14 @@ const Footer1 = () => {
 
   const handleSubmit =(e:any)=>{
     e.preventDefault();
-    if (!email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+    if (!emailRegex.test(email)) {
+      toast.error("Invalid email format");
+    }
+    else if (!email) {
       toast.error('Email is required')
-    }else{
+    }else if(email && emailRegex.test(email)){
       let data ={
         email:email
       }

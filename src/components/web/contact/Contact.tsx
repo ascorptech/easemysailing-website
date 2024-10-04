@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { TfiReload } from "react-icons/tfi";
 import { GrLocation } from "react-icons/gr";
 import { FiPhoneCall, FiMail } from "react-icons/fi";
@@ -8,12 +8,18 @@ import { toast } from "react-toastify";
 import { AddContactData } from "@/app/(web)/contact/Services/contactService";
 import PhoneInput from "react-phone-input-2"; // Import the phone input component
 import "react-phone-input-2/lib/style.css";
+import ReCAPTCHA from 'react-google-recaptcha';
+import { sanitizedValues } from "@/services/services";
+import { GoogleReCaptcha } from 'react-google-recaptcha-v3';
+import { GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 
 const Contact = () => {
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [countryCode, setCountryCode] = useState("+91"); // Default country code
+  const [countryCodeDrop, setCountryCodeDrop] = useState([]); // Default country code
   const [textarea, setTextArea] = useState("");
   const [errors, setErrors] = useState({
     name: "",
@@ -21,6 +27,16 @@ const Contact = () => {
     phone: "",
     message: "",
   });
+  const [captcha, setCaptcha] = useState("");
+  const [isVerified, setIsVerified] = useState(false);
+
+  useEffect(() => {
+    GetDropdownDetails('countryCode', (res: any) => {
+      // console.log('County',res?.data)
+      setCountryCodeDrop(res?.data?.values)
+    })
+  }, [])
+
 
   const validateInputs = () => {
     let formIsValid = true;
@@ -30,9 +46,14 @@ const Contact = () => {
       phone: "",
       message: "",
     };
-
+    let nameRegex = /^[a-zA-Z0-9\s,.!?@#&()_-]*$/;
     if (!name.trim()) {
       newErrors.name = "Name is required";
+      formIsValid = false;
+    }
+
+    if (!sanitizedValues(name)) {
+      newErrors.name = "Name is invalid";
       formIsValid = false;
     }
 
@@ -49,7 +70,7 @@ const Contact = () => {
       newErrors.phone = "Phone number is required";
       formIsValid = false;
     } else if (/^\d{13}$/.test(phone)) {
-      console.log('phone',phone.length)
+      console.log('phone', phone.length)
       newErrors.phone = "Phone number must be 10 digits";
       formIsValid = false;
     }
@@ -63,20 +84,41 @@ const Contact = () => {
     return formIsValid;
   };
 
+  async function handleCaptchaSubmission(token: string | null) {
+    try {
+      if (token) {
+       
+        setIsVerified(true);
+      }
+    } catch (e) {
+      setIsVerified(false);
+    }
+  }
+
+  const handleChange = (token: string | null) => {
+    handleCaptchaSubmission(token);
+  };
+
+  function handleExpired() {
+    setIsVerified(false);
+  }
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
     if (!validateInputs()) {
       return;
     }
+      let data = {
+        name: name,
+        email: email,
+        mobileNumber: `${countryCode} ${phone}`,
+        message: textarea,
+      };
+  
+      AddContactData(data, AddContactDataCB);
 
-    let data = {
-      name: name,
-      email: email,
-      mobileNumber: `${countryCode} ${phone}`,
-      message: textarea,
-    };
-
-    AddContactData(data, AddContactDataCB);
+    
   };
 
   const AddContactDataCB = (res: any) => {
@@ -92,6 +134,10 @@ const Contact = () => {
       message: "",
     });
   };
+
+  // const handleCaptchaChange = (value:any) => {
+  //   setCaptchaValue(value);
+  // };
 
   return (
     <div className="contact mt-14">
@@ -156,22 +202,29 @@ const Contact = () => {
                 {/* </select> */}
 
                 {/* Phone Input */}
-                {/* <input
+                <div className="flex w-full">
+                <select value={countryCode} className="border lg:h-10 rounded-lg w-[20%] py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm" onChange={(e:any)=>setCountryCode(e.target.value)}>
+                 {countryCodeDrop && countryCodeDrop?.map((code: any, index: number) => (
+                    <option key={index} value={code}>{code?.toUpperCase()}</option>
+                  ))}
+                </select>
+                <input
                   id="phone"
-                  type="text"
+                  type="number"
                   value={phone}
                   maxLength={10}
                   onChange={(e) => setPhone(e.target.value)}
                   className="border lg:h-10 rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm ml-2"
                   placeholder="Phone Number"
                   required
-                /> */}
-                <PhoneInput
+                />
+                </div>
+                {/* <PhoneInput
                   country={"in"} //default country
                   value={phone}
                   // maxLength={10}
                   // onChange={(e) => setPhone(e.target.value.trim())}
-                  onChange={(phone) => {console.log('p',phone); setPhone(phone)}}
+                  onChange={(phone) => { console.log('p', phone); setPhone(phone) }}
                   inputProps={{
                     name: "phone",
                     required: true,
@@ -179,7 +232,7 @@ const Contact = () => {
                   }}
                   inputClass="!w-full !h-[42px] !leading-[21.79px] !text-[16px] !text-[#333333] !border !rounded-lg focus:!outline-none focus:!shadow-outline font-[poppins] "
                   containerClass="w-full"
-                />
+                /> */}
                 {/* <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-[#00A264] text-white mr-7 rounded-l-md">
                   <FaPhone />
                 </span> */}
@@ -203,6 +256,33 @@ const Contact = () => {
                 <p className="text-red-500 text-xs mt-1">{errors.message}</p>
               )}
             </div>
+
+            {/* <div className="mb-[7px] flex">
+              <div className="flex w-[65%]">
+                <input
+                  id="Captcha"
+                  type="text"
+                  value={captcha}
+                  onChange={(e) => setCaptcha(e.target.value)}
+                  className="border rounded-lg w-full lg:h-10  py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
+                  placeholder="Captcha Code"
+                  required
+                />
+              </div>
+              <div className="flex items-center gap-2 ">
+                <div className="ml-4 ">
+                  <ReCAPTCHA
+        sitekey={'6LcdZEEqAAAAAPpMs4cg3i3Wl5BwLbhc2Z-6MZRC'}
+        ref={recaptchaRef}
+        // onChange={handleChange}
+        // onExpired={handleExpired}
+      />
+                </div>
+                <span className="text-white p-2 bg-green-600 text-2xl font-extrabold rounded-md">
+                  <TfiReload />
+                </span>
+              </div>
+            </div> */}
 
             {/* Submit Button */}
             <div>

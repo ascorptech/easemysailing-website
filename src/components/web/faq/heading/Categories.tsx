@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import { FaCirclePlus } from "react-icons/fa6";
 import { FaMinusCircle } from "react-icons/fa";
+import Link from "next/link";
 
 const Categories = () => {
   const [selectedTopic, setSelectedTopic] = useState<number | null>(1);
@@ -254,9 +255,9 @@ const Categories = () => {
 
       <div className="flex items-center justify-center ">
         <p className="mb-4 text-xl mr-2">Still have questions?</p>
-        <button className="p-2 mb-3 bg-[#00A264] text-white rounded transition ">
+        <Link href={'/contact'} className="p-2 mb-3 bg-[#00A264] text-white rounded transition ">
           Contact Us
-        </button>
+        </Link>
       </div>
     </div>
   );

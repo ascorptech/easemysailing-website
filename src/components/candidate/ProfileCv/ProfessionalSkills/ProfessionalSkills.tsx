@@ -45,21 +45,67 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
   const [tradingArea, setTradingArea] = useState("");
   const [description, setDescription] = useState("");
   const [description1, setDescription1] = useState("");
-
-
   const [selectedFile, setSelectedFile] = useState<any>(null);
- 
-
   const [inspection, setInspection] = useState("");
+  const [professionalTstDrop, setProfessionalTstDrop] = useState<any>([]);
+  const [professionalLvlDrop, setProfessionalLvlDrop] = useState<any>([]);
+  const [cargoGearDrop, setCargoGearDrop] = useState<any>([]);
+  const [cargoBulkDrop, setCargoBulkDrop] = useState<any>([]);
+  const [cargoTankerDrop, setCargoTankerDrop] = useState<any>([]);
+  const [cargoGeneralDrop, setCargoGeneralDrop] = useState<any>([]);
+  const [woodProDrop, setWoodProDrop] = useState<any>([]);
+  const [stowageDrop, setStowageDrop] = useState<any>([]);
+  const [metalWDrop, setMetalWDrop] = useState<any>([]);
+  const [metalLvlDrop, setMetalLvlDrop] = useState<any>([]);
+  const [tankTypeDrop, setTankTypeDrop] = useState<any>([]);
+  const [regionalAgDrop, setRegionalAgDrop] = useState<any>([]);
+  const [portDrop, setPortDrop] = useState<any>([]);
+  const [tradingAreaDrop, setTradingAreaDrop] = useState<any>([]);
 
-  // useEffect(() => {
-  //   GetDropdownDetails('gender',(res:any)=>{
-  //     setGenderDrop(res?.data?.values)
-  //   })
-  //   GetDropdownDetails('martialStatus',(res:any)=>{
-  //     setMartialStatusDrop(res?.data?.values)
-  //   })
-  // }, [])
+  useEffect(() => {
+    GetDropdownDetails('ProfessionalKnowledgeTest',(res:any)=>{
+      setProfessionalTstDrop(res?.data?.values)
+    })
+    GetDropdownDetails('ProfessionalKnowledgeLevel',(res:any)=>{
+      setProfessionalLvlDrop(res?.data?.values)
+    })
+    GetDropdownDetails('CARGOGEAREXPERIENCE',(res:any)=>{
+      setCargoGearDrop(res?.data?.values)
+    })
+    GetDropdownDetails('ProfessionalKnowledgeLevel',(res:any)=>{
+      setCargoBulkDrop(res?.data?.values)
+    })
+    GetDropdownDetails('ProfessionalKnowledgeLevel',(res:any)=>{
+      setCargoTankerDrop(res?.data?.values)
+    })
+    GetDropdownDetails('ProfessionalKnowledgeLevel',(res:any)=>{
+      setCargoGeneralDrop(res?.data?.values)
+    })
+    GetDropdownDetails('ProfessionalKnowledgeLevel',(res:any)=>{
+      setWoodProDrop(res?.data?.values)
+    })
+    GetDropdownDetails('ProfessionalKnowledgeLevel',(res:any)=>{
+      setStowageDrop(res?.data?.values)
+    })
+    GetDropdownDetails('METALWORKINGSKILLS',(res:any)=>{
+      setMetalWDrop(res?.data?.values)
+    })
+    GetDropdownDetails('METALWORKINGLevel',(res:any)=>{
+      setMetalLvlDrop(res?.data?.values)
+    })
+    GetDropdownDetails('TANKCOATINGTYPEEXPERIENCE',(res:any)=>{
+      setTankTypeDrop(res?.data?.values)
+    })
+    GetDropdownDetails('ProfessionalKnowledgeLevel',(res:any)=>{
+      setRegionalAgDrop(res?.data?.values)
+    })
+    GetDropdownDetails('ProfessionalKnowledgeLevel',(res:any)=>{
+      setPortDrop(res?.data?.values)
+    })
+    GetDropdownDetails('TRADINGAREAEXPERIENCE',(res:any)=>{
+      setTradingAreaDrop(res?.data?.values)
+    })
+  }, [])
 
 
 
@@ -181,7 +227,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
        <form onSubmit={handleSubmit}>
-      <h1 className="font-bold ">COMPUTER SKILLS</h1>
+      <h1 className="font-bold ">Professional Skills</h1>
       <div className="grid grid-cols-2 gap-4">
       <div className="">
             <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="Skill">
@@ -195,11 +241,14 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
               onChange={(e) => setSkill(e.target.value)}
             >
               <option value="" disabled selected>
-              Skill
+              Select
               </option>
-              <option value="skill">Skill1</option>
-              <option value="skill">Skill2</option>
-              <option value="skill">Skill3</option>
+              {professionalTstDrop &&
+                professionalTstDrop?.map((tst: any, index: number) => (
+                  <option key={index} value={tst}>
+                    {tst?.toUpperCase()}
+                  </option>
+                ))}
             </select>
           </div>
           <div className="">
@@ -214,11 +263,14 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
               onChange={(e) => setLevel1(e.target.value)}
             >
               <option value="" disabled selected>
-              Level
+              Select
               </option>
-              <option value="level1">Level1</option>
-              <option value="level2">Level2</option>
-              <option value="level3">Level3</option>
+              {professionalLvlDrop &&
+                professionalLvlDrop?.map((lvl: any, index: number) => (
+                  <option key={index} value={lvl}>
+                    {lvl?.toUpperCase()}
+                  </option>
+                ))}
             </select>
           </div>
           <div className="grid col-span-2">
@@ -238,11 +290,14 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
                   onChange={(e) => setBulkCargo(e.target.value)}
             >
               <option value="" disabled selected>
-              Bulk Cargo
+              Select
               </option>
-              <option value="bulk cargo1">Bulk Cargo1</option>
-              <option value="bulk cargo2">Bulk Cargo2</option>
-              <option value="bulk cargo3">Bulk Cargo3</option>
+              {cargoBulkDrop &&
+                cargoBulkDrop?.map((tst: any, index: number) => (
+                  <option key={index} value={tst}>
+                    {tst?.toUpperCase()}
+                  </option>
+                ))}
             </select>
           </div>
           <div className="">
@@ -256,12 +311,15 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
               value={tankerCargo}
               onChange={(e) => setTankerCargo(e.target.value)}
             >
-              <option value="" disabled selected>
-              Tanker Cargo
+               <option value="" disabled selected>
+              Select
               </option>
-              <option value="Tanker Cargo1">Tanker Cargo1</option>
-              <option value="Tanker Cargo2">Tanker Cargo2</option>
-              <option value="Tanker Cargo3">Tanker Cargo3</option>
+              {cargoTankerDrop &&
+                cargoTankerDrop?.map((tst: any, index: number) => (
+                  <option key={index} value={tst}>
+                    {tst?.toUpperCase()}
+                  </option>
+                ))}
             </select>
           </div>
 
@@ -278,11 +336,14 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
                   onChange={(e) => setGeneralCargo(e.target.value)}
             >
               <option value="" disabled selected>
-              General Cargo
+              Select
               </option>
-              <option value="General Cargo1">General Cargo1</option>
-              <option value="General Cargo2">General Cargo2</option>
-              <option value="General Cargo3">General Cargo3</option>
+              {cargoGeneralDrop &&
+                cargoGeneralDrop?.map((tst: any, index: number) => (
+                  <option key={index} value={tst}>
+                    {tst?.toUpperCase()}
+                  </option>
+                ))}
             </select>
           </div>
           <div className="">
@@ -297,11 +358,14 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
                   onChange={(e) => setWoodProducts(e.target.value)}
             >
               <option value="" disabled selected>
-              Wood Products
+              Select
               </option>
-              <option value="wood Products1">Wood Products1</option>
-              <option value="wood Products2 ">Wood Products2</option>
-              <option value="wood Products3">Wood Products3</option>
+              {woodProDrop &&
+                woodProDrop?.map((tst: any, index: number) => (
+                  <option key={index} value={tst}>
+                    {tst?.toUpperCase()}
+                  </option>
+                ))}
             </select>
           </div>
 
@@ -317,11 +381,14 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
                   onChange={(e) => setStowage(e.target.value)}
             >
               <option value="" disabled selected>
-              Stowage and Lashing Experience
+              Select
               </option>
-              <option value="Wood Products1">Wood Products1</option>
-              <option value="Wood Products2">Wood Products2</option>
-              <option value="Wood Products3">Wood Products3</option>
+              {stowageDrop &&
+                stowageDrop?.map((tst: any, index: number) => (
+                  <option key={index} value={tst}>
+                    {tst?.toUpperCase()}
+                  </option>
+                ))}
             </select>
           </div>
 
@@ -340,11 +407,14 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
               onChange={(e) => setTypeProfessional(e.target.value)}
             >
               <option value="" disabled selected>
-              Type
+              Select
               </option>
-              <option value="type1">Type1</option>
-              <option value="type2">Type2</option>
-              <option value="type3">Type3</option>
+              {cargoGearDrop &&
+                cargoGearDrop?.map((tst: any, index: number) => (
+                  <option key={index} value={tst}>
+                    {tst?.toUpperCase()}
+                  </option>
+                ))}
             </select>
           </div>
         <div className="   ">
@@ -396,10 +466,14 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
               onChange={(e) => setSkillmetal(e.target.value)}
             >
               <option value="" disabled selected>
-              Skill
+              Select
               </option>
-              <option value="type1">Type1</option>
-              <option value="type2">Type2</option>
+              {metalWDrop &&
+                metalWDrop?.map((tst: any, index: number) => (
+                  <option key={index} value={tst}>
+                    {tst?.toUpperCase()}
+                  </option>
+                ))}
              
             </select>
           </div>
@@ -415,11 +489,14 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
               onChange={(e) => setLevelMetal(e.target.value)}
             >
               <option value="" disabled selected>
-              Level
+              Select
               </option>
-              <option value="t">Type1</option>
-              <option value="t2">Type2</option>
-              <option value="t3">Type3</option>
+              {metalLvlDrop &&
+                metalLvlDrop?.map((tst: any, index: number) => (
+                  <option key={index} value={tst}>
+                    {tst?.toUpperCase()}
+                  </option>
+                ))}
             </select>
           </div>
          
@@ -506,11 +583,14 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
               onChange={(e) => setTypeTank(e.target.value)}
             >
               <option value="" disabled selected>
-              Type
+              Select
               </option>
-              <option value="t1">Type1</option>
-              <option value="t2">Type2</option>
-              <option value="t3">Type3</option>
+              {tankTypeDrop &&
+                tankTypeDrop?.map((tst: any, index: number) => (
+                  <option key={index} value={tst}>
+                    {tst?.toUpperCase()}
+                  </option>
+                ))}
             </select>
           </div>
       </div>
@@ -528,11 +608,14 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
               onChange={(e) => setRegionalAgreement(e.target.value)}
             >
               <option value="" disabled selected>
-              Regional Agreement
+              Select
               </option>
-              <option value="type1">Type1</option>
-              <option value="type2">Type2</option>
-              <option value="type3">Type3</option>
+              {regionalAgDrop &&
+                regionalAgDrop?.map((tst: any, index: number) => (
+                  <option key={index} value={tst}>
+                    {tst?.toUpperCase()}
+                  </option>
+                ))}
             </select>
           </div>
           <div className="">
@@ -546,12 +629,15 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
               value={port}
               onChange={(e) => setPort(e.target.value)}
             >
-              <option value="" disabled selected>
-              Port
+             <option value="" disabled selected>
+              Select
               </option>
-              <option value="port1">Port1</option>
-              <option value="port2">Port2</option>
-              <option value="port3">Port3</option>
+              {portDrop &&
+                portDrop?.map((tst: any, index: number) => (
+                  <option key={index} value={tst}>
+                    {tst?.toUpperCase()}
+                  </option>
+                ))}
             </select>
           </div>
           <div className="">
@@ -615,12 +701,15 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
               value={port1}
               onChange={(e) => setPort1(e.target.value)}
             >
-              <option value="" disabled selected>
-              Port
+             <option value="" disabled selected>
+              Select
               </option>
-              <option value="port1">Port1</option>
-              <option value="port2">Port2</option>
-              <option value="port3">Port3</option>
+              {portDrop &&
+                portDrop?.map((tst: any, index: number) => (
+                  <option key={index} value={tst}>
+                    {tst?.toUpperCase()}
+                  </option>
+                ))}
             </select>
           </div>
           <div className="">
@@ -668,11 +757,14 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
               onChange={(e) => setTradingArea(e.target.value)}
             >
               <option value="" disabled selected>
-              Trading Area
+              Select
               </option>
-              <option value="port1">Port1</option>
-              <option value="port2">Port2</option>
-              <option value="port3">Port3</option>
+              {tradingAreaDrop &&
+                tradingAreaDrop?.map((tst: any, index: number) => (
+                  <option key={index} value={tst}>
+                    {tst?.toUpperCase()}
+                  </option>
+                ))}
             </select>
           </div>
          </ div>

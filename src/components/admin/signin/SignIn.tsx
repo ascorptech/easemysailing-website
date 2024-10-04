@@ -17,6 +17,7 @@ import { postReq } from "@/RootServices";
 import { LoginData } from "@/app/(admin)/admin/Services/loginService";
 import { useRouter } from "next/navigation";
 import ClipLoader from "react-spinners/ClipLoader";
+import { toast } from "react-toastify";
 
 const SignIn = () => {
   const route = useRouter();
@@ -96,10 +97,16 @@ const SignIn = () => {
 
       const response = await LoginData(data);
       if (response?.data) {
-        const token = response?.data?.token;
-        document.cookie = `token=${response?.data?.token}; path=/admin`;
-        localStorage.setItem("token", token);
-        route.push("/admin/dashboard");
+       
+        if (response?.status ==200) {
+          const token = response?.data?.token;
+          document.cookie = `token=${response?.data?.token}; path=/admin`;
+          localStorage.setItem("token", token);
+          route.push("/admin/dashboard");
+        }else{
+          toast.error('Invalid Email or Password')
+        }
+        
       }
     } catch (error) {
       console.log("err", error);

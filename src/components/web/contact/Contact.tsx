@@ -12,6 +12,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import { sanitizedValues } from "@/services/services";
 import { GoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import { countryCodeDrop } from "@/constants/constants";
 
 const Contact = () => {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
@@ -19,7 +20,7 @@ const Contact = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [countryCode, setCountryCode] = useState("+91"); // Default country code
-  const [countryCodeDrop, setCountryCodeDrop] = useState([]); // Default country code
+  // const [countryCodeDrop, setCountryCodeDrop] = useState([]); // Default country code
   const [textarea, setTextArea] = useState("");
   const [errors, setErrors] = useState({
     name: "",
@@ -30,12 +31,12 @@ const Contact = () => {
   const [captcha, setCaptcha] = useState("");
   const [isVerified, setIsVerified] = useState(false);
 
-  useEffect(() => {
-    GetDropdownDetails('countryCode', (res: any) => {
-      // console.log('County',res?.data)
-      setCountryCodeDrop(res?.data?.values)
-    })
-  }, [])
+  // useEffect(() => {
+  //   GetDropdownDetails('countryCode', (res: any) => {
+  //     // console.log('County',res?.data)
+  //     setCountryCodeDrop(res?.data?.values)
+  //   })
+  // }, [])
 
 
   const validateInputs = () => {
@@ -87,7 +88,7 @@ const Contact = () => {
   async function handleCaptchaSubmission(token: string | null) {
     try {
       if (token) {
-       
+
         setIsVerified(true);
       }
     } catch (e) {
@@ -105,20 +106,20 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateInputs()) {
       return;
     }
-      let data = {
-        name: name,
-        email: email,
-        mobileNumber: `${countryCode} ${phone}`,
-        message: textarea,
-      };
-  
-      AddContactData(data, AddContactDataCB);
+    let data = {
+      name: name,
+      email: email,
+      mobileNumber: `${countryCode} ${phone}`,
+      message: textarea,
+    };
 
-    
+    AddContactData(data, AddContactDataCB);
+
+
   };
 
   const AddContactDataCB = (res: any) => {
@@ -146,7 +147,7 @@ const Contact = () => {
           Get in touch
         </h1>
       </div>
-      <div className="grid lg:grid-cols-2 lg:gap-24 md:mx-24 mx-8 my-10">
+      <div className="grid lg:grid-cols-2 lg:gap-24 md:mx-24 mx-2 my-10">
         <div className="bg-gray-200 p-8 rounded-xl">
           <h1 className="text-center mb-2">
             For questions and assistance, reach out to us.
@@ -158,7 +159,21 @@ const Contact = () => {
                 id="Name"
                 type="text"
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => {
+                  // Allow only alphabetic characters and spaces
+                  const value = e.target.value;
+                  if (/^[a-zA-Z\s]*$/.test(value)) {
+                    setName(value);
+                  }
+                }}
+                onBlur={(e) => {
+                  // Validation for min length
+                  if (e.target.value.length < 2) {
+                    toast.error("Name must be at least 2 characters long");
+                  } else if (e.target.value.length > 30) {
+                    toast.error("Name cannot exceed 30 characters");
+                  }
+                }}
                 className="border lg:h-10 rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
                 placeholder="Name"
                 required
@@ -170,11 +185,26 @@ const Contact = () => {
 
             {/* Email Input */}
             <div className="mb-[7px]">
+              {/* <input
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="border lg:h-10 rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
+                placeholder="Email"
+                required
+              /> */}
               <input
                 id="email"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                onBlur={(e) => {
+                  // Basic email validation
+                  if (!e.target.validity.valid) {
+                    toast.error("Please enter a valid email address.");
+                  }
+                }}
                 className="border lg:h-10 rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
                 placeholder="Email"
                 required
@@ -203,21 +233,42 @@ const Contact = () => {
 
                 {/* Phone Input */}
                 <div className="flex w-full">
-                <select value={countryCode} className="border lg:h-10 rounded-lg w-[20%] py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm" onChange={(e:any)=>setCountryCode(e.target.value)}>
-                 {countryCodeDrop && countryCodeDrop?.map((code: any, index: number) => (
-                    <option key={index} value={code}>{code?.toUpperCase()}</option>
-                  ))}
-                </select>
-                <input
+                  <select value={countryCode} className="border lg:h-10 rounded-lg w-[40%] sm:w-[20%] py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm" onChange={(e: any) => setCountryCode(e.target.value)}>
+                    {countryCodeDrop && countryCodeDrop?.map((code: any, index: number) => (
+                      <option key={index} value={code?.phoneCode}>{code?.flag + ' ' + code?.phoneCode?.toUpperCase()}</option>
+                    ))}
+                  </select>
+                  {/* <input
                   id="phone"
                   type="number"
                   value={phone}
-                  maxLength={10}
+                  max={10}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="border lg:h-10 rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm ml-2"
+                  className="border lg:h-10 rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
                   placeholder="Phone Number"
                   required
-                />
+                /> */}
+                  <input
+                    id="phone"
+                    type="text" // Keeping type as text to manage length validation
+                    value={phone}
+                    maxLength={12} // Maximum 12 digits
+                    onChange={(e) => {
+                      // Allow only numeric input
+                      const value = e.target.value;
+                      if (/^\d*$/.test(value)) { // Regex to allow only digits
+                        setPhone(value);
+                      }
+                    }}
+                    onBlur={(e) => {
+                      if (e.target.value.length < 7) {
+                        toast.error("Phone number must be at least 7 digits long");
+                      }
+                    }}
+                    className="border lg:h-10 rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
+                    placeholder="Phone Number"
+                    required
+                  />
                 </div>
                 {/* <PhoneInput
                   country={"in"} //default country
@@ -244,11 +295,31 @@ const Contact = () => {
 
             {/* Message Textarea */}
             <div className="mb-[7px]">
-              <textarea
+              {/* <textarea
                 value={textarea}
                 maxLength={500}
                 onChange={(e) => setTextArea(e.target.value)}
                 className="border rounded-lg w-full h-28 py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
+                placeholder="Message"
+                required
+              /> */}
+              <textarea
+                value={textarea}
+                maxLength={500}
+                onChange={(e) => {
+                  // Allow changes only if they are from user input
+                  if (e.nativeEvent.isTrusted) {
+                    setTextArea(e.target.value.replace(/<[^>]*>/g, ""));
+                  }
+                }}
+                onBlur={(e) => {
+                  // Minimum length validation
+                  if (e.target.value.length < 10) { // Adjust the minimum length as needed
+                    toast.error("Message must be at least 10 characters long.");
+                  }
+                }}
+                className={`border rounded-lg w-full h-28 py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm ${textarea.length > 500 ? "border-red-500" : ""
+                  }`} // Change border color if exceeded maxLength
                 placeholder="Message"
                 required
               />

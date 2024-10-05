@@ -16,7 +16,7 @@ const page = () => {
           <div className="space-y-6 text-gray-700">
             {/* Introduction Section */}
             <section>
-              <h2 className="text-2xl font-semibold">1. Introduction</h2>
+              <h2 className="text-2xl font-semibold bg-[#eaeaea]">1. Introduction</h2>
               <p>
                 EaseMySailing Technologies Pvt. Ltd. ("we," "us," or "our") is
                 committed to protecting and respecting your privacy. This
@@ -35,7 +35,7 @@ const page = () => {
 
             {/* Information We Collect Section */}
             <section>
-              <h2 className="text-2xl font-semibold">
+              <h2 className="text-2xl font-semibold bg-[#eaeaea]">
                 2. Information We Collect
               </h2>
               <p>We collect the following types of information:</p>
@@ -82,7 +82,7 @@ const page = () => {
 
             {/* How We Use Your Information Section */}
             <section>
-              <h2 className="text-2xl font-semibold">
+              <h2 className="text-2xl font-semibold bg-[#eaeaea]">
                 3. How We Use Your Information
               </h2>
               <ul className="list-disc list-inside ml-4">
@@ -115,7 +115,7 @@ const page = () => {
 
             {/* Sharing of Information Section */}
             <section>
-              <h2 className="text-2xl font-semibold">
+              <h2 className="text-2xl font-semibold bg-[#eaeaea]">
                 4. Sharing of Information
               </h2>
               <p>
@@ -163,7 +163,7 @@ const page = () => {
 
             {/* Data Security Section */}
             <section>
-              <h2 className="text-2xl font-semibold">5. Data Security</h2>
+              <h2 className="text-2xl font-semibold bg-[#eaeaea]">5. Data Security</h2>
               <p>
                 We implement industry-standard security measures to protect your
                 personal data from unauthorized access, alteration, disclosure,
@@ -179,7 +179,7 @@ const page = () => {
 
             {/* Data Retention Section */}
             <section>
-              <h2 className="text-2xl font-semibold">6. Data Retention</h2>
+              <h2 className="text-2xl font-semibold bg-[#eaeaea]">6. Data Retention</h2>
               <p>
                 We retain your personal information for as long as your account
                 is active or as needed to provide you with our services. We may
@@ -190,7 +190,7 @@ const page = () => {
 
             {/* Your Rights Section */}
             <section>
-              <h2 className="text-2xl font-semibold">7. Your Rights</h2>
+              <h2 className="text-2xl font-semibold bg-[#eaeaea]">7. Your Rights</h2>
               <br />
               <h3 className="text-lg font-semibold">
                 A. Access and Correction
@@ -231,7 +231,7 @@ const page = () => {
 
             {/* Cookies Policy Section */}
             <section>
-              <h2 className="text-2xl font-semibold">8. Cookies Policy</h2>
+              <h2 className="text-2xl font-semibold bg-[#eaeaea]">8. Cookies Policy</h2>
               <p>Our platform uses cookies to:</p>
               <ul className="list-disc list-inside ml-4">
                 <li>Enhance user experience</li>
@@ -247,7 +247,7 @@ const page = () => {
 
             {/* Third-Party Links Section */}
             <section>
-              <h2 className="text-2xl font-semibold">9. Third-Party Links</h2>
+              <h2 className="text-2xl font-semibold bg-[#eaeaea]">9. Third-Party Links</h2>
               <p>
                 Our platform may contain links to third-party websites,
                 services, or advertisements that are not operated by us. We are
@@ -259,7 +259,7 @@ const page = () => {
 
             {/* Children's Privacy Section */}
             <section>
-              <h2 className="text-2xl font-semibold">10. Children’s Privacy</h2>
+              <h2 className="text-2xl font-semibold bg-[#eaeaea]">10. Children’s Privacy</h2>
               <p>
                 Our platform is not intended for individuals under the age of
                 18. We do not knowingly collect personal data from anyone under
@@ -270,7 +270,7 @@ const page = () => {
 
             {/* Changes to the Privacy Policy Section */}
             <section>
-              <h2 className="text-2xl font-semibold">
+              <h2 className="text-2xl font-semibold bg-[#eaeaea]">
                 11. Changes to the Privacy Policy
               </h2>
               <p>
@@ -283,7 +283,7 @@ const page = () => {
 
             {/* Contact Information Section */}
             <section>
-              <h2 className="text-2xl font-semibold">
+              <h2 className="text-2xl font-semibold bg-[#eaeaea]">
                 12. Contact Information
               </h2>
               <p>

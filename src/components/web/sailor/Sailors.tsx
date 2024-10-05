@@ -7,7 +7,7 @@ const NumberContent = () => {
       {/* Heading div */}
       <h2 className="text-xl sm:text-2xl lg:text-4xl xl:text-6xl font-bold mb-4 lg:w-[70%] ml-5 lg:ml-10">
         Applying For Job Made Easy For{" "}
-        <p className="text-[#00A264] flex mt-2 lg:mt-8">
+        <p className="text-[#00A264] flex mt-2 lg:mt-8 item-center">
           Seafarers
           <Image
             priority
@@ -15,7 +15,7 @@ const NumberContent = () => {
             alt="anchor"
             width={200}
             height={200}
-            className="h-6 w-6 sm:h-8 sm:w-8 lg:h-10 lg:w-9 ml-2 lg:ml-3"
+            className="h-6 w-6 sm:h-8 sm:w-8 lg:h-10 lg:w-9 ml-2 lg:ml-3 sm:mt-4"
           />
         </p>
       </h2>

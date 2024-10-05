@@ -33,15 +33,15 @@ const Card = () => {
     },
     {
       id: 4,
-      logo: "/images/team/archna.png",
+      logo: "/images/team/puneet.png",
       company: "Puneet Saxena",
       designation:'Regulatory Compliance Expert'
     },
     {
       id: 5,
-      logo: "/images/team/satish.png",
-      company: "Capt. Pankaj Ranjan",
-      designation:'Maritime Leader & Industry Expert'
+      logo: "/images/team/ankit.png",
+      company: "Capt. Ankit Gupta",
+      designation:'Master Mariner, Seafarer Welfare & Well-being'
     },
   ];
 

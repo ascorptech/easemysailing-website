@@ -54,9 +54,8 @@ const ResourcesList = (props: Props) => {
       loading={isLoading}
       size={10}
       />
-    </div>):( <div className=" w-full">
-      {/* <Heading7 /> */}
-      <div className="mt-2 w-[97.2%] xl:w-[87%] mx-auto flex sm:flex-row flex-col border shadow-md rounded-md">
+    </div>):( <React.Fragment>{resourcesList?.length?<div className=" w-full">
+      <div className="mt-2 container mx-auto flex sm:flex-row flex-col">
         <div className="flex sm:w-[50%] w-full p-4">
           <div className="relative w-full border">
             <Image
@@ -64,7 +63,7 @@ const ResourcesList = (props: Props) => {
               alt="image not found"
               width={900}
               height={900}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain"
               priority
             />
             <div className="absolute px-2 sm:md:mt-[-1.5rem] mt-[-1.5rem] bg-green-700 text-white font-semibold ">
@@ -76,21 +75,18 @@ const ResourcesList = (props: Props) => {
           <h2 className="text-black-500  font-bold">
             {currentItems[0]?.title}
           </h2>
-          {/* <p className="text-gray-500 text-sm text-justify ">
-            {currentItems[0]?.description?.replace(/<[^>]+>/g, '').slice(0, 1000)}
-          </p> */}
           <div dangerouslySetInnerHTML={{__html:currentItems[0]?.description?.slice(0, 1000)}} className="text-gray-500 text-sm text-justify "/>
           <Link
             href={`/resources/${currentItems[0]?.id}`}
-            className="h-8 lg:w-[25%] xl:w-[20%] w-[40%] mt-2 bg-green-700 text-white py-1 px-4 rounded-lg text-sm justify-center items-center flex "
+            className="h-8 lg:w-[25%] xl:w-[20%] w-[45%] mt-2 bg-green-700 text-white py-1 px-4 rounded-lg text-sm justify-center items-center flex "
           >
             Read more
           </Link>
         </div>
       </div>
-      <div className="mt-2 container mx-auto sm:grid sm:grid-row-2 sm:grid-cols-3 ">
+      <div className="mt-2 container sm:mx-auto sm:grid sm:grid-row-2 sm:grid-cols-3 sm:gap-1 sm:px-0 px-2">
         {currentItems?.map((item:any) => (
-          <div key={item?.id} className="flex bg-white p-3 flex-shrink-0 ">
+          <div key={item?.id} className="flex bg-white flex-shrink-0 mt-2 sm:mt-0">
             <div className="relative bg-white border rounded-lg md:p-5 p-2  shadow-md  w-auto ">
               <div className=" flex mb-2">
                 <Image
@@ -177,7 +173,9 @@ const ResourcesList = (props: Props) => {
           Next
         </Link> */}
       </div>
-    </div>)}
+    </div>:<div className='flex justify-center items-center h-[35rem]'>
+      <span className="text-[46px] leading-[69px] text-[#00000] font-bold">Something Exciting Comming Soon <span className='text-[#00A264]'>Stay Tuned!</span></span>
+      </div>}</React.Fragment>)}
     </React.Fragment>
   )
 }

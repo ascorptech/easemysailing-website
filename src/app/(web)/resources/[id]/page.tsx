@@ -86,7 +86,7 @@ const ResourceDetailsPage: React.FC = () => {
           size={10}
         />
       </div>) :
-        (<div className="flex sm:flex-row flex-col sm:justify-around sm:mx-14 sm:my-11 sm:mt-[100px]">
+        (<div className="flex sm:flex-row flex-col sm:justify-around sm:mx-14 sm:my-11">
           <div className=" sm:float-left sm:w-[70%] w-full sm:px-10 px-2">
             <div className="w-full">
               <Image
@@ -103,8 +103,6 @@ const ResourceDetailsPage: React.FC = () => {
             </div>
             <div>
               <h2 className="font-bold text-xl mt-4">{resourceDetail?.title}</h2>
-              {/* <p className=" text-sm text-justify  mt-4">{resourceDetail?.description?.replace(/<[^>]+>/g, '')}</p> */}
-              {/* <p className=" text-sm text-justify  mt-4">{cleanDescText(resourceDetail?.description)}</p> */}
               <div dangerouslySetInnerHTML={{__html:resourceDetail?.description}} className=" text-sm text-justify  mt-4" />
             </div>
 

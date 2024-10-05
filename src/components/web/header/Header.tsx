@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import { PiLineVertical } from "react-icons/pi";
@@ -10,6 +10,7 @@ const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [listenerEnabled, setListenerEnabled] = useState(false);
 
   // Function to toggle the menu
   const toggleMenu = () => {
@@ -24,8 +25,64 @@ const Header: React.FC = () => {
     setIsOpen(false);
   };
 
+
+  // // Add the scroll event listener
+  // (()=>{})()
+  // window.addEventListener("scroll", hidePopupOnScroll);
+  
+
+  // function hidePopupOnScroll() {
+  //   setIsOpen(false);
+  //   setIsMenuOpen(false);
+  //   window.removeEventListener("scroll", hidePopupOnScroll); // Remove event listener after hiding
+  // }
+
+
+
+  const hidePopupOnScroll = () => {
+    setIsOpen(false);
+    setIsMenuOpen(false);
+    if (typeof window !== "undefined") {
+      window.removeEventListener("scroll", hidePopupOnScroll);
+      setListenerEnabled(false);
+    }
+  };
+
+  const enableScrollListener = () => {
+    if (typeof window !== "undefined" && !listenerEnabled) {
+      window.addEventListener("scroll", hidePopupOnScroll);
+      setListenerEnabled(true);
+    }
+  };
+
+  if (typeof window !== "undefined" && !listenerEnabled) {
+    enableScrollListener();
+  }
+
+  useEffect(() => {
+    // Define the function to hide the popup on scroll
+    function hidePopupOnScroll() {
+      setIsOpen(false);
+      setIsMenuOpen(false);
+      window.removeEventListener("scroll", hidePopupOnScroll); // Remove event listener after hiding
+    }
+
+    // Add the scroll event listener
+    window.addEventListener("scroll", hidePopupOnScroll);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener("scroll", hidePopupOnScroll);
+    };
+  }, []);
+
+  
+  
+  
+  
+
   return (
-    <div className="z-20 top-0 fixed w-full">
+    <div className="z-50 top-0 fixed w-full">
       <nav className="bg-white border-white dark:bg-white dark:border-black-700   ">
         <div className="lg:w-full w-[98%] text-25px font-[700px] leading-[37.5px] flex flex-wrap items-center justify-between  py-1 px-[1rem] sm:px-[3rem] lg:px-[2rem]   ">
           <div className="flex items-center space-x-3 rtl:space-x-reverse">
@@ -195,7 +252,7 @@ const Header: React.FC = () => {
               <div className="flex relative items-center h-2 ">
                 <Link
                   href={""}
-                  className="flex justify-center items-center mr-4 border border-[#00A264] text-[#00A264] p-2 rounded-full text-sm"
+                  className="hidden flex justify-center items-center mr-4 border border-[#00A264] text-[#00A264] p-2 rounded-full text-sm"
                 >
                   <span className="pr-2">
                     {/* {/ <CiSearch /> /} */}
@@ -209,6 +266,7 @@ const Header: React.FC = () => {
                   </span>
                   Seafarers Login
                 </Link>
+                <Image src={'/images/candidateLoginBtn.png'} width={5000} height={500} className="h-14 w-full object-contain" priority alt="btn"/>
                 {/* <Link
                   href="recruiter"
                   className=" h-8 w-21  text-[#FFFFFF] bg-[#00A264] hover:bg-[#00A264] focus:outline-none focus:ring-1 focus:ring-[#00A264] font-medium rounded-full text-sm px-5 py-5 text-center me-2  dark:bg-[#00A264]   flex justify-center items-center"
@@ -222,7 +280,7 @@ const Header: React.FC = () => {
           {/* mobile navbar   */}
 
           {/* Dropdown menu */}
-          <div className="lg:hidden lg:max-w-screen-xl flex flex-wrap items-center justify-between ">
+          <div className="lg:hidden lg:max-w-screen-xl flex flex-wrap items-center justify-between z-20">
             <div className=" top-0 ">
               <button
                 data-collapse-toggle="navbar-dropdown"
@@ -281,11 +339,11 @@ const Header: React.FC = () => {
         </div>
         {isMenuOpen && (
           <div
-            className={`lg:hidden w-full lg:w-auto ${isMenuOpen ? "" : "hidden"
+            className={`z-20 lg:hidden w-full lg:w-auto ${isMenuOpen ? "" : "hidden"
               }`}
             id="navbar-dropdown"
           >
-            <ul className="flex flex-col font-medium p-4   mt-1 border border-gray-100 rounded-lg bg-gray-100 md:border-0   dark:border-gray-700">
+            <ul className="flex flex-col font-medium p-4  z-20  mt-1 border border-gray-100 rounded-lg bg-gray-100 md:border-0   dark:border-gray-700">
               {/* <li>
                 <Link
                   href="/jobs"
@@ -379,7 +437,7 @@ const Header: React.FC = () => {
                 <Link
                   href={""}
                   onClick={() => setIsMenuOpen(false)}
-                  className="flex justify-center items-center mr-4 border border-[#00A264] text-[#00A264] p-2 rounded-full hover:bg-[#00A264] hover:text-[#FFFFFF]"
+                  className="hidden flex justify-center items-center mr-4 border border-[#00A264] text-[#00A264] p-2 rounded-full hover:bg-[#00A264] hover:text-[#FFFFFF]"
                 >
                   <span className="pr-2">
                     {/* {/ <CiSearch /> /} */}
@@ -394,6 +452,7 @@ const Header: React.FC = () => {
                   </span>
                   Seafarers Login
                 </Link>
+                <Image src={'/images/candidateLoginBtn.png'} width={5000} height={500} className="h-20 w-40 object-contain" priority alt="btn"/>
                 <Link
                   href="/recruiter"
                   className="hidden h-9 w-21  text-white bg-[#00A264] hover:bg-[#00A264] focus:outline-none focus:ring-1 focus:ring-[#00A264] font-medium rounded-full text-sm px-5 py-5 text-center me-2  dark:bg-[#00A264] dark:hover:bg-[#00A264] dark:focus:ring-[#00A264] flex justify-center items-center"

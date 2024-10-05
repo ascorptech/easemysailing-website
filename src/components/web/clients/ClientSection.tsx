@@ -77,12 +77,12 @@ const ClientSection: React.FC = () => {
     <div className="relative flex bg-[#D9F3EA] mx-2 lg:mx-0 flex-col w-[95%] lg:w-full">
       <div className="text-[21px] leading-[28px] font-bold sm:md:text-4xl lg:ml-[0rem] mt-10">
         <h2 className="text-[15px] leading-[20px] sm:text-[28px] lg:text-[45px] sm:leading-[54px] font-bold text-center">
-          Seafarer Stories: Why They Trust Us
-          <span className="text-[#00A264]"></span> Adore Us
+          Seafarer Stories: Why They <span className="text-[#00A264]">Trust Us
+           Adore Us</span>
         </h2>
       </div>
 
-        <div>
+        <div className="z-10">
           <Carousel  infinite responsive={responsive} slidesToSlide={2} sliderClass="slideCenter">
           {clientCards?.map((ccard:any, index:any) => (
               <ClientsCard

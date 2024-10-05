@@ -22,7 +22,7 @@ const Footer1 = () => {
       }
       AddSubscribe(data,(res:any)=>{
         console.log(res)
-        toast.success('Thanks for subscribe')
+        toast.success('Thanks for subscribing!')
         setEmail('')
       })
     }
@@ -54,7 +54,7 @@ const Footer1 = () => {
             </button>
           </div>
         </div>
-        <div className="lg:h-[420px] h-[280px] mb-3 lg:mb-0 lg:mt-0 mt-3 w-full lg:w-[35%] flex justify-center lg:justify-end">
+        <div className="lg:h-[420px] h-[280px] mb-3 lg:mb-0 lg:mt-0 mt-3 w-full lg:w-[45%] flex justify-center md:justify-end">
           <Image
             priority
             src="/ship3.png"

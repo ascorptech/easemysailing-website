@@ -28,7 +28,7 @@ const NumberContent = () => {
               />
             </div>
             <div className="flex flex-col justify-center items-center">
-              <span className="text-lg md:text-2xl font-extrabold">$ 14 T</span>
+              <span className="text-lg md:text-2xl font-extrabold">$ 14 Trillion</span>
               <span className="text-gray-700  text-[10px] lg:mt-2 md:text-[13px]">
                 in Goods moved each year
               </span>
@@ -106,7 +106,7 @@ const NumberContent = () => {
               />
             </div>
             <div className="flex flex-col justify-center items-center">
-              <span className="text-lg md:text-2xl font-extrabold">11 B</span>
+              <span className="text-lg md:text-2xl font-extrabold">11 Billion</span>
               <span className="text-gray-700  text-[10px] lg:mt-2 md:text-[13px]">
               Tons of Cargo yearly
               </span>
@@ -125,7 +125,7 @@ const NumberContent = () => {
               />
             </div>
             <div className="flex flex-col justify-center items-center">
-              <span className="text-lg md:text-2xl font-extrabold">1.9 M</span>
+              <span className="text-lg md:text-2xl font-extrabold">1.9 Million</span>
               <span className="text-gray-700  text-[10px] lg:mt-2 md:text-[13px]">
               Seafarers Serving Globally
               </span>

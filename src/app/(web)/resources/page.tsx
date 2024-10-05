@@ -5,7 +5,7 @@ const page = () => {
 
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col mb-4">
       <Heading7 />
       
       <ResourcesList/>

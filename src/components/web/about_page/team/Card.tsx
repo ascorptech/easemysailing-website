@@ -34,15 +34,15 @@ const Card = () => {
     },
     {
       id: 4,
-      logo: "/images/team/archna.png",
-      company: "Capt. MG",
-      designation: 'Finance and Administration'
+      logo: "/images/team/sarabjit.png",
+      company: "Sarabjit Singh Gill",
+      designation: 'Marine Technical Management'
     },
     {
       id: 5,
-      logo: "/images/team/satish.png",
-      company: "Oda Dink",
-      designation: 'Maritime Leader & Industry Expert'
+      logo: "/images/team/shashank.png",
+      company: "CA Shashank Garg",
+      designation: 'Finance'
     },
   ];
 
@@ -78,7 +78,7 @@ const Card = () => {
       {/* Left Arrow */}
       <button
         onClick={scrollLeft}
-        className="absolute left-2 md:left-4 lg:left-8 z-10 text-5xl text-gray-500"
+        className="absolute left-2 md:left-4 lg:left-8 text-5xl text-gray-500"
       >
         <PiCaretLeftThin />
       </button>
@@ -111,7 +111,7 @@ const Card = () => {
       {/* Right Arrow */}
       <button
         onClick={scrollRight}
-        className="absolute right-2 md:right-4 lg:right-8 z-10 text-5xl text-gray-500"
+        className="absolute right-2 md:right-4 lg:right-8 text-5xl text-gray-500"
       >
         <PiCaretRightThin />
       </button>

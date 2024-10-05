@@ -377,7 +377,7 @@ const Header: React.FC = () => {
 
               <li className="flex relative items-center gap-4 h-2 mt-7 mb-5">
                 <Link
-                  href={"/candidate"}
+                  href={""}
                   onClick={() => setIsMenuOpen(false)}
                   className="flex justify-center items-center mr-4 border border-[#00A264] text-[#00A264] p-2 rounded-full hover:bg-[#00A264] hover:text-[#FFFFFF]"
                 >

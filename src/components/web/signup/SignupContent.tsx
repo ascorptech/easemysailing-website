@@ -65,14 +65,14 @@ export default function SignupContent() {
           {/* LogIn and CreateButton */}
           <div className="flex flex-col sm:flex-row text-center justify-center items-center gap-4 sm:gap-6 lg:gap-12 mt-10 lg:mt-14">
             <Link
-              href="/candidate"
+              href=""
               className="bg-[#00A264] lg:py-3 px-4 py-2 lg:px-2 lg:h-[50px] rounded-full font-semibold text-base w-[160px]"
             >
               Login
             </Link>
 
             <Link
-              href="/candidate/signup"
+              href=""
               className="bg-white text-[#00A264] px-4 py-2 lg:py-3 lg:px-2 lg:h-[50px] rounded-full font-semibold text-base w-[160px]"
             >
               Create Account

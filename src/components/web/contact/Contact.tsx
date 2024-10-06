@@ -203,7 +203,7 @@ const Contact = () => {
                 id="email"
                 type="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value.trim())}
+                onChange={(e) => setEmail(e.target.value.trimStart())}
                 onBlur={(e) => {
                   // Basic email validation
                   if (!e.target.validity.valid) {
@@ -252,7 +252,7 @@ const Contact = () => {
                       // Allow only numeric input
                       const value = e.target.value;
                       if (/^\d*$/.test(value)) { // Regex to allow only digits
-                        setPhone(value);
+                        setPhone(value.trimStart());
                       }
                     }}
                     onBlur={(e) => {
@@ -304,7 +304,7 @@ const Contact = () => {
                 onChange={(e) => {
                   // Allow changes only if they are from user input
                   if (e.nativeEvent.isTrusted ) {
-                      setTextArea(e.target.value.replace(/<[^>]*>/g, ""));
+                      setTextArea(e.target.value.trimStart().replace(/<[^>]*>/g, ""));
                   }
                 }}
                 onBlur={(e) => {

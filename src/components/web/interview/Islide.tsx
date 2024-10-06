@@ -109,11 +109,11 @@ const Islide = () => {
       <IoMdArrowBack />
     </button>
     {/* <div ref={card} className="flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory w-[90%] mx-auto sm:mx-0 sm:w-full sm:grid sm:grid-rows-1 sm:grid-cols-4 gap-2 sm:gap-10"> */}
-    {podcasts?.length?<div ref={card} className="flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory w-[84%] sm:grid sm:grid-cols-4 sm:grid-rows-1 sm:w-full">
+    {podcasts?.length?<div ref={card} className="flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory w-[84%] sm:grid sm:grid-cols-4 sm:grid-rows-1 sm:w-full sm:gap-8">
       {podcasts?.map((item: any, index: any) => (
          <div
          key={index}
-         className="snap-center flex flex-col items-center min-w-[301px] max-w-[14rem] mx-auto"
+         className="snap-center flex flex-col items-center min-w-[301px] max-w-[14rem] sm:w-[16rem] mx-auto"
        >
           <Image
             key={item?.id}

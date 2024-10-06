@@ -100,81 +100,7 @@ const Islide = () => {
     setModalOpen(false);
   };
 
-  // return (
-  //   <div className="relative overflow-x-hidden  mt-7 pb-4 lg:pb-0 flex justify-center items-center lg:items-center w-full lg:w-[83%] xl:w-[82%] 2xl:w-[85%] md:w-[94%] px-1 sm:px-0 lg:px-0 lg:mx-[110px] ">
-
-  //     <button 
-  //       onClick={scrollLeft} 
-  //       className="absolute left-0 top-20  md:hidden bg-white p-[5px] rounded-full shadow-md"
-  //       aria-label="Scroll Left"
-  //     >
-  //       <IoMdArrowBack />
-  //     </button>
-
-  //     <div
-  //       ref={card}
-  //       className="w-[289px] sm:w-full sm:ml-0 flex overflow-x-scroll  no-scrollbar scroll-smooth snap-x snap-mandatory gap-1 lg:gap-[33px] 2xl:space-x-14"
-  //     >
-  //       <div className="snap-center ">
-  //         <div className="w-[18rem]  h-[12rem] sm:ml-0 lg:w-[18rem] xl:w-[16.8rem] 2xl:w-[18rem] lg:h-[220px]">
-  //           <iframe
-  //             className="w-full border-4 shadow-md rounded-lg h-full"
-  //             src="https://www.youtube.com/embed/afKjXPA5f0E"
-  //             title="YouTube video player"
-  //             frameBorder="0"
-  //             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  //             allowFullScreen
-  //           ></iframe>
-  //         </div>
-  //       </div>
-  //       <div className="snap-center">
-  //         <div className="w-[18rem] h-[12rem] lg:w-[18rem] xl:w-[16.8rem] 2xl:w-[18rem] lg:h-[220px]">
-  //           <iframe
-  //             className="w-full border-4 shadow-md rounded-lg h-full"
-  //             src="https://www.youtube.com/embed/roz9sXFkTuE"
-  //             title="YouTube video player"
-  //             frameBorder="0"
-  //             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  //             allowFullScreen
-  //           ></iframe>
-  //         </div>
-  //       </div>
-  //       <div className="snap-center">
-  //         <div className="w-[18rem] h-[12rem] lg:w-[18rem] xl:w-[16.8rem] 2xl:w-[18rem] lg:h-[220px]">
-  //           <iframe
-  //             className="w-full border-4 shadow-md rounded-lg h-full"
-  //             src="https://www.youtube.com/embed/Tl4bQBfOtbg"
-  //             title="YouTube video player"
-  //             frameBorder="0"
-  //             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  //             allowFullScreen
-  //           ></iframe>
-  //         </div>
-  //       </div>
-  //       <div className="snap-center">
-  //         <div className="w-[18rem] h-[12rem] lg:w-[18rem] xl:w-[16.8rem] 2xl:w-[18rem] lg:h-[220px]">
-  //           <iframe
-  //             className="w-full border-4 shadow-md rounded-lg h-full"
-  //             src="https://www.youtube.com/embed/VYslt8bc-4Q"
-  //             title="YouTube video player"
-  //             frameBorder="0"
-  //             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  //             allowFullScreen
-  //           ></iframe>
-  //         </div>
-  //       </div>
-  //     </div>
-
-  //     <button 
-  //       onClick={scrollRight} 
-  //       className="absolute right-0 top-20 md:hidden bg-white p-[5px] rounded-full shadow-md"
-  //       aria-label="Scroll Right"
-  //     >
-  //       <IoMdArrowForward />
-  //     </button>
-  //   </div>
-  // );
-  return (<div className="container mx-auto relative mb-10">
+  return (<div className="relative flex items-center justify-center mx-2 md:mx-4 lg:mx-0 my-4">
     <button
       onClick={scrollLeft}
       className="absolute left-0 top-20 sm:hidden bg-white p-[5px] rounded-full shadow-md"
@@ -182,8 +108,13 @@ const Islide = () => {
     >
       <IoMdArrowBack />
     </button>
-    <div ref={card} className="overflow-auto no-scrollbar flex w-[90%] mx-auto sm:mx-0 sm:w-full sm:grid sm:grid-rows-1 sm:grid-cols-4 gap-2 sm:gap-10">
+    {/* <div ref={card} className="flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory w-[90%] mx-auto sm:mx-0 sm:w-full sm:grid sm:grid-rows-1 sm:grid-cols-4 gap-2 sm:gap-10"> */}
+    {podcasts?.length?<div ref={card} className="flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory w-[84%] sm:grid sm:grid-cols-4 sm:grid-rows-1 sm:w-full">
       {podcasts?.map((item: any, index: any) => (
+         <div
+         key={index}
+         className="snap-center flex flex-col items-center min-w-[301px] max-w-[14rem] mx-auto"
+       >
           <Image
             key={item?.id}
             src={`data:image/png;image/jpg;image/jpeg;base64,${item?.thumbnail}`}
@@ -194,9 +125,12 @@ const Islide = () => {
             className="h-full w-full rounded-md mb-10 border border-gray-600 shadow-sm"
             onClick={() => openModal(item)}
           />
+         </div>
       ))}
 
-    </div>
+    </div>:<div className="w-full h-52 flex justify-center items-center">
+      <span className="text-[#00A264] text-2xl">No Content Found!</span>
+      </div>}
     <button
       onClick={scrollRight}
       className="absolute right-0 top-20 sm:hidden bg-white p-[5px] rounded-full shadow-md"

@@ -10,7 +10,7 @@ interface Card {
 }
 
 const Card = () => {
-  const card = useRef<HTMLDivElement>(null);
+  const cardContainer = useRef<HTMLDivElement>(null);
 
   const cards: Card[] = [
     {
@@ -46,14 +46,14 @@ const Card = () => {
   ];
 
   const scrollLeft = () => {
-    if (card.current) {
-      card.current.scrollBy({ left: -200, behavior: "smooth" });
+    if (cardContainer.current) {
+      cardContainer.current.scrollBy({ left: -200, behavior: "smooth" });
     }
   };
 
   const scrollRight = () => {
-    if (card.current) {
-      card.current.scrollBy({ left: 200, behavior: "smooth" });
+    if (cardContainer.current) {
+      cardContainer.current.scrollBy({ left: 200, behavior: "smooth" });
     }
   };
 
@@ -77,32 +77,35 @@ const Card = () => {
       {/* Left Arrow */}
       <button
         onClick={scrollLeft}
-        className="absolute left-2 md:left-4 lg:left-8 z-10 text-5xl text-gray-500"
+        className="absolute left-2 md:left-4 lg:left-8 text-5xl text-gray-500"
       >
         <PiCaretLeftThin />
       </button>
 
       {/* Carousel Wrapper */}
       <div
-        ref={card}
-        className="flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory w-[calc(1*190px+1*10px)] sm:w-[calc(5*220px+5*10px)] gap-3 sm:grid sm:grid-rows-1 sm:grid-cols-5 text-center"
+        ref={cardContainer}
+        className="flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory w-[56%] sm:w-full sm:max-w-6xl gap-3 text-center"
       >
-        {cards?.map((card) => (
-          <div key={card.id} className="snap-center flex flex-col items-center">
-            <div className="w-[197.58px] h-[197.98px] bg-white rounded-full shadow-md">
-            <Image
-                  priority
-                  height={5000}
-                  width={5000}
+        {cards.map((card) => (
+          <div
+            key={card.id}
+            className="snap-center flex flex-col items-center min-w-[200px] max-w-[14rem] mx-auto"
+          >
+            <div className="w-[200px] h-[200px] bg-white rounded-full shadow-md overflow-hidden">
+              <Image
+                priority
+                height={5000}
+                width={5000}
                 src={card.logo}
                 alt={card.company}
-                className="w-full h-full rounded-full"
+                className="w-full h-full object-cover"
               />
             </div>
-            <h2 className="text-[#00A264] mt-2">
+            <h2 className="text-[#00A264] mt-2 text-center">
               {card.company}
               <br />
-              <span className="text-black">{card.designation}</span>
+              <span className="text-black text-sm">{card.designation}</span>
             </h2>
           </div>
         ))}
@@ -111,7 +114,7 @@ const Card = () => {
       {/* Right Arrow */}
       <button
         onClick={scrollRight}
-        className="absolute right-2 md:right-4 lg:right-8 z-10 text-5xl text-gray-500"
+        className="absolute right-2 md:right-4 lg:right-8 text-5xl text-gray-500"
       >
         <PiCaretRightThin />
       </button>

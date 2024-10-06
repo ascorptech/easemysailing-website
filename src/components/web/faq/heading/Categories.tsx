@@ -223,7 +223,7 @@ const Categories = () => {
                       className="flex items-center justify-between w-full text-left p-2 bg-[#D1EFE4] mb-5 border-1"
                       onClick={() => handleQuestionClick(question.id)}
                     >
-                      <span className="text-black-600">
+                      <span className="text-black-600 w-[88%]">
                         {question.question}
                       </span>
                       {selectedQuestion === question.id ? (
@@ -238,12 +238,12 @@ const Categories = () => {
                         />
                       )}
                     </button>
-                    {selectedQuestion === question.id && (
+                    {selectedQuestion === question?.id && (
                       <div
-                        className="p-4 bg-white  mb-5"
+                        className="p-4 bg-white  mb-5 border"
                         style={{ boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)" }}
                       >
-                        <p>{question.answer}</p>
+                        <p className="">{question.answer}</p>
                       </div>
                     )}
                   </div>

@@ -47,7 +47,6 @@ const Contact = () => {
       phone: "",
       message: "",
     };
-    let nameRegex = /^[a-zA-Z0-9\s,.!?@#&()_-]*$/;
     if (!name.trim()) {
       newErrors.name = "Name is required";
       formIsValid = false;
@@ -66,7 +65,6 @@ const Contact = () => {
       newErrors.email = "Invalid email format";
       formIsValid = false;
     }
-
     if (!phone.trim()) {
       newErrors.phone = "Phone number is required";
       formIsValid = false;
@@ -74,13 +72,16 @@ const Contact = () => {
       console.log('phone', phone.length)
       newErrors.phone = "Phone number must be 10 digits";
       formIsValid = false;
+    }else if(phone.length<7){
+      newErrors.phone = "Phone number must be minimum 7 digits";
+      formIsValid = false;
     }
 
     if (!textarea.trim()) {
       newErrors.message = "Message is required";
       formIsValid = false;
-    }else if (textarea.length < 10) { // Adjust the minimum length as needed
-      newErrors.message ="Message must be at least 10 characters long.";
+    } else if (textarea.length < 10) { // Adjust the minimum length as needed
+      newErrors.message = "Message must be at least 10 characters long.";
       formIsValid = false;
     }
 
@@ -112,17 +113,17 @@ const Contact = () => {
 
     if (!validateInputs()) {
       return;
-    }else{
+    } else {
       let data = {
         name: name,
         email: email,
         mobileNumber: `${countryCode} ${phone}`,
         message: textarea,
       };
-  
+
       AddContactData(data, AddContactDataCB);
     }
-    
+
 
 
   };
@@ -203,7 +204,10 @@ const Contact = () => {
                 id="email"
                 type="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value.trimStart())}
+                onChange={(e) => {
+                  let value = e.target.value.replace(/\s+/g, ''); // Removes all spaces
+                  setEmail(value?.trim());
+                }}
                 onBlur={(e) => {
                   // Basic email validation
                   if (!e.target.validity.valid) {
@@ -303,8 +307,8 @@ const Contact = () => {
                 maxLength={500}
                 onChange={(e) => {
                   // Allow changes only if they are from user input
-                  if (e.nativeEvent.isTrusted ) {
-                      setTextArea(e.target.value.trimStart().replace(/<[^>]*>/g, ""));
+                  if (e.nativeEvent.isTrusted) {
+                    setTextArea(e.target.value.trimStart().replace(/<[^>]*>/g, ""));
                   }
                 }}
                 onBlur={(e) => {

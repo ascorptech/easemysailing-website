@@ -3,58 +3,58 @@ import React, { useRef, useEffect } from "react";
 import { PiCaretRightThin, PiCaretLeftThin } from "react-icons/pi";
 import Image from "next/image";
 
-interface Card {
+interface CardProps {
   id: number;
   logo: string;
   company: string;
   designation: string;
 }
 
-const Card = () => {
-  const card = useRef<HTMLDivElement>(null);
+const CardCarousel = () => {
+  const cardContainer = useRef<HTMLDivElement>(null);
 
-  const cards: Card[] = [
+  const cards: CardProps[] = [
     {
       id: 1,
       logo: "/images/team/amit.png",
       company: "Amit Dubey",
-      designation: 'Strategy and Inovation'
+      designation: "Strategy and Innovation",
     },
     {
       id: 2,
       logo: "/images/team/archna.png",
       company: "Archna Gauba",
-      designation: 'Marketing and Sales'
+      designation: "Marketing and Sales",
     },
     {
       id: 3,
       logo: "/images/team/arun.png",
       company: "Arun Tiwari",
-      designation: 'Technology & Operation'
+      designation: "Technology & Operation",
     },
     {
       id: 4,
       logo: "/images/team/sarabjit.png",
       company: "Sarabjit Singh Gill",
-      designation: 'Marine Technical Management'
+      designation: "Marine Technical Management",
     },
     {
       id: 5,
       logo: "/images/team/shashank.png",
-      company: "CA Shashank Garg",
-      designation: 'Finance'
+      company: "CA Shashank Garg",
+      designation: "Finance",
     },
   ];
 
   const scrollLeft = () => {
-    if (card.current) {
-      card.current.scrollBy({ left: -200, behavior: "smooth" });
+    if (cardContainer.current) {
+      cardContainer.current.scrollBy({ left: -200, behavior: "smooth" });
     }
   };
 
   const scrollRight = () => {
-    if (card.current) {
-      card.current.scrollBy({ left: 200, behavior: "smooth" });
+    if (cardContainer.current) {
+      cardContainer.current.scrollBy({ left: 200, behavior: "smooth" });
     }
   };
 
@@ -85,29 +85,33 @@ const Card = () => {
 
       {/* Carousel Wrapper */}
       <div
-        ref={card}
-        className="flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory w-[calc(1*190px+1*10px)] sm:w-[calc(5*220px+5*10px)] gap-3 sm:grid sm:grid-rows-1 sm:grid-cols-5 text-center"
+        ref={cardContainer}
+        className="flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory w-[56%] sm:w-full sm:max-w-6xl gap-3 text-center"
       >
-        {cards?.map((card) => (
-          <div key={card.id} className="snap-center flex flex-col items-center">
-            <div className="w-[197.58px] h-[197.98px] bg-white rounded-full shadow-md">
+        {cards.map((card) => (
+          <div
+            key={card.id}
+            className="snap-center flex flex-col items-center min-w-[200px] max-w-[14rem] mx-auto"
+          >
+            <div className="w-[200px] h-[200px] bg-white rounded-full shadow-md overflow-hidden">
               <Image
                 priority
                 height={5000}
                 width={5000}
                 src={card.logo}
                 alt={card.company}
-                className="w-full h-full rounded-full"
+                className="w-full h-full object-cover"
               />
             </div>
-            <h2 className="text-[#00A264] mt-2">
+            <h2 className="text-[#00A264] mt-2 text-center">
               {card.company}
               <br />
-              <span className="text-black">{card.designation}</span>
+              <span className="text-black text-sm">{card.designation}</span>
             </h2>
           </div>
         ))}
       </div>
+
       {/* Right Arrow */}
       <button
         onClick={scrollRight}
@@ -119,4 +123,5 @@ const Card = () => {
   );
 };
 
-export default Card;
+export default CardCarousel;
+

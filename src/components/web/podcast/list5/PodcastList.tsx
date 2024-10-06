@@ -34,10 +34,10 @@ const PodcastList = () => {
     setIsLoading(false)
   }
 
-  const currentItems = podcasts?.length?podcasts?.toReversed()?.slice(
-    (currentPage - 1) * resourcesPerPage,
-    currentPage * resourcesPerPage
-  ):[];
+  // const currentItems = podcasts?.length?podcasts?.toReversed()?.slice(
+  //   (currentPage - 1) * resourcesPerPage,
+  //   currentPage * resourcesPerPage
+  // ):[];
 
   const nextPage = () => {
     if (currentPage < totalPages) {

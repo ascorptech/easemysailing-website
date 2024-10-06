@@ -20,10 +20,10 @@ const ResourcesList = (props: Props) => {
   const totalPages = Math.ceil(resourcesList?.length / itemsPerPage);
 
   // Get items for the current page
-  const currentItems = resourcesList.length ?resourcesList?.toReversed().slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  ):[];
+  // const currentItems = resourcesList?.length ?resourcesList?.toReversed().slice(
+  //   (currentPage - 1) * itemsPerPage,
+  //   currentPage * itemsPerPage
+  // ):[];
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
@@ -43,7 +43,13 @@ const ResourcesList = (props: Props) => {
     }, [])
   
     const fetchResources=(result:any)=>{
-      setResourcesList(result.data);
+      console.log('res',result)
+      if (result?.status==200) {
+        setResourcesList(result.data);
+      } else {
+        setResourcesList([])
+      }
+      
       setIsLoading(false)
     }
   return (
@@ -55,11 +61,11 @@ const ResourcesList = (props: Props) => {
       size={10}
       />
     </div>):( <React.Fragment>{resourcesList?.length?<div className=" w-full">
-      <div className="mt-2 container mx-auto flex sm:flex-row flex-col">
+      <div className="mt-2 container mx-auto flex sm:flex-row flex-col shadow-md rounded-md">
         <div className="flex sm:w-[50%] w-full p-4">
           <div className="relative w-full border">
             <Image
-              src={currentItems[0]?.imageUrl?`data:image/png;image/jpg;image/jpeg;base64,${currentItems[0]?.imageUrl}`:"/images/captain4.jpeg"}
+              src={resourcesList[0]?.imageUrl?`data:image/png;image/jpg;image/jpeg;base64,${resourcesList[0]?.imageUrl}`:"/images/captain4.jpeg"}
               alt="image not found"
               width={900}
               height={900}
@@ -67,17 +73,17 @@ const ResourcesList = (props: Props) => {
               priority
             />
             <div className="absolute px-2 sm:md:mt-[-1.5rem] mt-[-1.5rem] bg-green-700 text-white font-semibold ">
-              <h3>{moment(currentItems[0]?.createdDate).format('YYYY-MM-DD')}</h3>
+              <h3>{moment(resourcesList[0]?.createdDate).format('YYYY-MM-DD')}</h3>
             </div>
           </div>
         </div>
         <div className="sm:w-[50%] w-full flex flex-col p-4">
           <h2 className="text-black-500  font-bold">
-            {currentItems[0]?.title}
+            {resourcesList[0]?.title}
           </h2>
-          <div dangerouslySetInnerHTML={{__html:currentItems[0]?.description?.slice(0, 1000)}} className="text-gray-500 text-sm text-justify "/>
+          <div dangerouslySetInnerHTML={{__html:resourcesList[0]?.description?.slice(0, 1000)}} className="text-gray-500 text-sm text-justify "/>
           <Link
-            href={`/resources/${currentItems[0]?.id}`}
+            href={`/resources/${resourcesList[0]?.id}`}
             className="h-8 lg:w-[25%] xl:w-[20%] w-[45%] mt-2 bg-green-700 text-white py-1 px-4 rounded-lg text-sm justify-center items-center flex "
           >
             Read more
@@ -85,7 +91,7 @@ const ResourcesList = (props: Props) => {
         </div>
       </div>
       <div className="mt-2 container sm:mx-auto sm:grid sm:grid-row-2 sm:grid-cols-3 sm:gap-1 sm:px-0 px-2">
-        {currentItems?.map((item:any) => (
+        {resourcesList?.map((item:any) => (
           <div key={item?.id} className="flex bg-white flex-shrink-0 mt-2 sm:mt-0">
             <div className="relative bg-white border rounded-lg md:p-5 p-2  shadow-md  w-auto ">
               <div className=" flex mb-2">
@@ -173,8 +179,8 @@ const ResourcesList = (props: Props) => {
           Next
         </Link> */}
       </div>
-    </div>:<div className='flex justify-center items-center h-[35rem]'>
-      <span className="text-[46px] leading-[69px] text-[#00000] font-bold">Something Exciting Comming Soon <span className='text-[#00A264]'>Stay Tuned!</span></span>
+    </div>:<div className='flex justify-center items-center h-[35rem] w-full'>
+      <span className="text-center text-[46px] leading-[69px] text-[#00000] font-bold">Something Exciting Comming Soon <span className='text-[#00A264]'>Stay Tuned!</span></span>
       </div>}</React.Fragment>)}
     </React.Fragment>
   )

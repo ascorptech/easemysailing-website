@@ -79,6 +79,9 @@ const Contact = () => {
     if (!textarea.trim()) {
       newErrors.message = "Message is required";
       formIsValid = false;
+    }else if (textarea.length < 10) { // Adjust the minimum length as needed
+      newErrors.message ="Message must be at least 10 characters long.";
+      formIsValid = false;
     }
 
     setErrors(newErrors);
@@ -109,15 +112,17 @@ const Contact = () => {
 
     if (!validateInputs()) {
       return;
+    }else{
+      let data = {
+        name: name,
+        email: email,
+        mobileNumber: `${countryCode} ${phone}`,
+        message: textarea,
+      };
+  
+      AddContactData(data, AddContactDataCB);
     }
-    let data = {
-      name: name,
-      email: email,
-      mobileNumber: `${countryCode} ${phone}`,
-      message: textarea,
-    };
-
-    AddContactData(data, AddContactDataCB);
+    
 
 
   };
@@ -198,7 +203,7 @@ const Contact = () => {
                 id="email"
                 type="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value.trim())}
                 onBlur={(e) => {
                   // Basic email validation
                   if (!e.target.validity.valid) {
@@ -233,21 +238,11 @@ const Contact = () => {
 
                 {/* Phone Input */}
                 <div className="flex w-full">
-                  <select value={countryCode} className="border lg:h-10 rounded-lg w-[40%] sm:w-[20%] py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm" onChange={(e: any) => setCountryCode(e.target.value)}>
+                  <select value={countryCode} className="border bg-white lg:h-10 rounded-lg w-[40%] sm:w-[20%] xl:w-[25%] py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm" onChange={(e: any) => setCountryCode(e.target.value)}>
                     {countryCodeDrop && countryCodeDrop?.map((code: any, index: number) => (
                       <option key={index} value={code?.phoneCode}>{code?.flag + ' ' + code?.phoneCode?.toUpperCase()}</option>
                     ))}
                   </select>
-                  {/* <input
-                  id="phone"
-                  type="number"
-                  value={phone}
-                  max={10}
-                  onChange={(e) => setPhone(e.target.value)}
-                  className="border lg:h-10 rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
-                  placeholder="Phone Number"
-                  required
-                /> */}
                   <input
                     id="phone"
                     type="text" // Keeping type as text to manage length validation
@@ -308,8 +303,8 @@ const Contact = () => {
                 maxLength={500}
                 onChange={(e) => {
                   // Allow changes only if they are from user input
-                  if (e.nativeEvent.isTrusted) {
-                    setTextArea(e.target.value.replace(/<[^>]*>/g, ""));
+                  if (e.nativeEvent.isTrusted ) {
+                      setTextArea(e.target.value.replace(/<[^>]*>/g, ""));
                   }
                 }}
                 onBlur={(e) => {

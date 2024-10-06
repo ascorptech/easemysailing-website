@@ -55,6 +55,30 @@ const ClientSection: React.FC = () => {
       imageSrc: "/people.png",
       image1: "/images/quotes.png",
     },
+    {
+      text: "An exceptional platform for seafarers! It’s streamlined, user-friendly, and genuinely cares about our welfare and career growth.",
+      name: "Ankush Gupta",
+      role: "Chief Officer",
+      rating: 4,
+      imageSrc: "/people.png",
+      image1: "/images/quotes.png",
+    },
+    {
+      text: "EaseMySailing is built by seafarers who truly understand and care about us. We deserve respect and recognition, and this platform envisions just that.",
+      name: "Baldeep Singh",
+      role: "Marine Superintendent",
+      rating: 4,
+      imageSrc: "/people.png",
+      image1: "/images/quotes.png",
+    },
+    {
+      text: "EaseMySailing has redefined how seafarers connect with recruiters. It’s intuitive and respectful of our hard work. It’s the go-to platform for Seafarers.",
+      name: "Ritesh Patel",
+      role: "Able Seaman",
+      rating: 4,
+      imageSrc: "/people.png",
+      image1: "/images/quotes.png",
+    },
   ];
 
   const scrollRef = useRef<HTMLDivElement>(null);

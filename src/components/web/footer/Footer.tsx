@@ -21,7 +21,6 @@ const Footer1 = () => {
         email:email
       }
       AddSubscribe(data,(res:any)=>{
-        console.log(res)
         toast.success('Thanks for subscribing!')
         setEmail('')
       })
@@ -34,10 +33,10 @@ const Footer1 = () => {
       <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center w-full">
         <div className="flex flex-col items-center lg:ml-6 justify-center lg:w-[65%] lg:items-start lg:justify-start lg:px-5">
           <div className="lg:mb-6 py-8 text-center lg:text-left">
-            <h2 className="text-black text-[24px] md:text-4xl lg:text-5xl font-extrabold mb-2">
+            <h2 className="text-black text-[24px] md:text-4xl lg:text-5xl xl:text-4xl font-extrabold mb-2">
               Don't miss out! Subscribe to our
             </h2>
-            <h2 className="text-black text-[24px] md:text-4xl lg:text-5xl font-extrabold">
+            <h2 className="text-black text-[24px] md:text-4xl lg:text-5xl xl:text-4xl font-extrabold">
               newsletter for exclusive content.
             </h2>
           </div>
@@ -47,14 +46,25 @@ const Footer1 = () => {
               placeholder="Enter your Email Address"
               className="p-2 w-full border-2 border-[#00A264] rounded-3xl focus:outline-none"
               value={email}
-              onChange={(e)=>setEmail(e.target.value)}
+              id="email"
+              onChange={(e) => {
+                // Remove spaces from the input
+                const value = e.target.value.replace(/\s/g, ""); // Regex to remove all spaces
+                setEmail(value.trim());
+              }}
+              onBlur={(e) => {
+                // Basic email validation
+                if (!e.target.validity.valid) {
+                  toast.error("Please enter a valid email address.");
+                }
+              }}
             />
             <button type="submit" className="w-full lg:w-44 text-sm bg-[#00A264] text-white px-6 py-2 rounded-3xl flex justify-center items-center" onClick={handleSubmit}>
               Subscribe
             </button>
           </div>
         </div>
-        <div className="lg:h-[420px] h-[280px] mb-3 lg:mb-0 lg:mt-0 mt-3 w-full lg:w-[45%] flex justify-center md:justify-end">
+        <div className="lg:h-[420px] h-[280px] mb-3 lg:mb-0 lg:mt-0 mt-3 w-full lg:w-[45%] xl:w-[48%] flex justify-center md:justify-end">
           <Image
             priority
             src="/ship3.png"

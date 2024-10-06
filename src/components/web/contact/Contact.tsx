@@ -168,7 +168,7 @@ const Contact = () => {
                   // Allow only alphabetic characters and spaces
                   const value = e.target.value;
                   if (/^[a-zA-Z\s]*$/.test(value)) {
-                    setName(value);
+                    setName(value.trimStart());
                   }
                 }}
                 onBlur={(e) => {

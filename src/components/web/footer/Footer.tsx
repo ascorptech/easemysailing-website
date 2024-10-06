@@ -50,7 +50,7 @@ const Footer1 = () => {
               onChange={(e) => {
                 // Remove spaces from the input
                 const value = e.target.value.replace(/\s/g, ""); // Regex to remove all spaces
-                setEmail(value.trim());
+                setEmail(value.trimStart());
               }}
               onBlur={(e) => {
                 // Basic email validation

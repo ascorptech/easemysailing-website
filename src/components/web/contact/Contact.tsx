@@ -57,7 +57,7 @@ const Contact = () => {
       formIsValid = false;
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!email.trim()) {
       newErrors.email = "Email is required";
       formIsValid = false;

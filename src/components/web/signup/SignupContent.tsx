@@ -64,19 +64,51 @@ export default function SignupContent() {
 
           {/* LogIn and CreateButton */}
           <div className="flex flex-col sm:flex-row text-center justify-center items-center gap-4 sm:gap-6 lg:gap-12 mt-10 lg:mt-14">
-            <Link
+            {/* <Link
               href=""
               className="bg-[#00A264] lg:py-3 px-4 py-2 lg:px-2 lg:h-[50px] rounded-full font-semibold text-base w-[160px]"
             >
               Login
-            </Link>
+            </Link> */}
+             <Link
+                // href="https://apps.apple.com/us/app/your-app-id"
+                href=""
+                // target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center text-white w-full lg:w-auto"
+              >
+                <Image
+                  priority
+                  src="/images/LoginBtn.png"
+                  alt="App Store"
+                  width={500}
+                  height={500}
+                  className="w-[150px] sm:w-[178px] h-[50px] lg:h-[60px]"
+                />
+              </Link>
+              <Link
+                // href="https://apps.apple.com/us/app/your-app-id"
+                href=""
+                // target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center text-white w-full lg:w-auto"
+              >
+                <Image
+                  priority
+                  src="/images/createAccount.png"
+                  alt="App Store"
+                  width={500}
+                  height={500}
+                  className="w-[150px] sm:w-[178px] h-[50px] lg:h-[60px]"
+                />
+              </Link>
 
-            <Link
+            {/* <Link
               href=""
               className="bg-white text-[#00A264] px-4 py-2 lg:py-3 lg:px-2 lg:h-[50px] rounded-full font-semibold text-base w-[160px]"
             >
               Create Account
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>

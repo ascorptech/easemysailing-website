@@ -28,9 +28,9 @@ const ClientsCard: React.FC<ClientsCardProps> = ({
           <Image
             src={imageSrc}
             alt={name}
-            width={65}
-            height={65}
-            className="rounded-full object-cover"
+            width={5000}
+            height={5000}
+            className="rounded-full object-cover h-20 w-20"
           />
         </div>
 

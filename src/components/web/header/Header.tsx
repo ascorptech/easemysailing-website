@@ -25,7 +25,7 @@ const Header: React.FC = () => {
   };
 
   return (
-    <div className="  z-20 top-0 fixed w-full">
+    <div className="z-20 top-0 fixed w-full">
       <nav className="bg-white border-white dark:bg-white dark:border-black-700   ">
         <div className="lg:w-full w-[98%] text-25px font-[700px] leading-[37.5px] flex flex-wrap items-center justify-between  py-1 px-[1rem] sm:px-[3rem] lg:px-[2rem]   ">
           <div className="flex items-center space-x-3 rtl:space-x-reverse">

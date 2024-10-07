@@ -10,6 +10,16 @@ import { toast } from "react-toastify";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import React from "react";
 
+type StcwTrainingForm = {
+  number: string;
+  issuedate: string;
+  exdate: string;
+  issuingCountry: string;
+  training: string;
+  neverExpires: any;
+  selectedFile: File | null;
+};
+
 type STCWComplete = {
   percentage: number;
   color: string;
@@ -25,6 +35,19 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
   const [extraFields, setExtraFields] = useState<
     { field1: string; field2: string }[]
   >([]);
+
+  const [stcwTraining, setStcwTraining] = useState<StcwTrainingForm[]>([
+    {
+      number: "",
+      issuedate: "",
+      exdate: "",
+      issuingCountry: "",
+      training: "",
+      neverExpires: "",
+      selectedFile: null,
+    },
+  ]);
+
   const [number, setNumber] = useState("");
   const [issuedate, setIssueDate] = useState("");
   const [exdate, setExDate] = useState("");
@@ -47,23 +70,41 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
     });
   }, []);
 
-  const totalFields = 6 + extraFields.length * 2;
-  const filledFields = [
-    number,
-    issuedate,
-    exdate || neverExpires ,
-    selectedFile,
-    trainingCountry,
-    training,
-   ,
-    ...extraFields.flatMap((field) => [field.field1, field.field2]),
-  ].filter(Boolean).length;
+  // const totalFields = 6 + extraFields.length * 2;
+  // const filledFields = [
+  //   number,
+  //   issuedate,
+  //   exdate || neverExpires ,
+  //   selectedFile,
+  //   trainingCountry,
+  //   training,
+  //  ,
+  //   ...extraFields.flatMap((field) => [field.field1, field.field2]),
+  // ].filter(Boolean).length;
+
+  const totalFields = 6; // Adjust based on total fields you want to calculate
+  const filledFields = stcwTraining.reduce(
+    (acc, form) =>
+      acc +
+      [
+        form.number,
+        form.issuedate,
+        form.exdate || form.neverExpires,
+        form.issuingCountry,
+        form.training,
+        form.selectedFile,
+      ].filter(Boolean).length,
+    0
+  );
+
+  const percentage = (filledFields / (totalFields * stcwTraining.length)) * 100;
+  let color = "";
 
   // const totalFields = available === "Yes" ? 6 : 5;
 
-  const percentage = (filledFields / totalFields) * 100;
+  // const percentage = (filledFields / totalFields) * 100;
   // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
-  let color;
+  // let color;
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
@@ -90,11 +131,31 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
     }
   }, [percentage, color]);
 
-  const handleFileChange = (event: any) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      setSelectedFile(file);
-    }
+  // const handleFileChange = (event: any) => {
+  //   const file = event.target.files?.[0];
+  //   if (file) {
+  //     setSelectedFile(file);
+  //   }
+  // };
+
+  const handleAddForm = () => {
+    setStcwTraining([
+      ...stcwTraining,
+      {
+        number: "",
+        exdate: "",
+        issuedate: "",
+        issuingCountry: "",
+        neverExpires: "",
+        training: "",
+        selectedFile: null,
+      },
+    ]);
+  };
+
+  const handleRemoveForm = (index: number) => {
+    const updatedForms = stcwTraining.filter((_, i) => i !== index);
+    setStcwTraining(updatedForms);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -125,169 +186,188 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
 
   // add plus and minus symbole
 
-  const addFieldPair = () => {
-    setExtraFields([...extraFields, { field1: "", field2: "" }]);
+  const handleFileChange = (index: number, event: any) => {
+    const updatedForms = [...stcwTraining];
+    updatedForms[index].selectedFile = event.target.files?.[0] || null;
+    setStcwTraining(updatedForms);
   };
 
-  const removeFieldPair = () => {
-    if (extraFields.length > 0) {
-      setExtraFields(extraFields.slice(0, -1));
-    }
-  };
-
-  const handleExtraFieldChange = (
+  const handleFormChange = (
     index: number,
-    value: string,
-    field: "field1" | "field2"
+    field: keyof StcwTrainingForm,
+    value: any
   ) => {
-    const updatedFields = [...extraFields];
-    updatedFields[index][field] = value;
-    setExtraFields(updatedFields);
+    const updatedForms = [...stcwTraining];
+    updatedForms[index][field] = value;
+    setStcwTraining(updatedForms);
   };
+
+  // const handleExtraFieldChange = (
+  //   index: number,
+  //   value: string,
+  //   field: "field1" | "field2"
+  // ) => {
+  //   const updatedFields = [...extraFields];
+  //   updatedFields[index][field] = value;
+  //   setExtraFields(updatedFields);
+  // };
 
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
         <div className=" flex flex-col">
           <div className="flex justify-between items-center my-2">
-            {" "}
             <h1 className="text-left font-bold">STCW Training</h1>
             <div className="flex gap-2">
               <AiOutlinePlus
                 className="text-2xl cursor-pointer"
-                onClick={addFieldPair}
+                onClick={handleAddForm}
               />
-              {extraFields.length > 0 && (
+              {stcwTraining.length > 1 && (
                 <AiOutlineMinus
                   className="text-2xl cursor-pointer"
-                  onClick={removeFieldPair}
+                  onClick={() => handleRemoveForm(stcwTraining.length - 1)}
                 />
               )}
             </div>
           </div>
 
-          <div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="">
-                <label
-                  className="text-[14px] leading-[19.07px]  text-[#333333] "
-                  htmlFor="option"
-                >
-                  Training
-                </label>
-                <select
-                  id="option"
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                  name="options"
-                  value={training}
-                  onChange={(e) => setTraining(e.target.value)}
-                >
-                  <option value="" disabled selected>
+          {stcwTraining.map((field, index) => (
+            <div key={index} className="">
+              <div className="grid grid-cols-2 gap-4">
+                <div className="">
+                  <label
+                    className="text-[14px] leading-[19.07px]  text-[#333333] "
+                    htmlFor="option"
+                  >
                     Training
-                  </option>
-                  {sTCHTrainOption &&
-                    sTCHTrainOption?.map((stch: any, index: number) => (
-                      <option key={index} value={stch}>
-                        {stch?.toUpperCase()}
-                      </option>
-                    ))}
-                </select>
-              </div>
-              <div className=" ">
-                <label
-                  className="text-[14px] leading-[19.07px]  text-[#333333] "
-                  htmlFor="trainingcou"
-                >
-                  Issuing Country
-                </label>
-                <select
-                  id="trainingcou"
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                  name="options"
-                  value={trainingCountry}
-                  onChange={(e) => setTrainingCountry(e.target.value)}
-                >
-                  <option value="" disabled selected>
+                  </label>
+                  <select
+                    id="option"
+                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    name="options"
+                    value={field.training}
+                    onChange={(e) =>
+                      handleFormChange(index, "training", e.target.value)
+                    }
+                  >
+                    <option value="" disabled selected>
+                      Training
+                    </option>
+                    {sTCHTrainOption &&
+                      sTCHTrainOption?.map((stch: any, index: number) => (
+                        <option key={index} value={stch}>
+                          {stch?.toUpperCase()}
+                        </option>
+                      ))}
+                  </select>
+                </div>
+                <div className=" ">
+                  <label
+                    className="text-[14px] leading-[19.07px]  text-[#333333] "
+                    htmlFor="trainingcou"
+                  >
                     Issuing Country
-                  </option>
-                  {countryDrop &&
-                    countryDrop?.map((country: any, index: number) => (
-                      <option key={index} value={country}>
-                        {country?.toUpperCase()}
-                      </option>
-                    ))}
-                </select>
-              </div>
+                  </label>
+                  <select
+                    id="trainingcou"
+                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    name="options"
+                    value={field.issuingCountry}
+                    onChange={(e) =>
+                      handleFormChange(index, "issuingCountry", e.target.value)
+                    }
+                  >
+                    <option value="" disabled selected>
+                      Issuing Country
+                    </option>
+                    {countryDrop &&
+                      countryDrop?.map((country: any, index: number) => (
+                        <option key={index} value={country}>
+                          {country?.toUpperCase()}
+                        </option>
+                      ))}
+                  </select>
+                </div>
 
-              <div className="">
-                <label
-                  className="text-[14px] leading-[19.07px]  text-[#333333] "
-                  htmlFor="number12"
-                >
-                  Number
-                </label>
-                <input
-                  id="number12"
-                  type="number"
-                  value={number}
-                  onChange={(e) => setNumber(e.target.value)}
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-                  placeholder=""
-                  required
-                />
-              </div>
+                <div className="">
+                  <label
+                    className="text-[14px] leading-[19.07px]  text-[#333333] "
+                    htmlFor={`number12_${index}`}
+                  >
+                    Number
+                  </label>
+                  <input
+                    id={`number12_${index}`}
+                    type="number"
+                    value={field.number}
+                    onChange={(e) =>
+                      handleFormChange(index, "number", e.target.value)
+                    }
+                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+                    placeholder=""
+                    required
+                  />
+                </div>
 
-              <div className="">
-                <label
-                  className="text-[14px] leading-[19.07px]  text-[#333333]"
-                  htmlFor="issuedate12"
-                >
-                  Issue Date
-                </label>
-                <input
-                  id="issuedate12"
-                  type="date"
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                  value={issuedate}
-                  onChange={(e) => setIssueDate(e.target.value)}
-                />
-              </div>
+                <div className="">
+                  <label
+                    className="text-[14px] leading-[19.07px]  text-[#333333]"
+                    htmlFor={`issuedate12_${index}`}
+                  >
+                    Issue Date
+                  </label>
+                  <input
+                    id={`issuedate12_${index}`}
+                    type="date"
+                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    value={field.issuedate}
+                    onChange={(e) =>
+                      handleFormChange(index, "issuedate", e.target.value)
+                    }
+                  />
+                </div>
 
-             {!neverExpires && ( <div className="">
-                <label
-                  className="text-[14px] leading-[19.07px]  text-[#333333]  "
-                  htmlFor="expiryDate12"
-                >
-                  Expiry Date
-                </label>
-                <input
-                  id="expiryDate12"
-                  type="date"
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                  value={exdate}
-                  onChange={(e) => setExDate(e.target.value)}
-                />
-              </div>
-              )}
+                {!neverExpires && (
+                  <div className="">
+                    <label
+                      className="text-[14px] leading-[19.07px]  text-[#333333]  "
+                      htmlFor="expiryDate12"
+                    >
+                      Expiry Date
+                    </label>
+                    <input
+                      id={`expiryDate12`}
+                      type="date"
+                      className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                      value={field.exdate}
+                      onChange={(e) =>
+                        handleFormChange(index, "exdate", e.target.value)
+                      }
+                    />
+                  </div>
+                )}
 
-              <div className=" flex items-center gap-2 mt-5 ">
-                <input
-                  id="neverExpires"
-                  type="checkbox"
-                  className="border focus:ring-[#00A264]  text-[#00A264] checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
-                  checked={neverExpires}
-                  onChange={(e) => setNeverExpires(!neverExpires)}
-                />
-                <label
-                  className="text-[14px] leading-[19.07px]  text-[#333333]"
-                  htmlFor="neverExpires"
-                >
-                  Never Expires
-                </label>
-              </div>
-              {/* add extra field */}
+                <div className=" flex items-center gap-2 mt-5 ">
+                  <input
+                    id={`neverExpires_${index}`}
+                    type="checkbox"
+                    className="border focus:ring-[#00A264]  text-[#00A264] checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
+                    checked={field.neverExpires}
+                    onChange={(e) =>
+                      handleFormChange(index, "neverExpires", e.target.checked)
+                    }
+                  />
+                  <label
+                    className="text-[14px] leading-[19.07px]  text-[#333333]"
+                    htmlFor={`neverExpires_${index}`}
+                  >
+                    Never Expires
+                  </label>
+                </div>
+                {/* add extra field */}
 
-              {/* {extraFields.map((field, index) => (
+                {/* {extraFields.map((field, index) => (
                 <React.Fragment key={index}>
                   <div className="w-full">
                     <label
@@ -327,54 +407,55 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
                   </div>
                 </React.Fragment>
               ))} */}
-            </div>
+              </div>
 
-            <div className="flex items-center justify-start gap-4 my-6">
-              <div className="flex gap-6 items-center  ">
-                <label
-                  htmlFor="file-upload"
-                  className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px]   "
-                >
-                  Attachment Document
-                </label>
-                <input
-                  id="file-upload"
-                  type="file"
-                  className="hidden"
-                  onChange={handleFileChange}
-                />
-                {/* {selectedFile && (
+              <div className="flex items-center justify-start gap-4 my-6">
+                <div className="flex gap-6 items-center  ">
+                  <label
+                    htmlFor={`file-upload_${index}`}
+                    className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px]   "
+                  >
+                    Attachment Document
+                  </label>
+                  <input
+                    id={`file-upload_${index}`}
+                    type="file"
+                    className="hidden"
+                    onChange={(e) => handleFileChange(index, e)}
+                  />
+                  {/* {selectedFile && (
           <p className="mt-4 text-gray-700">
             File Selected: {selectedFile.name}
           </p>
         )} */}
+                </div>
+                {field.selectedFile ? (
+                  <p className="mt-4 text-gray-700">
+                    File Selected: {field.selectedFile.name}
+                  </p>
+                ) : (
+                  <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                    No file selected
+                  </p>
+                )}
               </div>
-              {selectedFile ? (
-                <p className="mt-4 text-gray-700">
-                  File Selected: {selectedFile.name}
-                </p>
-              ) : (
-                <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                  No file selected
-                </p>
-              )}
-            </div>
 
-            <div className="flex gap-2 mb-4 mt-4">
-              <button
-                type="submit"
-                className="border border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
-              >
-                Save
-              </button>
-              <Link
-                href="#"
-                className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
-              >
-                Edit
-              </Link>
+              <div className="flex gap-2 mb-4 mt-4">
+                <button
+                  type="submit"
+                  className="border border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
+                >
+                  Save
+                </button>
+                <Link
+                  href="#"
+                  className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
+                >
+                  Edit
+                </Link>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </form>
     </div>

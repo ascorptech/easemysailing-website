@@ -1075,9 +1075,9 @@ const MyJob = () => {
                 </span>
                 <CircularProgress percentage={Math.round(educationComplete?.percentage)} color={educationComplete.color} />
               </div>
-            </div> */}
+            </div>
 
-            {/* {educationOpen && <Education educationComplete={educationComplete} setEducationComplete={setEducationComplete}  userDetail={profileDetail}/>} */}
+            {educationOpen && <Education educationComplete={educationComplete} setEducationComplete={setEducationComplete}  userDetail={profileDetail}/>} */}
 
             <div className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${professionalComplete?.color}] mt-3`}>
               <h2 className="">Professional SKills</h2>

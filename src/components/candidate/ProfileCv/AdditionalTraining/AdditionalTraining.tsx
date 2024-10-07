@@ -9,6 +9,34 @@ import React from "react";
 import react, { useEffect, useState } from "react";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
+type AdditionalTraining = {
+  countryCertifi:string;
+  number:any;
+  issuedate:string;
+  exdate:string;
+  trainingCenter:string;
+  countryIC:string;
+  neverExpCheck:any;
+  selectedFile: File | null;
+}
+
+type Professional = {
+  capacity: string;
+  level:string;
+  trainingCenter1:string;
+  typeOfTest:string;
+  result:string;
+  issuingCountry:string;
+  eCDISNumber:string;
+  issuedate1:string;
+  exdate1:string;
+  neverChecked1:any;
+  selectedFiles:File | null;
+
+
+
+}
+
 type AdditionalComplete = {
   percentage: number;
   color: string;
@@ -29,6 +57,32 @@ const AdditionalTraining = ({
   const [extraFields, setExtraFields] = useState<
     { field1: string; field2: string }[]
   >([]);
+
+  const [additionalForms, setAdditionalForms] = useState<AdditionalTraining[]> ([{
+    countryCertifi:"",
+    number:"",
+    issuedate:"" ,
+    exdate:"",
+    trainingCenter:"",
+    countryIC:"",
+    neverExpCheck:"",
+    selectedFile:null,
+
+  }])
+
+  const [professional, setProfessional] = useState<Professional[]>([{
+    capacity: "",
+    level:"",
+    trainingCenter1:"",
+    typeOfTest:"",
+    result:"",
+    issuingCountry:"",
+    eCDISNumber:"",
+    issuedate1:"",
+    exdate1:"",
+    neverChecked1:"",
+    selectedFiles:null,
+  }])
 
   const [number, setNumber] = useState("");
   const [issuedate, setIssueDate] = useState("");
@@ -720,6 +774,7 @@ const AdditionalTraining = ({
         {/* Third section */}
 
         <div className="flex gap-2 mb-4 mt-4">
+          
           <button
             type="submit"
             className="border text-[14px] leading-[19.07px] font-[poppins]  border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"

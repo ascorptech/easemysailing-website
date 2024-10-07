@@ -25,8 +25,18 @@ const MedicalCertificates = ({
   userDetail,
 }: Props) => {
   const [extraFields, setExtraFields] = useState<
-    { field1: string; field2: string }[]
+    {
+      field1: string;
+      field2: any;
+      neverExpires: any;
+      field3: any;
+      field4: any;
+      selectedFile:any;
+    }[]
   >([]);
+  //   const [extraFields, setExtraFields] = useState<
+  //   {  neverexp:any; field4:any; field5:any }[]
+  // >([]);
 
   const [number, setNumber] = useState("");
   const [issuedate, setIssueDate] = useState("");
@@ -103,7 +113,7 @@ const MedicalCertificates = ({
     });
   }, []);
 
-  const totalFields = 31 + extraFields.length * 2;
+  const totalFields = 31 + extraFields.length * 5;
   const filledFields = [
     number,
     issuedate,
@@ -137,7 +147,14 @@ const MedicalCertificates = ({
     selectedFilesFlag,
     exdateCovid || expiresMedical,
     issuedateCovid,
-    ...extraFields.flatMap((field) => [field.field1, field.field2]),
+    ...extraFields.flatMap((field) => [
+      field.field1,
+      field.field2,
+      field.neverExpires,
+      field.field3,
+      field.field4,
+      field.selectedFile
+    ]),
   ].filter(Boolean).length;
 
   const percentage = (filledFields / totalFields) * 100;
@@ -271,7 +288,10 @@ const MedicalCertificates = ({
   // add plus and minus symbole
 
   const addFieldPair = () => {
-    setExtraFields([...extraFields, { field1: "", field2: "" }]);
+    setExtraFields([
+      ...extraFields,
+      { field1: "", field2: "", neverExpires: "", field3: "", field4: "",selectedFile:"" },
+    ]);
   };
 
   const removeFieldPair = () => {
@@ -282,13 +302,14 @@ const MedicalCertificates = ({
 
   const handleExtraFieldChange = (
     index: number,
-    value: string,
-    field: "field1" | "field2"
+    value: any,
+    field: "field1" | "field2" | "neverExpires" | "field3" | "field4"|"selectedFile"
   ) => {
     const updatedFields = [...extraFields];
-    updatedFields[index][field] = value;
+    updatedFields[index] = { ...updatedFields[index], [field]: value };
     setExtraFields(updatedFields);
   };
+  
 
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
@@ -962,49 +983,10 @@ const MedicalCertificates = ({
             </label>
           </div>
 
-          {extraFields.map((field, index) => (
-            <React.Fragment key={index}>
-              <div className="w-full">
-                <label
-                  className="block text-[14px] font-[poppins] text-[#333333] mb-1"
-                  htmlFor={`extraField1_${index}`}
-                >
-                  Extra Field {index * 2 + 1}
-                </label>
-                <input
-                  id={`extraField1_${index}`}
-                  type="text"
-                  value={field.field1}
-                  onChange={(e) =>
-                    handleExtraFieldChange(index, e.target.value, "field1")
-                  }
-                  className="border rounded-md w-full h-9 px-2 text-[14px] text-[#333333] focus:outline-[#00A264] border-[#00A264]"
-                  // disabled={disabled}
-                />
-              </div>
-              <div className="w-full">
-                <label
-                  className="block text-[14px] font-[poppins] text-[#333333] mb-1"
-                  htmlFor={`extraField2_${index}`}
-                >
-                  Extra Field {index * 2 + 2}
-                </label>
-                <input
-                  id={`extraField2_${index}`}
-                  type="text"
-                  value={field.field2}
-                  onChange={(e) =>
-                    handleExtraFieldChange(index, e.target.value, "field2")
-                  }
-                  className="border rounded-md w-full h-9 px-2 text-[14px] text-[#333333] focus:outline-[#00A264] border-[#00A264]"
-                  // disabled={disabled}
-                />
-              </div>
-            </React.Fragment>
-          ))}
+      
 
           <div className="grid col-span-2">
-            <div className="flex gap-6 items-center  mt-4  ">
+            <div className="flex gap-6 items-center  my-4  ">
               <div>
                 <label
                   htmlFor="file-uploadmedicalvaccine"
@@ -1032,6 +1014,125 @@ const MedicalCertificates = ({
               </div>
             </div>
           </div>
+
+          {extraFields.map((field, index) => (
+            <React.Fragment key={index} >
+
+              <div className="w-full ">
+                <label
+                  className="block text-[14px] font-[poppins] text-[#333333] mb-1"
+                  htmlFor={`extraField1_${index}`}
+                >
+                  Type {index * 2 + 1}
+                </label>
+                <select
+                  id={`extraField1_${index}`}
+                  
+                  value={field.field1}
+                  onChange={(e) =>
+                    handleExtraFieldChange(index, e.target.value, "field1")
+                  }
+                  className="border rounded-md w-full h-9 px-2 text-[14px] text-[#333333] focus:outline-[#00A264] border-[#00A264]"
+                  // disabled={disabled}
+                >
+                 <option value="" disabled selected>
+                Type
+              </option></select>
+              </div>
+              <div className="w-full">
+                <label
+                  className="block text-[14px] font-[poppins] text-[#333333] mb-1"
+                  htmlFor={`extraField2_${index}`}
+                >
+                  Vaccination Date {index * 2 + 2}
+                </label>
+                <input
+                  id={`extraField2_${index}`}
+                  type="date"
+                  value={field.field2}
+                  onChange={(e) =>
+                    handleExtraFieldChange(index, e.target.value, "field2")
+                  }
+                  className="border rounded-md w-full h-9 px-2 text-[14px] text-[#333333] focus:outline-[#00A264] border-[#00A264]"
+                  // disabled={disabled}
+                />
+              </div>
+
+              {!field.neverExpires && (
+                <div className="w-full">
+                  <label
+                    className="block text-[14px] font-[poppins] text-[#333333] mb-1"
+                    htmlFor={`extraField3_${index}`}
+                  >
+                    Expiry Date {index * 2 + 2}
+                  </label>
+                  <input
+                    id={`extraField3_${index}`}
+                    type="date"
+                    value={field.field3}
+                    onChange={(e) =>
+                      handleExtraFieldChange(index, e.target.value, "field3")
+                    }
+                    className="border rounded-md w-full h-9 px-2 text-[14px] text-[#333333] focus:outline-[#00A264] border-[#00A264]"
+                    // disabled={disabled}
+                  />
+                </div>
+              )}
+              <div className=" flex items-center  gap-2 mt-5">
+                <input
+                  id={`field3_${index}`}
+                  type="checkbox"
+                  className="border focus:ring-[#00A264]  text-[#00A264] checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
+                  checked={field.neverExpires}
+                  onChange={(e) =>
+                    handleExtraFieldChange(
+                      index,
+                      e.target.checked,
+                      "neverExpires"
+                    )
+                  }
+                />
+                <label
+                  className="text-[14px] leading-[19.07px]  text-[#333333]"
+                  htmlFor={`field3_${index}`}
+                >
+                  Never Expires
+                </label>
+              </div>
+
+              <div className="grid col-span-2">
+            <div className="flex gap-6 items-center  my-4  ">
+              <div>
+                <label
+                 htmlFor={`file-uploadmedicalvaccine_${index}`}
+                  className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2  text-[14px] leading-[19.07px]  "
+                >
+                  Attachment Docoment
+                </label>
+                <input
+                   id={`file-uploadmedicalvaccine_${index}`}
+                  type="file"
+                  className="hidden"
+                  onChange={(e) =>
+                    handleExtraFieldChange(index, e.target.files?.[0], "selectedFile")
+                  }
+                />
+              </div>
+              <div>
+              {field.selectedFile ? (
+            <p className="text-gray-700">
+              File Selected: {field.selectedFile.name}
+            </p>
+          ) : (
+            <p className="text-[14px] leading-[19.07px] text-[#333333]">
+              No file selected
+            </p>
+          )}
+              </div>
+            </div>
+          </div>
+            </React.Fragment>
+          ))}
 
           {/* Flag medical */}
           <div className="grid col-span-2 ">

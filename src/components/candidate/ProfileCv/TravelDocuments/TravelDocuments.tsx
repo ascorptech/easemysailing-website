@@ -469,9 +469,7 @@ const TravelDocuments = ({
               </div>
             </div>
           </div>
-          {/* </div> */}
-
-          {/* third section */}
+        
 
           <div className=" grid col-span-2  my-2">
             <div className="flex items-center justify-between">

@@ -20,10 +20,12 @@ type Props = {
   userDetail: any;
 };
 
-type SeaGoingFiled={
-  imo:string,
+type SeaGoingFiled = {
+  imo: string;
   VersalName: string;
-}
+  rank:string;
+  tonnage:string;
+};
 
 const SeaGoingService = ({
   seaGoingServiceComplete,
@@ -31,7 +33,7 @@ const SeaGoingService = ({
   userDetail,
 }: Props) => {
   const [fields, setFields] = useState<SeaGoingFiled[]>([
-    { imo: "", VersalName: "" }
+    { imo: "", VersalName: "" ,rank: "",tonnage:""},
   ]);
   const [vercelName, setVercelName] = useState("");
   const [embarkationdate, setEmbarkationDate] = useState("");
@@ -59,10 +61,10 @@ const SeaGoingService = ({
     GetDropdownDetails("DRUG&ALCOHOLTEST", (res: any) => {
       setEngineDrop(res?.data?.values);
     });
-    GetDropdownDetails('ecdisEquipment', (res: any) => {
-      console.log('vac',res?.data)
-      setEcdisDrop(res?.data?.values)
-    })
+    GetDropdownDetails("ecdisEquipment", (res: any) => {
+      console.log("vac", res?.data);
+      setEcdisDrop(res?.data?.values);
+    });
     // GetDropdownDetails('country', (res: any) => {
     //   // console.log('County',res?.data)
     //   setCountryDrop(res?.data?.values)
@@ -70,15 +72,19 @@ const SeaGoingService = ({
   }, []);
 
   // const totalFields = 11;
-  const totalFields = fields.length * 2 + 9;
+  const totalFields = fields.length * 4 + 9;
   const filledFields = [
     ...fields.map((field) => field.imo),
     ...fields.map((field) => field.VersalName),
+    ...fields.map((field) => field.rank),
+    ...fields.map((field) => field.tonnage),
+
+
     // vercelName,
     // imo,
     disembarkationDate,
-    tonnage,
-    rank,
+    // tonnage,
+    // rank,
     enginemake,
     eCDIS,
     embarkationdate,
@@ -121,36 +127,35 @@ const SeaGoingService = ({
     e.preventDefault();
     let data = {
       " id": userDetail?.userId,
-      "vesselName": vercelName,
-      "imoNumber": imo,
-      "disembarkationDate": disembarkationDate,
+      vesselName: vercelName,
+      imoNumber: imo,
+      disembarkationDate: disembarkationDate,
       " tonnage": tonnage,
-      "rank": rank,
-      "engineMake": enginemake,
-      "ecdis": eCDIS,
-      "embarkationDate": embarkationdate,
-      "netSeagoingDays": seagoingNumber,
-      "gearless": gearless,
+      rank: rank,
+      engineMake: enginemake,
+      ecdis: eCDIS,
+      embarkationDate: embarkationdate,
+      netSeagoingDays: seagoingNumber,
+      gearless: gearless,
       " inertGasSystem": inertGas,
     };
 
     AddSeagoingData(data, AddSeagoingDatacb);
   };
 
-
-  const AddSeagoingDatacb = (result:any)=>{
-    console.log('res',result)
-    if (result?.status == 200||result?.status == 201) {
-      console.log(result)
+  const AddSeagoingDatacb = (result: any) => {
+    console.log("res", result);
+    if (result?.status == 200 || result?.status == 201) {
+      console.log(result);
       toast.success("Sea Going Detaila submited successfully");
       setTimeout(() => {
-        window.location.reload()
+        window.location.reload();
       }, 1000);
     } else {
-      console.log(result)
+      console.log(result);
       toast.error("Sea Going Detaila  not submited");
     }
-  }
+  };
 
   const handleFieldChange = (index: number, name: string, value: string) => {
     const updatedFields = fields.map((field, i) =>
@@ -160,7 +165,7 @@ const SeaGoingService = ({
   };
 
   const addField = () => {
-    setFields([...fields, { imo: "", VersalName: "" }]);
+    setFields([...fields, { imo: "", VersalName: "" ,rank:"", tonnage:"" }]);
   };
 
   const removeField = () => {
@@ -169,35 +174,44 @@ const SeaGoingService = ({
     }
   };
 
-
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
-        <h1 className=" font-bold my-2">SeaGoing Experience</h1>
-        
-        {fields.map((field, index) =>(
-        <div key={index} className="grid grid-cols-2 gap-4">
-          
-          
-          
+        <div className="flex items-center justify-between">
+          <h1 className=" font-bold my-2">SeaGoing Experience</h1>
 
-          <div className="">
-            <label
-              className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
-              htmlFor="imo"
-            >
-              IMO
-            </label>
-            <input
-              id="imo"
-              type="text"
-              value={imo}
-              onChange={(e) => setImo(e.target.value)}
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              placeholder=""
-              required
+          <div className="flex gap-2">
+            <AiOutlinePlus
+              className="text-2xl cursor-pointer"
+              // onClick={addFieldPair}
             />
-            {/* <select
+            {/* {extraFields.length > 0 && ( */}
+            <AiOutlineMinus
+              className="text-2xl cursor-pointer"
+              // onClick={removeFieldPair}
+            />
+            {/* )} */}
+          </div>
+        </div>
+        {fields.map((field, index) => (
+          <div key={index} className="grid grid-cols-2 gap-4">
+            <div className="">
+              <label
+                className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+                htmlFor="imo"
+              >
+                IMO
+              </label>
+              <input
+                id="imo"
+                type="text"
+                value={imo}
+                onChange={(e) => setImo(e.target.value)}
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                placeholder=""
+                required
+              />
+              {/* <select
               id="imo"
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
@@ -214,43 +228,43 @@ const SeaGoingService = ({
                   </option>
                 ))}
             </select> */}
-          </div>
+            </div>
 
-          <div className="   ">
-            <label
-              className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
-              htmlFor="vesselname"
-            >
-              Vessel Name
-            </label>
-            <input
-              id="vesselname"
-              type="text"
-              value={vercelName}
-              onChange={(e) => setVercelName(e.target.value)}
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              placeholder=""
-              required
-            />
-          </div>
+            <div className="   ">
+              <label
+                className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+                htmlFor="vesselname"
+              >
+                Vessel Name
+              </label>
+              <input
+                id="vesselname"
+                type="text"
+                value={vercelName}
+                onChange={(e) => setVercelName(e.target.value)}
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                placeholder=""
+                required
+              />
+            </div>
 
-          <div className="flex justify-start items-center gap-4">
+            {/* <div className="flex justify-start items-center gap-4">
               {index === fields.length - 1 && (
-                
-
-                <AiOutlinePlus className="text-green-600 cursor-pointer" onClick={addField} />
+                <AiOutlinePlus
+                  className="text-green-600 cursor-pointer"
+                  onClick={addField}
+                />
               )}
               {fields.length > 1 && index === fields.length - 1 && (
-
-<AiOutlineMinus className="text-red-600 cursor-pointer" onClick={ removeField} />
-               
+                <AiOutlineMinus
+                  className="text-red-600 cursor-pointer"
+                  onClick={removeField}
+                />
               )}
-            </div>
-            </div>
-        ) )}
-        <div className=" grid grid-cols-2 gap-4">
-        
-
+            </div> */}
+          {/* </div> */}
+        {/* ))} */}
+        {/* <div className=" grid grid-cols-2 gap-4"> */}
           <div className=" ">
             <label
               className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
@@ -294,12 +308,14 @@ const SeaGoingService = ({
               required
             />
           </div>
+          </div>
+        ))}
 
-          <div className=" grid col-span-2  my-2">
+          <div className="   my-2">
             {" "}
             <h1 className="font-bold"> Seaman Experience Details</h1>
           </div>
-
+<div className=" grid grid-cols-2 gap-4">
           <div className="">
             <label
               className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "

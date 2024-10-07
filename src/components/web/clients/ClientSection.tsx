@@ -32,52 +32,29 @@ const ClientSection: React.FC = () => {
 
   const clientCards = [
     {
-      text: "An exceptional platform for seafarers! It’s streamlined, user-friendly, and genuinely cares about our welfare and career growth.",
-      name: "Danny Jhonas",
-      role: "Customer",
+      text: "EaseMySailing’s futuristic platform has transformed maritime recruitment for us. It’s fast, user-friendly, and promotes fairness, helping us quickly connect with skilled seafarers globally. An absolute game-changer!",
+      name: "James V.",
+      role: "Shipowner",
       rating: 4,
-      imageSrc: "/images/ellipse.png",
+      imageSrc: "/people.png",
       image1: "/images/quotes.png",
     },
     {
-      text: "EaseMySailing is built by seafarers who truly understand and care about us. We deserve respect and recognition, and this platform envisions just that.",
-      name: "Danny Jhonas",
-      role: "Customer",
+      text: "EaseMySailing empowers seafarers like me to take control of our careers. It’s transparent, secure, and matches my skills with the right opportunities. It’s the platform seafarers have been waiting for!",
+      name: "Rahul S.",
+      role: " Seafarer",
       rating: 4,
-      imageSrc: "/images/ellipse.png",
+      imageSrc: "/people.png",
       image1: "/images/quotes.png",
     },
     {
-      text: "EaseMySailing has redefined how seafarers connect with recruiters. It’s intuitive and respectful of our hard work. It’s the go-to platform for Seafarers.",
-      name: "Danny Jhonas",
-      role: "Customer",
+      text: "EaseMySailing is a unique maritime platform that goes beyond recruitment, prioritizing seafarer welfare and career growth. Acting as HR, it brings a much-needed revolution to the industry.",
+      name: "Alex M.",
+      role: "Chief Officer",
       rating: 4,
-      imageSrc: "/images/ellipse.png",
+      imageSrc: "/people.png",
       image1: "/images/quotes.png",
     },
-    {
-      text: "An exceptional platform for seafarers! It’s streamlined, user-friendly, and genuinely cares about our welfare and career growth.",
-      name: "Danny Jhonas",
-      role: "Customer",
-      imageSrc: "/images/ellipse.png",
-      image1: "/images/quotes.png",
-    },
-    {
-      text: "EaseMySailing is built by seafarers who truly understand and care about us. We deserve respect and recognition, and this platform envisions just that.",
-      name: "Danny Jhonas",
-      role: "Customer",
-      imageSrc: "/images/ellipse.png",
-      image1: "/images/quotes.png",
-    },
-    {
-      text: "EaseMySailing has redefined how seafarers connect with recruiters. It’s intuitive and respectful of our hard work. It’s the go-to platform for Seafarers.",
-      name: "Danny Jhonas",
-      role: "Customer",
-      imageSrc: "/images/ellipse.png",
-      image1: "/images/quotes.png",
-    },
-
-    
   ];
 
   const scrollRef = useRef<HTMLDivElement>(null);

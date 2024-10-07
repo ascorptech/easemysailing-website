@@ -124,7 +124,7 @@ const ClientSection: React.FC = () => {
         </h2>
       </div>
 
-        <div className="hidden sm:flex flex-col z-10">
+        <div className="hidden sm:flex flex-col z-10 desktop-slider">
           <Carousel  infinite responsive={responsive} slidesToSlide={2} sliderClass="slideCenter">
           {clientCards?.map((ccard:any, index:any) => (
               <ClientsCard
@@ -139,7 +139,25 @@ const ClientSection: React.FC = () => {
             ))}
           </Carousel>
         </div>
-      <div className="sm:hidden relative flex items-center justify-center mx-2 md:mx-4 lg:mx-0 my-4">
+
+        <div className="mobile-slider sm:flex flex-col z-10">
+          <Carousel  infinite responsive={responsive} sliderClass="slideCenter">
+          {clientCards?.map((ccard:any, index:any) => (
+              <ClientsCard
+                key={index}
+                text={ccard.text}
+                name={ccard.name}
+                role={ccard.role}
+                imageSrc={ccard.imageSrc}
+                image1={ccard.image1}
+                index={index}
+              />
+            ))}
+          </Carousel>
+        </div>
+
+        {/* ========= */}
+      {/* <div className="sm:hidden relative flex items-center justify-center mx-2 md:mx-4 lg:mx-0 my-4">
         <button
           onClick={scrollLeft}
           className="absolute left-2 md:left-4 lg:left-8 text-5xl text-gray-500 z-10"
@@ -149,12 +167,11 @@ const ClientSection: React.FC = () => {
 
         <div
           ref={cardContainer}
-          className="flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory w-[85%] sm:w-full sm:max-w-6xl gap-3 text-center"
-        >
+          className="flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory w-[85%] sm:w-full sm:max-w-6xl gap-3 text-center">
           {clientCards?.map((ccard: any, index: any) => (
             <div className="snap-center flex flex-col items-center min-w-[280px] max-w-[14rem] mx-auto" key={index}>
             <div className={"bg-white p-6 w-full h-[400px] rounded-full flex flex-col border border-[#00A264]"}>
-              {/* Image Section */}
+              
               <div className="flex justify-center items-center mb-4">
                 <Image
                   src={ccard?.imageSrc}
@@ -165,12 +182,12 @@ const ClientSection: React.FC = () => {
                 />
               </div>
       
-              {/* Text */}
+              
               <p className="text-gray-700 text-center text-[13px] leading-[28px] mb-4">
                 {ccard?.text}
               </p>
       
-              {/* Name and Role */}
+            
               <div className="text-center">
                 <h4 className="font-bold text-[20px] text-[#00A264]">{ccard?.name}</h4>
                 <p className="text-black">{ccard?.role}</p>
@@ -186,7 +203,7 @@ const ClientSection: React.FC = () => {
         >
           <PiCaretRightThin />
         </button>
-      </div>
+      </div> */}
       
     </div>
     

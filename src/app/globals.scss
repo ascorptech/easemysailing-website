@@ -47,3 +47,19 @@
   min-width: 35px !important;
   min-height: 35px !important;
 }
+@media (min-width: 640px) {
+.sm\:flex.desktop-slider,.sm\:flex.mobile-slider{
+  width: 100%;
+}}
+.mobile-slider{
+  display: none !important;
+}
+@media(max-width:767px){
+  .mobile-slider{
+    display: block !important;
+  }
+  .inner-card.scale-110{
+    transform: none;
+    border: 0;
+  }
+}

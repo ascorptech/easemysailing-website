@@ -22,7 +22,7 @@ const ClientsCard: React.FC<ClientsCardProps> = ({
 }) => {
   return (
     <div className="flex justify-center items-center py-[45px]">
-      <div className={index %2 !== 0?"bg-white p-6 lg:w-[300px] lg:h-[430px] w-[280px] h-[400px] rounded-full flex flex-col justify-center items-center flex-shrink-0 transition-transform scale-110 border border-[#00A264]":"bg-white p-6 lg:w-[300px] lg:h-[430px] w-[280px] h-[400px] rounded-full flex flex-col justify-center items-center flex-shrink-0 transition-transform"}>
+      <div className={index %2 !== 0?"inner-card bg-white p-6 lg:w-[300px] lg:h-[430px] w-[280px] h-[400px] rounded-full flex flex-col justify-center items-center flex-shrink-0 transition-transform scale-110 border border-[#00A264]":"bg-white p-6 lg:w-[300px] lg:h-[430px] w-[280px] h-[400px] rounded-full flex flex-col justify-center items-center flex-shrink-0 transition-transform"}>
         {/* Image Section */}
         <div className="flex justify-center items-center mb-4">
           <Image

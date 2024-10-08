@@ -66,3 +66,23 @@
   }
 }
 
+.main-banner-wrap{
+  position: relative;
+}
+
+.main-banner-wrap .gallery-wrap{
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  filter: grayscale(100%);
+  opacity: 0.8;
+  background-color: gray;
+  
+}
+ .main-banner-wrap:hover .gallery-wrap{
+   opacity: 1;
+   background-color: transparent !important;
+   filter:grayscale(0)
+ }

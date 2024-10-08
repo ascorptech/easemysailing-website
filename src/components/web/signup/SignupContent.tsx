@@ -5,9 +5,12 @@ import Image from "next/image";
 
 export default function SignupContent() {
   return (
-    <div className="relative h-screen transition-all duration-300 filter grayscale hover:grayscale-0 w-full mt-16">
+    <div className="main-banner-wrap relative h-screen transition-all duration-300 w-full mt-16">
       {/* The gallery background */}
+      <div className="gallery-wrap filter">
       <GalleryBackground />
+      </div>
+    
 
       {/* Your content, which will be layered above the background */}
       <div className="absolute inset-0 bg-black bg-opacity-0 flex items-center justify-center text-center  text-white ">

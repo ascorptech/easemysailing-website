@@ -34,10 +34,10 @@ const PodcastList = () => {
     setIsLoading(false)
   }
 
-  const currentItems = podcasts?.length?podcasts?.toReversed()?.slice(
-    (currentPage - 1) * resourcesPerPage,
-    currentPage * resourcesPerPage
-  ):[];
+  // const currentItems = podcasts?.length?podcasts?.toReversed()?.slice(
+  //   (currentPage - 1) * resourcesPerPage,
+  //   currentPage * resourcesPerPage
+  // ):[];
 
   const nextPage = () => {
     if (currentPage < totalPages) {
@@ -81,8 +81,8 @@ const PodcastList = () => {
       size={10}
       />
     </div>):( 
-    <div>
-      <div className="lg:h-[500px] h-[220px] border-2 rounded-lg mb-8 cursor-pointer" onClick={() => openModal(selected)}>
+    <React.Fragment>{podcasts?.length?<div className="w-full">
+      <div className="lg:h-[500px] h-[220px] shadow-md rounded-lg mb-8 cursor-pointer" onClick={() => openModal(podcasts[0])}>
         {/* <iframe
           width="100%"
           height="100%"
@@ -93,8 +93,8 @@ const PodcastList = () => {
           allowFullScreen
         ></iframe> */}
         <Image
-          src={`data:image/png;image/jpg;image/jpeg;base64,${selected?.thumbnail}`}
-          alt={selected?.title}
+          src={`data:image/png;image/jpg;image/jpeg;base64,${podcasts[0]?.thumbnail}`}
+          alt={podcasts[0]?.title}
           width={100}
           height={100}
           priority
@@ -166,7 +166,9 @@ const PodcastList = () => {
           </div>
         </div>
       )}
-    </div>
+    </div>:<div className='flex justify-center items-center h-[35rem] w-full shadow-md rounded-md border'>
+      <span className="text-center text-[46px] leading-[69px] text-[#00000] font-bold">Something Exciting Comming Soon <span className='text-[#00A264]'>Stay Tuned!</span></span>
+      </div>}</React.Fragment>
     )}
     </React.Fragment>
   );

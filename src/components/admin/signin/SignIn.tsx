@@ -17,14 +17,15 @@ import { postReq } from "@/RootServices";
 import { LoginData } from "@/app/(admin)/admin/Services/loginService";
 import { useRouter } from "next/navigation";
 import ClipLoader from "react-spinners/ClipLoader";
+import { toast } from "react-toastify";
 
 const SignIn = () => {
   const route = useRouter();
   // const [emailOrPhone, setEmailOrPhone] = useState("ems@admin.com");
   const [emailOrPhone, setEmailOrPhone] = useState(
-    "ajay.chaurasia25921@gmail.com"
+    ""
   );
-  const [password, setPassword] = useState("C@$R@k2020");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading,setIsLoading] = useState(false)
   const [isForgotPasswordOpen, setIsForgotPasswordOpen] = useState(false);
@@ -87,7 +88,7 @@ const SignIn = () => {
   const handleSubmit = async (e: any) => {
     try {
       e.preventDefault();
-
+      setIsLoading(true)
       let data = {
         email: emailOrPhone,
         password: password,
@@ -96,10 +97,19 @@ const SignIn = () => {
 
       const response = await LoginData(data);
       if (response?.data) {
-        const token = response?.data?.token;
-        document.cookie = `token=${response?.data?.token}; path=/admin`;
-        localStorage.setItem("token", token);
-        route.push("/admin/dashboard");
+       
+        if (response?.status ==200) {
+          const token = response?.data?.token;
+          document.cookie = `token=${response?.data?.token}; path=/admin`;
+          localStorage.setItem("token", token);
+          route.push("/admin/dashboard");
+          toast.success('Login Successfull')
+          setIsLoading(false)
+        }else{
+          toast.error('Invalid Email or Password')
+          setIsLoading(false)
+        }
+        
       }
     } catch (error) {
       console.log("err", error);
@@ -188,11 +198,11 @@ const SignIn = () => {
                   <input
                     id="rememberMe"
                     type="checkbox"
-                    className="w-4 h-4 text-green-500 border-gray-300 rounded focus:ring-green-800"
+                    className="w-4 h-4 text-[#00A264] border-gray-300 rounded focus:ring-green-800"
                   />
                   <label
                     htmlFor="rememberMe"
-                    className="block ml-2 text-sm text-green-700"
+                    className="block ml-2 text-sm text-[#00A264]"
                   >
                     Remember me
                   </label>
@@ -200,7 +210,7 @@ const SignIn = () => {
 
                 <Link
                   href="#"
-                  className="inline-block text-sm text-green-500 align-baseline hover:text-green-800 "
+                  className="inline-block text-sm text-[#00A264] align-baseline hover:text-green-800 "
                   onClick={openForgotPassword}
                 >
                   Forgot Password?

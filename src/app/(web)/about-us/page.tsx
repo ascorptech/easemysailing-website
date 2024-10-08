@@ -5,9 +5,11 @@ import Mv2 from "@/components/web/about_page/mvv/Mv2";
 import Rating1 from "@/components/web/about_page/aboutrating/Rating1";
 import Team from "@/components/web/about_page/team/Team";
 import Team2 from "@/components/web/about_page/team/team2";
+import HeadingAbout from "@/components/web/about_page/heading/HeadingAbout";
 const page = () => {
   return (
     <div className="flex flex-col">
+      <HeadingAbout/>
       <Talk />
       <Wedo />
       <Crew />

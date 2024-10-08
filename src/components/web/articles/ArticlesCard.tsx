@@ -77,7 +77,7 @@ const ArticlesCard = () => {
         <IoMdArrowBack />
       </button>
 
-      <div
+      {articles?.length? <div
         ref={cardRef}
         className="overflow-auto w-[90%] mx-auto sm:mx-0 sm:w-full sm:grid sm:grid-rows-1 sm:grid-cols-4 gap-2 sm:gap-10">
       {/* <div
@@ -110,7 +110,9 @@ const ArticlesCard = () => {
             </div>
           </div>
         ))}
-      </div>
+      </div>:<div className="w-full h-52 flex justify-center items-center">
+      <span className="text-[#00A264] text-2xl">No Content Found!</span>
+      </div>}
 
       {/* Right Scroll Button */}
       <button

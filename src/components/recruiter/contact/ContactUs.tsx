@@ -5,7 +5,7 @@ import { TfiReload } from "react-icons/tfi";
 import { GrLocation } from "react-icons/gr";
 import { FiPhoneCall, FiMail } from "react-icons/fi";
 import { toast } from "react-toastify";
-import { AddContactData } from "@/app/(web)/contact/Services/contactService";
+import { AddContactData } from "@/app/(web)/contact-us/Services/contactService";
 import PhoneInput from "react-phone-input-2"; // Import the phone input component
 import "react-phone-input-2/lib/style.css";
 import Image from "next/image";

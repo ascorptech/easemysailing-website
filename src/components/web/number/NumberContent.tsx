@@ -28,8 +28,8 @@ const NumberContent = () => {
               />
             </div>
             <div className="flex flex-col justify-center items-center">
-              <span className="text-lg md:text-2xl font-extrabold">$ 14 T</span>
-              <span className="text-gray-700  text-[10px] lg:mt-2 md:text-[13px]">
+              <span className="text-lg md:text-2xl font-extrabold">$ 14 Trillion</span>
+              <span className="text-gray-700 text-[10px] lg:mt-2 md:text-[13px] xl:text-[11px]">
                 in Goods moved each year
               </span>
             </div>
@@ -48,7 +48,7 @@ const NumberContent = () => {
             </div>
             <div className="flex flex-col justify-center items-center">
               <span className="text-lg md:text-2xl font-extrabold">50,000+</span>
-              <span className="text-gray-700  text-[10px] lg:mt-2 md:text-[13px]">
+              <span className="text-gray-700  text-[10px] lg:mt-2 md:text-[13px] xl:text-[11px]">
               Ships operated by seafarers
               </span>
             </div>
@@ -67,7 +67,7 @@ const NumberContent = () => {
             </div>
             <div className="flex flex-col justify-center items-center">
               <span className="text-lg md:text-2xl font-extrabold">80%</span>
-              <span className="text-gray-700  text-[10px] lg:mt-2 md:text-[13px]">
+              <span className="text-gray-700  text-[10px] lg:mt-2 md:text-[13px] xl:text-[11px]">
               of World Energy
               </span>
             </div>
@@ -88,7 +88,7 @@ const NumberContent = () => {
             </div>
             <div className="flex flex-col justify-center items-center">
               <span className="text-lg md:text-2xl font-extrabold">90%</span>
-              <span className="text-gray-700  text-[10px] lg:mt-2 md:text-[13px]">
+              <span className="text-gray-700  text-[10px] lg:mt-2 md:text-[13px] xl:text-[11px]">
               of Global Trade
               </span>
             </div>
@@ -106,8 +106,8 @@ const NumberContent = () => {
               />
             </div>
             <div className="flex flex-col justify-center items-center">
-              <span className="text-lg md:text-2xl font-extrabold">11 B</span>
-              <span className="text-gray-700  text-[10px] lg:mt-2 md:text-[13px]">
+              <span className="text-lg md:text-2xl font-extrabold">11 Billion</span>
+              <span className="text-gray-700  text-[10px] lg:mt-2 md:text-[13px] xl:text-[11px]">
               Tons of Cargo yearly
               </span>
             </div>
@@ -125,8 +125,8 @@ const NumberContent = () => {
               />
             </div>
             <div className="flex flex-col justify-center items-center">
-              <span className="text-lg md:text-2xl font-extrabold">1.9 M</span>
-              <span className="text-gray-700  text-[10px] lg:mt-2 md:text-[13px]">
+              <span className="text-lg md:text-2xl font-extrabold">1.9 Million</span>
+              <span className="text-gray-700  text-[10px] lg:mt-2 md:text-[13px] xl:text-[11px]">
               Seafarers Serving Globally
               </span>
             </div>

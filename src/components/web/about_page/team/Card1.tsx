@@ -2,6 +2,8 @@
 import React, { useRef, useEffect } from "react";
 import { PiCaretRightThin, PiCaretLeftThin } from "react-icons/pi";
 import Image from "next/image";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 interface Card {
   id: number;
   logo: string;
@@ -10,7 +12,28 @@ interface Card {
 }
 
 const Card = () => {
-  const card = useRef<HTMLDivElement>(null);
+  const cardContainer = useRef<HTMLDivElement>(null);
+
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 3000, min: 1280 },
+      items: 5
+    },
+    desktop: {
+      breakpoint: { max: 1279, min: 1024 },
+      items: 5
+    },
+    tablet: {
+      breakpoint: { max: 1023, min: 992 },
+      items: 2
+    },
+    mobile: {
+      breakpoint: { max: 991, min: 320 },
+      items: 1
+    },
+    
+  };
 
   const cards: Card[] = [
     {
@@ -33,27 +56,27 @@ const Card = () => {
     },
     {
       id: 4,
-      logo: "/images/team/archna.png",
+      logo: "/images/team/puneet.png",
       company: "Puneet Saxena",
       designation:'Regulatory Compliance Expert'
     },
     {
       id: 5,
-      logo: "/images/team/satish.png",
-      company: "Capt. Pankaj Ranjan",
-      designation:'Maritime Leader & Industry Expert'
+      logo: "/images/team/ankit.png",
+      company: "Capt. Ankit Gupta",
+      designation:'Master Mariner, Seafarer Welfare & Well-being'
     },
   ];
 
   const scrollLeft = () => {
-    if (card.current) {
-      card.current.scrollBy({ left: -200, behavior: "smooth" });
+    if (cardContainer.current) {
+      cardContainer.current.scrollBy({ left: -200, behavior: "smooth" });
     }
   };
 
   const scrollRight = () => {
-    if (card.current) {
-      card.current.scrollBy({ left: 200, behavior: "smooth" });
+    if (cardContainer.current) {
+      cardContainer.current.scrollBy({ left: 200, behavior: "smooth" });
     }
   };
 
@@ -75,46 +98,104 @@ const Card = () => {
   return (
     <div className="relative flex items-center justify-center mx-2 md:mx-4 lg:mx-0 my-4">
       {/* Left Arrow */}
-      <button
+      {/* <button
         onClick={scrollLeft}
-        className="absolute left-2 md:left-4 lg:left-8 z-10 text-5xl text-gray-500"
+        className="absolute left-2 md:left-4 lg:left-8 text-5xl text-gray-500"
       >
         <PiCaretLeftThin />
-      </button>
+      </button> */}
 
       {/* Carousel Wrapper */}
-      <div
-        ref={card}
-        className="flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory w-[calc(1*190px+1*10px)] sm:w-[calc(5*220px+5*10px)] gap-3 sm:grid sm:grid-rows-1 sm:grid-cols-5 text-center"
+      {/* <div
+        ref={cardContainer}
+        className="flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory w-[56%] sm:w-full sm:max-w-6xl gap-3 text-center"
       >
-        {cards?.map((card) => (
-          <div key={card.id} className="snap-center flex flex-col items-center">
-            <div className="w-[197.58px] h-[197.98px] bg-white rounded-full shadow-md">
-            <Image
-                  priority
-                  height={5000}
-                  width={5000}
+        {cards.map((card) => (
+          <div
+            key={card.id}
+            className="snap-center flex flex-col items-center min-w-[200px] max-w-[14rem] mx-auto"
+          >
+            <div className="w-[200px] h-[200px] bg-white rounded-full shadow-md overflow-hidden">
+              <Image
+                priority
+                height={5000}
+                width={5000}
                 src={card.logo}
                 alt={card.company}
-                className="w-full h-full rounded-full"
+                className="w-full h-full object-cover"
               />
             </div>
-            <h2 className="text-[#00A264] mt-2">
+            <h2 className="text-[#00A264] mt-2 text-center">
               {card.company}
               <br />
-              <span className="text-black">{card.designation}</span>
+              <span className="text-black text-sm">{card.designation}</span>
             </h2>
           </div>
         ))}
-      </div>
+      </div> */}
 
       {/* Right Arrow */}
-      <button
+      {/* <button
         onClick={scrollRight}
-        className="absolute right-2 md:right-4 lg:right-8 z-10 text-5xl text-gray-500"
+        className="absolute right-2 md:right-4 lg:right-8 text-5xl text-gray-500"
       >
         <PiCaretRightThin />
-      </button>
+      </button> */}
+       <div
+        // ref={cardContainer}
+        className="hidden sm:flex flex-col z-10 desktop-slider"
+      >
+        <Carousel  infinite responsive={responsive} slidesToSlide={2} sliderClass="slideCenter" removeArrowOnDeviceType={["superLargeDesktop", "desktop"]}>
+        {cards.map((card) => (
+          <div
+            key={card.id}
+            className="snap-center flex flex-col items-center min-w-[200px] max-w-[14rem] mx-auto"
+          >
+            <div className="w-[200px] h-[200px] bg-white rounded-full shadow-md overflow-hidden">
+              <Image
+                priority
+                height={5000}
+                width={5000}
+                src={card.logo}
+                alt={card.company}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <h2 className="text-[#00A264] mt-2 text-center">
+              {card.company}
+              <br />
+              <span className="text-black text-sm">{card.designation}</span>
+            </h2>
+          </div>
+        ))}
+        </Carousel>
+      </div>
+      <div className="mobile-slider sm:flex flex-col z-10 h-20 w-60 mb-10">
+          <Carousel  infinite responsive={responsive} sliderClass="slideCenter">
+          {cards.map((card) => (
+          <div
+            key={card.id}
+            className="snap-center flex flex-col items-center min-w-[200px] max-w-[14rem] mx-auto"
+          >
+            <div className="w-[150px] h-[150px] bg-white rounded-full shadow-md overflow-hidden">
+              <Image
+                priority
+                height={5000}
+                width={5000}
+                src={card.logo}
+                alt={card.company}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <h2 className="text-[#00A264] mt-2 text-center">
+              {card.company}
+              <br />
+              <span className="text-black text-sm">{card.designation}</span>
+            </h2>
+          </div>
+        ))}
+          </Carousel>
+        </div>
     </div>
   );
 };

@@ -5,9 +5,12 @@ import Image from "next/image";
 
 export default function SignupContent() {
   return (
-    <div className="relative h-screen transition-all duration-300 filter grayscale hover:grayscale-0 w-full mt-16">
+    <div className="main-banner-wrap relative h-screen transition-all duration-300 w-full mt-16">
       {/* The gallery background */}
+      <div className="gallery-wrap filter">
       <GalleryBackground />
+      </div>
+    
 
       {/* Your content, which will be layered above the background */}
       <div className="absolute inset-0 bg-black bg-opacity-0 flex items-center justify-center text-center  text-white ">
@@ -26,8 +29,9 @@ export default function SignupContent() {
             <div className="flex flex-col lg:flex-row lg:w-[384px] gap-4 sm:gap-6 lg:gap-8 justify-center items-center mt-4 lg:mt-1">
               {/* Google Play Button */}
               <Link
-                href="https://play.google.com/store/apps/details?id=YOUR_APP_ID"
-                target="_blank"
+                // href="https://play.google.com/store/apps/details?id=YOUR_APP_ID"
+                href=""
+                // target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center text-white w-full lg:w-auto"
               >
@@ -43,8 +47,9 @@ export default function SignupContent() {
 
               {/* App Store Button */}
               <Link
-                href="https://apps.apple.com/us/app/your-app-id"
-                target="_blank"
+                // href="https://apps.apple.com/us/app/your-app-id"
+                href=""
+                // target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center text-white w-full lg:w-auto"
               >
@@ -62,19 +67,51 @@ export default function SignupContent() {
 
           {/* LogIn and CreateButton */}
           <div className="flex flex-col sm:flex-row text-center justify-center items-center gap-4 sm:gap-6 lg:gap-12 mt-10 lg:mt-14">
-            <Link
-              href="#"
+            {/* <Link
+              href=""
               className="bg-[#00A264] lg:py-3 px-4 py-2 lg:px-2 lg:h-[50px] rounded-full font-semibold text-base w-[160px]"
             >
               Login
-            </Link>
+            </Link> */}
+             <Link
+                // href="https://apps.apple.com/us/app/your-app-id"
+                href=""
+                // target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center text-white w-full lg:w-auto"
+              >
+                <Image
+                  priority
+                  src="/images/LoginBtn.png"
+                  alt="App Store"
+                  width={500}
+                  height={500}
+                  className="w-[150px] sm:w-[190px] h-[50px] lg:h-[50px]"
+                />
+              </Link>
+              <Link
+                // href="https://apps.apple.com/us/app/your-app-id"
+                href=""
+                // target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center text-white w-full lg:w-auto"
+              >
+                <Image
+                  priority
+                  src="/images/createAccount.png"
+                  alt="App Store"
+                  width={500}
+                  height={500}
+                  className="w-[150px] sm:w-[195px] h-[50px] lg:h-[60px] -mt-2"
+                />
+              </Link>
 
-            <Link
-              href="#"
+            {/* <Link
+              href=""
               className="bg-white text-[#00A264] px-4 py-2 lg:py-3 lg:px-2 lg:h-[50px] rounded-full font-semibold text-base w-[160px]"
             >
               Create Account
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>

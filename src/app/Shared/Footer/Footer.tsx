@@ -37,7 +37,7 @@ const Footer = () => {
   return (
     <footer className="bg-[#D1EFE4] p-4 text-sm text-gray-700 w-full ">
       <div className="container mx-auto grid md:grid-cols-4 md:grid-rows-1 sm:grid-rows-2 sm:grid-cols-2 grid-rows-1 grid-cols-1 h-auto sm:space-x-2 lg:space-x-4">
-        <div className="w-[70%]">
+        <div className="sm:w-[70%] w-full">
           <Link href="/">
             <Image
               src="/images/logo_1.png"
@@ -58,7 +58,7 @@ const Footer = () => {
           </p>
         </div>
         <div className="md:mt-0 mt-4 sm:ml-2 md:ml-0 flex flex-col justify-center">
-          <h3 className="text-lg text-green-600 font-semibold">Quick link</h3>
+          <h3 className="text-lg text-green-600 font-semibold">Quick Link</h3>
           <ul>
             <li className="mt-2">
               <Link href="/" className=" hover:text-green-600">
@@ -66,12 +66,12 @@ const Footer = () => {
               </Link>
             </li>
             <li className="mt-2">
-              <Link href="/about" className="hover:text-green-600">
-                About
+              <Link href="/about-us" className="hover:text-green-600">
+                About Us
               </Link>
             </li>
             <li className="mt-2">
-              <Link href="/contact" className="hover:text-green-600">
+              <Link href="/contact-us" className="hover:text-green-600">
                 {/* Recruiter */}
                 Contact Us
               </Link>
@@ -84,7 +84,7 @@ const Footer = () => {
           </ul>
         </div>
         <div className="md:mt-0 mt-4 flex flex-col justify-center">
-          <h3 className="text-lg text-green-600 font-semibold">Help</h3>
+          <h3 className="text-lg text-green-600 font-semibold">Legal & User Support</h3>
           <ul>
             <li className="mt-2">
               <Link href="/privacy-policy" className="hover:text-green-600">
@@ -110,7 +110,7 @@ const Footer = () => {
         </div>
         <div className="md:mt-0 mt-4 flex flex-col justify-center">
           <h3 className="text-lg text-green-600 font-semibold">
-            Connect with Us
+            Connect With Us
           </h3>
           <ul>
             <li className="mt-2">
@@ -147,17 +147,17 @@ const Footer = () => {
           </ul>
           <div className="mt-4 flex p-1 space-x-1 items-center">
             <h2 className="font-semibold">Follow Us :</h2>
-            <Link href="https://www.facebook.com/share/5TJ64Ue4vLGsjtti/?mibextid=qi2Omg" className="text-green-600" target="_blank">
-              <FaFacebook />
+            <Link href="https://www.facebook.com/share/fP79JgxLGNFaQmWc/" className="text-green-600" target="_blank">
+              <FaFacebook  size={18}/>
             </Link>
             <Link href="https://www.instagram.com/easemysailing" className="text-green-600" target="_blank">
-              <FaInstagram />
+              <FaInstagram  size={18}/>
             </Link>
             <Link href="https://x.com/EaseMySailing?s=08" className="text-green-600" target="_blank">
-              <FaXTwitter />
+              <FaXTwitter  size={18}/>
             </Link>
             <Link href="https://youtube.com/@easemysailing?si=EnjVlLHxdlHVtfsf" className="text-green-600" target="_blank">
-              <FaYoutube />
+              <FaYoutube  size={18}/>
             </Link>
           </div>
         </div>
@@ -165,7 +165,7 @@ const Footer = () => {
       <div className="w-full  border-spacing-1 border-[#77E2B9] mt-3 border "></div>
       <div className="mt-4 flex justify-center items-center ">
         <span>
-          Copyright © {new Date().getFullYear()} | All Rights Reserved
+          @{new Date().getFullYear()} | All Rights Reserved with EaseMySailing
         </span>
       </div>
     </footer>

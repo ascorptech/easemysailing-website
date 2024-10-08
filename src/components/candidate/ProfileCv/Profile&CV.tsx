@@ -503,7 +503,8 @@ const [profileDetail,setProfileDetail] = useState<any>()
           <div className="w-[115.32px] h-[128.85px] border p-2">
             <Image
             priority
-              src="/images/candidate/profileCv/profile.png"
+              // src="/images/candidate/profileCv/profile.png"
+              src=""
               alt="image not found"
               width={100}
               height={100}

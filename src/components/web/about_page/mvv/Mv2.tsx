@@ -57,20 +57,20 @@ const Mv2 = () => {
 
         {/* Third div */}
         <div className="flex flex-col justify-center items-center text-center border-2 shadow-lg rounded-tl-[2rem] rounded-br-[2rem] w-full md:w-[400px] h-auto pt-12 ">
-          <div className="w-[100px] h-[100px] -mt-6">
+          <div className="w-[100px] h-[100px] -mt-4">
             <Image
               src="/value.png"
               alt="Values Image"
               width={100}
               height={100}
-              className="w-full h-full object-contain"
+              className="w-full h-full object-contain -mt-6"
               priority
             />
           </div>
-          <h1 className="text-xl md:text-2xl lg:text-[36px] lg:leading-[54px] font-semibold mt-2">
+          <h1 className="-mt-2 text-xl md:text-2xl lg:text-[36px] lg:leading-[54px] font-semibold">
             Values
           </h1>
-          <ul className="mt-2 list-none font-bold text-[16px] md:text-base lg:text-[16px] leading-[28px] text-justify text-[#4E4E4E] px-4">
+          <ul className="list-none font-bold text-[16px] md:text-base lg:text-[16px] leading-[28px] text-justify text-[#4E4E4E] px-4">
             <li>
               <b className="font-extrabold">Transparency:{" "}</b>
               <span className="font-normal">

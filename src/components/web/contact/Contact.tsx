@@ -15,7 +15,7 @@ import { countryCodeDrop } from "@/constants/constants";
 import { AddContactData } from "@/app/(web)/contact-us/Services/contactService";
 
 const Contact = () => {
-  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const recaptchaRef = useRef<any>();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -91,14 +91,25 @@ const Contact = () => {
 
   async function handleCaptchaSubmission(token: string | null) {
     try {
-      console.log('token', token)
       if (token) {
-        let url = new URL('https://www.google.com/recaptcha/api/siteverify')
-        url.searchParams.append('secret', '6LfoUVsqAAAAAFySg2_u2dY3FJ_gTVom4nO2zVWd')
-        url.searchParams.append('response', token)
-        const response = await fetch(url, { method: 'POST', mode: 'no-cors' })
+        // let url = new URL('https://www.google.com/recaptcha/api/siteverify')
+        let secretKey = '6LfoUVsqAAAAAFySg2_u2dY3FJ_gTVom4nO2zVWd';
+        const verificationUrl = `https://www.google.com/recaptcha/api/siteverify`;
+
+        const response = await fetch(verificationUrl, {
+          method: 'POST',
+          mode:'same-origin',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          body: new URLSearchParams({
+            secret: secretKey,
+            response: token
+          })
+        });
         const captchaData = await response?.json()
-        if (captchaData?.success) {
+        console.log(captchaData, 'captchaData')
+        if (captchaData?.status == 200) {
           console.log('captcha passed')
           setIsVerified(true);
         }
@@ -116,9 +127,10 @@ const Contact = () => {
     setIsVerified(false);
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+    // const token = await recaptchaRef.current.executeAsync();
+    // console.log('tokwen',token)
     if (!validateInputs()) {
       return;
     } else {
@@ -336,7 +348,7 @@ const Contact = () => {
             </div>
 
             <div className="mb-[7px] flex">
-              <div className="flex w-[65%]">
+              {/* <div className="flex w-[65%]">
                 <input
                   id="Captcha"
                   type="text"
@@ -346,7 +358,7 @@ const Contact = () => {
                   placeholder="Captcha Code"
 
                 />
-              </div>
+              </div> */}
               <div className="flex items-center gap-2 ">
                 <div className="ml-4 ">
                   {/* <ReCAPTCHA
@@ -357,15 +369,16 @@ const Contact = () => {
                   /> */}
                   <ReCAPTCHA
                     sitekey={'6LfoUVsqAAAAAD6TM-xdumuFGc6hTLS2kBvYKX3S'}
-                    inputMode="text"
+                    // size="invisible"
                     ref={recaptchaRef}
                     onChange={handleChange}
                     onExpired={handleExpired}
+                    badge="inline"
                   />
                 </div>
-                <span className="text-white p-2 bg-green-600 text-2xl font-extrabold rounded-md">
+                {/* <span className="text-white p-2 bg-green-600 text-2xl font-extrabold rounded-md">
                   <TfiReload />
-                </span>
+                </span> */}
               </div>
             </div>
 

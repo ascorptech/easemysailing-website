@@ -124,7 +124,7 @@ const ClientSection: React.FC = () => {
         </h2>
       </div>
 
-        <div className="hidden sm:flex flex-col -z-10 desktop-slider">
+        <div className="hidden sm:flex flex-col desktop-slider">
           <Carousel  infinite responsive={responsive} slidesToSlide={2} sliderClass="slideCenter">
           {clientCards?.map((ccard:any, index:any) => (
               <ClientsCard

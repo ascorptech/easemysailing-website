@@ -4,6 +4,7 @@ import { useState } from "react";
 import CircularProgress from "../CircularProgress";
 import { AddAboutMeData } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import { toast } from "react-toastify";
+import { Link } from "lucide-react";
 
 type AboutMeComplete = {
   percentage: number;
@@ -21,7 +22,8 @@ const AboutMe = ({aboutMeComplete, setAboutMeComplete, userDetail}: Props) => {
     const [myFuture, setMyFuture] = useState("");
   
     const [criminal, setCriminal] = useState("");
-    const [nationality, setNationality] = useState("");
+    const [disabled,setDisabled] = useState(true)
+
 
     const totalFields = 4;
   const filledFields = [
@@ -92,6 +94,11 @@ const AboutMe = ({aboutMeComplete, setAboutMeComplete, userDetail}: Props) => {
     }
   }
 
+  const handleEdits = () => {
+    setDisabled(!disabled)
+    // toast.info("You are now in edit mode. Make your changes.");
+  };
+
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
          
@@ -101,7 +108,7 @@ const AboutMe = ({aboutMeComplete, setAboutMeComplete, userDetail}: Props) => {
 
         <div>
             <div className="flex flex-col gap-4 ">
-              <h1 className=" font-semibold mb-2">ABOUT ME</h1>
+              <h1 className=" font-semibold mb-2">About Me</h1>
 
               <div className="flex flex-col gap-4">
                 <div className=" ">
@@ -119,7 +126,7 @@ const AboutMe = ({aboutMeComplete, setAboutMeComplete, userDetail}: Props) => {
                       onChange={(e) => setPersonality(e.target.value)}
                       className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                       placeholder=""
-                      required
+                      disabled={disabled}
                     />
                 
                 </div>
@@ -138,7 +145,7 @@ const AboutMe = ({aboutMeComplete, setAboutMeComplete, userDetail}: Props) => {
                       onChange={(e) => setAdditional(e.target.value)}
                       className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                       placeholder=""
-                      required
+                      disabled={disabled}
                     />
                   </div>
                 </div>
@@ -157,7 +164,7 @@ const AboutMe = ({aboutMeComplete, setAboutMeComplete, userDetail}: Props) => {
                       onChange={(e) => setMyFuture(e.target.value)}
                       className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                       placeholder=""
-                      required
+                      disabled={disabled}
                     />
                   </div>
                 </div>
@@ -177,7 +184,7 @@ const AboutMe = ({aboutMeComplete, setAboutMeComplete, userDetail}: Props) => {
                       onChange={(e) => setCriminal(e.target.value)}
                       className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                       placeholder="Yes/No"
-                      required
+                      disabled={disabled}
                     />
                   </div>
                 </div>
@@ -193,7 +200,9 @@ const AboutMe = ({aboutMeComplete, setAboutMeComplete, userDetail}: Props) => {
             Save
           </button>
           <button
-            type="submit"
+            type="button"
+            onClick={handleEdits}
+           
             className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
           >
             Edit

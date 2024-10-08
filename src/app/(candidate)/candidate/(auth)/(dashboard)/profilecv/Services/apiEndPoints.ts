@@ -18,4 +18,6 @@ export default{
     POSTSTCWTRAINING:'/api/v1/stcw-training',
     POSTPROFESSIONALSKILL:'/api/v1/professional-skills',
     POSTREFERENCE:'/api/v1/references',
+    POSTADDITIIONAL:'/api/v1/trainings',
+    POSTVETTING:'/api/v1/vetting-services'
 }

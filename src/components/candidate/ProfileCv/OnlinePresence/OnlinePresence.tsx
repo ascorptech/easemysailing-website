@@ -2,6 +2,7 @@
 import {
   AddOnlinePresenceData,
   AddProfileData,
+  GetDropdownDetails,
 } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -26,6 +27,11 @@ const OnlinePresence = ({
 }: Props) => {
   // State for form fields
 
+  const [mCountrycode, setMCountrycode] = useState("+91");
+
+  const [countryCodeDrop, setCountryCodeDrop] = useState<any>([]);
+  const [countryDrop, setCountryDrop] = useState<any>([]);
+
   const [whatsApp, setWhatsApp] = useState(false);
   const [whatsAppId, setWhatsAppId] = useState("");
   const [weChat, setWeChat] = useState(false);
@@ -39,6 +45,8 @@ const OnlinePresence = ({
 
   const [viberId, setViberId] = useState("");
 
+  const [skypeIdChecked, setSkypeIdChecked] = useState(false);
+
   const [skypeId, setSkypeId] = useState("");
   const [linkedIn, setLinkedIn] = useState(false);
   const [linkedInId, setLinkedInId] = useState("");
@@ -49,7 +57,20 @@ const OnlinePresence = ({
   const [other, setOther] = useState(false);
   const [otherId, setOtherId] = useState("");
 
-  const totalFields = 9;
+  const [disabled, setDisabled] = useState(true);
+
+  useEffect(() => {
+    GetDropdownDetails("country", (res: any) => {
+      // console.log('County',res?.data)
+      setCountryDrop(res?.data?.values);
+    });
+    GetDropdownDetails("countryCode", (res: any) => {
+      // console.log('County',res?.data)
+      setCountryCodeDrop(res?.data?.values);
+    });
+  }, []);
+
+  const totalFields = 10;
 
   const filledFields = [
     whatsApp && whatsAppId,
@@ -57,7 +78,7 @@ const OnlinePresence = ({
     facebookMess && facebookMessId,
     telegram && telegramId,
     viber && viberId,
-    skypeId,
+    skypeId && skypeIdChecked,
     linkedIn && linkedInId,
     facebook && facebookId,
     instagram && instagramId,
@@ -97,27 +118,27 @@ const OnlinePresence = ({
     // try {
     e.preventDefault();
     let data = {
-      "id": userDetail?.userId,
-      "whatsapp": whatsApp,
-      "weChat": weChat,
-      "facebookMessenger": facebookMess,
-      "telegram": telegram,
-      "viber": viber,
-      "whatsappNumber": whatsAppId,
-      "weChatNumber": weChatId,
-      "facebookMessengerId": facebookMessId,
-      "telegramNumber": telegramId,
-     " viberNumber": viberId,
-      "skypeId": skypeId,
-      "linkedIn": linkedIn,
-      "facebook": facebook,
-     " instagram": instagram,
-      "other": other,
-      "linkedInProfileUrl": linkedIn,
-      "facebookProfileUrl": facebookId,
-     " instagramProfileUrl": instagramId,
-      "otherSocialMediaName": otherId,
-     " otherSocialMediaContact": "",
+      id: userDetail?.userId,
+      whatsapp: whatsApp,
+      weChat: weChat,
+      facebookMessenger: facebookMess,
+      telegram: telegram,
+      viber: viber,
+      whatsappNumber: whatsAppId,
+      weChatNumber: weChatId,
+      facebookMessengerId: facebookMessId,
+      telegramNumber: telegramId,
+      " viberNumber": viberId,
+      skypeId: skypeId,
+      linkedIn: linkedIn,
+      facebook: facebook,
+      " instagram": instagram,
+      other: other,
+      linkedInProfileUrl: linkedIn,
+      facebookProfileUrl: facebookId,
+      " instagramProfileUrl": instagramId,
+      otherSocialMediaName: otherId,
+      " otherSocialMediaContact": "",
     };
 
     AddOnlinePresenceData(data, AddOnlinePresenceDataCB);
@@ -137,18 +158,26 @@ const OnlinePresence = ({
     }
   };
 
+  const handleEdit = () => {
+    setDisabled(!disabled);
+    // toast.info("You are now in edit mode. Make your changes.");
+  };
+
   return (
     <div className="container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
         {/* <div className="  "> */}
         <div className="my-5 ">
-          <h1 className="mb-2  font-bold">Messengers in Use</h1>
-          <div className="flex  gap-2 ">
-            <div className="w-[18%]">
+          <h1 className="mb-2  font-bold">Social Media & Messanger in use</h1>
+          <div className="grid grid-cols-3  gap-2 ">
+            {/* <div className="w-full"> */}
+
+            <div className=" w-full">
               <input
                 type="checkbox"
                 checked={whatsApp}
                 onChange={() => setWhatsApp(!whatsApp)}
+                disabled={disabled}
               />
               <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                 WhatsApp
@@ -156,33 +185,53 @@ const OnlinePresence = ({
 
               {/* Conditionally render WhatsApp input box */}
               {whatsApp && (
-                <div className="mt-4 flex flex-col ">
+                <div className="mt-4 flex  ">
                   {/* <label
                 className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
                 htmlFor="whatsAppId"
               >
                 WhatsApp Number
               </label> */}
+                  <div className="w-[25%] ">
+                    <select
+                      className="border rounded-md  h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                      value={mCountrycode}
+                      onChange={(e) => setMCountrycode(e.target.value)}
+                      disabled={disabled}
+                    >
+                      {countryCodeDrop &&
+                        countryCodeDrop?.map((code: any, index: number) => (
+                          <option key={index} value={code}>
+                            {code?.toUpperCase()}
+                          </option>
+                        ))}
+                    </select>
+                  </div>
+                  {/* <div className=""> */}
                   <input
                     id="whatsAppId"
                     type="text"
-                    className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    className="border rounded-md  h-9 px-2 w-[80%] text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter WhatsApp No."
                     value={whatsAppId}
                     onChange={(e) => setWhatsAppId(e.target.value)}
+                    disabled={disabled}
                   />
+                  {/* </div> */}
                 </div>
               )}
             </div>
+            {/* </div> */}
 
-            <div className="w-[18%]">
+            <div className="w-full">
               <div>
                 {" "}
                 <input
                   type="checkbox"
                   checked={weChat}
                   onChange={() => setWeChat(!weChat)}
-                  className="ml-4"
+                  className=""
+                  disabled={disabled}
                 />
                 <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                   WeChat
@@ -201,18 +250,20 @@ const OnlinePresence = ({
                     type="text"
                     className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter WeChat Id"
+                    disabled={disabled}
                   />
                 </div>
               )}
             </div>
 
-            <div className="w-[18%]">
+            <div className="w-full">
               <div>
                 {" "}
                 <input
                   type="checkbox"
                   checked={facebookMess}
                   onChange={() => setFacebookMess(!facebookMess)}
+                  disabled={disabled}
                 />
                 <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                   Facebook
@@ -227,6 +278,7 @@ const OnlinePresence = ({
                     placeholder="Enter Facebook Id"
                     value={facebookMessId}
                     onChange={(e) => setFacebookMessId(e.target.value)}
+                    disabled={disabled}
                   />
                 </div>
               )}
@@ -234,13 +286,14 @@ const OnlinePresence = ({
 
             {/* <div className="my-5"> */}
             {/* <h1 className="mb-2">Preferred Contract Type</h1> */}
-            <div className="w-[18%]">
+            <div className="w-full">
               <div>
                 <input
                   type="checkbox"
                   checked={telegram}
                   onChange={() => setTelegram(!telegram)}
-                  className="ml-4"
+                  className=""
+                  disabled={disabled}
                 />
                 <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                   Telegram
@@ -256,18 +309,20 @@ const OnlinePresence = ({
                     placeholder="Enter Telegram Id"
                     value={telegramId}
                     onChange={(e) => setTelegramId(e.target.value)}
+                    disabled={disabled}
                   />
                 </div>
               )}
             </div>
 
-            <div className="w-[18%]">
+            <div className="w-full">
               <div>
                 <input
                   type="checkbox"
                   checked={viber}
                   onChange={() => setViber(!viber)}
-                  className="ml-4"
+                  className=""
+                  disabled={disabled}
                 />
                 <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                   Viber
@@ -283,39 +338,50 @@ const OnlinePresence = ({
                     placeholder="Enter viber Id"
                     value={viberId}
                     onChange={(e) => setViberId(e.target.value)}
+                    disabled={disabled}
                   />
                 </div>
               )}
             </div>
-          </div>
-        </div>
 
-        <div>
-          <label
-            className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
-            htmlFor="skypeId"
-          >
-            Skype ID
-          </label>
-          <input
-            id="skypeId"
-            type="text"
-            value={skypeId}
-            onChange={(e) => setSkypeId(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-            required
-          />
-        </div>
+            <div>
+              <div className="w-full">
+                <input
+                  type="checkbox"
+                  checked={skypeIdChecked}
+                  onChange={() => setSkypeIdChecked(!skypeIdChecked)}
+                  className=""
+                  disabled={disabled}
+                />
+                <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                  Skype ID
+                </label>
+              </div>
+              {skypeIdChecked && (
+                <div className="mt-4 flex flex-col ">
+                  <input
+                    id="skypeId"
+                    type="text"
+                    value={skypeId}
+                    onChange={(e) => setSkypeId(e.target.value)}
+                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder="Enter Skype Id"
+                    disabled={disabled}
+                  />
+                </div>
+              )}
+            </div>
 
-        <div className="my-5">
-          <h1 className="mb-2    font-bold">Social Media Channels in Use</h1>
-          <div className="flex gap-2">
-            <div className="w-[24%]">
+            {/* Channels in Use */}
+
+            {/* <div className="flex gap-2"> */}
+            <div className="w-full">
               <div>
                 <input
                   type="checkbox"
                   checked={linkedIn}
                   onChange={() => setLinkedIn(!linkedIn)}
+                  disabled={disabled}
                 />
                 <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                   LinkedIn
@@ -329,20 +395,22 @@ const OnlinePresence = ({
                     placeholder="Enter Linkdin Id "
                     value={linkedInId}
                     onChange={(e) => setLinkedInId(e.target.value)}
+                    disabled={disabled}
                   />
                 </div>
               )}
             </div>
-            <div className="w-[24%]">
+            <div className="w-full">
               <div>
                 <input
                   type="checkbox"
                   checked={facebook}
                   onChange={() => setFacebook(!facebook)}
-                  className="ml-4"
+                  className=""
+                  disabled={disabled}
                 />
                 <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
-                  Facebook
+                  Twitter
                 </label>
               </div>
               {facebook && (
@@ -350,20 +418,22 @@ const OnlinePresence = ({
                   <input
                     type="text"
                     className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    placeholder="Enter Facebook Id"
+                    placeholder="Enter Twitter Id"
                     value={facebookId}
                     onChange={(e) => setFacebookId(e.target.value)}
+                    disabled={disabled}
                   />
                 </div>
               )}
             </div>
-            <div className="w-[24%]">
+            <div className="w-full">
               <div>
                 <input
                   type="checkbox"
                   checked={instagram}
                   onChange={() => setInstagram(!instagram)}
-                  className="ml-4"
+                  className=""
+                  disabled={disabled}
                 />
                 <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                   Instagram
@@ -378,17 +448,19 @@ const OnlinePresence = ({
                     placeholder="Enter Instagram Id"
                     value={instagramId}
                     onChange={(e) => setInstagramId(e.target.value)}
+                    disabled={disabled}
                   />
                 </div>
               )}
             </div>
-            <div className="w-[24%]">
+            <div className="w-full">
               <div>
                 <input
                   type="checkbox"
                   checked={other}
                   onChange={() => setOther(!other)}
-                  className="ml-4"
+                  className=""
+                  disabled={disabled}
                 />
                 <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                   Other
@@ -403,6 +475,7 @@ const OnlinePresence = ({
                     placeholder=""
                     value={otherId}
                     onChange={(e) => setOtherId(e.target.value)}
+                    disabled={disabled}
                   />
                 </div>
               )}
@@ -417,12 +490,13 @@ const OnlinePresence = ({
           >
             Save
           </button>
-          <button
-            type="submit"
+          <Link
+            href={"#"}
+            onClick={handleEdit}
             className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
           >
             Edit
-          </button>
+          </Link>
         </div>
       </form>
     </div>

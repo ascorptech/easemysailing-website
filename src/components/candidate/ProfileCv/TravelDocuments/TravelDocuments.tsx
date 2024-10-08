@@ -8,6 +8,15 @@ import {
   GetDropdownDetails,
 } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import { toast } from "react-toastify";
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+
+type TravelDocumentsVisaForms = {
+  issueAuthority: string;
+  visaNumber: string;
+  issueDateVisa: string;
+  expryDateVisa: string;
+  selectedFileVisa: File | null;
+};
 
 type TravelDocumentsComplete = {
   percentage: number;
@@ -26,31 +35,42 @@ const TravelDocuments = ({
   setTravelComplete,
   userDetail,
 }: Props) => {
+  const [visaForms, setVisaForms] = useState<TravelDocumentsVisaForms[]>([
+    {
+      issueAuthority: "",
+      visaNumber: "",
+      issueDateVisa: "",
+      expryDateVisa: "",
+      selectedFileVisa: null,
+    },
+  ]);
+
   const [number, setNumber] = useState("");
   const [issuedate, setIssueDate] = useState("");
   const [exdate, setExDate] = useState("");
   const [checkBox, setCheckBox] = useState(false);
-  const [isssueAuthority, setIsssueAuthority] = useState("");
+  // const [isssueAuthority, setIsssueAuthority] = useState("");
   const [issuingCountry, setIssuingCountry] = useState("");
   const [issueDate2, setIssueDate2] = useState("");
   const [expDate2, setExpDate2] = useState("");
 
   const [selectedFile, setSelectedFile] = useState<any>(null);
   const [selectedFiles, setSelectedFiles] = useState<any>(null);
-  const [selectedFileVisa, setSelectedFileVisa] = useState<any>(null);
+  // const [selectedFileVisa, setSelectedFileVisa] = useState<any>(null);
   const [selectedFileResidence, setSelectedFileResidence] = useState<any>(null);
 
   const [trainingCenter, setTrainingCenter] = useState("");
   const [issuedate1, setIssueDate1] = useState("");
   const [exdate1, setExDate1] = useState("");
-  const [visaNumber, setVisaNumber] = useState("");
+  // const [visaNumber, setVisaNumber] = useState("");
   const [permitNumber, setPermitNumber] = useState("");
   const [issuingAuthority, setIssuingAuthority] = useState("");
   const [biometric, setBiometric] = useState("");
   const [flagState, setFlagState] = useState("");
-  const [issueDateVisa, setIssueDateVisa] = useState("");
-  const [expryDateVisa, setExpryDateVisa] = useState("");
+  // const [issueDateVisa, setIssueDateVisa] = useState("");
+  // const [expryDateVisa, setExpryDateVisa] = useState("");
   const [countryDrop, setCountryDrop] = useState<any>([]);
+  const [indNumber, setIndNumber] = useState("");
 
   useEffect(() => {
     GetDropdownDetails("country", (res: any) => {
@@ -59,66 +79,61 @@ const TravelDocuments = ({
     });
   }, []);
 
-  const totalFields = 22;
+  const totalFields = 21 + visaForms.length * 5;
   const filledFields = [
+    ...visaForms.flatMap((field) => [
+      field.issueAuthority,
+      field.expryDateVisa,
+      field.visaNumber,
+      field.issueDateVisa,
+      field.selectedFileVisa,
+    ]),
     number,
     issuedate,
-    exdate,
-    checkBox,
-    isssueAuthority,
+    exdate || checkBox,
     issuingCountry,
     issueDate2,
     expDate2,
     selectedFile,
-    selectedFileVisa,
     selectedFiles,
     trainingCenter,
     issuedate1,
     exdate1,
-    visaNumber,
     permitNumber,
-    issuingAuthority,
     biometric,
     flagState,
     selectedFileResidence,
-    issueDateVisa,
-    expryDateVisa,
+    indNumber,
   ].filter(Boolean).length;
 
-  // const totalFields = available === "Yes" ? 6 : 5;
-
   const percentage = (filledFields / totalFields) * 100;
-  // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
+
   let color;
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
       setTravelComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#FF0000", // Update the color field
+        ...prevState,
+        percentage: percentage,
+        color: "#FF0000",
       }));
       color = "red";
     } else if (percentage <= 70) {
       setTravelComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#FF9900", // Update the color field
+        ...prevState,
+        percentage: percentage,
+        color: "#FF9900",
       }));
       color = "#FF9900";
     } else {
       setTravelComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#00A264", // Update the color field
+        ...prevState,
+        percentage: percentage,
+        color: "#00A264",
       }));
       color = "green";
     }
   }, [percentage, color]);
-
-  //   const handleFileChange = (event: any) => { visaNumber
-  //     setSelectedFile(event.target.files[0]);
-  //   };
 
   const handleFileChange = (event: any) => {
     const file = event.target.files?.[0];
@@ -133,11 +148,39 @@ const TravelDocuments = ({
       setSelectedFiles(file);
     }
   };
-  const handleFileChangeVisa = (event: any) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      setSelectedFileVisa(file);
-    }
+
+  const handleFileChangeVisa = (index: number, event: any) => {
+    const updatedForms = [...visaForms];
+    updatedForms[index].selectedFileVisa = event.target.files?.[0] || null;
+    setVisaForms(updatedForms);
+  };
+
+  const handleFormChangeVisa = (
+    index: number,
+    field: keyof TravelDocumentsVisaForms,
+    value: any
+  ) => {
+    const updatedForms = [...visaForms];
+    updatedForms[index][field] = value;
+    setVisaForms(updatedForms);
+  };
+
+  const addFieldVisa = () => {
+    setVisaForms([
+      ...visaForms,
+      {
+        issueAuthority: "",
+        visaNumber: "",
+        issueDateVisa: "",
+        expryDateVisa: "",
+        selectedFileVisa: null,
+      },
+    ]);
+  };
+
+  const removeFieldVisa = (index: number) => {
+    const updatedForms = visaForms.filter((_, i) => i !== index);
+    setVisaForms(updatedForms);
   };
 
   const handleFileChangeResidence = (event: any) => {
@@ -160,18 +203,22 @@ const TravelDocuments = ({
     formData.append("seamansBookIssuingCountry", flagState);
     formData.append("seamansBookIssueDate", issuedate1);
     formData.append("seamansBookExpiryDate", exdate1);
-    formData.append("visaIssuingCountry", isssueAuthority);
-    formData.append("visaNumber", visaNumber);
-    formData.append("visaIssueDate", issueDateVisa);
-    formData.append("visaExpiryDate", expryDateVisa);
+
     formData.append("residencePermitIssuingCountry", issuingCountry);
     formData.append("residencePermitNumber", permitNumber);
     formData.append("residencePermitIssueDate", issueDate2);
     formData.append("residencePermitExpiryDate", expDate2);
     formData.append("passportDocument", selectedFile);
     formData.append("seamansBookDocument", selectedFiles);
-    formData.append("visaDocument", selectedFileVisa);
+
     formData.append("residencePermitDocument", selectedFileResidence);
+    visaForms.forEach((element: any) => {
+      formData.append("visaNumber", element?.visaNumber);
+      formData.append("visaIssueDate", element?.issueDateVisa);
+      formData.append("visaExpiryDate", element?.expryDateVisa);
+      formData.append("visaDocument", element?.selectedFileVisa);
+      formData.append("visaIssuingCountry", element?.issueAuthority);
+    });
 
     AddTravelDocumentData(
       userDetail?.userId,
@@ -196,7 +243,7 @@ const TravelDocuments = ({
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
-        <h1 className=" font-bold">PASSPORT DETAILS</h1>
+        <h1 className=" font-bold mb-4">Passport Details </h1>
         <div className="grid grid-cols-2 gap-4">
           <div className="">
             <label
@@ -300,7 +347,7 @@ const TravelDocuments = ({
                 <option key={index} value={country}>{country?.toUpperCase()}</option>
               ))} */}
               <option value="yes">Yes</option>
-              <option value="No">Yes</option>
+              <option value="No">No</option>
             </select>
           </div>
 
@@ -337,7 +384,7 @@ const TravelDocuments = ({
 
           {/* second section */}
           <div className=" grid col-span-2 ">
-            <h1 className="font-bold ">SEAMAN'S BOOK/ID</h1>
+            <h1 className="font-bold ">Seaman's Book/Id</h1>
           </div>
 
           {/* <div className="grid grid-cols-2 gap-4"> */}
@@ -401,39 +448,41 @@ const TravelDocuments = ({
             />
           </div>
 
-          <div className="">
-            <label
-              className="text-[14px] leading-[19.07px]  text-[#333333] "
-              htmlFor="expdate"
-            >
-              Expiry Date
-            </label>
+          {!checkBox && (
+            <div className="">
+              <label
+                className="text-[14px] leading-[19.07px]  text-[#333333] "
+                htmlFor="expdate"
+              >
+                Expiry Date
+              </label>
 
-            <input
-              id="expdate"
-              type="date"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              value={exdate1}
-              onChange={(e) => setExDate1(e.target.value)}
-            />
-          </div>
+              <input
+                id="expdate"
+                type="date"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                value={exdate1}
+                onChange={(e) => setExDate1(e.target.value)}
+              />
+            </div>
+          )}
 
-          <div className=" flex items-center  gap-4">
-            <input
-              id="neverExpires"
-              type="checkbox"
-              className="border focus:ring-[#00A264]  text-[#00A264] checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
-              // value={checkBox}
-              //  onChange={(e) => (true)}
-              checked={checkBox}
-              onChange={() => setCheckBox(!checkBox)}
-            />
-            <label
-              className="text-[14px] leading-[19.07px] text-[#333333]"
-              htmlFor="neverExpires"
-            >
-              Never Expires
-            </label>
+          <div className="grid col-span-2">
+            <div className=" flex items-center  gap-4 ">
+              <input
+                id="neverExpires"
+                type="checkbox"
+                className="border focus:ring-[#00A264]  text-[#00A264] checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
+                checked={checkBox}
+                onChange={() => setCheckBox(!checkBox)}
+              />
+              <label
+                className="text-[14px] leading-[19.07px] text-[#333333]"
+                htmlFor="neverExpires"
+              >
+                Never Expires
+              </label>
+            </div>
           </div>
 
           <div className="grid col-span-2 my-4">
@@ -465,130 +514,151 @@ const TravelDocuments = ({
               </div>
             </div>
           </div>
-          {/* </div> */}
+        </div>
 
-          {/* third section */}
-
-          <div className=" grid col-span-2  my-2">
-            <h1 className="font-bold ">VISA</h1>
-          </div>
-
-          {/* <div className="grid grid-cols-2 gap-4"> */}
-          <div className="">
-            <label
-              className="text-[14px] leading-[19.07px]  text-[#333333] "
-              htmlFor="countryissue"
-            >
-              Country(Issue Authority)
-            </label>
-            <select
-              id="countryissue"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              name="options"
-              value={isssueAuthority}
-              onChange={(e) => setIsssueAuthority(e.target.value)}
-            >
-              <option value="" disabled selected>
-                Issue Authority
-              </option>
-              {countryDrop &&
-                countryDrop?.map((country: any, index: number) => (
-                  <option key={index} value={country}>
-                    {country?.toUpperCase()}
-                  </option>
-                ))}
-            </select>
-          </div>
-          <div className="   ">
-            <label
-              className="text-[14px] leading-[19.07px]  text-[#333333]"
-              htmlFor="visanumber01"
-            >
-              Visa Number
-            </label>
-            <input
-              id="visanumber01"
-              type="text"
-              value={visaNumber}
-              onChange={(e) => setVisaNumber(e.target.value)}
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              placeholder=""
-              required
+        {/* <div className=" grid col-span-2  my-2"> */}
+        <div className="flex items-center justify-between">
+          <h1 className="font-bold ">VISA</h1>
+          <div className="flex gap-2">
+            <AiOutlinePlus
+              className="text-2xl cursor-pointer"
+              onClick={addFieldVisa}
             />
+            {visaForms.length > 1 && (
+              <AiOutlineMinus
+                className="text-2xl cursor-pointer"
+                onClick={() => removeFieldVisa(visaForms.length - 1)}
+              />
+            )}
           </div>
+        </div>
 
-          {/* </div> */}
-          <div className="">
-            <label
-              className="text-[14px] leading-[19.07px]  text-[#333333]"
-              htmlFor="issueDatevisa"
-            >
-              Issue Date
-            </label>
-            <input
-              id="issueDatevisa"
-              type="date"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              value={issueDateVisa}
-              onChange={(e) => setIssueDateVisa(e.target.value)}
-            />
-          </div>
+        {visaForms.map((field, index) => (
+          <div className="grid grid-cols-2 gap-4">
+            <div className="">
+              <label
+                className="text-[14px] leading-[19.07px]  text-[#333333] "
+                htmlFor={`countryissue_${index}`}
+              >
+                Country(Issue Authority)
+              </label>
+              <select
+                id={`countryissue_${index}`}
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                name="options"
+                value={field.issueAuthority}
+                onChange={(e) =>
+                  handleFormChangeVisa(index, "issueAuthority", e.target.value)
+                }
+              >
+                <option value="" disabled selected>
+                  Issue Authority
+                </option>
+                {countryDrop &&
+                  countryDrop?.map((country: any, index: number) => (
+                    <option key={index} value={country}>
+                      {country?.toUpperCase()}
+                    </option>
+                  ))}
+              </select>
+            </div>
+            <div className="   ">
+              <label
+                className="text-[14px] leading-[19.07px]  text-[#333333]"
+                htmlFor={`visanumber01_${index}`}
+              >
+                Visa Number
+              </label>
+              <input
+                id={`visanumber01_${index}`}
+                type="text"
+                value={field.visaNumber}
+                onChange={(e) =>
+                  handleFormChangeVisa(index, "visaNumber", e.target.value)
+                }
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                placeholder=""
+                required
+              />
+            </div>
 
-          <div className="">
-            <label
-              className="text-[14px] leading-[19.07px]  text-[#333333]  "
-              htmlFor="expdateVisa"
-            >
-              Expiry Date
-            </label>
+            {/* </div> */}
+            <div className="">
+              <label
+                className="text-[14px] leading-[19.07px]  text-[#333333]"
+                htmlFor={`issueDatevisa_${index}`}
+              >
+                Issue Date
+              </label>
+              <input
+                id={`issueDatevisa_${index}`}
+                type="date"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                value={field.issueDateVisa}
+                onChange={(e) =>
+                  handleFormChangeVisa(index, "issueDateVisa", e.target.value)
+                }
+              />
+            </div>
 
-            <input
-              id="expdatVisa"
-              type="date"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              value={expryDateVisa}
-              onChange={(e) => setExpryDateVisa(e.target.value)}
-            />
-          </div>
+            <div className="">
+              <label
+                className="text-[14px] leading-[19.07px]  text-[#333333]  "
+                htmlFor={`expdateVisa_${index}`}
+              >
+                Expiry Date
+              </label>
 
-          <div className="grid col-span-2 my-4">
-            <div className="flex gap-4 items-center  ">
-              <div>
-                <label
-                  htmlFor="file-uploadVisa"
-                  className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] text-[14px] leading-[19.07px]   focus:outline-none focus:ring-2 "
-                >
-                  Attachment Document
-                </label>
-                <input
-                  id="file-uploadVisa"
-                  type="file"
-                  className="hidden"
-                  onChange={handleFileChangeVisa}
-                />
-              </div>
-              <div>
-                {selectedFileVisa ? (
-                  <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                    File Selected: {selectedFileVisa.name}
-                  </p>
-                ) : (
-                  <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
-                    No file selected
-                  </p>
-                )}
+              <input
+                id={`expdateVisa_${index}`}
+                type="date"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                value={field.expryDateVisa}
+                onChange={(e) =>
+                  handleFormChangeVisa(index, "expryDateVisa", e.target.value)
+                }
+              />
+            </div>
+
+            <div className="grid col-span-2 my-4">
+              <div className="flex gap-4 items-center  ">
+                <div>
+                  <label
+                    htmlFor={`file-uploadVisa_${index}`}
+                    className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] text-[14px] leading-[19.07px]   focus:outline-none focus:ring-2 "
+                  >
+                    Attachment Document
+                  </label>
+                  <input
+                    id={`file-uploadVisa_${index}`}
+                    type="file"
+                    className="hidden"
+                    onChange={(e) => handleFileChangeVisa(index, e)}
+                  />
+                </div>
+                <div>
+                  {field.selectedFileVisa ? (
+                    <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                      File Selected: {field.selectedFileVisa.name}
+                    </p>
+                  ) : (
+                    <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                      No file selected
+                    </p>
+                  )}
+                </div>
               </div>
             </div>
           </div>
-          {/* </div> */}
+        ))}
 
-          {/* forth section */}
+        {/* forth section */}
 
-          <div className="grid col-span-2 ">
-            <h1 className="font-bold ">RESIDENCE PERMIT</h1>
-          </div>
+        {/* <div className="grid col-span-2 "> */}
+        <h1 className="font-bold ">Residence Permit</h1>
+        {/* </div> */}
 
-          {/* <div className="grid grid-cols-2 gap-4"> */}
+        <div className="grid grid-cols-2 gap-4">
           <div className="">
             <label
               className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
@@ -693,6 +763,26 @@ const TravelDocuments = ({
                   </p>
                 )}
               </div>
+            </div>
+          </div>
+
+          <div className="w-full grid col-span-2 ">
+            <label
+              className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
+              htmlFor="inumber"
+            >
+              INDoS Number
+            </label>
+            <div className="relative flex items-center  ">
+              <input
+                id="inumber"
+                type="text"
+                value={indNumber}
+                onChange={(e) => setIndNumber(e.target.value)}
+                className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                placeholder=""
+                required
+              />
             </div>
           </div>
         </div>

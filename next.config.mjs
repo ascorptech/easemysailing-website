@@ -3,10 +3,6 @@
 const nextConfig = {
   reactStrictMode: false,
   crossOrigin:'anonymous',
-  headers:{
-    'Access-Control-Allow-Origin':'*',
-    'Access-Control-Allow-Methods':'GET,HEAD,PUT,PATCH,POST,DELETE',
-  },
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve.fallback = {

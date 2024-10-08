@@ -1,7 +1,7 @@
 import { deleteReq, getReq, patchReq, postReq, putReq } from "@/RootServices";
 import apiEndPoints from "./apiEndPoints";
 
-const {GETPROFILE,PUTPROFILE,GETENUMS,POSTMYJOB,GETMYJOB,POSTNEXTOF,POSTLANGUAGE,POSTABOUTME,POSTCONTACT,POSTONLINEPRASENCE,POSTLICENSES,POSTSEADETAILS,POSTSEAGOING ,POSTMEDICAL,POSTECDIS,POSTTRAVELDOCUMENT,POSTSTCWTRAINING,POSTPROFESSIONALSKILL,POSTREFERENCE } = apiEndPoints
+const {GETPROFILE,PUTPROFILE,GETENUMS,POSTMYJOB,GETMYJOB,POSTNEXTOF,POSTLANGUAGE,POSTABOUTME,POSTCONTACT,POSTONLINEPRASENCE,POSTLICENSES,POSTSEADETAILS,POSTSEAGOING ,POSTMEDICAL,POSTECDIS,POSTTRAVELDOCUMENT,POSTSTCWTRAINING,POSTPROFESSIONALSKILL,POSTREFERENCE,POSTADDITIIONAL,POSTVETTING } = apiEndPoints
 
 
 
@@ -111,7 +111,8 @@ export const AddNextOfData = async(data:any ,cb:any)=>{
 export const AddLanguageData = async(userId:any,data:any ,cb:any)=>{
     try {
         console.log('Data to be submitted:', data);
-        const response = await postReq(POSTLANGUAGE,data)
+         let url = `${POSTLANGUAGE}/${userId}`
+        const response = await postReq(url,data)
         console.log('API response:', response);
         return cb(response)
     } catch (error:any) {
@@ -183,7 +184,9 @@ export const AddReferencesData = async(userId:any,consentGiven:any,data:any ,cb:
 export const AddMedicalData = async(userId:any,data:any ,cb:any)=>{
     try {
         console.log('Data to be submitted:', data);
-        const response = await postReq(POSTMEDICAL,data)
+        let url = `${POSTMEDICAL}/${userId}`
+
+        const response = await postReq(url,data)
         console.log('API response:', response);
         return cb(response)
     } catch (error:any) {
@@ -228,6 +231,7 @@ export const AddOnlinePresenceData = async(data:any ,cb:any)=>{
 export const AddLicensesData = async(userId:any,data:any ,cb:any)=>{
     try {
         console.log('Data to be submitted:', data);
+        // let url =`${POSTLICENSES}/${userId}`
         const response = await postReq(POSTLICENSES,data)
         console.log('API response:', response);
         return cb(response)
@@ -254,10 +258,11 @@ export const AddSeaDetailsData = async(userId:any,data:any ,cb:any)=>{
 
 
 //ECDIS 
-export const AddEcdisData = async(userId:any,data:any ,cb:any)=>{
+export const AddEcdisData = async(userId:any,data:any ,neverExpires:any,cb:any)=>{
     try {
         console.log('Data to be submitted:', data);
-        const response = await postReq(POSTECDIS,data)
+         let url = `${POSTECDIS}/${userId}/${neverExpires}`
+        const response = await postReq(url,data)
         console.log('API response:', response);
         return cb(response)
     } catch (error:any) {
@@ -266,3 +271,34 @@ export const AddEcdisData = async(userId:any,data:any ,cb:any)=>{
     } 
 }
 
+
+
+//Additional training
+
+export const AddAdditionalData = async(userId:any,data:any ,neverExpires:any,cb:any)=>{
+    try {
+        console.log('Data to be submitted:', data);
+         let url = `${POSTADDITIIONAL}/${userId}/${neverExpires}`
+        const response = await postReq(url,data)
+        console.log('API response:', response);
+        return cb(response)
+    } catch (error:any) {
+        console.log('err',error)
+        return cb(error?.response)
+    } 
+}
+
+
+//Vetting Services
+
+export const AddVettingData = async(data:any ,cb:any)=>{
+    try {
+        console.log('Data to be submitted:', data);
+        const response = await putReq(POSTVETTING,data)
+        console.log('API response:', response);
+        return cb(response)
+    } catch (error:any) {
+        console.log('err',error)
+        return cb(error?.response)
+    }
+}

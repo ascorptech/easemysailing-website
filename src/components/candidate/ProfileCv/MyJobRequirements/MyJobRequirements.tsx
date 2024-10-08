@@ -144,6 +144,8 @@ const MyJobRequirements = ({ mjrComplete, setMjrComplete, userDetail }: Props) =
 
   return (
     <div className="container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
+
+<h2 className="font-bold my-3"> My Job Requirements</h2>
       {/* <MyJob percentage={percentage} color="#FF9900" /> */}
       {/* <CircularProgress percentage={percentage} /> */}
       {/* <CircularProgress percentage={Math.round(percentage)} />  */}

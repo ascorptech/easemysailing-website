@@ -187,9 +187,7 @@ const NextOfKinDetails = ({
                 type="text"
                 value={nextKinName}
                 onChange={(e) => setNextKinName(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                placeholder=""
-                disabled={disabled}
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"                disabled={disabled}
                
               />
               {/* </div> */}

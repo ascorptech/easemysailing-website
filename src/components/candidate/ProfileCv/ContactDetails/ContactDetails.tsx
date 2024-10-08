@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 
 import { useState } from "react";
 import { toast } from "react-toastify";
-import CircularProgress from "../CircularProgress";
+
 
 type ContactComplete = {
   percentage: number;
@@ -35,6 +35,9 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
   const [nearestAirport, setNearestAirport] = useState("");
   const [countryDrop, setCountryDrop] = useState<any>([]);
   const [countryCodeDrop, setCountryCodeDrop] = useState<any>([]);
+
+  const [disabled,setDisabled] = useState(true)
+
 
   useEffect(() => {
     console.log('userDetail',userDetail)
@@ -134,6 +137,9 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
       toast.error("Contact not submited ");
     }
   };
+  const handleEdit = () => {
+    setDisabled(!disabled)
+  }
 
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
@@ -158,7 +164,7 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
                   onChange={(e) => setAddress(e.target.value)}
                   className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
-                  required
+                  disabled={disabled}
                 />
                 {/* </div> */}
               </div>
@@ -177,7 +183,7 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
                     onChange={(e) => setNumber(e.target.value)}
                     className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder=""
-                    required
+                    disabled={disabled}
                   />
                 </div>
               </div>
@@ -198,7 +204,7 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
                   onChange={(e) => setAddInfo(e.target.value)}
                   className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=""
-                  required
+                  disabled={disabled}
                 />
               </div>
             </div>
@@ -216,7 +222,7 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
                     onChange={(e) => setPostalCode(e.target.value)}
                     className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder=""
-                    required
+                    disabled={disabled}
                   />
                 </div>
               </div>
@@ -235,7 +241,7 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
                     onChange={(e) => setCityName(e.target.value)}
                     className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder=""
-                    required
+                    disabled={disabled}
                   />
                 </div>
               </div>
@@ -259,7 +265,7 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
                     onChange={(e) => setState(e.target.value)}
                     className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder=""
-                    required
+                    disabled={disabled}
                   />
                 </div>
               </div>
@@ -271,6 +277,7 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
                   className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={country1}
                   onChange={(e) => setCountry1(e.target.value)}
+                  disabled={disabled}
                 >
                   <option value="" disabled>
                     country
@@ -297,7 +304,7 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
                     onChange={(e) => setNearestAirport(e.target.value)}
                     className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder=""
-                    required
+                    disabled={disabled}
                   />
                 </div>
               {/* <select
@@ -329,6 +336,7 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
                   className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={mCountrycode}
                   onChange={(e) => setMCountrycode(e.target.value)}
+                  disabled={disabled}
                 >
                   {countryCodeDrop && countryCodeDrop?.map((code: any, index: number) => (
                     <option key={index} value={code}>{code?.toUpperCase()}</option>
@@ -351,7 +359,7 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
                     onChange={(e) => setPhoneNumber(e.target.value)}
                     className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder=""
-                    required
+                    disabled={disabled}
                   />
                 </div>
               </div>
@@ -368,6 +376,7 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
                   className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={rCountrycode}
                   onChange={(e) => setRCountrycode(e.target.value)}
+                  disabled={disabled}
                 >
                   {countryCodeDrop && countryCodeDrop?.map((code: any, index: number) => (
                     <option key={index} value={code}>{code?.toUpperCase()}</option>
@@ -390,7 +399,7 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
                     onChange={(e) => setPhoneNumber1(e.target.value)}
                     className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder=""
-                    required
+                    disabled={disabled}
                   />
                 </div>
               </div>
@@ -412,7 +421,7 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
                     onChange={(e) => setEmail(e.target.value)}
                     className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder=""
-                    required
+                    disabled={disabled}
                   />
                 </div>
               </div>
@@ -446,12 +455,13 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
             >
               Save
             </button>
-            <button
-              type="submit"
+            <Link 
+              href={'#'}
+              onClick={handleEdit}
               className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
             >
               Edit
-            </button>
+            </Link>
           </div>
         </div>
       </form>

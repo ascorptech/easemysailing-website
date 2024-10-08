@@ -38,6 +38,7 @@ const Languages = ({
 
   const [issuingCountry, setIssuingCountry] = useState("");
   const [dateofTest, setDateofTest] = useState("");
+  const [disabled, setDisabled] = useState(true);
 
   const [selectedFile, setSelectedFile] = useState<any>(null);
 
@@ -139,6 +140,10 @@ const Languages = ({
     }
   };
 
+  const handleEdit = () => {
+    setDisabled(!disabled);
+    // toast.info("You are now in edit mode. Make your changes.");
+  };
   return (
     <div className="container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
@@ -153,6 +158,7 @@ const Languages = ({
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={language1}
               onChange={(e) => setLanguage1(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled>
                 Language
@@ -179,6 +185,7 @@ const Languages = ({
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={addiLanguage}
                 onChange={(e) => setAddiLanguage(e.target.value)}
+                disabled={disabled}
               >
                 <option value="" disabled>
                   Language
@@ -201,6 +208,7 @@ const Languages = ({
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={languageLavel}
                 onChange={(e) => setLanguageLavel(e.target.value)}
+                disabled={disabled}
               >
                 <option value="" disabled>
                   Level{" "}
@@ -226,6 +234,7 @@ const Languages = ({
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={englishLavel}
               onChange={(e) => setEnglishLavel(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled>
                 Level
@@ -243,7 +252,7 @@ const Languages = ({
         {/* LANGUAGE TESTS */}
 
         <div className="mb-3">
-          <h1 className=" font-bold ">  Language Tests</h1>
+          <h1 className=" font-bold "> Language Tests</h1>
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label
@@ -257,6 +266,7 @@ const Languages = ({
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={languageTests}
                 onChange={(e) => setLanguageTests(e.target.value)}
+                disabled={disabled}
               >
                 <option value="" disabled>
                   Language
@@ -285,7 +295,7 @@ const Languages = ({
                 onChange={(e) => setTestCenter(e.target.value)}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder=""
-                required
+                disabled={disabled}
               />
               {/* </div> */}
             </div>
@@ -304,7 +314,7 @@ const Languages = ({
                 onChange={(e) => setTypeofTest(e.target.value)}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder=""
-                required
+                disabled={disabled}
               />
               {/* </div> */}
             </div>
@@ -322,7 +332,7 @@ const Languages = ({
                 onChange={(e) => setResult(e.target.value)}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder=""
-                required
+                disabled={disabled}
               />
             </div>
 
@@ -338,6 +348,7 @@ const Languages = ({
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={issuingCountry}
                 onChange={(e) => setIssuingCountry(e.target.value)}
+                disabled={disabled}
               >
                 <option value="" disabled>
                   Issuing Country
@@ -364,6 +375,7 @@ const Languages = ({
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={dateofTest}
                 onChange={(e) => setDateofTest(e.target.value)}
+                disabled={disabled}
               />
             </div>
 
@@ -385,6 +397,7 @@ const Languages = ({
             type="file"
             className="hidden"
             onChange={handleFileChange}
+            disabled={disabled}
           />
           {selectedFile ? (
             <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
@@ -404,12 +417,13 @@ const Languages = ({
           >
             Save
           </button>
-          <button
-            type="submit"
+          <Link
+            href={"#"}
+            onClick={handleEdit}
             className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
           >
             Edit
-          </button>
+          </Link>
         </div>
       </form>
     </div>

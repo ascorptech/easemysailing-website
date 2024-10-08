@@ -517,11 +517,11 @@ const AcademicDetails = ({
     },
   ]);
 
-  const [university, setUniversity] = useState("");
-  const [subject, setSubject] = useState("");
-  const [city, setCity] = useState("");
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [issuingCountry, setIssuingCountry] = useState("");
+  // const [university, setUniversity] = useState("");
+  // const [subject, setSubject] = useState("");
+  // const [city, setCity] = useState("");
+  // const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  // const [issuingCountry, setIssuingCountry] = useState("");
   const [countryDrop, setCountryDrop] = useState<any>([]);
   const [disabled, setDisabled] = useState(true);
 

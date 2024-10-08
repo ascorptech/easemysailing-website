@@ -11,7 +11,7 @@ import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import React from "react";
 
 type StcwTrainingForm = {
-  number: string;
+  number: any;
   issuedate: string;
   exdate: string;
   issuingCountry: string;
@@ -48,15 +48,7 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
     },
   ]);
 
-  const [number, setNumber] = useState("");
-  const [issuedate, setIssueDate] = useState("");
-  const [exdate, setExDate] = useState("");
 
-  const [selectedFile, setSelectedFile] = useState<any>(null);
-
-  const [trainingCountry, setTrainingCountry] = useState("");
-  const [training, setTraining] = useState("");
-  const [neverExpires, setNeverExpires] = useState(false);
   const [sTCHTrainOption, setSTCHTrainOption] = useState<any>("");
   const [countryDrop, setCountryDrop] = useState<any>([]);
 
@@ -70,19 +62,9 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
     });
   }, []);
 
-  // const totalFields = 6 + extraFields.length * 2;
-  // const filledFields = [
-  //   number,
-  //   issuedate,
-  //   exdate || neverExpires ,
-  //   selectedFile,
-  //   trainingCountry,
-  //   training,
-  //  ,
-  //   ...extraFields.flatMap((field) => [field.field1, field.field2]),
-  // ].filter(Boolean).length;
+ 
 
-  const totalFields = 6; // Adjust based on total fields you want to calculate
+  const totalFields = 6; 
   const filledFields = stcwTraining.reduce(
     (acc, form) =>
       acc +
@@ -163,12 +145,16 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
     e.preventDefault();
 
     let formData = new FormData();
-    formData.append("document", selectedFile);
-    formData.append("trainingName", training);
-    formData.append("issuingCountry", trainingCountry);
-    formData.append("certificateNumber", number);
-    formData.append("issueDate", issuedate);
-    formData.append("expiryDate", exdate);
+    stcwTraining.forEach((element:any) => {
+      formData.append("document", element?.selectedFile);
+      formData.append("trainingName", element?.training);
+      formData.append("issuingCountry", element?.trainingCountry);
+      formData.append("certificateNumber", element?.number);
+      formData.append("issueDate", element?.issuedate);
+      formData.append("expiryDate", element?.exdate);
+
+    })
+   
 
     AddStcwData(userDetail?.userId, neverExpires, formData, AddStcwDataCB);
   };
@@ -328,7 +314,7 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
                   />
                 </div>
 
-                {!neverExpires && (
+                {!field.neverExpires && (
                   <div className="">
                     <label
                       className="text-[14px] leading-[19.07px]  text-[#333333]  "
@@ -439,6 +425,8 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
                   </p>
                 )}
               </div>
+              </div>
+          ))}
 
               <div className="flex gap-2 mb-4 mt-4">
                 <button
@@ -454,8 +442,7 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
                   Edit
                 </Link>
               </div>
-            </div>
-          ))}
+         
         </div>
       </form>
     </div>

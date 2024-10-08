@@ -92,6 +92,8 @@ const MedicalCertificates = ({
   const [otherVaccineTypeDrop, setOtherVaccineTypeDrop] = useState<any>([]);
   const [countryDrop, setCountryDrop] = useState<any>([]);
 
+  const [disabled, setDisabled] = useState(true);
+
   useEffect(() => {
     GetDropdownDetails("MEDICALFITNESSTYPE", (res: any) => {
       setTypeDrop(res?.data?.values);
@@ -309,6 +311,11 @@ const MedicalCertificates = ({
     updatedFields[index] = { ...updatedFields[index], [field]: value };
     setExtraFields(updatedFields);
   };
+
+  const handleEdit = () => {
+    setDisabled(!disabled);
+    // toast.info("You are now in edit mode. Make your changes.");
+  };
   
 
   return (
@@ -331,6 +338,7 @@ const MedicalCertificates = ({
               name="options"
               value={types2Options}
               onChange={(e) => setTypes2Options(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
                 Type
@@ -358,7 +366,7 @@ const MedicalCertificates = ({
               onChange={(e) => setNumber(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder=""
-              required
+              disabled={disabled}
             />
           </div>
 
@@ -375,6 +383,7 @@ const MedicalCertificates = ({
               name="options"
               value={issuingOptions}
               onChange={(e) => setIssuingOptions(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
                 Issuing Country
@@ -404,7 +413,7 @@ const MedicalCertificates = ({
               onChange={(e) => setIssuingCity(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder=""
-              required
+              disabled={disabled}
             />
           </div>
 
@@ -422,7 +431,7 @@ const MedicalCertificates = ({
               onChange={(e) => setFMedicalcenter(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder=""
-              required
+              disabled={disabled}
             />
           </div>
 
@@ -440,6 +449,7 @@ const MedicalCertificates = ({
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={issuedate}
               onChange={(e) => setIssueDate(e.target.value)}
+              disabled={disabled}
             />
           </div>
           {/* </div> */}
@@ -459,6 +469,7 @@ const MedicalCertificates = ({
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={exdate}
                 onChange={(e) => setExDate(e.target.value)}
+                disabled={disabled}
               />
             </div>
           )}
@@ -469,6 +480,7 @@ const MedicalCertificates = ({
               className="border focus:ring-[#00A264]  checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] text-[14px] leading-[19.07px]  text-[#333333]"
               checked={expires1}
               onChange={() => setExpires1(!expires1)}
+              disabled={disabled}
             />
             <label
               className="text-[14px] leading-[19.07px]  text-[#333333]"
@@ -493,6 +505,7 @@ const MedicalCertificates = ({
                   type="file"
                   className="hidden"
                   onChange={handleFileChange}
+                  disabled={disabled}
                 />
               </div>
               <div>
@@ -525,6 +538,7 @@ const MedicalCertificates = ({
               name="options"
               value={typeOptions}
               onChange={(e) => setTypeOptions(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
                 Type
@@ -552,7 +566,7 @@ const MedicalCertificates = ({
               onChange={(e) => setMedicalNumber(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder=""
-              required
+              disabled={disabled}
             />
           </div>
 
@@ -569,6 +583,7 @@ const MedicalCertificates = ({
               name="options"
               value={issuingCountryOpt}
               onChange={(e) => setIssuingCountryOpt(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
                 Issuing Country
@@ -597,7 +612,7 @@ const MedicalCertificates = ({
               onChange={(e) => setMedicalCenter(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder=""
-              required
+              disabled={disabled}
             />
           </div>
 
@@ -615,7 +630,7 @@ const MedicalCertificates = ({
               onChange={(e) => setTestCenter(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder=""
-              required
+              disabled={disabled}
             />
           </div>
 
@@ -632,6 +647,7 @@ const MedicalCertificates = ({
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={issuedate1}
               onChange={(e) => setIssueDate1(e.target.value)}
+              disabled={disabled}
             />
           </div>
 
@@ -650,6 +666,7 @@ const MedicalCertificates = ({
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={exdate1}
                 onChange={(e) => setExDate1(e.target.value)}
+                disabled={disabled}
               />
             </div>
           )}
@@ -660,6 +677,7 @@ const MedicalCertificates = ({
               className="border focus:ring-[#00A264] text-[14px] leading-[19.07px]  text-[#333333]  checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
               checked={expires2}
               onChange={() => setExpires2(!expires2)}
+              disabled={disabled}
             />
             <label
               className="text-[14px] leading-[19.07px]  text-[#333333]"
@@ -683,6 +701,7 @@ const MedicalCertificates = ({
                   type="file"
                   className="hidden"
                   onChange={handleFileChanges}
+                  disabled={disabled}
                 />
               </div>
               <div>
@@ -716,6 +735,7 @@ const MedicalCertificates = ({
               name="options"
               value={medicalType}
               onChange={(e) => setMedicalType(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
                 Type
@@ -742,6 +762,7 @@ const MedicalCertificates = ({
               name="options"
               value={covidOptions}
               onChange={(e) => setCovidOptions(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
                 Covid Vaccine Name Country
@@ -769,7 +790,7 @@ const MedicalCertificates = ({
               onChange={(e) => setMedicalPhysician(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder=""
-              required
+              disabled={disabled}
             />
           </div>
 
@@ -786,6 +807,7 @@ const MedicalCertificates = ({
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={vaccinationIssue}
               onChange={(e) => setVaccinationIssue(e.target.value)}
+              disabled={disabled}
             />
           </div>
 
@@ -819,6 +841,7 @@ const MedicalCertificates = ({
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={issuedateCovid}
               onChange={(e) => setIssueDateCovid(e.target.value)}
+              disabled={disabled}
             />
           </div>
 
@@ -870,6 +893,7 @@ const MedicalCertificates = ({
                   type="file"
                   className="hidden"
                   onChange={handleFileChangesCovid}
+                  disabled={disabled}
                 />
               </div>
               <div>
@@ -920,6 +944,7 @@ const MedicalCertificates = ({
               name="options"
               value={medicalType1}
               onChange={(e) => setMedicalType1(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
                 Type
@@ -946,6 +971,7 @@ const MedicalCertificates = ({
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={vaccination1}
               onChange={(e) => setVaccination1(e.target.value)}
+              disabled={disabled}
             />
           </div>
 
@@ -964,6 +990,7 @@ const MedicalCertificates = ({
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={vaccinationexp}
                 onChange={(e) => setVaccinationexp(e.target.value)}
+                disabled={disabled}
               />
             </div>
           )}
@@ -974,6 +1001,7 @@ const MedicalCertificates = ({
               className="border focus:ring-[#00A264]  text-[#00A264] checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
               checked={veccinationCheck}
               onChange={() => setVeccinationCheck(!veccinationCheck)}
+              disabled={disabled}
             />
             <label
               className="text-[14px] leading-[19.07px]  text-[#333333]"
@@ -999,6 +1027,7 @@ const MedicalCertificates = ({
                   type="file"
                   className="hidden"
                   onChange={handleFileChangesOthers}
+                  disabled={disabled}
                 />
               </div>
               <div>
@@ -1033,7 +1062,7 @@ const MedicalCertificates = ({
                     handleExtraFieldChange(index, e.target.value, "field1")
                   }
                   className="border rounded-md w-full h-9 px-2 text-[14px] text-[#333333] focus:outline-[#00A264] border-[#00A264]"
-                  // disabled={disabled}
+                  disabled={disabled}
                 >
                  <option value="" disabled selected>
                 Type
@@ -1054,7 +1083,7 @@ const MedicalCertificates = ({
                     handleExtraFieldChange(index, e.target.value, "field2")
                   }
                   className="border rounded-md w-full h-9 px-2 text-[14px] text-[#333333] focus:outline-[#00A264] border-[#00A264]"
-                  // disabled={disabled}
+                 disabled={disabled}
                 />
               </div>
 
@@ -1074,7 +1103,7 @@ const MedicalCertificates = ({
                       handleExtraFieldChange(index, e.target.value, "field3")
                     }
                     className="border rounded-md w-full h-9 px-2 text-[14px] text-[#333333] focus:outline-[#00A264] border-[#00A264]"
-                    // disabled={disabled}
+                     disabled={disabled}
                   />
                 </div>
               )}
@@ -1091,6 +1120,7 @@ const MedicalCertificates = ({
                       "neverExpires"
                     )
                   }
+                  disabled={disabled}
                 />
                 <label
                   className="text-[14px] leading-[19.07px]  text-[#333333]"
@@ -1115,7 +1145,9 @@ const MedicalCertificates = ({
                   className="hidden"
                   onChange={(e) =>
                     handleExtraFieldChange(index, e.target.files?.[0], "selectedFile")
+                    
                   }
+                  disabled={disabled}
                 />
               </div>
               <div>
@@ -1152,6 +1184,7 @@ const MedicalCertificates = ({
               name="options"
               value={medicalTypeFlag}
               onChange={(e) => setMedicalTypeFlag(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
                 Type
@@ -1175,6 +1208,7 @@ const MedicalCertificates = ({
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={vaccinationFlag}
               onChange={(e) => setVaccinationFlag(e.target.value)}
+              disabled={disabled}
             />
           </div>
 
@@ -1193,6 +1227,7 @@ const MedicalCertificates = ({
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={vaccinationexpFlag}
                 onChange={(e) => setVaccinationexpFlag(e.target.value)}
+                disabled={disabled}
               />
             </div>
           )}
@@ -1203,6 +1238,7 @@ const MedicalCertificates = ({
               className="border focus:ring-[#00A264]  text-[#00A264] checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
               checked={veccinationCheckFlag}
               onChange={() => setVeccinationCheckFlag(!veccinationCheckFlag)}
+              disabled={disabled}
             />
             <label
               className="text-[14px] leading-[19.07px]  text-[#333333]"
@@ -1226,6 +1262,7 @@ const MedicalCertificates = ({
                   type="file"
                   className="hidden"
                   onChange={handleFileChangesFlag}
+                  disabled={disabled}
                 />
               </div>
               <div>
@@ -1254,6 +1291,7 @@ const MedicalCertificates = ({
           </button>
           <Link
             href="#"
+            onClick={handleEdit}
             className="border text-[14px] leading-[19.07px]  text-[#333333] border-[#00A264]  p-2 rounded-lg px-8"
           >
             Edit

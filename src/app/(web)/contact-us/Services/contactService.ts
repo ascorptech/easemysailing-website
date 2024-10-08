@@ -12,9 +12,10 @@ export const AddContactData = async(data:any,cb:any)=>{
         return cb(error?.response)
     }
 }
-export const verifyRecaptchaData = async(data:any,cb:any)=>{
+export const verifyRecaptchaData = async(token:any,data:any,cb:any)=>{
     try {
-        const response = await postReq(POSTCAPTCHA,data);
+        let url = `${POSTCAPTCHA}?token=${token}`
+        const response = await postReq(url,data);
         return cb(response)
     } catch (error:any) {
         console.log('err',error)

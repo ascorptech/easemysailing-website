@@ -46,11 +46,13 @@
   background-color: #00a264 !important;
   min-width: 35px !important;
   min-height: 35px !important;
+  z-index: 10 !important ;
 }
 @media (min-width: 640px) {
 .sm\:flex.desktop-slider,.sm\:flex.mobile-slider{
   width: 100%;
-}}
+}
+}
 .mobile-slider{
   display: none !important;
 }
@@ -63,3 +65,4 @@
     border: 0;
   }
 }
+

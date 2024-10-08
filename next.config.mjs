@@ -2,6 +2,7 @@
 
 const nextConfig = {
   reactStrictMode: false,
+  crossOrigin:'use-credentials',
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve.fallback = {

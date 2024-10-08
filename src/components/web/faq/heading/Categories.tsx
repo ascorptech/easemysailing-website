@@ -255,7 +255,7 @@ const Categories = () => {
 
       <div className="flex items-center justify-center ">
         <p className="mb-4 text-xl mr-2">Still have questions?</p>
-        <Link href={'/contact'} className="p-2 mb-3 bg-[#00A264] text-white rounded transition ">
+        <Link href={'/contact-us'} className="p-2 mb-3 bg-[#00A264] text-white rounded transition ">
           Contact Us
         </Link>
       </div>

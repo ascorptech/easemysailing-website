@@ -83,7 +83,7 @@ export default function SignupContent() {
                   alt="App Store"
                   width={500}
                   height={500}
-                  className="w-[150px] sm:w-[178px] h-[50px] lg:h-[60px]"
+                  className="w-[150px] sm:w-[190px] h-[50px] lg:h-[50px]"
                 />
               </Link>
               <Link
@@ -99,7 +99,7 @@ export default function SignupContent() {
                   alt="App Store"
                   width={500}
                   height={500}
-                  className="w-[150px] sm:w-[178px] h-[50px] lg:h-[60px]"
+                  className="w-[150px] sm:w-[195px] h-[50px] lg:h-[60px] -mt-2"
                 />
               </Link>
 

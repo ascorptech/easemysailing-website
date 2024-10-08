@@ -5,7 +5,6 @@ import { TfiReload } from "react-icons/tfi";
 import { GrLocation } from "react-icons/gr";
 import { FiPhoneCall, FiMail } from "react-icons/fi";
 import { toast } from "react-toastify";
-import { AddContactData } from "@/app/(web)/contact/Services/contactService";
 import PhoneInput from "react-phone-input-2"; // Import the phone input component
 import "react-phone-input-2/lib/style.css";
 import ReCAPTCHA from 'react-google-recaptcha';
@@ -13,6 +12,7 @@ import { sanitizedValues } from "@/services/services";
 import { GoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import { countryCodeDrop } from "@/constants/constants";
+import { AddContactData } from "@/app/(web)/contact-us/Services/contactService";
 
 const Contact = () => {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
@@ -72,7 +72,7 @@ const Contact = () => {
       console.log('phone', phone.length)
       newErrors.phone = "Phone number must be 10 digits";
       formIsValid = false;
-    }else if(phone.length<7){
+    } else if (phone.length < 7) {
       newErrors.phone = "Phone number must be minimum 7 digits";
       formIsValid = false;
     }
@@ -91,9 +91,17 @@ const Contact = () => {
 
   async function handleCaptchaSubmission(token: string | null) {
     try {
+      console.log('token', token)
       if (token) {
-
-        setIsVerified(true);
+        let url = new URL('https://www.google.com/recaptcha/api/siteverify')
+        url.searchParams.append('secret', '6LfoUVsqAAAAAFySg2_u2dY3FJ_gTVom4nO2zVWd')
+        url.searchParams.append('response', token)
+        const response = await fetch(url, { method: 'POST', mode: 'no-cors' })
+        const captchaData = await response?.json()
+        if (captchaData?.success) {
+          console.log('captcha passed')
+          setIsVerified(true);
+        }
       }
     } catch (e) {
       setIsVerified(false);
@@ -114,18 +122,18 @@ const Contact = () => {
     if (!validateInputs()) {
       return;
     } else {
-      let data = {
-        name: name,
-        email: email,
-        mobileNumber: `${countryCode} ${phone}`,
-        message: textarea,
-      };
+      if (isVerified) {
+        let data = {
+          name: name,
+          email: email,
+          mobileNumber: `${countryCode} ${phone}`,
+          message: textarea,
+        };
 
-      AddContactData(data, AddContactDataCB);
+        AddContactData(data, AddContactDataCB);
+      }
+
     }
-
-
-
   };
 
   const AddContactDataCB = (res: any) => {
@@ -327,7 +335,7 @@ const Contact = () => {
               )}
             </div>
 
-            {/* <div className="mb-[7px] flex">
+            <div className="mb-[7px] flex">
               <div className="flex w-[65%]">
                 <input
                   id="Captcha"
@@ -336,23 +344,30 @@ const Contact = () => {
                   onChange={(e) => setCaptcha(e.target.value)}
                   className="border rounded-lg w-full lg:h-10  py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
                   placeholder="Captcha Code"
-                  required
+
                 />
               </div>
               <div className="flex items-center gap-2 ">
                 <div className="ml-4 ">
+                  {/* <ReCAPTCHA
+                    sitekey={'6LfqTlsqAAAAAEezEzshPCv3NPP0QyIQ1FqrEpq_'}
+                    ref={recaptchaRef}
+                    onChange={handleChange}
+                    onExpired={handleExpired}
+                  /> */}
                   <ReCAPTCHA
-        sitekey={'6LcdZEEqAAAAAPpMs4cg3i3Wl5BwLbhc2Z-6MZRC'}
-        ref={recaptchaRef}
-        // onChange={handleChange}
-        // onExpired={handleExpired}
-      />
+                    sitekey={'6LfoUVsqAAAAAD6TM-xdumuFGc6hTLS2kBvYKX3S'}
+                    inputMode="text"
+                    ref={recaptchaRef}
+                    onChange={handleChange}
+                    onExpired={handleExpired}
+                  />
                 </div>
                 <span className="text-white p-2 bg-green-600 text-2xl font-extrabold rounded-md">
                   <TfiReload />
                 </span>
               </div>
-            </div> */}
+            </div>
 
             {/* Submit Button */}
             <div>

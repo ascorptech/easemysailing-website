@@ -82,8 +82,8 @@ const Header: React.FC = () => {
   
 
   return (
-    <div className="z-50 top-0 fixed w-full">
-      <nav className="bg-white border-white dark:bg-white dark:border-black-700   ">
+    <div className="top-0 fixed w-full z-50">
+      <nav className="bg-white border-white dark:bg-white dark:border-black-700">
         <div className="lg:w-full w-[98%] text-25px font-[700px] leading-[37.5px] flex flex-wrap items-center justify-between  py-1 px-[1rem] sm:px-[3rem] lg:px-[2rem]   ">
           <div className="flex items-center space-x-3 rtl:space-x-reverse">
             <div className="w-44 h-12 sm:w-[230px] sm:h-[55px] ">
@@ -106,7 +106,7 @@ const Header: React.FC = () => {
               <div className="">
                 <div className=" relative inline-block px-3 text-left group ">
                   <li className="block  text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white  md:dark:hover:bg-transparent">
-                    <Link href="/about" className="text-[16px]">
+                    <Link href="/about-us" className="text-[16px]">
                       About Us
                     </Link>
                   </li>
@@ -127,7 +127,7 @@ const Header: React.FC = () => {
                 </div>
                 <div className=" relative inline-block px-3 text-left group ">
                   <li className="block  text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white  md:dark:hover:bg-transparent">
-                    <Link href="/contact" className="text-[16px]">
+                    <Link href="/contact-us" className="text-[16px]">
                       Contact Us
                     </Link>
                   </li>
@@ -266,7 +266,7 @@ const Header: React.FC = () => {
                   </span>
                   Seafarers Login
                 </Link>
-                <Image src={'/images/candidateLoginBtn.png'} width={5000} height={500} className="h-14 w-full object-contain" priority alt="btn"/>
+                <Image src={'/images/candidateLoginBtn.png'} width={5000} height={5000} className="h-12 w-full object-contain" priority alt="btn"/>
                 {/* <Link
                   href="recruiter"
                   className=" h-8 w-21  text-[#FFFFFF] bg-[#00A264] hover:bg-[#00A264] focus:outline-none focus:ring-1 focus:ring-[#00A264] font-medium rounded-full text-sm px-5 py-5 text-center me-2  dark:bg-[#00A264]   flex justify-center items-center"
@@ -398,7 +398,7 @@ const Header: React.FC = () => {
               </li>
               <li>
                 <Link
-                  href="/about"
+                  href="/about-us"
                   className="block py-2 px-3 text-[#00A264] rounded-lg hover:bg-[#00A264] mt-1  hover:text-[#FFFFFF] text-xl"
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -407,7 +407,7 @@ const Header: React.FC = () => {
               </li>
               <li>
                 <Link
-                  href="/contact"
+                  href="/contact-us"
                   className="block py-2 px-3 text-[#00A264] rounded-lg hover:bg-[#00A264] mt-1  hover:text-[#FFFFFF] text-xl"
                   onClick={() => setIsMenuOpen(false)}
                 >

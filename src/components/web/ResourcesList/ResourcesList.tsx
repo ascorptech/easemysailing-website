@@ -179,7 +179,7 @@ const ResourcesList = (props: Props) => {
           Next
         </Link> */}
       </div>
-    </div>:<div className='flex justify-center items-center h-[35rem] w-full'>
+    </div>:<div className='flex justify-center items-center h-[35rem] w-full shadow-md rounded-md border'>
       <span className="text-center text-[46px] leading-[69px] text-[#00000] font-bold">Something Exciting Comming Soon <span className='text-[#00A264]'>Stay Tuned!</span></span>
       </div>}</React.Fragment>)}
     </React.Fragment>

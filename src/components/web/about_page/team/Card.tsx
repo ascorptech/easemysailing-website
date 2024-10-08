@@ -52,7 +52,7 @@ const CardCarousel = () => {
     {
       id: 3,
       logo: "/images/team/arun.png",
-      company: "Arun Tiwari",
+      company: "Arun Kumar Tiwari",
       designation: "Technology & Operation",
     },
     {

@@ -28,7 +28,7 @@ const Footer1 = () => {
     
   }
   return (
-    <footer className="w-full bg-white">
+    <footer className="w-full bg-white border-t-[0.5px] border-[#00A264]">
       {/* Newsletter Section */}
       <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center w-full">
         <div className="flex flex-col items-center lg:ml-6 justify-center lg:w-[65%] lg:items-start lg:justify-start lg:px-5">
@@ -43,7 +43,7 @@ const Footer1 = () => {
           <div className="flex flex-col lg:px-0 px-3 gap-3 lg:flex-row lg:mt-12 lg:gap-3 lg:w-auto w-full">
             <input
               type="email"
-              placeholder="Enter your Email Address"
+              placeholder="Enter Your Email Address"
               className="p-2 w-full border-2 border-[#00A264] rounded-3xl focus:outline-none"
               value={email}
               id="email"

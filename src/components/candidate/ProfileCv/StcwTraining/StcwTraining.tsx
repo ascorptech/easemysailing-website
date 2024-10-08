@@ -49,6 +49,8 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
   ]);
 
 
+  const [disabled,setDisabled] = useState(true)
+
   const [sTCHTrainOption, setSTCHTrainOption] = useState<any>("");
   const [countryDrop, setCountryDrop] = useState<any>([]);
 
@@ -63,6 +65,7 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
   }, []);
 
  
+
 
   const totalFields = 6; 
   const filledFields = stcwTraining.reduce(
@@ -198,6 +201,11 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
   //   setExtraFields(updatedFields);
   // };
 
+  const handleEdit = () => {
+    setDisabled(!disabled)
+    // toast.info("You are now in edit mode. Make your changes.");
+  };
+
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
@@ -236,9 +244,10 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
                     onChange={(e) =>
                       handleFormChange(index, "training", e.target.value)
                     }
+                    disabled={disabled}
                   >
                     <option value="" disabled selected>
-                      Training
+                      Select
                     </option>
                     {sTCHTrainOption &&
                       sTCHTrainOption?.map((stch: any, index: number) => (
@@ -263,9 +272,10 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
                     onChange={(e) =>
                       handleFormChange(index, "issuingCountry", e.target.value)
                     }
+                    disabled={disabled}
                   >
                     <option value="" disabled selected>
-                      Issuing Country
+                      Select
                     </option>
                     {countryDrop &&
                       countryDrop?.map((country: any, index: number) => (
@@ -281,18 +291,18 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
                     className="text-[14px] leading-[19.07px]  text-[#333333] "
                     htmlFor={`number12_${index}`}
                   >
-                    Number
+                    Enter Number
                   </label>
                   <input
                     id={`number12_${index}`}
-                    type="number"
+                    type="text"
                     value={field.number}
                     onChange={(e) =>
                       handleFormChange(index, "number", e.target.value)
                     }
                     className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
                     placeholder=""
-                    required
+                    disabled={disabled}
                   />
                 </div>
 
@@ -311,6 +321,7 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
                     onChange={(e) =>
                       handleFormChange(index, "issuedate", e.target.value)
                     }
+                    disabled={disabled}
                   />
                 </div>
 
@@ -330,6 +341,7 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
                       onChange={(e) =>
                         handleFormChange(index, "exdate", e.target.value)
                       }
+                      disabled={disabled}
                     />
                   </div>
                 )}
@@ -343,6 +355,7 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
                     onChange={(e) =>
                       handleFormChange(index, "neverExpires", e.target.checked)
                     }
+                    disabled={disabled}
                   />
                   <label
                     className="text-[14px] leading-[19.07px]  text-[#333333]"
@@ -408,6 +421,7 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
                     type="file"
                     className="hidden"
                     onChange={(e) => handleFileChange(index, e)}
+                    disabled={disabled}
                   />
                   {/* {selectedFile && (
           <p className="mt-4 text-gray-700">
@@ -436,8 +450,9 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
                   Save
                 </button>
                 <Link
-                  href="#"
+                  href={'#'}
                   className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
+                  onClick={handleEdit}
                 >
                   Edit
                 </Link>

@@ -63,6 +63,8 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
   const [tradingAreaDrop, setTradingAreaDrop] = useState<any>([]);
   const [disabled,setDisabled] = useState(true)
 
+  const [countryDrop, setCountryDrop] = useState<any>([]);
+
 
   useEffect(() => {
     GetDropdownDetails('ProfessionalKnowledgeTest',(res:any)=>{
@@ -107,6 +109,11 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
     GetDropdownDetails('TRADINGAREAEXPERIENCE',(res:any)=>{
       setTradingAreaDrop(res?.data?.values)
     })
+    
+    GetDropdownDetails("country", (res: any) => {
+      // console.log('County',res?.data)
+      setCountryDrop(res?.data?.values);
+    });
   }, [])
 
 
@@ -390,7 +397,8 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
               value={stowage}
-                  onChange={(e) => setStowage(e.target.value)}
+              onChange={(e) => setStowage(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
               Select
@@ -417,6 +425,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
               name="options"
               value={typeProfessional}
               onChange={(e) => setTypeProfessional(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
               Select
@@ -443,7 +452,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
             onChange={(e) => setMaker(e.target.value)}
             className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             placeholder=""
-            required
+            disabled={disabled}
           />
         </div>
         <div className="   ">
@@ -460,7 +469,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
             onChange={(e) => setSWL(e.target.value)}
             className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             placeholder=""
-            required
+            disabled={disabled}
           />
         </div>
 
@@ -476,6 +485,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
               name="options"
               value={skillmetal}
               onChange={(e) => setSkillmetal(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
               Select
@@ -499,6 +509,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
               name="options"
               value={levelMetal}
               onChange={(e) => setLevelMetal(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
               Select
@@ -527,7 +538,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
             onChange={(e) => setCAvailable(e.target.value)}
             className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             placeholder="Yes/No"
-            required
+            disabled={disabled}
           />
         </div>
 
@@ -545,7 +556,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
             onChange={(e) => setClassApproved(e.target.value)}
             className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
             placeholder="Yes/No"
-            required
+            disabled={disabled}
           />
         </div>
 
@@ -564,6 +575,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
             type="file"
             className="hidden"
             onChange={handleFileChange}
+            disabled={disabled}
           />
          
         </div>
@@ -593,6 +605,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
               name="options"
               value={typeTank}
               onChange={(e) => setTypeTank(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
               Select
@@ -618,6 +631,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
               name="options"
               value={regionalAgreement}
               onChange={(e) => setRegionalAgreement(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
               Select
@@ -640,16 +654,24 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
               name="options"
               value={port}
               onChange={(e) => setPort(e.target.value)}
+              disabled={disabled}
             >
              <option value="" disabled selected>
               Select
               </option>
-              {portDrop &&
+
+              {countryDrop &&
+                      countryDrop?.map((country: any, index: number) => (
+                        <option key={index} value={country}>
+                          {country?.toUpperCase()}
+                        </option>
+                      ))}
+              {/* {portDrop &&
                 portDrop?.map((tst: any, index: number) => (
                   <option key={index} value={tst}>
                     {tst?.toUpperCase()}
                   </option>
-                ))}
+                ))} */}
             </select>
           </div>
           <div className="">
@@ -663,6 +685,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
             className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             value={date}
             onChange={(e) => setDate(e.target.value)}
+            disabled={disabled}
           />
           {/* </div> */}
           </div>
@@ -680,7 +703,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
             onChange={(e) => setDescription(e.target.value)}
             className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             placeholder="Yes/No"
-            required
+            disabled={disabled}
           />
         </div>
 
@@ -699,7 +722,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
             onChange={(e) => setInspection(e.target.value)}
             className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
             placeholder=""
-            required
+            disabled={disabled}
           />
         </div>
           <div className="">
@@ -712,6 +735,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
               name="options"
               value={port1}
               onChange={(e) => setPort1(e.target.value)}
+              disabled={disabled}
             >
              <option value="" disabled selected>
               Select
@@ -735,6 +759,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
             className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             value={vdate}
             onChange={(e) => setVDate(e.target.value)}
+            disabled={disabled}
           />
           {/* </div> */}
           </div>
@@ -752,7 +777,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
             onChange={(e) => setDescription1(e.target.value)}
             className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
             placeholder="Yes/No"
-            required
+            disabled={disabled}
           />
         </div>
         <div className="grid col-span-2"><h1 className="font-bold ">Trading Area Experience</h1>
@@ -767,6 +792,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
               name="options"
               value={tradingArea}
               onChange={(e) => setTradingArea(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
               Select
@@ -794,6 +820,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
         </button>
         <Link
           href="#"
+          onClick={handleEdit}
           className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
         >
           Edit

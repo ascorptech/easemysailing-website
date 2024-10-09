@@ -316,7 +316,7 @@ const AdditionalTraining = ({
           </div>
         </div>
 
-        {/* <div > */}
+      
 
         {additionalForms.map((field, index) => (
           <div className="grid grid-cols-2 gap-4">
@@ -338,7 +338,7 @@ const AdditionalTraining = ({
                 disabled={disabled}
               >
                 <option value="" disabled selected>
-                  Certification
+                Select 
                 </option>
                 {additionalTraDrop &&
                   additionalTraDrop?.map((addi: any, index: number) => (
@@ -387,7 +387,7 @@ const AdditionalTraining = ({
                 disabled={disabled}
               >
                 <option value="" disabled selected>
-                  Issuing Country
+                Select 
                 </option>
                 {countryDrop &&
                   countryDrop?.map((country: any, index: number) => (
@@ -561,7 +561,7 @@ const AdditionalTraining = ({
                 disabled={disabled}
               >
                 <option value="" disabled selected>
-                  Capacity
+                Select 
                 </option>
                 {capacityDrop &&
                   capacityDrop?.map((cap: any, index: number) => (
@@ -590,7 +590,7 @@ const AdditionalTraining = ({
                 disabled={disabled}
               >
                 <option value="" disabled selected>
-                  Level
+                Select 
                 </option>
                 {levelDrop &&
                   levelDrop?.map((lev: any, index: number) => (
@@ -639,7 +639,7 @@ const AdditionalTraining = ({
                 disabled={disabled}
               >
                 <option value="" disabled selected>
-                  Type of Test
+                Select 
                 </option>
                 {levelTestDrop &&
                   levelTestDrop?.map((levTest: any, index: number) => (
@@ -688,7 +688,7 @@ const AdditionalTraining = ({
                 disabled={disabled}
               >
                 <option value="" disabled selected>
-                  Issuing Country
+                Select 
                 </option>
                 {countryDrop &&
                   countryDrop?.map((country: any, index: number) => (

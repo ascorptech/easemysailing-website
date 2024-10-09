@@ -163,7 +163,7 @@ const MyJobRequirements = ({ mjrComplete, setMjrComplete, userDetail }: Props) =
               disabled={disabled}
             >
               <option value="" disabled>
-                Current Position/Rank
+                Select
               </option>
               {rankDrop && rankDrop?.map((rank: any, index: number) => (
                 <option key={index} value={rank}>{rank?.toUpperCase()}</option>
@@ -185,7 +185,7 @@ const MyJobRequirements = ({ mjrComplete, setMjrComplete, userDetail }: Props) =
               disabled={disabled}
             >
               <option value="" disabled>
-                Alternate Position/Rank
+              Select
               </option>
               {rankDrop && rankDrop?.map((rank: any, index: number) => (
                 <option key={index} value={rank}>{rank?.toUpperCase()}</option>
@@ -204,7 +204,7 @@ const MyJobRequirements = ({ mjrComplete, setMjrComplete, userDetail }: Props) =
               disabled={disabled}
             >
               <option value="" disabled>
-                Preferred Vessel Type
+              Select
               </option>
               {shipTypeDrop && shipTypeDrop?.map((ship: any, index: number) => (
                 <option key={index} value={ship}>{ship?.toUpperCase()}</option>
@@ -223,7 +223,7 @@ const MyJobRequirements = ({ mjrComplete, setMjrComplete, userDetail }: Props) =
               disabled={disabled}
             >
               <option value="" disabled>
-                Alternate Vessel Type
+              Select
               </option>
               {shipTypeDrop && shipTypeDrop?.map((ship: any, index: number) => (
                 <option key={index} value={ship}>{ship?.toUpperCase()}</option>
@@ -248,7 +248,7 @@ const MyJobRequirements = ({ mjrComplete, setMjrComplete, userDetail }: Props) =
               disabled={disabled}
             >
               <option value="" disabled>
-                Availability
+              Select
               </option>
               <option value="Yes">Yes</option>
               <option value="No">No</option>

@@ -11,15 +11,42 @@ import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 // import React from "react";
 
 type LicensesForms = {
-  issueAuthority: string;
+  issueAuthority: any;
   certificateNo: any;
-  certificateType: string;
-  sTCWRegulation: string;
-  areaLimitation: string;
-  otherLimitation: string;
+  certificateType: any;
+  sTCWRegulation: any;
+  areaLimitation: any;
+  otherLimitation: any;
   issueDate: any;
-  expiryDate: string;
+  expiryDate: any;
   selectedFile: File | null;
+};
+
+type GlobalMaritime = {
+  issuingCountry: any;
+  number: any;
+
+  capacity: any;
+  wRegulation: any;
+  gMissueDate: any;
+
+  gMexpiryDate: any;
+  selectedFile1: File | null;
+};
+
+type Endorsements = {
+  typeOption: any;
+  issuingOption: any;
+  number1: any;
+
+  capacityOption: any;
+
+  sTCWRegulationOption: any;
+
+  issueDateOption: any;
+
+  expiryDateOption: any;
+  selectedFile2: File | null;
 };
 
 type LicensesComplete = {
@@ -55,27 +82,54 @@ const Licenses = ({
     },
   ]);
 
-  const [number, setNumber] = useState("");
+  const [globalMaritimeForms, setGlobalMaritimeForms] = useState<
+    GlobalMaritime[]
+  >([
+    {
+      issuingCountry: "",
+      number: "",
+      capacity: "",
+      wRegulation: "",
+      gMissueDate: "",
+      gMexpiryDate: "",
+      selectedFile1: null,
+    },
+  ]);
 
-  const [idoNotACoC, setIdoNotACoC] = useState("");
+  const [endorsementsForms, setEndorsementsForms] = useState<Endorsements[]>([
+    {
+      typeOption: "",
+      issuingOption: "",
+      number1: "",
+      capacityOption: "",
+      sTCWRegulationOption: "",
+      issueDateOption: "",
+      expiryDateOption: "",
+      selectedFile2: null,
+    },
+  ]);
+
+  // const [number, setNumber] = useState("");
+
+  // const [idoNotACoC, setIdoNotACoC] = useState<any>(false);
   // const [areaLimitation, setAreaLimitation] = useState("");
-  const [capacity, setCapacity] = useState("");
+  // const [capacity, setCapacity] = useState("");
 
-  const [issuingOption, setIssuingOption] = useState("");
-  const [typeOption, setTypeOption] = useState("");
-  const [number1, setNumber1] = useState("");
+  // const [issuingOption, setIssuingOption] = useState("");
+  // const [typeOption, setTypeOption] = useState("");
+  // const [number1, setNumber1] = useState("");
 
-  const [wRegulation, setWRegulation] = useState("");
+  // const [wRegulation, setWRegulation] = useState("");
 
   // const [otherLimitation, setOtherLimitation] = useState("");
   // const [issueDate, setIssueDate] = useState("");
   // const [expiryDate, setExpiryDate] = useState("");
 
-  const [gMexpiryDate, setGMExpiryDate] = useState("");
+  // const [gMexpiryDate, setGMExpiryDate] = useState("");
 
-  const [gMissueDate, setGMIssueDate] = useState("");
+  // const [gMissueDate, setGMIssueDate] = useState("");
 
-  const [issuingCountry, setIssuingCountry] = useState("");
+  // const [issuingCountry, setIssuingCountry] = useState("");
 
   // const [certificateNo, setCertificateNo] = useState("");
   // const [issueAuthority, setIssueAuthority] = useState("");
@@ -83,21 +137,24 @@ const Licenses = ({
   // const [certificateType, setCertificateType] = useState("");
   const [separatelyCheckBox, setSeparatelyCheckBox] = useState<any>(false);
 
-  const [sTCWRegulationOption, setSTCWRegulationOption] = useState("");
-  const [capacityOption, setCapacityOption] = useState("");
-  const [issueDateOption, setIssueDateOption] = useState("");
-  const [expiryDateOption, setExpiryDateOption] = useState("");
+  // const [sTCWRegulationOption, setSTCWRegulationOption] = useState("");
+  // const [capacityOption, setCapacityOption] = useState("");
+  // const [issueDateOption, setIssueDateOption] = useState("");
+  // const [expiryDateOption, setExpiryDateOption] = useState("");
 
-  // const [selectedFile, setSelectedFile] = useState<any>(null);
-  const [selectedFile1, setSelectedFile1] = useState<any>(null);
+  // // const [selectedFile, setSelectedFile] = useState<any>(null);
+  // const [selectedFile1, setSelectedFile1] = useState<any>(null);
 
-  const [selectedFile2, setSelectedFile2] = useState<any>(null);
+  // const [selectedFile2, setSelectedFile2] = useState<any>(null);
   const [countryDrop, setCountryDrop] = useState<any>([]);
   const [capacityDrop, setCapacityDrop] = useState<any>([]);
   const [stcwRegDrop, setStcWRegDrop] = useState<any>([]);
   const [edorTyDrop, setEndorTyDrop] = useState<any>([]);
 
-  const [showFields, setShowFields] = useState(true);
+  const [showFields, setShowFields] = useState<any>(false);
+
+  // const [showFieldsens, setShowFieldsens] = useState(false);
+
   const [disabled, setDisabled] = useState(true);
 
   useEffect(() => {
@@ -120,7 +177,11 @@ const Licenses = ({
 
   // Salary expectation states
 
-  const totalFields = 17 + licensesForms.length * 9;
+  const totalFields =
+    2 +
+    globalMaritimeForms.length * 7 +
+    endorsementsForms.length * 8 +
+    licensesForms.length * 9;
   const filledFields = [
     ...licensesForms.flatMap((field) => [
       field.areaLimitation,
@@ -133,23 +194,44 @@ const Licenses = ({
       field.selectedFile,
       field.sTCWRegulation,
     ]),
-    number,
-    idoNotACoC,
-    capacity,
-    issuingOption,
-    typeOption,
-    number1,
-    wRegulation,
-    issuingCountry,
-    separatelyCheckBox,
-    sTCWRegulationOption,
-    capacityOption,
-    issueDateOption,
-    expiryDateOption,
-    selectedFile1,
-    selectedFile2,
-    gMexpiryDate,
-    gMissueDate,
+
+    ...globalMaritimeForms.flatMap((field1) => [
+      field1.gMissueDate,
+      field1.capacity,
+      field1.gMexpiryDate,
+      field1.issuingCountry,
+      field1.number,
+      field1.selectedFile1,
+      field1.wRegulation,
+    ]),
+
+    ...endorsementsForms.flatMap((field2) => [
+      field2.capacityOption,
+      field2.expiryDateOption,
+      field2.issueDateOption,
+      field2.number1,
+      field2.sTCWRegulationOption,
+      field2.typeOption,
+      field2.selectedFile2,
+      field2.issuingOption,
+    ]),
+    // number,
+    // idoNotACoC,
+    // capacity,
+    // issuingOption,
+    // typeOption,
+    // number1,
+    // wRegulation,
+    // issuingCountry,
+    // separatelyCheckBox,
+    // sTCWRegulationOption,
+    // capacityOption,
+    // issueDateOption,
+    // expiryDateOption,
+    // selectedFile1,
+    // selectedFile2,
+    // gMexpiryDate,
+    // gMissueDate,
     // ...extraFields.flatMap((field) => [field.field1, field.field2]),
   ].filter(Boolean).length;
 
@@ -197,24 +279,32 @@ const Licenses = ({
         formData.append("cocExpiryDate", element?.expiryDate);
         formData.append("cocDocument", element?.selectedFile);
       });
+      globalMaritimeForms.forEach((element: any) => {
+        formData.append("gmdssIssuingCountry", element?.issuingCountry);
+        formData.append("gmdssNumber", element?.number);
+        formData.append("gmdssCapacity", element?.capacity);
+        formData.append("gmdssStcwRegulation", element?.wRegulation);
+        formData.append("gmdssIssueDate", element?.gMissueDate);
+        formData.append("gmdssExpiryDate", element?.gMexpiryDate);
+        formData.append("gmdssDocument", element?.selectedFile1);
+      });
+      endorsementsForms.forEach((element: any) => {
+        formData.append("endorsementType", element?.typeOption);
+        formData.append("endorsementIssuingCountry", element?.issuingOption);
+        formData.append("endorsementNumber", element?.number1);
+        formData.append("endorsementCapacity", element?.capacityOption);
+        formData.append(
+          "endorsementStcwRegulation",
+          element?.sTCWRegulationOption
+        );
+        formData.append("endorsementIssueDate", element?.issueDateOption);
+        formData.append("endorsementExpiryDate", element?.expiryDateOption);
+        formData.append("endorsementDocument", element?.selectedFile2);
+      });
 
-      formData.append("cocCapacity", idoNotACoC);
-      formData.append("gmdssIssuingCountry", issuingCountry);
-      formData.append("gmdssNumber", number);
-      formData.append("gmdssCapacity", capacity);
-      formData.append("gmdssStcwRegulation", wRegulation);
-      formData.append("gmdssIssueDate", gMissueDate);
-      formData.append("gmdssExpiryDate", gMexpiryDate);
-      formData.append("gmdssDocument", selectedFile1);
+      formData.append("cocCapacity", showFields);
+
       formData.append("endorsementsNotIssuedSeparately", separatelyCheckBox);
-      formData.append("endorsementType", typeOption);
-      formData.append("endorsementIssuingCountry", issuingOption);
-      formData.append("endorsementNumber", number1);
-      formData.append("endorsementCapacity", capacityOption);
-      formData.append("endorsementStcwRegulation", sTCWRegulationOption);
-      formData.append("endorsementIssueDate", issueDateOption);
-      formData.append("endorsementExpiryDate", expiryDateOption);
-      formData.append("endorsementDocument", selectedFile2);
     }
     AddLicensesData(userDetail?.userId, formData, AddLicensesdataDB);
   };
@@ -237,31 +327,42 @@ const Licenses = ({
   //     setSelectedFile(file);
   //   }
   // };
-  const handleFileChange = (index: number, event: any) => {
-    const updatedForms = [...licensesForms];
-    updatedForms[index].selectedFile = event.target.files?.[0] || null;
-    setLicensesForms(updatedForms);
-  };
 
-  const handleFileChange1 = (event: any) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      setSelectedFile1(file);
-    }
-  };
+  // const handleFileChange1 = (event: any) => {
+  //   const file = event.target.files?.[0];
+  //   if (file) {
+  //     setSelectedFile1(file);
+  //   }
+  // };
 
-  const handleFileChange2 = (event: any) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      setSelectedFile2(file);
-    }
-  };
+  // const handleFileChange2 = (event: any) => {
+  //   const file = event.target.files?.[0];
+  //   if (file) {
+  //     setSelectedFile2(file);
+  //   }
+  // };
 
   // add plus and minus symbole
 
   // const addFieldPair = () => {
   //   setExtraFields([...extraFields, { field1: "", field2: "" }]);
   // };
+
+  const handleFormChange = (
+    index: number,
+    field: keyof LicensesForms,
+    value: any
+  ) => {
+    const updatedForms = [...licensesForms];
+    updatedForms[index][field] = value;
+    setLicensesForms(updatedForms);
+  };
+
+  const handleFileChange = (index: number, event: any) => {
+    const updatedForms = [...licensesForms];
+    updatedForms[index].selectedFile = event.target.files?.[0] || null;
+    setLicensesForms(updatedForms);
+  };
 
   const addFieldLic = () => {
     setLicensesForms([
@@ -285,30 +386,75 @@ const Licenses = ({
     setLicensesForms(updatedForms);
   };
 
-  // const removeFieldPair = () => {
-  //   if (extraFields.length > 0) {
-  //     setExtraFields(extraFields.slice(0, -1));
-  //   }
-  // };
+  const handleFileChange1 = (index: number, event: any) => {
+    const updatedForms = [...globalMaritimeForms];
+    updatedForms[index].selectedFile1 = event.target.files?.[0] || null;
+    setGlobalMaritimeForms(updatedForms);
+  };
 
-  // const handleExtraFieldChange = (
-  //   index: number,
-  //   value: string,
-  //   field: "field1" | "field2"
-  // ) => {
-  //   const updatedFields = [...licensesForms];
-  //   updatedFields[index][field] = value;
-  //   setLicensesForms(updatedFields);
-  // };
-
-  const handleFormChange = (
+  const handleFormChangeGlobal = (
     index: number,
-    field: keyof LicensesForms,
+    field: keyof GlobalMaritime,
     value: any
   ) => {
-    const updatedForms = [...licensesForms];
+    const updatedForms = [...globalMaritimeForms];
     updatedForms[index][field] = value;
-    setLicensesForms(updatedForms);
+    setGlobalMaritimeForms(updatedForms);
+  };
+
+  const addFieldGlobal = () => {
+    setGlobalMaritimeForms([
+      ...globalMaritimeForms,
+      {
+        issuingCountry: "",
+        number: "",
+        capacity: "",
+        wRegulation: "",
+        gMissueDate: "",
+        gMexpiryDate: "",
+        selectedFile1: null,
+      },
+    ]);
+  };
+  const removeFieldGlobal = (index: number) => {
+    const updatedForms = globalMaritimeForms.filter((_, i) => i !== index);
+    setGlobalMaritimeForms(updatedForms);
+  };
+
+  const handleFileChange2 = (index: number, event: any) => {
+    const updatedForms = [...endorsementsForms];
+    updatedForms[index].selectedFile2 = event.target.files?.[0] || null;
+    setEndorsementsForms(updatedForms);
+  };
+
+  const handleFormChangeEndors = (
+    index: number,
+    field: keyof Endorsements,
+    value: any
+  ) => {
+    const updatedForms = [...endorsementsForms];
+    updatedForms[index][field] = value;
+    setEndorsementsForms(updatedForms);
+  };
+
+  const addFieldEndors = () => {
+    setEndorsementsForms([
+      ...endorsementsForms,
+      {
+        typeOption: "",
+        issuingOption: "",
+        number1: "",
+        capacityOption: "",
+        sTCWRegulationOption: "",
+        issueDateOption: "",
+        expiryDateOption: "",
+        selectedFile2: null,
+      },
+    ]);
+  };
+  const removeFieldEndors = (index: number) => {
+    const updatedForms = endorsementsForms.filter((_, i) => i !== index);
+    setEndorsementsForms(updatedForms);
   };
 
   const handleEdit = () => {
@@ -322,18 +468,20 @@ const Licenses = ({
         {/* <div className="mb-3"> */}
         <div className="flex justify-between items-center">
           <h1 className="font-bold  text-left  ">Certificate Of Competency</h1>
-          <div className="flex gap-2">
-            <AiOutlinePlus
-              className="text-2xl cursor-pointer"
-              onClick={addFieldLic}
-            />
-            {licensesForms.length > 1 && (
-              <AiOutlineMinus
+          {!showFields && (
+            <div className="flex gap-2">
+              <AiOutlinePlus
                 className="text-2xl cursor-pointer"
-                onClick={() => removeFieldLic(licensesForms.length - 1)}
+                onClick={addFieldLic}
               />
-            )}
-          </div>
+              {licensesForms.length > 1 && (
+                <AiOutlineMinus
+                  className="text-2xl cursor-pointer"
+                  onClick={() => removeFieldLic(licensesForms.length - 1)}
+                />
+              )}
+            </div>
+          )}
         </div>
 
         <div className="flex items-center  my-4">
@@ -342,13 +490,14 @@ const Licenses = ({
             checked={showFields}
             onChange={(e) => setShowFields(e.target.checked)}
             className="mr-2"
+            disabled={disabled}
           />
           <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
             I do not have a CoC
           </label>
         </div>
 
-        {showFields && (
+        {!showFields && (
           <div>
             {licensesForms.map((field, index) => (
               <div className="mb-3">
@@ -374,7 +523,7 @@ const Licenses = ({
                       disabled={disabled}
                     >
                       <option value="" disabled>
-                        Issuing Country
+                        Select
                       </option>
                       {countryDrop &&
                         countryDrop?.map((country: any, index: number) => (
@@ -429,7 +578,7 @@ const Licenses = ({
                       disabled={disabled}
                     >
                       <option value="" disabled>
-                        Capacity{" "}
+                        Select
                       </option>
                       {capacityDrop &&
                         capacityDrop?.map((cap: any, index: number) => (
@@ -460,7 +609,7 @@ const Licenses = ({
                       disabled={disabled}
                     >
                       <option value="" disabled>
-                        STCW Regulation{" "}
+                        Select
                       </option>
                       {stcwRegDrop &&
                         stcwRegDrop?.map((stc: any, index: number) => (
@@ -536,6 +685,7 @@ const Licenses = ({
                       onChange={(e) =>
                         handleFormChange(index, "issueDate", e.target.value)
                       }
+                      disabled={disabled}
                     />
                   </div>
                   <div>
@@ -633,213 +783,49 @@ const Licenses = ({
               </div>
             ))}
 
-            <div className="mb-3">
+            {/* <div className="mb-3"> */}
+
+            <div className="flex justify-between items-center">
               <h1 className="text-left font-bold  ">
                 Global Maritime Distress and Safety System (GMDSS)
               </h1>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
-                    Issuing Country
-                  </label>
-                  <select
-                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    value={issuingCountry}
-                    onChange={(e) => setIssuingCountry(e.target.value)}
-                    disabled={disabled}
-                  >
-                    <option value="" disabled>
-                      Issuing Country
-                    </option>
-                    {countryDrop &&
-                      countryDrop?.map((country: any, index: number) => (
-                        <option key={index} value={country}>
-                          {country?.toUpperCase()}
-                        </option>
-                      ))}
-                  </select>
-                </div>
-
-                <div className="w-full ">
-                  <label
-                    className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1 "
-                    htmlFor="cNumber"
-                  >
-                    Number
-                  </label>
-                  {/* <div className="relative flex items-center  "> */}
-                  <input
-                    id="cNumber"
-                    type="text"
-                    value={number}
-                    onChange={(e) => setNumber(e.target.value)}
-                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    placeholder=""
-                    disabled={disabled}
-                  />
-                  {/* </div> */}
-                </div>
-                <div>
-                  <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
-                    Capacity
-                  </label>
-                  <select
-                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    value={capacity}
-                    onChange={(e) => setCapacity(e.target.value)}
-                  >
-                    <option value="" disabled>
-                      Capacity
-                    </option>
-                    {capacityDrop &&
-                      capacityDrop?.map((cap: any, index: number) => (
-                        <option key={index} value={cap}>
-                          {cap?.toUpperCase()}
-                        </option>
-                      ))}
-                  </select>
-                </div>
-
-                <div>
-                  <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
-                    STCW Regulation
-                  </label>
-                  <select
-                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    value={wRegulation}
-                    onChange={(e) => setWRegulation(e.target.value)}
-                    disabled={disabled}
-                  >
-                    <option value="" disabled>
-                      STCW Regulation
-                    </option>
-                    {stcwRegDrop &&
-                      stcwRegDrop?.map((stc: any, index: number) => (
-                        <option key={index} value={stc}>
-                          {stc?.toUpperCase()}
-                        </option>
-                      ))}
-                  </select>
-                </div>
-
-                <div>
-                  <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
-                    Issue Date
-                  </label>
-                  <input
-                    type="date"
-                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    value={gMissueDate}
-                    onChange={(e) => setGMIssueDate(e.target.value)}
-                    disabled={disabled}
-                  />
-                </div>
-                <div>
-                  <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
-                    Expiry Date
-                  </label>
-                  <input
-                    type="date"
-                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    value={gMexpiryDate}
-                    onChange={(e) => setGMExpiryDate(e.target.value)}
-                    disabled={disabled}
-                  />
-                </div>
-              </div>
-
-              <div className="flex gap-6 items-center  my-6 ">
-                <label
-                  htmlFor="medicalfile-upload3"
-                  className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[poppins]  "
-                >
-                  Attachment Document
-                </label>
-                <input
-                  id="medicalfile-upload3"
-                  type="file"
-                  className="hidden"
-                  onChange={handleFileChange1}
-                  disabled={disabled}
+              <div className="flex gap-2">
+                <AiOutlinePlus
+                  className="text-2xl cursor-pointer"
+                  onClick={addFieldGlobal}
                 />
-                {selectedFile1 ? (
-                  <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
-                    File Selected: {selectedFile1.name}
-                  </p>
-                ) : (
-                  <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
-                    No file selected
-                  </p>
+                {globalMaritimeForms.length > 1 && (
+                  <AiOutlineMinus
+                    className="text-2xl cursor-pointer"
+                    onClick={() =>
+                      removeFieldGlobal(globalMaritimeForms.length - 1)
+                    }
+                  />
                 )}
               </div>
+            </div>
 
-              <div className="mb-3">
-                <h1 className="font-bold text-left ">Endorsements</h1>
-                <div className="flex items-center gap-2 my-2">
-                  <input
-                    id="neverExpires"
-                    type="checkbox"
-                    className="border focus:ring-[#00A264]  text-[#00A264] checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
-                    checked={separatelyCheckBox}
-                    onChange={(e) => setSeparatelyCheckBox(!separatelyCheckBox)}
-                    disabled={disabled}
-                  />
-                  <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
-                    Not Issued Separately
-                  </label>
-                  {/* <select
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                  value={separately}
-                  onChange={(e) => setSeparately(e.target.value)}
-                >
-                  <option value="" disabled>
-                    Not Issued Separately
-                  </option>
-                  {edorTyDrop &&
-                    edorTyDrop?.map((endor: any, index: number) => (
-                      <option key={index} value={endor}>
-                        {endor?.toUpperCase()}
-                      </option>
-                    ))}
-                </select> */}
-                </div>
-              </div>
-
-              <div className="mb-3">
+            {globalMaritimeForms.map((field1, index) => (
+              <div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
-                      Type
-                    </label>
-                    <select
-                      className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                      value={typeOption}
-                      onChange={(e) => setTypeOption(e.target.value)}
-                      disabled={disabled}
-                    >
-                      <option value="" disabled>
-                        Type
-                      </option>
-                      {edorTyDrop &&
-                        edorTyDrop?.map((endor: any, index: number) => (
-                          <option key={index} value={endor}>
-                            {endor?.toUpperCase()}
-                          </option>
-                        ))}
-                    </select>
-                  </div>
-                  <div>
-                    <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                       Issuing Country
                     </label>
                     <select
                       className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                      value={issuingOption}
-                      onChange={(e) => setIssuingOption(e.target.value)}
+                      value={field1.issuingCountry}
+                      onChange={(e) =>
+                        handleFormChangeGlobal(
+                          index,
+                          "issuingCountry",
+                          e.target.value
+                        )
+                      }
                       disabled={disabled}
                     >
                       <option value="" disabled>
-                        Issuing Country
+                        Select
                       </option>
                       {countryDrop &&
                         countryDrop?.map((country: any, index: number) => (
@@ -849,36 +835,46 @@ const Licenses = ({
                         ))}
                     </select>
                   </div>
-                  <div>
+
+                  <div className="w-full ">
                     <label
                       className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1 "
-                      htmlFor=""
+                      htmlFor={`cNumber_${index}`}
                     >
-                      Number
+                      Enter Number
                     </label>
                     {/* <div className="relative flex items-center  "> */}
                     <input
+                      id={`cNumber_${index}`}
                       type="text"
-                      value={number1}
-                      onChange={(e) => setNumber1(e.target.value)}
+                      value={field1.number}
+                      onChange={(e) =>
+                        handleFormChangeGlobal(index, "number", e.target.value)
+                      }
                       className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                       placeholder=""
                       disabled={disabled}
                     />
+                    {/* </div> */}
                   </div>
-
                   <div>
                     <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                       Capacity
                     </label>
                     <select
                       className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                      value={capacityOption}
-                      onChange={(e) => setCapacityOption(e.target.value)}
+                      value={field1.capacity}
+                      onChange={(e) =>
+                        handleFormChangeGlobal(
+                          index,
+                          "capacity",
+                          e.target.value
+                        )
+                      }
                       disabled={disabled}
                     >
                       <option value="" disabled>
-                        Capacity
+                        Select
                       </option>
                       {capacityDrop &&
                         capacityDrop?.map((cap: any, index: number) => (
@@ -888,27 +884,35 @@ const Licenses = ({
                         ))}
                     </select>
                   </div>
+
                   <div>
                     <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                       STCW Regulation
                     </label>
                     <select
                       className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                      value={sTCWRegulationOption}
-                      onChange={(e) => setSTCWRegulationOption(e.target.value)}
+                      value={field1.wRegulation}
+                      onChange={(e) =>
+                        handleFormChangeGlobal(
+                          index,
+                          "wRegulation",
+                          e.target.value
+                        )
+                      }
                       disabled={disabled}
                     >
                       <option value="" disabled>
-                        STCW Regulation
+                        Select
                       </option>
                       {stcwRegDrop &&
-                        stcwRegDrop?.map((stcw: any, index: number) => (
-                          <option key={index} value={stcw}>
-                            {stcw?.toUpperCase()}
+                        stcwRegDrop?.map((stc: any, index: number) => (
+                          <option key={index} value={stc}>
+                            {stc?.toUpperCase()}
                           </option>
                         ))}
                     </select>
                   </div>
+
                   <div>
                     <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
                       Issue Date
@@ -916,8 +920,14 @@ const Licenses = ({
                     <input
                       type="date"
                       className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                      value={issueDateOption}
-                      onChange={(e) => setIssueDateOption(e.target.value)}
+                      value={field1.gMissueDate}
+                      onChange={(e) =>
+                        handleFormChangeGlobal(
+                          index,
+                          "gMissueDate",
+                          e.target.value
+                        )
+                      }
                       disabled={disabled}
                     />
                   </div>
@@ -928,41 +938,287 @@ const Licenses = ({
                     <input
                       type="date"
                       className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                      value={expiryDateOption}
-                      onChange={(e) => setExpiryDateOption(e.target.value)}
+                      value={field1.gMexpiryDate}
+                      onChange={(e) =>
+                        handleFormChangeGlobal(
+                          index,
+                          "gMexpiryDate",
+                          e.target.value
+                        )
+                      }
                       disabled={disabled}
                     />
                   </div>
                 </div>
+
+                <div className="flex gap-6 items-center  my-6 ">
+                  <label
+                    htmlFor={`medicalfile-upload3_${index}`}
+                    className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[poppins]  "
+                  >
+                    Attachment Document
+                  </label>
+                  <input
+                    id={`medicalfile-upload3_${index}`}
+                    type="file"
+                    className="hidden"
+                    onChange={(e) => handleFileChange1(index, e)}
+                    disabled={disabled}
+                  />
+                  {field1.selectedFile1 ? (
+                    <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                      File Selected: {field1.selectedFile1.name}
+                    </p>
+                  ) : (
+                    <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                      No file selected
+                    </p>
+                  )}
+                </div>
               </div>
+            ))}
+          </div>
+        )}
 
-              {/* Attachment Document */}
+        <div className="flex items-center gap-2 my-2">
+          <input
+            id="showhidecheck"
+            type="checkbox"
+            className="border focus:ring-[#00A264]  text-[#00A264] checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
+            checked={separatelyCheckBox}
+            onChange={(e) => setSeparatelyCheckBox(e.target.checked)}
+            disabled={disabled}
+          />
+          <label
+            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+            htmlFor="showhidecheck"
+          >
+            Not Issued Separately
+          </label>
+        </div>
 
-              <div className="flex gap-6 items-center my-6">
-                <label
-                  htmlFor="medicalfile-upload3"
-                  className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[poppins]  "
-                >
-                  Attachment Document
-                </label>
-                <input
-                  id="medicalfile-upload3"
-                  type="file"
-                  className="hidden"
-                  onChange={handleFileChange2}
-                  disabled={disabled}
+        {!separatelyCheckBox && (
+          <div>
+            <div className="mb-3 flex justify-between items-center">
+              <h1 className="font-bold text-left ">Endorsements</h1>
+              <div className="flex gap-2">
+                <AiOutlinePlus
+                  className="text-2xl cursor-pointer"
+                  onClick={addFieldEndors}
                 />
-                {selectedFile2 ? (
-                  <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
-                    File Selected: {selectedFile2.name}
-                  </p>
-                ) : (
-                  <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
-                    No file selected
-                  </p>
+                {endorsementsForms.length > 1 && (
+                  <AiOutlineMinus
+                    className="text-2xl cursor-pointer"
+                    onClick={() =>
+                      removeFieldEndors(endorsementsForms.length - 1)
+                    }
+                  />
                 )}
               </div>
             </div>
+            {endorsementsForms.map((field, index) => (
+              <div>
+                <div className="mb-3">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                        Type
+                      </label>
+                      <select
+                        className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                        value={field.typeOption}
+                        onChange={(e) =>
+                          handleFormChangeEndors(
+                            index,
+                            "typeOption",
+                            e.target.value
+                          )
+                        }
+                        disabled={disabled}
+                      >
+                        <option value="" disabled>
+                          Select
+                        </option>
+                        {edorTyDrop &&
+                          edorTyDrop?.map((endor: any, index: number) => (
+                            <option key={index} value={endor}>
+                              {endor?.toUpperCase()}
+                            </option>
+                          ))}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                        Issuing Country
+                      </label>
+                      <select
+                        className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                        value={field.issuingOption}
+                        onChange={(e) =>
+                          handleFormChangeEndors(
+                            index,
+                            "issuingOption",
+                            e.target.value
+                          )
+                        }
+                        disabled={disabled}
+                      >
+                        <option value="" disabled>
+                          Select
+                        </option>
+                        {countryDrop &&
+                          countryDrop?.map((country: any, index: number) => (
+                            <option key={index} value={country}>
+                              {country?.toUpperCase()}
+                            </option>
+                          ))}
+                      </select>
+                    </div>
+                    <div>
+                      <label
+                        className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1 "
+                        htmlFor=""
+                      >
+                        Enter Number
+                      </label>
+                      {/* <div className="relative flex items-center  "> */}
+                      <input
+                        type="text"
+                        value={field.number1}
+                        onChange={(e) =>
+                          handleFormChangeEndors(
+                            index,
+                            "number1",
+                            e.target.value
+                          )
+                        }
+                        className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                        placeholder=""
+                        disabled={disabled}
+                      />
+                    </div>
+
+                    <div>
+                      <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                        Capacity
+                      </label>
+                      <select
+                        className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                        value={field.capacityOption}
+                        onChange={(e) =>
+                          handleFormChangeEndors(
+                            index,
+                            "capacityOption",
+                            e.target.value
+                          )
+                        }
+                        disabled={disabled}
+                      >
+                        <option value="" disabled>
+                          Select
+                        </option>
+                        {capacityDrop &&
+                          capacityDrop?.map((cap: any, index: number) => (
+                            <option key={index} value={cap}>
+                              {cap?.toUpperCase()}
+                            </option>
+                          ))}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                        STCW Regulation
+                      </label>
+                      <select
+                        className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                        value={field.sTCWRegulationOption}
+                        onChange={(e) =>
+                          handleFormChangeEndors(
+                            index,
+                            "sTCWRegulationOption",
+                            e.target.value
+                          )
+                        }
+                        disabled={disabled}
+                      >
+                        <option value="" disabled>
+                          Select
+                        </option>
+                        {stcwRegDrop &&
+                          stcwRegDrop?.map((stcw: any, index: number) => (
+                            <option key={index} value={stcw}>
+                              {stcw?.toUpperCase()}
+                            </option>
+                          ))}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                        Issue Date
+                      </label>
+                      <input
+                        type="date"
+                        className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                        value={field.issueDateOption}
+                        onChange={(e) =>
+                          handleFormChangeEndors(
+                            index,
+                            "issueDateOption",
+                            e.target.value
+                          )
+                        }
+                        disabled={disabled}
+                      />
+                    </div>
+                    <div>
+                      <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                        Expiry Date
+                      </label>
+                      <input
+                        type="date"
+                        className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                        value={field.expiryDateOption}
+                        onChange={(e) =>
+                          handleFormChangeEndors(
+                            index,
+                            "expiryDateOption",
+                            e.target.value
+                          )
+                        }
+                        disabled={disabled}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Attachment Document */}
+
+                <div className="flex gap-6 items-center my-6">
+                  <label
+                    htmlFor={`medicalfile-upload3_${index}`}
+                    className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[poppins]  "
+                  >
+                    Attachment Document
+                  </label>
+                  <input
+                    id={`medicalfile-upload3_${index}`}
+                    type="file"
+                    className="hidden"
+                    onChange={(e) => handleFileChange2(index, e)}
+                    disabled={disabled}
+                  />
+                  {field.selectedFile2 ? (
+                    <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                      File Selected: {field.selectedFile2.name}
+                    </p>
+                  ) : (
+                    <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                      No file selected
+                    </p>
+                  )}
+                </div>
+              </div>
+            ))}
           </div>
         )}
 

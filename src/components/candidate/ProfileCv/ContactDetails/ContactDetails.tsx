@@ -350,12 +350,15 @@ const ContactDetails = ({
                   onChange={(e) => setMCountrycode(e.target.value)}
                   disabled={disabled}
                 >
-                  {countryCodeDrop &&
+                  <option value="" disabled selected>
+                    Select
+                  </option>
+                  {/* {countryCodeDrop &&
                     countryCodeDrop?.map((code: any, index: number) => (
                       <option key={index} value={code}>
                         {code?.toUpperCase()}
                       </option>
-                    ))}
+                    ))} */}
                 </select>
               </div>
 
@@ -393,6 +396,9 @@ const ContactDetails = ({
                   onChange={(e) => setRCountrycode(e.target.value)}
                   disabled={disabled}
                 >
+                  <option value="" disabled selected>
+                    Select
+                  </option>
                   {countryCodeDrop &&
                     countryCodeDrop?.map((code: any, index: number) => (
                       <option key={index} value={code}>

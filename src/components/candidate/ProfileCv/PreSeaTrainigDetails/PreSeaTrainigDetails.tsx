@@ -322,7 +322,7 @@ const PreSeaTrainigDetails = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                select 
+                Select 
               </option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -354,7 +354,7 @@ const PreSeaTrainigDetails = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                select 
+              Select 
               </option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -386,7 +386,7 @@ const PreSeaTrainigDetails = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                select 
+              Select 
               </option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -418,7 +418,7 @@ const PreSeaTrainigDetails = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                select 
+              Select 
               </option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -499,7 +499,7 @@ const PreSeaTrainigDetails = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Issuing Country
+              Select 
               </option>
               {countryDrop &&
                   countryDrop?.map((country: any, index: number) => (
@@ -903,7 +903,7 @@ const PreSeaTrainigDetails = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Winch Drive Experience
+              Select 
               </option>
               {winchDiveDrop && winchDiveDrop?.map((dive: any, index: number) => (
                 <option key={index} value={dive}>{dive?.toUpperCase()}</option>

@@ -50,6 +50,8 @@ const SeaGoingService = ({
   const [rankDrop, setRankDrop] = useState<any>([]);
   const [engineDrop, setEngineDrop] = useState<any>([]);
   const [ecdisDrop, setEcdisDrop] = useState<any>([]);
+  const [disabled, setDisabled] = useState(true);
+
 
   useEffect(() => {
     GetDropdownDetails("SEAGOINGEXP", (res: any) => {
@@ -174,24 +176,29 @@ const SeaGoingService = ({
     }
   };
 
+  const handleEdit = () => {
+    setDisabled(!disabled);
+    // toast.info("You are now in edit mode. Make your changes.");
+  };
+
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
         <div className="flex items-center justify-between">
           <h1 className=" font-bold my-2">SeaGoing Experience</h1>
 
-          <div className="flex gap-2">
+          {/* <div className="flex gap-2">
             <AiOutlinePlus
               className="text-2xl cursor-pointer"
-              // onClick={addFieldPair}
+               onClick={addFieldPair}
             />
-            {/* {extraFields.length > 0 && ( */}
+            {extraFields.length > 0 && (
             <AiOutlineMinus
               className="text-2xl cursor-pointer"
-              // onClick={removeFieldPair}
+              onClick={removeFieldPair}
             />
-            {/* )} */}
-          </div>
+             )} 
+          </div> */}
         </div>
         {fields.map((field, index) => (
           <div key={index} className="grid grid-cols-2 gap-4">
@@ -209,7 +216,7 @@ const SeaGoingService = ({
                 onChange={(e) => setImo(e.target.value)}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder=""
-                required
+                disabled={disabled}
               />
               {/* <select
               id="imo"
@@ -244,7 +251,7 @@ const SeaGoingService = ({
                 onChange={(e) => setVercelName(e.target.value)}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder=""
-                required
+                disabled={disabled}
               />
             </div>
 
@@ -278,6 +285,7 @@ const SeaGoingService = ({
               name="options"
               value={rank}
               onChange={(e) => setRank(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
                 Select
@@ -305,7 +313,7 @@ const SeaGoingService = ({
               onChange={(e) => setTonnage(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder=""
-              required
+              disabled={disabled}
             />
           </div>
           </div>
@@ -330,6 +338,7 @@ const SeaGoingService = ({
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={enginemake}
               onChange={(e) => setEnginemake(e.target.value)}
+              disabled={disabled}
             />
             {/* <select
               id="enginemake"
@@ -366,6 +375,7 @@ const SeaGoingService = ({
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={embarkationdate}
               onChange={(e) => setEmbarkationDate(e.target.value)}
+              disabled={disabled}
             />
           </div>
           {/* </div> */}
@@ -385,6 +395,7 @@ const SeaGoingService = ({
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={disembarkationDate}
               onChange={(e) => setDisembarkationDate(e.target.value)}
+              disabled={disabled}
             />
           </div>
 
@@ -402,7 +413,7 @@ const SeaGoingService = ({
               onChange={(e) => setSeagoingNumber(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder=""
-              required
+              disabled={disabled}
             />
           </div>
 
@@ -419,6 +430,7 @@ const SeaGoingService = ({
               name="options"
               value={eCDIS}
               onChange={(e) => setECDIS(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
                 Select
@@ -446,7 +458,7 @@ const SeaGoingService = ({
               onChange={(e) => setGearless(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder=""
-              required
+              disabled={disabled}
             />
           </div>
 
@@ -464,7 +476,7 @@ const SeaGoingService = ({
               onChange={(e) => setInertGas(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder=""
-              required
+              disabled={disabled}
             />
           </div>
         </div>
@@ -479,7 +491,8 @@ const SeaGoingService = ({
             Save
           </button>
           <Link
-            href="#"
+            href={'#'}
+            onClick={handleEdit}
             className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
           >
             Edit

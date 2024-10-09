@@ -28,6 +28,13 @@ const OnlinePresence = ({
   // State for form fields
 
   const [mCountrycode, setMCountrycode] = useState("+91");
+  const [wCountrycode, setWCountrycode] = useState("+91");
+
+  const [tCountrycode, setTCountrycode] = useState("+91");
+
+  const [vCountrycode, setVCountrycode] = useState("+91");
+
+  // const [mCountrycode, setMCountrycode] = useState("+91");
 
   const [countryCodeDrop, setCountryCodeDrop] = useState<any>([]);
   const [countryDrop, setCountryDrop] = useState<any>([]);
@@ -50,8 +57,8 @@ const OnlinePresence = ({
   const [skypeId, setSkypeId] = useState("");
   const [linkedIn, setLinkedIn] = useState(false);
   const [linkedInId, setLinkedInId] = useState("");
-  const [facebook, setFacebook] = useState(false);
-  const [facebookId, setFacebookId] = useState("");
+  const [twitter, setTwitter] = useState(false);
+  const [twitterId, setTwitterId] = useState("");
   const [instagram, setInstagram] = useState(false);
   const [instagramId, setInstagramId] = useState("");
   const [other, setOther] = useState(false);
@@ -80,7 +87,7 @@ const OnlinePresence = ({
     viber && viberId,
     skypeId && skypeIdChecked,
     linkedIn && linkedInId,
-    facebook && facebookId,
+    twitter && twitterId,
     instagram && instagramId,
     other && otherId,
   ].filter(Boolean).length;
@@ -128,17 +135,17 @@ const OnlinePresence = ({
       weChatNumber: weChatId,
       facebookMessengerId: facebookMessId,
       telegramNumber: telegramId,
-      " viberNumber": viberId,
+      viberNumber: viberId,
       skypeId: skypeId,
       linkedIn: linkedIn,
-      facebook: facebook,
-      " instagram": instagram,
+      facebook: twitter,
+      instagram: instagram,
       other: other,
       linkedInProfileUrl: linkedIn,
-      facebookProfileUrl: facebookId,
-      " instagramProfileUrl": instagramId,
+      facebookProfileUrl: twitterId,
+      instagramProfileUrl: instagramId,
       otherSocialMediaName: otherId,
-      " otherSocialMediaContact": "",
+      otherSocialMediaContact: "",
     };
 
     AddOnlinePresenceData(data, AddOnlinePresenceDataCB);
@@ -238,17 +245,33 @@ const OnlinePresence = ({
                 </label>
               </div>
               {weChat && (
-                <div className="mt-4 flex flex-col ">
+                <div className="mt-4 flex  ">
                   {/* <label
                 className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
                 htmlFor="whatsAppId"
               >
                 WeChat Number
               </label> */}
+
+                  <div className="w-[25%] ">
+                    <select
+                      className="border rounded-md  h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                      value={wCountrycode}
+                      onChange={(e) => setWCountrycode(e.target.value)}
+                      disabled={disabled}
+                    >
+                      {countryCodeDrop &&
+                        countryCodeDrop?.map((code: any, index: number) => (
+                          <option key={index} value={code}>
+                            {code?.toUpperCase()}
+                          </option>
+                        ))}
+                    </select>
+                  </div>
                   <input
                     id="whatsAppId"
                     type="text"
-                    className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    className="border rounded-md  h-9 px-2 w-[80%] text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter WeChat Id"
                     disabled={disabled}
                   />
@@ -270,7 +293,7 @@ const OnlinePresence = ({
                 </label>
               </div>
               {facebookMess && (
-                <div className="mt-4 flex flex-col ">
+                <div className="mt-4 flex  ">
                   <input
                     id="whatsAppId"
                     type="text"
@@ -301,11 +324,26 @@ const OnlinePresence = ({
               </div>
 
               {telegram && (
-                <div className="mt-4 flex flex-col ">
+                <div className="mt-4 flex  ">
+                  <div className="w-[25%] ">
+                    <select
+                      className="border rounded-md  h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                      value={tCountrycode}
+                      onChange={(e) => setTCountrycode(e.target.value)}
+                      disabled={disabled}
+                    >
+                      {countryCodeDrop &&
+                        countryCodeDrop?.map((code: any, index: number) => (
+                          <option key={index} value={code}>
+                            {code?.toUpperCase()}
+                          </option>
+                        ))}
+                    </select>
+                  </div>
                   <input
                     id="whatsAppId"
                     type="text"
-                    className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    className="border rounded-md  h-9 px-2 w-[80%] text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter Telegram Id"
                     value={telegramId}
                     onChange={(e) => setTelegramId(e.target.value)}
@@ -330,11 +368,26 @@ const OnlinePresence = ({
               </div>
 
               {viber && (
-                <div className="mt-4 flex flex-col ">
+                <div className="mt-4 flex  ">
+                  <div className="w-[25%] ">
+                    <select
+                      className="border rounded-md  h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                      value={vCountrycode}
+                      onChange={(e) => setVCountrycode(e.target.value)}
+                      disabled={disabled}
+                    >
+                      {countryCodeDrop &&
+                        countryCodeDrop?.map((code: any, index: number) => (
+                          <option key={index} value={code}>
+                            {code?.toUpperCase()}
+                          </option>
+                        ))}
+                    </select>
+                  </div>
                   <input
                     id="viberId"
                     type="text"
-                    className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    className="border rounded-md  h-9 px-2 w-[80%] text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter viber Id"
                     value={viberId}
                     onChange={(e) => setViberId(e.target.value)}
@@ -404,8 +457,8 @@ const OnlinePresence = ({
               <div>
                 <input
                   type="checkbox"
-                  checked={facebook}
-                  onChange={() => setFacebook(!facebook)}
+                  checked={twitter}
+                  onChange={() => setTwitter(!twitter)}
                   className=""
                   disabled={disabled}
                 />
@@ -413,14 +466,14 @@ const OnlinePresence = ({
                   Twitter
                 </label>
               </div>
-              {facebook && (
+              {twitter && (
                 <div className="mt-4 flex flex-col ">
                   <input
                     type="text"
                     className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter Twitter Id"
-                    value={facebookId}
-                    onChange={(e) => setFacebookId(e.target.value)}
+                    value={twitterId}
+                    onChange={(e) => setTwitterId(e.target.value)}
                     disabled={disabled}
                   />
                 </div>
@@ -453,7 +506,7 @@ const OnlinePresence = ({
                 </div>
               )}
             </div>
-            <div className="w-full">
+            {/* <div className="w-full">
               <div>
                 <input
                   type="checkbox"
@@ -479,7 +532,7 @@ const OnlinePresence = ({
                   />
                 </div>
               )}
-            </div>
+            </div> */}
           </div>
         </div>
 

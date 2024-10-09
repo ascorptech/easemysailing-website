@@ -161,7 +161,7 @@ const Languages = ({
               disabled={disabled}
             >
               <option value="" disabled>
-                Language
+               Select
               </option>
               {languageDrop &&
                 languageDrop?.map((lang: any, index: number) => (
@@ -188,7 +188,7 @@ const Languages = ({
                 disabled={disabled}
               >
                 <option value="" disabled>
-                  Language
+                Select
                 </option>
                 {languageDrop &&
                   languageDrop?.map((lang: any, index: number) => (
@@ -211,7 +211,7 @@ const Languages = ({
                 disabled={disabled}
               >
                 <option value="" disabled>
-                  Level{" "}
+                Select
                 </option>
                 {languageLevelDrop &&
                   languageLevelDrop?.map((lang: any, index: number) => (
@@ -237,7 +237,7 @@ const Languages = ({
               disabled={disabled}
             >
               <option value="" disabled>
-                Level
+              Select
               </option>
               {languageLevelDrop &&
                 languageLevelDrop?.map((lang: any, index: number) => (
@@ -269,7 +269,7 @@ const Languages = ({
                 disabled={disabled}
               >
                 <option value="" disabled>
-                  Language
+                Select
                 </option>
                 {languageDrop &&
                   languageDrop?.map((lang: any, index: number) => (
@@ -351,7 +351,7 @@ const Languages = ({
                 disabled={disabled}
               >
                 <option value="" disabled>
-                  Issuing Country
+                Select
                 </option>
                 {countryDrop &&
                   countryDrop?.map((country: any, index: number) => (

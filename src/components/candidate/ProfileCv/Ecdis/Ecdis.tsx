@@ -173,7 +173,7 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail }: Props) => {
 
               >
                 <option value="" disabled selected>
-                  Training
+                  Select
                 </option>
                 {trainDrop &&
                   trainDrop?.map((train: any, index: number) => (
@@ -218,8 +218,8 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail }: Props) => {
                 disabled={disabled}
 
               >
-                <option value="" disabled selected>
-                  Issuing Country
+                 <option value="" disabled selected>
+                  Select
                 </option>
                 {countryDrop &&
                   countryDrop?.map((country: any, index: number) => (

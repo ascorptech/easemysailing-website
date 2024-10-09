@@ -291,7 +291,7 @@ const TravelDocuments = ({
               value={number}
               onChange={(e) => setNumber(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-              placeholder="Passport No"
+              placeholder=""
               disabled={disabled}
             />
           </div>
@@ -321,7 +321,7 @@ const TravelDocuments = ({
 
           <div className="">
             <label
-              className="text-[14px] leading-[19.07px]  text-[#333333]  "
+              className="text-[14px] leading-[19.07px]  text-[#333333]"
               htmlFor="expiryDate"
             >
               Expiry Date
@@ -710,7 +710,7 @@ const TravelDocuments = ({
               className="text-[14px] leading-[19.07px]  text-[#333333] "
               htmlFor="seamanPermit"
             >
-              Number
+              Enter Number
             </label>
             <input
               id="seamanPermit"

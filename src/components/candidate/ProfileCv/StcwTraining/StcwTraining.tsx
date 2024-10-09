@@ -157,7 +157,7 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
       formData.append("expiryDate", element?.exdate);
 
     })
-   
+   let neverExpires = ''
 
     AddStcwData(userDetail?.userId, neverExpires, formData, AddStcwDataCB);
   };

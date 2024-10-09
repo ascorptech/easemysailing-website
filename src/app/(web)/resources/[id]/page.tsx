@@ -86,7 +86,13 @@ const ResourceDetailsPage: React.FC = () => {
           size={10}
         />
       </div>) :
-        (<div className="flex sm:flex-row flex-col sm:justify-around sm:mx-14 sm:my-11">
+        (<div className="flex flex-col">
+           <div className="my-5 flex text-center lg:justify-center tracking-wider items-center ">
+        <p className="text-left">
+        Disclaimer: The views expressed in this article are the personal opinion of the writer
+        </p>
+      </div>
+          <div className="flex sm:flex-row flex-col sm:justify-around sm:mx-14 sm:my-11">
           <div className=" sm:float-left sm:w-[70%] w-full sm:px-10 px-2">
             <div className="w-full">
               <Image
@@ -204,7 +210,7 @@ const ResourceDetailsPage: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>)}
+        </div></div>)}
         </div>
     </React.Fragment>
   );

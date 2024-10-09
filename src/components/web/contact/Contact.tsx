@@ -12,7 +12,7 @@ import { sanitizedValues } from "@/services/services";
 import { GoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import { countryCodeDrop } from "@/constants/constants";
-import { AddContactData } from "@/app/(web)/contact-us/Services/contactService";
+import { AddContactData, verifyRecaptchaData } from "@/app/(web)/contact-us/Services/contactService";
 
 const Contact = () => {
   const recaptchaRef = useRef<any>();
@@ -93,26 +93,30 @@ const Contact = () => {
     try {
       if (token) {
         // let url = new URL('https://www.google.com/recaptcha/api/siteverify')
-        let secretKey = '6LfoUVsqAAAAAFySg2_u2dY3FJ_gTVom4nO2zVWd';
-        const verificationUrl = `https://www.google.com/recaptcha/api/siteverify`;
+        // let secretKey = '6LfoUVsqAAAAAFySg2_u2dY3FJ_gTVom4nO2zVWd';
+        // const verificationUrl = `https://www.google.com/recaptcha/api/siteverify`;
 
-        const response = await fetch(verificationUrl, {
-          method: 'POST',
-          mode:'same-origin',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          },
-          body: new URLSearchParams({
-            secret: secretKey,
-            response: token
-          })
-        });
-        const captchaData = await response?.json()
-        console.log(captchaData, 'captchaData')
-        if (captchaData?.status == 200) {
-          console.log('captcha passed')
-          setIsVerified(true);
-        }
+        // const response = await fetch(verificationUrl, {
+        //   method: 'POST',
+        //   mode:'same-origin',
+        //   headers: {
+        //     'Content-Type': 'application/x-www-form-urlencoded'
+        //   },
+        //   body: new URLSearchParams({
+        //     secret: secretKey,
+        //     response: token
+        //   })
+        // });
+        // const captchaData = await response?.json()
+        // console.log(captchaData, 'captchaData')
+        // if (captchaData?.status == 200) {
+        //   console.log('captcha passed')
+        //   setIsVerified(true);
+        // }
+        let data ={}
+        verifyRecaptchaData(token,data,(res:any)=>{
+          console.log('res',res)
+        })
       }
     } catch (e) {
       setIsVerified(false);

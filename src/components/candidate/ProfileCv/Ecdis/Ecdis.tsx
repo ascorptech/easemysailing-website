@@ -307,7 +307,7 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail }: Props) => {
             </label>
           </div> */}
           <div className="grid col-span-2">
-            <div className=" flex items-center  gap-4">
+            <div className=" flex items-center  gap-2">
               <input
                 id="neverExpires"
                 type="checkbox"

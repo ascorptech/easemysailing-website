@@ -14,12 +14,14 @@ type Props = {
   aboutMeComplete: AboutMeComplete; // mjrComplete is an object with percentage and color
   setAboutMeComplete: React.Dispatch<React.SetStateAction<AboutMeComplete>>; // setMjrComplete is a function to update mjrComplete
   userDetail: any;
+  aboutDetail:any;
 };
 
 const AboutMe = ({
   aboutMeComplete,
   setAboutMeComplete,
   userDetail,
+  aboutDetail
 }: Props) => {
   const [personality, setPersonality] = useState("");
   const [additional, setAdditional] = useState("");
@@ -32,6 +34,15 @@ const AboutMe = ({
   const filledFields = [personality, additional, myFuture, criminal].filter(
     Boolean
   ).length;
+
+  useEffect(() => {
+    console.log('ab',aboutDetail)
+    if (aboutDetail) {
+      setPersonality(aboutDetail?.personalityAndProfessionalAttitude)
+      setAdditional(aboutDetail?.additionalSeaServiceInfo)
+      setMyFuture(aboutDetail?.futureAimsAndExpectations)
+      }
+  }, [])
 
   const percentage = (filledFields / totalFields) * 100;
   let color;

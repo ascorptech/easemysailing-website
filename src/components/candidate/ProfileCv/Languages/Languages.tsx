@@ -16,12 +16,14 @@ type Props = {
   languageComplete: LanguageComplete;
   setLanguageComplete: React.Dispatch<React.SetStateAction<LanguageComplete>>;
   userDetail: any;
+  languageDetail:any;
 };
 
 const Languages = ({
   languageComplete,
   setLanguageComplete,
   userDetail,
+  languageDetail
 }: Props) => {
   // State for form fields
   const [language1, setLanguage1] = useState("");
@@ -43,7 +45,13 @@ const Languages = ({
   const [selectedFile, setSelectedFile] = useState<any>(null);
 
   useEffect(() => {
-    GetDropdownDetails("additionalLanguage", (res: any) => {
+    if (languageDetail) {
+     console.log('lan',languageDetail)
+      }
+  }, [])
+
+  useEffect(() => {
+    GetDropdownDetails("additionallanguagelevel", (res: any) => {
       setLanguageLevelDrop(res?.data?.values);
     });
     GetDropdownDetails("country", (res: any) => {
@@ -116,7 +124,7 @@ const Languages = ({
       formData.append("testResult", result);
       formData.append("issuingCountry", issuingCountry);
       formData.append("dateOfTest", dateofTest);
-      formData.append("document", selectedFile);
+      selectedFile && formData.append("document", selectedFile);
     }
     AddLanguageData(userDetail?.userId, formData, AddLanguagedataDB);
   };

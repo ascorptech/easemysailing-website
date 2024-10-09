@@ -4,6 +4,7 @@ import {
   AddProfileData,
   GetDropdownDetails,
 } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import { countryCodeDrop } from "@/constants/constants";
 import Link from "next/link";
 import React, { useEffect } from "react";
 
@@ -18,12 +19,14 @@ type Props = {
   contactComplete: ContactComplete; // mjrComplete is an object with percentage and color
   setContactComplete: React.Dispatch<React.SetStateAction<ContactComplete>>; // setMjrComplete is a function to update mjrComplete
   userDetail: any;
+  contactDetail:any;
 };
 
 const ContactDetails = ({
   contactComplete,
   setContactComplete,
   userDetail,
+  contactDetail
 }: Props) => {
   const [address, setAddress] = useState("");
   const [number, setNumber] = useState("");
@@ -40,14 +43,26 @@ const ContactDetails = ({
   const [country1, setCountry1] = useState("");
   const [nearestAirport, setNearestAirport] = useState("");
   const [countryDrop, setCountryDrop] = useState<any>([]);
-  const [countryCodeDrop, setCountryCodeDrop] = useState<any>([]);
+  // const [countryCodeDrop, setCountryCodeDrop] = useState<any>([]);
 
   const [disabled, setDisabled] = useState(true);
 
   useEffect(() => {
     console.log("userDetail", userDetail);
-    if (userDetail) {
-      setEmail(userDetail?.email);
+    if (contactDetail) {
+      setAddress(contactDetail?.street);
+      setNumber(contactDetail?.number);
+      setAddInfo(contactDetail?.additionalInfo);
+      setPostalCode(contactDetail?.postalCode);
+      setEmail(contactDetail?.emailAddress);
+      setCountry1(contactDetail?.country)
+      setCityName(contactDetail?.city)
+      setState(contactDetail?.state)
+      setRCountrycode(contactDetail?.mobileCountryCode)
+      setPhoneNumber(contactDetail?.mobilePhoneNumber)
+      setMCountrycode(contactDetail?.directLineCountryCode)
+      setPhoneNumber1(contactDetail?.directLinePhoneNumber)
+      setNearestAirport(contactDetail?.nearestAirport)
     }
   }, []);
 
@@ -56,10 +71,10 @@ const ContactDetails = ({
       // console.log('County',res?.data)
       setCountryDrop(res?.data?.values);
     });
-    GetDropdownDetails("countryCode", (res: any) => {
-      // console.log('County',res?.data)
-      setCountryCodeDrop(res?.data?.values);
-    });
+    // GetDropdownDetails("countryCode", (res: any) => {
+    //   // console.log('County',res?.data)
+    //   setCountryCodeDrop(res?.data?.values);
+    // });
   }, []);
 
   const totalFields = 11;
@@ -112,12 +127,10 @@ const ContactDetails = ({
     e.preventDefault();
     let data = {
       id: userDetail?.userId,
-      street: "string",
-      address: address,
-      number: "string",
+      street: address,
+      number: number,
       additionalInfo: addInfo,
       postalCode: postalCode,
-      zipcode: postalCode,
       city: cityName,
       state: state,
       country: country1,
@@ -353,12 +366,12 @@ const ContactDetails = ({
                   <option value="" disabled selected>
                     Select
                   </option>
-                  {/* {countryCodeDrop &&
+                  {countryCodeDrop &&
                     countryCodeDrop?.map((code: any, index: number) => (
-                      <option key={index} value={code}>
-                        {code?.toUpperCase()}
+                      <option key={index} value={code?.phoneCode}>
+                        {code?.flag+' '+code?.phoneCode}
                       </option>
-                    ))} */}
+                    ))}
                 </select>
               </div>
 
@@ -402,8 +415,8 @@ const ContactDetails = ({
                   </option>
                   {countryCodeDrop &&
                     countryCodeDrop?.map((code: any, index: number) => (
-                      <option key={index} value={code}>
-                        {code?.toUpperCase()}
+                      <option key={index} value={code?.phoneCode}>
+                        {code?.flag+' '+code?.phoneCode}
                       </option>
                     ))}
                 </select>

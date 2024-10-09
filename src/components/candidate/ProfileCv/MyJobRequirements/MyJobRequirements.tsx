@@ -4,6 +4,7 @@ import {
   GetDropdownDetails,
   AddMyJobData,
 } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import moment from "moment";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
@@ -17,12 +18,14 @@ type Props = {
   mjrComplete: MjrComplete; // mjrComplete is an object with percentage and color
   setMjrComplete: React.Dispatch<React.SetStateAction<MjrComplete>>; // setMjrComplete is a function to update mjrComplete
   userDetail: any;
+  jobDetail:any
 };
 
 const MyJobRequirements = ({
   mjrComplete,
   setMjrComplete,
   userDetail,
+  jobDetail,
 }: Props) => {
   const [rankDrop, setRankDrop] = useState<any>([]);
   const [shipTypeDrop, setShipTypeDrop] = useState<any>([]);
@@ -36,16 +39,16 @@ const MyJobRequirements = ({
   const [contractDuration, setContractDuration] = useState("");
 
   const [disabled, setDisabled] = useState(true);
+  const [color,setColor]=useState('')
 
   useEffect(() => {
-    console.log("userDetail", userDetail);
-    if (userDetail) {
-      setCurrentPosition(userDetail?.jobRequirements?.currentPosition);
-      setAlternatePosition(userDetail?.jobRequirements?.alternatePosition);
-      setPreferredVesselType(userDetail?.jobRequirements?.preferredVesselType);
-      setAlternateVesselType(userDetail?.jobRequirements?.alternateVesselType);
-      setAvailabilityDate(userDetail?.jobRequirements?.availabilityDate);
-      setAvailable(!userDetail?.jobRequirements?.notAvailable ? "No" : "Yes");
+    if (jobDetail) {
+      setCurrentPosition(jobDetail?.currentPosition);
+      setAlternatePosition(jobDetail?.alternatePosition);
+      setPreferredVesselType(jobDetail?.preferredVesselType);
+      setAlternateVesselType(jobDetail?.alternateVesselType);
+      setAvailabilityDate(moment(jobDetail?.availabilityDate).format('YYYY-MM-DD'));
+      setAvailable(!jobDetail?.notAvailable ? "No" : "Yes");
     }
   }, []);
 
@@ -60,8 +63,7 @@ const MyJobRequirements = ({
     contractDuration,
   ].filter(Boolean).length;
 
-  const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
-  let color;
+  const percentage:any = totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
   // setMjrComplete({...mjrComplete,percentage:percentage})
   useEffect(() => {
     console.log("user", userDetail);
@@ -71,21 +73,21 @@ const MyJobRequirements = ({
         percentage: percentage, // Update the percentage field
         color: "#FF0000", // Update the color field
       }));
-      color = "#FF0000";
+      setColor("#FF0000");
     } else if (percentage <= 70) {
       setMjrComplete((prevState) => ({
         ...prevState, // Spread the previous state to keep any other properties
         percentage: percentage, // Update the percentage field
         color: "#FF9900", // Update the color field
       }));
-      color = "#FF9900";
+      setColor("#FF9900");
     } else {
       setMjrComplete((prevState) => ({
         ...prevState,
         percentage: percentage,
         color: "#00A264",
       }));
-      color = "green";
+      setColor("#00A264");
     }
   }, [percentage, color]);
 
@@ -119,6 +121,8 @@ const MyJobRequirements = ({
       preferredVesselType: preferredVesselType,
       alternateVesselType: alternateVesselType,
       notAvailable: available == "yes" ? "true" : "false",
+      color: color,
+      completed: percentage,
     };
     if (availabilityDate) {
       data.availabilityDate = availabilityDate ? availabilityDate : "";

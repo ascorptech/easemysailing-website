@@ -492,7 +492,7 @@ const Licenses = ({
             className="mr-2"
             disabled={disabled}
           />
-          <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+          <label className="text-[14px] leading-[19.07px]  text-[#333333]">
             I do not have a CoC
           </label>
         </div>
@@ -504,14 +504,14 @@ const Licenses = ({
                 <div className="grid grid-cols-2 gap-4  ">
                   <div>
                     <label
-                      className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                      className="text-[14px] leading-[19.07px]  text-[#333333]"
                       htmlFor={`issueAuthority_${index}`}
                     >
                       Issue Authority
                     </label>
                     <select
                       id={`issueAuthority_${index}`}
-                      className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                      className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                       value={field.issueAuthority}
                       onChange={(e) =>
                         handleFormChange(
@@ -536,7 +536,7 @@ const Licenses = ({
 
                   <div className="w-full ">
                     <label
-                      className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1 "
+                      className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1 "
                       htmlFor={`Certificate_${index}`}
                     >
                       Certificate No
@@ -549,8 +549,8 @@ const Licenses = ({
                       onChange={(e) =>
                         handleFormChange(index, "certificateNo", e.target.value)
                       }
-                      className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                      placeholder=""
+                      className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                      placeholder="Enter Certificate Number"
                       disabled={disabled}
                     />
                     {/* </div> */}
@@ -559,14 +559,14 @@ const Licenses = ({
                   {/* Preferred Vessel Type */}
                   <div>
                     <label
-                      className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                      className="text-[14px] leading-[19.07px]  text-[#333333]"
                       htmlFor={`certificatetype_${index}`}
                     >
                       Certificate Type
                     </label>
                     <select
                       id={`certificatetype_${index}`}
-                      className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                      className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                       value={field.certificateType}
                       onChange={(e) =>
                         handleFormChange(
@@ -590,14 +590,14 @@ const Licenses = ({
                   </div>
                   <div>
                     <label
-                      className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                      className="text-[14px] leading-[19.07px]  text-[#333333]"
                       htmlFor={`stcwregulation_${index}`}
                     >
                       STCW Regulation
                     </label>
                     <select
                       id={`stcwregulation_${index}`}
-                      className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                      className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                       value={field.sTCWRegulation}
                       onChange={(e) =>
                         handleFormChange(
@@ -621,7 +621,7 @@ const Licenses = ({
                   </div>
                   <div className=" w-full">
                     <label
-                      className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
+                      className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
                       htmlFor={`Limitation_${index}`}
                     >
                       Area Limitation
@@ -638,15 +638,15 @@ const Licenses = ({
                           e.target.value
                         )
                       }
-                      className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                      placeholder=""
+                      className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                      placeholder="Enter Area Limitation"
                       disabled={disabled}
                     />
                     {/* </div> */}
                   </div>
                   <div className=" w-full">
                     <label
-                      className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
+                      className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
                       htmlFor={`OtherLimitation_${index}`}
                     >
                       Other Limitation
@@ -663,8 +663,8 @@ const Licenses = ({
                           e.target.value
                         )
                       }
-                      className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                      placeholder=""
+                      className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                      placeholder="Enter  Other Limitation"
                       disabled={disabled}
                     />
                     {/* </div> */}
@@ -672,7 +672,7 @@ const Licenses = ({
 
                   <div>
                     <label
-                      className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                      className="text-[14px] leading-[19.07px]  text-[#333333]"
                       htmlFor={`issuesdate_${index}`}
                     >
                       Issue Date
@@ -680,17 +680,18 @@ const Licenses = ({
                     <input
                       id={`issuesdate_${index}`}
                       type="date"
-                      className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                      className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                       value={field.issueDate}
                       onChange={(e) =>
                         handleFormChange(index, "issueDate", e.target.value)
                       }
+                      placeholder="Enter Issue Date"
                       disabled={disabled}
                     />
                   </div>
                   <div>
                     <label
-                      className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                      className="text-[14px] leading-[19.07px]  text-[#333333]"
                       htmlFor={`expirydate_${index}`}
                     >
                       Expiry Date
@@ -698,19 +699,20 @@ const Licenses = ({
                     <input
                       id={`expirydate_${index}`}
                       type="date"
-                      className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                      className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                       value={field.expiryDate}
                       onChange={(e) =>
                         handleFormChange(index, "expiryDate", e.target.value)
                       }
                       disabled={disabled}
+                      placeholder="Enter Expiry Date"
                     />
                   </div>
                   {/* {extraFields.map((field, index) => (
                   <React.Fragment key={index}>
                     <div className="w-full">
                       <label
-                        className="block text-[14px] font-[poppins] text-[#333333] mb-1"
+                        className="block text-[14px]  text-[#333333] mb-1"
                         htmlFor={`extraField1_${index}`}
                       >
                         Extra Field {index * 2 + 1}
@@ -732,7 +734,7 @@ const Licenses = ({
                     </div>
                     <div className="w-full">
                       <label
-                        className="block text-[14px] font-[poppins] text-[#333333] mb-1"
+                        className="block text-[14px]  text-[#333333] mb-1"
                         htmlFor={`extraField2_${index}`}
                       >
                         Extra Field {index * 2 + 2}
@@ -759,7 +761,7 @@ const Licenses = ({
                 <div className="flex gap-6 items-center  my-6 ">
                   <label
                     htmlFor={`medicalfile-upload3_${index}`}
-                    className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[poppins]  "
+                    className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px]   "
                   >
                     Attachment Document
                   </label>
@@ -771,206 +773,11 @@ const Licenses = ({
                     disabled={disabled}
                   />
                   {field.selectedFile ? (
-                    <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                    <p className="text-[14px] leading-[19.07px]  text-[#333333]">
                       File Selected: {field.selectedFile.name}
                     </p>
                   ) : (
-                    <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
-                      No file selected
-                    </p>
-                  )}
-                </div>
-              </div>
-            ))}
-
-            {/* <div className="mb-3"> */}
-
-            <div className="flex justify-between items-center">
-              <h1 className="text-left font-bold  ">
-                Global Maritime Distress and Safety System (GMDSS)
-              </h1>
-              <div className="flex gap-2">
-                <AiOutlinePlus
-                  className="text-2xl cursor-pointer"
-                  onClick={addFieldGlobal}
-                />
-                {globalMaritimeForms.length > 1 && (
-                  <AiOutlineMinus
-                    className="text-2xl cursor-pointer"
-                    onClick={() =>
-                      removeFieldGlobal(globalMaritimeForms.length - 1)
-                    }
-                  />
-                )}
-              </div>
-            </div>
-
-            {globalMaritimeForms.map((field1, index) => (
-              <div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
-                      Issuing Country
-                    </label>
-                    <select
-                      className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                      value={field1.issuingCountry}
-                      onChange={(e) =>
-                        handleFormChangeGlobal(
-                          index,
-                          "issuingCountry",
-                          e.target.value
-                        )
-                      }
-                      disabled={disabled}
-                    >
-                      <option value="" disabled>
-                        Select
-                      </option>
-                      {countryDrop &&
-                        countryDrop?.map((country: any, index: number) => (
-                          <option key={index} value={country}>
-                            {country?.toUpperCase()}
-                          </option>
-                        ))}
-                    </select>
-                  </div>
-
-                  <div className="w-full ">
-                    <label
-                      className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1 "
-                      htmlFor={`cNumber_${index}`}
-                    >
-                      Enter Number
-                    </label>
-                    {/* <div className="relative flex items-center  "> */}
-                    <input
-                      id={`cNumber_${index}`}
-                      type="text"
-                      value={field1.number}
-                      onChange={(e) =>
-                        handleFormChangeGlobal(index, "number", e.target.value)
-                      }
-                      className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                      placeholder=""
-                      disabled={disabled}
-                    />
-                    {/* </div> */}
-                  </div>
-                  <div>
-                    <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
-                      Capacity
-                    </label>
-                    <select
-                      className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                      value={field1.capacity}
-                      onChange={(e) =>
-                        handleFormChangeGlobal(
-                          index,
-                          "capacity",
-                          e.target.value
-                        )
-                      }
-                      disabled={disabled}
-                    >
-                      <option value="" disabled>
-                        Select
-                      </option>
-                      {capacityDrop &&
-                        capacityDrop?.map((cap: any, index: number) => (
-                          <option key={index} value={cap}>
-                            {cap?.toUpperCase()}
-                          </option>
-                        ))}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
-                      STCW Regulation
-                    </label>
-                    <select
-                      className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                      value={field1.wRegulation}
-                      onChange={(e) =>
-                        handleFormChangeGlobal(
-                          index,
-                          "wRegulation",
-                          e.target.value
-                        )
-                      }
-                      disabled={disabled}
-                    >
-                      <option value="" disabled>
-                        Select
-                      </option>
-                      {stcwRegDrop &&
-                        stcwRegDrop?.map((stc: any, index: number) => (
-                          <option key={index} value={stc}>
-                            {stc?.toUpperCase()}
-                          </option>
-                        ))}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
-                      Issue Date
-                    </label>
-                    <input
-                      type="date"
-                      className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                      value={field1.gMissueDate}
-                      onChange={(e) =>
-                        handleFormChangeGlobal(
-                          index,
-                          "gMissueDate",
-                          e.target.value
-                        )
-                      }
-                      disabled={disabled}
-                    />
-                  </div>
-                  <div>
-                    <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
-                      Expiry Date
-                    </label>
-                    <input
-                      type="date"
-                      className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                      value={field1.gMexpiryDate}
-                      onChange={(e) =>
-                        handleFormChangeGlobal(
-                          index,
-                          "gMexpiryDate",
-                          e.target.value
-                        )
-                      }
-                      disabled={disabled}
-                    />
-                  </div>
-                </div>
-
-                <div className="flex gap-6 items-center  my-6 ">
-                  <label
-                    htmlFor={`medicalfile-upload3_${index}`}
-                    className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[poppins]  "
-                  >
-                    Attachment Document
-                  </label>
-                  <input
-                    id={`medicalfile-upload3_${index}`}
-                    type="file"
-                    className="hidden"
-                    onChange={(e) => handleFileChange1(index, e)}
-                    disabled={disabled}
-                  />
-                  {field1.selectedFile1 ? (
-                    <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
-                      File Selected: {field1.selectedFile1.name}
-                    </p>
-                  ) : (
-                    <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                    <p className="text-[14px] leading-[19.07px]  text-[#333333]">
                       No file selected
                     </p>
                   )}
@@ -979,6 +786,212 @@ const Licenses = ({
             ))}
           </div>
         )}
+
+        {/* <div className="mb-3"> */}
+
+        <div className="flex justify-between items-center">
+          <h1 className="text-left font-bold  ">
+            Global Maritime Distress and Safety System (GMDSS)
+          </h1>
+          <div className="flex gap-2">
+            <AiOutlinePlus
+              className="text-2xl cursor-pointer"
+              onClick={addFieldGlobal}
+            />
+            {globalMaritimeForms.length > 1 && (
+              <AiOutlineMinus
+                className="text-2xl cursor-pointer"
+                onClick={() =>
+                  removeFieldGlobal(globalMaritimeForms.length - 1)
+                }
+              />
+            )}
+          </div>
+        </div>
+
+        {globalMaritimeForms.map((field1, index) => (
+          <div>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="text-[14px] leading-[19.07px]  text-[#333333]">
+                  Issuing Country
+                </label>
+                <select
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  value={field1.issuingCountry}
+                  onChange={(e) =>
+                    handleFormChangeGlobal(
+                      index,
+                      "issuingCountry",
+                      e.target.value
+                    )
+                  }
+                  disabled={disabled}
+                >
+                  <option value="" disabled>
+                    Select
+                  </option>
+                  {countryDrop &&
+                    countryDrop?.map((country: any, index: number) => (
+                      <option key={index} value={country}>
+                        {country?.toUpperCase()}
+                      </option>
+                    ))}
+                </select>
+              </div>
+
+              <div className="w-full ">
+                <label
+                  className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1 "
+                  htmlFor={`cNumber_${index}`}
+                >
+                  Enter Number
+                </label>
+                {/* <div className="relative flex items-center  "> */}
+                <input
+                  id={`cNumber_${index}`}
+                  type="text"
+                  value={field1.number}
+                  onChange={(e) =>
+                    handleFormChangeGlobal(index, "number", e.target.value)
+                  }
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  placeholder="Enter Number"
+                  disabled={disabled}
+                />
+                {/* </div> */}
+              </div>
+              <div>
+                <label className="text-[14px] leading-[19.07px]  text-[#333333]">
+                  Capacity
+                </label>
+                <select
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  value={field1.capacity}
+                  onChange={(e) =>
+                    handleFormChangeGlobal(index, "capacity", e.target.value)
+                  }
+                  disabled={disabled}
+                >
+                  <option value="" disabled>
+                    Select
+                  </option>
+                  {capacityDrop &&
+                    capacityDrop?.map((cap: any, index: number) => (
+                      <option key={index} value={cap}>
+                        {cap?.toUpperCase()}
+                      </option>
+                    ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="text-[14px] leading-[19.07px]  text-[#333333]">
+                  STCW Regulation
+                </label>
+                <select
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  value={field1.wRegulation}
+                  onChange={(e) =>
+                    handleFormChangeGlobal(index, "wRegulation", e.target.value)
+                  }
+                  disabled={disabled}
+                >
+                  <option value="" disabled>
+                    Select
+                  </option>
+                  {stcwRegDrop &&
+                    stcwRegDrop?.map((stc: any, index: number) => (
+                      <option key={index} value={stc}>
+                        {stc?.toUpperCase()}
+                      </option>
+                    ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="text-[14px] leading-[19.07px]  text-[#333333]">
+                  Issue Date
+                </label>
+                <input
+                  type="date"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  value={field1.gMissueDate}
+                  onChange={(e) =>
+                    handleFormChangeGlobal(index, "gMissueDate", e.target.value)
+                  }
+                  disabled={disabled}
+                  placeholder="Enter Issue Date"
+                />
+              </div>
+              <div>
+                <label className="text-[14px] leading-[19.07px]  text-[#333333]">
+                  Expiry Date
+                </label>
+                <input
+                  type="date"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  value={field1.gMexpiryDate}
+                  onChange={(e) =>
+                    handleFormChangeGlobal(
+                      index,
+                      "gMexpiryDate",
+                      e.target.value
+                    )
+                  }
+                  disabled={disabled}
+                  placeholder="Enter Expiry Date"
+                />
+              </div>
+            </div>
+
+            <div className="flex gap-6 items-center  my-6 ">
+              <label
+                htmlFor={`medicalfile-upload3_${index}`}
+                className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px]   "
+              >
+                Attachment Document
+              </label>
+              <input
+                id={`medicalfile-upload3_${index}`}
+                type="file"
+                className="hidden"
+                onChange={(e) => handleFileChange1(index, e)}
+                disabled={disabled}
+              />
+              {field1.selectedFile1 ? (
+                <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                  File Selected: {field1.selectedFile1.name}
+                </p>
+              ) : (
+                <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                  No file selected
+                </p>
+              )}
+            </div>
+          </div>
+        ))}
+
+        {/* <div> */}
+        <div className="mb-3 flex justify-between items-center">
+          <h1 className="font-bold text-left ">Endorsements</h1>
+          {!separatelyCheckBox && (
+            <div className="flex gap-2">
+              <AiOutlinePlus
+                className="text-2xl cursor-pointer"
+                onClick={addFieldEndors}
+              />
+              {endorsementsForms.length > 1 && (
+                <AiOutlineMinus
+                  className="text-2xl cursor-pointer"
+                  onClick={() =>
+                    removeFieldEndors(endorsementsForms.length - 1)
+                  }
+                />
+              )}
+            </div>
+          )}
+        </div>
 
         <div className="flex items-center gap-2 my-2">
           <input
@@ -990,7 +1003,7 @@ const Licenses = ({
             disabled={disabled}
           />
           <label
-            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+            className="text-[14px] leading-[19.07px]  text-[#333333]"
             htmlFor="showhidecheck"
           >
             Not Issued Separately
@@ -999,33 +1012,16 @@ const Licenses = ({
 
         {!separatelyCheckBox && (
           <div>
-            <div className="mb-3 flex justify-between items-center">
-              <h1 className="font-bold text-left ">Endorsements</h1>
-              <div className="flex gap-2">
-                <AiOutlinePlus
-                  className="text-2xl cursor-pointer"
-                  onClick={addFieldEndors}
-                />
-                {endorsementsForms.length > 1 && (
-                  <AiOutlineMinus
-                    className="text-2xl cursor-pointer"
-                    onClick={() =>
-                      removeFieldEndors(endorsementsForms.length - 1)
-                    }
-                  />
-                )}
-              </div>
-            </div>
             {endorsementsForms.map((field, index) => (
               <div>
                 <div className="mb-3">
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                      <label className="text-[14px] leading-[19.07px]  text-[#333333]">
                         Type
                       </label>
                       <select
-                        className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                        className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                         value={field.typeOption}
                         onChange={(e) =>
                           handleFormChangeEndors(
@@ -1048,11 +1044,11 @@ const Licenses = ({
                       </select>
                     </div>
                     <div>
-                      <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                      <label className="text-[14px] leading-[19.07px]  text-[#333333]">
                         Issuing Country
                       </label>
                       <select
-                        className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                        className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                         value={field.issuingOption}
                         onChange={(e) =>
                           handleFormChangeEndors(
@@ -1076,7 +1072,7 @@ const Licenses = ({
                     </div>
                     <div>
                       <label
-                        className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1 "
+                        className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1 "
                         htmlFor=""
                       >
                         Enter Number
@@ -1092,18 +1088,18 @@ const Licenses = ({
                             e.target.value
                           )
                         }
-                        className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                        placeholder=""
+                        className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                        placeholder="Enter Number"
                         disabled={disabled}
                       />
                     </div>
 
                     <div>
-                      <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                      <label className="text-[14px] leading-[19.07px]  text-[#333333]">
                         Capacity
                       </label>
                       <select
-                        className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                        className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                         value={field.capacityOption}
                         onChange={(e) =>
                           handleFormChangeEndors(
@@ -1126,11 +1122,11 @@ const Licenses = ({
                       </select>
                     </div>
                     <div>
-                      <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                      <label className="text-[14px] leading-[19.07px]  text-[#333333]">
                         STCW Regulation
                       </label>
                       <select
-                        className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                        className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                         value={field.sTCWRegulationOption}
                         onChange={(e) =>
                           handleFormChangeEndors(
@@ -1153,12 +1149,12 @@ const Licenses = ({
                       </select>
                     </div>
                     <div>
-                      <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                      <label className="text-[14px] leading-[19.07px]  text-[#333333]">
                         Issue Date
                       </label>
                       <input
                         type="date"
-                        className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                        className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                         value={field.issueDateOption}
                         onChange={(e) =>
                           handleFormChangeEndors(
@@ -1167,16 +1163,17 @@ const Licenses = ({
                             e.target.value
                           )
                         }
+                        placeholder="Enter Issue Date"
                         disabled={disabled}
                       />
                     </div>
                     <div>
-                      <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                      <label className="text-[14px] leading-[19.07px]  text-[#333333]">
                         Expiry Date
                       </label>
                       <input
                         type="date"
-                        className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                        className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                         value={field.expiryDateOption}
                         onChange={(e) =>
                           handleFormChangeEndors(
@@ -1185,6 +1182,7 @@ const Licenses = ({
                             e.target.value
                           )
                         }
+                        placeholder="Enter Expiry Date"
                         disabled={disabled}
                       />
                     </div>
@@ -1196,7 +1194,7 @@ const Licenses = ({
                 <div className="flex gap-6 items-center my-6">
                   <label
                     htmlFor={`medicalfile-upload3_${index}`}
-                    className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[poppins]  "
+                    className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px]   "
                   >
                     Attachment Document
                   </label>
@@ -1208,11 +1206,11 @@ const Licenses = ({
                     disabled={disabled}
                   />
                   {field.selectedFile2 ? (
-                    <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                    <p className="text-[14px] leading-[19.07px]  text-[#333333]">
                       File Selected: {field.selectedFile2.name}
                     </p>
                   ) : (
-                    <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                    <p className="text-[14px] leading-[19.07px]  text-[#333333]">
                       No file selected
                     </p>
                   )}

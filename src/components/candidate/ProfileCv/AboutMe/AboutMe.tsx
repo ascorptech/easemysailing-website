@@ -106,10 +106,10 @@ const AboutMe = ({
             <div className="flex flex-col gap-4">
               <div className=" ">
                 <label
-                  className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
+                  className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
                   htmlFor="personality"
                 >
-                  My Personality and professional Attitude
+                  My Personality And Professional Attitude
                 </label>
 
                 <input
@@ -117,34 +117,34 @@ const AboutMe = ({
                   type="text"
                   value={personality}
                   onChange={(e) => setPersonality(e.target.value.slice(0, 25))} // Limit to 25 characters
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                  placeholder=""
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  placeholder=" My Personality And Professional Attitude"
                   disabled={disabled}
                 />
               </div>
               <div className="">
                 <label
-                  className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
+                  className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
                   htmlFor="additional"
                 >
-                  Additional Information about my past Sea Service
+                  Additional Information About My Past Sea Service
                 </label>
                 <input
                   id="additional"
                   type="text"
                   value={additional}
                   onChange={(e) => setAdditional(e.target.value.slice(0, 25))} // Limit to 25 characters
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                  placeholder=""
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  placeholder="  Additional Information About My Past Sea Service"
                   disabled={disabled}
                 />
               </div>
               <div className=" ">
                 <label
-                  className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
+                  className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
                   htmlFor="future"
                 >
-                  My Future Aims and Expectations
+                  My Future Aims And Expectations
                 </label>
                 <div className="relative flex items-center  ">
                   <input
@@ -152,19 +152,19 @@ const AboutMe = ({
                     type="text"
                     value={myFuture}
                     onChange={(e) => setMyFuture(e.target.value.slice(0, 25))} // Limit to 25 characters
-                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    placeholder=""
+                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder="  My Future Aims And Expectations"
                     disabled={disabled}
                   />
                 </div>
               </div>
 
-              <div className=" ">
+              {/* <div className=" ">
                 <label
-                  className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
+                  className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
                   htmlFor="action"
                 >
-                  Criminal action.
+                  Criminal Action.
                 </label>
                 <div className="relative flex items-center  ">
                   <input
@@ -172,10 +172,34 @@ const AboutMe = ({
                     type="text"
                     value={criminal}
                     onChange={(e) => setCriminal(e.target.value.slice(0, 25))} // Limit to 25 characters
-                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Yes/No"
                     disabled={disabled}
                   />
+                </div>
+              </div> */}
+
+              <div className="flex gap-2 ">
+               
+                <div className="  ">
+                  <input
+                    id="action"
+                    type="checkbox"
+                    value={criminal}
+                    onChange={(e) => setCriminal(e.target.value)} 
+                    className="border rounded-md w-full   px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    // placeholder="Yes/No"
+                    disabled={disabled}
+                  />
+                  </div>
+                  <div>
+                   <label
+                  className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
+                  htmlFor="action"
+                >
+                  I declare that I was never dismissed by any of my former employers because of drug or alcohol abuse, discrimination, sexual abuse or any criminal action.
+                </label>
+                
                 </div>
               </div>
             </div>

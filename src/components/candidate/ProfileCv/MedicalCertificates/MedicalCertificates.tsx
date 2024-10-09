@@ -372,7 +372,7 @@ const MedicalCertificates = ({
               className="text-[14px] leading-[19.07px]  text-[#333333]"
               htmlFor="medicalnumber"
             >
-              Enter Number
+              Enter Certificate Number
             </label>
             <input
               id="medicalnumber"
@@ -380,7 +380,7 @@ const MedicalCertificates = ({
               value={number}
               onChange={(e) => setNumber(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-              placeholder=""
+              placeholder=" Enter Certificate Number"
               disabled={disabled}
             />
           </div>
@@ -427,7 +427,7 @@ const MedicalCertificates = ({
               value={issuingCity}
               onChange={(e) => setIssuingCity(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-              placeholder=""
+              placeholder="Enter Issuring City"
               disabled={disabled}
             />
           </div>
@@ -445,7 +445,7 @@ const MedicalCertificates = ({
               value={fMedicalcenter}
               onChange={(e) => setFMedicalcenter(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-              placeholder=""
+              placeholder="Enter Medical Center"
               disabled={disabled}
             />
           </div>
@@ -465,6 +465,7 @@ const MedicalCertificates = ({
               value={issuedate}
               onChange={(e) => setIssueDate(e.target.value)}
               disabled={disabled}
+              placeholder="Enter Issue Date"
             />
           </div>
           {/* </div> */}
@@ -485,6 +486,7 @@ const MedicalCertificates = ({
                 value={exdate}
                 onChange={(e) => setExDate(e.target.value)}
                 disabled={disabled}
+                placeholder="Enter Expiry Date"
               />
             </div>
           )}
@@ -530,7 +532,7 @@ const MedicalCertificates = ({
                   </p>
                 ) : (
                   <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                    No file selected
+                    No File Selected
                   </p>
                 )}
               </div>
@@ -572,7 +574,7 @@ const MedicalCertificates = ({
               className="text-[14px] leading-[19.07px]  text-[#333333] "
               htmlFor="medicalNumber1"
             >
-              Enter Number
+              Enter Certificate Number
             </label>
             <input
               id="medicalNumber1"
@@ -580,7 +582,7 @@ const MedicalCertificates = ({
               value={medicalNumber}
               onChange={(e) => setMedicalNumber(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              placeholder=""
+              placeholder="Enter Certificate Number"
               disabled={disabled}
             />
           </div>
@@ -626,7 +628,7 @@ const MedicalCertificates = ({
               value={medicalCenter}
               onChange={(e) => setMedicalCenter(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              placeholder=""
+              placeholder="Enter Issuring City"
               disabled={disabled}
             />
           </div>
@@ -644,7 +646,7 @@ const MedicalCertificates = ({
               value={testCenter}
               onChange={(e) => setTestCenter(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-              placeholder=""
+              placeholder="Enter  Test Center"
               disabled={disabled}
             />
           </div>
@@ -663,6 +665,7 @@ const MedicalCertificates = ({
               value={issuedate1}
               onChange={(e) => setIssueDate1(e.target.value)}
               disabled={disabled}
+              placeholder="Enter  Issue Date"
             />
           </div>
 
@@ -682,6 +685,7 @@ const MedicalCertificates = ({
                 value={exdate1}
                 onChange={(e) => setExDate1(e.target.value)}
                 disabled={disabled}
+                placeholder="Enter Expiry Date"
               />
             </div>
           )}
@@ -726,7 +730,7 @@ const MedicalCertificates = ({
                   </p>
                 ) : (
                   <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                    No file selected
+                    No File Selected
                   </p>
                 )}
               </div>
@@ -804,7 +808,7 @@ const MedicalCertificates = ({
               value={medicalPhysician}
               onChange={(e) => setMedicalPhysician(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              placeholder=""
+              placeholder="Enter Medical Center/Physician"
               disabled={disabled}
             />
           </div>
@@ -823,6 +827,7 @@ const MedicalCertificates = ({
               value={vaccinationIssue}
               onChange={(e) => setVaccinationIssue(e.target.value)}
               disabled={disabled}
+              placeholder="Enter Vaccination Date First"
             />
           </div>
 
@@ -857,6 +862,7 @@ const MedicalCertificates = ({
               value={issuedateCovid}
               onChange={(e) => setIssueDateCovid(e.target.value)}
               disabled={disabled}
+              placeholder="Enter Vaccination Date Second"
             />
           </div>
 
@@ -918,7 +924,7 @@ const MedicalCertificates = ({
                   </p>
                 ) : (
                   <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                    No file selected
+                    No File Selected
                   </p>
                 )}
               </div>
@@ -996,6 +1002,7 @@ const MedicalCertificates = ({
                   handleFormChangeOthers(index, "vaccination1", e.target.value)
                 }
                 disabled={disabled}
+                placeholder="Enter  Vaccination Date"
               />
             </div>
 
@@ -1021,6 +1028,7 @@ const MedicalCertificates = ({
                     )
                   }
                   disabled={disabled}
+                  placeholder="Enter Expiry Date"
                 />
               </div>
             )}
@@ -1038,6 +1046,7 @@ const MedicalCertificates = ({
                   )
                 }
                 disabled={disabled}
+                
               />
               <label
                 className="text-[14px] leading-[19.07px]  text-[#333333]"
@@ -1071,7 +1080,7 @@ const MedicalCertificates = ({
                     </p>
                   ) : (
                     <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                      No file selected
+                      No File Selected
                     </p>
                   )}
                 </div>
@@ -1084,7 +1093,7 @@ const MedicalCertificates = ({
             <React.Fragment key={index}>
               <div className="w-full ">
                 <label
-                  className="block text-[14px] font-[poppins] text-[#333333] mb-1"
+                  className="block text-[14px]  text-[#333333] mb-1"
                   htmlFor={`extraField1_${index}`}
                 >
                   Type {index * 2 + 1}
@@ -1105,7 +1114,7 @@ const MedicalCertificates = ({
               </div>
               <div className="w-full">
                 <label
-                  className="block text-[14px] font-[poppins] text-[#333333] mb-1"
+                  className="block text-[14px]  text-[#333333] mb-1"
                   htmlFor={`extraField2_${index}`}
                 >
                   Vaccination Date {index * 2 + 2}
@@ -1125,7 +1134,7 @@ const MedicalCertificates = ({
               {!field.neverExpires && (
                 <div className="w-full">
                   <label
-                    className="block text-[14px] font-[poppins] text-[#333333] mb-1"
+                    className="block text-[14px]  text-[#333333] mb-1"
                     htmlFor={`extraField3_${index}`}
                   >
                     Expiry Date {index * 2 + 2}
@@ -1195,7 +1204,7 @@ const MedicalCertificates = ({
                       </p>
                     ) : (
                       <p className="text-[14px] leading-[19.07px] text-[#333333]">
-                        No file selected
+                        No File Selected
                       </p>
                     )}
                   </div>
@@ -1256,6 +1265,7 @@ const MedicalCertificates = ({
               value={vaccinationFlag}
               onChange={(e) => setVaccinationFlag(e.target.value)}
               disabled={disabled}
+              placeholder="Enter Vaccination Date"
             />
           </div>
 
@@ -1275,6 +1285,7 @@ const MedicalCertificates = ({
                 value={vaccinationexpFlag}
                 onChange={(e) => setVaccinationexpFlag(e.target.value)}
                 disabled={disabled}
+                placeholder="Enter Expiry Date"
               />
             </div>
           )}
@@ -1319,7 +1330,7 @@ const MedicalCertificates = ({
                   </p>
                 ) : (
                   <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                    No file selected
+                    No File Selected
                   </p>
                 )}
               </div>

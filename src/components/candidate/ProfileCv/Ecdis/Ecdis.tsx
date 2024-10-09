@@ -196,7 +196,7 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail }: Props) => {
                 value={trainingCenter}
                 onChange={(e) => setTrainingCenter(e.target.value)}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-                placeholder=""
+                placeholder="Enter Training Center"
                 disabled={disabled}
 
               />
@@ -244,7 +244,7 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail }: Props) => {
                 value={eCDISNumber}
                 onChange={(e) => setECDISNumber(e.target.value)}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                placeholder=""
+                placeholder="Enter Certificate Number"
                 disabled={disabled}
 
               />
@@ -265,6 +265,7 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail }: Props) => {
                 value={issuedate1}
                 onChange={(e) => setIssueDate1(e.target.value)}
                 disabled={disabled}
+                placeholder="Enter Issue Date"
 
               />
             </div>
@@ -285,6 +286,7 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail }: Props) => {
                 value={exdate1}
                 onChange={(e) => setExDate1(e.target.value)}
                 disabled={disabled}
+                placeholder="Enter Expiry Date"
 
               />
             </div>

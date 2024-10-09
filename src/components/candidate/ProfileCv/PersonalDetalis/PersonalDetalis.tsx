@@ -181,7 +181,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
           {/* <div className="flex gap-8 items-center justify-center mt-3 mb-6">
               <label
                 htmlFor="medicalfile-upload3"
-                className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[poppins]  "
+                className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px]   "
               >
                 Photo
               </label>
@@ -192,11 +192,11 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
                 onChange={handleFileChange}
               />
               {selectedFile ? (
-                <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                <p className="text-[14px] leading-[19.07px]  text-[#333333]">
                   File Selected: {selectedFile.name}
                 </p>
               ) : (
-                <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                <p className="text-[14px] leading-[19.07px]  text-[#333333]">
                   No file selected
                 </p>
               )}
@@ -239,7 +239,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
                 </button>
               </div>
             ) : (
-              <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+              <p className="text-[14px] leading-[19.07px]  text-[#333333]">
                 No file selected
               </p>
             )}
@@ -248,7 +248,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
           <div className="grid grid-cols-2 gap-4    ">
             <div className="w-full ">
               <label
-                className="blocktext-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
+                className="blocktext-[14px] leading-[19.07px]  text-[#333333] mb-1"
                 htmlFor="firstName"
               >
                 First Name
@@ -259,7 +259,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
                 type="text"
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter First Name"
                 disabled={disabled}
               />
@@ -267,7 +267,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
             </div>
             <div className="w-full ">
               <label
-                className="block  text-[14px] leading-[19.07px] font-[poppins] text-[#333333]  mb-1"
+                className="block  text-[14px] leading-[19.07px]  text-[#333333]  mb-1"
                 htmlFor="userName"
               >
                 Middle Name
@@ -278,8 +278,8 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
                 type="text"
                 value={middleName}
                 onChange={(e) => setmidddleName(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                placeholder="Enter middle Name"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                placeholder="Enter Middle Name"
                 disabled={disabled}
               />
               {/* </div> */}
@@ -287,7 +287,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
 
             <div className="w-full ">
               <label
-                className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
+                className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
                 htmlFor="lastName"
               >
                 Last Name
@@ -298,7 +298,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
                 type="text"
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Last Name"
                 disabled={disabled}
               />
@@ -307,30 +307,30 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
 
             {/* <div className="flex items-center justify-between gap-4  "> */}
             <div className=" w-full">
-              <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2" htmlFor="Gender1">
+              <label className="text-[14px] leading-[19.07px]  text-[#333333] mb-2" htmlFor="Gender1">
                 Gender
               </label>
               <select
               id="Gender1"
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={gender}
                 onChange={(e) => setGender(e.target.value)}
                 disabled={disabled}
               >
-                <option value="">Select gender</option>
+                <option value="">Select</option>
                 {genderDrop&& genderDrop?.map((gen:any,index:number)=>(
                 <option key={index} value={gen}>{gen}</option>
               ))}
               </select>
             </div>
             <div className=" w-full">
-              <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 " htmlFor="DateofBirth">
+              <label className="text-[14px] leading-[19.07px]  text-[#333333] mb-2 " htmlFor="DateofBirth">
                 Date of Birth
               </label>
               <input
               id="DateofBirth"
                 type="date"
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
                 disabled={disabled}
@@ -342,17 +342,17 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
 
             {/* <div className="flex items-center justify-between gap-4  "> */}
             <div className="w-full">
-              <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2" htmlFor="CountryofBirth">
+              <label className="text-[14px] leading-[19.07px]  text-[#333333] mb-2" htmlFor="CountryofBirth">
                 Country of Birth
               </label>
               <select
               id="CountryofBirth"
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={countryOfBirth}
                 onChange={(e) => setCountryOfBirth(e.target.value)}
                 disabled={disabled}
               >
-                <option value="">Select country</option>
+                <option value="">Select</option>
                 {countryDrop && countryDrop?.map((country: any, index: number) => (
                     <option key={index} value={country}>{country?.toUpperCase()}</option>
                   ))}
@@ -361,7 +361,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
 
             <div className="w-full ">
               <label
-                className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
+                className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
                 htmlFor="cityBirth" 
               >
                 City of Birth
@@ -372,8 +372,8 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
                 type="text"
                 value={cityBirth}
                 onChange={(e) => setCityName(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                placeholder="Enter your city"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                placeholder="Enter Your City"
                 disabled={disabled}
               />
              
@@ -384,17 +384,17 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
 
             {/* <div className="flex items-center justify-between gap-4  "> */}
             <div className=" w-full">
-              <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2" htmlFor="nationality">
+              <label className="text-[14px] leading-[19.07px]  text-[#333333] mb-2" htmlFor="nationality">
                 Nationality
               </label>
               <select
               id="nationality"
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={nationality}
                 onChange={(e) => setNationality(e.target.value)}
                 disabled={disabled}
               >
-                <option value="">Select nationality</option>
+                <option value="">Select</option>
                 {countryDrop && countryDrop?.map((country: any, index: number) => (
                     <option key={index} value={country}>{country?.toUpperCase()}</option>
                   ))}
@@ -403,7 +403,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
             {/* Relision */}
             <div className="w-full ">
               <label
-                className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
+                className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
                 htmlFor="relision"
               >
                 Religion
@@ -414,24 +414,24 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
                 type="text"
                 value={religionName}
                 onChange={(e) => setReligionName(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Religion Name"
                 disabled={disabled}
               />
               {/* </div> */}
             </div>
             <div className=" w-full">
-              <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2" htmlFor="meritalstatus">
+              <label className="text-[14px] leading-[19.07px]  text-[#333333] mb-2" htmlFor="meritalstatus">
                 Marital Status
               </label>
               <select
               id="meritalstatus"
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={marital}
                 onChange={(e) => setMarital(e.target.value)}
                 disabled={disabled}
               >
-                <option value="">Select Marital Status</option>
+                <option value="">Select</option>
                 {martialStatusDrop&& martialStatusDrop?.map((status:any,index:number)=>(
                 <option key={index} value={status}>{status}</option>
               ))}

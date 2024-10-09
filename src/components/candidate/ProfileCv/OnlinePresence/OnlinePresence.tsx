@@ -176,7 +176,7 @@ const OnlinePresence = ({
         {/* <div className="  "> */}
         <div className="my-5 ">
           <h1 className="mb-2  font-bold">Social Media & Messanger in use</h1>
-          <div className="grid grid-cols-3  gap-2 ">
+          <div className="grid grid-cols-2  gap-2 ">
             {/* <div className="w-full"> */}
 
             <div className=" w-full">
@@ -186,22 +186,22 @@ const OnlinePresence = ({
                 onChange={() => setWhatsApp(!whatsApp)}
                 disabled={disabled}
               />
-              <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+              <label className="p-2 text-[14px] leading-[19.07px]  text-[#333333]">
                 WhatsApp
               </label>
 
               {/* Conditionally render WhatsApp input box */}
               {whatsApp && (
-                <div className="mt-4 flex  ">
+                <div className="mt-4 flex gap-2 ">
                   {/* <label
-                className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="p-2 text-[14px] leading-[19.07px]  text-[#333333]"
                 htmlFor="whatsAppId"
               >
                 WhatsApp Number
               </label> */}
-                  <div className="w-[25%] ">
+                  <div className="w-[30%] ">
                     <select
-                      className="border rounded-md  h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                      className="border rounded-md w-full   h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                       value={mCountrycode}
                       onChange={(e) => setMCountrycode(e.target.value)}
                       disabled={disabled}
@@ -218,8 +218,8 @@ const OnlinePresence = ({
                   <input
                     id="whatsAppId"
                     type="text"
-                    className="border rounded-md  h-9 px-2 w-[80%] text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    placeholder="Enter WhatsApp No."
+                    className="border rounded-md  h-9 px-2 w-[90%] text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder="Enter WhatsApp Number"
                     value={whatsAppId}
                     onChange={(e) => setWhatsAppId(e.target.value)}
                     disabled={disabled}
@@ -240,22 +240,22 @@ const OnlinePresence = ({
                   className=""
                   disabled={disabled}
                 />
-                <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                <label className="p-2 text-[14px] leading-[19.07px]  text-[#333333]">
                   WeChat
                 </label>
               </div>
               {weChat && (
-                <div className="mt-4 flex  ">
+                <div className="mt-4 flex  gap-2">
                   {/* <label
-                className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="p-2 text-[14px] leading-[19.07px]  text-[#333333]"
                 htmlFor="whatsAppId"
               >
                 WeChat Number
               </label> */}
 
-                  <div className="w-[25%] ">
+                  <div className="w-[30%] ">
                     <select
-                      className="border rounded-md  h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                      className="border rounded-md w-full   h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                       value={wCountrycode}
                       onChange={(e) => setWCountrycode(e.target.value)}
                       disabled={disabled}
@@ -271,8 +271,8 @@ const OnlinePresence = ({
                   <input
                     id="whatsAppId"
                     type="text"
-                    className="border rounded-md  h-9 px-2 w-[80%] text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    placeholder="Enter WeChat Id"
+                    className="border rounded-md  h-9 px-2 w-[90%] text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder="Enter WeChat Number"
                     disabled={disabled}
                   />
                 </div>
@@ -288,7 +288,7 @@ const OnlinePresence = ({
                   onChange={() => setFacebookMess(!facebookMess)}
                   disabled={disabled}
                 />
-                <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                <label className="p-2 text-[14px] leading-[19.07px]  text-[#333333]">
                   Facebook
                 </label>
               </div>
@@ -297,7 +297,7 @@ const OnlinePresence = ({
                   <input
                     id="whatsAppId"
                     type="text"
-                    className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter Facebook Id"
                     value={facebookMessId}
                     onChange={(e) => setFacebookMessId(e.target.value)}
@@ -318,16 +318,16 @@ const OnlinePresence = ({
                   className=""
                   disabled={disabled}
                 />
-                <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                <label className="p-2 text-[14px] leading-[19.07px]  text-[#333333]">
                   Telegram
                 </label>
               </div>
 
               {telegram && (
-                <div className="mt-4 flex  ">
-                  <div className="w-[25%] ">
+                <div className="mt-4 flex gap-2 ">
+                  <div className="w-[30%] ">
                     <select
-                      className="border rounded-md  h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                      className="border rounded-md w-full   h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                       value={tCountrycode}
                       onChange={(e) => setTCountrycode(e.target.value)}
                       disabled={disabled}
@@ -343,8 +343,8 @@ const OnlinePresence = ({
                   <input
                     id="whatsAppId"
                     type="text"
-                    className="border rounded-md  h-9 px-2 w-[80%] text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    placeholder="Enter Telegram Id"
+                    className="border rounded-md  h-9 px-2 w-[80%] text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder="Enter Telegram Number."
                     value={telegramId}
                     onChange={(e) => setTelegramId(e.target.value)}
                     disabled={disabled}
@@ -362,16 +362,16 @@ const OnlinePresence = ({
                   className=""
                   disabled={disabled}
                 />
-                <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                <label className="p-2 text-[14px] leading-[19.07px]  text-[#333333]">
                   Viber
                 </label>
               </div>
 
               {viber && (
-                <div className="mt-4 flex  ">
-                  <div className="w-[25%] ">
+                <div className="mt-4 flex gap-2 ">
+                  <div className="w-[30%] ">
                     <select
-                      className="border rounded-md  h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                      className="border rounded-md w-full   h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                       value={vCountrycode}
                       onChange={(e) => setVCountrycode(e.target.value)}
                       disabled={disabled}
@@ -387,8 +387,8 @@ const OnlinePresence = ({
                   <input
                     id="viberId"
                     type="text"
-                    className="border rounded-md  h-9 px-2 w-[80%] text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    placeholder="Enter viber Id"
+                    className="border rounded-md  h-9 px-2 w-[90%] text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder="Enter viber Number"
                     value={viberId}
                     onChange={(e) => setViberId(e.target.value)}
                     disabled={disabled}
@@ -406,7 +406,7 @@ const OnlinePresence = ({
                   className=""
                   disabled={disabled}
                 />
-                <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                <label className="p-2 text-[14px] leading-[19.07px]  text-[#333333]">
                   Skype ID
                 </label>
               </div>
@@ -417,7 +417,7 @@ const OnlinePresence = ({
                     type="text"
                     value={skypeId}
                     onChange={(e) => setSkypeId(e.target.value)}
-                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter Skype Id"
                     disabled={disabled}
                   />
@@ -436,7 +436,7 @@ const OnlinePresence = ({
                   onChange={() => setLinkedIn(!linkedIn)}
                   disabled={disabled}
                 />
-                <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                <label className="p-2 text-[14px] leading-[19.07px]  text-[#333333]">
                   LinkedIn
                 </label>
               </div>
@@ -444,7 +444,7 @@ const OnlinePresence = ({
                 <div className="mt-4 flex flex-col ">
                   <input
                     type="text"
-                    className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter Linkdin Id "
                     value={linkedInId}
                     onChange={(e) => setLinkedInId(e.target.value)}
@@ -462,7 +462,7 @@ const OnlinePresence = ({
                   className=""
                   disabled={disabled}
                 />
-                <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                <label className="p-2 text-[14px] leading-[19.07px]  text-[#333333]">
                   Twitter
                 </label>
               </div>
@@ -470,7 +470,7 @@ const OnlinePresence = ({
                 <div className="mt-4 flex flex-col ">
                   <input
                     type="text"
-                    className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter Twitter Id"
                     value={twitterId}
                     onChange={(e) => setTwitterId(e.target.value)}
@@ -488,7 +488,7 @@ const OnlinePresence = ({
                   className=""
                   disabled={disabled}
                 />
-                <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                <label className="p-2 text-[14px] leading-[19.07px]  text-[#333333]">
                   Instagram
                 </label>
               </div>
@@ -497,7 +497,7 @@ const OnlinePresence = ({
                   <input
                     id="whatsAppId"
                     type="text"
-                    className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter Instagram Id"
                     value={instagramId}
                     onChange={(e) => setInstagramId(e.target.value)}
@@ -515,7 +515,7 @@ const OnlinePresence = ({
                   className=""
                   disabled={disabled}
                 />
-                <label className="p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                <label className="p-2 text-[14px] leading-[19.07px]  text-[#333333]">
                   Other
                 </label>
               </div>
@@ -524,7 +524,7 @@ const OnlinePresence = ({
                   <input
                     id=""
                     type="text"
-                    className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    className="border rounded-md  h-9 px-2 text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder=""
                     value={otherId}
                     onChange={(e) => setOtherId(e.target.value)}

@@ -150,12 +150,12 @@ const ContactDetails = ({
       <h2 className="font-bold">Home Address</h2>
       <form onSubmit={handlesubmit}>
         <div className="">
-          <div className=" flex flex-col  px-4 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] gap-4">
+          <div className=" flex flex-col  px-4 text-[14px] leading-[19.07px]  text-[#333333] gap-4">
             <div className="flex items-center justify-between gap-4  ">
               {" "}
               <div className="w-[50%] ">
                 <label
-                  className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
+                  className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
                   htmlFor="street"
                 >
                   Street
@@ -166,18 +166,18 @@ const ContactDetails = ({
                   type="text"
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
-                  className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                  placeholder=""
+                  className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  placeholder="Enter Street"
                   disabled={disabled}
                 />
                 {/* </div> */}
               </div>
               <div className="w-[50%] ">
                 <label
-                  className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
+                  className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
                   htmlFor="number"
                 >
-                  Number
+                 Enter Number
                 </label>
                 <div className="relative flex items-center  ">
                   <input
@@ -185,8 +185,8 @@ const ContactDetails = ({
                     type="text"
                     value={number}
                     onChange={(e) => setNumber(e.target.value)}
-                    className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    placeholder=""
+                    className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder=" Enter Number"
                     disabled={disabled}
                   />
                 </div>
@@ -195,7 +195,7 @@ const ContactDetails = ({
 
             <div className=" ">
               <label
-                className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
+                className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
                 htmlFor="addinfo"
               >
                 Add. Info (c/o etc.)
@@ -206,8 +206,8 @@ const ContactDetails = ({
                   type="text"
                   value={addInfo}
                   onChange={(e) => setAddInfo(e.target.value)}
-                  className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                  placeholder=""
+                  className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  placeholder="Enter Add. Info (c/o etc.)"
                   disabled={disabled}
                 />
               </div>
@@ -215,11 +215,11 @@ const ContactDetails = ({
 
             <div className="flex items-center gap-4">
               <div className="flex flex-col w-[50%]  ">
-                <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 ">
+                <label className="text-[14px] leading-[19.07px]  text-[#333333] mb-2 ">
                   Country
                 </label>{" "}
                 <select
-                  className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={country1}
                   onChange={(e) => setCountry1(e.target.value)}
                   disabled={disabled}
@@ -238,7 +238,7 @@ const ContactDetails = ({
 
               <div className="w-[50%]">
                 <label
-                  className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 "
+                  className="text-[14px] leading-[19.07px]  text-[#333333] mb-2 "
                   htmlFor="state"
                 >
                   State/Province
@@ -249,8 +249,8 @@ const ContactDetails = ({
                     type="text"
                     value={state}
                     onChange={(e) => setState(e.target.value)}
-                    className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    placeholder=""
+                    className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder="Enter  State/Province"
                     disabled={disabled}
                   />
                 </div>
@@ -262,7 +262,7 @@ const ContactDetails = ({
             <div className="flex items-center gap-4 w-full">
               <div className="w-[50%] ">
                 <label
-                  className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
+                  className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
                   htmlFor="cityName"
                 >
                   City
@@ -273,15 +273,15 @@ const ContactDetails = ({
                     type="text"
                     value={cityName}
                     onChange={(e) => setCityName(e.target.value)}
-                    className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    placeholder=""
+                    className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder="Enter  City"
                     disabled={disabled}
                   />
                 </div>
               </div>
 
               <div className="w-[50%]">
-                <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 ">
+                <label className="text-[14px] leading-[19.07px]  text-[#333333] mb-2 ">
                   Postal Code/ZIP Code
                 </label>
                 <div className="relative flex items-center  ">
@@ -290,8 +290,8 @@ const ContactDetails = ({
                     type="number"
                     value={postalCode}
                     onChange={(e) => setPostalCode(e.target.value)}
-                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    placeholder=""
+                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder="Enter Postal Code/ZIP Code"
                     disabled={disabled}
                   />
                 </div>
@@ -302,7 +302,7 @@ const ContactDetails = ({
 
             <div className="flex flex-col">
               <label
-                className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 "
+                className="text-[14px] leading-[19.07px]  text-[#333333] mb-2 "
                 htmlFor="nearestAirport"
               >
                 Nearest Airport
@@ -314,13 +314,13 @@ const ContactDetails = ({
                   type="text"
                   value={nearestAirport}
                   onChange={(e) => setNearestAirport(e.target.value)}
-                  className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                  placeholder=""
+                  className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  placeholder="Enter Nearest Airport"
                   disabled={disabled}
                 />
               </div>
               {/* <select
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={nACountrycode}
                 onChange={(e) => setNACountrycode(e.target.value)}
               >
@@ -336,16 +336,16 @@ const ContactDetails = ({
             {/* counstry and city section start*/}
 
             <div className="grid col-span-2 ">
-              <h1 className="font-bold">MOBILE PHONE</h1>
+              <h1 className="font-bold">Mobile Phone</h1>
             </div>
 
-            <div className="flex items-center justify-between gap-4 ">
+            <div className="flex items-center justify-between gap-2 ">
               <div className="flex flex-col  ">
-                <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 ">
+                <label className="text-[14px] leading-[19.07px]  text-[#333333]  ">
                   Country Code
                 </label>
                 <select
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={mCountrycode}
                   onChange={(e) => setMCountrycode(e.target.value)}
                   disabled={disabled}
@@ -362,9 +362,9 @@ const ContactDetails = ({
                 </select>
               </div>
 
-              <div className="w-[75%] ">
+              <div className="w-[78%] ">
                 <label
-                  className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
+                  className="block text-[14px] leading-[19.07px]  text-[#333333] "
                   htmlFor="number"
                 >
                   Phone Number
@@ -375,23 +375,24 @@ const ContactDetails = ({
                     type="text"
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
-                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    placeholder=""
+                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder="Enter Phone Number"
                     disabled={disabled}
+                    required
                   />
                 </div>
               </div>
             </div>
             <div className="grid col-span-2">
-              <h1 className="font-bold">DIRECT LINE</h1>
+              <h1 className="font-bold">Direct Line</h1>
             </div>
-            <div className="flex items-center justify-between gap-4  ">
+            <div className="flex items-center justify-between gap-2  ">
               <div className="flex flex-col  ">
-                <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 ">
+                <label className="text-[14px] leading-[19.07px]  text-[#333333]  ">
                   Country Code
                 </label>
                 <select
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={rCountrycode}
                   onChange={(e) => setRCountrycode(e.target.value)}
                   disabled={disabled}
@@ -408,9 +409,9 @@ const ContactDetails = ({
                 </select>
               </div>
 
-              <div className="w-[75%] ">
+              <div className="w-[78%] ">
                 <label
-                  className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
+                  className="block text-[14px] leading-[19.07px]  text-[#333333] "
                   htmlFor="phonenumber2"
                 >
                   Phone Number
@@ -421,9 +422,10 @@ const ContactDetails = ({
                     type="text"
                     value={phoneNumber1}
                     onChange={(e) => setPhoneNumber1(e.target.value)}
-                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    placeholder=""
+                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder="Enter Phone Number"
                     disabled={disabled}
+                    required
                   />
                 </div>
               </div>
@@ -432,7 +434,7 @@ const ContactDetails = ({
             <div className="flex items-center justify-between gap-4  ">
               <div className="w-full ">
                 <label
-                  className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 "
+                  className="text-[14px] leading-[19.07px]  text-[#333333] mb-2 "
                   htmlFor="emails"
                 >
                   Email
@@ -443,16 +445,17 @@ const ContactDetails = ({
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    placeholder=""
+                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder="Enter Email Address"
                     disabled={disabled}
+                    required
                   />
                 </div>
               </div>
 
               {/* <div className="w-[50%] ">
                 <label
-                  className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
+                  className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
                   htmlFor="inumber"
                 >
                   INDoS Number
@@ -463,7 +466,7 @@ const ContactDetails = ({
                     type="text"
                     value={indNumber}
                     onChange={(e) => setIndNumber(e.target.value)}
-                    className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder=""
                     required
                   />

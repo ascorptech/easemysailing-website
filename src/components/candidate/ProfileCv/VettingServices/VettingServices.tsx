@@ -156,7 +156,7 @@ const VettingServices = ({
     <div className="container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
         <div className="my-5">
-          <h1 className="mb-2 bg-[#00A264] rounded-md">
+          <h1 className="mb-2 bg-[#EAEAEA] rounded-md">
             Assessment of Completeness and Validity of Certificates legally
             required by Rank
           </h1>
@@ -176,7 +176,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="inProgress"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 In Progress
               </label>
@@ -197,7 +197,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="done"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Done
               </label>
@@ -217,7 +217,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="notApplicable"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Not Applicable
               </label>
@@ -226,7 +226,7 @@ const VettingServices = ({
         </div>
 
         <div className="my-5">
-          <h1 className="mb-2  bg-[#00A264] rounded-md">
+          <h1 className="mb-2  bg-[#EAEAEA] rounded-md">
             Verification of COC and GMDSS (if applicable)
           </h1>
           <div className="flex justify-between">
@@ -245,7 +245,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="inProgress1"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 In Progress
               </label>
@@ -266,7 +266,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="done1"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Done
               </label>
@@ -286,7 +286,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="notApplicable1"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Not Applicable
               </label>
@@ -295,7 +295,7 @@ const VettingServices = ({
         </div>
 
         <div className="my-5">
-          <h1 className="mb-2  bg-[#00A264] rounded-md">
+          <h1 className="mb-2  bg-[#EAEAEA] rounded-md">
             Verification of medical certificates and/or medical centers
           </h1>
           <div className="flex justify-between">
@@ -314,7 +314,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="inProgress2"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 In Progress
               </label>
@@ -335,7 +335,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="done2"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Done
               </label>
@@ -355,7 +355,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="notApplicable2"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Not Applicable
               </label>
@@ -364,7 +364,7 @@ const VettingServices = ({
         </div>
 
         <div className="my-5">
-          <h1 className="mb-2  bg-[#00A264] rounded-md">Identity check via video call</h1>
+          <h1 className="mb-2  bg-[#EAEAEA] rounded-md">Identity check via video call</h1>
           <div className="flex justify-between">
             <div>
               <input
@@ -381,7 +381,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="inProgress3"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 In Progress
               </label>
@@ -402,7 +402,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="done3"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Done
               </label>
@@ -422,7 +422,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="notApplicable3"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Not Applicable
               </label>
@@ -431,7 +431,7 @@ const VettingServices = ({
         </div>
 
         <div className="my-5">
-          <h1 className="mb-2  bg-[#00A264] rounded-md">English level assessment via video call</h1>
+          <h1 className="mb-2  bg-[#EAEAEA] rounded-md">English level assessment via video call</h1>
           <div className="flex justify-between">
             <div>
               <input
@@ -448,7 +448,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="inProgress4"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 In Progress
               </label>
@@ -469,7 +469,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="done4"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Done
               </label>
@@ -489,7 +489,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="notApplicable4"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Not Applicable
               </label>
@@ -498,7 +498,7 @@ const VettingServices = ({
         </div>
 
         <div className="my-5">
-          <h1 className="mb-2  bg-[#00A264] rounded-md">Plausibility check of Seagoing Experience</h1>
+          <h1 className="mb-2  bg-[#EAEAEA] rounded-md">Plausibility check of Seagoing Experience</h1>
           <div className="flex justify-between">
             <div>
               <input
@@ -515,7 +515,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="inProgress5"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 In Progress
               </label>
@@ -536,7 +536,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="done5"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Done
               </label>
@@ -556,7 +556,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="notApplicable5"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Not Applicable
               </label>
@@ -565,7 +565,7 @@ const VettingServices = ({
         </div>
 
         <div className="my-5">
-          <h1 className="mb-2  bg-[#00A264] rounded-md">Verification of STCW Training Certificates</h1>
+          <h1 className="mb-2  bg-[#EAEAEA] rounded-md">Verification of STCW Training Certificates</h1>
           <div className="flex justify-between">
             <div>
               <input
@@ -583,7 +583,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="inProgress6"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 In Progress
               </label>
@@ -605,7 +605,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="done6"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Done
               </label>
@@ -626,7 +626,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="notApplicable6"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Not Applicable
               </label>
@@ -649,7 +649,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="optional6"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Optional
               </label>
@@ -658,7 +658,7 @@ const VettingServices = ({
         </div>
 
         <div className="my-5">
-          <h1 className="mb-2  bg-[#00A264] rounded-md">Verification of Additional Trainings</h1>
+          <h1 className="mb-2  bg-[#EAEAEA] rounded-md">Verification of Additional Trainings</h1>
           <div className="flex justify-between">
             <div>
               <input
@@ -676,7 +676,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="inProgress7"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 In Progress
               </label>
@@ -698,7 +698,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="done7"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Done
               </label>
@@ -719,7 +719,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="notApplicable7"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Not Applicable
               </label>
@@ -741,7 +741,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="optional1"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Optional
               </label>
@@ -750,7 +750,7 @@ const VettingServices = ({
         </div>
 
         <div className="my-5 ">
-          <h1 className="mb-2  bg-[#00A264] rounded-md ">Verification of Flag State Certificates</h1>
+          <h1 className="mb-2  bg-[#EAEAEA] rounded-md ">Verification of Flag State Certificates</h1>
           <div className="flex justify-between ">
             <div>
               <input
@@ -768,7 +768,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="inProgress8"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 In Progress
               </label>
@@ -790,7 +790,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="done8"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Done
               </label>
@@ -811,7 +811,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="notApplicable8"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Not Applicable
               </label>
@@ -834,7 +834,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="optional8"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Optional
               </label>
@@ -843,7 +843,7 @@ const VettingServices = ({
         </div>
 
         <div className="my-5 ">
-          <h1 className="mb-2  bg-[#00A264] rounded-md">
+          <h1 className="mb-2  bg-[#EAEAEA] rounded-md">
             Verification of ECDIS type specific trainings (if applicable)
           </h1>
           <div className="flex justify-between ">
@@ -863,7 +863,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="inProgress9"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 In Progress
               </label>
@@ -885,7 +885,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="done9"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Done
               </label>
@@ -906,7 +906,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="notApplicable9"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Not Applicable
               </label>
@@ -929,7 +929,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="optional9"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Optional
               </label>
@@ -938,7 +938,7 @@ const VettingServices = ({
         </div>
 
         <div className="my-5">
-          <h1 className="mb-2  bg-[#00A264] rounded-md">
+          <h1 className="mb-2  bg-[#EAEAEA] rounded-md">
             Verification of Engine specific trainings (if applicable)
           </h1>
           <div className="flex justify-between ">
@@ -958,7 +958,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="inProgress10"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 In Progress
               </label>
@@ -980,7 +980,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="done10"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Done
               </label>
@@ -1001,7 +1001,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="notApplicable10"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Not Applicable
               </label>
@@ -1024,7 +1024,7 @@ const VettingServices = ({
               />
               <label
                 htmlFor="optional4"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Optional
               </label>
@@ -1032,10 +1032,10 @@ const VettingServices = ({
           </div>
         </div>
 
-        <div className="flex gap-2 mb-4 mt-4">
+        {/* <div className="flex gap-2 mb-4 mt-4">
           <button
             type="submit"
-            className="border border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
+            className="border border-[#00A264] bg-[#EAEAEA] p-2 px-8 rounded-lg text-white"
           >
             Save  
           </button>
@@ -1046,7 +1046,7 @@ const VettingServices = ({
           >
             Edit
           </Link>
-        </div>
+        </div> */}
       </form>
     </div>
   );

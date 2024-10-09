@@ -265,6 +265,7 @@ const TravelDocuments = ({
               value={issuingAuthority}
               onChange={(e) => setIssuingAuthority(e.target.value)}
               disabled={disabled}
+              required
             >
               <option value="" disabled selected>
                 Select
@@ -291,8 +292,9 @@ const TravelDocuments = ({
               value={number}
               onChange={(e) => setNumber(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-              placeholder=""
+              placeholder="Enter  Passport Number"
               disabled={disabled}
+              required
             />
           </div>
 
@@ -313,6 +315,8 @@ const TravelDocuments = ({
               value={issuedate}
               onChange={(e) => setIssueDate(e.target.value)}
               disabled={disabled}
+              required
+              placeholder="Enter Issue Date"
             />
           </div>
           {/* </div> */}
@@ -333,6 +337,8 @@ const TravelDocuments = ({
               value={exdate}
               onChange={(e) => setExDate(e.target.value)}
               disabled={disabled}
+              required
+              placeholder="Enter Expiry Date"
             />
           </div>
           <div className="grid col-span-2 ">
@@ -349,6 +355,7 @@ const TravelDocuments = ({
               value={biometric}
               onChange={(e) => setBiometric(e.target.value)}
               disabled={disabled}
+              required
             >
               <option value="" disabled selected>
                 Select
@@ -376,6 +383,7 @@ const TravelDocuments = ({
                   className="hidden"
                   onChange={handleFileChange}
                   disabled={disabled}
+                  required
                 />
               </div>
 
@@ -386,7 +394,7 @@ const TravelDocuments = ({
                   </p>
                 ) : (
                   <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                    No file selected
+                    No File Selected
                   </p>
                 )}
               </div>
@@ -413,6 +421,7 @@ const TravelDocuments = ({
               value={flagState}
               onChange={(e) => setFlagState(e.target.value)}
               disabled={disabled}
+              required
             >
               <option value="" disabled selected>
                 Select
@@ -438,8 +447,9 @@ const TravelDocuments = ({
               value={trainingCenter}
               onChange={(e) => setTrainingCenter(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-              placeholder=""
+              placeholder="Enter  Seaman Book No."
               disabled={disabled}
+              required
             />
           </div>
 
@@ -458,6 +468,8 @@ const TravelDocuments = ({
               value={issuedate1}
               onChange={(e) => setIssueDate1(e.target.value)}
               disabled={disabled}
+              required
+              placeholder="Enter Issue Date"
             />
           </div>
 
@@ -477,6 +489,8 @@ const TravelDocuments = ({
                 value={exdate1}
                 onChange={(e) => setExDate1(e.target.value)}
                 disabled={disabled}
+                required
+                placeholder="Enter Expiry Date"
               />
             </div>
           )}
@@ -490,6 +504,7 @@ const TravelDocuments = ({
                 checked={checkBox}
                 onChange={() => setCheckBox(!checkBox)}
                 disabled={disabled}
+                required
               />
               <label
                 className="text-[14px] leading-[19.07px] text-[#333333]"
@@ -515,6 +530,7 @@ const TravelDocuments = ({
                   className="hidden"
                   onChange={handleFileChanges}
                   disabled={disabled}
+                  required
                 />
               </div>
               <div>
@@ -524,7 +540,7 @@ const TravelDocuments = ({
                   </p>
                 ) : (
                   <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                    No file selected
+                    No File Selected
                   </p>
                 )}
               </div>
@@ -594,7 +610,7 @@ const TravelDocuments = ({
                   handleFormChangeVisa(index, "visaNumber", e.target.value)
                 }
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                placeholder=""
+                placeholder="Enter Visa Number"
                 disabled={disabled}
               />
             </div>
@@ -616,6 +632,7 @@ const TravelDocuments = ({
                   handleFormChangeVisa(index, "issueDateVisa", e.target.value)
                 }
                 disabled={disabled}
+                placeholder="Enter  Issue Date"
               />
             </div>
 
@@ -636,6 +653,7 @@ const TravelDocuments = ({
                   handleFormChangeVisa(index, "expryDateVisa", e.target.value)
                 }
                 disabled={disabled}
+                placeholder="Enter  Expiry Date"
               />
             </div>
 
@@ -662,8 +680,8 @@ const TravelDocuments = ({
                       File Selected: {field.selectedFileVisa.name}
                     </p>
                   ) : (
-                    <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
-                      No file selected
+                    <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                      No File Selected
                     </p>
                   )}
                 </div>
@@ -681,14 +699,14 @@ const TravelDocuments = ({
         <div className="grid grid-cols-2 gap-4">
           <div className="">
             <label
-              className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+              className="text-[14px] leading-[19.07px]  text-[#333333]"
               htmlFor="issuingcou"
             >
               Issuing Country
             </label>
             <select
               id="issuingcou"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
               value={issuingCountry}
               onChange={(e) => setIssuingCountry(e.target.value)}
@@ -718,7 +736,7 @@ const TravelDocuments = ({
               value={permitNumber}
               onChange={(e) => setPermitNumber(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-              placeholder=""
+              placeholder="Enter Number"
               disabled={disabled}
             />
           </div>
@@ -737,6 +755,7 @@ const TravelDocuments = ({
               value={issueDate2}
               onChange={(e) => setIssueDate2(e.target.value)}
               disabled={disabled}
+              placeholder="Enter Issue Date"
             />
           </div>
 
@@ -755,6 +774,7 @@ const TravelDocuments = ({
               value={expDate2}
               onChange={(e) => setExpDate2(e.target.value)}
               disabled={disabled}
+              placeholder="Enter Expiry Date"
             />
           </div>
           {/* </div> */}
@@ -783,7 +803,7 @@ const TravelDocuments = ({
                   </p>
                 ) : (
                   <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                    No file selected
+                    No File Selected
                   </p>
                 )}
               </div>
@@ -792,7 +812,7 @@ const TravelDocuments = ({
 
           <div className="w-full grid col-span-2 ">
             <label
-              className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
+              className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
               htmlFor="inumber"
             >
               INDoS Number
@@ -803,9 +823,10 @@ const TravelDocuments = ({
                 type="text"
                 value={indNumber}
                 onChange={(e) => setIndNumber(e.target.value)}
-                className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                placeholder=""
+                className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                placeholder="Enter INDoS Number"
                 disabled={disabled}
+                required
               />
             </div>
           </div>

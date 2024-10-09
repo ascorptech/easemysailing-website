@@ -291,7 +291,7 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
                     className="text-[14px] leading-[19.07px]  text-[#333333] "
                     htmlFor={`number12_${index}`}
                   >
-                    Enter Number
+                    Enter Certificate Number
                   </label>
                   <input
                     id={`number12_${index}`}
@@ -301,7 +301,7 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
                       handleFormChange(index, "number", e.target.value)
                     }
                     className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-                    placeholder=""
+                    placeholder="Enter Certificate Number"
                     disabled={disabled}
                   />
                 </div>
@@ -435,7 +435,7 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
                   </p>
                 ) : (
                   <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                    No file selected
+                    No File Selected
                   </p>
                 )}
               </div>

@@ -179,20 +179,19 @@ const Refrences = ({
             <div className=" grid grid-cols-3 gap-4   ">
               <div className=" ">
                 <label
-                  className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
+                  className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
                   htmlFor="issued"
                 >
                   Issued
                 </label>
                 <select
                   id="issued"
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={issued}
                   onChange={(e) => setIssued(e.target.value)}
                   disabled={disabled}
-
                 >
-                   <option value="" disabled>
+                  <option value="" disabled>
                     Select
                   </option>
                   <option value="maile1">2</option>
@@ -203,7 +202,7 @@ const Refrences = ({
 
               <div className=" ">
                 <label
-                  className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
+                  className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
                   htmlFor="issuedate1"
                 >
                   Issue Date
@@ -214,17 +213,16 @@ const Refrences = ({
                   type="date"
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                  placeholder="Enter middle Name"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  placeholder="Enter  Issue Date"
                   disabled={disabled}
-
                 />
                 {/* </div> */}
               </div>
 
               <div className=" ">
                 <label
-                  className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
+                  className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
                   htmlFor="vessel"
                 >
                   Vessel/Company Name
@@ -235,10 +233,9 @@ const Refrences = ({
                   type="text"
                   value={companyName}
                   onChange={(e) => setCompanyName(e.target.value)}
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                  placeholder=""
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  placeholder="Enter Vessel/Company Name"
                   disabled={disabled}
-
                 />
                 {/* </div> */}
               </div>
@@ -258,7 +255,6 @@ const Refrences = ({
                       className="hidden"
                       onChange={handleFileChange}
                       disabled={disabled}
-
                     />
                   </div>
                   <div>
@@ -268,7 +264,7 @@ const Refrences = ({
                       </p>
                     ) : (
                       <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                        No file selected
+                        No File Selected
                       </p>
                     )}
                   </div>
@@ -281,20 +277,19 @@ const Refrences = ({
             <div className="grid grid-cols-2 gap-4  ">
               <div className="  ">
                 <label
-                  className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 "
+                  className="text-[14px] leading-[19.07px]  text-[#333333] mb-2 "
                   htmlFor="issuingcountry1"
                 >
                   Issuing Country
                 </label>
                 <select
                   id="issuingcountry1"
-                  className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={issuingCountry}
                   onChange={(e) => setIssuingCountry(e.target.value)}
                   disabled={disabled}
-
                 >
-                   <option value="" disabled>
+                  <option value="" disabled>
                     Select
                   </option>
                   {countryDrop &&
@@ -308,7 +303,7 @@ const Refrences = ({
 
               <div className="">
                 <label
-                  className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
+                  className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
                   htmlFor="number"
                 >
                   Issue Date
@@ -319,8 +314,8 @@ const Refrences = ({
                     type="date"
                     value={issueDate1}
                     onChange={(e) => setIssueDate1(e.target.value)}
-                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    placeholder=""
+                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder="Enter Issue Date"
                     disabled={disabled}
                   />
                 </div>
@@ -349,7 +344,7 @@ const Refrences = ({
                       </p>
                     ) : (
                       <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                        No file selected
+                        No File Selected
                       </p>
                     )}
                   </div>
@@ -363,7 +358,7 @@ const Refrences = ({
             <div className="grid grid-cols-3 gap-4">
               <div className=" ">
                 <label
-                  className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
+                  className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
                   htmlFor="firstName"
                 >
                   First Name
@@ -374,16 +369,15 @@ const Refrences = ({
                   type="text"
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                  placeholder=""
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  placeholder="Enter First Name"
                   disabled={disabled}
                 />
-               
               </div>
 
               <div className="">
                 <label
-                  className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
+                  className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
                   htmlFor="lastName"
                 >
                   Last Name
@@ -394,15 +388,15 @@ const Refrences = ({
                   type="text"
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                  placeholder=""
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  placeholder="Enter  Last Name"
                   disabled={disabled}
                 />
                 {/* </div> */}
               </div>
               <div className="">
                 <label
-                  className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
+                  className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
                   htmlFor="street1"
                 >
                   Company
@@ -413,30 +407,30 @@ const Refrences = ({
                   type="text"
                   value={companyName1}
                   onChange={(e) => setCompanyName1(e.target.value)}
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                  placeholder=""
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  placeholder="Enter  Company"
                   disabled={disabled}
                 />
                 {/* </div> */}
               </div>
             </div>
 
-            <div className="flex items-center justify-between gap-4  my-3 ">
-              <div className="w-[40%]  ">
+            <div className="flex items-center justify-between gap-3  my-3 ">
+              <div className="w-[50%]  ">
                 <label
-                  className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 "
+                  className="text-[14px] leading-[19.07px]  text-[#333333] mb-2  "
                   htmlFor="countryCode1"
                 >
                   Country Code
                 </label>
                 <select
                   id="countryCode1"
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={countryCode1}
                   onChange={(e) => setCountryCode1(e.target.value)}
                   disabled={disabled}
                 >
-                   <option value="" disabled>
+                  <option value="" disabled>
                     Select
                   </option>
                   {countryCodeDrop &&
@@ -450,7 +444,7 @@ const Refrences = ({
 
               <div className="w-full ">
                 <label
-                  className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
+                  className="text-[14px] leading-[19.07px]  text-[#333333] mb-2  "
                   htmlFor="number"
                 >
                   Phone Number
@@ -461,17 +455,16 @@ const Refrences = ({
                     type="text"
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
-                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    placeholder=""
+                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder="Enter  Phone Number"
                     disabled={disabled}
-
                   />
                 </div>
               </div>
 
-              <div className="flex flex-col w-full ">
+              <div className="w-[80%] ">
                 <label
-                  className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 "
+                  className="text-[14px] leading-[19.07px]  text-[#333333] mb-2  "
                   htmlFor="email"
                 >
                   Email
@@ -482,10 +475,9 @@ const Refrences = ({
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                  placeholder=""
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  placeholder="Enter Email"
                   disabled={disabled}
-
                 />
                 {/* </div> */}
               </div>
@@ -494,7 +486,7 @@ const Refrences = ({
             <div className="flex items-center justify-between mt-2  ">
               <div className="w-full  ">
                 <label
-                  className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
+                  className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
                   htmlFor="inumber"
                 >
                   ConsentGiven
@@ -505,17 +497,16 @@ const Refrences = ({
                     type="text"
                     value={consentGiven}
                     onChange={(e) => setConsentGiven(e.target.value)}
-                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="yes/No"
                     disabled={disabled}
-
                   />
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="flex gap-2 mb-4 mt-4 ml-3">
+          <div className="flex gap-2 mb-4 mt-4 ">
             <button
               type="submit"
               className="border border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
@@ -523,7 +514,7 @@ const Refrences = ({
               Save
             </button>
             <Link
-              href={'#'}
+              href={"#"}
               onClick={handleEdit}
               className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
             >

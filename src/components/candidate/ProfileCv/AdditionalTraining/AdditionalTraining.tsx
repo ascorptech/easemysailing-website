@@ -322,14 +322,14 @@ const AdditionalTraining = ({
           <div className="grid grid-cols-2 gap-4">
             <div className="">
               <label
-                className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+                className="text-[14px] leading-[19.07px]  text-[#333333] "
                 htmlFor={`optionce_${index}`}
               >
-                Certification
+                Certificate
               </label>
               <select
                 id={`optionce_${index}`}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 name="options"
                 value={field.countryCertifi}
                 onChange={(e) =>
@@ -351,7 +351,7 @@ const AdditionalTraining = ({
 
             <div className="   ">
               <label
-                className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+                className="text-[14px] leading-[19.07px]  text-[#333333] "
                 htmlFor="trainingC1"
               >
                 Training Center
@@ -363,22 +363,22 @@ const AdditionalTraining = ({
                 onChange={(e) =>
                   handleFormChangeAdd(index, "trainingCenter", e.target.value)
                 }
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-                placeholder=""
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+                placeholder="Enter Training Center"
                 disabled={disabled}
               />
             </div>
 
             <div className=" ">
               <label
-                className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+                className="text-[14px] leading-[19.07px]  text-[#333333] "
                 htmlFor={`optionsIC_${index}`}
               >
                 Issuing Country
               </label>
               <select
                 id={`optionsIC_${index}`}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 name="options"
                 value={field.countryIC}
                 onChange={(e) =>
@@ -402,10 +402,10 @@ const AdditionalTraining = ({
 
             <div className="   ">
               <label
-                className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+                className="text-[14px] leading-[19.07px]  text-[#333333] "
                 htmlFor={`numberA_${index}`}
               >
-                Enter Number
+                Enter Certificate Number
               </label>
               <input
                 id={`numberA_${index}`}
@@ -414,8 +414,8 @@ const AdditionalTraining = ({
                 onChange={(e) =>
                   handleFormChangeAdd(index, "number", e.target.value)
                 }
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                placeholder=""
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                placeholder=" Enter Certificate Number"
                 disabled={disabled}
               />
             </div>
@@ -423,7 +423,7 @@ const AdditionalTraining = ({
             {/* </div> */}
             <div className="">
               <label
-                className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="text-[14px] leading-[19.07px]  text-[#333333]"
                 htmlFor={`issue3_${index}`}
               >
                 Issue Date
@@ -431,12 +431,13 @@ const AdditionalTraining = ({
               <input
                 id={`issue3_${index}`}
                 type="date"
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={field.issuedate}
                 onChange={(e) =>
                   handleFormChangeAdd(index, "issuedate", e.target.value)
                 }
                 disabled={disabled}
+                placeholder="Enter  Issue Date"
               />
             </div>
             {/* </div> */}
@@ -444,7 +445,7 @@ const AdditionalTraining = ({
             {!field.neverExpCheck && (
               <div className="">
                 <label
-                  className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]  "
+                  className="text-[14px] leading-[19.07px]  text-[#333333]  "
                   htmlFor={`expiryDate3_${index}`}
                 >
                   Expiry Date
@@ -453,18 +454,19 @@ const AdditionalTraining = ({
                 <input
                   id={`expiryDate3_${index}`}
                   type="date"
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={field.exdate}
                   onChange={(e) =>
                     handleFormChangeAdd(index, "exdate", e.target.value)
                   }
                   disabled={disabled}
+                  placeholder="Enter Expiry Date"
                 />
               </div>
             )}
 
             <div className="grid col-span-2 my-3">
-              <div className=" flex items-center  gap-4">
+              <div className=" flex items-center  gap-2">
                 <input
                   id="neverExpires1"
                   type="checkbox"
@@ -480,7 +482,7 @@ const AdditionalTraining = ({
                   disabled={disabled}
                 />
                 <label
-                  className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                  className="text-[14px] leading-[19.07px]  text-[#333333]"
                   htmlFor="neverExpires1"
                 >
                   Never Expires
@@ -492,7 +494,7 @@ const AdditionalTraining = ({
                 <div>
                   <label
                     htmlFor={`file-upload03_${index}`}
-                    className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[poppins]  "
+                    className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px]   "
                   >
                     Attachment Document
                   </label>
@@ -506,12 +508,12 @@ const AdditionalTraining = ({
                 </div>
                 <div>
                   {selectedFile ? (
-                    <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                    <p className="text-[14px] leading-[19.07px]  text-[#333333]">
                       File Selected: {selectedFile.name}
                     </p>
                   ) : (
-                    <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
-                      No file selected
+                    <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                      No File Selected
                     </p>
                   )}
                 </div>
@@ -542,17 +544,17 @@ const AdditionalTraining = ({
         </div>
 
         {professionalForms.map((fields, index) => (
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-4 mt-2">
             <div className="">
               <label
-                className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+                className="text-[14px] leading-[19.07px]  text-[#333333] "
                 htmlFor={`option02_${index}`}
               >
                 Capacity
               </label>
               <select
                 id={`option02_${index}`}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 name="options"
                 value={fields.capacity}
                 onChange={(e) =>
@@ -574,14 +576,14 @@ const AdditionalTraining = ({
 
             <div className="">
               <label
-                className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+                className="text-[14px] leading-[19.07px]  text-[#333333] "
                 htmlFor={`level_${index}`}
               >
                 Level
               </label>
               <select
                 id={`level_${index}`}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 name="options"
                 value={fields.level}
                 onChange={(e) =>
@@ -603,7 +605,7 @@ const AdditionalTraining = ({
 
             <div className="   ">
               <label
-                className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+                className="text-[14px] leading-[19.07px]  text-[#333333] "
                 htmlFor={`trainingCe_${index}`}
               >
                 Training Center
@@ -615,22 +617,22 @@ const AdditionalTraining = ({
                 onChange={(e) =>
                   handleFormChangePro(index, "trainingCenter1", e.target.value)
                 }
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                placeholder=""
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                placeholder="Enter Training Center"
                 disabled={disabled}
               />
             </div>
 
             <div className="">
               <label
-                className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+                className="text-[14px] leading-[19.07px]  text-[#333333] "
                 htmlFor={`typeoftest_${index}`}
               >
                 Type of Test
               </label>
               <select
                 id={`typeoftest_${index}`}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 name="options"
                 value={fields.typeOfTest}
                 onChange={(e) =>
@@ -652,7 +654,7 @@ const AdditionalTraining = ({
 
             <div className="   ">
               <label
-                className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+                className="text-[14px] leading-[19.07px]  text-[#333333] "
                 htmlFor={`result_${index}`}
               >
                 Result
@@ -664,22 +666,22 @@ const AdditionalTraining = ({
                 onChange={(e) =>
                   handleFormChangePro(index, "result", e.target.value)
                 }
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                placeholder=""
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                placeholder="Enter  Result"
                 disabled={disabled}
               />
             </div>
 
             <div className=" ">
               <label
-                className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+                className="text-[14px] leading-[19.07px]  text-[#333333] "
                 htmlFor={`optionT1_${index}`}
               >
                 Issuing Country
               </label>
               <select
                 id={`optionT1_${index}`}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 name="options"
                 value={fields.issuingCountry}
                 onChange={(e) =>
@@ -702,10 +704,10 @@ const AdditionalTraining = ({
 
             <div className="   ">
               <label
-                className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+                className="text-[14px] leading-[19.07px]  text-[#333333] "
                 htmlFor={`proNumber1_${index}`}
               >
-                Enter Number
+                Enter Certificate Number
               </label>
               <input
                 id={`proNumber1_${index}`}
@@ -714,8 +716,8 @@ const AdditionalTraining = ({
                 onChange={(e) =>
                   handleFormChangePro(index, "eCDISNumber", e.target.value)
                 }
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                placeholder=""
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                placeholder="Enter Certificate Number"
                 disabled={disabled}
               />
             </div>
@@ -723,7 +725,7 @@ const AdditionalTraining = ({
             {/* </div> */}
             <div className="">
               <label
-                className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="text-[14px] leading-[19.07px]  text-[#333333]"
                 htmlFor={`issue2_${index}`}
               >
                 Issue Date
@@ -731,19 +733,20 @@ const AdditionalTraining = ({
               <input
                 id={`issue2_${index}`}
                 type="date"
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={fields.issuedate1}
                 onChange={(e) =>
                   handleFormChangePro(index, "issuedate1", e.target.value)
                 }
                 disabled={disabled}
+                placeholder="Enter  Issue Date"
               />
             </div>
 
             {!fields.neverChecked1 && (
               <div className="">
                 <label
-                  className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]  "
+                  className="text-[14px] leading-[19.07px]  text-[#333333]  "
                   htmlFor={`expiryDate2_${index}`}
                 >
                   Expiry Date
@@ -752,12 +755,13 @@ const AdditionalTraining = ({
                 <input
                   id={`expiryDate2_${index}`}
                   type="date"
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={fields.exdate1}
                   onChange={(e) =>
                     handleFormChangePro(index, "exdate1", e.target.value)
                   }
                   disabled={disabled}
+                  placeholder="Enter  Expiry Date"
                 />
               </div>
             )}
@@ -774,19 +778,19 @@ const AdditionalTraining = ({
                 disabled={disabled}
               />
               <label
-                className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="text-[14px] leading-[19.07px]  text-[#333333]"
                 htmlFor={`neverExpires2_${index}`}
               >
                 Never Expires
               </label>
             </div>
 
-            <div className="grid col-span-2">
+            <div className="grid col-span-2 my-2">
               <div className="flex gap-4 items-center justify-start ">
                 <div>
                   <label
                     htmlFor={`file-upload2_${index}`}
-                    className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] text-[14px] leading-[19.07px] font-[poppins]  focus:outline-none focus:ring-2 "
+                    className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] text-[14px] leading-[19.07px]   focus:outline-none focus:ring-2 "
                   >
                     Attachment Document
                   </label>
@@ -800,12 +804,12 @@ const AdditionalTraining = ({
                 </div>
                 <div>
                   {selectedFiles ? (
-                    <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
+                    <p className="text-[14px] leading-[19.07px]  text-[#333333]">
                       File Selected: {selectedFiles.name}
                     </p>
                   ) : (
-                    <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
-                      No file selected
+                    <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                      No File Selected
                     </p>
                   )}
                 </div>
@@ -819,14 +823,14 @@ const AdditionalTraining = ({
         <div className="flex gap-2 mb-4 mt-4">
           <button
             type="submit"
-            className="border text-[14px] leading-[19.07px] font-[poppins]  border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
+            className="border text-[14px] leading-[19.07px]   border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
           >
             Save
           </button>
           <Link
             href="#"
             onClick={handleEdits}
-            className="border border-[#00A264]  p-2 rounded-lg px-8 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+            className="border border-[#00A264]  p-2 rounded-lg px-8 text-[14px] leading-[19.07px]  text-[#333333]"
           >
             Edit
           </Link>

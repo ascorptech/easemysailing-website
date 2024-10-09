@@ -243,12 +243,12 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
       <h1 className="font-bold ">Computer Skills</h1>
       <div className="grid grid-cols-2 gap-4">
       <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="Skill">
+            <label className="text-[14px] leading-[19.07px]  text-[#333333] " htmlFor="Skill">
             Skill
             </label>
             <select
               id="Skill"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
               value={skill}
               onChange={(e) => setSkill(e.target.value)}
@@ -266,12 +266,12 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
             </select>
           </div>
           <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="level1">
+            <label className="text-[14px] leading-[19.07px]  text-[#333333] " htmlFor="level1">
             Level
             </label>
             <select
               id="level1"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
               value={level1}
               onChange={(e) => setLevel1(e.target.value)}
@@ -294,12 +294,12 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
           </div>
 
           <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="bulkCargo">
+            <label className="text-[14px] leading-[19.07px]  text-[#333333] " htmlFor="bulkCargo">
             Bulk Cargo
             </label>
             <select
               id="bulkCargo"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
               value={bulkCargo}
               onChange={(e) => setBulkCargo(e.target.value)}
@@ -317,12 +317,12 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
             </select>
           </div>
           <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="tankerCargo">
+            <label className="text-[14px] leading-[19.07px]  text-[#333333] " htmlFor="tankerCargo">
             Tanker Cargo
             </label>
             <select
               id="tankerCargo"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
               value={tankerCargo}
               onChange={(e) => setTankerCargo(e.target.value)}
@@ -342,12 +342,12 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
 
 
           <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="generalCargo">
+            <label className="text-[14px] leading-[19.07px]  text-[#333333] " htmlFor="generalCargo">
             General Cargo
             </label>
             <select
               id="generalCargo"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
               value={generalCargo}
               onChange={(e) => setGeneralCargo(e.target.value)}
@@ -365,12 +365,12 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
             </select>
           </div>
           <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="woodProducts">
+            <label className="text-[14px] leading-[19.07px]  text-[#333333] " htmlFor="woodProducts">
             Wood Products
             </label>
             <select
               id="woodProducts"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
               value={woodProducts}
               onChange={(e) => setWoodProducts(e.target.value)}
@@ -389,12 +389,12 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
           </div>
 
           <div className=" grid col-span-2">
-            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="stowage">
-            Stowage and Lashing Experience
+            <label className="text-[14px] leading-[19.07px]  text-[#333333] " htmlFor="stowage">
+            Stowage And Lashing Experience
             </label>
             <select
               id="stowage"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
               value={stowage}
               onChange={(e) => setStowage(e.target.value)}
@@ -416,12 +416,12 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
             <h1 className=" font-bold">Cargo Gear Experience</h1>
           </div>
           <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="typeProfessional">
+            <label className="text-[14px] leading-[19.07px]  text-[#333333] " htmlFor="typeProfessional">
             Type
             </label>
             <select
               id="typeProfessional"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
               value={typeProfessional}
               onChange={(e) => setTypeProfessional(e.target.value)}
@@ -440,7 +440,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
           </div>
         <div className="   ">
           <label
-            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+            className="text-[14px] leading-[19.07px]  text-[#333333] "
             htmlFor="maker"
           >
             Maker
@@ -450,14 +450,14 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
             type="text"
             value={maker}
             onChange={(e) => setMaker(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-            placeholder=""
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            placeholder="Enter  Maker"
             disabled={disabled}
           />
         </div>
         <div className="   ">
           <label
-            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+            className="text-[14px] leading-[19.07px]  text-[#333333] "
             htmlFor="swl"
           >
             SWL
@@ -467,8 +467,8 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
             type="text"
             value={sWL}
             onChange={(e) => setSWL(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-            placeholder=""
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            placeholder="Enter SWL"
             disabled={disabled}
           />
         </div>
@@ -476,12 +476,12 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
         <div className="grid col-span-2"><h1 className=" font-bold">Metal Working Skills</h1></div>
 
         <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="skillmetal">
+            <label className="text-[14px] leading-[19.07px]  text-[#333333] " htmlFor="skillmetal">
             Skill
             </label>
             <select
               id="skillmetal"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
               value={skillmetal}
               onChange={(e) => setSkillmetal(e.target.value)}
@@ -500,12 +500,12 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
             </select>
           </div>
           <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="levelMetal">
+            <label className="text-[14px] leading-[19.07px]  text-[#333333] " htmlFor="levelMetal">
             Level
             </label>
             <select
               id="levelMetal"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
               value={levelMetal}
               onChange={(e) => setLevelMetal(e.target.value)}
@@ -526,7 +526,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
 
         <div className="   ">
           <label
-            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+            className="text-[14px] leading-[19.07px]  text-[#333333] "
            
           >
            Certificate Available
@@ -536,7 +536,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
             type="text"
             value={cAvailable}
             onChange={(e) => setCAvailable(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             placeholder="Yes/No"
             disabled={disabled}
           />
@@ -544,7 +544,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
 
         <div className="   ">
           <label
-            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+            className="text-[14px] leading-[19.07px]  text-[#333333] "
            
           >
            Class Approved
@@ -554,7 +554,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
             type="text"
             value={classApproved}
             onChange={(e) => setClassApproved(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
             placeholder="Yes/No"
             disabled={disabled}
           />
@@ -566,7 +566,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
         <div className="flex gap-6 items-center  ">
           <label
             htmlFor="file-upload"
-            className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[poppins]  "
+            className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px]   "
           >
             Attachment Document
           </label>
@@ -585,8 +585,8 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
             File Selected: {selectedFile.name}
           </p>
         ) : (
-          <p className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]">
-            No file selected
+          <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+            No File Selected
           </p>
         )}
         {/* </div> */}
@@ -596,12 +596,12 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
       <div className="grid col-span-2">
         <h1 className=" font-bold" >Tank Coating Type Experience</h1>
         <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="typeTank">
+            <label className="text-[14px] leading-[19.07px]  text-[#333333] " htmlFor="typeTank">
             Type
             </label>
             <select
               id="typeTank"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
               value={typeTank}
               onChange={(e) => setTypeTank(e.target.value)}
@@ -622,12 +622,12 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
 
       <div className="grid col-span-2"><h1 className="font-bold ">Port State Control Experience </h1></div>
       <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="regionalAgreement">
+            <label className="text-[14px] leading-[19.07px]  text-[#333333] " htmlFor="regionalAgreement">
             Regional Agreement
             </label>
             <select
               id="regionalAgreement"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
               value={regionalAgreement}
               onChange={(e) => setRegionalAgreement(e.target.value)}
@@ -645,12 +645,12 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
             </select>
           </div>
           <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="port">
+            <label className="text-[14px] leading-[19.07px]  text-[#333333] " htmlFor="port">
             Port 
             </label>
             <select
               id="port"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
               value={port}
               onChange={(e) => setPort(e.target.value)}
@@ -675,24 +675,25 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
             </select>
           </div>
           <div className="">
-        <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]  " htmlFor="expiryDate">
+        <label className="text-[14px] leading-[19.07px]  text-[#333333]  " htmlFor="expiryDate">
           Date
         </label>
         {/* <div className="flex items-center gap-4 mt-2"> */}
           <input
             id="expiryDate"
             type="date"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             value={date}
             onChange={(e) => setDate(e.target.value)}
             disabled={disabled}
+            placeholder="Enter  Date"
           />
           {/* </div> */}
           </div>
 
           <div className="grid col-span-2   ">
           <label
-            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+            className="text-[14px] leading-[19.07px]  text-[#333333] "
            
           >
             Description of Findings / Observation / Deficiencies (if any)          </label>
@@ -701,7 +702,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
             type="text"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             placeholder="Yes/No"
             disabled={disabled}
           />
@@ -710,7 +711,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
         <div className="grid col-span-2"><h1 className=" font-bold">Vetting Inspection</h1></div>
         <div className="   ">
           <label
-            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+            className="text-[14px] leading-[19.07px]  text-[#333333] "
            
           >
            Inspection By
@@ -720,18 +721,18 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
             type="text"
             value={inspection}
             onChange={(e) => setInspection(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-            placeholder=""
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+            placeholder="Enter  Inspection By"
             disabled={disabled}
           />
         </div>
           <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="port1">
+            <label className="text-[14px] leading-[19.07px]  text-[#333333] " htmlFor="port1">
             Port
             </label>
             <select
               id="port1"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
               value={port1}
               onChange={(e) => setPort1(e.target.value)}
@@ -749,24 +750,25 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
             </select>
           </div>
           <div className="">
-        <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]  " htmlFor="expiryDate">
+        <label className="text-[14px] leading-[19.07px]  text-[#333333]  " htmlFor="expiryDate">
           Date
         </label>
         {/* <div className="flex items-center gap-4 mt-2"> */}
           <input
             id="expiryDate"
             type="date"
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
             value={vdate}
             onChange={(e) => setVDate(e.target.value)}
             disabled={disabled}
+            placeholder="Enter Date"
           />
           {/* </div> */}
           </div>
 
           <div className="grid col-span-2   ">
           <label
-            className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+            className="text-[14px] leading-[19.07px]  text-[#333333] "
            
           >
             Description of Findings / Observation / Deficiencies (if any)          </label>
@@ -775,7 +777,7 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
             type="text"
             value={description1}
             onChange={(e) => setDescription1(e.target.value)}
-            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+            className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
             placeholder="Yes/No"
             disabled={disabled}
           />
@@ -783,12 +785,12 @@ const ProfessionalSkills = ({professionalComplete, setProfessionalComplete, user
         <div className="grid col-span-2"><h1 className="font-bold ">Trading Area Experience</h1>
 
         <div className="">
-            <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] " htmlFor="tradingArea">
+            <label className="text-[14px] leading-[19.07px]  text-[#333333] " htmlFor="tradingArea">
             Trading Area
             </label>
             <select
               id="tradingArea"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
               value={tradingArea}
               onChange={(e) => setTradingArea(e.target.value)}

@@ -4,7 +4,7 @@ import { FaChevronDown } from "react-icons/fa";
 
 export default function header() {
   return (
-    <div className="flex flex-row justify-between items-center mx-5 my-3">
+    <div className="flex  justify-between items-center mx-5 my-3">
       <div className="text-xl font-bold">
         <h1>Jobs By EMS</h1>
       </div>

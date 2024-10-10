@@ -7,7 +7,7 @@ export default function EmsDetail() {
       <div>
         <h1 className="font-bold text-[25px]">Maersk Line</h1>
         <p>Captain</p>
-        <ul className="flex flex-row w-auto h-12 gap-3 mt-3 bg-[#D6EEEE] text-sm">
+        <ul className="flex  gap-2 mt-3 bg-[#D6EEEE] ">
           <li className=" ">
             <Link
               href="#"
@@ -19,7 +19,7 @@ export default function EmsDetail() {
           <li className="  ">
             <Link
               href="#"
-              className="inline-flex h-12 justify-between items-center px-4 py-2 bg-[#00A264] text-white  rounded-md shadow-sm focus:outline-none"
+              className=" inline-flex h-12 justify-between items-center px-4 py-2 bg-white border border-[#00A264] text-[#00A264]  rounded-md shadow-sm focus:outline-none"
             >
               More Info
             </Link>
@@ -27,7 +27,7 @@ export default function EmsDetail() {
           <li className="">
             <Link
               href="#"
-              className="inline-flex h-12 justify-between items-center px-4 py-2 bg-[#00A264] text-white rounded-md shadow-sm  focus:outline-none"
+              className="inline-flex h-12 justify-between items-center px-4 py-2 bg-white border border-[#00A264] text-[#00A264]  rounded-md shadow-sm focus:outline-none"
             >
               Recruiter Information
             </Link>

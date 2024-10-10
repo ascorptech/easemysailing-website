@@ -4,12 +4,12 @@ import EmsDetail from './EmsDetail';
 
 export default function EmsContain() {
   return (
-    <div className="flex flex-row justify-between items-center mx-5">
-      <div className=" w-[48%] ">
+    <div className="flex  justify-between items-center mx-5 gap-5">
+      <div className=" w-full ">
         <EmsCard />
       </div>
       {/* right div */}
-      <div className="border-2 w-[48%]  shadow-2xl p-3 bg-white rounded-lg">
+      <div className="border w-full  shadow-2xl  bg-white rounded-md">
         <EmsDetail />
       </div>
     </div>

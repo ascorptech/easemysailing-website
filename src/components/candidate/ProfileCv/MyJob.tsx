@@ -1364,7 +1364,7 @@ const MyJob = () => {
             <div
               className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${vettingServicesComplete?.color}] mt-3`}
             >
-              <h2 className="">Verification status</h2>
+              <h2 className="">Verification Status</h2>
               <div className="flex items-center justify-center gap-1">
                 <span className="ml-2 cursor-pointer" onClick={hendleModular}>
                   {mCOpen ? (

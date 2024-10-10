@@ -13,19 +13,17 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
-
 interface sidebarProps {
   sidebarToggle: boolean;
 }
 
 const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
-
   const pathname = usePathname();
   console.log("path", pathname);
-  const onLogout =()=>{
+  const onLogout = () => {
     localStorage.clear();
-    document.cookie=`token=${''}; path=/candidate`
-  }
+    document.cookie = `token=${""}; path=/candidate`;
+  };
   return (
     <div
       className={`${
@@ -34,9 +32,8 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
     >
       <div className="w-44 h-12 sm:w-52 sm:h-[53px] ml-3 ">
         <Link href="#">
-        
           <Image
-          priority
+            priority
             src="/images/logo_1.png"
             alt="EaseMySailing Logo"
             className="object-contain h-full w-full "
@@ -160,7 +157,7 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
             Contact Us
           </Link>
         </li> */}
-        
+
         <li className="mb-2 rounded py-2">
           <Link href="/candidate" onClick={onLogout}>
             <FiLogOut className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />

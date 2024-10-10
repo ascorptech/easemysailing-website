@@ -6,15 +6,17 @@ import Link from "next/link";
 import { MdOutlineWatchLater } from "react-icons/md";
 import { FaSackDollar } from "react-icons/fa6";
 
-
 interface ShippingCardProps {
   name: string;
   reviews: string;
   rating: string;
   contactPerson: string;
+  startSrc: string;
   logoSrc: string;
   duration: string;
   days: string;
+  dollerSrc:string;
+  doller:string;
 }
 
 const EmsCard: React.FC = () => {
@@ -27,86 +29,112 @@ const EmsCard: React.FC = () => {
       name: "AP Moller-Maersk",
       reviews: "5k+",
       rating: "4.8",
+      startSrc: "/images/candidate/profileCv/star-rate.png",
       contactPerson: "Bulk",
       duration: "Contact Duration: ",
       days: "6 days ago",
       logoSrc: "/images/logo1.png",
+      dollerSrc:"/images/candidate/profileCv/doller.png",
+      doller:"$123 - $456",
     },
-    
+
     {
       name: "CMA CGM Group",
       reviews: "2k+",
       rating: "3.9",
+      startSrc: "/images/candidate/profileCv/star-rate.png",
       contactPerson: "Tanker",
       duration: "Contact Duration: ",
       days: "6 days ago",
       logoSrc: "/images/logo2.png",
+      dollerSrc:"/images/candidate/profileCv/doller.png",
+      doller:"$123 - $456",
     },
     {
       name: "Teekay Corporation",
       reviews: "1k+",
       rating: "3.6",
+      startSrc: "/images/candidate/profileCv/star-rate.png",
       contactPerson: "Bulk",
       duration: "Contact Duration: ",
       days: "6 days ago",
       logoSrc: "/images/logo3.png",
+      dollerSrc:"/images/candidate/profileCv/doller.png",
+      doller:"$123 - $456",
     },
     {
       name: "V. Ships",
       reviews: "2k+",
       rating: "3.8",
+      startSrc: "/images/candidate/profileCv/star-rate.png",
       contactPerson: " Bulk",
       duration: "Contact Duration: ",
       days: "6 days ago",
       logoSrc: "/images/logo4.png",
+      dollerSrc:"/images/candidate/profileCv/doller.png",
+      doller:"$123 - $456",
     },
     {
       name: "COSCO Shipping",
       reviews: "2k+",
       rating: "4.6",
+      startSrc: "/images/candidate/profileCv/star-rate.png",
       contactPerson: " Bulk",
       duration: "Contact Duration: ",
       days: "6 days ago",
       logoSrc: "/images/logo5.png",
+      dollerSrc:"/images/candidate/profileCv/doller.png",
+      doller:"$123 - $456",
     },
     {
       name: "AP Moller-Maersk",
       reviews: "5k+",
       rating: "4.8",
+      startSrc: "/images/candidate/profileCv/star-rate.png",
       contactPerson: "Sherry Smith",
       duration: "Contact Duration: ",
       days: "6 days ago",
       logoSrc: "/images/logo1.png",
+      dollerSrc:"/images/candidate/profileCv/doller.png",
+      doller:"$123 - $456",
     },
-  
+
     {
       name: "V. Ships",
       reviews: "2k+",
       rating: "3.8",
+      startSrc: "/images/candidate/profileCv/star-rate.png",
       contactPerson: " Bulk",
       duration: "Contact Duration: ",
       days: "6 days ago",
       logoSrc: "/images/logo4.png",
+      dollerSrc:"/images/candidate/profileCv/doller.png",
+      doller:"$123 - $456",
     },
     {
       name: "COSCO Shipping",
       reviews: "2k+",
       rating: "4.6",
+      startSrc: "/images/candidate/profileCv/star-rate.png",
       contactPerson: " Bulk",
       duration: "Contact Duration: ",
       days: "6 days ago",
       logoSrc: "/images/logo5.png",
+      dollerSrc:"/images/candidate/profileCv/doller.png",
+      doller:"$123 - $456",
     },
     {
       name: "Teekay Corporation",
       reviews: "1k+",
       rating: "3.6",
+      startSrc: "/images/candidate/profileCv/star-rate.png",
       contactPerson: "Robin",
       duration: "Contact Duration: ",
       days: "6 days ago",
       logoSrc: "/images/logo3.png",
+      dollerSrc:"/images/candidate/profileCv/doller.png",
+      doller:"$123 - $456",
     },
-    
   ];
 
   // Calculate total pages
@@ -136,35 +164,71 @@ const EmsCard: React.FC = () => {
         {currentItems.map((item, index) => (
           <div
             key={index}
-            className="bg-white border h-[9rem] rounded-lg px-3 mx-[1rem]  shadow-2xl flex-shrink-0  "
+            className="  border-red-500 bg-white border  rounded-md px-3 py-3  shadow-lg flex-shrink-0  "
           >
-            <div className="flex relative justify-between mt-3 items-center ">
+            <div className="flex relative justify-between mt-3 items-center">
               <h3 className="  text-base font-semibold ">{item.name}</h3>
-              <div className="flex absolute top-0 right-3 justify-center items-center h-16 w-16 border shadow-md rounded-md mt-3">
+              <div className="flex absolute top-0 right-3 justify-center items-center h-[61px] w-[76px] border shadow-md rounded-md mt-3  border-red-500 p-1">
                 <Image
-                priority
+                  priority
                   src={item.logoSrc}
                   width={100}
                   height={100}
                   alt={`${item.name} logo`}
-                  className="h-10 w-10"
+                  className="h-full w-full object-contain"
                 />
               </div>
             </div>
 
-            <div className="text-gray-700 font-base"><span className="text-[#00A264] text-sm">Captain, </span>{item.contactPerson}</div>
+            <div className="text-gray-700 font-base">
+              <span className="text-[#00A264] text-sm">Captain, </span>
+              {item.contactPerson}
+            </div>
 
-            <div className="text-sm mt-2 gap-6 flex mb-2">
-              <div className="">
+            <div className="text-sm gap-6 flex my-2 items-center">
+              {/* <div className="">
                 <span className="text-yellow-500">⭐ {item.rating}</span>
                 <span className="text-gray-500"> | {item.reviews} reviews</span>
+              </div> */}
+              <div className="flex gap-2">
+                {" "}
+                <Image
+                  priority
+                  src={item.startSrc}
+                  alt=""
+                  width={500}
+                  height={500}
+                  className="object-contain w-[18px] h-[18px]"
+                />
+                <p className="font-semibold text-[15px] leading-[21px]">
+                  {item.rating}
+                  <span className="font-normal text-[15px] leading-[18px] ml-2">
+                    | {item.reviews} reviews
+                  </span>
+                </p>
               </div>
 
               <div className="flex gap-2 items-center">
-                <span className="text-[#00A264] text-lg">
+              <div className="flex gap-2">
+                {" "}
+                <Image
+                  priority
+                  src={item.dollerSrc}
+                  alt=""
+                  width={500}
+                  height={500}
+                  className="object-contain w-[18px] h-[18px]"
+                />
+               
+                  <span className="font-normal text-[15px] leading-[18px] ml-1`">
+                  {item.doller}
+                  </span>
+               
+              </div>
+                {/* <span className="text-[#00A264] text-lg">
                   <FaSackDollar />
                 </span>
-                <span>$123 - $456</span>
+                <span>$123 - $456</span> */}
               </div>
             </div>
             <div className="flex justify-between mr-4 pt-1 items-center">

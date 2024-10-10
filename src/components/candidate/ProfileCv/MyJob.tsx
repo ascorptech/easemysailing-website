@@ -39,12 +39,12 @@ import ShorJob from "./ShoreJob/ShoreJob";
 
 const MyJob = () => {
   const [profileDetail, setProfileDetail] = useState<any>({});
-  const [myJobDetail,setMyJobDetail] = useState<any>({})
-  const [aboutMeDetail,setAboutMeDetail] = useState<any>()
-  const [nextOfKinDetail,setNextOfKinDetail] = useState<any>()
-  const [languageDetail,setLanguageDetail] = useState<any>()
-  const [contactDetail,setContactDetail] = useState<any>()
-  const [ecdisDetail,setEcdisDetail] = useState<any>()
+  const [myJobDetail, setMyJobDetail] = useState<any>({});
+  const [aboutMeDetail, setAboutMeDetail] = useState<any>({});
+  const [nextOfKinDetail, setNextOfKinDetail] = useState<any>({});
+  const [languageDetail, setLanguageDetail] = useState<any>({});
+  const [contactDetail, setContactDetail] = useState<any>({});
+  const [ecdisDetail, setEcdisDetail] = useState<any>({});
   const [isOpen, setIsOpen] = useState(false); // State to toggle
   const [pDOpen, setPDOpen] = useState(false);
   const [languageOpen, setLanguageOpen] = useState(false);
@@ -59,7 +59,7 @@ const MyJob = () => {
     percentage: 0,
     color: "#FF0000",
   });
-  const [nextofComplete, setNextOfComplete] = useState<any>({
+  const [nextOfComplete, setNextOfComplete] = useState<any>({
     percentage: 0,
     color: "#FF0000",
   });
@@ -179,54 +179,48 @@ const MyJob = () => {
         toast.error("No data found");
       }
     });
-    GetMyjob(id,(res:any)=>{
-      if (res?.status==200) {
-        setMyJobDetail(res?.data)
-      }else{
-        toast.error('No data found')
+    GetMyjob(id, (res: any) => {
+      if (res?.status == 200) {
+        setMyJobDetail(res?.data);
+      } else {
+        toast.error("No data found");
       }
-
-    })
-    GetAboutMe(id,(res:any)=>{
-      if (res?.status==200) {
-        setAboutMeDetail(res?.data)
-      }else{
-        toast.error('No data found')
+    });
+    GetAboutMe(id, (res: any) => {
+      if (res?.status == 200) {
+        setAboutMeDetail(res?.data);
+      } else {
+        toast.error("No data found");
       }
-
-    })
-    GetNextOfData(id,(res:any)=>{
-      if (res?.status==200) {
-        setNextOfKinDetail(res?.data)
-      }else{
-        toast.error('No data found')
+    });
+    GetNextOfData(id, (res: any) => {
+      if (res?.status == 200) {
+        setNextOfKinDetail(res?.data);
+      } else {
+        toast.error("No data found");
       }
-
-    })
-    GetLanguageData(id,(res:any)=>{
-      if (res?.status==200) {
-        setLanguageDetail(res?.data)
-      }else{
-        toast.error('No data found')
+    });
+    GetLanguageData(id, (res: any) => {
+      if (res?.status == 200) {
+        setLanguageDetail(res?.data);
+      } else {
+        toast.error("No data found");
       }
-
-    })
-    GetContact(id,(res:any)=>{
-      if (res?.status==200) {
-        setContactDetail(res?.data)
-      }else{
-        toast.error('No data found')
+    });
+    GetContact(id, (res: any) => {
+      if (res?.status == 200) {
+        setContactDetail(res?.data);
+      } else {
+        toast.error("No data found");
       }
-
-    })
-    GetEcdisData(id,(res:any)=>{
-      if (res?.status==200) {
-        setEcdisDetail(res?.data)
-      }else{
-        toast.error('No data found')
+    });
+    GetEcdisData(id, (res: any) => {
+      if (res?.status == 200) {
+        setEcdisDetail(res?.data);
+      } else {
+        toast.error("No data found");
       }
-
-    })
+    });
   };
 
   const toggleCollapse = () => {
@@ -308,7 +302,9 @@ const MyJob = () => {
           <div className=" h-screen overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory ">
             <div className="">
               <div
-                className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2  border-r-8 border-[${myJobDetail.color?myJobDetail.color:mjrComplete.color}]`}
+                className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2  border-r-8 border-[${
+                  myJobDetail.color ? myJobDetail.color : mjrComplete.color
+                }]`}
               >
                 <h2 className=""> My Job Requirements</h2>{" "}
                 <div className="flex items-center justify-center gap-1">
@@ -349,8 +345,14 @@ const MyJob = () => {
                     )}
                   </span>
                   <CircularProgress
-                    percentage={Math.round(mjrComplete?.percentage?mjrComplete?.percentage:Number(myJobDetail?.completed))}
-                    color={myJobDetail.color?myJobDetail.color:mjrComplete.color}
+                    percentage={Math.round(
+                      mjrComplete?.percentage
+                        ? mjrComplete?.percentage
+                        : Number(myJobDetail?.completed)
+                    )}
+                    color={
+                      myJobDetail.color ? myJobDetail.color : mjrComplete.color
+                    }
                   />
                 </div>
               </div>
@@ -365,7 +367,11 @@ const MyJob = () => {
               )}
 
               <div
-                className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2  border-r-8 border-[${profileDetail.color?profileDetail?.color:personalComplete?.color}] mt-3`}
+                className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2  border-r-8 border-[${
+                  profileDetail.color
+                    ? profileDetail?.color
+                    : personalComplete?.color
+                }] mt-3`}
               >
                 <h2 className="">Personal Details</h2>
                 <div className="flex items-center justify-center gap-1">
@@ -404,8 +410,16 @@ const MyJob = () => {
                   </span>
 
                   <CircularProgress
-                    percentage={Math.round(personalComplete?.percentage)?Math.round(personalComplete?.percentage):Number(profileDetail?.completed)}
-                    color={profileDetail.color?profileDetail?.color:personalComplete?.color}
+                    percentage={
+                      Math.round(personalComplete?.percentage)
+                        ? Math.round(personalComplete?.percentage)
+                        : Number(profileDetail?.completed)
+                    }
+                    color={
+                      profileDetail.color
+                        ? profileDetail?.color
+                        : personalComplete?.color
+                    }
                   />
                 </div>
               </div>
@@ -421,7 +435,11 @@ const MyJob = () => {
               {/* PersonalDetails start */}
 
               <div
-                className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${languageComplete?.color}] mt-3`}
+                className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${
+                  languageDetail.color
+                  ?languageDetail.color
+                  : languageComplete.color
+              }] mt-3`}
               >
                 <h2 className="">Languages</h2>
                 <div className="flex items-center justify-center gap-1">
@@ -462,9 +480,17 @@ const MyJob = () => {
                     )}
                   </span>
                   <CircularProgress
-                    percentage={Math.round(languageComplete?.percentage)}
-                    color={languageComplete.color}
-                  />
+                  percentage={Math.round(
+                    languageComplete?.percentage
+                      ? languageComplete?.percentage
+                      : Number(languageDetail?.completed)
+                  )}
+                  color={
+                    languageDetail.color
+                      ? languageDetail.color
+                      :languageComplete.color
+                  }
+                />
                 </div>
               </div>
 
@@ -593,7 +619,9 @@ const MyJob = () => {
               )}
 
               <div
-                className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${eCDISComplete?.color}] mt-3`}
+                className={`flex justify-between items-center rounded-md  mt-3 bg-[#D6EEEE] p-2 border-r-8 border-[${
+                  ecdisDetail.color ? ecdisDetail.color : eCDISComplete.color
+                }]`}
               >
                 <h1 className="">ECDIS</h1>
                 <div className="flex items-center justify-center gap-1">
@@ -634,8 +662,16 @@ const MyJob = () => {
                     )}
                   </span>
                   <CircularProgress
-                    percentage={Math.round(eCDISComplete?.percentage)}
-                    color={eCDISComplete.color}
+                    percentage={Math.round(
+                      eCDISComplete?.percentage
+                        ? eCDISComplete?.percentage
+                        : Number(ecdisDetail?.completed)
+                    )}
+                    color={
+                      ecdisDetail.color
+                        ? ecdisDetail.color
+                        : eCDISComplete.color
+                    }
                   />
                 </div>
               </div>
@@ -879,7 +915,11 @@ const MyJob = () => {
             {/* Aboutme  start*/}
 
             <div
-              className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${aboutMeComplete?.color}] `}
+              className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${
+                aboutMeDetail.color
+                  ? aboutMeDetail.color 
+                  : aboutMeComplete.color
+              }]`}
             >
               <h2 className="">About Me</h2>
               <div className="flex items-center justify-center gap-1">
@@ -917,8 +957,16 @@ const MyJob = () => {
                   )}
                 </span>
                 <CircularProgress
-                  percentage={Math.round(aboutMeComplete?.percentage)}
-                  color={aboutMeComplete?.color}
+                  percentage={
+                    Math.round(aboutMeComplete?.percentage
+                      ? aboutMeComplete?.percentage
+                      : Number(aboutMeDetail?.completed)
+   ) }
+                  color={
+                    aboutMeDetail.color
+                      ? aboutMeDetail.color
+                      : aboutMeComplete.color
+                  }
                 />
               </div>
             </div>
@@ -933,7 +981,11 @@ const MyJob = () => {
             {/* about me end */}
 
             <div
-              className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2   border-r-8 border-[${nextofComplete?.color}] mt-3`}
+              className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2   border-r-8 border-[${
+                nextOfKinDetail.color
+                  ? nextOfKinDetail.color
+                  : nextOfComplete.color
+              }] mt-3`}
             >
               <h1 className="">Next Of Kin Details</h1>
               <div className="flex items-center justify-center gap-1">
@@ -973,17 +1025,29 @@ const MyJob = () => {
                     </svg>
                   )}
                 </span>
-                <CircularProgress
+                {/* <CircularProgress
                   percentage={Math.round(nextofComplete?.percentage)}
                   color={nextofComplete?.color}
+                /> */}
+                <CircularProgress
+                  percentage={Math.round(
+                    nextOfComplete?.percentage
+                      ? nextOfComplete?.percentage
+                      : Number(nextOfKinDetail?.completed)
+                  )}
+                  color={
+                    nextOfKinDetail?.color
+                      ? nextOfKinDetail.color
+                      : nextOfComplete.color
+                  }
                 />
               </div>
             </div>
             {/* {nKOpen && <NextOfKinDetails />} */}
             {nKOpen && (
               <NextOfKinDetails
-                personalComplete={nextofComplete}
-                setPersonalComplete={setNextOfComplete}
+                nextOfKinComplete={nextOfComplete}
+                setNextOfKinComplete={setNextOfComplete}
                 userDetail={profileDetail}
                 nextOfKinDetail={nextOfKinDetail}
               />
@@ -991,7 +1055,11 @@ const MyJob = () => {
 
             {/* conatact Details start */}
             <div
-              className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${contactComplete?.color}] mt-3`}
+              className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${
+                contactDetail.color
+                  ? contactDetail.color
+                  : contactComplete.color
+              }] mt-3`}
             >
               <h2 className="">Contact Details</h2>
               <div className="flex items-center justify-center gap-1">
@@ -1032,9 +1100,21 @@ const MyJob = () => {
                   )}
                 </span>
                 <CircularProgress
+                  percentage={Math.round(
+                    contactComplete?.percentage
+                      ? contactComplete?.percentage
+                      : Number(contactDetail?.completed)
+                  )}
+                  color={
+                    contactDetail.color
+                      ? contactDetail.color
+                      : contactComplete.color
+                  }
+                />
+                {/* <CircularProgress
                   percentage={Math.round(contactComplete?.percentage)}
                   color={contactComplete.color}
-                />
+                /> */}
               </div>
             </div>
 

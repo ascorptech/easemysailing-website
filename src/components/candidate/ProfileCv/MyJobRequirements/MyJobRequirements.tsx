@@ -15,8 +15,8 @@ type MjrComplete = {
 };
 
 type Props = {
-  mjrComplete: MjrComplete; // mjrComplete is an object with percentage and color
-  setMjrComplete: React.Dispatch<React.SetStateAction<MjrComplete>>; // setMjrComplete is a function to update mjrComplete
+  mjrComplete: MjrComplete; 
+  setMjrComplete: React.Dispatch<React.SetStateAction<MjrComplete>>; 
   userDetail: any;
   jobDetail:any
 };

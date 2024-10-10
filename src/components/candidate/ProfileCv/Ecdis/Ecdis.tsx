@@ -14,7 +14,7 @@ type ECDISComplete = {
 };
 
 type Props = {
-  eCDISComplete: ECDISComplete; // mjrComplete is an object with percentage and color
+  eCDISComplete: ECDISComplete; 
   setECDISComplete: React.Dispatch<React.SetStateAction<ECDISComplete>>;
   userDetail: any;
   ecdisDetail:any;
@@ -41,6 +41,8 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail,ecdisDetail }: Prop
   const [disabled,setDisabled] = useState(true)
 
   const [showFields, setShowFields] = useState(true);
+  const [color,setColor]=useState('')
+
 
   useEffect(() => {
     console.log("userDetail", userDetail);
@@ -83,32 +85,34 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail,ecdisDetail }: Prop
     // const totalFields = checkBox1=== "false" ? 7 : 6;
 
   // const percentage = (filledFields / totalFields) * 100;
-  const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
+  // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
 
-  let color;
+  const percentage:any = totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
+
+  
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
       setECDISComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#FF0000", // Update the color field
+        ...prevState, 
+        percentage: percentage, 
+        color: "#FF0000", 
       }));
-      color = "red";
+      setColor("#FF0000");
     } else if (percentage <= 70) {
       setECDISComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#FF9900", // Update the color field
+        ...prevState,
+        percentage: percentage,
+        color: "#FF9900", 
       }));
-      color = "#FF9900";
+      setColor("#FF9900");
     } else {
       setECDISComplete((prevState) => ({
         ...prevState,
         percentage: percentage,
         color: "#00A264",
       }));
-      color = "green";
+      setColor("#00A264");
     }
   }, [percentage, color]);
 
@@ -138,6 +142,8 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail,ecdisDetail }: Prop
     formData.append("issueDate", issuedate1);
     formData.append("expiryDate", exdate1);
     formData.append("neverExpires", checkBox1);
+    formData.append('color',color);
+    formData.append('completed',percentage);
 
     selectedFiles && formData.append("document", selectedFiles);
 

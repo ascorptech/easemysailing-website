@@ -6,13 +6,15 @@ import { AddAboutMeData } from "@/app/(candidate)/candidate/(auth)/(dashboard)/p
 import { toast } from "react-toastify";
 import { Link } from "lucide-react";
 
+
+
 type AboutMeComplete = {
   percentage: number;
   color: string;
 };
 type Props = {
-  aboutMeComplete: AboutMeComplete; // mjrComplete is an object with percentage and color
-  setAboutMeComplete: React.Dispatch<React.SetStateAction<AboutMeComplete>>; // setMjrComplete is a function to update mjrComplete
+  aboutMeComplete: AboutMeComplete; 
+  setAboutMeComplete: React.Dispatch<React.SetStateAction<AboutMeComplete>>; 
   userDetail: any;
   aboutDetail:any;
 };
@@ -29,6 +31,7 @@ const AboutMe = ({
 
   const [criminal, setCriminal] = useState("");
   const [disabled, setDisabled] = useState(true);
+  const [color, setColor]=useState('')
 
   const totalFields = 4;
   const filledFields = [personality, additional, myFuture, criminal].filter(
@@ -44,31 +47,33 @@ const AboutMe = ({
       }
   }, [])
 
-  const percentage = (filledFields / totalFields) * 100;
-  let color;
+  const percentage:any = totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
+
+  // const percentage = (filledFields / totalFields) * 100;
+  // let color;
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
       setAboutMeComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#FF0000", // Update the color field
+        ...prevState, 
+        percentage: percentage, 
+        color: "#FF0000", 
       }));
-      color = "red";
+      setColor("#FF0000");
     } else if (percentage <= 70) {
       setAboutMeComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#FF9900", // Update the color field
+        ...prevState, 
+        percentage: percentage, 
+        color: "#FF9900",
       }));
-      color = "#FF9900";
+      setColor("#FF9900");
     } else {
       setAboutMeComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#00A264", // Update the color field
+        ...prevState,
+        percentage: percentage, 
+        color: "#00A264", 
       }));
-      color = "green";
+      setColor("#00A264");
     }
   }, [percentage, color]);
 
@@ -81,6 +86,8 @@ const AboutMe = ({
       additionalSeaServiceInfo: additional,
       futureAimsAndExpectations: myFuture,
       employmentDeclaration: criminal,
+      color: color,
+      completed: percentage,
     };
 
     AddAboutMeData(data, AddAboutMeDataCB);

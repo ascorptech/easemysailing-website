@@ -43,6 +43,7 @@ const Languages = ({
   const [disabled, setDisabled] = useState(true);
 
   const [selectedFile, setSelectedFile] = useState<any>(null);
+  const [color,setColor]=useState('')
 
   useEffect(() => {
     if (languageDetail) {
@@ -79,9 +80,10 @@ const Languages = ({
     selectedFile,
   ].filter(Boolean).length;
 
-  const percentage = (filledFields / totalFields) * 100;
+  // const percentage = (filledFields / totalFields) * 100;
+  const percentage:any = totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
   // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
-  let color;
+  
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
@@ -90,21 +92,21 @@ const Languages = ({
         percentage: percentage, // Update the percentage field
         color: "#FF0000", // Update the color field
       }));
-      color = "red";
+      setColor("#FF0000");
     } else if (percentage <= 70) {
       setLanguageComplete((prevState) => ({
         ...prevState, // Spread the previous state to keep any other properties
         percentage: percentage, // Update the percentage field
         color: "#FF9900", // Update the color field
       }));
-      color = "#FF9900";
+      setColor("#FF9900");
     } else {
       setLanguageComplete((prevState) => ({
         ...prevState, // Spread the previous state to keep any other properties
         percentage: percentage, // Update the percentage field
         color: "#00A264", // Update the color field
       }));
-      color = "green";
+      setColor("#00A264");
     }
   }, [percentage, color]);
 
@@ -113,7 +115,7 @@ const Languages = ({
     e.preventDefault();
     let formData = new FormData();
 
-    {
+    // {
       formData.append("nativeLanguage", language1);
       formData.append("additionalLanguage", addiLanguage);
       formData.append("additionalLanguageLevel", languageLavel);
@@ -125,7 +127,9 @@ const Languages = ({
       formData.append("issuingCountry", issuingCountry);
       formData.append("dateOfTest", dateofTest);
       selectedFile && formData.append("document", selectedFile);
-    }
+      formData.append('color',color);
+      formData.append('completed',percentage);
+    // }
     AddLanguageData(userDetail?.userId, formData, AddLanguagedataDB);
   };
 

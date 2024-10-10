@@ -119,7 +119,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
 
   const handleSubmit = async (e: React.FormEvent) => {
     // try {
-    e.preventDefault(); // Prevent default form submission
+    e.preventDefault(); 
     let formData = new FormData();
     // formData.append('userId',userDetail?.userId);
     formData.append('firstName',firstName);

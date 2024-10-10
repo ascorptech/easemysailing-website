@@ -47,8 +47,8 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
         <li
           className={
             pathname === "/recruiter/dashboard"
-              ? "mb-2 rounded py-2 bg-green-600 text-white font-semibold"
-              : "mb-1 rounded py-2  hover:bg-green-600 hover:text-white"
+              ? "mb-2 rounded py-2 bg-[#00A264] text-white font-semibold"
+              : "mb-1 rounded py-2  hover:bg-[#00A264] hover:text-white"
           }
         >
           <Link href="/recruiter/dashboard" className="">
@@ -59,8 +59,8 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
         <li
           className={
             pathname === "/recruiter/profile"
-              ? "mb-2 rounded py-2 bg-green-600 text-white font-semibold"
-              : "mb-1 rounded py-2  hover:bg-green-600 hover:text-white"
+              ? "mb-2 rounded py-2 bg-[#00A264] text-white font-semibold"
+              : "mb-1 rounded py-2  hover:bg-[#00A264] hover:text-white"
           }
         >
           <Link href="/recruiter/profile">
@@ -71,8 +71,8 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
         <li
           className={
             pathname === "/recruiter/subscription"
-              ? "mb-2 rounded py-2 bg-green-600 text-white font-semibold"
-              : "mb-1 rounded py-2  hover:bg-green-600 hover:text-white"
+              ? "mb-2 rounded py-2 bg-[#00A264] text-white font-semibold"
+              : "mb-1 rounded py-2  hover:bg-[#00A264] hover:text-white"
           }
         >
           <Link href="/recruiter/subscription">
@@ -83,8 +83,8 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
 
         <li className={
             pathname === "/recruiter/jobposting"
-              ? "mb-2 rounded py-2 bg-green-600 text-white font-semibold"
-              : "mb-1 rounded py-2  hover:bg-green-600 hover:text-white"
+              ? "mb-2 rounded py-2 bg-[#00A264] text-white font-semibold"
+              : "mb-1 rounded py-2  hover:bg-[#00A264] hover:text-white"
           }
           >
           <Link href="/recruiter/jobposting">
@@ -94,8 +94,8 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
         </li>
         <li className={
             pathname === "/recruiter/ship"
-              ? "mb-2 rounded py-2 bg-green-600 text-white font-semibold"
-              : "mb-1 rounded py-2  hover:bg-green-600 hover:text-white"
+              ? "mb-2 rounded py-2 bg-[#00A264] text-white font-semibold"
+              : "mb-1 rounded py-2  hover:bg-[#00A264] hover:text-white"
           }
           >
           <Link href="/recruiter/ship">
@@ -106,8 +106,8 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
         <li
           className={
             pathname === "/recruiter/wsg"
-              ? "mb-2 rounded py-2 bg-green-600 text-white font-semibold"
-              : "mb-1 rounded py-2  hover:bg-green-600 hover:text-white"
+              ? "mb-2 rounded py-2 bg-[#00A264] text-white font-semibold"
+              : "mb-1 rounded py-2  hover:bg-[#00A264] hover:text-white"
           }
         >
           <Link href="/recruiter/wsg">
@@ -115,37 +115,36 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
             WSG
           </Link>
         </li>
-        <li className="mb-2 rounded py-2  hover:bg-green-600 hover:text-white">
+        <li className="mb-2 rounded py-2  hover:bg-[#00A264] hover:text-white">
           <Link href="#">
             <FaFileLines className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             Candidates Listing
           </Link>
         </li>
-        <li className="mb-2 rounded py-2  hover:bg-green-600 hover:text-white">
-          <Link href="#">
+        <li className={
+            pathname === "/recruiter/emsmatch"
+              ? "mb-2 rounded py-2 bg-[#00A264] text-white font-semibold"
+              : "mb-1 rounded py-2  hover:bg-[#00A264] hover:text-white"
+          }>
+          <Link href="/recruiter/emsmatch">
             <MdMapsHomeWork className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             EMS Matches
           </Link>
         </li>
-        <li className="mb-2 rounded py-2  hover:bg-green-600 hover:text-white">
+        <li className="mb-2 rounded py-2  hover:bg-[#00A264] hover:text-white">
           <Link href="#">
             <MdOutlineCardGiftcard className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             EduEMS
           </Link>
         </li>
-        <li className="mb-2 rounded py-2  hover:bg-green-600 hover:text-white">
-          <Link href="#">
-            <FaFileLines className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
-            EduEMS
-          </Link>
-        </li>
-        <li className="mb-2 rounded py-2  hover:bg-green-600 hover:text-white">
+       
+        <li className="mb-2 rounded py-2  hover:bg-[#00A264] hover:text-white">
           <Link href="#">
             <RiExchangeDollarLine className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             Downloadded CV
           </Link>
         </li>
-        <li className="mb-2 rounded py-2  hover:bg-green-600 hover:text-white">
+        <li className="mb-2 rounded py-2  hover:bg-[#00A264] hover:text-white">
           <Link href="#">
             <RiContactsBook3Line className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             EMSRecruit
@@ -153,8 +152,8 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
         </li>
         <li className={
             pathname === "/recruiter/transaction"
-              ? "mb-2 rounded py-2 bg-green-600 text-white font-semibold"
-              : "mb-1 rounded py-2  hover:bg-green-600 hover:text-white"
+              ? "mb-2 rounded py-2 bg-[#00A264] text-white font-semibold"
+              : "mb-1 rounded py-2  hover:bg-[#00A264] hover:text-white"
           }>
           <Link href="/recruiter/transaction">
             <FiLogOut className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
@@ -164,8 +163,8 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
         <li
           className={
             pathname === "/recruiter/contactus"
-              ? "mb-2 rounded py-2 bg-green-600 text-white font-semibold"
-              : "mb-1 rounded py-2  hover:bg-green-600 hover:text-white"
+              ? "mb-2 rounded py-2 bg-[#00A264] text-white font-semibold"
+              : "mb-1 rounded py-2  hover:bg-[#00A264] hover:text-white"
           }
         >
           <Link href="/recruiter/contactus">
@@ -175,8 +174,8 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
         </li>
         <li className={
             pathname === "/recruiter/logout"
-              ? "mb-2 rounded py-2 bg-green-600 text-white font-semibold"
-              : "mb-1 rounded py-2  hover:bg-green-600 hover:text-white"
+              ? "mb-2 rounded py-2 bg-[#00A264] text-white font-semibold"
+              : "mb-1 rounded py-2  hover:bg-[#00A264] hover:text-white"
           }>
           <Link href="/recruiter/logout" >
             <FiLogOut className="inline-block w-6 h-6 mr-1 ml-2 mt-[-5px] " />

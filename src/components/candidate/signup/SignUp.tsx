@@ -10,13 +10,14 @@ import { FaRegUser } from "react-icons/fa";
 
 import { FaPhone } from "react-icons/fa";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LoginImg from "../image/LoginImg";
 import LoginHeader from "@/app/Shared/LoginHeader/LoginHeader";
 import Footer from "@/app/Shared/Footer/Footer";
 import { SignupData } from "@/app/(candidate)/candidate/signup/Services/signupService";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import { GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 
 type PhoneLengthRule = {
   min: number;
@@ -47,8 +48,12 @@ const passwordRules: PasswordRules = {
   digit: /\d/,
   special: /[!@#$%^&*(),.?":{}|<>]/,
 };
-const SignUp: React.FC = () => {
-  const route = useRouter();
+
+type Props = {
+  route: string;
+};
+const SignUp  = ({ route }: Props) => {
+  const router = useRouter();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
@@ -64,8 +69,16 @@ const SignUp: React.FC = () => {
   // const [error, setError] = useState("");
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [isValidPhone, setIsValidPhone] = useState(true); 
-  const [countryCode, setCountryCode] = useState("in");
+  const [countryCode, setCountryCode] = useState("+91"); // Default country code
+  const [countryCodeDrop, setCountryCodeDrop] = useState([]); // Default country code
   const [passwordError, setPasswordError] = useState("");
+
+  useEffect(() => {
+    GetDropdownDetails('countryCode', (res: any) => {
+      // console.log('County',res?.data)
+      setCountryCodeDrop(res?.data?.values)
+    })
+  }, [])
 
 
 
@@ -170,12 +183,17 @@ const handlePhoneChange = (value: string, country: any) => {
         email:email,
         phoneNumber:phone,
         password:password,
-        role:'USER'
+        role:route=='candidate'?'USER':'RECRUITER'
       }
         const response = await SignupData(data);
         if (response?.data) {
           toast.success('Register successfully')
-          route.push("/candidate");
+          if (route=='candidate') {
+            router.push("/candidate");
+          }else{
+            router.push("/recruiter");
+          }
+          
         }
     }
     
@@ -197,7 +215,7 @@ const handlePhoneChange = (value: string, country: any) => {
           {/* Sign-Up Form Section */}
           <div className="w-full flex flex-col items-center justify-center md:w-1/2  bg-[#EAEAEA]   ">
             <h2 className="mt-4 mb-2 text-[30.52px] leading-[45.79px] font-semibold text-center ">
-              Sign In as Candidate
+              Sign In as {route=='candidate'?'Candidate':'Recruiter'}
             </h2>
             <p className="text-center text-[18px] leading-[27px] text-[#333333] w-[70%]">
               Enter your credential to access your account.
@@ -221,7 +239,7 @@ const handlePhoneChange = (value: string, country: any) => {
                       type="text"
                       value={firstName}
                       onChange={(e) => setFirstName(e.target.value.trim())}
-                      className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline "
+                      className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline"
                       placeholder="Enter First Name"
                       required
                     />
@@ -244,7 +262,7 @@ const handlePhoneChange = (value: string, country: any) => {
                       type="text"
                       value={lastName}
                       onChange={(e) => setLastName(e.target.value.trim())}
-                      className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline font-[poppins]"
+                      className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline"
                       placeholder="Enter Last Name"
                       required
                     />
@@ -270,7 +288,7 @@ const handlePhoneChange = (value: string, country: any) => {
                     // onChange={(e) => setEmail(e.target.value.trim())}
                      onChange={(e) => setEmail(e.target.value.toLowerCase())} 
                       // pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                    className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline font-[poppins]"
+                    className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline"
                     placeholder="Email"
                     required
                   />
@@ -288,27 +306,23 @@ const handlePhoneChange = (value: string, country: any) => {
                   Phone
                 </label>
                 <div className="relative flex items-center pl-8 ">
-                  <div className=" w-full ml-2"> <PhoneInput
-                  country={"in"}  
-                    value={phone}
-                    // maxLength={10}
-                    // onChange={(e) => setPhone(e.target.value.trim())}
-                    // onChange={(phone) => setPhone(phone)} 
-                    onChange={handlePhoneChange} 
-                    inputProps={{
-                      name: "phone",
-                      required: true,
-                      autoFocus: false,
-                    }}
-               
-                    inputClass={`!w-full !h-[42px] !leading-[21.79px] !text-[16px] !text-[#333333]  ${!isValidPhone && '!border-2 !border-red-500  '} !rounded-lg focus:!outline-none focus:!shadow-outline font-[poppins]`}
-
-                     
-                    
-                containerClass="w-full"
-                   
-                    
-                  /></div>
+                <div className="flex w-full">
+                <select value={countryCode} className="border lg:h-10 rounded-lg w-[20%] py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm" onChange={(e:any)=>setCountryCode(e.target.value)}>
+                 {countryCodeDrop && countryCodeDrop?.map((code: any, index: number) => (
+                    <option key={index} value={code}>{code?.toUpperCase()}</option>
+                  ))}
+                </select>
+                <input
+                  id="phone"
+                  type="number"
+                  value={phone}
+                  maxLength={10}
+                  onChange={(e) => setPhone(e.target.value)}
+                  className="border lg:h-10 rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
+                  placeholder="Phone Number"
+                  required
+                />
+                </div>
                  
                   <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-[#00A264] text-white mr-2 rounded-l-md ">
                     <FaPhone />
@@ -335,7 +349,7 @@ const handlePhoneChange = (value: string, country: any) => {
                       setPassword(e.target.value);
                       setPasswordError("");
                     }}
-                    className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline font-[poppins]"
+                    className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline"
                     placeholder="Password"
                     required
                   />
@@ -365,7 +379,7 @@ const handlePhoneChange = (value: string, country: any) => {
                     type={showCpassword ? "text" : "password"}
                     value={cPassword}
                     onChange={(e) => setCpassword(e.target.value.trim())}
-                    className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline font-[poppins]"
+                    className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline"
                     placeholder="Confirm Password"
                     required
                   />
@@ -387,7 +401,7 @@ const handlePhoneChange = (value: string, country: any) => {
 
                 <button
                   type="submit"
-                  className="w-full bg-[#00A264] hover:bg-green-700 text-white font-bold h-[42px] px-4 rounded focus:outline-none focus:shadow-outline"
+                  className="w-full bg-[#00A264] hover:bg-green-700 text-white font-bold h-[42px] px-4 rounded focus:outline-none focus:shadow-outline mt-2"
                 >
                   Sign Up
                 </button>
@@ -406,14 +420,14 @@ const handlePhoneChange = (value: string, country: any) => {
                     <div>
                     <label
                       htmlFor="termsAccepted"
-                      className="  block  text-sm text-left  text-[16px] leading-[24px]  text-[#333333]  "
+                      className="block text-sm text-left  text-[16px] leading-[24px] text-[#333333]  "
                     >
                       You agree to our
-                      <Link href="" className="text-[#00A264] font-[500] hover:underline mx-1">
+                      <Link href="/terms" className="text-[#00A264] font-[500] hover:underline mx-1">
                         Teams & Conditions
                       </Link>
                       and{" "}
-                      <Link href="#" className="text-[#00A264] font-[500] hover:underline ">
+                      <Link href="/privacy-policy" className="text-[#00A264] font-[500] hover:underline ">
                         Privacy Policy.
                       </Link>
                     </label>
@@ -423,11 +437,13 @@ const handlePhoneChange = (value: string, country: any) => {
               </div>
             </form>
 
-            <p className=" text-center  font-semibold mb-6 mt-2  text-[16px] leading-[24px]  text-[#333333]">
+            <p className="text-center font-semibold mb-6 mt-2 text-[16px] leading-[24px] text-[#333333]">
               Already have on account?
-              <Link href="/candidate" className="text-[#00A264] font-[500] hover:underline ml-1">
+              {route=='candidate'?<Link href="/candidate" className="text-[#00A264] font-[500] hover:underline ml-1">
                 Sign In as Candidate
-              </Link>
+              </Link>:<Link href="/recruiter" className="text-[#00A264] font-[500] hover:underline ml-1">
+                Sign In as Recruiter
+              </Link>}
             </p>
           </div>
         </div>

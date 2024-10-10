@@ -267,7 +267,7 @@ const SignIn = ({ route }: Props) => {
               </button>}
             </form>
 
-            {route == "candidate" && (
+            {route == "candidate"? (
               <p className="mt-2 text-center mb-16 text-[16px] leading-[24px]  text-[#333333] ">
                 Don’t have an account?
                 <Link
@@ -277,7 +277,15 @@ const SignIn = ({ route }: Props) => {
                   Sign Up
                 </Link>
               </p>
-            )}
+            ): <p className="mt-2 text-center mb-16 text-[16px] leading-[24px]  text-[#333333] ">
+            Don’t have an account?
+            <Link
+              href={"/recruiter/signup"}
+              className="text-[#00A264] font-[500] hover:underline ml-1"
+            >
+              Sign Up
+            </Link>
+          </p>}
           </div>
         </div>
 

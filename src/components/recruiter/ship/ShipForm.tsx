@@ -4,12 +4,18 @@ import Image from "next/image";
 import { SetStateAction, useState } from "react";
 import { IoIosCloseCircle } from "react-icons/io";
 import { IoIosAddCircleOutline } from "react-icons/io";
+import { FiUpload } from "react-icons/fi";
 
 const ShipForm = () => {
   const [shipForms, setShipForms] = useState([1]); // Handles the tabs (form indexes)
   const [activeForm, setActiveForm] = useState(1); //
   const [showModal, setShowModal] = useState(false); // Track modal visibility
-  const [showJobModal, setShowJobModal] = useState(false); 
+  const [showJobModal, setShowJobModal] = useState(false);
+  const [showPopup, setShowPopup] = useState(false); // Control popup visibility for Company Advertisement
+  const [progress, setProgress] = useState(0); // Simulated upload progress
+  const [fileName, setFileName] = useState(""); // Store uploaded file name
+  const [filePreview, setFilePreview] = useState<string | null>(null); // Store file preview
+  const [uploading, setUploading] = useState(false); // For showing upload progress
 
   const [showJobPostings, setShowJobPostings] = useState(true);
   const [activeJobForm, setActiveJobForm] = useState("Manual Entry");
@@ -18,14 +24,66 @@ const ShipForm = () => {
   //   setShipForms((prev) => [...prev, newFormIndex]);
   //   setActiveForm(newFormIndex);
   // };
+  const triggerFileUpload = () => {
+    document.getElementById("file-input")?.click();
+  };
 
-  const handleJobClose=()=>{
+  const openPopup = () => {
+    setShowPopup(true); // Open the Company Advertisement popup
+  };
+
+  const simulateUpload = () => {
+    setProgress(0);
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(interval);
+          setUploading(false); // Hide upload progress after completion
+          return 100;
+        }
+        return prev + 10;
+      });
+    }, 200);
+  };
+
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      setFileName(file.name); // Set file name
+
+      // Only preview images (jpg, png, etc.)
+      const fileTypes = ["image/jpeg", "image/jpg", "image/png", "image/gif"];
+      if (fileTypes.includes(file.type)) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setFilePreview(reader.result as string); // Set file preview
+        };
+        reader.readAsDataURL(file);
+      } else {
+        setFilePreview(null); // Set null if the file is not an image
+      }
+
+      setUploading(true); // Start upload progress
+      simulateUpload(); // Simulate upload progress
+    }
+  };
+
+  const closePopup = () => {
+    setShowPopup(false); // Close the popup
+    setFilePreview(null); // Reset file preview on popup close
+    setFileName(""); // Reset file name on popup close
+    setProgress(0); // Reset progress
+  };
+
+  const handleJobClose = () => {
     setShowJobModal(false);
-  }
+    setShowJobPostings(true);
+    // setShowModal(true);
+  };
 
-const handleJobModel =()=>{
-  setShowJobModal(true)
-}
+  const handleJobModel = () => {
+    setShowJobModal(true);
+  };
 
   const addNewShip = () => {
     setShipForms([...shipForms, shipForms.length + 1]);
@@ -41,6 +99,15 @@ const handleJobModel =()=>{
 
   const handleTabClick = (formName: any) => {
     setActiveJobForm(formName);
+  };
+
+  const handleUpldSubmit = () => {
+    if (progress === 100 && fileName) {
+      console.log("File submitted:", fileName);
+
+      alert(`File "${fileName}" successfully uploaded.`);
+      closePopup(); // Close the popup after submission
+    }
   };
 
   const handleSubmit = () => {
@@ -522,15 +589,15 @@ const handleJobModel =()=>{
         </div>
 
         {/* Right column: Image section */}
-        <div className="relative flex w-[80%] ml-32 items-center justify-center ">
+        <div className="relative flex w-[82%] ml-32 items-center justify-center ">
           {/* <div className=" w-[100%] h-full border rounded-lg shadow-lg bg-white"> */}
 
           {/* Opacity div */}
           {showJobPostings && (
             <div
-              className={`bg-[#D9D9D9BD] text-xl text-center flex justify-center items-center absolute h-full w-full`}
+              className={`bg-[#D9D9D9BD] text-xl rounded-lg text-center flex justify-center items-center absolute h-full w-full`}
             >
-              <h2>
+              <h2 className="text-xl px-5 font-bold">
                 Please complete the Ship details on the left to proceed with Job
                 Postings
               </h2>
@@ -581,11 +648,119 @@ const handleJobModel =()=>{
                   Manual Entry
                 </button>
               </div>
+
               <div className="flex space-x-2  p-2 rounded-b-lg">
-                <button className="bg-white border border-[#00A264] px-3 py-1 rounded text-[#00A264]">
+                <button
+                  onClick={openPopup}
+                  className="bg-white flex justify-center  items-center border border-[#00A264] px-1 py-1 rounded text-[#00A264]"
+                >
+                  <FiUpload className="mr-1" />
                   IMO Crew List
                 </button>
               </div>
+              {/* Upload Popup */}
+              {showPopup && (
+                <div className="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-70">
+                  <div className="bg-white rounded-lg p-6 shadow-lg  w-[35rem]">
+                    <div className="text-right">
+                      <button className="text-[#00A264]" onClick={closePopup}>
+                        <IoIosCloseCircle className="w-8 h-8" />
+                      </button>
+                    </div>
+                    <h3 className="text-xl font-semibold mb-4 text-center">
+                      Upload Company Advertisement
+                    </h3>
+
+                    <div
+                      className="border-[#00A264] bg-[#E9FFF7] border-dashed flex flex-col justify-center items-center border-2 p-6 rounded-lg text-center cursor-pointer"
+                      onClick={triggerFileUpload} // Trigger file input when icon is clicked
+                    >
+                      <Image
+                        priority
+                        width={60}
+                        height={60}
+                        src={"/upload.png"}
+                        alt="Upload Icon"
+                      />
+                      <p className="text-gray-500 mt-3">
+                        Browse file to upload
+                      </p>
+
+                      <input
+                        type="file"
+                        className="hidden"
+                        id="file-input"
+                        onChange={handleFileUpload}
+                      />
+                    </div>
+                    <div className="text-center mt-3">
+                      <p className="text-base font-semibold text-black">
+                        Only PDF, jpg, and image formats with max file size of
+                        16MB
+                      </p>
+                    </div>
+
+                    {/* Show selected file name and preview */}
+                    {fileName && (
+                      <div className="mt-2 ">
+                        <p className="font-semibold">
+                          Selected File:{" "}
+                          <span className="font-normal">{fileName}</span>
+                        </p>
+                        {filePreview && (
+                          <div className="mt-2">
+                            <Image
+                              priority
+                              height={20}
+                              width={20}
+                              src={filePreview}
+                              alt="Selected Preview"
+                              className="w-[10rem] h-[10rem] rounded-md"
+                            />
+                          </div>
+                        )}
+                      </div>
+                    )}
+
+                    {/* Upload Progress Bar */}
+                    {uploading && (
+                      <div className=" flex justify-center items-center p-2 border bg-[#E9FFF7] shadow-md rounded-md">
+                        <div className="">
+                          <Image
+                            priority
+                            height={20}
+                            width={20}
+                            src={"/file.png"}
+                            alt="Selected Preview"
+                            className="w-[10] h-[10] rounded-md"
+                          />
+                        </div>
+
+                        <div className="w-full mx-2 bg-gray-200 rounded-full h-2.5">
+                          <div
+                            className="bg-[#00A264] h-3 rounded-full"
+                            style={{ width: `${progress}%` }}
+                          ></div>
+                        </div>
+                        <p className="text-sm mt-1 text-gray-600">
+                          {progress}%
+                        </p>
+                      </div>
+                    )}
+
+                    {/* Submit Button */}
+                    <button
+                      className={`mt-6 w-full px-4 py-2 rounded-lg ${
+                        progress === 100 ? "bg-[#00A264]" : "bg-gray-400"
+                      } text-white font-semibold`}
+                      onClick={handleUpldSubmit}
+                      disabled={progress !== 100}
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Form */}
@@ -610,7 +785,10 @@ const handleJobModel =()=>{
                       {Array(15)
                         .fill("")
                         .map((_, index) => (
-                          <tr key={index} className="hover:bg-green-50 border-[#00A264] border">
+                          <tr
+                            key={index}
+                            className="hover:bg-green-50 border-[#00A264] border"
+                          >
                             <td className="p-2 border-b  border-[#00A264] text-center">
                               <input
                                 type="checkbox"
@@ -658,7 +836,10 @@ const handleJobModel =()=>{
                       {Array(15)
                         .fill("")
                         .map((_, index) => (
-                          <tr key={index} className="hover:bg-green-50  border-[#00A264] border">
+                          <tr
+                            key={index}
+                            className="hover:bg-green-50  border-[#00A264] border"
+                          >
                             <td className="p-2 border-b border-[#00A264] text-center">
                               <input
                                 type="checkbox"
@@ -706,7 +887,10 @@ const handleJobModel =()=>{
                       {Array(15)
                         .fill("")
                         .map((_, index) => (
-                          <tr key={index} className="hover:bg-green-50  border-[#00A264] border">
+                          <tr
+                            key={index}
+                            className="hover:bg-green-50  border-[#00A264] border"
+                          >
                             <td className="p-2 border-b border-[#00A264] text-center">
                               <input
                                 type="checkbox"
@@ -735,9 +919,10 @@ const handleJobModel =()=>{
 
             {/* Submit Button */}
             <div className="text-center my-4">
-              <button 
-              onClick={handleJobModel}
-              className="mt-2 w-[12rem] ml-[1rem] text-center bg-[#00A264] text-white p-3 rounded-lg">
+              <button
+                onClick={handleJobModel}
+                className="mt-2 w-[12rem] ml-[1rem] text-center bg-[#00A264] text-white p-3 rounded-lg"
+              >
                 Submit
               </button>
 

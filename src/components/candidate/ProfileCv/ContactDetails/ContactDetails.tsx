@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 
 import { useState } from "react";
 import { toast } from "react-toastify";
-import CircularProgress from "../CircularProgress";
+
 
 type ContactComplete = {
   percentage: number;
@@ -26,15 +26,18 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
   const [state, setState] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
-  const [indNumber, setIndNumber] = useState("");
+  // const [indNumber, setIndNumber] = useState("");
   const [cityName, setCityName] = useState("");
   const [phoneNumber1, setPhoneNumber1] = useState("");
   const [rCountrycode, setRCountrycode] = useState("+91");
   const [mCountrycode, setMCountrycode] = useState("+91");
   const [country1, setCountry1] = useState("");
-  const [nACountrycode, setNACountrycode] = useState("");
+  const [nearestAirport, setNearestAirport] = useState("");
   const [countryDrop, setCountryDrop] = useState<any>([]);
   const [countryCodeDrop, setCountryCodeDrop] = useState<any>([]);
+
+  const [disabled,setDisabled] = useState(true)
+
 
   useEffect(() => {
     console.log('userDetail',userDetail)
@@ -55,7 +58,7 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
     })
   }, [])
 
-  const totalFields = 12;
+  const totalFields = 11;
   const filledFields = [
     address,
     number,
@@ -64,10 +67,9 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
     state,
     phoneNumber,
     email,
-    indNumber,
     cityName,
     phoneNumber1,
-    nACountrycode,
+    nearestAirport,
     country1
   ].filter(Boolean).length;
 
@@ -115,13 +117,13 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
       "city": cityName,
       "state": state,
       "country": country1,
-      "nearestAirport": nACountrycode,
+      "nearestAirport": nearestAirport,
       "mobileCountryCode": mCountrycode,
       "mobilePhoneNumber": phoneNumber,
       "directLineCountryCode": rCountrycode,
       "directLinePhoneNumber": phoneNumber1,
       "emailAddress": email,
-      "indosNumber": indNumber
+      // "indosNumber": indNumber
     }
 
     // console.log(data);
@@ -135,9 +137,13 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
       toast.error("Contact not submited ");
     }
   };
+  const handleEdit = () => {
+    setDisabled(!disabled)
+  }
 
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
+      <h2 className="font-bold">Home Address</h2>
       <form onSubmit={handlesubmit}>
         <div className="">
           <div className=" flex flex-col  px-4 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] gap-4">
@@ -157,8 +163,8 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
                   className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                  placeholder="Enter your address"
-                  required
+                  placeholder=""
+                  disabled={disabled}
                 />
                 {/* </div> */}
               </div>
@@ -176,8 +182,8 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
                     value={number}
                     onChange={(e) => setNumber(e.target.value)}
                     className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    placeholder="Enter middle Name"
-                    required
+                    placeholder=""
+                    disabled={disabled}
                   />
                 </div>
               </div>
@@ -197,8 +203,8 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
                   value={addInfo}
                   onChange={(e) => setAddInfo(e.target.value)}
                   className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                  placeholder="Enter Last Name"
-                  required
+                  placeholder=""
+                  disabled={disabled}
                 />
               </div>
             </div>
@@ -215,8 +221,8 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
                     value={postalCode}
                     onChange={(e) => setPostalCode(e.target.value)}
                     className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    placeholder="Enter ZipCode"
-                    required
+                    placeholder=""
+                    disabled={disabled}
                   />
                 </div>
               </div>
@@ -234,8 +240,8 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
                     value={cityName}
                     onChange={(e) => setCityName(e.target.value)}
                     className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    placeholder="Enter your city"
-                    required
+                    placeholder=""
+                    disabled={disabled}
                   />
                 </div>
               </div>
@@ -259,7 +265,7 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
                     onChange={(e) => setState(e.target.value)}
                     className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder=""
-                    required
+                    disabled={disabled}
                   />
                 </div>
               </div>
@@ -271,6 +277,7 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
                   className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={country1}
                   onChange={(e) => setCountry1(e.target.value)}
+                  disabled={disabled}
                 >
                   <option value="" disabled>
                     country
@@ -285,10 +292,22 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
             {/* airport  */}
 
             <div className="flex flex-col">
-              <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 ">
+              <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 " htmlFor="nearestAirport">
                 Nearest Airport
               </label>
-              <select
+
+              <div className="relative flex items-center  ">
+                  <input
+                    id="nearestAirport"
+                    type="text"
+                    value={nearestAirport}
+                    onChange={(e) => setNearestAirport(e.target.value)}
+                    className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder=""
+                    disabled={disabled}
+                  />
+                </div>
+              {/* <select
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={nACountrycode}
                 onChange={(e) => setNACountrycode(e.target.value)}
@@ -299,7 +318,7 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
                 {countryDrop && countryDrop?.map((country: any, index: number) => (
                     <option key={index} value={country}>{country?.toUpperCase()}</option>
                   ))}
-              </select>
+              </select> */}
             </div>
 
             {/* counstry and city section start*/}
@@ -317,6 +336,7 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
                   className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={mCountrycode}
                   onChange={(e) => setMCountrycode(e.target.value)}
+                  disabled={disabled}
                 >
                   {countryCodeDrop && countryCodeDrop?.map((code: any, index: number) => (
                     <option key={index} value={code}>{code?.toUpperCase()}</option>
@@ -339,7 +359,7 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
                     onChange={(e) => setPhoneNumber(e.target.value)}
                     className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder=""
-                    required
+                    disabled={disabled}
                   />
                 </div>
               </div>
@@ -356,6 +376,7 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
                   className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={rCountrycode}
                   onChange={(e) => setRCountrycode(e.target.value)}
+                  disabled={disabled}
                 >
                   {countryCodeDrop && countryCodeDrop?.map((code: any, index: number) => (
                     <option key={index} value={code}>{code?.toUpperCase()}</option>
@@ -378,14 +399,14 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
                     onChange={(e) => setPhoneNumber1(e.target.value)}
                     className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder=""
-                    required
+                    disabled={disabled}
                   />
                 </div>
               </div>
             </div>
 
             <div className="flex items-center justify-between gap-4  ">
-              <div className="flex flex-col w-[50%] ">
+              <div className="w-full ">
                 <label
                   className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 "
                   htmlFor="emails"
@@ -400,12 +421,12 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
                     onChange={(e) => setEmail(e.target.value)}
                     className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder=""
-                    required
+                    disabled={disabled}
                   />
                 </div>
               </div>
 
-              <div className="w-[50%] ">
+              {/* <div className="w-[50%] ">
                 <label
                   className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
                   htmlFor="inumber"
@@ -423,7 +444,7 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
                     required
                   />
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
 
@@ -434,12 +455,13 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
             >
               Save
             </button>
-            <button
-              type="submit"
+            <Link 
+              href={'#'}
+              onClick={handleEdit}
               className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
             >
               Edit
-            </button>
+            </Link>
           </div>
         </div>
       </form>

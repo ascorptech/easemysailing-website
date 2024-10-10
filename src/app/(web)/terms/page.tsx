@@ -18,7 +18,7 @@ const page = () => {
 
           <div className="space-y-6 text-gray-700 leading-relaxed">
             <section>
-              <h2 className="text-2xl font-semibold mb-4">1. Introduction</h2>
+              <h2 className="text-2xl font-semibold mb-4 bg-[#eaeaea]">1. Introduction</h2>
               <p>
                 These General Terms and Conditions govern your use of the
                 platform provided by EaseMySailing Technologies Pvt. Ltd.,
@@ -28,7 +28,7 @@ const page = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">2. Definitions</h2>
+              <h2 className="text-2xl font-semibold mb-4 bg-[#eaeaea]">2. Definitions</h2>
               <p>
                 In these terms, "Platform" refers to the services offered by
                 EaseMySailing Technologies Pvt. Ltd. "User" means any person or
@@ -37,7 +37,7 @@ const page = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">3. Eligibility</h2>
+              <h2 className="text-2xl font-semibold mb-4 bg-[#eaeaea]">3. Eligibility</h2>
               <p>
                 Users must be at least 18 years old to register and use the
                 platform. By using the platform, you confirm that you meet the
@@ -46,7 +46,7 @@ const page = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">
+              <h2 className="text-2xl font-semibold mb-4 bg-[#eaeaea]">
                 4. Governing Law and Jurisdiction
               </h2>
               <p>
@@ -57,7 +57,7 @@ const page = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">
+              <h2 className="text-2xl font-semibold mb-4 bg-[#eaeaea]">
                 5. User Registration
               </h2>
               <p>
@@ -71,7 +71,7 @@ const page = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">
+              <h2 className="text-2xl font-semibold mb-4 bg-[#eaeaea]">
                 6. Account Security
               </h2>
               <p>
@@ -82,7 +82,7 @@ const page = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">
+              <h2 className="text-2xl font-semibold mb-4 bg-[#eaeaea]">
                 7. Access to the Platform
               </h2>
               <p>
@@ -94,7 +94,7 @@ const page = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">
+              <h2 className="text-2xl font-semibold mb-4 bg-[#eaeaea]">
                 8. User Responsibilities
               </h2>
               <p>
@@ -106,7 +106,7 @@ const page = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">
+              <h2 className="text-2xl font-semibold mb-4 bg-[#eaeaea]">
                 9. Services Offered
               </h2>
               <p>
@@ -118,7 +118,7 @@ const page = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">
+              <h2 className="text-2xl font-semibold mb-4 bg-[#eaeaea]">
                 10. Content Ownership
               </h2>
               <p>
@@ -131,7 +131,7 @@ const page = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">
+              <h2 className="text-2xl font-semibold mb-4 bg-[#eaeaea]">
                 11. Third-Party Content
               </h2>
               <p>
@@ -142,7 +142,7 @@ const page = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">
+              <h2 className="text-2xl font-semibold mb-4 bg-[#eaeaea]">
                 12. Rewards Program
               </h2>
               <p>
@@ -154,7 +154,7 @@ const page = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">
+              <h2 className="text-2xl font-semibold mb-4 bg-[#eaeaea]">
                 13. Games, Engagement Plans, and Health Content
               </h2>
               <p>
@@ -172,7 +172,7 @@ const page = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">
+              <h2 className="text-2xl font-semibold mb-4 bg-[#eaeaea]">
                 14. Privacy Policy
               </h2>
               <p>
@@ -183,7 +183,7 @@ const page = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">
+              <h2 className="text-2xl font-semibold mb-4 bg-[#eaeaea]">
                 15. Data Privacy and Security (New Section)
               </h2>
               <p>
@@ -194,7 +194,7 @@ const page = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">
+              <h2 className="text-2xl font-semibold mb-4 bg-[#eaeaea]">
                 16. MLC Compliance
               </h2>
               <p>
@@ -206,7 +206,7 @@ const page = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">
+              <h2 className="text-2xl font-semibold mb-4 bg-[#eaeaea]">
                 17. Candidate Evaluation and Selection (New Section)
               </h2>
               <p>
@@ -218,7 +218,7 @@ const page = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">
+              <h2 className="text-2xl font-semibold mb-4 bg-[#eaeaea]">
                 18. Terms of Use for Employers and Recruiters (New Section)
               </h2>
               <p>
@@ -230,7 +230,7 @@ const page = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">
+              <h2 className="text-2xl font-semibold mb-4 bg-[#eaeaea]">
                 19. Third-Party Integrations (New Section)
               </h2>
               <p>
@@ -242,7 +242,7 @@ const page = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">
+              <h2 className="text-2xl font-semibold mb-4 bg-[#eaeaea]">
                 20. Platform Updates and Availability (New Section)
               </h2>
               <p>
@@ -254,7 +254,7 @@ const page = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">
+              <h2 className="text-2xl font-semibold mb-4 bg-[#eaeaea]">
                 21. Limitation of Liability
               </h2>
               <p>
@@ -268,7 +268,7 @@ const page = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">
+              <h2 className="text-2xl font-semibold mb-4 bg-[#eaeaea]">
                 22. Indemnification
               </h2>
               <p>
@@ -279,7 +279,7 @@ const page = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">23. Force Majeure</h2>
+              <h2 className="text-2xl font-semibold mb-4 bg-[#eaeaea]">23. Force Majeure</h2>
               <p>
                 EaseMySailing Technologies Pvt. Ltd. is not liable for any
                 delays or failures in performance due to circumstances beyond
@@ -289,7 +289,7 @@ const page = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">24. Termination</h2>
+              <h2 className="text-2xl font-semibold mb-4 bg-[#eaeaea]">24. Termination</h2>
               <p>
                 EaseMySailing Technologies Pvt. Ltd. reserves the right to
                 terminate your access to the platform at any time, without
@@ -298,7 +298,7 @@ const page = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">
+              <h2 className="text-2xl font-semibold mb-4 bg-[#eaeaea]">
                 25. No Guarantee of Employment
               </h2>
               <p>
@@ -309,7 +309,7 @@ const page = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">26. Severability</h2>
+              <h2 className="text-2xl font-semibold mb-4 bg-[#eaeaea]">26. Severability</h2>
               <p>
                 If any part of these terms is deemed invalid or unenforceable,
                 the remaining provisions shall remain in full force and effect.
@@ -317,7 +317,7 @@ const page = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">
+              <h2 className="text-2xl font-semibold mb-4 bg-[#eaeaea]">
                 27. Amendments to Terms
               </h2>
               <p>
@@ -329,7 +329,7 @@ const page = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold">
+              <h2 className="text-2xl font-semibold bg-[#eaeaea]">
                 12. Contact Information
               </h2>
               <p>

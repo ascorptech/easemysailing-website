@@ -118,12 +118,12 @@ const MyJob = () => {
       color:'#FF0000'
     }
   )
-  const [educationComplete, setEducationComplete] = useState<any> (
-    {
-      percentage: 0,
-      color:'#FF0000'
-    }
-  )
+  // const [educationComplete, setEducationComplete] = useState<any> (
+  //   {
+  //     percentage: 0,
+  //     color:'#FF0000'
+  //   }
+  // )
   const [academicComplete, setAcademicComplete] = useState<any> (
     {
       percentage: 0,
@@ -290,8 +290,9 @@ const MyJob = () => {
   return (
     <div className=" mx-6 mt-4  ">
       <div className=" flex justify-between">
-        
+      
         <div className=" w-[50%] ">
+        <div className=" h-screen overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory ">
           <div className="">
             <div className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2  border-r-8 border-[${mjrComplete?.color}]`}>
 
@@ -333,7 +334,7 @@ const MyJob = () => {
                 <CircularProgress percentage={Math.round(mjrComplete?.percentage)} color={mjrComplete.color} />
               </div>
             </div>
-            <div className=" h-screen overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory ">
+            
               {isOpen && <MyJobRequirements mjrComplete={mjrComplete} setMjrComplete={setMjrComplete} userDetail={profileDetail} />}
 
               {/* PersonalDetails start */}
@@ -616,7 +617,7 @@ const MyJob = () => {
               {madicalOpen && <MedicalCertificates medicalComplete={medicalComplete} setMedicalComplete={setMedicalComplete} userDetail={profileDetail}/>}
 
               <div className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${academicComplete?.color}] mt-3`}>
-                <h2 className="">Academic Details</h2>
+                <h2 className="">Shor Job</h2>
                 <div className="flex items-center justify-center gap-1">
                   <span className="ml-2 cursor-pointer" onClick={() => setAcademicOpen(!academicOpen)}>
                     {!academicOpen ? (
@@ -699,55 +700,10 @@ const MyJob = () => {
 
               {seaOpen && <SeaGoingService seaGoingServiceComplete={seaGoingServiceComplete} setSeaGoingServiceComplete={setSeaGoingServiceComplete}  userDetail={profileDetail} />}
 
-              {/* OnlinePresence end */}
+              
+             
 
-              {/* <div
-                className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF9900] "
-                onClick={hendletoggle}
-              >
-                <h2 className="">Personal Details</h2>
-                <div className="flex items-center justify-center gap-1">
-                  <span className="ml-2 cursor-pointer">
-                    {pDOpen ? (
-                      <svg
-                        className="w-6 h-6 transform rotate-180 transition-transform"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M19 9l-7 7-7-7"
-                        />
-                      </svg>
-                    ) : (
-                      <svg
-                        className="w-6 h-6 transition-transform"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M19 9l-7 7-7-7"
-                        />
-                      </svg>
-                    )}
-                  </span>
-
-                  <CircularProgress percentage={100} color="#00A264" />
-                </div>
-              </div>
-              {pDOpen && <PersonalDetails />} */}
-              {/* PersonalDetails end */}
-
-              {/*Address Details start */}
+             
 
               <div
                 className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${preSeaTrainigComplete?.color}] mt-3`}
@@ -796,53 +752,6 @@ const MyJob = () => {
 
               {preOpen && <PreSeaTrainigDetails  preSeaTrainigComplete={ preSeaTrainigComplete} setPreSeaTrainigComplete={setPreSeaTrainigComplete}  userDetail={profileDetail}/>}
 
-
-
-              {/* <div
-                className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF9900] mt-3"
-                onClick={handleEase}
-              >
-                <Link href="#" className="">
-                  Ease My Sailing Assessment and Verification
-                </Link>
-                <div className="flex items-center justify-center gap-1">
-                  <span className="ml-2 cursor-pointer">
-                    {easeOpen ? (
-                      <svg
-                        className="w-6 h-6 transform rotate-180 transition-transform"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M19 9l-7 7-7-7"
-                        />
-                      </svg>
-                    ) : (
-                      <svg
-                        className="w-6 h-6 transition-transform"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M19 9l-7 7-7-7"
-                        />
-                      </svg>
-                    )}
-                  </span>
-                  <CircularProgress percentage={100} color="#FF9900" />
-                </div>
-              </div>
-              {easeOpen && <MyJobRequirements />} */}
             </div>
           </div>
         </div>
@@ -850,47 +759,7 @@ const MyJob = () => {
         {/* right section */}
 
         <div className="  w-[48%]">
-          {/* <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF9900]  ">
-            <h2 className="">Certificates of Competency & Endorsements </h2>
-            <div className="flex items-center justify-center gap-1">
-              <span className="ml-2 cursor-pointer" onClick={toggleright}>
-                {isOpenright ? (
-                  <svg
-                    className="w-6 h-6 transform rotate-180 transition-transform"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                ) : (
-                  <svg
-                    className="w-6 h-6 transition-transform"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                )}
-              </span>
-              <CircularProgress percentage={82} color="#FF9900" />
-            </div>
-          </div> */}
-
-          {/* PersonalDetails start */}
+        <div className=" h-screen overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory ">
 
           <div
             className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2  border-r-8 border-[${personalComplete?.color}]`}
@@ -935,7 +804,7 @@ const MyJob = () => {
               <CircularProgress percentage={Math.round(personalComplete?.percentage)} color={personalComplete?.color} />
             </div>
           </div>
-          <div className=" h-screen overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory ">
+          
             {pDOpen && <PersonalDetails personalComplete={personalComplete} setPersonalComplete={setPersonalComplete} userDetail={profileDetail}/>}
             {/* PersonalDetails end */}
 
@@ -1034,7 +903,7 @@ const MyJob = () => {
 
             {/* travel documents */}
             <div className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${travelComplete?.color}] mt-3`}>
-              <h1 className="">Travel Documents</h1>
+              <h1 className="">Identity & Travel Documents</h1>
               <div className="flex items-center justify-center gap-1">
                 <span
                   className="ml-2 cursor-pointer"
@@ -1168,7 +1037,7 @@ const MyJob = () => {
 
             {aCOpen && <AdditionalTraining additionalComplete={additionalComplete} setAdditionalComplete={setAdditionalComplete}  userDetail={profileDetail} />}
 
-            <div className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${educationComplete?.color}] mt-3`}>
+            {/* <div className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${educationComplete?.color}] mt-3`}>
               <h2 className="">Education</h2>
               <div className="flex items-center justify-center gap-1">
                 <span className="ml-2 cursor-pointer" onClick={() => setEducationOpen(!educationOpen)}>
@@ -1208,7 +1077,7 @@ const MyJob = () => {
               </div>
             </div>
 
-            {educationOpen && <Education educationComplete={educationComplete} setEducationComplete={setEducationComplete}  userDetail={profileDetail}/>}
+            {educationOpen && <Education educationComplete={educationComplete} setEducationComplete={setEducationComplete}  userDetail={profileDetail}/>} */}
 
             <div className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${professionalComplete?.color}] mt-3`}>
               <h2 className="">Professional SKills</h2>

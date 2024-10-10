@@ -62,6 +62,8 @@ const PreSeaTrainigDetails = ({
   const [rigMoveWaterDrop, setRigMoveWaterDrop] = useState<any>([])
   const [tradingAreaDrop, setTradingAreaDrop] = useState<any>([])
   const [winchDiveDrop, setWinchDiveDrop] = useState<any>([])
+  const [disabled,setDisabled] = useState(true)
+
 
   useEffect(() => {
     GetDropdownDetails("countryCurrencyCode", (res: any) => {
@@ -228,10 +230,15 @@ const PreSeaTrainigDetails = ({
     }
   };
 
+  const handleEdit = () => {
+    setDisabled(!disabled)
+    // toast.info("You are now in edit mode. Make your changes.");
+  };
+
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
-        <h1 className=" font-bold">SALARY EXPECTATION</h1>
+        <h1 className=" font-bold">  Salary Expectation</h1>
         <div className="grid grid-cols-2 gap-4">
           <div className="   ">
             <label
@@ -247,7 +254,7 @@ const PreSeaTrainigDetails = ({
               onChange={(e) => setPermanect(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder=""
-              required
+              disabled={disabled}
             />
           </div>
           <div className="">
@@ -263,6 +270,7 @@ const PreSeaTrainigDetails = ({
               name="options"
               value={currency}
               onChange={(e) => setCurrency(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
                 Select
@@ -290,13 +298,13 @@ const PreSeaTrainigDetails = ({
               onChange={(e) => setSalary(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder="Yes/No"
-              required
+              disabled={disabled}
             />
           </div>
 
           <div className="grid col-span-2">
             {" "}
-            <h1 className=" font-bold">ROTATION EXPECTATION </h1>
+            <h1 className=" font-bold"> Rotation Expectation</h1>
           </div>
           <div className=" ">
             <label
@@ -311,13 +319,22 @@ const PreSeaTrainigDetails = ({
               name="options"
               value={timeonBoard}
               onChange={(e) => setTimeonBoard(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
-                Min. Time on Board (weeks)
+                select 
               </option>
-              <option value="india">India</option>
-              <option value="us">Us</option>
-              <option value="enland">England</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="Other">Other</option>
             </select>
           </div>
 
@@ -334,13 +351,22 @@ const PreSeaTrainigDetails = ({
               name="options"
               value={maxTimeonBoard}
               onChange={(e) => setMaxTimeonBoard(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
-                Max. Time on Board (weeks)
+                select 
               </option>
-              <option value="india">India</option>
-              <option value="us">Us</option>
-              <option value="england">England</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="Other">Other</option>
             </select>
           </div>
 
@@ -357,13 +383,22 @@ const PreSeaTrainigDetails = ({
               name="options"
               value={minTimeonHome}
               onChange={(e) => setMinTimeonHome(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
-                Min. Time at Home (weeks)
+                select 
               </option>
-              <option value="1">India</option>
-              <option value="23">Us</option>
-              <option value="3">England</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="Other">Other</option>
             </select>
           </div>
 
@@ -380,20 +415,29 @@ const PreSeaTrainigDetails = ({
               name="options"
               value={maxTimeonHome}
               onChange={(e) => setMaxTimeonHome(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
-                Max. Time at Home (weeks)
+                select 
               </option>
-              <option value="1">India</option>
-              <option value="2">Us</option>
-              <option value="3">England</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="Other">Other</option>
             </select>
           </div>
           {/* <div className=""> */}
 
           <div className="grid col-span-2">
             {" "}
-            <h1 className="font-bold">OFFSHORE SPECIFIC TRAININGS</h1>
+            <h1 className="font-bold">Offshore Specific Trainings</h1>
           </div>
           <div className=" ">
             <label
@@ -408,6 +452,7 @@ const PreSeaTrainigDetails = ({
               name="options"
               value={certificate}
               onChange={(e) => setCertificate(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
                 Select
@@ -435,7 +480,7 @@ const PreSeaTrainigDetails = ({
               onChange={(e) => setTrainingCenter(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder=""
-              required
+              disabled={disabled}
             />
           </div>
           <div className=" ">
@@ -451,6 +496,7 @@ const PreSeaTrainigDetails = ({
               name="options"
               value={issuingCountry}
               onChange={(e) => setIssuingCountry(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
                 Issuing Country
@@ -478,7 +524,7 @@ const PreSeaTrainigDetails = ({
               onChange={(e) => setNumber(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder=""
-              required
+              disabled={disabled}
             />
           </div>
 
@@ -496,6 +542,7 @@ const PreSeaTrainigDetails = ({
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={issuedate}
               onChange={(e) => setIssueDate(e.target.value)}
+              disabled={disabled}
             />
           </div>
           <div>
@@ -512,6 +559,7 @@ const PreSeaTrainigDetails = ({
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={exdate}
               onChange={(e) => setExDate(e.target.value)}
+              disabled={disabled}
             />
             {/* </div> */}
           </div>
@@ -523,6 +571,7 @@ const PreSeaTrainigDetails = ({
               className="border focus:ring-[#00A264] text-[14px] leading-[19.07px] font-[poppins] text-[#333333]  checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264]"
               checked={neverExpires}
               onChange={() => setNeverExpires(!neverExpires)}
+              disabled={disabled}
             />
             <label
               className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
@@ -533,7 +582,7 @@ const PreSeaTrainigDetails = ({
           </div>
 
           <div className="grid col-span-2">
-            <div className="flex gap-4 items-center justify-center ">
+            <div className="flex gap-4 items-center  ">
               <label
                 htmlFor="file-upload"
                 className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] font-[poppins]"
@@ -545,6 +594,7 @@ const PreSeaTrainigDetails = ({
                 type="file"
                 className="hidden"
                 onChange={handleFileChange}
+                disabled={disabled}
               />
 
               {/* </div> */}
@@ -562,9 +612,9 @@ const PreSeaTrainigDetails = ({
             </div>
           </div>
 
-          <div className="grid col-span-2 ">
+          {/* <div className="grid col-span-2 ">
             <h1 className="font-bold ">Company Name/Ship type</h1>
-          </div>
+          </div> */}
 
           {/* <div className="grid grid-cols-2 gap-4"> */}
           <div className="">
@@ -580,6 +630,7 @@ const PreSeaTrainigDetails = ({
               name="options"
               value={pumpType}
               onChange={(e) => setPumpType(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
                 Select
@@ -594,7 +645,7 @@ const PreSeaTrainigDetails = ({
           </div>
           <div className="   ">
             <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] ">
-              Crew Manager
+            Company Crew Manager
             </label>
             <input
               type="text"
@@ -602,7 +653,7 @@ const PreSeaTrainigDetails = ({
               onChange={(e) => setCrewManager(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder=""
-              required
+              disabled={disabled}
             />
           </div>
           <div className="   ">
@@ -615,7 +666,7 @@ const PreSeaTrainigDetails = ({
               onChange={(e) => setTechnicalManager(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder=""
-              required
+              disabled={disabled}
             />
           </div>
           <div className="   ">
@@ -628,16 +679,16 @@ const PreSeaTrainigDetails = ({
               onChange={(e) => setOperator(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder=""
-              required
+              disabled={disabled}
             />
           </div>
 
-          <div className="grid col-span-2">
-            <h1 className="text-center font-bold">Company Name/Ship type</h1>
-          </div>
+          {/* <div className="grid col-span-2">
+            <h1 className=" font-bold">Company Name/Ship type</h1>
+          </div> */}
           <div className="   ">
             <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] ">
-              Vessel Type
+            Company Vessel Type
             </label>
             <input
               type="text"
@@ -645,7 +696,7 @@ const PreSeaTrainigDetails = ({
               onChange={(e) => setVesselType(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder=""
-              required
+              disabled={disabled}
             />
           </div>
 
@@ -659,7 +710,7 @@ const PreSeaTrainigDetails = ({
               onChange={(e) => setCommercialSpecification(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder=""
-              required
+              disabled={disabled}
             />
           </div>
 
@@ -673,12 +724,12 @@ const PreSeaTrainigDetails = ({
               onChange={(e) => setDesignSpecification(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder=""
-              required
+              disabled={disabled}
             />
           </div>
 
           <div className="grid col-span-2">
-            <h1 className=" font-bold">OFFSHORE SPECIFIC SKILLS</h1>
+            <h1 className=" font-bold"> Offshore Specific Skills</h1>
 
             <div className="   ">
               <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] ">
@@ -690,7 +741,7 @@ const PreSeaTrainigDetails = ({
                 onChange={(e) => setDPHours(e.target.value)}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
                 placeholder=""
-                required
+                disabled={disabled}
               />
             </div>
           </div>
@@ -712,6 +763,7 @@ const PreSeaTrainigDetails = ({
               name="options"
               value={vesselType1}
               onChange={(e) => setVesselType1(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
                 Select
@@ -735,6 +787,7 @@ const PreSeaTrainigDetails = ({
               name="options"
               value={rank}
               onChange={(e) => setRank(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
                 Select
@@ -760,7 +813,7 @@ const PreSeaTrainigDetails = ({
               onChange={(e) => setNumberOfrig(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder=""
-              required
+              disabled={disabled}
             />
           </div>
           <div className=" ">
@@ -776,6 +829,7 @@ const PreSeaTrainigDetails = ({
               name="options"
               value={moveditem}
               onChange={(e) => setMoveditem(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
                 Select
@@ -798,6 +852,7 @@ const PreSeaTrainigDetails = ({
               name="options"
               value={waterDepth}
               onChange={(e) => setWaterDepth(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
                 Select
@@ -821,6 +876,7 @@ const PreSeaTrainigDetails = ({
               name="options"
               value={tradingArea}
               onChange={(e) => setTradingArea(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
                 Select
@@ -844,6 +900,7 @@ const PreSeaTrainigDetails = ({
               name="options"
               value={winchDrive}
               onChange={(e) => setWinchDrive(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
                 Winch Drive Experience
@@ -866,6 +923,7 @@ const PreSeaTrainigDetails = ({
           </button>
           <Link
             href="#"
+            onClick={handleEdit}
             className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
           >
             Edit

@@ -14,7 +14,7 @@ const Talk = () => {
             priority
           />
         </div>
-        <div className="w-full  md:max-w-[45rem]  text-center md:text-left mt-4 md:mt-0 lg:w-[681px] lg:h-[386px] ">
+        <div className="w-full  md:max-w-[45rem] flex flex-col justify-center items-center  text-center md:text-left mt-4 md:mt-0 lg:w-[681px] lg:h-[386px] ">
           <h1 className="text-[28px] md:text-4xl lg:text-[44px] leading-[62px] font-semibold">
             Let's Talk About <span className="text-[#00A264] font-semibold leading-[62px]">
               EaseMySailing
@@ -29,7 +29,7 @@ const Talk = () => {
             those who choose a life on the ocean.
           </p>
 
-          <p className="text-sm md:text-base text-justify px-2 text-[#4E4E4E] mt-4 lg:text-[18px] lg:leading-[28px]">
+          <p className="text-[16px] text-justify leading-[28px] md:text-base lg:text-[18px] lg:leading-[28px] mt-2 px-2 text-[#4E4E4E]">
             EaseMySailing aims to bring the life of seafarers into the
             spotlight, highlighting the vital role they play and the challenges
             they face. The platform is dedicated to promoting sustainable

@@ -31,7 +31,7 @@ export default function BackgroundSlider() {
   }, [currentBackground, totalSlides]);
 
   return (
-    <div className="absolute top-0 left-0 w-full h-full  overflow-hidden z-0">
+    <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
       {/* Slider container */}
       <div
         className={`absolute top-0 left-0 w-full h-full flex ${
@@ -43,7 +43,7 @@ export default function BackgroundSlider() {
       >
         {/* First Image */}
         <div className="w-full h-full flex-shrink-0 relative">
-          <Image
+          <Image 
             src="/banner.png"
             alt="Background 1"
             fill

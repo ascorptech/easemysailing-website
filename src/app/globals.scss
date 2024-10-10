@@ -46,4 +46,43 @@
   background-color: #00a264 !important;
   min-width: 35px !important;
   min-height: 35px !important;
+  z-index: 10 !important ;
 }
+@media (min-width: 640px) {
+.sm\:flex.desktop-slider,.sm\:flex.mobile-slider{
+  width: 100%;
+}
+}
+.mobile-slider{
+  display: none !important;
+}
+@media(max-width:767px){
+  .mobile-slider{
+    display: block !important;
+  }
+  .inner-card.scale-110{
+    transform: none;
+    border: 0;
+  }
+}
+
+.main-banner-wrap{
+  position: relative;
+}
+
+.main-banner-wrap .gallery-wrap{
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  filter: grayscale(100%);
+  opacity: 0.8;
+  background-color: gray;
+  
+}
+ .main-banner-wrap:hover .gallery-wrap{
+   opacity: 1;
+   background-color: transparent !important;
+   filter:grayscale(0)
+ }

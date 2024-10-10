@@ -147,7 +147,7 @@ useEffect(() => {
       setViberId(onlinePresenceDetail?.viberNumber);
       setSkypeId(onlinePresenceDetail?.certificateNumber);
       setLinkedIn(onlinePresenceDetail?.certificateNumber);
-      setLinkedInId(onlinePresenceDetail?.certificateNumber);
+      setLinkedInId(onlinePresenceDetail?.linkedIn);
 
       setTwitterId(onlinePresenceDetail?.certificateNumber);
       setTwitter(onlinePresenceDetail?.certificateNumber);
@@ -244,7 +244,7 @@ useEffect(() => {
               >
                 WhatsApp Number
               </label> */}
-                  <div className="w-[30%] ">
+                  <div className="w-[40%] ">
                     <select
                       className="border rounded-md w-full   h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                       value={mCountrycode}

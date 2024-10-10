@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import CircularProgress from "../CircularProgress";
+import { countryCodeDrop } from "@/constants/constants";
 type OnlinePresenceComplete = {
   percentage: number;
   color: string;
@@ -37,7 +38,7 @@ const OnlinePresence = ({
 
   // const [mCountrycode, setMCountrycode] = useState("+91");
 
-  const [countryCodeDrop, setCountryCodeDrop] = useState<any>([]);
+  // const [countryCodeDrop, setCountryCodeDrop] = useState<any>([]);
   const [countryDrop, setCountryDrop] = useState<any>([]);
 
   const [whatsApp, setWhatsApp] = useState(false);
@@ -73,10 +74,10 @@ const OnlinePresence = ({
       // console.log('County',res?.data)
       setCountryDrop(res?.data?.values);
     });
-    GetDropdownDetails("countryCode", (res: any) => {
-      // console.log('County',res?.data)
-      setCountryCodeDrop(res?.data?.values);
-    });
+    // GetDropdownDetails("countryCode", (res: any) => {
+    //   // console.log('County',res?.data)
+    //   setCountryCodeDrop(res?.data?.values);
+    // });
   }, []);
 
   const totalFields = 10;
@@ -197,7 +198,6 @@ useEffect(() => {
   };
 
   const AddOnlinePresenceDataCB = (result: any) => {
-    console.log("res", result);
     if (result?.status == 200 || result?.status == 201) {
       console.log(result);
       toast.success("Online Presence submited successfully");
@@ -251,12 +251,9 @@ useEffect(() => {
                       onChange={(e) => setMCountrycode(e.target.value)}
                       disabled={disabled}
                     >
-                      {countryCodeDrop &&
-                        countryCodeDrop?.map((code: any, index: number) => (
-                          <option key={index} value={code}>
-                            {code?.toUpperCase()}
-                          </option>
-                        ))}
+                      {countryCodeDrop && countryCodeDrop?.map((code: any, index: number) => (
+                      <option key={index} value={code?.phoneCode}>{code?.flag + ' ' + code?.phoneCode?.toUpperCase()}</option>
+                    ))}
                     </select>
                   </div>
                   {/* <div className=""> */}
@@ -305,12 +302,9 @@ useEffect(() => {
                       onChange={(e) => setWCountrycode(e.target.value)}
                       disabled={disabled}
                     >
-                      {countryCodeDrop &&
-                        countryCodeDrop?.map((code: any, index: number) => (
-                          <option key={index} value={code}>
-                            {code?.toUpperCase()}
-                          </option>
-                        ))}
+                      {countryCodeDrop && countryCodeDrop?.map((code: any, index: number) => (
+                      <option key={index} value={code?.phoneCode}>{code?.flag + ' ' + code?.phoneCode?.toUpperCase()}</option>
+                    ))}
                     </select>
                   </div>
                   <input
@@ -379,12 +373,9 @@ useEffect(() => {
                       onChange={(e) => setTCountrycode(e.target.value)}
                       disabled={disabled}
                     >
-                      {countryCodeDrop &&
-                        countryCodeDrop?.map((code: any, index: number) => (
-                          <option key={index} value={code}>
-                            {code?.toUpperCase()}
-                          </option>
-                        ))}
+                      {countryCodeDrop && countryCodeDrop?.map((code: any, index: number) => (
+                      <option key={index} value={code?.phoneCode}>{code?.flag + ' ' + code?.phoneCode?.toUpperCase()}</option>
+                    ))}
                     </select>
                   </div>
                   <input
@@ -423,12 +414,9 @@ useEffect(() => {
                       onChange={(e) => setVCountrycode(e.target.value)}
                       disabled={disabled}
                     >
-                      {countryCodeDrop &&
-                        countryCodeDrop?.map((code: any, index: number) => (
-                          <option key={index} value={code}>
-                            {code?.toUpperCase()}
-                          </option>
-                        ))}
+                      {countryCodeDrop && countryCodeDrop?.map((code: any, index: number) => (
+                      <option key={index} value={code?.phoneCode}>{code?.flag + ' ' + code?.phoneCode?.toUpperCase()}</option>
+                    ))}
                     </select>
                   </div>
                   <input

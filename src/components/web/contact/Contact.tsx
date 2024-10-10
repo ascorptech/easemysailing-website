@@ -29,14 +29,57 @@ const Contact = () => {
     message: "",
   });
   const [captcha, setCaptcha] = useState("");
+  const [userInput, setUserInput] = useState('');
   const [isVerified, setIsVerified] = useState(false);
+  const canvasRef = useRef(null);
 
-  // useEffect(() => {
-  //   GetDropdownDetails('countryCode', (res: any) => {
-  //     // console.log('County',res?.data)
-  //     setCountryCodeDrop(res?.data?.values)
-  //   })
-  // }, [])
+  useEffect(() => {
+    const canvas: any = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    initializeCaptcha(ctx);
+  }, []);
+
+  const generateRandomChar = (min: any, max: any) =>
+    String.fromCharCode(Math.floor
+      (Math.random() * (max - min + 1) + min));
+
+  const generateCaptchaText = () => {
+    let captcha = '';
+    for (let i = 0; i < 3; i++) {
+      captcha += generateRandomChar(65, 90);
+      captcha += generateRandomChar(97, 122);
+      captcha += generateRandomChar(48, 57);
+    }
+    return captcha.split('').sort(
+      () => Math.random() - 0.5).join('');
+  };
+
+  const drawCaptchaOnCanvas = (ctx: any, captcha: any) => {
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    const textColors = ['rgb(0,0,0)', 'rgb(130,130,130)'];
+    const letterSpace = 150 / captcha.length;
+    for (let i = 0; i < captcha.length; i++) {
+      const xInitialSpace = 25;
+      ctx.font = '20px Roboto Mono';
+      ctx.fillStyle = textColors[Math.floor(
+        Math.random() * 2)];
+      ctx.fillText(
+        captcha[i],
+        xInitialSpace + i * letterSpace,
+
+        // Randomize Y position slightly
+        Math.floor(Math.random() * 16 + 25),
+        100
+      );
+    }
+  };
+
+  const initializeCaptcha = (ctx: any) => {
+    setUserInput('');
+    const newCaptcha = generateCaptchaText();
+    setCaptcha(newCaptcha);
+    drawCaptchaOnCanvas(ctx, newCaptcha);
+  };
 
 
   const validateInputs = () => {
@@ -113,9 +156,9 @@ const Contact = () => {
         //   console.log('captcha passed')
         //   setIsVerified(true);
         // }
-        let data ={}
-        verifyRecaptchaData(token,data,(res:any)=>{
-          console.log('res',res)
+        let data = {}
+        verifyRecaptchaData(token, data, (res: any) => {
+          console.log('res', res)
         })
       }
     } catch (e) {
@@ -138,7 +181,8 @@ const Contact = () => {
     if (!validateInputs()) {
       return;
     } else {
-      if (isVerified) {
+      if (userInput === captcha) {
+        toast.success('Success');
         let data = {
           name: name,
           email: email,
@@ -147,7 +191,13 @@ const Contact = () => {
         };
 
         AddContactData(data, AddContactDataCB);
-      }
+    } else {
+        toast.error('Incorrect');
+        const canvas:any = canvasRef.current;
+        const ctx = canvas.getContext('2d');
+        initializeCaptcha(ctx);
+    }
+       
 
     }
   };
@@ -164,6 +214,9 @@ const Contact = () => {
       phone: "",
       message: "",
     });
+    const canvas:any = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    initializeCaptcha(ctx);
   };
 
   // const handleCaptchaChange = (value:any) => {
@@ -352,17 +405,17 @@ const Contact = () => {
             </div>
 
             <div className="mb-[7px] flex">
-              {/* <div className="flex w-[65%]">
+              <div className="flex w-[65%]">
                 <input
                   id="Captcha"
                   type="text"
-                  value={captcha}
-                  onChange={(e) => setCaptcha(e.target.value)}
+                  value={userInput}
+                  onChange={(e) => setUserInput(e.target.value)}
                   className="border rounded-lg w-full lg:h-10  py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
                   placeholder="Captcha Code"
 
                 />
-              </div> */}
+              </div>
               <div className="flex items-center gap-2 ">
                 <div className="ml-4 ">
                   {/* <ReCAPTCHA
@@ -371,14 +424,19 @@ const Contact = () => {
                     onChange={handleChange}
                     onExpired={handleExpired}
                   /> */}
-                  <ReCAPTCHA
+                  {/* <ReCAPTCHA
                     sitekey={'6LfoUVsqAAAAAD6TM-xdumuFGc6hTLS2kBvYKX3S'}
                     // size="invisible"
                     ref={recaptchaRef}
                     onChange={handleChange}
                     onExpired={handleExpired}
                     badge="inline"
-                  />
+                  /> */}
+                  <canvas ref={canvasRef}
+                    width="200"
+                    height="70">
+
+                  </canvas>
                 </div>
                 {/* <span className="text-white p-2 bg-green-600 text-2xl font-extrabold rounded-md">
                   <TfiReload />

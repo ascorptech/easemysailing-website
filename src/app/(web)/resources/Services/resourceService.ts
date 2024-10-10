@@ -5,7 +5,8 @@ const {GETRESOURCES,GETRESOURCEDETAIL,GETRECENTRESOURCEBYID} = apiEndPoints
 
 export const GetResourcesList = async(cb:any)=>{
     try {
-        const response = await getReq(GETRESOURCES);
+         let url = `${GETRESOURCES}?sort=createdDate,desc`
+        const response = await getReq(url);
         return cb(response)
     } catch (error:any) {
         console.log('err',error)

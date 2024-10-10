@@ -45,6 +45,7 @@ const Languages = ({
 
   const [selectedFile, setSelectedFile] = useState<any>(null);
   const [color,setColor]=useState('')
+  const [isHideShow, setIsHideShow] = useState(false);
 
   useEffect(() => {
     if (languageDetail) {
@@ -165,6 +166,7 @@ const Languages = ({
 
   const handleEdit = () => {
     setDisabled(!disabled);
+    setIsHideShow(!isHideShow);
     // toast.info("You are now in edit mode. Make your changes.");
   };
   return (
@@ -411,8 +413,9 @@ const Languages = ({
         </div>
 
         {/* Attachment Document */}
-
+       {isHideShow && (
         <div className="flex gap-6 items-center  my-6 ">
+          <div>
           <label
             htmlFor="medicalfile-upload3"
             className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px]   "
@@ -426,6 +429,7 @@ const Languages = ({
             onChange={handleFileChange}
             disabled={disabled}
           />
+          </div> <div>
           {selectedFile ? (
             <p className="text-[14px] leading-[19.07px]  text-[#333333]">
               File Selected: {selectedFile.name}
@@ -435,7 +439,10 @@ const Languages = ({
               No file selected
             </p>
           )}
+          </div>
         </div>
+        )} 
+
 
         <div className="flex gap-2 mb-4 mt-4">
           <button

@@ -33,6 +33,7 @@ import {
   GetContact,
   GetEcdisData,
   GetLicencesData,
+  GetTravelDocumentData,
 } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import { toast } from "react-toastify";
 import { FaPercentage } from "react-icons/fa";
@@ -46,6 +47,7 @@ const MyJob = () => {
   const [languageDetail, setLanguageDetail] = useState<any>({});
   const [licencesDetail, setLicencesDetail] = useState<any>({});
   const [contactDetail, setContactDetail] = useState<any>({});
+  const [travelDocumentsDetail, setTravelDocumentsDetail] = useState<any>({});
   const [ecdisDetail, setEcdisDetail] = useState<any>({});
   const [isOpen, setIsOpen] = useState(false); // State to toggle
   const [pDOpen, setPDOpen] = useState(false);
@@ -223,6 +225,14 @@ const MyJob = () => {
         toast.error("No data found");
       }
     });
+    GetTravelDocumentData(id, (res: any) => {
+      if (res?.status == 200) {
+        setTravelDocumentsDetail(res?.data);
+      } else {
+        toast.error("No data found");
+      }
+    });
+
     GetEcdisData(id, (res: any) => {
       if (res?.status == 200) {
         setEcdisDetail(res?.data);
@@ -269,11 +279,6 @@ const MyJob = () => {
     setAuthOpen(!authOpen);
   };
 
-  const handleEase = () => {
-    setEaseOpen(!easeOpen);
-  };
-  // right toggle button
-
   const hendleAboutMe = () => {
     setAboutMeOpen(!aboutMeOpen);
   };
@@ -300,10 +305,6 @@ const MyJob = () => {
     setOffshoreOpen(!offshoreOpen);
   };
 
-  const handleFamily = () => {
-    setFDOpen(!fDOpen);
-  };
-
   return (
     <div className=" mx-6 mt-4  ">
       <div className=" flex justify-between">
@@ -315,7 +316,7 @@ const MyJob = () => {
                   myJobDetail.color ? myJobDetail.color : mjrComplete.color
                 }]`}
               >
-                <h2 className=""> My Job Requirements</h2>{" "}
+                <h2 className=""> My Job Requirements</h2>
                 <div className="flex items-center justify-center gap-1">
                   <span
                     className="ml-2 cursor-pointer"
@@ -446,9 +447,9 @@ const MyJob = () => {
               <div
                 className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${
                   languageDetail.color
-                  ?languageDetail.color
-                  : languageComplete.color
-              }] mt-3`}
+                    ? languageDetail.color
+                    : languageComplete.color
+                }] mt-3`}
               >
                 <h2 className="">Languages</h2>
                 <div className="flex items-center justify-center gap-1">
@@ -489,17 +490,17 @@ const MyJob = () => {
                     )}
                   </span>
                   <CircularProgress
-                  percentage={Math.round(
-                    languageComplete?.percentage
-                      ? languageComplete?.percentage
-                      : Number(languageDetail?.completed)
-                  )}
-                  color={
-                    languageDetail.color
-                      ? languageDetail.color
-                      :languageComplete.color
-                  }
-                />
+                    percentage={Math.round(
+                      languageComplete?.percentage
+                        ? languageComplete?.percentage
+                        : Number(languageDetail?.completed)
+                    )}
+                    color={
+                      languageDetail.color
+                        ? languageDetail.color
+                        : languageComplete.color
+                    }
+                  />
                 </div>
               </div>
 
@@ -926,7 +927,7 @@ const MyJob = () => {
             <div
               className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${
                 aboutMeDetail.color
-                  ? aboutMeDetail.color 
+                  ? aboutMeDetail.color
                   : aboutMeComplete.color
               }]`}
             >
@@ -966,11 +967,11 @@ const MyJob = () => {
                   )}
                 </span>
                 <CircularProgress
-                  percentage={
-                    Math.round(aboutMeComplete?.percentage
+                  percentage={Math.round(
+                    aboutMeComplete?.percentage
                       ? aboutMeComplete?.percentage
                       : Number(aboutMeDetail?.completed)
-   ) }
+                  )}
                   color={
                     aboutMeDetail.color
                       ? aboutMeDetail.color
@@ -1139,7 +1140,11 @@ const MyJob = () => {
 
             {/* travel documents */}
             <div
-              className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${travelComplete?.color}] mt-3`}
+              className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${
+                travelDocumentsDetail.color
+                  ? travelDocumentsDetail.color
+                  : travelComplete.color
+              }] mt-3`}
             >
               <h1 className="">Identity & Travel Documents</h1>
               <div className="flex items-center justify-center gap-1">
@@ -1180,8 +1185,16 @@ const MyJob = () => {
                   )}
                 </span>
                 <CircularProgress
-                  percentage={Math.round(travelComplete?.percentage)}
-                  color={travelComplete.color}
+                  percentage={Math.round(
+                    travelComplete?.percentage
+                      ? travelComplete?.percentage
+                      : Number(travelDocumentsDetail?.completed)
+                  )}
+                  color={
+                    travelDocumentsDetail.color
+                      ? travelDocumentsDetail.color
+                      : travelComplete.color
+                  }
                 />
               </div>
             </div>
@@ -1190,6 +1203,7 @@ const MyJob = () => {
                 travelComplete={travelComplete}
                 setTravelComplete={setTravelComplete}
                 userDetail={profileDetail}
+                travelDocumentsDetails={travelDocumentsDetail}
               />
             )}
 

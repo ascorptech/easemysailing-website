@@ -134,7 +134,7 @@ const AboutMe = ({
                   id="personality"
                   type="text"
                   value={personality}
-                  onChange={(e) => setPersonality(e.target.value.slice(0, 25))} // Limit to 25 characters
+                  onChange={(e) => setPersonality(e.target.value.slice(0, 25))} 
                   className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=" My Personality And Professional Attitude"
                   disabled={disabled}
@@ -151,7 +151,7 @@ const AboutMe = ({
                   id="additional"
                   type="text"
                   value={additional}
-                  onChange={(e) => setAdditional(e.target.value.slice(0, 25))} // Limit to 25 characters
+                  onChange={(e) => setAdditional(e.target.value.slice(0, 25))}
                   className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder="  Additional Information About My Past Sea Service"
                   disabled={disabled}
@@ -169,7 +169,7 @@ const AboutMe = ({
                     id="future"
                     type="text"
                     value={myFuture}
-                    onChange={(e) => setMyFuture(e.target.value.slice(0, 25))} // Limit to 25 characters
+                    onChange={(e) => setMyFuture(e.target.value.slice(0, 25))} 
                     className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="  My Future Aims And Expectations"
                     disabled={disabled}

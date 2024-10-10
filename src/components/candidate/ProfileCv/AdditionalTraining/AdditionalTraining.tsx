@@ -111,7 +111,8 @@ const AdditionalTraining = ({
   const [levelTestDrop, setLevelTestDrop] = useState<any>([]);
   const [disabled, setDisabled] = useState(true);
 
-  const [showFields, setShowFields] = useState(true);
+  // const [showFields, setShowFields] = useState(true);
+  const [isHideShow, setIsHideShow] = useState(false);
 
   useEffect(() => {
     GetDropdownDetails("ProfessionalKnowledgeLevel", (res: any) => {
@@ -289,6 +290,7 @@ const AdditionalTraining = ({
   };
   const handleEdits = () => {
     setDisabled(!disabled);
+    setIsHideShow(!isHideShow);
     // toast.info("You are now in edit mode. Make your changes.");
   };
 
@@ -301,7 +303,7 @@ const AdditionalTraining = ({
       <form onSubmit={handleSubmit}>
         <div className="flex items-center justify-between">
           <h2 className="font-bold">Additional Trainings</h2>
-
+{ isHideShow  && (
           <div className="flex gap-2">
             <AiOutlinePlus
               className="text-2xl cursor-pointer"
@@ -314,6 +316,7 @@ const AdditionalTraining = ({
               />
             )}
           </div>
+          )}
         </div>
 
       
@@ -490,6 +493,7 @@ const AdditionalTraining = ({
               </div>
             </div>
             <div className="grid col-span-2">
+            { isHideShow  && (
               <div className="flex gap-6 items-center ">
                 <div>
                   <label
@@ -518,6 +522,7 @@ const AdditionalTraining = ({
                   )}
                 </div>
               </div>
+            )}
             </div>
           </div>
         ))}
@@ -528,6 +533,7 @@ const AdditionalTraining = ({
           <div className="flex justify-between mt-3">
             {" "}
             <h1 className=" font-bold">Professional Knowledge Test</h1>
+            { isHideShow  && (
             <div className="flex gap-2">
               <AiOutlinePlus
                 className="text-2xl cursor-pointer"
@@ -540,6 +546,7 @@ const AdditionalTraining = ({
                 />
               )}
             </div>
+            )}
           </div>
         </div>
 
@@ -786,6 +793,7 @@ const AdditionalTraining = ({
             </div>
 
             <div className="grid col-span-2 my-2">
+            { isHideShow  && (
               <div className="flex gap-4 items-center justify-start ">
                 <div>
                   <label
@@ -814,6 +822,7 @@ const AdditionalTraining = ({
                   )}
                 </div>
               </div>
+            )}
             </div>
           </div>
         ))}

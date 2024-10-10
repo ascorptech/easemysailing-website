@@ -52,6 +52,8 @@ const Refrences = ({
   const [issueDate1, setIssueDate1] = useState("");
   const [countryDrop, setCountryDrop] = useState<any>([]);
   const [countryCodeDrop, setCountryCodeDrop] = useState<any>([]);
+  const [isHideShow, setIsHideShow] = useState(false);
+
 
   useEffect(() => {
     GetDropdownDetails("country", (res: any) => {
@@ -164,6 +166,7 @@ const Refrences = ({
 
   const handleEdit = () => {
     setDisabled(!disabled);
+    setIsHideShow(!isHideShow);
   };
 
   return (
@@ -241,6 +244,7 @@ const Refrences = ({
               </div>
 
               <div className="grid col-span-3">
+                { isHideShow && (
                 <div className="flex items-center justify-start gap-4 my-6">
                   <div className="  ">
                     <label
@@ -269,6 +273,7 @@ const Refrences = ({
                     )}
                   </div>
                 </div>
+                )}
               </div>
             </div>
 
@@ -321,6 +326,7 @@ const Refrences = ({
                 </div>
               </div>
               <div className="grid col-span-2 ">
+              { isHideShow && (
                 <div className="flex gap-4  my-4">
                   <div className="  ">
                     <label
@@ -349,6 +355,7 @@ const Refrences = ({
                     )}
                   </div>
                 </div>
+              )}
               </div>
             </div>
 

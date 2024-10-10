@@ -32,6 +32,7 @@ import {
   GetLanguageData,
   GetContact,
   GetEcdisData,
+  GetLicencesData,
 } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import { toast } from "react-toastify";
 import { FaPercentage } from "react-icons/fa";
@@ -43,6 +44,7 @@ const MyJob = () => {
   const [aboutMeDetail, setAboutMeDetail] = useState<any>({});
   const [nextOfKinDetail, setNextOfKinDetail] = useState<any>({});
   const [languageDetail, setLanguageDetail] = useState<any>({});
+  const [licencesDetail, setLicencesDetail] = useState<any>({});
   const [contactDetail, setContactDetail] = useState<any>({});
   const [ecdisDetail, setEcdisDetail] = useState<any>({});
   const [isOpen, setIsOpen] = useState(false); // State to toggle
@@ -203,6 +205,13 @@ const MyJob = () => {
     GetLanguageData(id, (res: any) => {
       if (res?.status == 200) {
         setLanguageDetail(res?.data);
+      } else {
+        toast.error("No data found");
+      }
+    });
+    GetLicencesData(id, (res: any) => {
+      if (res?.status == 200) {
+        setLicencesDetail(res?.data);
       } else {
         toast.error("No data found");
       }

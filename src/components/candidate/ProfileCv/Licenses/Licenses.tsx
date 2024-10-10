@@ -148,6 +148,7 @@ const Licenses = ({
   // const [selectedFile2, setSelectedFile2] = useState<any>(null);
   const [countryDrop, setCountryDrop] = useState<any>([]);
   const [capacityDrop, setCapacityDrop] = useState<any>([]);
+  const [competencyDrop, setCompetencyDrop] = useState<any>([]);
   const [stcwRegDrop, setStcWRegDrop] = useState<any>([]);
   const [edorTyDrop, setEndorTyDrop] = useState<any>([]);
 
@@ -160,6 +161,9 @@ const Licenses = ({
   useEffect(() => {
     GetDropdownDetails("capacity", (res: any) => {
       setCapacityDrop(res?.data?.values);
+    });
+    GetDropdownDetails("CERTIFICATEOFCOMPETENCY", (res: any) => {
+      setCompetencyDrop(res?.data?.values);
     });
     GetDropdownDetails("country", (res: any) => {
       // console.log('County',res?.data)
@@ -580,8 +584,8 @@ const Licenses = ({
                       <option value="" disabled>
                         Select
                       </option>
-                      {capacityDrop &&
-                        capacityDrop?.map((cap: any, index: number) => (
+                      {competencyDrop &&
+                        competencyDrop?.map((cap: any, index: number) => (
                           <option key={index} value={cap}>
                             {cap?.toUpperCase()}
                           </option>

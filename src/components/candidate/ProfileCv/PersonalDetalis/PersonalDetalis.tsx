@@ -312,7 +312,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
               >
                 <option value="">Select</option>
                 {genderDrop&& genderDrop?.map((gen:any,index:number)=>(
-                <option key={index} value={gen}>{gen}</option>
+                <option key={index} value={gen}>{gen.toUpperCase()}</option>
               ))}
               </select>
             </div>
@@ -426,7 +426,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
               >
                 <option value="">Select</option>
                 {martialStatusDrop&& martialStatusDrop?.map((status:any,index:number)=>(
-                <option key={index} value={status}>{status}</option>
+                <option key={index} value={status}>{status.toUpperCase()}</option>
               ))}
                 {/* <option value="male">Male</option>
                 <option value="female">Female</option>

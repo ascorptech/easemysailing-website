@@ -107,11 +107,11 @@ const MedicalCertificates = ({
     GetDropdownDetails("DRUG&ALCOHOLTEST", (res: any) => {
       setDrugDrop(res?.data?.values);
     });
-    GetDropdownDetails("covidVaccine", (res: any) => {
+    GetDropdownDetails("COVID-19VACCINETYPE", (res: any) => {
       console.log("vac", res?.data);
       setVaccineTypeDrop(res?.data?.values);
     });
-    GetDropdownDetails("otherVaccine", (res: any) => {
+    GetDropdownDetails("OTHERVACCINATIONTYPE", (res: any) => {
       console.log("vac", res?.data);
       setOtherVaccineTypeDrop(res?.data?.values);
     });

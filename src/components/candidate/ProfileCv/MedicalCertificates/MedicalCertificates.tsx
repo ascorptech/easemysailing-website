@@ -378,7 +378,7 @@ const MedicalCertificates = ({
             </label>
             <input
               id="medicalnumber"
-              type="number"
+              type="text"
               value={number}
               onChange={(e) => setNumber(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
@@ -582,7 +582,7 @@ const MedicalCertificates = ({
             </label>
             <input
               id="medicalNumber1"
-              type="number"
+              type="text"
               value={medicalNumber}
               onChange={(e) => setMedicalNumber(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"

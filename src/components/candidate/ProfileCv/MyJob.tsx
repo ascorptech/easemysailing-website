@@ -34,6 +34,7 @@ import {
   GetEcdisData,
   GetLicencesData,
   GetTravelDocumentData,
+  GetOnlinePresenceData,
 } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import { toast } from "react-toastify";
 import { FaPercentage } from "react-icons/fa";
@@ -49,6 +50,7 @@ const MyJob = () => {
   const [contactDetail, setContactDetail] = useState<any>({});
   const [travelDocumentsDetail, setTravelDocumentsDetail] = useState<any>({});
   const [ecdisDetail, setEcdisDetail] = useState<any>({});
+  const [onlinePresenseDetail, setOnlinePresenseDetail] = useState<any>({});
   const [isOpen, setIsOpen] = useState(false); // State to toggle
   const [pDOpen, setPDOpen] = useState(false);
   const [languageOpen, setLanguageOpen] = useState(false);
@@ -200,6 +202,14 @@ const MyJob = () => {
     GetNextOfData(id, (res: any) => {
       if (res?.status == 200) {
         setNextOfKinDetail(res?.data);
+      } else {
+        toast.error("No data found");
+      }
+    });
+
+    GetOnlinePresenceData(id, (res: any) => {
+      if (res?.status == 200) {
+        setOnlinePresenseDetail(res?.data);
       } else {
         toast.error("No data found");
       }
@@ -515,7 +525,9 @@ const MyJob = () => {
 
               {/* OnlinePresence start */}
               <div
-                className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${onlinePresenceComplete?.color}] mt-3`}
+                className={` mt-3 flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${
+                  onlinePresenseDetail.color ? onlinePresenseDetail.color : onlinePresenceComplete.color
+                }]`}
               >
                 <h1 className="">Online Presence</h1>
                 <div className="flex items-center justify-center gap-1">
@@ -555,9 +567,16 @@ const MyJob = () => {
                       </svg>
                     )}
                   </span>
+                 
                   <CircularProgress
-                    percentage={Math.round(onlinePresenceComplete?.percentage)}
-                    color={onlinePresenceComplete.color}
+                    percentage={Math.round(
+                      onlinePresenceComplete?.percentage
+                        ? onlinePresenceComplete?.percentage
+                        : Number(onlinePresenseDetail?.completed)
+                    )}
+                    color={
+                      onlinePresenseDetail.color ? onlinePresenseDetail.color : onlinePresenceComplete.color
+                    }
                   />
                 </div>
               </div>
@@ -567,6 +586,7 @@ const MyJob = () => {
                   onlinePresenceComplete={onlinePresenceComplete}
                   setOnlinePresenceComplete={setOnlinePresenceComplete}
                   userDetail={profileDetail}
+                   onlinePresenceDetail={onlinePresenseDetail}
                 />
               )}
               {/* OnlinePresence end */}

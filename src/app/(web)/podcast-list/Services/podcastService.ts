@@ -5,7 +5,7 @@ const {GETPODCASTS} = apiEndPoints
 
 export const GetPodcastList = async(page:any,pageLimit:any,cb:any)=>{
     try {
-        let url = `${GETPODCASTS}?page=${page}&size=${pageLimit}&sort=ASC`
+        let url = `${GETPODCASTS}?page=${page}&size=${pageLimit}&sort=createdDate,desc`
         const response = await getReq(url);
         return cb(response)
     } catch (error:any) {

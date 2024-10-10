@@ -32,6 +32,8 @@ const ProfileCV = () => {
   const [progress, setProgress] = useState(0);
   const [uploading, setUploading] = useState(false);
   const [showEditImagePopup, setShowEditImagePopup] = useState(false);
+  const [color, setColor] = useState("");
+
 
   useEffect(() => {
     fetchDetails();

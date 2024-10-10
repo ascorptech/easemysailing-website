@@ -5,6 +5,8 @@ import {
 } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
 import React, { useEffect } from "react";
+import moment from "moment";
+
 
 import { useState } from "react";
 import { toast } from "react-toastify";
@@ -17,12 +19,13 @@ type Props = {
   refrencesComplete: RefrencesComplete;
   setRefrencesComplete: React.Dispatch<React.SetStateAction<RefrencesComplete>>;
   userDetail: any;
+  refrencesDetail:any;
 };
 
 const Refrences = ({
   refrencesComplete,
   setRefrencesComplete,
-  userDetail,
+  userDetail,refrencesDetail
 }: Props) => {
   const [date, setDate] = useState("");
   const [companyName, setCompanyName] = useState("");
@@ -53,6 +56,8 @@ const Refrences = ({
   const [countryDrop, setCountryDrop] = useState<any>([]);
   const [countryCodeDrop, setCountryCodeDrop] = useState<any>([]);
   const [isHideShow, setIsHideShow] = useState(false);
+  const [color, setColor] = useState("");
+
 
 
   useEffect(() => {
@@ -84,9 +89,10 @@ const Refrences = ({
     selectedFile1,
   ].filter(Boolean).length;
 
-  const percentage = (filledFields / totalFields) * 100;
+  const percentage: any =
+    totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
 
-  let color;
+ 
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
@@ -95,21 +101,21 @@ const Refrences = ({
         percentage: percentage,
         color: "#FF0000",
       }));
-      color = "red";
+      setColor("#FF0000");
     } else if (percentage <= 70) {
       setRefrencesComplete((prevState) => ({
         ...prevState,
         percentage: percentage,
         color: "#FF9900",
       }));
-      color = "#FF9900";
+      setColor("#FF9900");
     } else {
       setRefrencesComplete((prevState) => ({
         ...prevState,
         percentage: percentage,
         color: "#00A264",
       }));
-      color = "green";
+      setColor("#00A264");
     }
   }, [percentage, color]);
 
@@ -127,6 +133,29 @@ const Refrences = ({
     }
   };
 
+
+  useEffect(() => {
+    console.log("refrencesDetail", refrencesDetail)
+    if(refrencesDetail){
+      setCompanyName(refrencesDetail?.vesselOrCompanyName)
+      setCompanyName1(refrencesDetail?.referenceCompany)
+      setFirstName(refrencesDetail?.referenceFirstName)
+      setLastName(refrencesDetail?.referenceLastName)
+      setPhoneNumber(refrencesDetail?.referencePhoneNumber)
+      setEmail(refrencesDetail?.referenceEmail)
+      setConsentGiven(refrencesDetail?.consentGiven)
+      setCountryCode1(refrencesDetail?.referenceCountryCode)
+      // setSelectedFile(refrencesDetail?.)
+      // setSelectedFile1(refrencesDetail?.)
+      setIssueDate1(moment(refrencesDetail?.criminalRecordIssueDate).format("YYYY-MM-DD"));
+      setDate(moment(refrencesDetail?.issueDate).format("YYYY-MM-DD"));
+      setIssued(moment(refrencesDetail?.issuedBy).format("YYYY-MM-DD"));
+      setIssuingCountry(refrencesDetail?.issuingCountry)
+      
+      
+      
+    }
+  })
   const handleSubmit = (e: React.FormEvent) => {
     // try {
     e.preventDefault();
@@ -217,7 +246,7 @@ const Refrences = ({
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
                   className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                  placeholder="Enter  Issue Date"
+                  placeholder="Enter Issue Date"
                   disabled={disabled}
                 />
                 {/* </div> */}

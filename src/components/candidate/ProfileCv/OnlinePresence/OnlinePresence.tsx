@@ -19,12 +19,13 @@ type Props = {
     React.SetStateAction<OnlinePresenceComplete>
   >; // setMjrComplete is a function to update mjrComplete
   userDetail: any;
+  onlinePresenceDetail:any;
 };
 
 const OnlinePresence = ({
   onlinePresenceComplete,
   setOnlinePresenceComplete,
-  userDetail,
+  userDetail, onlinePresenceDetail
 }: Props) => {
   // State for form fields
 
@@ -66,6 +67,7 @@ const OnlinePresence = ({
   const [otherId, setOtherId] = useState("");
 
   const [disabled, setDisabled] = useState(true);
+  const [color, setColor] = useState("");
 
   useEffect(() => {
     GetDropdownDetails("country", (res: any) => {
@@ -93,9 +95,11 @@ const OnlinePresence = ({
     other && otherId,
   ].filter(Boolean).length;
 
-  const percentage = (filledFields / totalFields) * 100;
+  // const percentage = (filledFields / totalFields) * 100;
+  const percentage: any =
+    totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
 
-  let color;
+  
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
@@ -104,34 +108,72 @@ const OnlinePresence = ({
         percentage: percentage,
         color: "#FF0000",
       }));
-      color = "red";
+      setColor("#FF0000");
     } else if (percentage <= 70) {
       setOnlinePresenceComplete((prevState) => ({
         ...prevState,
         percentage: percentage,
         color: "#FF9900",
       }));
-      color = "#FF9900";
+      setColor("#FF9900");
     } else {
       setOnlinePresenceComplete((prevState) => ({
         ...prevState,
         percentage: percentage,
         color: "#00A264",
       }));
-      color = "green";
+      setColor("#00A264");
     }
   }, [percentage, color]);
+
+
+useEffect(() => {
+    console.log("userDetail", onlinePresenceDetail);
+    if (onlinePresenceDetail) {
+      setMCountrycode(onlinePresenceDetail?.whatsappCountryCode);
+      setWCountrycode(onlinePresenceDetail?.weChatCountryCode);
+      setTCountrycode(onlinePresenceDetail?.telegramCountryCode);
+      setVCountrycode(onlinePresenceDetail?.viberCountryCode);
+      setWhatsApp(onlinePresenceDetail?.whatsapp)
+
+      setWeChat(onlinePresenceDetail?.weChat);
+      setWeChatId(onlinePresenceDetail?. weChatNumber);
+      setFacebookMess(onlinePresenceDetail?. facebookMessenger);
+
+      setFacebookMessId(onlinePresenceDetail?.facebookMessengerId);
+
+      setTelegram(onlinePresenceDetail?.telegram);
+      setTelegramId(onlinePresenceDetail?. telegramNumber);
+      setViber(onlinePresenceDetail?. viber);
+      setViberId(onlinePresenceDetail?.viberNumber);
+      setSkypeId(onlinePresenceDetail?.certificateNumber);
+      setLinkedIn(onlinePresenceDetail?.certificateNumber);
+      setLinkedInId(onlinePresenceDetail?.certificateNumber);
+
+      setTwitterId(onlinePresenceDetail?.certificateNumber);
+      setTwitter(onlinePresenceDetail?.certificateNumber);
+      setInstagram(onlinePresenceDetail?.certificateNumber);
+      setInstagramId(onlinePresenceDetail?.certificateNumber);
+
+      
+    }
+  }, []);
+
 
   const handleSubmit = (e: React.FormEvent) => {
     // try {
     e.preventDefault();
     let data = {
       id: userDetail?.userId,
+      whatsappCountryCode: mCountrycode,
       whatsapp: whatsApp,
       weChat: weChat,
+      weChatCountryCode: wCountrycode,
       facebookMessenger: facebookMess,
       telegram: telegram,
+      telegramCountryCode: tCountrycode,
       viber: viber,
+      viberCountryCode: vCountrycode,
       whatsappNumber: whatsAppId,
       weChatNumber: weChatId,
       facebookMessengerId: facebookMessId,
@@ -142,11 +184,14 @@ const OnlinePresence = ({
       facebook: twitter,
       instagram: instagram,
       other: other,
+
       linkedInProfileUrl: linkedIn,
       facebookProfileUrl: twitterId,
       instagramProfileUrl: instagramId,
       otherSocialMediaName: otherId,
       otherSocialMediaContact: "",
+      color: color,
+      completed: percentage,
     };
 
     AddOnlinePresenceData(data, AddOnlinePresenceDataCB);
@@ -267,6 +312,8 @@ const OnlinePresence = ({
                     type="text"
                     className="border rounded-md  h-9 px-2 w-[90%] text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter WeChat Number"
+                    value={weChatId}
+                    onChange={(e) => setWeChatId(e.target.value)}
                     disabled={disabled}
                   />
                 </div>

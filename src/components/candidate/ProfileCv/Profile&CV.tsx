@@ -164,7 +164,7 @@ const ProfileCV = () => {
             />
             {/* Edit profile image */}
             <div
-              className="absolute ml-[6rem] top-0 right-0 cursor-pointer"
+              className="absolute top-0 right-0 cursor-pointer"
               onClick={openEditImagePopup}
             >
               <Image

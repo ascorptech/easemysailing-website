@@ -63,6 +63,8 @@ const PreSeaTrainigDetails = ({
   const [tradingAreaDrop, setTradingAreaDrop] = useState<any>([])
   const [winchDiveDrop, setWinchDiveDrop] = useState<any>([])
   const [disabled,setDisabled] = useState(true)
+  const [isHideShow, setIsHideShow] = useState(false);
+
 
 
   useEffect(() => {
@@ -232,6 +234,7 @@ const PreSeaTrainigDetails = ({
 
   const handleEdit = () => {
     setDisabled(!disabled)
+    setIsHideShow(!isHideShow);
     // toast.info("You are now in edit mode. Make your changes.");
   };
 
@@ -588,7 +591,8 @@ const PreSeaTrainigDetails = ({
           </div>
 
           <div className="grid col-span-2">
-            <div className="flex gap-4 items-center  ">
+          { isHideShow && (
+             <div className="flex gap-4 items-center  ">
               <label
                 htmlFor="file-upload"
                 className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] "
@@ -616,6 +620,7 @@ const PreSeaTrainigDetails = ({
                 )}
               </div>
             </div>
+             )}
           </div>
 
           {/* <div className="grid col-span-2 ">

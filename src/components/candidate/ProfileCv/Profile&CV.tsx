@@ -8,6 +8,7 @@ import { X } from "lucide-react";
 import { FaStar } from "react-icons/fa";
 import { GetProfileDetail } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import { toast } from "react-toastify";
+import { IoIosCloseCircle } from "react-icons/io";
 
 const ProfileCV = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,39 +21,85 @@ const ProfileCV = () => {
     attitude: 0,
     acceptability: 0,
   });
-  const [profileDetail, setProfileDetail] = useState<any>()
+  const [profileDetail, setProfileDetail] = useState<any>();
   const [date, setDate] = useState("");
   const [feedback, setFeedback] = useState("");
+  const [filePreview, setFilePreview] = useState<string | null>(null);
+  const [profileImage, setProfileImage] = useState(
+    "/images/candidate/profileCv/profile.png"
+  );
+  const [fileName, setFileName] = useState("");
+  const [progress, setProgress] = useState(0);
+  const [uploading, setUploading] = useState(false);
+  const [showEditImagePopup, setShowEditImagePopup] = useState(false);
 
   useEffect(() => {
-    fetchDetails()
-  }, [])
+    fetchDetails();
+  }, []);
 
   const fetchDetails = async () => {
-    let id = await localStorage.getItem('id')
-    setProfileDetail({ name: localStorage.getItem('firstName') + ' ' + localStorage.getItem('lastName'), email: localStorage.getItem('email') })
+    let id = await localStorage.getItem("id");
+    setProfileDetail({
+      name:
+        localStorage.getItem("firstName") +
+        " " +
+        localStorage.getItem("lastName"),
+      email: localStorage.getItem("email"),
+    });
     GetProfileDetail(id, (res: any) => {
       if (res?.status == 200) {
-        setProfileDetail(res?.data)
+        setProfileDetail(res?.data);
       } else {
-        toast.error('No data found')
+        toast.error("No data found");
       }
-      console.log('data here iam', res)
-
-    })
-  }
-
-
-  const handleRating = (key: string, value: number) => {
-    setRatings({ ...ratings, [key]: value });
+      console.log("data here iam", res);
+    });
   };
 
-  const handleClosePopup = () => {
-    setIsPopupOpen(false);
-  };
+  // const handleRating = (key: string, value: number) => {
+  //   setRatings({ ...ratings, [key]: value });
+  // };
 
-  const handleAddClick = () => {
-    setIsPopupOpen(true);
+  // const handleClosePopup = () => {
+  //   setIsPopupOpen(false);
+  // };
+
+  // const handleAddClick = () => {
+  //   setIsPopupOpen(true);
+  // };
+  const simulateUpload = () => {
+    setProgress(0);
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(interval);
+          setUploading(false); // Hide upload progress after completion
+          return 100;
+        }
+        return prev + 10;
+      });
+    }, 200);
+  };
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      setFileName(file.name); 
+
+     
+      const fileTypes = ["image/jpeg", "image/jpg", "image/png", "image/gif"];
+      if (fileTypes.includes(file.type)) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setFilePreview(reader.result as string); 
+        };
+        reader.readAsDataURL(file);
+      } else {
+        setFilePreview(null);
+      }
+
+      setUploading(true);
+      simulateUpload();
+    }
   };
 
   // const handleInputChange = (
@@ -64,14 +111,28 @@ const ProfileCV = () => {
   //   });
   // };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission logic here (e.g., update state or send to backend)
-    console.log("Form Submitted:");
-    setIsPopupOpen(false); // Close the popup after submission
+ 
+
+
+  const openEditImagePopup = () => {
+    setShowEditImagePopup(true);
   };
+  const closeEditImagePopup = () => {
+    setShowEditImagePopup(false);
+    setFilePreview(null);
+    setFileName("");
+    setProgress(0);
+  };
+  const triggerFileUpload = () => {
+    document.getElementById("file-input")?.click();
+  };
+  const handleSubmitImageChange = () => {
+    if (progress === 100 && filePreview) {
+      setProfileImage(filePreview);
 
-
+      closeEditImagePopup();
+    }
+  };
 
   const handletoggle = () => {
     setIsOpen(!isOpen);
@@ -81,7 +142,7 @@ const ProfileCV = () => {
     <div className="   mt-3  px-9">
       <div className="flex  justify-between border-2 py-2 px-4">
         <div className="flex gap-2">
-          <div className="w-[115.32px] h-[128.85px] border p-2">
+          {/* <div className="w-[115.32px] h-[128.85px] border p-2">
             <Image
               priority
               src="/images/candidate/profileCv/profile.png"
@@ -90,14 +151,39 @@ const ProfileCV = () => {
               height={100}
               className="w-full h-full"
             />
+          </div> */}
+
+          <div className="relative w-[115.32px] h-[128.85px] border p-2">
+            <Image
+              priority
+              width={200}
+              height={200}
+              src={profileImage} 
+              className="w-full h-full"
+              alt={"Profile Image"}
+            />
+            {/* Edit profile image */}
+            <div
+              className="absolute ml-[6rem] top-0 right-0 cursor-pointer"
+              onClick={openEditImagePopup}
+            >
+              <Image
+                priority
+                width={20}
+                height={20}
+                src={"/edit.png"}
+                className="w-6 h-6"
+                alt={"Edit Image"}
+              />
+            </div>
           </div>
           <div className="flex flex-col gap-[6px]">
             <h1 className="font-semibold text-[24px] leading-[36px]">
-              {profileDetail?.firstName + ' ' + profileDetail?.lastName}
+              {profileDetail?.firstName + " " + profileDetail?.lastName}
             </h1>
             <p className="text-[#00A264] font-medium text-[16px] leading-[24px]">
               {/* {profileDetail?.rank} */}
-              {profileDetail?.rank || 'Rank not available'}
+              {profileDetail?.rank || "Rank not available"}
             </p>
             <div className="flex items-center gap-2">
               <Image
@@ -280,8 +366,6 @@ const ProfileCV = () => {
         </div> */}
       </div>
 
-
-
       {/* Popup Form */}
       {/* {isPopupOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50">
@@ -375,6 +459,76 @@ const ProfileCV = () => {
           </div>
         </div>
       )} */}
+
+      {showEditImagePopup && (
+        <div className="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-70">
+          <div className="bg-white rounded-lg p-6 shadow-lg w-[35rem] flex flex-col justify-center items-center">
+            <div className="ml-[32rem] -mt-4 ">
+              <button className="text-[#00A264]" onClick={closeEditImagePopup}>
+                <IoIosCloseCircle className="w-8 h-8" />
+              </button>
+            </div>
+            <h3 className="text-xl font-semibold mb-4 text-center">
+              Update Logo
+            </h3>
+
+            <div
+              className="border-[#00A264] w-44 h-44 bg-[#E9FFF7] shadow-lg rounded-full flex flex-col justify-center items-center border-2 cursor-pointer overflow-hidden"
+              onClick={triggerFileUpload}
+            >
+              {filePreview ? (
+                <Image
+                  priority
+                  width={176} 
+                  height={176}
+                  src={filePreview}
+                  alt="Selected Preview"
+                  className="object-fit w-full h-full rounded-full"
+                />
+              ) : (
+                <div className="flex justify-center items-center relative">
+                  <Image
+                    priority
+                    width={60}
+                    height={60}
+                    src={"/upload.png"}
+                    alt="Upload Icon"
+                    className="h-8 w-10 z-30"
+                  />
+                </div>
+              )}
+              <input
+                type="file"
+                className="hidden"
+                id="file-input"
+                onChange={handleFileUpload}
+              />
+            </div>
+
+            {uploading && (
+              <div className="mt-4 w-full">
+                <div className="w-full bg-gray-200 rounded-full h-2.5">
+                  <div
+                    className="bg-[#00A264] h-2.5 rounded-full"
+                    style={{ width: `${progress}%` }}
+                  ></div>
+                </div>
+                <p className="text-sm mt-1 text-gray-600">{progress}%</p>
+              </div>
+            )}
+
+            <button
+              className={`mt-6 w-full px-4 py-2 rounded-lg ${
+                progress === 100 ? "bg-[#00A264]" : "bg-gray-400"
+              } text-white font-semibold`}
+              onClick={handleSubmitImageChange}
+              disabled={progress !== 100}
+            >
+              Save
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

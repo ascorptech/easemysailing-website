@@ -26,16 +26,16 @@ type Props = {
   travelComplete: TravelDocumentsComplete;
   setTravelComplete: React.Dispatch<
     React.SetStateAction<TravelDocumentsComplete>
-  >; 
+  >;
   userDetail: any;
-  travelDocumentsDetails:any;
+  travelDocumentsDetails: any;
 };
 
 const TravelDocuments = ({
   travelComplete,
   setTravelComplete,
   userDetail,
-  travelDocumentsDetails
+  travelDocumentsDetails,
 }: Props) => {
   const [visaForms, setVisaForms] = useState<TravelDocumentsVisaForms[]>([
     {
@@ -74,7 +74,8 @@ const TravelDocuments = ({
   const [countryDrop, setCountryDrop] = useState<any>([]);
   const [indNumber, setIndNumber] = useState("");
   const [disabled, setDisabled] = useState(true);
-  const [color, setColor]=useState('')
+  const [color, setColor] = useState("");
+  const [isHideShow, setIsHideShow] = useState(false);
 
   useEffect(() => {
     GetDropdownDetails("country", (res: any) => {
@@ -82,8 +83,6 @@ const TravelDocuments = ({
       setCountryDrop(res?.data?.values);
     });
   }, []);
-
-  
 
   const totalFields = 21 + visaForms.length * 5;
   const filledFields = [
@@ -114,7 +113,6 @@ const TravelDocuments = ({
 
   const percentage = (filledFields / totalFields) * 100;
 
-  
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
@@ -196,34 +194,34 @@ const TravelDocuments = ({
     }
   };
 
-  useEffect (() => {
-    console.log('travelDoc',  travelDocumentsDetails )
-    if(travelDocumentsDetails){
-      setNumber(travelDocumentsDetails?.passportNumber )
-      setIssueDate(travelDocumentsDetails?.passportIssueDate )
-      setExDate(travelDocumentsDetails?.passportExpiryDate )
+  useEffect(() => {
+    console.log("travelDoc", travelDocumentsDetails);
+    if (travelDocumentsDetails) {
+      setNumber(travelDocumentsDetails?.passportNumber);
+      setIssueDate(travelDocumentsDetails?.passportIssueDate);
+      setExDate(travelDocumentsDetails?.passportExpiryDate);
 
-      setIssuingCountry(travelDocumentsDetails?.residencePermitIssuingCountry )
+      setIssuingCountry(travelDocumentsDetails?.residencePermitIssuingCountry);
 
-      setIssueDate2(travelDocumentsDetails?.residencePermitIssueDate )
+      setIssueDate2(travelDocumentsDetails?.residencePermitIssueDate);
 
-      setExpDate2(travelDocumentsDetails?.passportIssueDate )
+      setExpDate2(travelDocumentsDetails?.passportIssueDate);
 
-      setSelectedFile(travelDocumentsDetails?.passportIssueDate )
+      setSelectedFile(travelDocumentsDetails?.passportIssueDate);
 
-      setSelectedFiles(travelDocumentsDetails?.passportIssueDate )
-      setSelectedFileResidence(travelDocumentsDetails?.passportIssueDate )
+      setSelectedFiles(travelDocumentsDetails?.passportIssueDate);
+      setSelectedFileResidence(travelDocumentsDetails?.passportIssueDate);
 
-      setTrainingCenter(travelDocumentsDetails?.passportIssueDate )
-      setIssueDate1(travelDocumentsDetails?.passportIssueDate )
-      setExDate1(travelDocumentsDetails?.passportIssueDate )
-      setPermitNumber(travelDocumentsDetails?.passportIssueDate )
-      setIssuingAuthority(travelDocumentsDetails?.passportIssueDate )
-      setBiometric(travelDocumentsDetails?.passportIssueDate )
-      setFlagState(travelDocumentsDetails?.passportIssueDate )
-      setIndNumber(travelDocumentsDetails?.passportIssueDate )
+      setTrainingCenter(travelDocumentsDetails?.passportIssueDate);
+      setIssueDate1(travelDocumentsDetails?.passportIssueDate);
+      setExDate1(travelDocumentsDetails?.passportIssueDate);
+      setPermitNumber(travelDocumentsDetails?.passportIssueDate);
+      setIssuingAuthority(travelDocumentsDetails?.passportIssueDate);
+      setBiometric(travelDocumentsDetails?.passportIssueDate);
+      setFlagState(travelDocumentsDetails?.passportIssueDate);
+      setIndNumber(travelDocumentsDetails?.passportIssueDate);
     }
-  },[])
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     // try {
@@ -277,6 +275,8 @@ const TravelDocuments = ({
 
   const handleEdit = () => {
     setDisabled(!disabled);
+    setIsHideShow(!isHideShow);
+
     // toast.info("You are now in edit mode. Make your changes.");
   };
 
@@ -403,36 +403,38 @@ const TravelDocuments = ({
           </div>
 
           <div className="grid col-span-2 my-4">
-            <div className="flex gap-4 items-center  ">
-              <div>
-                <label
-                  htmlFor="file-uploadpassport1"
-                  className="cursor-pointer bg-[#00A264] text-[14px] leading-[19.07px]   text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 "
-                >
-                  Attachment Document
-                </label>
-                <input
-                  id="file-uploadpassport1"
-                  type="file"
-                  className="hidden"
-                  onChange={handleFileChange}
-                  disabled={disabled}
-                  required
-                />
-              </div>
+            {isHideShow && (
+              <div className="flex gap-4 items-center  ">
+                <div>
+                  <label
+                    htmlFor="file-uploadpassport1"
+                    className="cursor-pointer bg-[#00A264] text-[14px] leading-[19.07px]   text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 "
+                  >
+                    Attachment Document
+                  </label>
+                  <input
+                    id="file-uploadpassport1"
+                    type="file"
+                    className="hidden"
+                    onChange={handleFileChange}
+                    disabled={disabled}
+                    required
+                  />
+                </div>
 
-              <div>
-                {selectedFile ? (
-                  <p className="mt-4 text-[14px] leading-[19.07px]  text-[#333333]">
-                    File Selected: {selectedFile.name}
-                  </p>
-                ) : (
-                  <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                    No File Selected
-                  </p>
-                )}
+                <div>
+                  {selectedFile ? (
+                    <p className="mt-4 text-[14px] leading-[19.07px]  text-[#333333]">
+                      File Selected: {selectedFile.name}
+                    </p>
+                  ) : (
+                    <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                      No File Selected
+                    </p>
+                  )}
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
           {/* second section */}
@@ -550,53 +552,57 @@ const TravelDocuments = ({
           </div>
 
           <div className="grid col-span-2 my-4">
-            <div className="flex gap-4 items-center  ">
-              <div>
-                <label
-                  htmlFor="file-uploadpassport"
-                  className="cursor-pointer bg-[#00A264] text-[14px] leading-[19.07px]  text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2  "
-                >
-                  Attachment Document
-                </label>
-                <input
-                  id="file-uploadpassport"
-                  type="file"
-                  className="hidden"
-                  onChange={handleFileChanges}
-                  disabled={disabled}
-                  required
-                />
+            {isHideShow && (
+              <div className="flex gap-4 items-center  ">
+                <div>
+                  <label
+                    htmlFor="file-uploadpassport"
+                    className="cursor-pointer bg-[#00A264] text-[14px] leading-[19.07px]  text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2  "
+                  >
+                    Attachment Document
+                  </label>
+                  <input
+                    id="file-uploadpassport"
+                    type="file"
+                    className="hidden"
+                    onChange={handleFileChanges}
+                    disabled={disabled}
+                    required
+                  />
+                </div>
+                <div>
+                  {selectedFiles ? (
+                    <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                      File Selected: {selectedFiles.name}
+                    </p>
+                  ) : (
+                    <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                      No File Selected
+                    </p>
+                  )}
+                </div>
               </div>
-              <div>
-                {selectedFiles ? (
-                  <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                    File Selected: {selectedFiles.name}
-                  </p>
-                ) : (
-                  <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                    No File Selected
-                  </p>
-                )}
-              </div>
-            </div>
+            )}
           </div>
         </div>
 
         {/* <div className=" grid col-span-2  my-2"> */}
         <div className="flex items-center justify-between">
           <h1 className="font-bold ">VISA</h1>
-          <div className="flex gap-2">
-            <AiOutlinePlus
-              className="text-2xl cursor-pointer"
-              onClick={addFieldVisa}
-            />
-            {visaForms.length > 1 && (
-              <AiOutlineMinus
+          {isHideShow && (
+            <div className="flex gap-2">
+              <AiOutlinePlus
                 className="text-2xl cursor-pointer"
-                onClick={() => removeFieldVisa(visaForms.length - 1)}
+                onClick={addFieldVisa}
               />
-            )}
-          </div>
+              {visaForms.length > 1 && (
+                <AiOutlineMinus
+                  className="text-2xl cursor-pointer"
+                  onClick={() => removeFieldVisa(visaForms.length - 1)}
+                />
+              )}
+            </div>
+          )}
         </div>
 
         {visaForms.map((field, index) => (
@@ -692,34 +698,36 @@ const TravelDocuments = ({
             </div>
 
             <div className="grid col-span-2 my-4">
-              <div className="flex gap-4 items-center  ">
-                <div>
-                  <label
-                    htmlFor={`file-uploadVisa_${index}`}
-                    className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] text-[14px] leading-[19.07px]   focus:outline-none focus:ring-2 "
-                  >
-                    Attachment Document
-                  </label>
-                  <input
-                    id={`file-uploadVisa_${index}`}
-                    type="file"
-                    className="hidden"
-                    onChange={(e) => handleFileChangeVisa(index, e)}
-                    disabled={disabled}
-                  />
+              {isHideShow && (
+                <div className="flex gap-4 items-center  ">
+                  <div>
+                    <label
+                      htmlFor={`file-uploadVisa_${index}`}
+                      className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] text-[14px] leading-[19.07px]   focus:outline-none focus:ring-2 "
+                    >
+                      Attachment Document
+                    </label>
+                    <input
+                      id={`file-uploadVisa_${index}`}
+                      type="file"
+                      className="hidden"
+                      onChange={(e) => handleFileChangeVisa(index, e)}
+                      disabled={disabled}
+                    />
+                  </div>
+                  <div>
+                    {field.selectedFileVisa ? (
+                      <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                        File Selected: {field.selectedFileVisa.name}
+                      </p>
+                    ) : (
+                      <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                        No File Selected
+                      </p>
+                    )}
+                  </div>
                 </div>
-                <div>
-                  {field.selectedFileVisa ? (
-                    <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                      File Selected: {field.selectedFileVisa.name}
-                    </p>
-                  ) : (
-                    <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                      No File Selected
-                    </p>
-                  )}
-                </div>
-              </div>
+              )}
             </div>
           </div>
         ))}
@@ -814,34 +822,36 @@ const TravelDocuments = ({
           {/* </div> */}
 
           <div className="col-span-2 ">
-            <div className="flex gap-6 items-center   my-6 ">
-              <div>
-                <label
-                  htmlFor="file-uploadpermit"
-                  className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] text-[14px] leading-[19.07px]   focus:outline-none focus:ring-2  "
-                >
-                  Attachment Docoment
-                </label>
-                <input
-                  id="file-uploadpermit"
-                  type="file"
-                  className="hidden"
-                  onChange={handleFileChangeResidence}
-                  disabled={disabled}
-                />
+            {isHideShow && (
+              <div className="flex gap-6 items-center   my-6 ">
+                <div>
+                  <label
+                    htmlFor="file-uploadpermit"
+                    className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] text-[14px] leading-[19.07px]   focus:outline-none focus:ring-2  "
+                  >
+                    Attachment Docoment
+                  </label>
+                  <input
+                    id="file-uploadpermit"
+                    type="file"
+                    className="hidden"
+                    onChange={handleFileChangeResidence}
+                    disabled={disabled}
+                  />
+                </div>
+                <div>
+                  {selectedFileResidence ? (
+                    <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                      File Selected: {selectedFileResidence.name}
+                    </p>
+                  ) : (
+                    <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                      No File Selected
+                    </p>
+                  )}
+                </div>
               </div>
-              <div>
-                {selectedFileResidence ? (
-                  <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                    File Selected: {selectedFileResidence.name}
-                  </p>
-                ) : (
-                  <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                    No File Selected
-                  </p>
-                )}
-              </div>
-            </div>
+            )}
           </div>
 
           <div className="w-full grid col-span-2 ">

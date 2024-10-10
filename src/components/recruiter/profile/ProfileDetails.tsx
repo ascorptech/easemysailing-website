@@ -34,22 +34,22 @@ const ProfileDetails = () => {
   };
 
   const closePopup = () => {
-    setShowPopup(false); // Close the popup
-    setFilePreview(null); // Reset file preview on popup close
-    setFileName(""); // Reset file name on popup close
-    setProgress(0); // Reset progress
+    setShowPopup(false); 
+    setFilePreview(null); 
+    setFileName(""); 
+    setProgress(0); 
   };
 
   // For the edit image popup
   const openEditImagePopup = () => {
-    setShowEditImagePopup(true); // Open the image edit popup
+    setShowEditImagePopup(true); 
   };
 
   const closeEditImagePopup = () => {
-    setShowEditImagePopup(false); // Close the popup
-    setFilePreview(null); // Reset file preview on popup close
-    setFileName(""); // Reset file name on popup close
-    setProgress(0); // Reset progress
+    setShowEditImagePopup(false); 
+    setFilePreview(null); 
+    setFileName(""); 
+    setProgress(0); 
   };
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -95,17 +95,17 @@ const ProfileDetails = () => {
 
   const handleSubmitImageChange = () => {
     if (progress === 100 && filePreview) {
-      // Update the profile image with the uploaded image
+     
       setProfileImage(filePreview);
 
-      // Close the edit image popup after saving
+      
       closeEditImagePopup();
     }
   };
 
   const handleSubmit = () => {
     if (progress === 100 && fileName) {
-      // Perform actions such as sending the file to the server, etc.
+     
       console.log("File submitted:", fileName);
 
       // For example, show a success message or reset the state:
@@ -129,7 +129,7 @@ const ProfileDetails = () => {
           {/* Edit profile image */}
           <div
             className="absolute ml-[6rem] top-0 right-0 cursor-pointer"
-            onClick={openEditImagePopup} // Open the edit image popup when clicked
+            onClick={openEditImagePopup} 
           >
             <Image
               priority

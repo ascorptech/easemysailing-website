@@ -99,6 +99,7 @@ const MedicalCertificates = ({
   const [countryDrop, setCountryDrop] = useState<any>([]);
 
   const [disabled, setDisabled] = useState(true);
+  const [isHideShow, setIsHideShow] = useState(false);
 
   useEffect(() => {
     GetDropdownDetails("MEDICALFITNESSTYPE", (res: any) => {
@@ -330,6 +331,7 @@ const MedicalCertificates = ({
 
   const handleEdit = () => {
     setDisabled(!disabled);
+    setIsHideShow(!isHideShow);
     // toast.info("You are now in edit mode. Make your changes.");
   };
 
@@ -507,37 +509,39 @@ const MedicalCertificates = ({
             </label>
             {/* </div> */}
           </div>
-          <div className="grid col-span-2  items-center">
-            <div className="flex gap-6 items-center  my-6">
-              <div>
-                <label
-                  htmlFor="medicalfile-upload3"
-                  className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px]   "
-                >
-                  Attachment Document
-                </label>
+          {isHideShow && (
+            <div className="grid col-span-2  items-center">
+              <div className="flex gap-6 items-center  my-6">
+                <div>
+                  <label
+                    htmlFor="medicalfile-upload3"
+                    className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px]   "
+                  >
+                    Attachment Document
+                  </label>
 
-                <input
-                  id="medicalfile-upload3"
-                  type="file"
-                  className="hidden"
-                  onChange={handleFileChange}
-                  disabled={disabled}
-                />
-              </div>
-              <div>
-                {selectedFile ? (
-                  <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                    File Selected: {selectedFile.name}
-                  </p>
-                ) : (
-                  <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                    No File Selected
-                  </p>
-                )}
+                  <input
+                    id="medicalfile-upload3"
+                    type="file"
+                    className="hidden"
+                    onChange={handleFileChange}
+                    disabled={disabled}
+                  />
+                </div>
+                <div>
+                  {selectedFile ? (
+                    <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                      File Selected: {selectedFile.name}
+                    </p>
+                  ) : (
+                    <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                      No File Selected
+                    </p>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
+          )}
 
           <div className="grid col-span-2 ">
             <h1 className=" font-bold">Drug & Alcohol Test </h1>
@@ -706,36 +710,38 @@ const MedicalCertificates = ({
             </label>
           </div>
 
-          <div className=" text-center grid col-span-2 mt-3">
-            <div className="flex items-center  gap-4">
-              <div>
-                <label
-                  htmlFor="file-uploadmedical"
-                  className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2  text-[14px] leading-[19.07px]   "
-                >
-                  Attachment Docoment
-                </label>
-                <input
-                  id="file-uploadmedical"
-                  type="file"
-                  className="hidden"
-                  onChange={handleFileChanges}
-                  disabled={disabled}
-                />
-              </div>
-              <div>
-                {selectedFiles ? (
-                  <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                    File Selected: {selectedFiles.name}
-                  </p>
-                ) : (
-                  <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                    No File Selected
-                  </p>
-                )}
+          {isHideShow && (
+            <div className=" text-center grid col-span-2 mt-3">
+              <div className="flex items-center  gap-4">
+                <div>
+                  <label
+                    htmlFor="file-uploadmedical"
+                    className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2  text-[14px] leading-[19.07px]   "
+                  >
+                    Attachment Docoment
+                  </label>
+                  <input
+                    id="file-uploadmedical"
+                    type="file"
+                    className="hidden"
+                    onChange={handleFileChanges}
+                    disabled={disabled}
+                  />
+                </div>
+                <div>
+                  {selectedFiles ? (
+                    <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                      File Selected: {selectedFiles.name}
+                    </p>
+                  ) : (
+                    <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                      No File Selected
+                    </p>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
+          )}
 
           <div className="grid col-span-2 ">
             <h1 className="font-bold ">COVID-19 Vaccine</h1>
@@ -901,34 +907,36 @@ const MedicalCertificates = ({
           </div> */}
 
           <div className="grid col-span-2">
-            <div className="flex gap-6 items-center  mt-4  ">
-              <div>
-                <label
-                  htmlFor="file-uploadmedicalvaccine"
-                  className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2  text-[14px] leading-[19.07px]  "
-                >
-                  Attachment Docoment
-                </label>
-                <input
-                  id="file-uploadmedicalvaccine"
-                  type="file"
-                  className="hidden"
-                  onChange={handleFileChangesCovid}
-                  disabled={disabled}
-                />
+            {isHideShow && (
+              <div className="flex gap-6 items-center  mt-4  ">
+                <div>
+                  <label
+                    htmlFor="file-uploadmedicalvaccine"
+                    className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2  text-[14px] leading-[19.07px]  "
+                  >
+                    Attachment Docoment
+                  </label>
+                  <input
+                    id="file-uploadmedicalvaccine"
+                    type="file"
+                    className="hidden"
+                    onChange={handleFileChangesCovid}
+                    disabled={disabled}
+                  />
+                </div>
+                <div>
+                  {selectedFilesCovid ? (
+                    <p className="text-gray-700">
+                      File Selected: {selectedFilesCovid.name}
+                    </p>
+                  ) : (
+                    <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                      No File Selected
+                    </p>
+                  )}
+                </div>
               </div>
-              <div>
-                {selectedFilesCovid ? (
-                  <p className="text-gray-700">
-                    File Selected: {selectedFilesCovid.name}
-                  </p>
-                ) : (
-                  <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                    No File Selected
-                  </p>
-                )}
-              </div>
-            </div>
+            )}
           </div>
 
           {/* other caccination section */}
@@ -936,21 +944,22 @@ const MedicalCertificates = ({
           <div className="grid col-span-2 ">
             <div className="flex justify-between items-center">
               <h1 className="font-bold ">Other Vaccination </h1>
-
-              <div className="flex gap-2">
-                <AiOutlinePlus
-                  className="text-2xl cursor-pointer"
-                  onClick={addFieldOthers}
-                />
-                {otherVaccinationForms.length > 1 && (
-                  <AiOutlineMinus
+              {isHideShow && (
+                <div className="flex gap-2">
+                  <AiOutlinePlus
                     className="text-2xl cursor-pointer"
-                    onClick={() =>
-                      removeFieldOthers(otherVaccinationForms.length - 1)
-                    }
+                    onClick={addFieldOthers}
                   />
-                )}
-              </div>
+                  {otherVaccinationForms.length > 1 && (
+                    <AiOutlineMinus
+                      className="text-2xl cursor-pointer"
+                      onClick={() =>
+                        removeFieldOthers(otherVaccinationForms.length - 1)
+                      }
+                    />
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -1046,7 +1055,6 @@ const MedicalCertificates = ({
                   )
                 }
                 disabled={disabled}
-                
               />
               <label
                 className="text-[14px] leading-[19.07px]  text-[#333333]"
@@ -1057,34 +1065,36 @@ const MedicalCertificates = ({
             </div>
 
             <div className="grid col-span-2">
-              <div className="flex gap-6 items-center  my-4  ">
-                <div>
-                  <label
-                    htmlFor={`file-uploadmedicalvaccine_${index}`}
-                    className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2  text-[14px] leading-[19.07px]  "
-                  >
-                    Attachment Docoment
-                  </label>
-                  <input
-                    id={`file-uploadmedicalvaccine_${index}`}
-                    type="file"
-                    className="hidden"
-                    onChange={(e) => handleFileChangesOthers(index, e)}
-                    disabled={disabled}
-                  />
+              {isHideShow && (
+                <div className="flex gap-6 items-center  my-4  ">
+                  <div>
+                    <label
+                      htmlFor={`file-uploadmedicalvaccine_${index}`}
+                      className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2  text-[14px] leading-[19.07px]  "
+                    >
+                      Attachment Docoment
+                    </label>
+                    <input
+                      id={`file-uploadmedicalvaccine_${index}`}
+                      type="file"
+                      className="hidden"
+                      onChange={(e) => handleFileChangesOthers(index, e)}
+                      disabled={disabled}
+                    />
+                  </div>
+                  <div>
+                    {field.selectedFilesOthers ? (
+                      <p className="text-gray-700">
+                        File Selected: {field.selectedFilesOthers.name}
+                      </p>
+                    ) : (
+                      <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                        No File Selected
+                      </p>
+                    )}
+                  </div>
                 </div>
-                <div>
-                  {field.selectedFilesOthers ? (
-                    <p className="text-gray-700">
-                      File Selected: {field.selectedFilesOthers.name}
-                    </p>
-                  ) : (
-                    <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                      No File Selected
-                    </p>
-                  )}
-                </div>
-              </div>
+              )}
             </div>
           </div>
         ))}
@@ -1307,34 +1317,36 @@ const MedicalCertificates = ({
           </div>
 
           <div className="grid col-span-2">
-            <div className="flex gap-6 items-center  mt-4  ">
-              <div>
-                <label
-                  htmlFor="file-uploadmedicalvaccineflag"
-                  className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2  text-[14px] leading-[19.07px]  "
-                >
-                  Attachment Docoment
-                </label>
-                <input
-                  id="file-uploadmedicalvaccineflag"
-                  type="file"
-                  className="hidden"
-                  onChange={handleFileChangesFlag}
-                  disabled={disabled}
-                />
+            {isHideShow && (
+              <div className="flex gap-6 items-center  mt-4  ">
+                <div>
+                  <label
+                    htmlFor="file-uploadmedicalvaccineflag"
+                    className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2  text-[14px] leading-[19.07px]  "
+                  >
+                    Attachment Docoment
+                  </label>
+                  <input
+                    id="file-uploadmedicalvaccineflag"
+                    type="file"
+                    className="hidden"
+                    onChange={handleFileChangesFlag}
+                    disabled={disabled}
+                  />
+                </div>
+                <div>
+                  {selectedFilesFlag ? (
+                    <p className="text-gray-700">
+                      File Selected: {selectedFilesFlag.name}
+                    </p>
+                  ) : (
+                    <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                      No File Selected
+                    </p>
+                  )}
+                </div>
               </div>
-              <div>
-                {selectedFilesFlag ? (
-                  <p className="text-gray-700">
-                    File Selected: {selectedFilesFlag.name}
-                  </p>
-                ) : (
-                  <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                    No File Selected
-                  </p>
-                )}
-              </div>
-            </div>
+            )}
           </div>
         </div>
 

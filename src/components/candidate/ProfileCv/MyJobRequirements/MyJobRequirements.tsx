@@ -69,16 +69,16 @@ const MyJobRequirements = ({
     console.log("user", userDetail);
     if (percentage <= 30) {
       setMjrComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#FF0000", // Update the color field
+        ...prevState, 
+        percentage: percentage, 
+        color: "#FF0000", 
       }));
       setColor("#FF0000");
     } else if (percentage <= 70) {
       setMjrComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#FF9900", // Update the color field
+        ...prevState, 
+        percentage: percentage,
+        color: "#FF9900", 
       }));
       setColor("#FF9900");
     } else {

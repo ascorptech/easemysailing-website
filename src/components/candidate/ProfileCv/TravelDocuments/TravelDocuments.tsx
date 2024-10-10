@@ -23,17 +23,19 @@ type TravelDocumentsComplete = {
   color: string;
 };
 type Props = {
-  travelComplete: TravelDocumentsComplete; // mjrComplete is an object with percentage and color
+  travelComplete: TravelDocumentsComplete;
   setTravelComplete: React.Dispatch<
     React.SetStateAction<TravelDocumentsComplete>
-  >; // setMjrComplete is a function to update mjrComplete
+  >; 
   userDetail: any;
+  travelDocumentsDetails:any;
 };
 
 const TravelDocuments = ({
   travelComplete,
   setTravelComplete,
   userDetail,
+  travelDocumentsDetails
 }: Props) => {
   const [visaForms, setVisaForms] = useState<TravelDocumentsVisaForms[]>([
     {
@@ -72,6 +74,7 @@ const TravelDocuments = ({
   const [countryDrop, setCountryDrop] = useState<any>([]);
   const [indNumber, setIndNumber] = useState("");
   const [disabled, setDisabled] = useState(true);
+  const [color, setColor]=useState('')
 
   useEffect(() => {
     GetDropdownDetails("country", (res: any) => {
@@ -79,6 +82,8 @@ const TravelDocuments = ({
       setCountryDrop(res?.data?.values);
     });
   }, []);
+
+  
 
   const totalFields = 21 + visaForms.length * 5;
   const filledFields = [
@@ -109,7 +114,7 @@ const TravelDocuments = ({
 
   const percentage = (filledFields / totalFields) * 100;
 
-  let color;
+  
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
@@ -118,21 +123,21 @@ const TravelDocuments = ({
         percentage: percentage,
         color: "#FF0000",
       }));
-      color = "red";
+      setColor("#FF0000");
     } else if (percentage <= 70) {
       setTravelComplete((prevState) => ({
         ...prevState,
         percentage: percentage,
         color: "#FF9900",
       }));
-      color = "#FF9900";
+      setColor("#FF9900");
     } else {
       setTravelComplete((prevState) => ({
         ...prevState,
         percentage: percentage,
         color: "#00A264",
       }));
-      color = "green";
+      setColor("#00A264");
     }
   }, [percentage, color]);
 
@@ -190,6 +195,35 @@ const TravelDocuments = ({
       setSelectedFileResidence(file);
     }
   };
+
+  useEffect (() => {
+    console.log('travelDoc',  travelDocumentsDetails )
+    if(travelDocumentsDetails){
+      setNumber(travelDocumentsDetails?.passportNumber )
+      setIssueDate(travelDocumentsDetails?.passportIssueDate )
+      setExDate(travelDocumentsDetails?.passportExpiryDate )
+
+      setIssuingCountry(travelDocumentsDetails?.residencePermitIssuingCountry )
+
+      setIssueDate2(travelDocumentsDetails?.residencePermitIssueDate )
+
+      setExpDate2(travelDocumentsDetails?.passportIssueDate )
+
+      setSelectedFile(travelDocumentsDetails?.passportIssueDate )
+
+      setSelectedFiles(travelDocumentsDetails?.passportIssueDate )
+      setSelectedFileResidence(travelDocumentsDetails?.passportIssueDate )
+
+      setTrainingCenter(travelDocumentsDetails?.passportIssueDate )
+      setIssueDate1(travelDocumentsDetails?.passportIssueDate )
+      setExDate1(travelDocumentsDetails?.passportIssueDate )
+      setPermitNumber(travelDocumentsDetails?.passportIssueDate )
+      setIssuingAuthority(travelDocumentsDetails?.passportIssueDate )
+      setBiometric(travelDocumentsDetails?.passportIssueDate )
+      setFlagState(travelDocumentsDetails?.passportIssueDate )
+      setIndNumber(travelDocumentsDetails?.passportIssueDate )
+    }
+  },[])
 
   const handleSubmit = (e: React.FormEvent) => {
     // try {

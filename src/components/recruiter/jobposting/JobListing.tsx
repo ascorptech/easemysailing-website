@@ -11,7 +11,7 @@ const jobData = [
     rank: "Master",
     dateOfJoining: "2024-01-01",
     jobStatusTracking: "2024-01-01",
-    status: true, // true represents Active, false represents Deactivated
+    status: true,  
   },
   {
     id: 2,
@@ -20,7 +20,7 @@ const jobData = [
     rank: "Chief Officer",
     dateOfJoining: "2024-01-01",
     jobStatusTracking: "2024-01-01",
-    status: false, // Initial status is Deactivated
+    status: false, 
   },
   {
     id: 3,
@@ -29,7 +29,7 @@ const jobData = [
     rank: "Master",
     dateOfJoining: "2024-01-01",
     jobStatusTracking: "2024-01-01",
-    status: true, // true represents Active, false represents Deactivate
+    status: true,  
   },
   {
     id: 4,
@@ -38,7 +38,7 @@ const jobData = [
     rank: "Chief Officer",
     dateOfJoining: "2024-01-01",
     jobStatusTracking: "2024-01-01",
-    status: false, // Initial status is Deactivated
+    status: false, 
   },
   {
     id: 5,
@@ -47,7 +47,7 @@ const jobData = [
     rank: "Master",
     dateOfJoining: "2024-01-01",
     jobStatusTracking: "2024-01-01",
-    status: true, // true represents Active, false represents Deactivate
+    status: true,  
   },
   {
     id: 6,
@@ -56,7 +56,7 @@ const jobData = [
     rank: "Chief Officer",
     dateOfJoining: "2024-01-01",
     jobStatusTracking: "2024-01-01",
-    status: false, // Initial status is Deactivated
+    status: false, 
   },
   {
     id: 7,
@@ -65,7 +65,7 @@ const jobData = [
     rank: "Chief Officer",
     dateOfJoining: "2024-01-01",
     jobStatusTracking: "2024-01-01",
-    status: false, // Initial status is Deactivated
+    status: false, 
   },
   {
     id: 8,
@@ -74,7 +74,7 @@ const jobData = [
     rank: "Master",
     dateOfJoining: "2024-01-01",
     jobStatusTracking: "2024-01-01",
-    status: true, // true represents Active, false represents Deactivate
+    status: true,  
   },
   {
     id: 9,
@@ -83,7 +83,7 @@ const jobData = [
     rank: "Chief Officer",
     dateOfJoining: "2024-01-01",
     jobStatusTracking: "2024-01-01",
-    status: false, // Initial status is Deactivated
+    status: false, 
   },
   {
     id: 10,
@@ -92,7 +92,7 @@ const jobData = [
     rank: "Master",
     dateOfJoining: "2024-01-01",
     jobStatusTracking: "2024-01-01",
-    status: true, // true represents Active, false represents Deactivate
+    status: true,  
   },
   {
     id: 11,
@@ -101,7 +101,7 @@ const jobData = [
     rank: "Chief Officer",
     dateOfJoining: "2024-01-01",
     jobStatusTracking: "2024-01-01",
-    status: false, // Initial status is Deactivated
+    status: false, 
   },
 ];
 
@@ -165,7 +165,7 @@ function JobModal({ isOpen, job, onClose, onSubmit, actionType }: any) {
               if (actionType === "activate") {
                 onSubmit(joiningDate);
               } else {
-                onSubmit(); // Just call submit for deactivation, no parameters needed
+                onSubmit(); 
               }
             }}
             className="bg-[#00A264] text-white px-8 py-2 rounded-lg"
@@ -206,15 +206,13 @@ export default function JobListing() {
 
   const handleClosePopup = () => {
     setPopupOpen(false);
-    setReason(""); // Reset reason on close
-    setOtherReason(""); // Reset other reason on close
+    setReason(""); 
+    setOtherReason(""); 
   };
 
   const handleSubmit = () => {
-    // Handle the submission logic here
     console.log("Reason for closure:", reason);
     console.log("Other reason:", otherReason);
-    // Close the popup after submission
     setPopupOpen(false);
   };
 
@@ -236,10 +234,8 @@ export default function JobListing() {
     setActionType(null);
   };
 
-  // Handle Job Activation
   const handleActivationSubmit = (joiningDate: string) => {
     if (selectedJob && selectedJob.id) {
-      // Update job dateOfJoining and set status to active
       setJobs((prevJobs) =>
         prevJobs.map((job) =>
           job.id === selectedJob.id
@@ -251,7 +247,6 @@ export default function JobListing() {
     closeModal();
   };
 
-  // Handle Job Deactivation Confirmation
   const handleDeactivationSubmit = () => {
     const currentDate = new Date().toISOString().split("T")[0];
     if (selectedJob && selectedJob.id) {

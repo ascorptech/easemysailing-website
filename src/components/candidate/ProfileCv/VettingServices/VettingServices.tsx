@@ -69,6 +69,8 @@ const VettingServices = ({
   const [inProgress10, setInProgress10] = useState(false);
   const [done10, setDone10] = useState(false);
   const [notApplicable10, setNotApplicable10] = useState(false);
+  const [disabled, setDisabled] = useState(true);
+
 
   // Optional fields
   const [optional, setOptional] = useState(false);
@@ -145,12 +147,16 @@ const VettingServices = ({
       toast.error("Vetting data not submited ");
     }
   };
+  const handleEdit = () => {
+    setDisabled(!disabled);
+    // toast.info("You are now in edit mode. Make your changes.");
+  };
 
   return (
     <div className="container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
         <div className="my-5">
-          <h1 className="mb-2">
+          <h1 className="mb-2 bg-[#EAEAEA] rounded-md">
             Assessment of Completeness and Validity of Certificates legally
             required by Rank
           </h1>
@@ -166,10 +172,11 @@ const VettingServices = ({
                   setDone(false);
                   setNotApplicable(false);
                 }}
+                disabled={disabled}
               />
               <label
                 htmlFor="inProgress"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 In Progress
               </label>
@@ -185,11 +192,12 @@ const VettingServices = ({
                   setDone(true);
                   setNotApplicable(false);
                 }}
+                disabled={disabled}
                 className="ml-4"
               />
               <label
                 htmlFor="done"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Done
               </label>
@@ -205,10 +213,11 @@ const VettingServices = ({
                   setDone(false);
                   setNotApplicable(true);
                 }}
+                disabled={disabled}
               />
               <label
                 htmlFor="notApplicable"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Not Applicable
               </label>
@@ -217,7 +226,7 @@ const VettingServices = ({
         </div>
 
         <div className="my-5">
-          <h1 className="mb-2">
+          <h1 className="mb-2  bg-[#EAEAEA] rounded-md">
             Verification of COC and GMDSS (if applicable)
           </h1>
           <div className="flex justify-between">
@@ -232,10 +241,11 @@ const VettingServices = ({
                   setDone1(false);
                   setNotApplicable1(false);
                 }}
+                disabled={disabled}
               />
               <label
                 htmlFor="inProgress1"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 In Progress
               </label>
@@ -251,11 +261,12 @@ const VettingServices = ({
                   setDone1(true);
                   setNotApplicable1(false);
                 }}
+                disabled={disabled}
                 className="ml-4"
               />
               <label
                 htmlFor="done1"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Done
               </label>
@@ -271,10 +282,11 @@ const VettingServices = ({
                   setDone1(false);
                   setNotApplicable1(true);
                 }}
+                disabled={disabled}
               />
               <label
                 htmlFor="notApplicable1"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Not Applicable
               </label>
@@ -283,7 +295,7 @@ const VettingServices = ({
         </div>
 
         <div className="my-5">
-          <h1 className="mb-2">
+          <h1 className="mb-2  bg-[#EAEAEA] rounded-md">
             Verification of medical certificates and/or medical centers
           </h1>
           <div className="flex justify-between">
@@ -298,10 +310,11 @@ const VettingServices = ({
                   setDone2(false);
                   setNotApplicable2(false);
                 }}
+                disabled={disabled}
               />
               <label
                 htmlFor="inProgress2"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 In Progress
               </label>
@@ -317,11 +330,12 @@ const VettingServices = ({
                   setDone2(true);
                   setNotApplicable2(false);
                 }}
+                disabled={disabled}
                 className="ml-4"
               />
               <label
                 htmlFor="done2"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Done
               </label>
@@ -337,10 +351,11 @@ const VettingServices = ({
                   setDone2(false);
                   setNotApplicable2(true);
                 }}
+                disabled={disabled}
               />
               <label
                 htmlFor="notApplicable2"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Not Applicable
               </label>
@@ -349,7 +364,7 @@ const VettingServices = ({
         </div>
 
         <div className="my-5">
-          <h1 className="mb-2">Identity check via video call</h1>
+          <h1 className="mb-2  bg-[#EAEAEA] rounded-md">Identity check via video call</h1>
           <div className="flex justify-between">
             <div>
               <input
@@ -362,10 +377,11 @@ const VettingServices = ({
                   setDone3(false);
                   setNotApplicable3(false);
                 }}
+                disabled={disabled}
               />
               <label
                 htmlFor="inProgress3"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 In Progress
               </label>
@@ -381,11 +397,12 @@ const VettingServices = ({
                   setDone3(true);
                   setNotApplicable3(false);
                 }}
+                disabled={disabled}
                 className="ml-4"
               />
               <label
                 htmlFor="done3"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Done
               </label>
@@ -401,10 +418,11 @@ const VettingServices = ({
                   setDone3(false);
                   setNotApplicable3(true);
                 }}
+                disabled={disabled}
               />
               <label
                 htmlFor="notApplicable3"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Not Applicable
               </label>
@@ -413,7 +431,7 @@ const VettingServices = ({
         </div>
 
         <div className="my-5">
-          <h1 className="mb-2">English level assessment via video call</h1>
+          <h1 className="mb-2  bg-[#EAEAEA] rounded-md">English level assessment via video call</h1>
           <div className="flex justify-between">
             <div>
               <input
@@ -426,10 +444,11 @@ const VettingServices = ({
                   setDone4(false);
                   setNotApplicable4(false);
                 }}
+                disabled={disabled}
               />
               <label
                 htmlFor="inProgress4"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 In Progress
               </label>
@@ -445,11 +464,12 @@ const VettingServices = ({
                   setDone4(true);
                   setNotApplicable4(false);
                 }}
+                disabled={disabled}
                 className="ml-4"
               />
               <label
                 htmlFor="done4"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Done
               </label>
@@ -465,10 +485,11 @@ const VettingServices = ({
                   setDone4(false);
                   setNotApplicable4(true);
                 }}
+                disabled={disabled}
               />
               <label
                 htmlFor="notApplicable4"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Not Applicable
               </label>
@@ -477,7 +498,7 @@ const VettingServices = ({
         </div>
 
         <div className="my-5">
-          <h1 className="mb-2">Plausibility check of Seagoing Experience</h1>
+          <h1 className="mb-2  bg-[#EAEAEA] rounded-md">Plausibility check of Seagoing Experience</h1>
           <div className="flex justify-between">
             <div>
               <input
@@ -490,10 +511,11 @@ const VettingServices = ({
                   setDone5(false);
                   setNotApplicable5(false);
                 }}
+                disabled={disabled}
               />
               <label
                 htmlFor="inProgress5"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 In Progress
               </label>
@@ -509,11 +531,12 @@ const VettingServices = ({
                   setDone5(true);
                   setNotApplicable5(false);
                 }}
+                disabled={disabled}
                 className="ml-4"
               />
               <label
                 htmlFor="done5"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Done
               </label>
@@ -529,10 +552,11 @@ const VettingServices = ({
                   setDone5(false);
                   setNotApplicable5(true);
                 }}
+                disabled={disabled}
               />
               <label
                 htmlFor="notApplicable5"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Not Applicable
               </label>
@@ -541,7 +565,7 @@ const VettingServices = ({
         </div>
 
         <div className="my-5">
-          <h1 className="mb-2">Verification of STCW Training Certificates</h1>
+          <h1 className="mb-2  bg-[#EAEAEA] rounded-md">Verification of STCW Training Certificates</h1>
           <div className="flex justify-between">
             <div>
               <input
@@ -555,10 +579,11 @@ const VettingServices = ({
                   setNotApplicable6(false);
                   setOptional(false); // Unselect optional if inProgress is selected
                 }}
+                disabled={disabled}
               />
               <label
                 htmlFor="inProgress6"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 In Progress
               </label>
@@ -575,11 +600,12 @@ const VettingServices = ({
                   setNotApplicable6(false);
                   setOptional(false); // Unselect optional if done is selected
                 }}
+                disabled={disabled}
                 className="ml-4"
               />
               <label
                 htmlFor="done6"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Done
               </label>
@@ -588,18 +614,19 @@ const VettingServices = ({
               <input
                 type="radio"
                 id="notApplicable6"
-                name="stcwTrainingStatus" // Group name for radio buttons
+                name="stcwTrainingStatus" 
                 checked={notApplicable6}
                 onChange={() => {
                   setInProgress6(false);
                   setDone6(false);
                   setNotApplicable6(true);
-                  setOptional(false); // Unselect optional if not applicable is selected
+                  setOptional(false); 
                 }}
+                disabled={disabled}
               />
               <label
                 htmlFor="notApplicable6"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Not Applicable
               </label>
@@ -609,7 +636,7 @@ const VettingServices = ({
               <input
                 type="radio"
                 id="optional6"
-                name="stcwTrainingStatus" // Group name for radio buttons
+                name="stcwTrainingStatus"
                 checked={optional}
                 onChange={() => {
                   setInProgress6(false);
@@ -617,11 +644,12 @@ const VettingServices = ({
                   setNotApplicable6(false);
                   setOptional(true);
                 }}
+                disabled={disabled}
                 className="ml-4"
               />
               <label
                 htmlFor="optional6"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Optional
               </label>
@@ -630,7 +658,7 @@ const VettingServices = ({
         </div>
 
         <div className="my-5">
-          <h1 className="mb-2">Verification of Additional Trainings</h1>
+          <h1 className="mb-2  bg-[#EAEAEA] rounded-md">Verification of Additional Trainings</h1>
           <div className="flex justify-between">
             <div>
               <input
@@ -644,10 +672,11 @@ const VettingServices = ({
                   setNotApplicable7(false);
                   setOptional1(false);
                 }}
+                disabled={disabled}
               />
               <label
                 htmlFor="inProgress7"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 In Progress
               </label>
@@ -664,11 +693,12 @@ const VettingServices = ({
                   setNotApplicable7(false);
                   setOptional1(false);
                 }}
+                disabled={disabled}
                 className="ml-4"
               />
               <label
                 htmlFor="done7"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Done
               </label>
@@ -685,10 +715,11 @@ const VettingServices = ({
                   setNotApplicable7(true);
                   setOptional1(false);
                 }}
+                disabled={disabled}
               />
               <label
                 htmlFor="notApplicable7"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Not Applicable
               </label>
@@ -705,11 +736,12 @@ const VettingServices = ({
                   setNotApplicable7(false);
                   setOptional1(true);
                 }}
+                disabled={disabled}
                 className="ml-4"
               />
               <label
                 htmlFor="optional1"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Optional
               </label>
@@ -718,7 +750,7 @@ const VettingServices = ({
         </div>
 
         <div className="my-5 ">
-          <h1 className="mb-2 ">Verification of Flag State Certificates</h1>
+          <h1 className="mb-2  bg-[#EAEAEA] rounded-md ">Verification of Flag State Certificates</h1>
           <div className="flex justify-between ">
             <div>
               <input
@@ -732,10 +764,11 @@ const VettingServices = ({
                   setNotApplicable8(false);
                   setOptional2(false);
                 }}
+                disabled={disabled}
               />
               <label
                 htmlFor="inProgress8"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 In Progress
               </label>
@@ -752,11 +785,12 @@ const VettingServices = ({
                   setNotApplicable8(false);
                   setOptional2(false);
                 }}
+                disabled={disabled}
                 className="ml-4"
               />
               <label
                 htmlFor="done8"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Done
               </label>
@@ -773,10 +807,11 @@ const VettingServices = ({
                   setNotApplicable8(true);
                   setOptional2(false);
                 }}
+                disabled={disabled}
               />
               <label
                 htmlFor="notApplicable8"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Not Applicable
               </label>
@@ -794,11 +829,12 @@ const VettingServices = ({
                   setNotApplicable8(false);
                   setOptional2(true);
                 }}
+                disabled={disabled}
                 className="ml-4"
               />
               <label
                 htmlFor="optional8"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Optional
               </label>
@@ -807,7 +843,7 @@ const VettingServices = ({
         </div>
 
         <div className="my-5 ">
-          <h1 className="mb-2 ">
+          <h1 className="mb-2  bg-[#EAEAEA] rounded-md">
             Verification of ECDIS type specific trainings (if applicable)
           </h1>
           <div className="flex justify-between ">
@@ -823,10 +859,11 @@ const VettingServices = ({
                   setNotApplicable9(false);
                   setOptional3(false);
                 }}
+                disabled={disabled}
               />
               <label
                 htmlFor="inProgress9"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 In Progress
               </label>
@@ -843,11 +880,12 @@ const VettingServices = ({
                   setNotApplicable9(false);
                   setOptional3(false);
                 }}
+                disabled={disabled}
                 className="ml-4"
               />
               <label
                 htmlFor="done9"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Done
               </label>
@@ -864,10 +902,11 @@ const VettingServices = ({
                   setNotApplicable9(true);
                   setOptional3(false);
                 }}
+                disabled={disabled}
               />
               <label
                 htmlFor="notApplicable9"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Not Applicable
               </label>
@@ -885,11 +924,12 @@ const VettingServices = ({
                   setNotApplicable9(false);
                   setOptional3(true);
                 }}
+                disabled={disabled}
                 className="ml-4"
               />
               <label
                 htmlFor="optional9"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Optional
               </label>
@@ -898,7 +938,7 @@ const VettingServices = ({
         </div>
 
         <div className="my-5">
-          <h1 className="mb-2 ">
+          <h1 className="mb-2  bg-[#EAEAEA] rounded-md">
             Verification of Engine specific trainings (if applicable)
           </h1>
           <div className="flex justify-between ">
@@ -914,10 +954,11 @@ const VettingServices = ({
                   setNotApplicable10(false);
                   setOptional4(false);
                 }}
+                disabled={disabled}
               />
               <label
                 htmlFor="inProgress10"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 In Progress
               </label>
@@ -934,11 +975,12 @@ const VettingServices = ({
                   setNotApplicable10(false);
                   setOptional4(false);
                 }}
+                disabled={disabled}
                 className="ml-4"
               />
               <label
                 htmlFor="done10"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Done
               </label>
@@ -955,10 +997,11 @@ const VettingServices = ({
                   setNotApplicable10(true);
                   setOptional4(false);
                 }}
+                disabled={disabled}
               />
               <label
                 htmlFor="notApplicable10"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Not Applicable
               </label>
@@ -976,11 +1019,12 @@ const VettingServices = ({
                   setNotApplicable10(false);
                   setOptional4(true);
                 }}
+                disabled={disabled}
                 className="ml-4"
               />
               <label
                 htmlFor="optional4"
-                className="font-bold p-2 text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="font-bold p-2 text-[14px] leading-[19.07px]  text-[#333333]"
               >
                 Optional
               </label>
@@ -988,20 +1032,21 @@ const VettingServices = ({
           </div>
         </div>
 
-        <div className="flex gap-2 mb-4 mt-4">
+        {/* <div className="flex gap-2 mb-4 mt-4">
           <button
             type="submit"
-            className="border border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
+            className="border border-[#00A264] bg-[#EAEAEA] p-2 px-8 rounded-lg text-white"
           >
-            Save
+            Save  
           </button>
-          <button
-            type="submit"
+          <Link
+            href={'#'}
+            onClick={handleEdit}
             className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
           >
             Edit
-          </button>
-        </div>
+          </Link>
+        </div> */}
       </form>
     </div>
   );

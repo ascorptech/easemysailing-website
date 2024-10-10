@@ -1,11 +1,15 @@
 "use client";
-import { AddContactData, AddProfileData, GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import {
+  AddContactData,
+  AddProfileData,
+  GetDropdownDetails,
+} from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import { countryCodeDrop } from "@/constants/constants";
 import Link from "next/link";
 import React, { useEffect } from "react";
 
 import { useState } from "react";
 import { toast } from "react-toastify";
-
 
 type ContactComplete = {
   percentage: number;
@@ -14,11 +18,16 @@ type ContactComplete = {
 type Props = {
   contactComplete: ContactComplete; // mjrComplete is an object with percentage and color
   setContactComplete: React.Dispatch<React.SetStateAction<ContactComplete>>; // setMjrComplete is a function to update mjrComplete
-  userDetail: any
-}
+  userDetail: any;
+  contactDetail:any;
+};
 
-
-const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Props) => {
+const ContactDetails = ({
+  contactComplete,
+  setContactComplete,
+  userDetail,
+  contactDetail
+}: Props) => {
   const [address, setAddress] = useState("");
   const [number, setNumber] = useState("");
   const [addInfo, setAddInfo] = useState("");
@@ -34,29 +43,39 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
   const [country1, setCountry1] = useState("");
   const [nearestAirport, setNearestAirport] = useState("");
   const [countryDrop, setCountryDrop] = useState<any>([]);
-  const [countryCodeDrop, setCountryCodeDrop] = useState<any>([]);
+  // const [countryCodeDrop, setCountryCodeDrop] = useState<any>([]);
 
-  const [disabled,setDisabled] = useState(true)
-
+  const [disabled, setDisabled] = useState(true);
 
   useEffect(() => {
-    console.log('userDetail',userDetail)
-    if (userDetail) {
-      setEmail(userDetail?.email)
+    console.log("userDetail", userDetail);
+    if (contactDetail) {
+      setAddress(contactDetail?.street);
+      setNumber(contactDetail?.number);
+      setAddInfo(contactDetail?.additionalInfo);
+      setPostalCode(contactDetail?.postalCode);
+      setEmail(contactDetail?.emailAddress);
+      setCountry1(contactDetail?.country)
+      setCityName(contactDetail?.city)
+      setState(contactDetail?.state)
+      setRCountrycode(contactDetail?.mobileCountryCode)
+      setPhoneNumber(contactDetail?.mobilePhoneNumber)
+      setMCountrycode(contactDetail?.directLineCountryCode)
+      setPhoneNumber1(contactDetail?.directLinePhoneNumber)
+      setNearestAirport(contactDetail?.nearestAirport)
     }
-  }, [])
-
+  }, []);
 
   useEffect(() => {
-    GetDropdownDetails('country', (res: any) => {
+    GetDropdownDetails("country", (res: any) => {
       // console.log('County',res?.data)
-      setCountryDrop(res?.data?.values)
-    })
-    GetDropdownDetails('countryCode', (res: any) => {
-      // console.log('County',res?.data)
-      setCountryCodeDrop(res?.data?.values)
-    })
-  }, [])
+      setCountryDrop(res?.data?.values);
+    });
+    // GetDropdownDetails("countryCode", (res: any) => {
+    //   // console.log('County',res?.data)
+    //   setCountryCodeDrop(res?.data?.values);
+    // });
+  }, []);
 
   const totalFields = 11;
   const filledFields = [
@@ -70,7 +89,7 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
     cityName,
     phoneNumber1,
     nearestAirport,
-    country1
+    country1,
   ].filter(Boolean).length;
 
   // const totalFields = available === "Yes" ? 6 : 5;
@@ -79,79 +98,77 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
   // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
   let color;
   useEffect(() => {
-    console.log('user', userDetail)
+    console.log("user", userDetail);
     if (percentage <= 30) {
       setContactComplete((prevState) => ({
         ...prevState, // Spread the previous state to keep any other properties
         percentage: percentage, // Update the percentage field
-        color: '#FF0000' // Update the color field
+        color: "#FF0000", // Update the color field
       }));
       color = "red";
     } else if (percentage <= 70) {
       setContactComplete((prevState) => ({
         ...prevState, // Spread the previous state to keep any other properties
         percentage: percentage, // Update the percentage field
-        color: '#FF9900' // Update the color field
+        color: "#FF9900", // Update the color field
       }));
       color = "#FF9900";
     } else {
       setContactComplete((prevState) => ({
         ...prevState, // Spread the previous state to keep any other properties
         percentage: percentage, // Update the percentage field
-        color: '#00A264' // Update the color field
+        color: "#00A264", // Update the color field
       }));
       color = "green";
     }
-  }, [percentage, color])
+  }, [percentage, color]);
 
   const handlesubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     let data = {
-      "id": userDetail?.userId,
-      "street": "string",
-      "address": address,
-      "number": "string",
-      "additionalInfo": addInfo,
-      "postalCode": postalCode,
-      "zipcode": postalCode,
-      "city": cityName,
-      "state": state,
-      "country": country1,
-      "nearestAirport": nearestAirport,
-      "mobileCountryCode": mCountrycode,
-      "mobilePhoneNumber": phoneNumber,
-      "directLineCountryCode": rCountrycode,
-      "directLinePhoneNumber": phoneNumber1,
-      "emailAddress": email,
+      id: userDetail?.userId,
+      street: address,
+      number: number,
+      additionalInfo: addInfo,
+      postalCode: postalCode,
+      city: cityName,
+      state: state,
+      country: country1,
+      nearestAirport: nearestAirport,
+      mobileCountryCode: mCountrycode,
+      mobilePhoneNumber: phoneNumber,
+      directLineCountryCode: rCountrycode,
+      directLinePhoneNumber: phoneNumber1,
+      emailAddress: email,
       // "indosNumber": indNumber
-    }
+    };
 
     // console.log(data);
     AddContactData(data, AddaddressdataDB);
   };
   const AddaddressdataDB = (result: any) => {
     console.log(result);
-    if (result?.status == 200||result?.status==201) {
+    if (result?.status == 200 || result?.status == 201) {
       toast.success("Contact submited successfully");
     } else {
       toast.error("Contact not submited ");
     }
   };
   const handleEdit = () => {
-    setDisabled(!disabled)
-  }
+    setDisabled(!disabled);
+  };
 
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <h2 className="font-bold">Home Address</h2>
       <form onSubmit={handlesubmit}>
         <div className="">
-          <div className=" flex flex-col  px-4 text-[14px] leading-[19.07px] font-[poppins] text-[#333333] gap-4">
+          <div className=" flex flex-col  px-4 text-[14px] leading-[19.07px]  text-[#333333] gap-4">
             <div className="flex items-center justify-between gap-4  ">
               {" "}
               <div className="w-[50%] ">
                 <label
-                  className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
+                  className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
                   htmlFor="street"
                 >
                   Street
@@ -162,18 +179,18 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
                   type="text"
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
-                  className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                  placeholder=""
+                  className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  placeholder="Enter Street"
                   disabled={disabled}
                 />
                 {/* </div> */}
               </div>
               <div className="w-[50%] ">
                 <label
-                  className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
+                  className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
                   htmlFor="number"
                 >
-                  Number
+                 Enter Number
                 </label>
                 <div className="relative flex items-center  ">
                   <input
@@ -181,8 +198,8 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
                     type="text"
                     value={number}
                     onChange={(e) => setNumber(e.target.value)}
-                    className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    placeholder=""
+                    className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder=" Enter Number"
                     disabled={disabled}
                   />
                 </div>
@@ -191,7 +208,7 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
 
             <div className=" ">
               <label
-                className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
+                className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
                 htmlFor="addinfo"
               >
                 Add. Info (c/o etc.)
@@ -202,57 +219,39 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
                   type="text"
                   value={addInfo}
                   onChange={(e) => setAddInfo(e.target.value)}
-                  className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                  placeholder=""
+                  className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  placeholder="Enter Add. Info (c/o etc.)"
                   disabled={disabled}
                 />
               </div>
             </div>
 
             <div className="flex items-center gap-4">
-              <div className="w-[50%]">
-                <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 ">
-                  Postal Code/ZIP Code
-                </label>
-                <div className="relative flex items-center  ">
-                  <input
-                    id="addinfo"
-                    type="number"
-                    value={postalCode}
-                    onChange={(e) => setPostalCode(e.target.value)}
-                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    placeholder=""
-                    disabled={disabled}
-                  />
-                </div>
-              </div>
-              <div className="w-[50%] ">
-                <label
-                  className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
-                  htmlFor="cityName"
+              <div className="flex flex-col w-[50%]  ">
+                <label className="text-[14px] leading-[19.07px]  text-[#333333] mb-2 ">
+                  Country
+                </label>{" "}
+                <select
+                  className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  value={country1}
+                  onChange={(e) => setCountry1(e.target.value)}
+                  disabled={disabled}
                 >
-                  City
-                </label>
-                <div className="relative flex items-center  ">
-                  <input
-                    id="cityName"
-                    type="text"
-                    value={cityName}
-                    onChange={(e) => setCityName(e.target.value)}
-                    className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    placeholder=""
-                    disabled={disabled}
-                  />
-                </div>
+                  <option value="" disabled>
+                    Select
+                  </option>
+                  {countryDrop &&
+                    countryDrop?.map((country: any, index: number) => (
+                      <option key={index} value={country}>
+                        {country?.toUpperCase()}
+                      </option>
+                    ))}
+                </select>
               </div>
-            </div>
 
-            {/* state section */}
-
-            <div className="flex items-center gap-4 w-full">
               <div className="w-[50%]">
                 <label
-                  className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 "
+                  className="text-[14px] leading-[19.07px]  text-[#333333] mb-2 "
                   htmlFor="state"
                 >
                   State/Province
@@ -263,52 +262,78 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
                     type="text"
                     value={state}
                     onChange={(e) => setState(e.target.value)}
-                    className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    placeholder=""
+                    className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder="Enter  State/Province"
                     disabled={disabled}
                   />
                 </div>
               </div>
-              <div className="flex flex-col w-[50%]  ">
-                <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 ">
-                  Country
-                </label>{" "}
-                <select
-                  className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                  value={country1}
-                  onChange={(e) => setCountry1(e.target.value)}
-                  disabled={disabled}
+            </div>
+
+            {/* state section */}
+
+            <div className="flex items-center gap-4 w-full">
+              <div className="w-[50%] ">
+                <label
+                  className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
+                  htmlFor="cityName"
                 >
-                  <option value="" disabled>
-                    country
-                  </option>
-                  {countryDrop && countryDrop?.map((country: any, index: number) => (
-                    <option key={index} value={country}>{country?.toUpperCase()}</option>
-                  ))}
-                </select>
+                  City
+                </label>
+                <div className="relative flex items-center  ">
+                  <input
+                    id="cityName"
+                    type="text"
+                    value={cityName}
+                    onChange={(e) => setCityName(e.target.value)}
+                    className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder="Enter  City"
+                    disabled={disabled}
+                  />
+                </div>
+              </div>
+
+              <div className="w-[50%]">
+                <label className="text-[14px] leading-[19.07px]  text-[#333333] mb-2 ">
+                  Postal Code/ZIP Code
+                </label>
+                <div className="relative flex items-center  ">
+                  <input
+                    id="addinfo"
+                    type="number"
+                    value={postalCode}
+                    onChange={(e) => setPostalCode(e.target.value)}
+                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder="Enter Postal Code/ZIP Code"
+                    disabled={disabled}
+                  />
+                </div>
               </div>
             </div>
 
             {/* airport  */}
 
             <div className="flex flex-col">
-              <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 " htmlFor="nearestAirport">
+              <label
+                className="text-[14px] leading-[19.07px]  text-[#333333] mb-2 "
+                htmlFor="nearestAirport"
+              >
                 Nearest Airport
               </label>
 
               <div className="relative flex items-center  ">
-                  <input
-                    id="nearestAirport"
-                    type="text"
-                    value={nearestAirport}
-                    onChange={(e) => setNearestAirport(e.target.value)}
-                    className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    placeholder=""
-                    disabled={disabled}
-                  />
-                </div>
+                <input
+                  id="nearestAirport"
+                  type="text"
+                  value={nearestAirport}
+                  onChange={(e) => setNearestAirport(e.target.value)}
+                  className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  placeholder="Enter Nearest Airport"
+                  disabled={disabled}
+                />
+              </div>
               {/* <select
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={nACountrycode}
                 onChange={(e) => setNACountrycode(e.target.value)}
               >
@@ -324,29 +349,35 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
             {/* counstry and city section start*/}
 
             <div className="grid col-span-2 ">
-              <h1 className="font-bold">MOBILE PHONE</h1>
+              <h1 className="font-bold">Mobile Phone</h1>
             </div>
 
-            <div className="flex items-center justify-between gap-4 ">
+            <div className="flex items-center justify-between gap-2 ">
               <div className="flex flex-col  ">
-                <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 ">
+                <label className="text-[14px] leading-[19.07px]  text-[#333333]  ">
                   Country Code
                 </label>
                 <select
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={mCountrycode}
                   onChange={(e) => setMCountrycode(e.target.value)}
                   disabled={disabled}
                 >
-                  {countryCodeDrop && countryCodeDrop?.map((code: any, index: number) => (
-                    <option key={index} value={code}>{code?.toUpperCase()}</option>
-                  ))}
+                  <option value="" disabled selected>
+                    Select
+                  </option>
+                  {countryCodeDrop &&
+                    countryCodeDrop?.map((code: any, index: number) => (
+                      <option key={index} value={code?.phoneCode}>
+                        {code?.flag+' '+code?.phoneCode}
+                      </option>
+                    ))}
                 </select>
               </div>
 
-              <div className="w-[75%] ">
+              <div className="w-[78%] ">
                 <label
-                  className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
+                  className="block text-[14px] leading-[19.07px]  text-[#333333] "
                   htmlFor="number"
                 >
                   Phone Number
@@ -357,36 +388,43 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
                     type="text"
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
-                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    placeholder=""
+                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder="Enter Phone Number"
                     disabled={disabled}
+                    required
                   />
                 </div>
               </div>
             </div>
             <div className="grid col-span-2">
-              <h1 className="font-bold">DIRECT LINE</h1>
+              <h1 className="font-bold">Direct Line</h1>
             </div>
-            <div className="flex items-center justify-between gap-4  ">
+            <div className="flex items-center justify-between gap-2  ">
               <div className="flex flex-col  ">
-                <label className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 ">
+                <label className="text-[14px] leading-[19.07px]  text-[#333333]  ">
                   Country Code
                 </label>
                 <select
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={rCountrycode}
                   onChange={(e) => setRCountrycode(e.target.value)}
                   disabled={disabled}
                 >
-                  {countryCodeDrop && countryCodeDrop?.map((code: any, index: number) => (
-                    <option key={index} value={code}>{code?.toUpperCase()}</option>
-                  ))}
+                  <option value="" disabled selected>
+                    Select
+                  </option>
+                  {countryCodeDrop &&
+                    countryCodeDrop?.map((code: any, index: number) => (
+                      <option key={index} value={code?.phoneCode}>
+                        {code?.flag+' '+code?.phoneCode}
+                      </option>
+                    ))}
                 </select>
               </div>
 
-              <div className="w-[75%] ">
+              <div className="w-[78%] ">
                 <label
-                  className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
+                  className="block text-[14px] leading-[19.07px]  text-[#333333] "
                   htmlFor="phonenumber2"
                 >
                   Phone Number
@@ -397,9 +435,10 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
                     type="text"
                     value={phoneNumber1}
                     onChange={(e) => setPhoneNumber1(e.target.value)}
-                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    placeholder=""
+                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder="Enter Phone Number"
                     disabled={disabled}
+                    required
                   />
                 </div>
               </div>
@@ -408,7 +447,7 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
             <div className="flex items-center justify-between gap-4  ">
               <div className="w-full ">
                 <label
-                  className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-2 "
+                  className="text-[14px] leading-[19.07px]  text-[#333333] mb-2 "
                   htmlFor="emails"
                 >
                   Email
@@ -419,16 +458,17 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    placeholder=""
+                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder="Enter Email Address"
                     disabled={disabled}
+                    required
                   />
                 </div>
               </div>
 
               {/* <div className="w-[50%] ">
                 <label
-                  className="block text-[14px] leading-[19.07px] font-[poppins] text-[#333333] mb-1"
+                  className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
                   htmlFor="inumber"
                 >
                   INDoS Number
@@ -439,7 +479,7 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
                     type="text"
                     value={indNumber}
                     onChange={(e) => setIndNumber(e.target.value)}
-                    className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder=""
                     required
                   />
@@ -455,8 +495,8 @@ const ContactDetails = ({ contactComplete, setContactComplete, userDetail }: Pro
             >
               Save
             </button>
-            <Link 
-              href={'#'}
+            <Link
+              href={"#"}
               onClick={handleEdit}
               className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
             >

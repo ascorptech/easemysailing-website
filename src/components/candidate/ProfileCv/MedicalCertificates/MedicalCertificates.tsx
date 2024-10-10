@@ -8,6 +8,14 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
+type OtherVaccination = {
+  medicalType1: any;
+  vaccination1: any;
+  vaccinationexp: any;
+  veccinationCheck: any;
+  selectedFilesOthers: File | null;
+};
+
 type MedicalComplete = {
   percentage: number;
   color: string;
@@ -24,19 +32,17 @@ const MedicalCertificates = ({
   setMedicalComplete,
   userDetail,
 }: Props) => {
-  const [extraFields, setExtraFields] = useState<
+  const [otherVaccinationForms, setOtherVaccinationForms] = useState<
+    OtherVaccination[]
+  >([
     {
-      field1: string;
-      field2: any;
-      neverExpires: any;
-      field3: any;
-      field4: any;
-      selectedFile:any;
-    }[]
-  >([]);
-  //   const [extraFields, setExtraFields] = useState<
-  //   {  neverexp:any; field4:any; field5:any }[]
-  // >([]);
+      medicalType1: "",
+      vaccination1: "",
+      vaccinationexp: "",
+      veccinationCheck: "",
+      selectedFilesOthers: null,
+    },
+  ]);
 
   const [number, setNumber] = useState("");
   const [issuedate, setIssueDate] = useState("");
@@ -56,7 +62,7 @@ const MedicalCertificates = ({
   const [issuedate1, setIssueDate1] = useState("");
   const [exdate1, setExDate1] = useState("");
   const [issuedateCovid, setIssueDateCovid] = useState("");
-  const [exdateCovid, setExDateCovid] = useState("");
+  // const [exdateCovid, setExDateCovid] = useState("");
 
   const [issuingCity, setIssuingCity] = useState("");
 
@@ -70,15 +76,15 @@ const MedicalCertificates = ({
   const [medicalType, setMedicalType] = useState("");
   const [vaccinationIssue, setVaccinationIssue] = useState("");
   const [covidOptions, setCovidOptions] = useState("");
-  const [vaccinationExpiry, setVaccinationExpiry] = useState("");
-  const [expiresMedical, setExpiresMedical] = useState<any>(false);
-  const [veccinationCheck, setVeccinationCheck] = useState<any>(false);
-  const [medicalType1, setMedicalType1] = useState("");
-  const [vaccination1, setVaccination1] = useState("");
+  // const [vaccinationExpiry, setVaccinationExpiry] = useState("");
+  // const [expiresMedical, setExpiresMedical] = useState<any>(false);
+  // const [veccinationCheck, setVeccinationCheck] = useState<any>(false);
+  // const [medicalType1, setMedicalType1] = useState("");
+  // const [vaccination1, setVaccination1] = useState("");
 
-  const [vaccinationexp, setVaccinationexp] = useState("");
+  // const [vaccinationexp, setVaccinationexp] = useState("");
 
-  const [selectedFilesOthers, setSelectedFilesOthers] = useState<any>("");
+  // const [selectedFilesOthers, setSelectedFilesOthers] = useState<any>("");
 
   const [veccinationCheckFlag, setVeccinationCheckFlag] = useState<any>(false);
   const [medicalTypeFlag, setMedicalTypeFlag] = useState("");
@@ -115,8 +121,15 @@ const MedicalCertificates = ({
     });
   }, []);
 
-  const totalFields = 31 + extraFields.length * 5;
+  const totalFields = 26 + otherVaccinationForms.length * 5;
   const filledFields = [
+    ...otherVaccinationForms.flatMap((field) => [
+      field.medicalType1,
+      field.selectedFilesOthers,
+      field.vaccination1,
+      field.vaccinationexp || field.veccinationCheck,
+      ,
+    ]),
     number,
     issuedate,
     exdate || expires1,
@@ -138,25 +151,13 @@ const MedicalCertificates = ({
     medicalType,
     vaccinationIssue,
     covidOptions,
-    vaccinationExpiry,
-    medicalType1,
-    vaccination1,
-    vaccinationexp || veccinationCheck,
-    selectedFilesOthers,
+    // vaccinationExpiry,
     medicalTypeFlag,
     vaccinationFlag,
     vaccinationexpFlag || veccinationCheckFlag,
     selectedFilesFlag,
-    exdateCovid || expiresMedical,
+    // exdateCovid || expiresMedical,
     issuedateCovid,
-    ...extraFields.flatMap((field) => [
-      field.field1,
-      field.field2,
-      field.neverExpires,
-      field.field3,
-      field.field4,
-      field.selectedFile
-    ]),
   ].filter(Boolean).length;
 
   const percentage = (filledFields / totalFields) * 100;
@@ -202,12 +203,47 @@ const MedicalCertificates = ({
     }
   };
 
-  const handleFileChangesOthers = (event: any) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      setSelectedFilesOthers(file);
-    }
+  // const handleFileChangesOthers = (event: any) => {
+  //   const file = event.target.files?.[0];
+  //   if (file) {
+  //     setSelectedFilesOthers(file);
+  //   }
+  // };
+
+  const handleFileChangesOthers = (index: number, event: any) => {
+    const updatedForms = [...otherVaccinationForms];
+    updatedForms[index].selectedFilesOthers = event.target.files?.[0] || null;
+    setOtherVaccinationForms(updatedForms);
   };
+
+  const handleFormChangeOthers = (
+    index: number,
+    field: keyof OtherVaccination,
+    value: any
+  ) => {
+    const updatedForms = [...otherVaccinationForms];
+    updatedForms[index][field] = value;
+    setOtherVaccinationForms(updatedForms);
+  };
+
+  const addFieldOthers = () => {
+    setOtherVaccinationForms([
+      ...otherVaccinationForms,
+      {
+        medicalType1: "",
+        vaccination1: "",
+        vaccinationexp: "",
+        veccinationCheck: "",
+        selectedFilesOthers: null,
+      },
+    ]);
+  };
+
+  const removeFieldOthers = (index: number) => {
+    const updatedForms = otherVaccinationForms.filter((_, i) => i !== index);
+    setOtherVaccinationForms(updatedForms);
+  };
+
   const handleFileChangesCovid = (event: any) => {
     const file = event.target.files?.[0];
     if (file) {
@@ -225,6 +261,13 @@ const MedicalCertificates = ({
     e.preventDefault();
 
     let formData = new FormData();
+    otherVaccinationForms.forEach((element: any) => {
+      formData.append("otherVaccinationType", element?.medicalType1);
+      formData.append("otherVaccinationDate", element?.vaccination1);
+      formData.append("otherVaccinationExpiryDate", element?.vaccinationexp);
+      formData.append("otherVaccinationDocument", element.selectedFilesOthers);
+    });
+
     formData.append("fitnessType", types2Options);
     formData.append("fitnessNumber", number);
     formData.append("fitnessIssuingCountry", issuingOptions);
@@ -249,22 +292,18 @@ const MedicalCertificates = ({
     formData.append("covidVaccineCountry", covidOptions);
     formData.append("covidVaccineMedicalCenter", medicalPhysician);
     formData.append("covidVaccineDate1", vaccinationIssue);
-    formData.append("covidVaccineExpiryDate1", vaccinationExpiry);
+    // formData.append("covidVaccineExpiryDate1", vaccinationExpiry);
     // missing covid19 expiry data
     // formData.append("covidVaccineNeverExpires1", expiresMedical);
     formData.append("covidVaccineDocument1", selectedFilesCovid);
 
     formData.append("covidVaccineDate2", issuedateCovid);
-    formData.append("covidVaccineExpiryDate2", exdateCovid);
+    // formData.append("covidVaccineExpiryDate2", exdateCovid);
     // formData.append("covidVaccineNeverExpires2", expires2);
 
     formData.append("covidVaccineDocument2", "");
 
-    formData.append("otherVaccinationType", medicalType1);
-    formData.append("otherVaccinationDate", vaccination1);
-    formData.append("otherVaccinationExpiryDate", vaccinationexp);
     // formData.append("otherVaccinationNeverExpires", veccinationCheck);
-    formData.append("otherVaccinationDocument", selectedFilesOthers);
 
     formData.append("flagMedicalType", medicalTypeFlag);
     formData.append("flagMedicalVaccinationDate", vaccinationFlag);
@@ -289,34 +328,10 @@ const MedicalCertificates = ({
 
   // add plus and minus symbole
 
-  const addFieldPair = () => {
-    setExtraFields([
-      ...extraFields,
-      { field1: "", field2: "", neverExpires: "", field3: "", field4: "",selectedFile:"" },
-    ]);
-  };
-
-  const removeFieldPair = () => {
-    if (extraFields.length > 0) {
-      setExtraFields(extraFields.slice(0, -1));
-    }
-  };
-
-  const handleExtraFieldChange = (
-    index: number,
-    value: any,
-    field: "field1" | "field2" | "neverExpires" | "field3" | "field4"|"selectedFile"
-  ) => {
-    const updatedFields = [...extraFields];
-    updatedFields[index] = { ...updatedFields[index], [field]: value };
-    setExtraFields(updatedFields);
-  };
-
   const handleEdit = () => {
     setDisabled(!disabled);
     // toast.info("You are now in edit mode. Make your changes.");
   };
-  
 
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
@@ -341,7 +356,7 @@ const MedicalCertificates = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Type
+                Select
               </option>
               {typeDrop &&
                 drugDrop?.map((type: any, index: number) => (
@@ -357,7 +372,7 @@ const MedicalCertificates = ({
               className="text-[14px] leading-[19.07px]  text-[#333333]"
               htmlFor="medicalnumber"
             >
-              Number
+              Enter Certificate Number
             </label>
             <input
               id="medicalnumber"
@@ -365,7 +380,7 @@ const MedicalCertificates = ({
               value={number}
               onChange={(e) => setNumber(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-              placeholder=""
+              placeholder=" Enter Certificate Number"
               disabled={disabled}
             />
           </div>
@@ -386,7 +401,7 @@ const MedicalCertificates = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Issuing Country
+                Select
               </option>
               {countryDrop &&
                 countryDrop?.map((country: any, index: number) => (
@@ -412,7 +427,7 @@ const MedicalCertificates = ({
               value={issuingCity}
               onChange={(e) => setIssuingCity(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-              placeholder=""
+              placeholder="Enter Issuring City"
               disabled={disabled}
             />
           </div>
@@ -430,7 +445,7 @@ const MedicalCertificates = ({
               value={fMedicalcenter}
               onChange={(e) => setFMedicalcenter(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-              placeholder=""
+              placeholder="Enter Medical Center"
               disabled={disabled}
             />
           </div>
@@ -450,6 +465,7 @@ const MedicalCertificates = ({
               value={issuedate}
               onChange={(e) => setIssueDate(e.target.value)}
               disabled={disabled}
+              placeholder="Enter Issue Date"
             />
           </div>
           {/* </div> */}
@@ -470,6 +486,7 @@ const MedicalCertificates = ({
                 value={exdate}
                 onChange={(e) => setExDate(e.target.value)}
                 disabled={disabled}
+                placeholder="Enter Expiry Date"
               />
             </div>
           )}
@@ -515,7 +532,7 @@ const MedicalCertificates = ({
                   </p>
                 ) : (
                   <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                    No file selected
+                    No File Selected
                   </p>
                 )}
               </div>
@@ -541,7 +558,7 @@ const MedicalCertificates = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Type
+                Select
               </option>
               {drugDrop &&
                 drugDrop?.map((drug: any, index: number) => (
@@ -557,7 +574,7 @@ const MedicalCertificates = ({
               className="text-[14px] leading-[19.07px]  text-[#333333] "
               htmlFor="medicalNumber1"
             >
-              Enter Number
+              Enter Certificate Number
             </label>
             <input
               id="medicalNumber1"
@@ -565,7 +582,7 @@ const MedicalCertificates = ({
               value={medicalNumber}
               onChange={(e) => setMedicalNumber(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              placeholder=""
+              placeholder="Enter Certificate Number"
               disabled={disabled}
             />
           </div>
@@ -586,7 +603,7 @@ const MedicalCertificates = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Issuing Country
+                Select
               </option>
               {countryDrop &&
                 countryDrop?.map((country: any, index: number) => (
@@ -611,7 +628,7 @@ const MedicalCertificates = ({
               value={medicalCenter}
               onChange={(e) => setMedicalCenter(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              placeholder=""
+              placeholder="Enter Issuring City"
               disabled={disabled}
             />
           </div>
@@ -629,7 +646,7 @@ const MedicalCertificates = ({
               value={testCenter}
               onChange={(e) => setTestCenter(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-              placeholder=""
+              placeholder="Enter  Test Center"
               disabled={disabled}
             />
           </div>
@@ -648,6 +665,7 @@ const MedicalCertificates = ({
               value={issuedate1}
               onChange={(e) => setIssueDate1(e.target.value)}
               disabled={disabled}
+              placeholder="Enter  Issue Date"
             />
           </div>
 
@@ -667,6 +685,7 @@ const MedicalCertificates = ({
                 value={exdate1}
                 onChange={(e) => setExDate1(e.target.value)}
                 disabled={disabled}
+                placeholder="Enter Expiry Date"
               />
             </div>
           )}
@@ -711,7 +730,7 @@ const MedicalCertificates = ({
                   </p>
                 ) : (
                   <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                    No file selected
+                    No File Selected
                   </p>
                 )}
               </div>
@@ -738,7 +757,7 @@ const MedicalCertificates = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Type
+                Select
               </option>
               {vaccineTypeDrop &&
                 vaccineTypeDrop?.map((typ: any, index: number) => (
@@ -765,7 +784,7 @@ const MedicalCertificates = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Covid Vaccine Name Country
+                Select
               </option>
               {countryDrop &&
                 countryDrop?.map((country: any, index: number) => (
@@ -789,7 +808,7 @@ const MedicalCertificates = ({
               value={medicalPhysician}
               onChange={(e) => setMedicalPhysician(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              placeholder=""
+              placeholder="Enter Medical Center/Physician"
               disabled={disabled}
             />
           </div>
@@ -808,6 +827,7 @@ const MedicalCertificates = ({
               value={vaccinationIssue}
               onChange={(e) => setVaccinationIssue(e.target.value)}
               disabled={disabled}
+              placeholder="Enter Vaccination Date First"
             />
           </div>
 
@@ -842,6 +862,7 @@ const MedicalCertificates = ({
               value={issuedateCovid}
               onChange={(e) => setIssueDateCovid(e.target.value)}
               disabled={disabled}
+              placeholder="Enter Vaccination Date Second"
             />
           </div>
 
@@ -903,7 +924,7 @@ const MedicalCertificates = ({
                   </p>
                 ) : (
                   <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                    No file selected
+                    No File Selected
                   </p>
                 )}
               </div>
@@ -919,144 +940,166 @@ const MedicalCertificates = ({
               <div className="flex gap-2">
                 <AiOutlinePlus
                   className="text-2xl cursor-pointer"
-                  onClick={addFieldPair}
+                  onClick={addFieldOthers}
                 />
-                {extraFields.length > 0 && (
+                {otherVaccinationForms.length > 1 && (
                   <AiOutlineMinus
                     className="text-2xl cursor-pointer"
-                    onClick={removeFieldPair}
+                    onClick={() =>
+                      removeFieldOthers(otherVaccinationForms.length - 1)
+                    }
                   />
                 )}
               </div>
             </div>
           </div>
+        </div>
 
-          <div className="">
-            <label
-              className="text-[14px] leading-[19.07px]  text-[#333333] "
-              htmlFor="medicaltypes1"
-            >
-              Type
-            </label>
-            <select
-              id="medicaltypes1"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              name="options"
-              value={medicalType1}
-              onChange={(e) => setMedicalType1(e.target.value)}
-              disabled={disabled}
-            >
-              <option value="" disabled selected>
-                Type
-              </option>
-              {otherVaccineTypeDrop &&
-                otherVaccineTypeDrop?.map((vac: any, index: number) => (
-                  <option key={index} value={vac}>
-                    {vac?.toUpperCase()}
-                  </option>
-                ))}
-            </select>
-          </div>
-
-          <div className="">
-            <label
-              className="text-[14px] leading-[19.07px]  text-[#333333]"
-              htmlFor="vaccinedate01"
-            >
-              Vaccination Date
-            </label>
-            <input
-              id="vaccinedate01"
-              type="date"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              value={vaccination1}
-              onChange={(e) => setVaccination1(e.target.value)}
-              disabled={disabled}
-            />
-          </div>
-
-          {!veccinationCheck && (
+        {otherVaccinationForms.map((field, index) => (
+          <div className="grid grid-cols-2 gap-4">
             <div className="">
               <label
                 className="text-[14px] leading-[19.07px]  text-[#333333] "
-                htmlFor="vaccinationexp"
+                htmlFor={`medicaltypes1_${index}`}
               >
-                Expiry Date
+                Type
               </label>
+              <select
+                id={`medicaltypes1_${index}`}
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                name="options"
+                value={field.medicalType1}
+                onChange={(e) =>
+                  handleFormChangeOthers(index, "medicalType1", e.target.value)
+                }
+                disabled={disabled}
+              >
+                <option value="" disabled selected>
+                  Select
+                </option>
+                {otherVaccineTypeDrop &&
+                  otherVaccineTypeDrop?.map((vac: any, index: number) => (
+                    <option key={index} value={vac}>
+                      {vac?.toUpperCase()}
+                    </option>
+                  ))}
+              </select>
+            </div>
 
+            <div className="">
+              <label
+                className="text-[14px] leading-[19.07px]  text-[#333333]"
+                htmlFor={`vaccinedate01_${index}`}
+              >
+                Vaccination Date
+              </label>
               <input
-                id="vaccinationexp"
+                id={`vaccinedate01_${index}`}
                 type="date"
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                value={vaccinationexp}
-                onChange={(e) => setVaccinationexp(e.target.value)}
+                value={field.vaccination1}
+                onChange={(e) =>
+                  handleFormChangeOthers(index, "vaccination1", e.target.value)
+                }
                 disabled={disabled}
+                placeholder="Enter  Vaccination Date"
               />
             </div>
-          )}
-          <div className=" flex items-center  gap-2 mt-5">
-            <input
-              id="veccinationCheck"
-              type="checkbox"
-              className="border focus:ring-[#00A264]  text-[#00A264] checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
-              checked={veccinationCheck}
-              onChange={() => setVeccinationCheck(!veccinationCheck)}
-              disabled={disabled}
-            />
-            <label
-              className="text-[14px] leading-[19.07px]  text-[#333333]"
-              htmlFor="veccinationCheck"
-            >
-              Never Expires
-            </label>
-          </div>
 
-      
-
-          <div className="grid col-span-2">
-            <div className="flex gap-6 items-center  my-4  ">
-              <div>
+            {!field.veccinationCheck && (
+              <div className="">
                 <label
-                  htmlFor="file-uploadmedicalvaccine"
-                  className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2  text-[14px] leading-[19.07px]  "
+                  className="text-[14px] leading-[19.07px]  text-[#333333] "
+                  htmlFor={`vaccinationexp_${index}`}
                 >
-                  Attachment Docoment
+                  Expiry Date
                 </label>
+
                 <input
-                  id="file-uploadmedicalvaccine"
-                  type="file"
-                  className="hidden"
-                  onChange={handleFileChangesOthers}
+                  id={`vaccinationexp_${index}`}
+                  type="date"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  value={field.vaccinationexp}
+                  onChange={(e) =>
+                    handleFormChangeOthers(
+                      index,
+                      "vaccinationexp",
+                      e.target.value
+                    )
+                  }
                   disabled={disabled}
+                  placeholder="Enter Expiry Date"
                 />
               </div>
-              <div>
-                {selectedFilesOthers ? (
-                  <p className="text-gray-700">
-                    File Selected: {selectedFilesOthers.name}
-                  </p>
-                ) : (
-                  <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                    No file selected
-                  </p>
-                )}
+            )}
+            <div className=" flex items-center  gap-2 mt-5">
+              <input
+                id={`veccinationCheck_${index}`}
+                type="checkbox"
+                className="border focus:ring-[#00A264]  text-[#00A264] checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
+                checked={field.veccinationCheck}
+                onChange={(e) =>
+                  handleFormChangeOthers(
+                    index,
+                    "veccinationCheck",
+                    e.target.checked
+                  )
+                }
+                disabled={disabled}
+                
+              />
+              <label
+                className="text-[14px] leading-[19.07px]  text-[#333333]"
+                htmlFor={`veccinationCheck_${index}`}
+              >
+                Never Expires
+              </label>
+            </div>
+
+            <div className="grid col-span-2">
+              <div className="flex gap-6 items-center  my-4  ">
+                <div>
+                  <label
+                    htmlFor={`file-uploadmedicalvaccine_${index}`}
+                    className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2  text-[14px] leading-[19.07px]  "
+                  >
+                    Attachment Docoment
+                  </label>
+                  <input
+                    id={`file-uploadmedicalvaccine_${index}`}
+                    type="file"
+                    className="hidden"
+                    onChange={(e) => handleFileChangesOthers(index, e)}
+                    disabled={disabled}
+                  />
+                </div>
+                <div>
+                  {field.selectedFilesOthers ? (
+                    <p className="text-gray-700">
+                      File Selected: {field.selectedFilesOthers.name}
+                    </p>
+                  ) : (
+                    <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                      No File Selected
+                    </p>
+                  )}
+                </div>
               </div>
             </div>
           </div>
+        ))}
 
-          {extraFields.map((field, index) => (
-            <React.Fragment key={index} >
-
+        {/* {extraFields.map((field, index) => (
+            <React.Fragment key={index}>
               <div className="w-full ">
                 <label
-                  className="block text-[14px] font-[poppins] text-[#333333] mb-1"
+                  className="block text-[14px]  text-[#333333] mb-1"
                   htmlFor={`extraField1_${index}`}
                 >
                   Type {index * 2 + 1}
                 </label>
                 <select
                   id={`extraField1_${index}`}
-                  
                   value={field.field1}
                   onChange={(e) =>
                     handleExtraFieldChange(index, e.target.value, "field1")
@@ -1064,13 +1107,14 @@ const MedicalCertificates = ({
                   className="border rounded-md w-full h-9 px-2 text-[14px] text-[#333333] focus:outline-[#00A264] border-[#00A264]"
                   disabled={disabled}
                 >
-                 <option value="" disabled selected>
-                Type
-              </option></select>
+                  <option value="" disabled selected>
+                    Type
+                  </option>
+                </select>
               </div>
               <div className="w-full">
                 <label
-                  className="block text-[14px] font-[poppins] text-[#333333] mb-1"
+                  className="block text-[14px]  text-[#333333] mb-1"
                   htmlFor={`extraField2_${index}`}
                 >
                   Vaccination Date {index * 2 + 2}
@@ -1083,14 +1127,14 @@ const MedicalCertificates = ({
                     handleExtraFieldChange(index, e.target.value, "field2")
                   }
                   className="border rounded-md w-full h-9 px-2 text-[14px] text-[#333333] focus:outline-[#00A264] border-[#00A264]"
-                 disabled={disabled}
+                  disabled={disabled}
                 />
               </div>
 
               {!field.neverExpires && (
                 <div className="w-full">
                   <label
-                    className="block text-[14px] font-[poppins] text-[#333333] mb-1"
+                    className="block text-[14px]  text-[#333333] mb-1"
                     htmlFor={`extraField3_${index}`}
                   >
                     Expiry Date {index * 2 + 2}
@@ -1103,7 +1147,7 @@ const MedicalCertificates = ({
                       handleExtraFieldChange(index, e.target.value, "field3")
                     }
                     className="border rounded-md w-full h-9 px-2 text-[14px] text-[#333333] focus:outline-[#00A264] border-[#00A264]"
-                     disabled={disabled}
+                    disabled={disabled}
                   />
                 </div>
               )}
@@ -1131,41 +1175,45 @@ const MedicalCertificates = ({
               </div>
 
               <div className="grid col-span-2">
-            <div className="flex gap-6 items-center  my-4  ">
-              <div>
-                <label
-                 htmlFor={`file-uploadmedicalvaccine_${index}`}
-                  className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2  text-[14px] leading-[19.07px]  "
-                >
-                  Attachment Docoment
-                </label>
-                <input
-                   id={`file-uploadmedicalvaccine_${index}`}
-                  type="file"
-                  className="hidden"
-                  onChange={(e) =>
-                    handleExtraFieldChange(index, e.target.files?.[0], "selectedFile")
-                    
-                  }
-                  disabled={disabled}
-                />
+                <div className="flex gap-6 items-center  my-4  ">
+                  <div>
+                    <label
+                      htmlFor={`file-uploadmedicalvaccine_${index}`}
+                      className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2  text-[14px] leading-[19.07px]  "
+                    >
+                      Attachment Docoment
+                    </label>
+                    <input
+                      id={`file-uploadmedicalvaccine_${index}`}
+                      type="file"
+                      className="hidden"
+                      onChange={(e) =>
+                        handleExtraFieldChange(
+                          index,
+                          e.target.files?.[0],
+                          "selectedFile"
+                        )
+                      }
+                      disabled={disabled}
+                    />
+                  </div>
+                  <div>
+                    {field.selectedFile ? (
+                      <p className="text-gray-700">
+                        File Selected: {field.selectedFile.name}
+                      </p>
+                    ) : (
+                      <p className="text-[14px] leading-[19.07px] text-[#333333]">
+                        No File Selected
+                      </p>
+                    )}
+                  </div>
+                </div>
               </div>
-              <div>
-              {field.selectedFile ? (
-            <p className="text-gray-700">
-              File Selected: {field.selectedFile.name}
-            </p>
-          ) : (
-            <p className="text-[14px] leading-[19.07px] text-[#333333]">
-              No file selected
-            </p>
-          )}
-              </div>
-            </div>
-          </div>
             </React.Fragment>
-          ))}
+          ))} */}
 
+        <div className="grid grid-cols-2 gap-4">
           {/* Flag medical */}
           <div className="grid col-span-2 ">
             <h1 className="font-bold ">Flag Medical </h1>
@@ -1187,11 +1235,19 @@ const MedicalCertificates = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Type
+                Select
               </option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="other">other</option>
             </select>
           </div>
 
@@ -1209,6 +1265,7 @@ const MedicalCertificates = ({
               value={vaccinationFlag}
               onChange={(e) => setVaccinationFlag(e.target.value)}
               disabled={disabled}
+              placeholder="Enter Vaccination Date"
             />
           </div>
 
@@ -1228,6 +1285,7 @@ const MedicalCertificates = ({
                 value={vaccinationexpFlag}
                 onChange={(e) => setVaccinationexpFlag(e.target.value)}
                 disabled={disabled}
+                placeholder="Enter Expiry Date"
               />
             </div>
           )}
@@ -1272,7 +1330,7 @@ const MedicalCertificates = ({
                   </p>
                 ) : (
                   <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                    No file selected
+                    No File Selected
                   </p>
                 )}
               </div>

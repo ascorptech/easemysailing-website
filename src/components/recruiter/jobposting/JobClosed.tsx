@@ -10,7 +10,7 @@ export default function JobClosed() {
       rank: "Master",
       dateOfJoining: "2024-01-01",
       jobStatusTracking: "Closed by System",
-      status: "---", // true represents Active, false represents Deactivate
+      status: "---", 
     },
     {
       id: 2,
@@ -19,7 +19,7 @@ export default function JobClosed() {
       rank: "Chief Officer",
       dateOfJoining: "2024-01-01",
       jobStatusTracking: "Closed by User",
-      status: "Will be available....", // Initial status is Deactivated
+      status: "Will be available....", 
     },
     {
       id: 3,
@@ -28,7 +28,7 @@ export default function JobClosed() {
       rank: "Master",
       dateOfJoining: "2024-01-01",
       jobStatusTracking: "Closed by User",
-      status: "Because i was not....", // true represents Active, false represents Deactivate
+      status: "Because i was not....",  
     },
     {
       id: 4,
@@ -37,7 +37,7 @@ export default function JobClosed() {
       rank: "Chief Officer",
       dateOfJoining: "2024-01-01",
       jobStatusTracking: "Closed by System",
-      status: "----", // Initial status is Deactivated
+      status: "----",  
     },
     {
       id: 5,
@@ -46,7 +46,7 @@ export default function JobClosed() {
       rank: "Master",
       dateOfJoining: "2024-01-01",
       jobStatusTracking: "Closed by System",
-      status: "Because of my....", // true represents Active, false represents Deactivate
+      status: "Because of my....",  
     },
     {
       id: 6,
@@ -55,7 +55,7 @@ export default function JobClosed() {
       rank: "Chief Officer",
       dateOfJoining: "2024-01-01",
       jobStatusTracking: "Closed by User",
-      status: "The change in plan....", // Initial status is Deactivated
+      status: "The change in plan....",  
     },
     {
       id: 7,
@@ -64,7 +64,7 @@ export default function JobClosed() {
       rank: "Chief Officer",
       dateOfJoining: "2024-01-01",
       jobStatusTracking: "Closed by User",
-      status: "----", // Initial status is Deactivated
+      status: "----",  
     },
     {
       id: 8,
@@ -73,7 +73,7 @@ export default function JobClosed() {
       rank: "Master",
       dateOfJoining: "2024-01-01",
       jobStatusTracking: "Closed by System",
-      status: "Because i was not.....", // true represents Active, false represents Deactivate
+      status: "Because i was not.....",  
     },
     {
       id: 9,
@@ -82,7 +82,7 @@ export default function JobClosed() {
       rank: "Chief Officer",
       dateOfJoining: "2024-01-01",
       jobStatusTracking: "Closed by User",
-      status: "----", // Initial status is Deactivated
+      status: "----",  
     },
     {
       id: 10,
@@ -91,7 +91,7 @@ export default function JobClosed() {
       rank: "Master",
       dateOfJoining: "2024-01-01",
       jobStatusTracking: "Closed by User",
-      status: "----", // true represents Active, false represents Deactivate
+      status: "----",  
     },
     {
       id: 11,
@@ -100,7 +100,7 @@ export default function JobClosed() {
       rank: "Chief Officer",
       dateOfJoining: "2024-01-01",
       jobStatusTracking: "Closed by System",
-      status: "----", // Initial status is Deactivated
+      status: "----",  
     },
   ];
 

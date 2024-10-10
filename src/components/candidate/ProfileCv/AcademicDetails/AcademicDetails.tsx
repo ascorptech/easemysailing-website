@@ -224,7 +224,7 @@
 //           <div key={index} className="grid grid-cols-2 gap-4 mt-4">
 //             <div>
 //               <label
-//                 className="text-[14px] font-[poppins] text-[#333333]"
+//                 className="text-[14px]  text-[#333333]"
 //                 htmlFor={`degree_${index}`}
 //               >
 //                 Degree
@@ -236,14 +236,14 @@
 //                 onChange={(e) =>
 //                   handleFormChange(index, "degree", e.target.value)
 //                 }
-//                 className="border rounded-md w-full h-9 px-2 text-[14px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+//                 className="border rounded-md w-full h-9 px-2 text-[14px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
 //                 placeholder="Enter degree"
 //                 disabled={disabled}
 //               />
 //             </div>
 //             <div>
 //               <label
-//                 className="text-[14px] font-[poppins] text-[#333333]"
+//                 className="text-[14px]  text-[#333333]"
 //                 htmlFor={`percetnge_${index}`}
 //               >
 //                 Percentage
@@ -255,7 +255,7 @@
 //                 onChange={(e) =>
 //                   handleFormChange(index, "percentage", e.target.value)
 //                 }
-//                 className="border rounded-md w-full h-9 px-2 text-[14px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+//                 className="border rounded-md w-full h-9 px-2 text-[14px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
 //                 placeholder="Enter percentage"
 //                 disabled={disabled}
 //               />
@@ -285,7 +285,7 @@
 
 //         {/* <div className="grid grid-cols-2 gap-4"> */}
 //           <div>
-//             <label className="text-[14px] font-[poppins] text-[#333333]">
+//             <label className="text-[14px]  text-[#333333]">
 //               Start Date
 //             </label>
 //             <input
@@ -293,12 +293,12 @@
 //               value={field.startdate}
 //               // onChange={(e) => setStartDate(e.target.value)}
 //               onChange={(e) => handleFormChange(index, "startdate", e.target.value)}
-//               className="border rounded-md w-full h-9 px-2 text-[14px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+//               className="border rounded-md w-full h-9 px-2 text-[14px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
 //               disabled={disabled}
 //             />
 //           </div>
 //           <div>
-//             <label className="text-[14px] font-[poppins] text-[#333333]">
+//             <label className="text-[14px]  text-[#333333]">
 //               End Date
 //             </label>
 //             <input
@@ -307,7 +307,7 @@
 //               // onChange={(e) => setEndDate(e.target.value)}
 //               onChange={(e) => handleFormChange(index, "enddate", e.target.value)}
 
-//               className="border rounded-md w-full h-9 px-2 text-[14px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+//               className="border rounded-md w-full h-9 px-2 text-[14px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
 //               disabled={disabled}
 //             />
 //           </div>
@@ -317,7 +317,7 @@
 //           <div className="flex gap-6 items-center">
 //             <label
 //               htmlFor={`file-upload_${index}`}
-//               className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md hover:bg-[#04714e] text-[14px] font-[poppins]"
+//               className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md hover:bg-[#04714e] text-[14px] "
 //             >
 //               Attachment Document
 //             </label>
@@ -334,8 +334,8 @@
 //               File Selected: {field.selectedFile.name}
 //             </p>
 //           ) : (
-//             <p className="text-[14px] font-[poppins] text-[#333333]">
-//               No file selected
+//             <p className="text-[14px]  text-[#333333]">
+//               No File Selected
 //             </p>
 //           )}
 //         </div>
@@ -363,7 +363,7 @@
 //         <div className="grid grid-cols-2 gap-4">
 //           <div className="   ">
 //             <label
-//               className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+//               className="text-[14px] leading-[19.07px]  text-[#333333] "
 //               htmlFor="university"
 //             >
 //               School / College / University{" "}
@@ -373,14 +373,14 @@
 //               type="text"
 //               value={university}
 //               onChange={(e) => setUniversity(e.target.value)}
-//               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+//               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
 //               placeholder="Enter University"
 //               disabled={disabled}
 //             />
 //           </div>
 //           <div className="   ">
 //             <label
-//               className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+//               className="text-[14px] leading-[19.07px]  text-[#333333] "
 //               htmlFor="subject"
 //             >
 //               Subject
@@ -390,21 +390,21 @@
 //               type="text"
 //               value={subject}
 //               onChange={(e) => setSubject(e.target.value)}
-//               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+//               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
 //               placeholder=""
 //               disabled={disabled}
 //             />
 //           </div>
 //           <div className=" ">
 //             <label
-//               className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+//               className="text-[14px] leading-[19.07px]  text-[#333333] "
 //               htmlFor="optionT1"
 //             >
 //               Country
 //             </label>
 //             <select
 //               id="optionT1"
-//               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+//               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
 //               name="options"
 //               value={issuingCountry}
 //               onChange={(e) => setIssuingCountry(e.target.value)}
@@ -424,7 +424,7 @@
 
 //           <div className="   ">
 //             <label
-//               className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+//               className="text-[14px] leading-[19.07px]  text-[#333333] "
 //               htmlFor="number"
 //             >
 //               City{" "}
@@ -434,7 +434,7 @@
 //               type="text"
 //               value={city}
 //               onChange={(e) => setCity(e.target.value)}
-//               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+//               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
 //               placeholder=""
 //               disabled={disabled}
 //             />
@@ -663,7 +663,7 @@ const AcademicDetails = ({
           <div key={index} className="grid grid-cols-2 gap-4 mt-4">
             <div>
               <label
-                className="text-[14px] font-[poppins] text-[#333333]"
+                className="text-[14px]  text-[#333333]"
                 htmlFor={`degree_${index}`}
               >
                 Degree
@@ -675,14 +675,14 @@ const AcademicDetails = ({
                 onChange={(e) =>
                   handleFormChange(index, "degree", e.target.value)
                 }
-                className="border rounded-md w-full h-9 px-2 text-[14px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                placeholder="Enter degree"
+                className="border rounded-md w-full h-9 px-2 text-[14px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                placeholder="Enter Degree"
                 disabled={disabled}
               />
             </div>
             <div>
               <label
-                className="text-[14px] font-[poppins] text-[#333333]"
+                className="text-[14px]  text-[#333333]"
                 htmlFor={`percetnge_${index}`}
               >
                 Percentage
@@ -694,37 +694,33 @@ const AcademicDetails = ({
                 onChange={(e) =>
                   handleFormChange(index, "percentage", e.target.value)
                 }
-                className="border rounded-md w-full h-9 px-2 text-[14px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                placeholder="Enter percentage"
+                className="border rounded-md w-full h-9 px-2 text-[14px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                placeholder="Enter Percentage"
                 disabled={disabled}
               />
             </div>
 
             <div>
-              <label className="text-[14px] font-[poppins] text-[#333333]">
-                Start Date
-              </label>
+              <label className="text-[14px]  text-[#333333]">Start Date</label>
               <input
                 type="date"
                 value={field.startdate}
                 onChange={(e) =>
                   handleFormChange(index, "startdate", e.target.value)
                 }
-                className="border rounded-md w-full h-9 px-2 text-[14px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9 px-2 text-[14px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 disabled={disabled}
               />
             </div>
             <div>
-              <label className="text-[14px] font-[poppins] text-[#333333]">
-                End Date
-              </label>
+              <label className="text-[14px]  text-[#333333]">End Date</label>
               <input
                 type="date"
                 value={field.enddate}
                 onChange={(e) =>
                   handleFormChange(index, "enddate", e.target.value)
                 }
-                className="border rounded-md w-full h-9 px-2 text-[14px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                className="border rounded-md w-full h-9 px-2 text-[14px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 disabled={disabled}
               />
             </div>
@@ -734,7 +730,7 @@ const AcademicDetails = ({
                 <div className="flex gap-6 items-center">
                   <label
                     htmlFor={`file-upload_${index}`}
-                    className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md hover:bg-[#04714e] text-[14px] font-[poppins]"
+                    className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md hover:bg-[#04714e] text-[14px] "
                   >
                     Attachment Document
                   </label>
@@ -751,8 +747,8 @@ const AcademicDetails = ({
                     File Selected: {field.selectedFile.name}
                   </p>
                 ) : (
-                  <p className="text-[14px] font-[poppins] text-[#333333]">
-                    No file selected
+                  <p className="text-[14px]  text-[#333333]">
+                    No File Selected
                   </p>
                 )}
               </div>
@@ -780,7 +776,7 @@ const AcademicDetails = ({
           <div key={index} className="grid grid-cols-2 gap-4">
             <div className="">
               <label
-                className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+                className="text-[14px] leading-[19.07px]  text-[#333333]"
                 htmlFor="university"
               >
                 University/School
@@ -789,49 +785,49 @@ const AcademicDetails = ({
                 id="university"
                 type="text"
                 value={fields.university}
-                onChange={(e) => handleFormChangeEdu(index, "university", e.target.value)}
-                className="border rounded-md w-full h-9 px-2 text-[14px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                placeholder="Enter your university"
+                onChange={(e) =>
+                  handleFormChangeEdu(index, "university", e.target.value)
+                }
+                className="border rounded-md w-full h-9 px-2 text-[14px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                placeholder="Enter Your University"
                 disabled={disabled}
               />
             </div>
             <div>
-              <label
-                className="text-[14px] font-[poppins] text-[#333333]"
-                htmlFor="subject"
-              >
+              <label className="text-[14px]  text-[#333333]" htmlFor="subject">
                 Subject
               </label>
               <input
                 id="subject"
                 type="text"
                 value={fields.subject}
-                onChange={(e) => handleFormChangeEdu(index, "subject", e.target.value)}
-                className="border rounded-md w-full h-9 px-2 text-[14px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                placeholder="Enter your subject"
+                onChange={(e) =>
+                  handleFormChangeEdu(index, "subject", e.target.value)
+                }
+                className="border rounded-md w-full h-9 px-2 text-[14px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                placeholder="Enter Your Subject"
                 disabled={disabled}
               />
             </div>
             <div>
-              <label
-                className="text-[14px] font-[poppins] text-[#333333]"
-                htmlFor="city"
-              >
+              <label className="text-[14px]  text-[#333333]" htmlFor="city">
                 City
               </label>
               <input
                 id="city"
                 type="text"
                 value={fields.city}
-                onChange={(e) => handleFormChangeEdu(index, "city", e.target.value)}
-                className="border rounded-md w-full h-9 px-2 text-[14px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                placeholder="Enter your city"
+                onChange={(e) =>
+                  handleFormChangeEdu(index, "city", e.target.value)
+                }
+                className="border rounded-md w-full h-9 px-2 text-[14px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                placeholder="Enter Your City"
                 disabled={disabled}
               />
             </div>
             <div>
               <label
-                className="text-[14px] font-[poppins] text-[#333333]"
+                className="text-[14px]  text-[#333333]"
                 htmlFor="issuingCountry"
               >
                 Issuing Country
@@ -839,11 +835,13 @@ const AcademicDetails = ({
               <select
                 id="issuingCountry"
                 value={fields.issuingCountry}
-                onChange={(e) => handleFormChangeEdu(index, "issuingCountry", e.target.value)}
-                className="border rounded-md w-full h-9 px-2 text-[14px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                onChange={(e) =>
+                  handleFormChangeEdu(index, "issuingCountry", e.target.value)
+                }
+                className="border rounded-md w-full h-9 px-2 text-[14px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 disabled={disabled}
               >
-                <option value="">Select country</option>
+                <option value="">Select</option>
                 {countryDrop.map((country: any) => (
                   <option key={country.isoCode} value={country.isoCode}>
                     {country.name}

@@ -115,8 +115,12 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
             WSG
           </Link>
         </li>
-        <li className="mb-2 rounded py-2  hover:bg-[#00A264] hover:text-white">
-          <Link href="#">
+        <li className={
+            pathname === "/recruiter/candidatelisting"
+              ? "mb-2 rounded py-2 bg-[#00A264] text-white font-semibold"
+              : "mb-1 rounded py-2  hover:bg-[#00A264] hover:text-white"
+          }>
+          <Link href="/recruiter/candidatelisting">
             <FaFileLines className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             Candidates Listing
           </Link>
@@ -131,15 +135,23 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
             EMS Matches
           </Link>
         </li>
-        <li className="mb-2 rounded py-2  hover:bg-[#00A264] hover:text-white">
-          <Link href="#">
+        <li className={
+            pathname === "/recruiter/eduems"
+              ? "mb-2 rounded py-2 bg-[#00A264] text-white font-semibold"
+              : "mb-1 rounded py-2  hover:bg-[#00A264] hover:text-white"
+          }>
+          <Link href="/recruiter/eduems">
             <MdOutlineCardGiftcard className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             EduEMS
           </Link>
         </li>
        
-        <li className="mb-2 rounded py-2  hover:bg-[#00A264] hover:text-white">
-          <Link href="#">
+        <li className={
+            pathname === "/recruiter/cv"
+              ? "mb-2 rounded py-2 bg-[#00A264] text-white font-semibold"
+              : "mb-1 rounded py-2  hover:bg-[#00A264] hover:text-white"
+          }>
+          <Link href="/recruiter/cv">
             <RiExchangeDollarLine className="inline-block w-6 h-6 mr-1 ml-2 -mt-[5px] " />
             Downloadded CV
           </Link>

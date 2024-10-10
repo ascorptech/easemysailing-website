@@ -7,14 +7,14 @@ import { PiUploadSimpleBold } from "react-icons/pi";
 const ProfileDetails = () => {
   const options = ["Ownership", "Ship Management", "Crew Management"];
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(options[0]); // Default to the first option
-  const [showPopup, setShowPopup] = useState(false); // Control popup visibility for Company Advertisement
-  const [showEditImagePopup, setShowEditImagePopup] = useState(false); // Control popup visibility for image editing
-  const [uploading, setUploading] = useState(false); // For showing upload progress
-  const [progress, setProgress] = useState(0); // Simulated upload progress
-  const [fileName, setFileName] = useState(""); // Store uploaded file name
-  const [filePreview, setFilePreview] = useState<string | null>(null); // Store file preview
-  const [profileImage, setProfileImage] = useState("/ml3x.png"); // Store the current profile image
+  const [selectedOption, setSelectedOption] = useState(options[0]); 
+  const [showPopup, setShowPopup] = useState(false); 
+  const [showEditImagePopup, setShowEditImagePopup] = useState(false); 
+  const [uploading, setUploading] = useState(false); 
+  const [progress, setProgress] = useState(0); 
+  const [fileName, setFileName] = useState(""); 
+  const [filePreview, setFilePreview] = useState<string | null>(null);
+  const [profileImage, setProfileImage] = useState("/ml3x.png"); 
 
   const toggleDropdown = () => {
     setIsOpen((prev) => !prev);
@@ -25,31 +25,30 @@ const ProfileDetails = () => {
   };
 
   const handleOptionSelect = (option: any) => {
-    setSelectedOption(option); // Update the selected option
-    closeDropdown(); // Close the dropdown
+    setSelectedOption(option);
+    closeDropdown();
   };
 
   const openPopup = () => {
-    setShowPopup(true); // Open the Company Advertisement popup
+    setShowPopup(true); 
   };
 
   const closePopup = () => {
-    setShowPopup(false); // Close the popup
-    setFilePreview(null); // Reset file preview on popup close
-    setFileName(""); // Reset file name on popup close
-    setProgress(0); // Reset progress
+    setShowPopup(false); 
+    setFilePreview(null); 
+    setFileName(""); 
+    setProgress(0);
   };
 
-  // For the edit image popup
   const openEditImagePopup = () => {
-    setShowEditImagePopup(true); // Open the image edit popup
+    setShowEditImagePopup(true); 
   };
 
   const closeEditImagePopup = () => {
-    setShowEditImagePopup(false); // Close the popup
-    setFilePreview(null); // Reset file preview on popup close
-    setFileName(""); // Reset file name on popup close
-    setProgress(0); // Reset progress
+    setShowEditImagePopup(false);
+    setFilePreview(null);
+    setFileName(""); 
+    setProgress(0); 
   };
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -57,20 +56,19 @@ const ProfileDetails = () => {
       const file = e.target.files[0];
       setFileName(file.name); // Set file name
 
-      // Only preview images (jpg, png, etc.)
       const fileTypes = ["image/jpeg", "image/jpg", "image/png", "image/gif"];
       if (fileTypes.includes(file.type)) {
         const reader = new FileReader();
         reader.onloadend = () => {
-          setFilePreview(reader.result as string); // Set file preview
+          setFilePreview(reader.result as string); 
         };
         reader.readAsDataURL(file);
       } else {
-        setFilePreview(null); // Set null if the file is not an image
+        setFilePreview(null); 
       }
 
-      setUploading(true); // Start upload progress
-      simulateUpload(); // Simulate upload progress
+      setUploading(true); 
+      simulateUpload();
     }
   };
 
@@ -80,7 +78,7 @@ const ProfileDetails = () => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(interval);
-          setUploading(false); // Hide upload progress after completion
+          setUploading(false);  
           return 100;
         }
         return prev + 10;
@@ -88,29 +86,24 @@ const ProfileDetails = () => {
     }, 200);
   };
 
-  // To trigger file input on icon click
   const triggerFileUpload = () => {
     document.getElementById("file-input")?.click();
   };
 
   const handleSubmitImageChange = () => {
     if (progress === 100 && filePreview) {
-      // Update the profile image with the uploaded image
       setProfileImage(filePreview);
 
-      // Close the edit image popup after saving
       closeEditImagePopup();
     }
   };
 
   const handleSubmit = () => {
     if (progress === 100 && fileName) {
-      // Perform actions such as sending the file to the server, etc.
       console.log("File submitted:", fileName);
 
-      // For example, show a success message or reset the state:
       alert(`File "${fileName}" successfully uploaded.`);
-      closePopup(); // Close the popup after submission
+      closePopup(); 
     }
   };
 
@@ -122,14 +115,14 @@ const ProfileDetails = () => {
             priority
             width={200}
             height={200}
-            src={profileImage} // Display the current profile image
+            src={profileImage} 
             className="w-full h-full"
             alt={"Profile Image"}
           />
           {/* Edit profile image */}
           <div
             className="absolute ml-[6rem] top-0 right-0 cursor-pointer"
-            onClick={openEditImagePopup} // Open the edit image popup when clicked
+            onClick={openEditImagePopup} 
           >
             <Image
               priority
@@ -167,11 +160,11 @@ const ProfileDetails = () => {
               aria-expanded={isOpen}
               aria-haspopup="true"
             >
-              {selectedOption} {/* Show the selected option */}
+              {selectedOption} 
               <svg
                 className={`-mr-1 ml-2 h-5 w-5 transition-transform duration-200 ${
                   isOpen ? "rotate-180" : ""
-                }`} // Rotate based on isOpen
+                }`} 
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
                 fill="currentColor"
@@ -242,7 +235,7 @@ const ProfileDetails = () => {
       <div className="relative  right-0 ml-[32rem] p-2 mt-16 rounded-lg bg-[#00A264]">
         <button
           className="text-white flex items-center font-semibold"
-          onClick={openPopup} // Open popup when clicked
+          onClick={openPopup} 
         >
           <PiUploadSimpleBold className="mx-1" />
           Upload Company Advertisement
@@ -264,7 +257,7 @@ const ProfileDetails = () => {
 
             <div
               className="border-[#00A264] bg-[#E9FFF7] border-dashed flex flex-col justify-center items-center border-2 p-6 rounded-lg text-center cursor-pointer"
-              onClick={triggerFileUpload} // Trigger file input when icon is clicked
+              onClick={triggerFileUpload}
             >
               <Image
                 priority

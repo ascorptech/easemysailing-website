@@ -50,6 +50,8 @@ const SeaGoingService = ({
   const [rankDrop, setRankDrop] = useState<any>([]);
   const [engineDrop, setEngineDrop] = useState<any>([]);
   const [ecdisDrop, setEcdisDrop] = useState<any>([]);
+  const [disabled, setDisabled] = useState(true);
+
 
   useEffect(() => {
     GetDropdownDetails("SEAGOINGEXP", (res: any) => {
@@ -126,18 +128,18 @@ const SeaGoingService = ({
     // try {
     e.preventDefault();
     let data = {
-      " id": userDetail?.userId,
+      id: userDetail?.userId,
       vesselName: vercelName,
       imoNumber: imo,
       disembarkationDate: disembarkationDate,
-      " tonnage": tonnage,
+      tonnage: tonnage,
       rank: rank,
       engineMake: enginemake,
       ecdis: eCDIS,
       embarkationDate: embarkationdate,
       netSeagoingDays: seagoingNumber,
       gearless: gearless,
-      " inertGasSystem": inertGas,
+      inertGasSystem: inertGas,
     };
 
     AddSeagoingData(data, AddSeagoingDatacb);
@@ -174,30 +176,35 @@ const SeaGoingService = ({
     }
   };
 
+  const handleEdit = () => {
+    setDisabled(!disabled);
+    // toast.info("You are now in edit mode. Make your changes.");
+  };
+
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
         <div className="flex items-center justify-between">
           <h1 className=" font-bold my-2">SeaGoing Experience</h1>
 
-          <div className="flex gap-2">
+          {/* <div className="flex gap-2">
             <AiOutlinePlus
               className="text-2xl cursor-pointer"
-              // onClick={addFieldPair}
+               onClick={addFieldPair}
             />
-            {/* {extraFields.length > 0 && ( */}
+            {extraFields.length > 0 && (
             <AiOutlineMinus
               className="text-2xl cursor-pointer"
-              // onClick={removeFieldPair}
+              onClick={removeFieldPair}
             />
-            {/* )} */}
-          </div>
+             )} 
+          </div> */}
         </div>
         {fields.map((field, index) => (
           <div key={index} className="grid grid-cols-2 gap-4">
             <div className="">
               <label
-                className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+                className="text-[14px] leading-[19.07px]  text-[#333333] "
                 htmlFor="imo"
               >
                 IMO
@@ -207,13 +214,13 @@ const SeaGoingService = ({
                 type="text"
                 value={imo}
                 onChange={(e) => setImo(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                placeholder=""
-                required
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                placeholder="Enter  IMO"
+                disabled={disabled}
               />
               {/* <select
               id="imo"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
               value={imo}
               onChange={(e) => setImo(e.target.value)}
@@ -232,7 +239,7 @@ const SeaGoingService = ({
 
             <div className="   ">
               <label
-                className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+                className="text-[14px] leading-[19.07px]  text-[#333333] "
                 htmlFor="vesselname"
               >
                 Vessel Name
@@ -242,9 +249,9 @@ const SeaGoingService = ({
                 type="text"
                 value={vercelName}
                 onChange={(e) => setVercelName(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                placeholder=""
-                required
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                placeholder="Enter  Vessel Name"
+                disabled={disabled}
               />
             </div>
 
@@ -267,17 +274,18 @@ const SeaGoingService = ({
         {/* <div className=" grid grid-cols-2 gap-4"> */}
           <div className=" ">
             <label
-              className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+              className="text-[14px] leading-[19.07px]  text-[#333333]"
               htmlFor="rank1"
             >
               Rank
             </label>
             <select
               id="rank1"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
               value={rank}
               onChange={(e) => setRank(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
                 Select
@@ -293,7 +301,7 @@ const SeaGoingService = ({
 
           <div className="   ">
             <label
-              className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+              className="text-[14px] leading-[19.07px]  text-[#333333] "
               htmlFor="tonnage"
             >
               Tonnage
@@ -303,9 +311,9 @@ const SeaGoingService = ({
               type="text"
               value={tonnage}
               onChange={(e) => setTonnage(e.target.value)}
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              placeholder=""
-              required
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              placeholder="Enter  Tonnage"
+              disabled={disabled}
             />
           </div>
           </div>
@@ -318,7 +326,7 @@ const SeaGoingService = ({
 <div className=" grid grid-cols-2 gap-4">
           <div className="">
             <label
-              className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+              className="text-[14px] leading-[19.07px]  text-[#333333] "
               htmlFor="enginemake"
             >
               Engine Make
@@ -327,13 +335,15 @@ const SeaGoingService = ({
             <input
               id="enginemake"
               type="text"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={enginemake}
               onChange={(e) => setEnginemake(e.target.value)}
+              disabled={disabled}
+              placeholder="Enter Engine Make"
             />
             {/* <select
               id="enginemake"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
               value={enginemake}
               onChange={(e) => setEnginemake(e.target.value)}
@@ -355,7 +365,7 @@ const SeaGoingService = ({
           {/* </div> */}
           <div className="">
             <label
-              className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]"
+              className="text-[14px] leading-[19.07px]  text-[#333333]"
               htmlFor="issue"
             >
               Embarkation Date
@@ -363,9 +373,11 @@ const SeaGoingService = ({
             <input
               id="issue"
               type="date"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={embarkationdate}
               onChange={(e) => setEmbarkationDate(e.target.value)}
+              disabled={disabled}
+              placeholder="Enter  Embarkation Date"
             />
           </div>
           {/* </div> */}
@@ -374,7 +386,7 @@ const SeaGoingService = ({
 
           <div className="">
             <label
-              className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333]  "
+              className="text-[14px] leading-[19.07px]  text-[#333333]  "
               htmlFor="expiryDate"
             >
               Disembarkation date
@@ -382,15 +394,17 @@ const SeaGoingService = ({
             <input
               id="expiryDate"
               type="date"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={disembarkationDate}
               onChange={(e) => setDisembarkationDate(e.target.value)}
+              disabled={disabled}
+              placeholder="Enter  Disembarkation date"
             />
           </div>
 
           <div className="   ">
             <label
-              className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+              className="text-[14px] leading-[19.07px]  text-[#333333] "
               htmlFor="netSeagoingDays"
             >
               Net Seagoing Days
@@ -400,25 +414,26 @@ const SeaGoingService = ({
               type="text"
               value={seagoingNumber}
               onChange={(e) => setSeagoingNumber(e.target.value)}
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              placeholder=""
-              required
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              placeholder="Enter Net Seagoing Days"
+              disabled={disabled}
             />
           </div>
 
           <div className=" ">
             <label
-              className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+              className="text-[14px] leading-[19.07px]  text-[#333333] "
               htmlFor="ecdis"
             >
               ECDIS
             </label>
             <select
               id="ecdis"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
               value={eCDIS}
               onChange={(e) => setECDIS(e.target.value)}
+              disabled={disabled}
             >
               <option value="" disabled selected>
                 Select
@@ -434,7 +449,7 @@ const SeaGoingService = ({
 
           <div className="  ">
             <label
-              className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+              className="text-[14px] leading-[19.07px]  text-[#333333] "
               htmlFor="Gearless"
             >
               Gearless
@@ -444,15 +459,15 @@ const SeaGoingService = ({
               type="text"
               value={gearless}
               onChange={(e) => setGearless(e.target.value)}
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              placeholder=""
-              required
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              placeholder="Enter Gearless"
+              disabled={disabled}
             />
           </div>
 
           <div className="  ">
             <label
-              className="text-[14px] leading-[19.07px] font-[poppins] text-[#333333] "
+              className="text-[14px] leading-[19.07px]  text-[#333333] "
               htmlFor="inertGasSysterm"
             >
               Inert Gas Systerm
@@ -462,9 +477,9 @@ const SeaGoingService = ({
               type="text"
               value={inertGas}
               onChange={(e) => setInertGas(e.target.value)}
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] font-[poppins] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-              placeholder=""
-              required
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+              placeholder="Enter Inert Gas Systerm"
+              disabled={disabled}
             />
           </div>
         </div>
@@ -479,7 +494,8 @@ const SeaGoingService = ({
             Save
           </button>
           <Link
-            href="#"
+            href={'#'}
+            onClick={handleEdit}
             className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
           >
             Edit

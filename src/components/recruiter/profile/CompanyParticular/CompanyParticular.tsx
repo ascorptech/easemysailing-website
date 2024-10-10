@@ -11,7 +11,7 @@ type CompanyComplete = {
 };
 
 type Props = {
-  companyParticular: CompanyComplete; // mjrComplete is an object with percentage and color
+  companyParticular: CompanyComplete; 
   setCompanyParticular: React.Dispatch<React.SetStateAction<CompanyComplete>>;
   // userDetail: any;
 };
@@ -123,16 +123,16 @@ const CompanyParticular = ({
     // console.log("user", userDetail);
     if (percentage <= 30) {
       setCompanyParticular((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#FF0000", // Update the color field
+        ...prevState,  
+        percentage: percentage,  
+        color: "#FF0000",  
       }));
       color = "red";
     } else if (percentage <= 70) {
       setCompanyParticular((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#FF9900", // Update the color field
+        ...prevState,  
+        percentage: percentage,  
+        color: "#FF9900",  
       }));
       color = "#FF9900";
     } else {

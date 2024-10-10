@@ -183,10 +183,11 @@ const handlePhoneChange = (value: string, country: any) => {
         email:email,
         phoneNumber:phone,
         password:password,
-        role:route=='candidate'?'USER':'RECRUITER'
+        role:route=='candidate'?'CANDIDATE':'RECRUITER'
       }
         const response = await SignupData(data);
-        if (response?.data) {
+        console.log('res',response)
+        if (response?.status==200) {
           toast.success('Register successfully')
           if (route=='candidate') {
             router.push("/candidate");
@@ -194,6 +195,8 @@ const handlePhoneChange = (value: string, country: any) => {
             router.push("/recruiter");
           }
           
+        }else{
+          toast.error('Register failed')
         }
     }
     
@@ -238,7 +241,21 @@ const handlePhoneChange = (value: string, country: any) => {
                       id="userName"
                       type="text"
                       value={firstName}
-                      onChange={(e) => setFirstName(e.target.value.trim())}
+                      onChange={(e) => {
+                        // Allow only alphabetic characters and spaces
+                        const value = e.target.value;
+                        if (/^[a-zA-Z\s]*$/.test(value)) {
+                          setFirstName(value.trimStart());
+                        }
+                      }}
+                      onBlur={(e) => {
+                        // Validation for min length
+                        if (e.target.value.length < 2) {
+                          toast.error("Name must be at least 2 characters long");
+                        } else if (e.target.value.length > 30) {
+                          toast.error("Name cannot exceed 30 characters");
+                        }
+                      }}
                       className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline"
                       placeholder="Enter First Name"
                       required
@@ -261,7 +278,21 @@ const handlePhoneChange = (value: string, country: any) => {
                       id="lastName"
                       type="text"
                       value={lastName}
-                      onChange={(e) => setLastName(e.target.value.trim())}
+                      onChange={(e) => {
+                        // Allow only alphabetic characters and spaces
+                        const value = e.target.value;
+                        if (/^[a-zA-Z\s]*$/.test(value)) {
+                          setLastName(value.trimStart());
+                        }
+                      }}
+                      onBlur={(e) => {
+                        // Validation for min length
+                        if (e.target.value.length < 2) {
+                          toast.error("Name must be at least 2 characters long");
+                        } else if (e.target.value.length > 30) {
+                          toast.error("Name cannot exceed 30 characters");
+                        }
+                      }}
                       className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline"
                       placeholder="Enter Last Name"
                       required
@@ -286,7 +317,16 @@ const handlePhoneChange = (value: string, country: any) => {
                     type="email"
                     value={email}
                     // onChange={(e) => setEmail(e.target.value.trim())}
-                     onChange={(e) => setEmail(e.target.value.toLowerCase())} 
+                     onChange={(e) => {
+                      let value = e.target.value.replace(/\s+/g, ''); // Removes all spaces
+                      setEmail(value?.trim());
+                    }}
+                    onBlur={(e) => {
+                      // Basic email validation
+                      if (!e.target.validity.valid) {
+                        toast.error("Please enter a valid email address.");
+                      }
+                    }}
                       // pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                     className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline"
                     placeholder="Email"
@@ -317,7 +357,18 @@ const handlePhoneChange = (value: string, country: any) => {
                   type="number"
                   value={phone}
                   maxLength={10}
-                  onChange={(e) => setPhone(e.target.value)}
+                  onChange={(e) => {
+                    // Allow only numeric input
+                    const value = e.target.value;
+                    if (/^\d*$/.test(value)) { // Regex to allow only digits
+                      setPhone(value.trimStart());
+                    }
+                  }}
+                  onBlur={(e) => {
+                    if (e.target.value.length < 7) {
+                      toast.error("Phone number must be at least 7 digits long");
+                    }
+                  }}
                   className="border lg:h-10 rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
                   placeholder="Phone Number"
                   required

@@ -123,7 +123,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
     let formData = new FormData();
     // formData.append('userId',userDetail?.userId);
     formData.append('firstName',firstName);
-    middleName&&formData.append('middleName',middleName);
+    formData.append('middleName',middleName);
     formData.append('lastName',lastName);
     formData.append('dateOfBirth',date);
     formData.append('cityOfBirth',cityBirth);
@@ -146,15 +146,6 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
     } else {
       toast.error("Personal detail not submited ");
     }
-
-    //   const data = await AddProfileData(formData);
-    //   console.log("Success:", formData);
-    //   toast.success(" PersonalDetails successfully");
-    // } catch (error) {
-    //   toast.error("PersonalDetails not updated");
-
-    //   console.error("Error:", error);
-    // }
   };
 
   const handleImageChange = (e: any) => {

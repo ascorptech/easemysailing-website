@@ -49,6 +49,8 @@ const MyJobRequirements = ({
       setAlternateVesselType(jobDetail?.alternateVesselType);
       setAvailabilityDate(moment(jobDetail?.availabilityDate).format('YYYY-MM-DD'));
       setAvailable(!jobDetail?.notAvailable ? "No" : "Yes");
+      setSalaryField(jobDetail.expectedSalary)
+      setContractDuration(jobDetail.contractDuration)
     }
   }, []);
 
@@ -108,7 +110,9 @@ const MyJobRequirements = ({
       !alternatePosition ||
       !preferredVesselType ||
       !alternateVesselType ||
-      !available
+      !available||
+      !salaryField||
+      !contractDuration
     ) {
       toast.error("Please fill in all required fields.");
       return;
@@ -123,6 +127,8 @@ const MyJobRequirements = ({
       notAvailable: available == "yes" ? "true" : "false",
       color: color,
       completed: percentage,
+      expectedSalary:salaryField,
+      contractDuration:contractDuration
     };
     if (availabilityDate) {
       data.availabilityDate = availabilityDate ? availabilityDate : "";

@@ -154,6 +154,9 @@ const ContactDetails = ({
     console.log(result);
     if (result?.status == 200 || result?.status == 201) {
       toast.success("Contact submited successfully");
+      setTimeout(() => {
+        window.location.reload()
+      }, 1000);
     } else {
       toast.error("Contact not submited ");
     }

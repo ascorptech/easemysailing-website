@@ -8,6 +8,7 @@ import {
   AddLanguageData,
   GetDropdownDetails,
 } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import moment from "moment";
 type LanguageComplete = {
   percentage: number;
   color: string;
@@ -48,6 +49,16 @@ const Languages = ({
   useEffect(() => {
     if (languageDetail) {
      console.log('lan',languageDetail)
+     setLanguage1(languageDetail.nativeLanguage);
+     setAddiLanguage(languageDetail.additionalLanguage);
+     setLanguageLavel(languageDetail.additionalLanguageLevel);
+     setEnglishLavel(languageDetail.englishLevel);
+     setLanguageTests(languageDetail.testLanguage);
+     setTypeofTest(languageDetail.testType);
+     setResult(languageDetail?.testResult)
+     setTestCenter(languageDetail?.testCenter)
+     setIssuingCountry(languageDetail?.issuingCountry)
+     setDateofTest(moment(languageDetail?.dateOfTest).format('YYYY-MM-DD'))
       }
   }, [])
 

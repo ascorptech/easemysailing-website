@@ -128,18 +128,18 @@ const SeaGoingService = ({
     // try {
     e.preventDefault();
     let data = {
-      " id": userDetail?.userId,
+      id: userDetail?.userId,
       vesselName: vercelName,
       imoNumber: imo,
       disembarkationDate: disembarkationDate,
-      " tonnage": tonnage,
+      tonnage: tonnage,
       rank: rank,
       engineMake: enginemake,
       ecdis: eCDIS,
       embarkationDate: embarkationdate,
       netSeagoingDays: seagoingNumber,
       gearless: gearless,
-      " inertGasSystem": inertGas,
+      inertGasSystem: inertGas,
     };
 
     AddSeagoingData(data, AddSeagoingDatacb);

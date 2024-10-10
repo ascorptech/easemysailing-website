@@ -37,6 +37,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
   const [marital, setMarital] = useState("");
 
   const [nationality, setNationality] = useState("");
+  const [color,setColor]=useState('')
 
   useEffect(() => {
     GetDropdownDetails('country', (res: any) => {
@@ -88,34 +89,33 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
   }, [])
   
 
-  const percentage = (filledFields / totalFields) * 100;
+  const percentage:any = totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
   // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
-  let color;
   useEffect(() => {
-    console.log('user',userDetail)
+    console.log("user", userDetail);
     if (percentage <= 30) {
       setPersonalComplete((prevState) => ({
         ...prevState, // Spread the previous state to keep any other properties
         percentage: percentage, // Update the percentage field
-        color: '#FF0000' // Update the color field
+        color: "#FF0000", // Update the color field
       }));
-      color = "red"; 
+      setColor("#FF0000");
     } else if (percentage <= 70) {
       setPersonalComplete((prevState) => ({
         ...prevState, // Spread the previous state to keep any other properties
         percentage: percentage, // Update the percentage field
-        color: '#FF9900' // Update the color field
+        color: "#FF9900", // Update the color field
       }));
-      color = "#FF9900"; 
+      setColor("#FF9900");
     } else {
       setPersonalComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: '#00A264' // Update the color field
+        ...prevState,
+        percentage: percentage,
+        color: "#00A264",
       }));
-      color = "green";
+      setColor("#00A264");
     }
-  }, [percentage,color])
+  }, [percentage, color]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     // try {
@@ -132,6 +132,8 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
     formData.append('gender',gender);
     formData.append('maritalStatus',marital);
     formData.append('nationality',nationality);
+    formData.append('color',color);
+    formData.append('completed',percentage);
     AddProfileData(userDetail?.userId,formData, AddaddressdataDB);
   };
   const AddaddressdataDB = (result: any) => {

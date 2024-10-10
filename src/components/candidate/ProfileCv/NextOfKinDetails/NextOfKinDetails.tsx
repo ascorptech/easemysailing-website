@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
-import { AddProfileData, GetDropdownDetails,AddNextOfData } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import {AddNextOfData } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 
 import { useState } from "react";
 import { toast } from "react-toastify";
@@ -15,20 +15,20 @@ type Props = {
   personalComplete: PersonalComplete; // mjrComplete is an object with percentage and color
   setPersonalComplete: React.Dispatch<React.SetStateAction<PersonalComplete>>;
   userDetail: any;
+  nextOfKinDetail:any;
 };
 
 const NextOfKinDetails = ({
   personalComplete,
   setPersonalComplete,
   userDetail,
+  nextOfKinDetail
 }: Props) => {
   const [nextKinName, setNextKinName] = useState("");
   const [nextKinShip, setNextKinShip] = useState("");
   const [nextKinAddre, setNextKinAddre] = useState("");
   const [nextKinChildren, setNextKinChildren] = useState("");
   const [disabled,setDisabled] = useState(true)
-
-  
 
   const totalFields = 4;
   const filledFields = [
@@ -70,13 +70,13 @@ const NextOfKinDetails = ({
   }, [percentage, color]);
 
   useEffect(() => {
-    if(userDetail){
-      setNextKinName(userDetail.nextKinName);
-      setNextKinAddre(userDetail.nextKinAddre);
-      setNextKinChildren(userDetail.nextKinChildren);
-      setNextKinShip(userDetail.nextKinShip)
-      
-    }
+    if (nextOfKinDetail) {
+      console.log('nnnn',nextOfKinDetail?.nextOfKinName)
+      setNextKinName(nextOfKinDetail.nextOfKinName);
+      setNextKinShip(nextOfKinDetail.nextOfKinRelationship);
+      setNextKinAddre(nextOfKinDetail.nextOfKinAddress);
+      setNextKinChildren(nextOfKinDetail.numberOfChildren);
+      }
   }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -242,7 +242,7 @@ const NextOfKinDetails = ({
               {/* <div className="relative flex items-center  "> */}
               <input
                 id="numberofchildren"
-                type="text"
+                type="number"
                 value={nextKinChildren}
                 onChange={(e) => setNextKinChildren(e.target.value)}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"

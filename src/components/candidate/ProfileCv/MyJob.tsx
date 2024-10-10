@@ -27,14 +27,24 @@ import VettingServices from "./VettingServices/VettingServices";
 import {
   GetProfileDetail,
   GetMyjob,
+  GetAboutMe,
+  GetNextOfData,
+  GetLanguageData,
+  GetContact,
+  GetEcdisData,
 } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import { toast } from "react-toastify";
 import { FaPercentage } from "react-icons/fa";
 import ShorJob from "./ShoreJob/ShoreJob";
 
 const MyJob = () => {
-  const [profileDetail, setProfileDetail] = useState<any>();
-
+  const [profileDetail, setProfileDetail] = useState<any>({});
+  const [myJobDetail,setMyJobDetail] = useState<any>({})
+  const [aboutMeDetail,setAboutMeDetail] = useState<any>()
+  const [nextOfKinDetail,setNextOfKinDetail] = useState<any>()
+  const [languageDetail,setLanguageDetail] = useState<any>()
+  const [contactDetail,setContactDetail] = useState<any>()
+  const [ecdisDetail,setEcdisDetail] = useState<any>()
   const [isOpen, setIsOpen] = useState(false); // State to toggle
   const [pDOpen, setPDOpen] = useState(false);
   const [languageOpen, setLanguageOpen] = useState(false);
@@ -168,8 +178,55 @@ const MyJob = () => {
       } else {
         toast.error("No data found");
       }
-      console.log("data here iam", res);
     });
+    GetMyjob(id,(res:any)=>{
+      if (res?.status==200) {
+        setMyJobDetail(res?.data)
+      }else{
+        toast.error('No data found')
+      }
+
+    })
+    GetAboutMe(id,(res:any)=>{
+      if (res?.status==200) {
+        setAboutMeDetail(res?.data)
+      }else{
+        toast.error('No data found')
+      }
+
+    })
+    GetNextOfData(id,(res:any)=>{
+      if (res?.status==200) {
+        setNextOfKinDetail(res?.data)
+      }else{
+        toast.error('No data found')
+      }
+
+    })
+    GetLanguageData(id,(res:any)=>{
+      if (res?.status==200) {
+        setLanguageDetail(res?.data)
+      }else{
+        toast.error('No data found')
+      }
+
+    })
+    GetContact(id,(res:any)=>{
+      if (res?.status==200) {
+        setContactDetail(res?.data)
+      }else{
+        toast.error('No data found')
+      }
+
+    })
+    GetEcdisData(id,(res:any)=>{
+      if (res?.status==200) {
+        setEcdisDetail(res?.data)
+      }else{
+        toast.error('No data found')
+      }
+
+    })
   };
 
   const toggleCollapse = () => {
@@ -251,7 +308,7 @@ const MyJob = () => {
           <div className=" h-screen overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory ">
             <div className="">
               <div
-                className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2  border-r-8 border-[${mjrComplete?.color}]`}
+                className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2  border-r-8 border-[${myJobDetail.color?myJobDetail.color:mjrComplete.color}]`}
               >
                 <h2 className=""> My Job Requirements</h2>{" "}
                 <div className="flex items-center justify-center gap-1">
@@ -292,8 +349,8 @@ const MyJob = () => {
                     )}
                   </span>
                   <CircularProgress
-                    percentage={Math.round(mjrComplete?.percentage)}
-                    color={mjrComplete.color}
+                    percentage={Math.round(mjrComplete?.percentage?mjrComplete?.percentage:Number(myJobDetail?.completed))}
+                    color={myJobDetail.color?myJobDetail.color:mjrComplete.color}
                   />
                 </div>
               </div>
@@ -303,11 +360,12 @@ const MyJob = () => {
                   mjrComplete={mjrComplete}
                   setMjrComplete={setMjrComplete}
                   userDetail={profileDetail}
+                  jobDetail={myJobDetail}
                 />
               )}
 
               <div
-                className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2  border-r-8 border-[${personalComplete?.color}] mt-3`}
+                className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2  border-r-8 border-[${profileDetail.color?profileDetail?.color:personalComplete?.color}] mt-3`}
               >
                 <h2 className="">Personal Details</h2>
                 <div className="flex items-center justify-center gap-1">
@@ -346,8 +404,8 @@ const MyJob = () => {
                   </span>
 
                   <CircularProgress
-                    percentage={Math.round(personalComplete?.percentage)}
-                    color={personalComplete?.color}
+                    percentage={Math.round(personalComplete?.percentage)?Math.round(personalComplete?.percentage):Number(profileDetail?.completed)}
+                    color={profileDetail.color?profileDetail?.color:personalComplete?.color}
                   />
                 </div>
               </div>
@@ -415,6 +473,7 @@ const MyJob = () => {
                   languageComplete={languageComplete}
                   setLanguageComplete={setLanguageComplete}
                   userDetail={profileDetail}
+                  languageDetail={languageDetail}
                 />
               )}
 
@@ -586,6 +645,7 @@ const MyJob = () => {
                   eCDISComplete={eCDISComplete}
                   setECDISComplete={setECDISComplete}
                   userDetail={profileDetail}
+                  ecdisDetail={ecdisDetail}
                 />
               )}
 
@@ -867,6 +927,7 @@ const MyJob = () => {
                 aboutMeComplete={aboutMeComplete}
                 setAboutMeComplete={setAboutMeComplete}
                 userDetail={profileDetail}
+                aboutDetail={aboutMeDetail}
               />
             )}
             {/* about me end */}
@@ -924,6 +985,7 @@ const MyJob = () => {
                 personalComplete={nextofComplete}
                 setPersonalComplete={setNextOfComplete}
                 userDetail={profileDetail}
+                nextOfKinDetail={nextOfKinDetail}
               />
             )}
 
@@ -981,6 +1043,7 @@ const MyJob = () => {
                 contactComplete={contactComplete}
                 setContactComplete={setContactComplete}
                 userDetail={profileDetail}
+                contactDetail={contactDetail}
               />
             )}
             {/* constact details end */}

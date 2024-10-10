@@ -3,6 +3,7 @@ import {
   AddEcdisData,
   GetDropdownDetails,
 } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import moment from "moment";
 import Link from "next/link";
 
 import { useEffect, useState } from "react";
@@ -16,9 +17,10 @@ type Props = {
   eCDISComplete: ECDISComplete; // mjrComplete is an object with percentage and color
   setECDISComplete: React.Dispatch<React.SetStateAction<ECDISComplete>>;
   userDetail: any;
+  ecdisDetail:any;
 };
 
-const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail }: Props) => {
+const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail,ecdisDetail }: Props) => {
   const [number, setNumber] = useState("");
   const [issuedate, setIssueDate] = useState("");
   const [exdate, setExDate] = useState("");
@@ -40,7 +42,17 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail }: Props) => {
 
   const [showFields, setShowFields] = useState(true);
 
-
+  useEffect(() => {
+    console.log("userDetail", userDetail);
+    if (ecdisDetail) {
+      setTrainings(ecdisDetail?.trainingName)
+      setTrainingCenter(ecdisDetail?.trainingCenter)
+      setIssuingCountry(ecdisDetail?.issuingCountry)
+      setECDISNumber(ecdisDetail?.certificateNumber)
+      setIssueDate1(moment(ecdisDetail?.issueDate).format('YYYY-MM-DD'))
+      setExDate1(moment(ecdisDetail?.expiryDate).format('YYYY-MM-DD'))
+    }
+  }, []);
 
   useEffect(() => {
     GetDropdownDetails("country", (res: any) => {
@@ -118,17 +130,18 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail }: Props) => {
     // try {
     e.preventDefault();
     let formData = new FormData();
+    formData.append("id", userDetail?.userId);
     formData.append("trainingName", trainings);
     formData.append("trainingCenter", trainingCenter);
     formData.append("issuingCountry", issuingCountry);
     formData.append("certificateNumber", eCDISNumber);
     formData.append("issueDate", issuedate1);
     formData.append("expiryDate", exdate1);
-    // formData.append("neverExpires", );
+    formData.append("neverExpires", checkBox1);
 
-    formData.append("document", selectedFiles);
+    selectedFiles && formData.append("document", selectedFiles);
 
-    AddEcdisData(userDetail?.userId,checkBox1, formData, AddEcdisdataDB);
+    AddEcdisData(formData, AddEcdisdataDB);
   };
 
   const AddEcdisdataDB = (result: any) => {

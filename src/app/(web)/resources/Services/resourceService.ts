@@ -3,9 +3,10 @@ import apiEndPoints from "./apiEndPoints";
 
 const {GETRESOURCES,GETRESOURCEDETAIL,GETRECENTRESOURCEBYID} = apiEndPoints
 
-export const GetResourcesList = async(cb:any)=>{
+export const GetResourcesList = async(page:any,pageLimit:any,cb:any)=>{
     try {
-        const response = await getReq(GETRESOURCES);
+        let url = `${GETRESOURCES}?page=${page}&size=${pageLimit}&sort=createdDate,desc`
+        const response = await getReq(url);
         return cb(response)
     } catch (error:any) {
         console.log('err',error)

@@ -29,7 +29,7 @@ const Header: React.FC = () => {
   // // Add the scroll event listener
   // (()=>{})()
   // window.addEventListener("scroll", hidePopupOnScroll);
-  
+
 
   // function hidePopupOnScroll() {
   //   setIsOpen(false);
@@ -76,10 +76,10 @@ const Header: React.FC = () => {
     };
   }, []);
 
-  
-  
-  
-  
+
+
+
+
 
   return (
     <div className="top-0 fixed w-full z-50">
@@ -87,7 +87,7 @@ const Header: React.FC = () => {
         <div className="lg:w-full w-[98%] text-25px font-[700px] leading-[37.5px] flex flex-wrap items-center justify-between  py-1 px-[1rem] sm:px-[3rem] lg:px-[2rem]   ">
           <div className="flex items-center space-x-3 rtl:space-x-reverse">
             <div className="w-44 h-12 sm:w-[230px] sm:h-[55px] ">
-              <Link href="/" onClick={()=>setIsMenuOpen(false)}>
+              <Link href="/" onClick={() => setIsMenuOpen(false)}>
                 <Image
                   priority
 
@@ -113,14 +113,14 @@ const Header: React.FC = () => {
                 </div>
                 <div className=" relative inline-block px-3 text-left group ">
                   <li className="block  text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white  md:dark:hover:bg-transparent">
-                    <Link href="/resources" className="text-[16px]">
+                    <Link href="/resources-blogs" className="text-[16px]">
                       Resources
                     </Link>
                   </li>
                 </div>
                 <div className=" relative inline-block px-3 text-left group ">
                   <li className="block  text-sm text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-black md:dark:hover:text-green-700 dark:hover:bg-gray-700 dark:hover:text-white  md:dark:hover:bg-transparent">
-                    <Link href="/podcast-list" className="text-[16px]">
+                    <Link href="/podcasts-interviews" className="text-[16px]">
                       Podcast & Interviews
                     </Link>
                   </li>
@@ -184,10 +184,17 @@ const Header: React.FC = () => {
                             Jobs & Career Advise
                           </Link>
                         </li> */}
-
                         <li>
                           <Link
-                            href="/resources"
+                            href="/about-us"
+                            className="block px-4 py-1 hover:bg-white hover:text-green-800"
+                          >
+                            About Us
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            href="/resources-blog"
                             className="block px-4 py-1 hover:bg-white hover:text-green-800"
                           >
                             Resource
@@ -196,19 +203,10 @@ const Header: React.FC = () => {
 
                         <li>
                           <Link
-                            href="/podcast-list"
+                            href="/podcast-interviews"
                             className="block px-4 py-1 hover:bg-white hover:text-green-800"
                           >
                             Podcast & Interviews
-                          </Link>
-                        </li>
-
-                        <li>
-                          <Link
-                            href="/about"
-                            className="block px-4 py-1 hover:bg-white hover:text-green-800"
-                          >
-                            About Us
                           </Link>
                         </li>
                         <li>
@@ -266,7 +264,7 @@ const Header: React.FC = () => {
                   </span>
                   Seafarers Login
                 </Link>
-                <Image src={'/images/candidateLoginBtn.png'} width={5000} height={5000} className="h-12 w-full object-contain" priority alt="btn"/>
+                <Image src={'/images/candidateLoginBtn.png'} width={5000} height={5000} className="h-12 w-full object-contain" priority alt="btn" />
                 {/* <Link
                   href="recruiter"
                   className=" h-8 w-21  text-[#FFFFFF] bg-[#00A264] hover:bg-[#00A264] focus:outline-none focus:ring-1 focus:ring-[#00A264] font-medium rounded-full text-sm px-5 py-5 text-center me-2  dark:bg-[#00A264]   flex justify-center items-center"
@@ -380,7 +378,16 @@ const Header: React.FC = () => {
               </li> */}
               <li>
                 <Link
-                  href="/resources"
+                  href="/about-us"
+                  className="block py-2 px-3 text-[#00A264] rounded-lg hover:bg-[#00A264] mt-1  hover:text-[#FFFFFF] text-xl"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/resources-blogs"
                   className="block py-2 px-3 text-[#00A264] rounded-lg hover:bg-[#00A264] mt-1  hover:text-[#FFFFFF] text-xl"
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -389,20 +396,11 @@ const Header: React.FC = () => {
               </li>
               <li>
                 <Link
-                  href="/podcast-list"
+                  href="/podcast-interviews"
                   className="block py-2 px-3 text-[#00A264] rounded-lg hover:bg-[#00A264] mt-1  hover:text-[#FFFFFF] text-xl"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Podcast & Interviews
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/about-us"
-                  className="block py-2 px-3 text-[#00A264] rounded-lg hover:bg-[#00A264] mt-1  hover:text-[#FFFFFF] text-xl"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  About Us
                 </Link>
               </li>
               <li>
@@ -452,7 +450,7 @@ const Header: React.FC = () => {
                   </span>
                   Seafarers Login
                 </Link>
-                <Image src={'/images/candidateLoginBtn.png'} width={5000} height={500} className="h-20 w-40 object-contain" priority alt="btn"/>
+                <Image src={'/images/candidateLoginBtn.png'} width={5000} height={500} className="h-20 w-40 object-contain" priority alt="btn" />
                 <Link
                   href="/recruiter"
                   className="hidden h-9 w-21  text-white bg-[#00A264] hover:bg-[#00A264] focus:outline-none focus:ring-1 focus:ring-[#00A264] font-medium rounded-full text-sm px-5 py-5 text-center me-2  dark:bg-[#00A264] dark:hover:bg-[#00A264] dark:focus:ring-[#00A264] flex justify-center items-center"

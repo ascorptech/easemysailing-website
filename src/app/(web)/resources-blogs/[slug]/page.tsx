@@ -13,7 +13,8 @@ import Heading7 from "@/components/web/resource_page/heading7/Heading7";
 
 const ResourceDetailsPage: React.FC = () => {
   const params = useParams(); // useParams hook to get route parameters
-  const { id } = params;
+  // const { id } = params;
+  const id = localStorage.getItem('resId')
 
   const [name, setName] = useState("");
 

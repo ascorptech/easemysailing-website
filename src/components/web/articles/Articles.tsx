@@ -15,7 +15,7 @@ const Articles = () => {
 
         <div>
           <Link
-            href="/resources"
+            href="/resources-blogs"
             className="h-8 bg-[#00A264] text-white py-2 px-4 rounded-full text-sm"
           >
             View All

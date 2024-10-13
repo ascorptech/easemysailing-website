@@ -187,7 +187,7 @@ const ResourceDetailsPage: React.FC = () => {
               <h2 className="font-bold text-xl ">More Articles</h2>
               <div className="absolute">
                 {resourcesList?.map((item: any) => (
-                  <Link href={`/resources/${item?.id}`} className=" flex gap-3  mb-2 p-2">
+                  <Link href={`/resources-blogs/${item?.title}`} className=" flex gap-3  mb-2 p-2"  onClick={()=>localStorage.setItem('resId',item?.id)}>
                     <div className="w-24 h-14 border-2 border-green-500">
                       <Image
                         priority

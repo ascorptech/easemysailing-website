@@ -104,7 +104,7 @@ const ArticlesCard = () => {
               <span className="text-black text-justify text-[10px] lg:text-[10px]">
                 {item?.title}{" "}
               </span>
-              <Link href={`resources/${item?.id}`} className="text-[#00A264] text-sm">
+              <Link href={`resources-blogs/${item?.title}`} className="text-[#00A264] text-sm"  onClick={()=>localStorage.setItem('resId',item?.id)}>
                 Read More
               </Link>
             </div>

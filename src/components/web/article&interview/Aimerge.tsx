@@ -7,7 +7,7 @@ const Aimergee = () => {
       <div className=" bg-[#021527] bg-opacity-0  ">
         
         <Interview />
-        <div className="w-full  border-spacing-1 border-[#77E2B9] my-3 border "></div>
+        <hr className="w-full  border-spacing-1 border-[#77E2B9] my-3 border-[0.2px] "/>
         <Articles />
       </div>
     </div>

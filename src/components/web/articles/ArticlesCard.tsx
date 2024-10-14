@@ -88,19 +88,19 @@ const ArticlesCard = () => {
             className="mb-10 h-full w-full"
             key={item.id}
           >
-            <div className="w-full">
+            <div className="w-full h-40">
               <Image
                 src={item?.imageUrl ? `data:image/png;image/jpg;image/jpeg;base64,${item?.imageUrl}` : "/images/captain4.jpeg"}
                 alt={`${item.title} logo`}
-                width={500}
-                height={500}
+                width={5000}
+                height={5000}
                 className="h-full w-full rounded-sm"
               />
               <div className="absolute mt-[-1.5rem] sm:mt-[-2.5rem] bg-[#00A264] text-white lg:font-semibold px-2 py-1 lg:px-3 lg:py-2">
                 <h3 className=" text-xs lg:text-base ">{moment(item?.createdDate).format('YYYY-MM-DD')}</h3>
               </div>
             </div>
-            <div className="px-2 sm:px-2 bg-white py-2 flex flex-col">
+            <div className="px-2 sm:px-2 bg-white py-2 flex flex-col h-24">
               <span className="text-black text-justify text-[10px] lg:text-[10px]">
                 {item?.title}{" "}
               </span>

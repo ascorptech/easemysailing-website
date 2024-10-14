@@ -109,26 +109,52 @@ const Islide = () => {
       <IoMdArrowBack />
     </button>
     {/* <div ref={card} className="flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory w-[90%] mx-auto sm:mx-0 sm:w-full sm:grid sm:grid-rows-1 sm:grid-cols-4 gap-2 sm:gap-10"> */}
-    {podcasts?.length?<div ref={card} className="flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory w-[84%] sm:grid sm:grid-cols-4 sm:grid-rows-1 sm:w-full sm:gap-8">
+    {/* {podcasts?.length?<div ref={card}
+     className="flex flex-row gap-10 overflow-x-scroll">
       {podcasts?.map((item: any, index: any) => (
          <div
          key={index}
-         className="snap-center flex flex-col items-center min-w-[301px] max-w-[14rem] sm:w-[16rem] mx-auto"
+         className="snap-center flex flex-col items-center w-[20rem] sm:w-[16rem] mx-auto"
        >
           <Image
             key={item?.id}
             src={`data:image/png;image/jpg;image/jpeg;base64,${item?.thumbnail}`}
             alt={item?.title}
-            width={100}
-            height={100}
+            width={5000}
+            height={5000}
             priority
-            className="h-full w-full rounded-md mb-10 border border-gray-600 shadow-sm"
+            className="h-full w-[20rem] rounded-md mb-10 border border-gray-600 shadow-sm"
             onClick={() => openModal(item)}
           />
-         </div>
+       </div>
       ))}
 
     </div>:<div className="w-full h-52 flex justify-center items-center">
+      <span className="text-[#00A264] text-2xl">No Content Found!</span>
+      </div>} */}
+      {podcasts?.length? <div
+        ref={card}
+        className="flex overflow-x-scroll no-scrollbar w-[90%] mx-auto sm:mx-0 sm:w-full sm:grid sm:grid-rows-1 sm:grid-cols-4 gap-2 sm:gap-10">
+      {/* <div
+        ref={cardRef}
+        className="flex flex-row space-x-4 overflow-auto"> */}
+        {podcasts?.map((item: any) => (
+          // <div
+          //   className="mb-10 h-full w-full"
+          //   key={item.id}
+          // >
+            // <div className="w-full h-40">
+              <Image
+                src={item?.imageUrl ? `data:image/png;image/jpg;image/jpeg;base64,${item?.imageUrl}` : "/images/captain4.jpeg"}
+                alt={`${item.title} logo`}
+                width={5000}
+                height={5000}
+                className="h-full w-full rounded-sm"
+              />
+            // </div>
+          // </div>
+        ))}
+      </div>:<div className="w-full h-52 flex justify-center items-center">
       <span className="text-[#00A264] text-2xl">No Content Found!</span>
       </div>}
     <button

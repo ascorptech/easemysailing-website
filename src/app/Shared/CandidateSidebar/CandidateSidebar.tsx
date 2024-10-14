@@ -11,18 +11,19 @@ import { RiContactsBook3Line } from "react-icons/ri";
 import { RiExchangeDollarLine } from "react-icons/ri";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 interface sidebarProps {
   sidebarToggle: boolean;
 }
 
 const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
+  const navigate = useRouter()
   const pathname = usePathname();
-  console.log("path", pathname);
   const onLogout = () => {
     localStorage.clear();
     document.cookie = `token=${""}; path=/candidate`;
+    navigate.push('/candidate')
   };
   return (
     <div

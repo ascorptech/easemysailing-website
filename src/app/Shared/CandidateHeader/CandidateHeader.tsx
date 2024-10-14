@@ -91,10 +91,10 @@ const Header: React.FC<HeaderProps> = ({ sidebarToggle, setSidebarToggle }) => {
         </ul>
         <div className="ml-[5px] mr-11 cursor-pointer flex items-center">
           <Image
-            src="/images/candidate/Profile-icon.png"
+            src="/images/candidate/Profile-Icon.png"
             alt="image not found"
-            width={500}
-            height={500}
+            width={5000}
+            height={5000}
             className="w-9 h-9 rounded-full border-2 border-green-600"
           ></Image>
           <p className="ml-1 font-semibold">{name}</p>

@@ -139,8 +139,8 @@ const ProfileCV = () => {
   };
 
   return (
-    <div className="   mt-3  px-9">
-      <div className="flex  justify-between border-2 py-2 px-4">
+    <div className="mt-3 px-6">
+      <div className="flex justify-between border-2 py-2 px-4">
         <div className="flex gap-2">
           {/* <div className="w-[115.32px] h-[128.85px] border p-2">
             <Image
@@ -156,8 +156,8 @@ const ProfileCV = () => {
           <div className="relative w-[115.32px] h-[128.85px] border p-2">
             <Image
               priority
-              width={200}
-              height={200}
+              width={5000}
+              height={5000}
               src={profileImage} 
               className="w-full h-full"
               alt={"Profile Image"}
@@ -169,8 +169,8 @@ const ProfileCV = () => {
             >
               <Image
                 priority
-                width={20}
-                height={20}
+                width={5000}
+                height={5000}
                 src={"/edit.png"}
                 className="w-6 h-6"
                 alt={"Edit Image"}
@@ -190,8 +190,8 @@ const ProfileCV = () => {
                 priority
                 src="/images/candidate/profileCv/user.png"
                 alt="logo not found"
-                width={300}
-                height={300}
+                width={5000}
+                height={5000}
                 className="object-contain w-[24px] h-[24px]"
               />
               <p className="font-semibold text-[15px] leading-[21px]">
@@ -204,10 +204,10 @@ const ProfileCV = () => {
             <div className="flex items-center gap-2">
               <Image
                 priority
-                src="/vector1.png"
+                src="/mail.png"
                 alt="logo not found"
-                width={300}
-                height={300}
+                width={5000}
+                height={5000}
                 className="object-contain w-[24px] h-[24px]"
               />
               <p className="font-semibold text-[15px] leading-[21px]">
@@ -226,8 +226,8 @@ const ProfileCV = () => {
               priority
               src="/images/candidate/profileCv/Vector.png"
               alt=""
-              width={200}
-              height={200}
+              width={5000}
+              height={5000}
               className="object-contain w-[24px] h-[24px]"
             />
             <p className="font-semibold text-[15px] leading-[21px]">
@@ -244,8 +244,8 @@ const ProfileCV = () => {
               priority
               src="/images/candidate/profileCv/Group.png"
               alt=""
-              width={500}
-              height={500}
+              width={5000}
+              height={5000}
               className="object-contain w-[24px] h-[24px]"
             />
             <div className="flex items-center justify-center ">
@@ -311,8 +311,8 @@ const ProfileCV = () => {
               priority
               src="/images/candidate/profileCv/zondicons_time.png"
               alt=""
-              width={50}
-              height={50}
+              width={5000}
+              height={5000}
               className="object-contain w-[24px] h-[24px]"
             />
             <p className="font-semibold text-[15px] leading-[21px]">
@@ -469,7 +469,7 @@ const ProfileCV = () => {
               </button>
             </div>
             <h3 className="text-xl font-semibold mb-4 text-center">
-              Update Logo
+              Update Profile Picture
             </h3>
 
             <div

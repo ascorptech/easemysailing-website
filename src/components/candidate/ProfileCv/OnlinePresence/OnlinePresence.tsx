@@ -19,13 +19,14 @@ type Props = {
     React.SetStateAction<OnlinePresenceComplete>
   >; // setMjrComplete is a function to update mjrComplete
   userDetail: any;
-  onlinePresenceDetail:any;
+  onlinePresenceDetail: any;
 };
 
 const OnlinePresence = ({
   onlinePresenceComplete,
   setOnlinePresenceComplete,
-  userDetail, onlinePresenceDetail
+  userDetail,
+  onlinePresenceDetail,
 }: Props) => {
   // State for form fields
 
@@ -80,7 +81,7 @@ const OnlinePresence = ({
     // });
   }, []);
 
-  const totalFields = 10;
+  const totalFields = 9;
 
   const filledFields = [
     whatsApp && whatsAppId,
@@ -99,7 +100,6 @@ const OnlinePresence = ({
   const percentage: any =
     totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
 
-  
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
@@ -126,39 +126,36 @@ const OnlinePresence = ({
     }
   }, [percentage, color]);
 
-
-useEffect(() => {
+  useEffect(() => {
     console.log("userDetail", onlinePresenceDetail);
     if (onlinePresenceDetail) {
       setMCountrycode(onlinePresenceDetail?.whatsappCountryCode);
       setWCountrycode(onlinePresenceDetail?.weChatCountryCode);
       setTCountrycode(onlinePresenceDetail?.telegramCountryCode);
       setVCountrycode(onlinePresenceDetail?.viberCountryCode);
-      setWhatsApp(onlinePresenceDetail?.whatsapp)
+      setWhatsApp(onlinePresenceDetail?.whatsapp);
+      setWhatsAppId(onlinePresenceDetail?. whatsappNumber);
 
       setWeChat(onlinePresenceDetail?.weChat);
-      setWeChatId(onlinePresenceDetail?. weChatNumber);
-      setFacebookMess(onlinePresenceDetail?. facebookMessenger);
+      setWeChatId(onlinePresenceDetail?.weChatNumber);
+      setFacebookMess(onlinePresenceDetail?.facebookMessenger);
 
       setFacebookMessId(onlinePresenceDetail?.facebookMessengerId);
 
       setTelegram(onlinePresenceDetail?.telegram);
-      setTelegramId(onlinePresenceDetail?. telegramNumber);
-      setViber(onlinePresenceDetail?. viber);
+      setTelegramId(onlinePresenceDetail?.telegramNumber);
+      setViber(onlinePresenceDetail?.viber);
       setViberId(onlinePresenceDetail?.viberNumber);
-      setSkypeId(onlinePresenceDetail?.certificateNumber);
-      setLinkedIn(onlinePresenceDetail?.certificateNumber);
-      setLinkedInId(onlinePresenceDetail?.certificateNumber);
+      setSkypeId(onlinePresenceDetail?.skypeId);
+      setLinkedIn(onlinePresenceDetail?.linkedIn);
+      setLinkedInId(onlinePresenceDetail?.linkedInProfileUrl);
 
-      setTwitterId(onlinePresenceDetail?.certificateNumber);
-      setTwitter(onlinePresenceDetail?.certificateNumber);
-      setInstagram(onlinePresenceDetail?.certificateNumber);
-      setInstagramId(onlinePresenceDetail?.certificateNumber);
-
-      
+      setTwitterId(onlinePresenceDetail?.facebookProfileUrl);
+      setTwitter(onlinePresenceDetail?.facebook);
+      setInstagram(onlinePresenceDetail?.instagram);
+      setInstagramId(onlinePresenceDetail?.instagramProfileUrl);
     }
   }, []);
-
 
   const handleSubmit = (e: React.FormEvent) => {
     // try {
@@ -185,7 +182,7 @@ useEffect(() => {
       instagram: instagram,
       other: other,
 
-      linkedInProfileUrl: linkedIn,
+      linkedInProfileUrl: linkedInId,
       facebookProfileUrl: twitterId,
       instagramProfileUrl: instagramId,
       otherSocialMediaName: otherId,
@@ -244,16 +241,19 @@ useEffect(() => {
               >
                 WhatsApp Number
               </label> */}
-                  <div className="w-[30%] ">
+                  <div className="w-[40%] ">
                     <select
                       className="border rounded-md w-full   h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                       value={mCountrycode}
                       onChange={(e) => setMCountrycode(e.target.value)}
                       disabled={disabled}
                     >
-                      {countryCodeDrop && countryCodeDrop?.map((code: any, index: number) => (
-                      <option key={index} value={code?.phoneCode}>{code?.flag + ' ' + code?.phoneCode?.toUpperCase()}</option>
-                    ))}
+                      {countryCodeDrop &&
+                        countryCodeDrop?.map((code: any, index: number) => (
+                          <option key={index} value={code?.phoneCode}>
+                            {code?.flag + " " + code?.phoneCode?.toUpperCase()}
+                          </option>
+                        ))}
                     </select>
                   </div>
                   {/* <div className=""> */}
@@ -295,16 +295,19 @@ useEffect(() => {
                 WeChat Number
               </label> */}
 
-                  <div className="w-[30%] ">
+                  <div className="w-[40%] ">
                     <select
                       className="border rounded-md w-full   h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                       value={wCountrycode}
                       onChange={(e) => setWCountrycode(e.target.value)}
                       disabled={disabled}
                     >
-                      {countryCodeDrop && countryCodeDrop?.map((code: any, index: number) => (
-                      <option key={index} value={code?.phoneCode}>{code?.flag + ' ' + code?.phoneCode?.toUpperCase()}</option>
-                    ))}
+                      {countryCodeDrop &&
+                        countryCodeDrop?.map((code: any, index: number) => (
+                          <option key={index} value={code?.phoneCode}>
+                            {code?.flag + " " + code?.phoneCode?.toUpperCase()}
+                          </option>
+                        ))}
                     </select>
                   </div>
                   <input
@@ -366,23 +369,26 @@ useEffect(() => {
 
               {telegram && (
                 <div className="mt-4 flex gap-2 ">
-                  <div className="w-[30%] ">
+                  <div className="w-[35%] ">
                     <select
                       className="border rounded-md w-full   h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                       value={tCountrycode}
                       onChange={(e) => setTCountrycode(e.target.value)}
                       disabled={disabled}
                     >
-                      {countryCodeDrop && countryCodeDrop?.map((code: any, index: number) => (
-                      <option key={index} value={code?.phoneCode}>{code?.flag + ' ' + code?.phoneCode?.toUpperCase()}</option>
-                    ))}
+                      {countryCodeDrop &&
+                        countryCodeDrop?.map((code: any, index: number) => (
+                          <option key={index} value={code?.phoneCode}>
+                            {code?.flag + " " + code?.phoneCode?.toUpperCase()}
+                          </option>
+                        ))}
                     </select>
                   </div>
                   <input
                     id="whatsAppId"
                     type="text"
                     className="border rounded-md  h-9 px-2 w-[80%] text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    placeholder="Enter Telegram Number."
+                    placeholder="Enter Telegram Number"
                     value={telegramId}
                     onChange={(e) => setTelegramId(e.target.value)}
                     disabled={disabled}
@@ -407,16 +413,19 @@ useEffect(() => {
 
               {viber && (
                 <div className="mt-4 flex gap-2 ">
-                  <div className="w-[30%] ">
+                  <div className="w-[40%] ">
                     <select
                       className="border rounded-md w-full   h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                       value={vCountrycode}
                       onChange={(e) => setVCountrycode(e.target.value)}
                       disabled={disabled}
                     >
-                      {countryCodeDrop && countryCodeDrop?.map((code: any, index: number) => (
-                      <option key={index} value={code?.phoneCode}>{code?.flag + ' ' + code?.phoneCode?.toUpperCase()}</option>
-                    ))}
+                      {countryCodeDrop &&
+                        countryCodeDrop?.map((code: any, index: number) => (
+                          <option key={index} value={code?.phoneCode}>
+                            {code?.flag + " " + code?.phoneCode?.toUpperCase()}
+                          </option>
+                        ))}
                     </select>
                   </div>
                   <input

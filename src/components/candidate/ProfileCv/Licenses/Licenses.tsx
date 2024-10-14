@@ -57,16 +57,16 @@ type Props = {
   licensesComplete: LicensesComplete;
   setLicensesComplete: React.Dispatch<React.SetStateAction<LicensesComplete>>;
   userDetail: any;
+  licensesDetail:any;
 };
 
 const Licenses = ({
   licensesComplete,
   setLicensesComplete,
   userDetail,
+  licensesDetail
 }: Props) => {
-  const [extraFields, setExtraFields] = useState<
-    { field1: string; field2: string }[]
-  >([]);
+
 
   const [licensesForms, setLicensesForms] = useState<LicensesForms[]>([
     {
@@ -153,6 +153,9 @@ const Licenses = ({
   const [edorTyDrop, setEndorTyDrop] = useState<any>([]);
 
   const [showFields, setShowFields] = useState<any>(false);
+  const [color, setColor] = useState("");
+
+
 
   // const [showFieldsens, setShowFieldsens] = useState(false);
 
@@ -220,28 +223,13 @@ const Licenses = ({
       field2.selectedFile2,
       field2.issuingOption,
     ]),
-    // number,
-    // idoNotACoC,
-    // capacity,
-    // issuingOption,
-    // typeOption,
-    // number1,
-    // wRegulation,
-    // issuingCountry,
-    // separatelyCheckBox,
-    // sTCWRegulationOption,
-    // capacityOption,
-    // issueDateOption,
-    // expiryDateOption,
-    // selectedFile1,
-    // selectedFile2,
-    // gMexpiryDate,
-    // gMissueDate,
-    // ...extraFields.flatMap((field) => [field.field1, field.field2]),
+   
   ].filter(Boolean).length;
 
-  const percentage = (filledFields / totalFields) * 100;
-  let color;
+  
+  const percentage: any =
+  totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
+
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
@@ -250,23 +238,34 @@ const Licenses = ({
         percentage: percentage,
         color: "#FF0000",
       }));
-      color = "red";
+     setColor("#FF0000");
     } else if (percentage <= 70) {
       setLicensesComplete((prevState) => ({
         ...prevState,
         percentage: percentage,
         color: "#FF9900",
       }));
-      color = "#FF9900";
+      setColor("#FF9900");
     } else {
       setLicensesComplete((prevState) => ({
         ...prevState,
         percentage: percentage,
         color: "#00A264",
       }));
-      color = "green";
+      setColor("#00A264");
     }
   }, [percentage, color]);
+
+  useEffect(() => {
+    console.log("licensesDetail", licensesDetail)
+     if(licensesDetail){
+    // setLicensesForms.forEach((element:any) =>{
+    //   element.licensesDetail?.cocIssuingAuthority
+
+    //  })
+      
+    }
+  } ,[]);
 
   const handleSubmit = (e: React.FormEvent) => {
     // try {
@@ -326,32 +325,7 @@ const Licenses = ({
     }
   };
 
-  // const handleFileChange = (event: any) => {
-  //   const file = event.target.files?.[0];
-  //   if (file) {
-  //     setSelectedFile(file);
-  //   }
-  // };
-
-  // const handleFileChange1 = (event: any) => {
-  //   const file = event.target.files?.[0];
-  //   if (file) {
-  //     setSelectedFile1(file);
-  //   }
-  // };
-
-  // const handleFileChange2 = (event: any) => {
-  //   const file = event.target.files?.[0];
-  //   if (file) {
-  //     setSelectedFile2(file);
-  //   }
-  // };
-
-  // add plus and minus symbole
-
-  // const addFieldPair = () => {
-  //   setExtraFields([...extraFields, { field1: "", field2: "" }]);
-  // };
+  
 
   const handleFormChange = (
     index: number,

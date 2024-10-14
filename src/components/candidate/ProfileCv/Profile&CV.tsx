@@ -32,6 +32,8 @@ const ProfileCV = () => {
   const [progress, setProgress] = useState(0);
   const [uploading, setUploading] = useState(false);
   const [showEditImagePopup, setShowEditImagePopup] = useState(false);
+  const [color, setColor] = useState("");
+
 
   useEffect(() => {
     fetchDetails();
@@ -140,26 +142,17 @@ const ProfileCV = () => {
 
   return (
     <div className="mt-3 px-6">
-      <div className="flex justify-between border-2 py-2 px-4">
-        <div className="flex gap-2">
-          {/* <div className="w-[115.32px] h-[128.85px] border p-2">
-            <Image
-              priority
-              src="/images/candidate/profileCv/profile.png"
-              alt="image not found"
-              width={100}
-              height={100}
-              className="w-full h-full"
-            />
-          </div> */}
+      <div className="flex  flex-col gap-4 lg:gap-0 lg:flex-row lg:justify-between border-2 py-2 px-4">
+        <div className="flex md:flex-row flex-col items-center gap-2 ">
+        
 
-          <div className="relative w-[115.32px] h-[128.85px] border p-2">
+          <div className="relative w-[115.32px] h-[128.85px] border p-2 -z-30">
             <Image
               priority
               width={5000}
               height={5000}
               src={profileImage} 
-              className="w-full h-full"
+              className="w-full h-full "
               alt={"Profile Image"}
             />
             {/* Edit profile image */}
@@ -292,7 +285,7 @@ const ProfileCV = () => {
                   )}
                 </span>
               </p>
-
+{/* 
               {isOpen && (
                 <div className="fixed bg-black  bg-opacity-10 rounded-lg flex mt-32 ml-28 justify-center items-center z-50">
                   <div className="border  shadow-lg p-2 pl-3 rounded-lg bg-white text-[14px] leading-[20px] ">
@@ -301,7 +294,7 @@ const ProfileCV = () => {
                     <p>Ready for joining</p>
                   </div>
                 </div>
-              )}
+              )} */}
             </div>
           </div>
 

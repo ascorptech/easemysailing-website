@@ -26,7 +26,7 @@ const Header: React.FC<HeaderProps> = ({ sidebarToggle, setSidebarToggle }) => {
   }
   
   return (
-    <div className="bg-gray-200 flex items-center justify-between sticky top-0 z-50">
+    <div className="bg-[#EBEBEB] flex items-center justify-between sticky top-0 -z-30">
       <div className="ml-4">
         <FaBars
           className="text-green-700 text-2xl cursor-pointer"

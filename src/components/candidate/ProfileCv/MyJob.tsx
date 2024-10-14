@@ -20,7 +20,6 @@ import TravelDocuments from "./TravelDocuments/TravelDocuments";
 import Licenses from "./Licenses/Licenses";
 import StcwTraining from "./StcwTraining/StcwTraining";
 import Ecdis from "./Ecdis/Ecdis";
-import Education from "./Education/Education";
 import AcademicDetails from "./AcademicDetails/AcademicDetails";
 import ProfessionalSkills from "./ProfessionalSkills/ProfessionalSkills";
 import VettingServices from "./VettingServices/VettingServices";
@@ -35,6 +34,8 @@ import {
   GetLicencesData,
   GetTravelDocumentData,
   GetOnlinePresenceData,
+  GetReferencesData,
+  GetSeagoingData,
 } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import { toast } from "react-toastify";
 import { FaPercentage } from "react-icons/fa";
@@ -51,6 +52,9 @@ const MyJob = () => {
   const [travelDocumentsDetail, setTravelDocumentsDetail] = useState<any>({});
   const [ecdisDetail, setEcdisDetail] = useState<any>({});
   const [onlinePresenseDetail, setOnlinePresenseDetail] = useState<any>({});
+ 
+  const [refrencesDetail, setRefrencesDetail] = useState<any>({});
+  const [seaGoingServiceDetail, setseaGoingServiceDetail] = useState<any>({});
   const [isOpen, setIsOpen] = useState(false); // State to toggle
   const [pDOpen, setPDOpen] = useState(false);
   const [languageOpen, setLanguageOpen] = useState(false);
@@ -242,6 +246,21 @@ const MyJob = () => {
         toast.error("No data found");
       }
     });
+    GetReferencesData(id, (res: any) => {
+      if (res?.status == 200) {
+        setRefrencesDetail(res?.data);
+      } else {
+        toast.error("No data found");
+      }
+    });
+
+    GetSeagoingData(id, (res: any) => {
+    if (res?.status == 200) {
+      setseaGoingServiceDetail(res?.data);
+    } else {
+      toast.error("No data found");
+    }
+    })
 
     GetEcdisData(id, (res: any) => {
       if (res?.status == 200) {
@@ -316,10 +335,10 @@ const MyJob = () => {
   };
 
   return (
-    <div className=" mx-6 mt-4  ">
-      <div className=" flex justify-between">
-        <div className=" w-[50%] ">
-          <div className=" h-screen overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory ">
+    <div className=" mx-6 mt-4   ">
+      <div className=" flex w-full flex-col justify-center lg:flex-row lg:justify-between lg:gap-4 ">
+        <div className="w-full lg:w-[50%] ">
+          <div className=" lg:h-screen overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory ">
             <div className="">
               <div
                 className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2  border-r-8 border-[${
@@ -593,7 +612,9 @@ const MyJob = () => {
 
               {/* OnlinePresence start */}
               <div
-                className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${licensesComplete?.color}] mt-3`}
+                className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8  border-[${
+                  licencesDetail.color ? licencesDetail.color : licensesComplete.color
+                }] mt-3`}
               >
                 <h1 className="">Licenses</h1>
                 <div className="flex items-center justify-center gap-1">
@@ -634,8 +655,16 @@ const MyJob = () => {
                     )}
                   </span>
                   <CircularProgress
-                    percentage={Math.round(licensesComplete?.percentage)}
-                    color={licensesComplete.color}
+                    percentage={Math.round(
+                      licensesComplete?.percentage
+                        ? licensesComplete?.percentage
+                        : Number(licencesDetail?.completed)
+                    )}
+                    color={
+                      licencesDetail.color
+                        ? licencesDetail.color
+                        : licensesComplete.color
+                    }
                   />
                 </div>
               </div>
@@ -645,6 +674,7 @@ const MyJob = () => {
                   licensesComplete={licensesComplete}
                   setLicensesComplete={setLicensesComplete}
                   userDetail={profileDetail}
+                  licensesDetail={licencesDetail}
                 />
               )}
 
@@ -825,7 +855,9 @@ const MyJob = () => {
               )}
 
               <div
-                className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${seaGoingServiceComplete?.color}] mt-3`}
+                className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${
+                  seaGoingServiceDetail.color ? seaGoingServiceDetail.color : seaGoingServiceComplete.color
+                }] mt-3`}
               >
                 <h2 className="">SeaGoing Experience </h2>
                 <div className="flex items-center justify-center gap-1">
@@ -863,8 +895,14 @@ const MyJob = () => {
                     )}
                   </span>
                   <CircularProgress
-                    percentage={Math.round(seaGoingServiceComplete?.percentage)}
-                    color={seaGoingServiceComplete.color}
+                    percentage={Math.round(
+                      seaGoingServiceComplete?.percentage
+                        ? seaGoingServiceComplete?.percentage
+                        : Number(seaGoingServiceDetail?.completed)
+                    )}
+                    color={
+                      seaGoingServiceDetail.color ? seaGoingServiceDetail.color : seaGoingServiceComplete.color
+                    }
                   />
                 </div>
               </div>
@@ -874,6 +912,7 @@ const MyJob = () => {
                   seaGoingServiceComplete={seaGoingServiceComplete}
                   setSeaGoingServiceComplete={setSeaGoingServiceComplete}
                   userDetail={profileDetail}
+                  seaGoingServiceDetail={seaGoingServiceDetail}
                 />
               )}
 
@@ -938,8 +977,8 @@ const MyJob = () => {
 
         {/* right section */}
 
-        <div className="  w-[48%]">
-          <div className=" h-screen overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory ">
+        <div className="w-full  lg:w-[50%] mt-4 lg:mt-0">
+          <div className=" lg:h-screen overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory ">
             {/* PersonalDetails end */}
 
             {/* Aboutme  start*/}
@@ -1438,7 +1477,9 @@ const MyJob = () => {
             )}
 
             <div
-              className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${refrencesComplete?.color}] mt-3`}
+              className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${
+                  refrencesDetail.color ? refrencesDetail.color : refrencesComplete.color
+                }] mt-3`}
             >
               <h2 className="">References</h2>
               <div className="flex items-center justify-center gap-1">
@@ -1479,9 +1520,15 @@ const MyJob = () => {
                   )}
                 </span>
                 <CircularProgress
-                  percentage={Math.round(refrencesComplete?.percentage)}
-                  color={refrencesComplete.color}
-                />
+                    percentage={Math.round(
+                      refrencesComplete?.percentage
+                        ? refrencesComplete?.percentage
+                        : Number(refrencesDetail?.completed)
+                    )}
+                    color={
+                      refrencesDetail.color ? refrencesDetail.color : refrencesComplete.color
+                    }
+                  />
               </div>
             </div>
             {refOpen && (
@@ -1489,6 +1536,7 @@ const MyJob = () => {
                 refrencesComplete={refrencesComplete}
                 setRefrencesComplete={setRefrencesComplete}
                 userDetail={profileDetail}
+                refrencesDetail={refrencesDetail}
               />
             )}
 

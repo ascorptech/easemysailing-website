@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { GoCheckCircleFill } from "react-icons/go";
 
 export default function AddOn() {
@@ -33,10 +34,10 @@ export default function AddOn() {
               <span className="ml-2">Employer identity masked</span>
             </li>
           </ul>
-          <div className="my-5 text-base w-36 mx-auto">
-            <button className="bg-[#00A264] text-white py-3  rounded-md w-full">
+          <div className="my-5 text-base pt-3 w-36 mx-auto">
+            <Link href="/recruiter/subscription/payment" className="bg-[#00A264] text-white py-3 px-2 rounded-md w-full">
               Currently Active
-            </button>
+            </Link>
           </div>
         </div>
 
@@ -67,10 +68,10 @@ export default function AddOn() {
               <span className="ml-2">Employer identity disclosed</span>
             </li>
           </ul>
-          <div className="my-5 text-base w-36 mx-auto">
-            <button className="bg-[#00A264] text-white py-3  rounded-md w-full">
-              Subscribe Now
-            </button>
+          <div className="my-5 text-base pt-3 w-36 mx-auto">
+          <Link href="/recruiter/subscription/payment" className="bg-[#00A264] text-white py-3 px-3 rounded-md w-full">
+          Subscribe Now
+            </Link>
           </div>
         </div>
 
@@ -101,10 +102,10 @@ export default function AddOn() {
               <span className="ml-2">Employer identity disclosed</span>
             </li>
           </ul>
-          <div className="my-5 text-base w-36 mx-auto">
-            <button className="bg-[#00A264] text-white py-3  rounded-md w-full">
+          <div className="my-5 text-base pt-3 w-36 mx-auto">
+            <Link href="/recruiter/subscription/payment" className="bg-[#00A264] text-white py-3 px-3 rounded-md w-full">
               Subscribe Now
-            </button>
+            </Link>
           </div>
         </div>
       </div>

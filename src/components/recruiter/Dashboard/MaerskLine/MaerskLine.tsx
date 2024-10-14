@@ -110,7 +110,7 @@ const MaerskLine: React.FC = () => {
           <div className="flex items-center justify-around ml-2  pb-1">
             <div className=" relative  text-center h-[74px] w-[74px] ">
               <Image
-                src="/images/MaerskLine.jpeg"
+                src="/ml3x.png"
                 alt="Avatar"
                 width={500}
                 height={500}
@@ -179,8 +179,8 @@ const MaerskLine: React.FC = () => {
               <div className="flex items-center ">
               <Image
                   priority
-                  height={20}
-                  width={20}
+                  height={200}
+                  width={200}
                   src="/images/artificial.png"
                   alt="image not found"
                   className="w-12 h-12 "
@@ -194,8 +194,8 @@ const MaerskLine: React.FC = () => {
               <div className="flex items-center ">
               <Image
                   priority
-                  height={20}
-                  width={20}
+                  height={200}
+                  width={200}
                   src="/images/Customer.png"
                   alt="image not found"
                   className="w-12 h-12 "
@@ -221,8 +221,8 @@ const MaerskLine: React.FC = () => {
               <div className="flex items-center space-x-2">
               <Image
                   priority
-                  height={20}
-                  width={20}
+                  height={200}
+                  width={200}
                   src="/images/visitor.png"
                   alt="Salary Icon"
                   className="w-6 h-6"
@@ -238,8 +238,8 @@ const MaerskLine: React.FC = () => {
               <div className="flex items-center space-x-2 ">
               <Image
                   priority
-                  height={20}
-                  width={20}
+                  height={200}
+                  width={200}
                   src="/images/jobOffer.png"
                   alt="Rank Icon"
                   className="w-6 h-6"
@@ -255,8 +255,8 @@ const MaerskLine: React.FC = () => {
               <div className="flex items-center space-x-2 ">
               <Image
                   priority
-                  height={20}
-                  width={20}
+                  height={200}
+                  width={200}
                   src="/images/Resume.png"
                   alt="Ship Type Icon"
                   className="w-6 h-6"
@@ -272,8 +272,8 @@ const MaerskLine: React.FC = () => {
               <div className="flex items-center space-x-2 ">
               <Image
                   priority
-                  height={20}
-                  width={20}
+                  height={200}
+                  width={200}
                   src="/images/attachment.png"
                   alt="Rank Icon"
                   className="w-6 h-6"
@@ -289,8 +289,8 @@ const MaerskLine: React.FC = () => {
               <div className="flex items-center space-x-2 ">
               <Image
                   priority
-                  height={20}
-                  width={20}
+                  height={200}
+                  width={200}
                   src="/images/EDUEms.png"
                   alt="Rank Icon"
                   className="w-6 h-6"
@@ -370,8 +370,8 @@ const MaerskLine: React.FC = () => {
                 <Image
 
                   priority
-                  height={20}
-                  width={20}
+                  height={200}
+                  width={200}
                   alt=""
                     src="/images/ship-user.png"
                     className=" text-[#00A264]"

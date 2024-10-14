@@ -180,7 +180,7 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
       </ul>
       {/* Logout Modal */}
       {showLogoutModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-[1000]">
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
           <div className="bg-white py-4 h-[330px] rounded shadow-lg  w-80 flex flex-col items-center justify-center relative">
             <div
               className="absolute w-4 h-4 top-1 right-1 cursor-pointer"
@@ -214,7 +214,7 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
             </p>
             <div className="flex gap-4">
             <Link
-                href="/candidate"
+                href="#"
                 onClick={onLogout}
                 className="  border border-[#00A264] w-24 py-1 rounded-md text-white bg-[#00A264] text-center"
               >

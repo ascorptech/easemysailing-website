@@ -88,13 +88,13 @@ const Slides: React.FC = () => {
 
   const scrollLeft = () => {
     if (card.current) {
-      card.current.scrollBy({ left: -200, behavior: "smooth" });
+      card.current.scrollBy({ left: -245, behavior: "smooth" });
     }
   };
 
   const scrollRight = () => {
     if (card.current) {
-      card.current.scrollBy({ left: 200, behavior: "smooth" });
+      card.current.scrollBy({ left: 245, behavior: "smooth" });
     }
   };
 
@@ -127,7 +127,7 @@ const Slides: React.FC = () => {
       {/* {/ Carousel Wrapper /} */}
       <div
         ref={card}
-        className=" flex overflow-x-scroll no-scrollbar gap-2 scroll-smooth snap-x snap-mandatory mx-[5rem]"
+        className=" flex overflow-x-scroll no-scrollbar gap-9 scroll-smooth snap-x snap-mandatory mx-[5rem]"
       >
         {vacancies.map((vacancy) => (
           <div
@@ -138,9 +138,9 @@ const Slides: React.FC = () => {
             <div className="w-[90px] h-[90px] p-2 bg-white  ">
               <Image
               priority
-              height={20}
-              width={20}
-                src="/images/avatar.png"
+              height={100}
+              width={100}
+                src="/images/avatar.webp"
                 alt="Maersk Line"
                 className="h-full w-full "
               />

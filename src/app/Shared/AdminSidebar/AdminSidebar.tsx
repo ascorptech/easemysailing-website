@@ -12,20 +12,30 @@ import { FiLogOut } from "react-icons/fi";
 import { RiContactsBook3Line } from "react-icons/ri";
 import { RiExchangeDollarLine } from "react-icons/ri";
 import { FiMail } from "react-icons/fi";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
+import { useState } from "react";
 
 interface sidebarProps {
   sidebarToggle?: boolean;
 }
 
 const AdminSidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
+  const navigate = useRouter()
   const pathname = usePathname();
-  console.log("path", pathname);
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const handleLogoutClick = () => {
+    setShowLogoutModal(true); 
+  };
+
+  const handleCloseModal = () => {
+    setShowLogoutModal(false); 
+  };
 
   const onLogout =()=>{
     localStorage.clear();
     document.cookie=`token=${''}; path=/admin`
+    navigate.push('/admin')
   }
   return (
     <div
@@ -100,12 +110,65 @@ const AdminSidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
 
        
         <li className=" rounded py-2  hover:bg-green-600 hover:text-white">
-          <Link href="/admin" onClick={onLogout}>
+          <Link href="/admin" onClick={handleLogoutClick}>
             <FiLogOut className="inline-block w-6 h-6 mr-1 ml-2 mt-[-5px] " />
             Logout
           </Link>
         </li>
       </ul>
+      {/* Logout Modal */}
+      {showLogoutModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
+          <div className="bg-white py-4 h-[330px] rounded shadow-lg  w-80 flex flex-col items-center justify-center relative">
+            <div
+              className="absolute w-4 h-4 top-1 right-1 cursor-pointer"
+              onClick={handleCloseModal}
+            >
+              <Image
+                priority
+                src="/images/candidate/profileCv/closeIcons.png"
+                alt=""
+                width={500}
+                height={500}
+                className="w-full h-full object-contain"
+              />
+            </div>
+
+            <div className="bg-[#D1FEE4] w-20 h-20 rounded-full flex items-center justify-center">
+              <div className="w-14 h-14 ">
+                <Image
+                  priority
+                  src="/images/candidate/profileCv/logout.png"
+                  alt=""
+                  width={5000}
+                  height={5000}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+            </div>
+            <h1 className="font-bold text-[34px] leading-[51px]">Logout</h1>
+            <p className="mb-6 text-[16px] leading-[21px]">
+              Are you sure you want to logout?
+            </p>
+            <div className="flex gap-4">
+            <Link
+                href="#"
+                onClick={onLogout}
+                className="  border border-[#00A264] w-24 py-1 rounded-md text-white bg-[#00A264] text-center"
+              >
+                Yes
+              </Link>
+              <button
+                onClick={handleCloseModal}
+                className="bg-[#D1FEE4] w-24 py-1 rounded-md hover:bg-[#00A264]hover:tex-white text-[#00A264] border border-[#00A264] hover:text-white hover:bg-[#00A264] text-center "
+              >
+                No
+              </button>
+              
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

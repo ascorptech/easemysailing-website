@@ -9,8 +9,8 @@ type Fleetdetails = {
   };
 
   type Props = {
-    fleetComplete: Fleetdetails; // mjrComplete is an object with percentage and color
-    setfleetComplete: React.Dispatch<React.SetStateAction<Fleetdetails>>; // setMjrComplete is a function to update mjrComplete
+    fleetComplete: Fleetdetails; 
+    setfleetComplete: React.Dispatch<React.SetStateAction<Fleetdetails>>;  
     userDetail: any
   };
 

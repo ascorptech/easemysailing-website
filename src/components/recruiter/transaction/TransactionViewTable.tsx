@@ -47,7 +47,7 @@ export default function TransactionViewTable() {
                   <td className="border-b border-[#00A264] p-2">{transaction.date}</td>
                   <td className="border-b border-[#00A264] p-2">{transaction.shipName}</td>
                   <td className="border-b border-[#00A264] p-2">{transaction.paymentStatus}</td>
-                  <td className="border-b border-[#00A264] p-2">{transaction.amountPaid}</td>
+                  <td className="border-b border-[#00A264] text-[#00A264] p-2">{transaction.amountPaid}</td>
                 </tr>
               ))}
             </tbody>

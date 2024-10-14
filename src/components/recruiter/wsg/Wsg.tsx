@@ -3,7 +3,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 
 function Wsg() {
-  const [isOpen1, setIsOpen1] = useState(false);
+  const [isOpen1, setIsOpen1] = useState(true);
   const [isOpen2, setIsOpen2] = useState(false);
   const [isOpen3, setIsOpen3] = useState(false);
   const [isOpen4, setIsOpen4] = useState(false);

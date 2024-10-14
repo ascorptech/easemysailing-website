@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { GoCheckCircleFill } from "react-icons/go";
 
 export default function Advertisement() {
@@ -38,10 +39,10 @@ export default function Advertisement() {
               </span>
             </li>
           </ul>
-          <div className="my-5 text-sm w-36 mx-auto">
-            <button className="bg-[#00A264] text-white py-3  rounded-md w-full">
+          <div className="my-5 text-sm w-36 pt-3 mx-auto">
+            <Link href="/recruiter/subscription/payment" className="bg-[#00A264] text-base text-white py-3 px-5 rounded-md w-full">
               Get Started
-            </button>
+            </Link>
           </div>
         </div>
 
@@ -74,10 +75,10 @@ export default function Advertisement() {
               </span>
             </li>
           </ul>
-          <div className="my-5 text-sm w-36 mx-auto">
-            <button className="bg-[#00A264] text-white py-3  rounded-md w-full">
+          <div className="my-5 text-sm w-36 pt-3 mx-auto">
+            <Link href="/recruiter/subscription/payment" className="bg-[#00A264] text-white py-3 px-3 text-base  rounded-md w-full">
               Subscribe Now
-            </button>
+            </Link>
           </div>
         </div>
       </div>

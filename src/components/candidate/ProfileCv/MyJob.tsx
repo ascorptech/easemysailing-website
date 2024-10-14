@@ -20,7 +20,6 @@ import TravelDocuments from "./TravelDocuments/TravelDocuments";
 import Licenses from "./Licenses/Licenses";
 import StcwTraining from "./StcwTraining/StcwTraining";
 import Ecdis from "./Ecdis/Ecdis";
-import Education from "./Education/Education";
 import AcademicDetails from "./AcademicDetails/AcademicDetails";
 import ProfessionalSkills from "./ProfessionalSkills/ProfessionalSkills";
 import VettingServices from "./VettingServices/VettingServices";

@@ -68,7 +68,6 @@ const SeaGoingService = ({
     // })
   }, []);
 
-  // const totalFields = 11;
   const totalFields = 11;
   const filledFields = [
     vercelName,
@@ -128,7 +127,7 @@ const SeaGoingService = ({
       setTonnage(seaGoingServiceDetail?.tonnage);
       setVercelName(seaGoingServiceDetail?.vesselName);
     }
-  });
+  },[]);
 
   const handleSubmit = (e: React.FormEvent) => {
     // try {
@@ -221,7 +220,7 @@ const SeaGoingService = ({
               value={imo}
               onChange={(e) => setImo(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              placeholder="Enter  IMO"
+              placeholder="Enter IMO"
               disabled={disabled}
             />
             {/* <select
@@ -243,7 +242,7 @@ const SeaGoingService = ({
             </select> */}
           </div>
 
-          <div className="   ">
+          <div className=" ">
             <label
               className="text-[14px] leading-[19.07px]  text-[#333333] "
               htmlFor="vesselname"
@@ -261,23 +260,6 @@ const SeaGoingService = ({
             />
           </div>
 
-          {/* <div className="flex justify-start items-center gap-4">
-              {index === fields.length - 1 && (
-                <AiOutlinePlus
-                  className="text-green-600 cursor-pointer"
-                  onClick={addField}
-                />
-              )}
-              {fields.length > 1 && index === fields.length - 1 && (
-                <AiOutlineMinus
-                  className="text-red-600 cursor-pointer"
-                  onClick={removeField}
-                />
-              )}
-            </div> */}
-          {/* </div> */}
-          {/* ))} */}
-          {/* <div className=" grid grid-cols-2 gap-4"> */}
           <div className=" ">
             <label
               className="text-[14px] leading-[19.07px]  text-[#333333]"

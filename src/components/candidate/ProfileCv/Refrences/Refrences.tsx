@@ -155,7 +155,8 @@ const Refrences = ({
       
       
     }
-  })
+  },[])
+  
   const handleSubmit = (e: React.FormEvent) => {
     // try {
     e.preventDefault();

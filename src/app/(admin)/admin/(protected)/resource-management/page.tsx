@@ -88,18 +88,33 @@ const page = (props: Props) => {
 
   const handleDescriptionChange = (content: any) => {
     // Update letter count (excluding HTML tags)
-    const plainText = content.replace(/<[^>]+>/g, ""); // Remove HTML tags
+    // const plainText = content.replace(/<[^>]+>/g, ""); // Remove HTML tags
 
-    // Limit to 4000 characters
-    if (plainText.length <= 4000) {
-      setResourceData({
-        ...resourceData,
-        description: content,
-      });
-      setLetterCount(plainText.length); // Update letter count
-    } else {
-      toast.error("Description cannot exceed 4000 characters.");
-    }
+    // // Limit to 4000 characters
+    // if (plainText.length <= 4000) {
+    //   setResourceData({
+    //     ...resourceData,
+    //     description: content,
+    //   });
+    //   setLetterCount(plainText.length); // Update letter count
+    // } else {
+    //   toast.error("Description cannot exceed 4000 characters.");
+    // }
+    const plainText = content.replace(/<[^>]+>/g, "");
+
+// Calculate word count
+const wordCount = plainText.trim().split(/\s+/).length;
+
+// Limit to 500 words
+if (wordCount <= 4000) {
+  setResourceData({
+    ...resourceData,
+    description: content,
+  });
+  setLetterCount(wordCount); // Update word count
+} else {
+  toast.error("Description cannot exceed 500 words.");
+}
   };
 
 

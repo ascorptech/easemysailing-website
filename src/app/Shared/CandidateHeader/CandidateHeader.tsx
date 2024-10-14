@@ -89,9 +89,9 @@ const Header: React.FC<HeaderProps> = ({ sidebarToggle, setSidebarToggle }) => {
             </Link>
           </li> */}
         </ul>
-        <div className="ml-[5px] mr-11 cursor-pointer flex items-center">
+        <div className="ml-[5px] mr-11 cursor-pointer flex flex-row items-center justify-center">
           <Image
-            src="/images/candidate/Profile-Icon.png"
+            src="/images/avatar.png"
             alt="image not found"
             width={5000}
             height={5000}

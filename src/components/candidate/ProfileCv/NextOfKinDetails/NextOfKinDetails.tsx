@@ -203,7 +203,7 @@ const NextOfKinDetails = ({
                 className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1 "
                 htmlFor="nextofkineship"
               >
-                Next of Kin Relation Ship
+                Next of Kin Relationship
               </label>
               {/* <div className="relative flex items-center  "> */}
               <input

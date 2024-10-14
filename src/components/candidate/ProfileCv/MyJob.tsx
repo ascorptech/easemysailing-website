@@ -192,6 +192,7 @@ const MyJob = () => {
     GetMyjob(id, (res: any) => {
       if (res?.status == 200) {
         setMyJobDetail(res?.data);
+        localStorage.setItem('rank',res?.data?.currentPosition)
       } else {
         toast.error("No data found");
       }
@@ -199,6 +200,7 @@ const MyJob = () => {
     GetAboutMe(id, (res: any) => {
       if (res?.status == 200) {
         setAboutMeDetail(res?.data);
+        localStorage.setItem('aboutMe',res?.data?.personalityAndProfessionalAttitude)
       } else {
         toast.error("No data found");
       }
@@ -1049,79 +1051,6 @@ const MyJob = () => {
             )}
             {/* about me end */}
 
-            <div
-              className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2   border-r-8 border-[${
-                nextOfKinDetail.color
-                  ? nextOfKinDetail.color
-                  : nextOfComplete.color
-              }] mt-3`}
-            >
-              <h1 className="">Next Of Kin Details</h1>
-              <div className="flex items-center justify-center gap-1">
-                <span
-                  className="ml-2 cursor-pointer"
-                  onClick={hendleNextKinDetails}
-                >
-                  {nKOpen ? (
-                    <svg
-                      className="w-6 h-6 transform rotate-180 transition-transform"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
-                  ) : (
-                    <svg
-                      className="w-6 h-6 transition-transform"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
-                  )}
-                </span>
-                {/* <CircularProgress
-                  percentage={Math.round(nextofComplete?.percentage)}
-                  color={nextofComplete?.color}
-                /> */}
-                <CircularProgress
-                  percentage={Math.round(
-                    nextOfComplete?.percentage
-                      ? nextOfComplete?.percentage
-                      : Number(nextOfKinDetail?.completed)
-                  )}
-                  color={
-                    nextOfKinDetail?.color
-                      ? nextOfKinDetail.color
-                      : nextOfComplete.color
-                  }
-                />
-              </div>
-            </div>
-            {/* {nKOpen && <NextOfKinDetails />} */}
-            {nKOpen && (
-              <NextOfKinDetails
-                nextOfKinComplete={nextOfComplete}
-                setNextOfKinComplete={setNextOfComplete}
-                userDetail={profileDetail}
-                nextOfKinDetail={nextOfKinDetail}
-              />
-            )}
-
             {/* conatact Details start */}
             <div
               className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${
@@ -1196,6 +1125,78 @@ const MyJob = () => {
               />
             )}
             {/* constact details end */}
+            <div
+              className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2   border-r-8 border-[${
+                nextOfKinDetail.color
+                  ? nextOfKinDetail.color
+                  : nextOfComplete.color
+              }] mt-3`}
+            >
+              <h1 className="">Next Of Kin Details</h1>
+              <div className="flex items-center justify-center gap-1">
+                <span
+                  className="ml-2 cursor-pointer"
+                  onClick={hendleNextKinDetails}
+                >
+                  {nKOpen ? (
+                    <svg
+                      className="w-6 h-6 transform rotate-180 transition-transform"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      className="w-6 h-6 transition-transform"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  )}
+                </span>
+                {/* <CircularProgress
+                  percentage={Math.round(nextofComplete?.percentage)}
+                  color={nextofComplete?.color}
+                /> */}
+                <CircularProgress
+                  percentage={Math.round(
+                    nextOfComplete?.percentage
+                      ? nextOfComplete?.percentage
+                      : Number(nextOfKinDetail?.completed)
+                  )}
+                  color={
+                    nextOfKinDetail?.color
+                      ? nextOfKinDetail.color
+                      : nextOfComplete.color
+                  }
+                />
+              </div>
+            </div>
+            {/* {nKOpen && <NextOfKinDetails />} */}
+            {nKOpen && (
+              <NextOfKinDetails
+                nextOfKinComplete={nextOfComplete}
+                setNextOfKinComplete={setNextOfComplete}
+                userDetail={profileDetail}
+                nextOfKinDetail={nextOfKinDetail}
+              />
+            )}
 
             {/* travel documents */}
             <div

@@ -26,13 +26,15 @@ const ProfileCV = () => {
   const [feedback, setFeedback] = useState("");
   const [filePreview, setFilePreview] = useState<string | null>(null);
   const [profileImage, setProfileImage] = useState(
-    "/images/candidate/profileCv/profile.png"
+    "/images/avatar-place.jpg"
   );
   const [fileName, setFileName] = useState("");
   const [progress, setProgress] = useState(0);
   const [uploading, setUploading] = useState(false);
   const [showEditImagePopup, setShowEditImagePopup] = useState(false);
   const [color, setColor] = useState("");
+  const [rank,setRank] = useState("")
+  const [aboutMe,setAboutMe] = useState("")
 
 
   useEffect(() => {
@@ -41,16 +43,22 @@ const ProfileCV = () => {
 
   const fetchDetails = async () => {
     let id = await localStorage.getItem("id");
+    let rnk:any = await localStorage.getItem("rank");
+    let abtMe:any = await localStorage.getItem("aboutMe");
     setProfileDetail({
       name:
         localStorage.getItem("firstName") +
         " " +
         localStorage.getItem("lastName"),
       email: localStorage.getItem("email"),
+      rank: localStorage.getItem('rank')
     });
+    
     GetProfileDetail(id, (res: any) => {
       if (res?.status == 200) {
         setProfileDetail(res?.data);
+        setRank(rnk)
+        setAboutMe(abtMe)
       } else {
         toast.error("No data found");
       }
@@ -141,7 +149,7 @@ const ProfileCV = () => {
   };
 
   return (
-    <div className="mt-3 px-6">
+    <div className="mt-3 px-6 z-50">
       <div className="flex  flex-col gap-4 lg:gap-0 lg:flex-row lg:justify-between border-2 py-2 px-4">
         <div className="flex md:flex-row flex-col items-center gap-2 ">
         
@@ -152,7 +160,7 @@ const ProfileCV = () => {
               width={5000}
               height={5000}
               src={profileImage} 
-              className="w-full h-full "
+              className="w-full h-full object-fill"
               alt={"Profile Image"}
             />
             {/* Edit profile image */}
@@ -176,7 +184,7 @@ const ProfileCV = () => {
             </h1>
             <p className="text-[#00A264] font-medium text-[16px] leading-[24px]">
               {/* {profileDetail?.rank} */}
-              {profileDetail?.rank || "Rank not available"}
+              {rank?.toLocaleUpperCase() || "Rank not available"}
             </p>
             <div className="flex items-center gap-2">
               <Image
@@ -190,7 +198,7 @@ const ProfileCV = () => {
               <p className="font-semibold text-[15px] leading-[21px]">
                 About :
                 <span className="font-normal ml-1 text-[15px] leading-[21px]">
-                  {profileDetail?.aboutMe}
+                  {aboutMe}
                 </span>
               </p>
             </div>

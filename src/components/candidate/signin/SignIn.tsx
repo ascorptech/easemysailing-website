@@ -116,7 +116,7 @@ const SignIn = ({ route }: Props) => {
             localStorage.setItem("lastName", user?.lastName);
             localStorage.setItem("email", user?.email);
     
-            toast.success('Login successfull')
+            toast.success('Login Successfull')
             if (token) {
               router.push("/candidate/profilecv");
               setIsLoading(false)
@@ -131,7 +131,7 @@ const SignIn = ({ route }: Props) => {
             localStorage.setItem("lastName", user?.lastName);
             localStorage.setItem("email", user?.email);
     
-            toast.success('Login successfull')
+            toast.success('Login Successfull')
             if (token) {
               router.push("/recruiter/dashboard");
               setIsLoading(false)

@@ -193,7 +193,7 @@ const MyJobRequirements = ({
           {currentPosition && (
             <div>
               <label className="text-[14px] leading-[19.07px]  text-[#333333]">
-                Alternate Position/Rank
+              Primary Rank Choice
               </label>
               <select
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
@@ -341,7 +341,7 @@ const MyJobRequirements = ({
               className="text-[14px] leading-[19.07px]  text-[#333333]"
               htmlFor="salaryField"
             >
-              Expected Salary (in USD)
+              Expected Salary (in USD/Month)
             </label>
             {/* <select
               id="salaryField"
@@ -361,7 +361,21 @@ const MyJobRequirements = ({
               id="salaryField"
               type="number"
               value={salaryField}
-              onChange={(e) => setSalaryField(e.target.value)}
+              onChange={(e) => {
+                if (e.target.value.length <= 6) {
+                  setSalaryField(e.target.value);
+                }
+                  else{
+                    toast.error("Salary can not be more than 6 digits");
+                  }
+                
+              }}
+              onBlur={(e) => {
+                // Validation for min length
+                if (e.target.value.length > 6) {
+                  toast.error("Salary can not be more than 6 digits");
+                }
+              }}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder="Enter Expected Salary"
               disabled={disabled}

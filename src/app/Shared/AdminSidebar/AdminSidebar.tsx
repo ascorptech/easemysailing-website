@@ -33,9 +33,15 @@ const AdminSidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
   };
 
   const onLogout =()=>{
+    console.log('i am clicked')
     localStorage.clear();
     document.cookie=`token=${''}; path=/admin`
-    navigate.push('/admin')
+    navigate.replace('/admin')
+    setTimeout(() => {
+      window.location.replace('/admin')
+      // window.location.reload()
+    }, 800);
+    // window.location.replace('/admin')
   }
   return (
     <div
@@ -110,7 +116,7 @@ const AdminSidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
 
        
         <li className=" rounded py-2  hover:bg-green-600 hover:text-white">
-          <Link href="/admin" onClick={handleLogoutClick}>
+          <Link href="#" onClick={handleLogoutClick}>
             <FiLogOut className="inline-block w-6 h-6 mr-1 ml-2 mt-[-5px] " />
             Logout
           </Link>
@@ -128,8 +134,8 @@ const AdminSidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
                 priority
                 src="/images/candidate/profileCv/closeIcons.png"
                 alt=""
-                width={500}
-                height={500}
+                width={5000}
+                height={5000}
                 className="w-full h-full object-contain"
               />
             </div>
@@ -154,7 +160,7 @@ const AdminSidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
             <Link
                 href="#"
                 onClick={onLogout}
-                className="  border border-[#00A264] w-24 py-1 rounded-md text-white bg-[#00A264] text-center"
+                className="cursor-pointer  border border-[#00A264] w-24 py-1 rounded-md text-white bg-[#00A264] text-center"
               >
                 Yes
               </Link>

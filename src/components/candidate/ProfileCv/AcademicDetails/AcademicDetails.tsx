@@ -524,6 +524,7 @@ const AcademicDetails = ({
   // const [issuingCountry, setIssuingCountry] = useState("");
   const [countryDrop, setCountryDrop] = useState<any>([]);
   const [disabled, setDisabled] = useState(true);
+  const [isHideShow, setIsHideShow] = useState(false);
 
   const totalFields = educationForms.length * 4 + academicForms.length * 5;
   const filledFields = [
@@ -637,6 +638,7 @@ const AcademicDetails = ({
 
   const handleEdit = () => {
     setDisabled(!disabled);
+    setIsHideShow(!isHideShow);
   };
 
   return (
@@ -645,18 +647,20 @@ const AcademicDetails = ({
         <div className="flex items-center justify-between">
           <h1 className="font-bold">Qualification</h1>
 
-          <div className="flex gap-2">
-            <AiOutlinePlus
-              className="text-2xl cursor-pointer"
-              onClick={addField}
-            />
-            {academicForms.length > 1 && (
-              <AiOutlineMinus
+          {isHideShow && (
+            <div className="flex gap-2">
+              <AiOutlinePlus
                 className="text-2xl cursor-pointer"
-                onClick={() => removeField(academicForms.length - 1)}
+                onClick={addField}
               />
-            )}
-          </div>
+              {academicForms.length > 1 && (
+                <AiOutlineMinus
+                  className="text-2xl cursor-pointer"
+                  onClick={() => removeField(academicForms.length - 1)}
+                />
+              )}
+            </div>
+          )}
         </div>
 
         {academicForms.map((field, index) => (
@@ -726,50 +730,54 @@ const AcademicDetails = ({
             </div>
 
             <div className="grid col-span-2 gap-4 ">
-              <div className="flex items-center gap-4">
-                <div className="flex gap-6 items-center">
-                  <label
-                    htmlFor={`file-upload_${index}`}
-                    className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md hover:bg-[#04714e] text-[14px] "
-                  >
-                    Attachment Document
-                  </label>
-                  <input
-                    id={`file-upload_${index}`}
-                    type="file"
-                    className="hidden"
-                    onChange={(e) => handleFileChange(index, e)}
-                    disabled={disabled}
-                  />
+              {isHideShow && (
+                <div className="flex items-center gap-4">
+                  <div className="flex gap-6 items-center">
+                    <label
+                      htmlFor={`file-upload_${index}`}
+                      className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md hover:bg-[#04714e] text-[14px] "
+                    >
+                      Attachment Document
+                    </label>
+                    <input
+                      id={`file-upload_${index}`}
+                      type="file"
+                      className="hidden"
+                      onChange={(e) => handleFileChange(index, e)}
+                      disabled={disabled}
+                    />
+                  </div>
+                  {field.selectedFile ? (
+                    <p className="mt-4 text-gray-700">
+                      File Selected: {field.selectedFile.name}
+                    </p>
+                  ) : (
+                    <p className="text-[14px]  text-[#333333]">
+                      No File Selected
+                    </p>
+                  )}
                 </div>
-                {field.selectedFile ? (
-                  <p className="mt-4 text-gray-700">
-                    File Selected: {field.selectedFile.name}
-                  </p>
-                ) : (
-                  <p className="text-[14px]  text-[#333333]">
-                    No File Selected
-                  </p>
-                )}
-              </div>
+              )}
             </div>
           </div>
         ))}
 
         <div className="flex justify-between items-center mt-4">
           <h1 className="font-bold">Education</h1>
-          <div className="flex gap-2">
-            <AiOutlinePlus
-              className="text-2xl cursor-pointer"
-              onClick={addFields}
-            />
-            {educationForms.length > 1 && (
-              <AiOutlineMinus
+          {isHideShow && (
+            <div className="flex gap-2">
+              <AiOutlinePlus
                 className="text-2xl cursor-pointer"
-                onClick={() => removeFields(educationForms.length - 1)}
+                onClick={addFields}
               />
-            )}
-          </div>
+              {educationForms.length > 1 && (
+                <AiOutlineMinus
+                  className="text-2xl cursor-pointer"
+                  onClick={() => removeFields(educationForms.length - 1)}
+                />
+              )}
+            </div>
+          )}
         </div>
 
         {educationForms.map((fields, index) => (

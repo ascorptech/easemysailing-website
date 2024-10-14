@@ -11,13 +11,15 @@ type Props = {}
 
 const ResourcesList = (props: Props) => {
     const [resourcesList,setResourcesList] = useState<any>([])
-    const [currentPage, setCurrentPage] = useState(1);
     const [isLoading,setIsLoading] = useState<boolean>(false)
+    const [currentPage, setCurrentPage] = useState(0);
+    const [resourcesPerPage,setResourcesPerPage] = useState(10);
+    const [totalPages, setTotalPages] = useState(1)
     const limit = 100;
-  const itemsPerPage = 6; // Number of items per page
+    // const itemsPerPage = 6; // Number of items per page
 
   // Calculate total pages
-  const totalPages = Math.ceil(resourcesList?.length / itemsPerPage);
+  // const totalPages = Math.ceil(resourcesList?.length / itemsPerPage);
 
   // Get items for the current page
   // const currentItems = resourcesList?.length ?resourcesList?.toReversed().slice(
@@ -25,27 +27,29 @@ const ResourcesList = (props: Props) => {
   //   currentPage * itemsPerPage
   // ):[];
 
-  const handleNextPage = () => {
+  const nextPage = () => {
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
+      GetResourcesList(currentPage+1,resourcesPerPage,fetchResources)
     }
   };
 
-  const handlePreviousPage = () => {
-    if (currentPage > 1) {
+  const previousPage = () => {
+    if (currentPage > 0) {
       setCurrentPage(currentPage - 1);
+      GetResourcesList(currentPage-1,resourcesPerPage,fetchResources)
     }
   };
 
     useEffect(() => {
       setIsLoading(true)
-      GetResourcesList(fetchResources)
+      GetResourcesList(currentPage,resourcesPerPage,fetchResources)
     }, [])
   
     const fetchResources=(result:any)=>{
       console.log('res',result)
       if (result?.status==200) {
-        setResourcesList(result.data);
+        setResourcesList(result.data?.content);
       } else {
         setResourcesList([])
       }
@@ -132,9 +136,9 @@ const ResourcesList = (props: Props) => {
       {/* {/ Pagination Controls /} */}
       <div className="flex justify-center items-center text-sm mt-[6rem] mb-4">
         <button
-          onClick={handlePreviousPage}
+          onClick={previousPage}
           className="px-2 py-1 mr-2 bg-green-600 text-white rounded-lg"
-          disabled={currentPage === 1}
+          disabled={currentPage === 0}
         >
           Previous
         </button>
@@ -153,13 +157,13 @@ const ResourcesList = (props: Props) => {
         </Link> */}
 
         <span className="text-green-700">
-          Page {currentPage} of {totalPages}
+        Page {currentPage+1} of {totalPages}
         </span>
 
         <button
-          onClick={handleNextPage}
+          onClick={nextPage}
           className="px-2 py-1 ml-2 bg-green-600 text-white rounded-lg"
-          disabled={currentPage === totalPages}
+          disabled={currentPage+1 >= totalPages}
         >
           Next
         </button>

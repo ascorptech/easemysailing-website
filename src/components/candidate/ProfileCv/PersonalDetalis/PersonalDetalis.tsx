@@ -119,11 +119,11 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
 
   const handleSubmit = async (e: React.FormEvent) => {
     // try {
-    e.preventDefault(); // Prevent default form submission
+    e.preventDefault(); 
     let formData = new FormData();
     // formData.append('userId',userDetail?.userId);
     formData.append('firstName',firstName);
-    middleName&&formData.append('middleName',middleName);
+    formData.append('middleName',middleName);
     formData.append('lastName',lastName);
     formData.append('dateOfBirth',date);
     formData.append('cityOfBirth',cityBirth);
@@ -146,15 +146,6 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
     } else {
       toast.error("Personal detail not submited ");
     }
-
-    //   const data = await AddProfileData(formData);
-    //   console.log("Success:", formData);
-    //   toast.success(" PersonalDetails successfully");
-    // } catch (error) {
-    //   toast.error("PersonalDetails not updated");
-
-    //   console.error("Error:", error);
-    // }
   };
 
   const handleImageChange = (e: any) => {
@@ -321,7 +312,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
               >
                 <option value="">Select</option>
                 {genderDrop&& genderDrop?.map((gen:any,index:number)=>(
-                <option key={index} value={gen}>{gen}</option>
+                <option key={index} value={gen}>{gen.toUpperCase()}</option>
               ))}
               </select>
             </div>
@@ -435,7 +426,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
               >
                 <option value="">Select</option>
                 {martialStatusDrop&& martialStatusDrop?.map((status:any,index:number)=>(
-                <option key={index} value={status}>{status}</option>
+                <option key={index} value={status}>{status.toUpperCase()}</option>
               ))}
                 {/* <option value="male">Male</option>
                 <option value="female">Female</option>

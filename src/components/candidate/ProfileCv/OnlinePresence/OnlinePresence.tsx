@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import CircularProgress from "../CircularProgress";
+import { countryCodeDrop } from "@/constants/constants";
 type OnlinePresenceComplete = {
   percentage: number;
   color: string;
@@ -18,12 +19,13 @@ type Props = {
     React.SetStateAction<OnlinePresenceComplete>
   >; // setMjrComplete is a function to update mjrComplete
   userDetail: any;
+  onlinePresenceDetail:any;
 };
 
 const OnlinePresence = ({
   onlinePresenceComplete,
   setOnlinePresenceComplete,
-  userDetail,
+  userDetail, onlinePresenceDetail
 }: Props) => {
   // State for form fields
 
@@ -36,7 +38,7 @@ const OnlinePresence = ({
 
   // const [mCountrycode, setMCountrycode] = useState("+91");
 
-  const [countryCodeDrop, setCountryCodeDrop] = useState<any>([]);
+  // const [countryCodeDrop, setCountryCodeDrop] = useState<any>([]);
   const [countryDrop, setCountryDrop] = useState<any>([]);
 
   const [whatsApp, setWhatsApp] = useState(false);
@@ -65,16 +67,17 @@ const OnlinePresence = ({
   const [otherId, setOtherId] = useState("");
 
   const [disabled, setDisabled] = useState(true);
+  const [color, setColor] = useState("");
 
   useEffect(() => {
     GetDropdownDetails("country", (res: any) => {
       // console.log('County',res?.data)
       setCountryDrop(res?.data?.values);
     });
-    GetDropdownDetails("countryCode", (res: any) => {
-      // console.log('County',res?.data)
-      setCountryCodeDrop(res?.data?.values);
-    });
+    // GetDropdownDetails("countryCode", (res: any) => {
+    //   // console.log('County',res?.data)
+    //   setCountryCodeDrop(res?.data?.values);
+    // });
   }, []);
 
   const totalFields = 10;
@@ -92,9 +95,11 @@ const OnlinePresence = ({
     other && otherId,
   ].filter(Boolean).length;
 
-  const percentage = (filledFields / totalFields) * 100;
+  // const percentage = (filledFields / totalFields) * 100;
+  const percentage: any =
+    totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
 
-  let color;
+  
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
@@ -103,34 +108,72 @@ const OnlinePresence = ({
         percentage: percentage,
         color: "#FF0000",
       }));
-      color = "red";
+      setColor("#FF0000");
     } else if (percentage <= 70) {
       setOnlinePresenceComplete((prevState) => ({
         ...prevState,
         percentage: percentage,
         color: "#FF9900",
       }));
-      color = "#FF9900";
+      setColor("#FF9900");
     } else {
       setOnlinePresenceComplete((prevState) => ({
         ...prevState,
         percentage: percentage,
         color: "#00A264",
       }));
-      color = "green";
+      setColor("#00A264");
     }
   }, [percentage, color]);
+
+
+useEffect(() => {
+    console.log("userDetail", onlinePresenceDetail);
+    if (onlinePresenceDetail) {
+      setMCountrycode(onlinePresenceDetail?.whatsappCountryCode);
+      setWCountrycode(onlinePresenceDetail?.weChatCountryCode);
+      setTCountrycode(onlinePresenceDetail?.telegramCountryCode);
+      setVCountrycode(onlinePresenceDetail?.viberCountryCode);
+      setWhatsApp(onlinePresenceDetail?.whatsapp)
+
+      setWeChat(onlinePresenceDetail?.weChat);
+      setWeChatId(onlinePresenceDetail?. weChatNumber);
+      setFacebookMess(onlinePresenceDetail?. facebookMessenger);
+
+      setFacebookMessId(onlinePresenceDetail?.facebookMessengerId);
+
+      setTelegram(onlinePresenceDetail?.telegram);
+      setTelegramId(onlinePresenceDetail?. telegramNumber);
+      setViber(onlinePresenceDetail?. viber);
+      setViberId(onlinePresenceDetail?.viberNumber);
+      setSkypeId(onlinePresenceDetail?.certificateNumber);
+      setLinkedIn(onlinePresenceDetail?.certificateNumber);
+      setLinkedInId(onlinePresenceDetail?.certificateNumber);
+
+      setTwitterId(onlinePresenceDetail?.certificateNumber);
+      setTwitter(onlinePresenceDetail?.certificateNumber);
+      setInstagram(onlinePresenceDetail?.certificateNumber);
+      setInstagramId(onlinePresenceDetail?.certificateNumber);
+
+      
+    }
+  }, []);
+
 
   const handleSubmit = (e: React.FormEvent) => {
     // try {
     e.preventDefault();
     let data = {
       id: userDetail?.userId,
+      whatsappCountryCode: mCountrycode,
       whatsapp: whatsApp,
       weChat: weChat,
+      weChatCountryCode: wCountrycode,
       facebookMessenger: facebookMess,
       telegram: telegram,
+      telegramCountryCode: tCountrycode,
       viber: viber,
+      viberCountryCode: vCountrycode,
       whatsappNumber: whatsAppId,
       weChatNumber: weChatId,
       facebookMessengerId: facebookMessId,
@@ -141,18 +184,20 @@ const OnlinePresence = ({
       facebook: twitter,
       instagram: instagram,
       other: other,
+
       linkedInProfileUrl: linkedIn,
       facebookProfileUrl: twitterId,
       instagramProfileUrl: instagramId,
       otherSocialMediaName: otherId,
       otherSocialMediaContact: "",
+      color: color,
+      completed: percentage,
     };
 
     AddOnlinePresenceData(data, AddOnlinePresenceDataCB);
   };
 
   const AddOnlinePresenceDataCB = (result: any) => {
-    console.log("res", result);
     if (result?.status == 200 || result?.status == 201) {
       console.log(result);
       toast.success("Online Presence submited successfully");
@@ -206,12 +251,9 @@ const OnlinePresence = ({
                       onChange={(e) => setMCountrycode(e.target.value)}
                       disabled={disabled}
                     >
-                      {countryCodeDrop &&
-                        countryCodeDrop?.map((code: any, index: number) => (
-                          <option key={index} value={code}>
-                            {code?.toUpperCase()}
-                          </option>
-                        ))}
+                      {countryCodeDrop && countryCodeDrop?.map((code: any, index: number) => (
+                      <option key={index} value={code?.phoneCode}>{code?.flag + ' ' + code?.phoneCode?.toUpperCase()}</option>
+                    ))}
                     </select>
                   </div>
                   {/* <div className=""> */}
@@ -260,12 +302,9 @@ const OnlinePresence = ({
                       onChange={(e) => setWCountrycode(e.target.value)}
                       disabled={disabled}
                     >
-                      {countryCodeDrop &&
-                        countryCodeDrop?.map((code: any, index: number) => (
-                          <option key={index} value={code}>
-                            {code?.toUpperCase()}
-                          </option>
-                        ))}
+                      {countryCodeDrop && countryCodeDrop?.map((code: any, index: number) => (
+                      <option key={index} value={code?.phoneCode}>{code?.flag + ' ' + code?.phoneCode?.toUpperCase()}</option>
+                    ))}
                     </select>
                   </div>
                   <input
@@ -273,6 +312,8 @@ const OnlinePresence = ({
                     type="text"
                     className="border rounded-md  h-9 px-2 w-[90%] text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter WeChat Number"
+                    value={weChatId}
+                    onChange={(e) => setWeChatId(e.target.value)}
                     disabled={disabled}
                   />
                 </div>
@@ -332,12 +373,9 @@ const OnlinePresence = ({
                       onChange={(e) => setTCountrycode(e.target.value)}
                       disabled={disabled}
                     >
-                      {countryCodeDrop &&
-                        countryCodeDrop?.map((code: any, index: number) => (
-                          <option key={index} value={code}>
-                            {code?.toUpperCase()}
-                          </option>
-                        ))}
+                      {countryCodeDrop && countryCodeDrop?.map((code: any, index: number) => (
+                      <option key={index} value={code?.phoneCode}>{code?.flag + ' ' + code?.phoneCode?.toUpperCase()}</option>
+                    ))}
                     </select>
                   </div>
                   <input
@@ -376,12 +414,9 @@ const OnlinePresence = ({
                       onChange={(e) => setVCountrycode(e.target.value)}
                       disabled={disabled}
                     >
-                      {countryCodeDrop &&
-                        countryCodeDrop?.map((code: any, index: number) => (
-                          <option key={index} value={code}>
-                            {code?.toUpperCase()}
-                          </option>
-                        ))}
+                      {countryCodeDrop && countryCodeDrop?.map((code: any, index: number) => (
+                      <option key={index} value={code?.phoneCode}>{code?.flag + ' ' + code?.phoneCode?.toUpperCase()}</option>
+                    ))}
                     </select>
                   </div>
                   <input

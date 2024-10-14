@@ -8,6 +8,7 @@ import {
   AddLanguageData,
   GetDropdownDetails,
 } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import moment from "moment";
 type LanguageComplete = {
   percentage: number;
   color: string;
@@ -43,10 +44,22 @@ const Languages = ({
   const [disabled, setDisabled] = useState(true);
 
   const [selectedFile, setSelectedFile] = useState<any>(null);
+  const [color,setColor]=useState('')
+  const [isHideShow, setIsHideShow] = useState(false);
 
   useEffect(() => {
     if (languageDetail) {
      console.log('lan',languageDetail)
+     setLanguage1(languageDetail.nativeLanguage);
+     setAddiLanguage(languageDetail.additionalLanguage);
+     setLanguageLavel(languageDetail.additionalLanguageLevel);
+     setEnglishLavel(languageDetail.englishLevel);
+     setLanguageTests(languageDetail.testLanguage);
+     setTypeofTest(languageDetail.testType);
+     setResult(languageDetail?.testResult)
+     setTestCenter(languageDetail?.testCenter)
+     setIssuingCountry(languageDetail?.issuingCountry)
+     setDateofTest(moment(languageDetail?.dateOfTest).format('YYYY-MM-DD'))
       }
   }, [])
 
@@ -79,9 +92,10 @@ const Languages = ({
     selectedFile,
   ].filter(Boolean).length;
 
-  const percentage = (filledFields / totalFields) * 100;
+  // const percentage = (filledFields / totalFields) * 100;
+  const percentage:any = totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
   // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
-  let color;
+  
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
@@ -90,21 +104,21 @@ const Languages = ({
         percentage: percentage, // Update the percentage field
         color: "#FF0000", // Update the color field
       }));
-      color = "red";
+      setColor("#FF0000");
     } else if (percentage <= 70) {
       setLanguageComplete((prevState) => ({
         ...prevState, // Spread the previous state to keep any other properties
         percentage: percentage, // Update the percentage field
         color: "#FF9900", // Update the color field
       }));
-      color = "#FF9900";
+      setColor("#FF9900");
     } else {
       setLanguageComplete((prevState) => ({
         ...prevState, // Spread the previous state to keep any other properties
         percentage: percentage, // Update the percentage field
         color: "#00A264", // Update the color field
       }));
-      color = "green";
+      setColor("#00A264");
     }
   }, [percentage, color]);
 
@@ -113,7 +127,7 @@ const Languages = ({
     e.preventDefault();
     let formData = new FormData();
 
-    {
+    // {
       formData.append("nativeLanguage", language1);
       formData.append("additionalLanguage", addiLanguage);
       formData.append("additionalLanguageLevel", languageLavel);
@@ -125,7 +139,9 @@ const Languages = ({
       formData.append("issuingCountry", issuingCountry);
       formData.append("dateOfTest", dateofTest);
       selectedFile && formData.append("document", selectedFile);
-    }
+      formData.append('color',color);
+      formData.append('completed',percentage);
+    // }
     AddLanguageData(userDetail?.userId, formData, AddLanguagedataDB);
   };
 
@@ -150,6 +166,7 @@ const Languages = ({
 
   const handleEdit = () => {
     setDisabled(!disabled);
+    setIsHideShow(!isHideShow);
     // toast.info("You are now in edit mode. Make your changes.");
   };
   return (
@@ -396,8 +413,9 @@ const Languages = ({
         </div>
 
         {/* Attachment Document */}
-
+       {isHideShow && (
         <div className="flex gap-6 items-center  my-6 ">
+          <div>
           <label
             htmlFor="medicalfile-upload3"
             className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px]   "
@@ -411,6 +429,7 @@ const Languages = ({
             onChange={handleFileChange}
             disabled={disabled}
           />
+          </div> <div>
           {selectedFile ? (
             <p className="text-[14px] leading-[19.07px]  text-[#333333]">
               File Selected: {selectedFile.name}
@@ -420,7 +439,10 @@ const Languages = ({
               No file selected
             </p>
           )}
+          </div>
         </div>
+        )} 
+
 
         <div className="flex gap-2 mb-4 mt-4">
           <button

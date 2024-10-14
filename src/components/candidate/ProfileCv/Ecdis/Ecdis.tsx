@@ -14,13 +14,18 @@ type ECDISComplete = {
 };
 
 type Props = {
-  eCDISComplete: ECDISComplete; // mjrComplete is an object with percentage and color
+  eCDISComplete: ECDISComplete;
   setECDISComplete: React.Dispatch<React.SetStateAction<ECDISComplete>>;
   userDetail: any;
-  ecdisDetail:any;
+  ecdisDetail: any;
 };
 
-const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail,ecdisDetail }: Props) => {
+const Ecdis = ({
+  eCDISComplete,
+  setECDISComplete,
+  userDetail,
+  ecdisDetail,
+}: Props) => {
   const [number, setNumber] = useState("");
   const [issuedate, setIssueDate] = useState("");
   const [exdate, setExDate] = useState("");
@@ -38,19 +43,21 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail,ecdisDetail }: Prop
   const [checkBox1, setCheckBox1] = useState<any>(false);
   const [countryDrop, setCountryDrop] = useState<any>([]);
   const [trainDrop, setTrainDrop] = useState<any>([]);
-  const [disabled,setDisabled] = useState(true)
+  const [disabled, setDisabled] = useState(true);
 
   const [showFields, setShowFields] = useState(true);
+  const [color, setColor] = useState("");
+  const [isHideShow, setIsHideShow] = useState(false);
 
   useEffect(() => {
     console.log("userDetail", userDetail);
     if (ecdisDetail) {
-      setTrainings(ecdisDetail?.trainingName)
-      setTrainingCenter(ecdisDetail?.trainingCenter)
-      setIssuingCountry(ecdisDetail?.issuingCountry)
-      setECDISNumber(ecdisDetail?.certificateNumber)
-      setIssueDate1(moment(ecdisDetail?.issueDate).format('YYYY-MM-DD'))
-      setExDate1(moment(ecdisDetail?.expiryDate).format('YYYY-MM-DD'))
+      setTrainings(ecdisDetail?.trainingName);
+      setTrainingCenter(ecdisDetail?.trainingCenter);
+      setIssuingCountry(ecdisDetail?.issuingCountry);
+      setECDISNumber(ecdisDetail?.certificateNumber);
+      setIssueDate1(moment(ecdisDetail?.issueDate).format("YYYY-MM-DD"));
+      setExDate1(moment(ecdisDetail?.expiryDate).format("YYYY-MM-DD"));
     }
   }, []);
 
@@ -69,7 +76,7 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail,ecdisDetail }: Prop
   //     setSelectedFile(event.target.files[0]);
   //   };
 
-   const totalFields = 7;
+  const totalFields = 7;
   const filledFields = [
     trainings,
     trainingCenter,
@@ -80,35 +87,37 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail,ecdisDetail }: Prop
     eCDISNumber,
   ].filter(Boolean).length;
 
-    // const totalFields = checkBox1=== "false" ? 7 : 6;
+  // const totalFields = checkBox1=== "false" ? 7 : 6;
 
   // const percentage = (filledFields / totalFields) * 100;
-  const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
+  // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
 
-  let color;
+  const percentage: any =
+    totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
+
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
       setECDISComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#FF0000", // Update the color field
+        ...prevState,
+        percentage: percentage,
+        color: "#FF0000",
       }));
-      color = "red";
+      setColor("#FF0000");
     } else if (percentage <= 70) {
       setECDISComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#FF9900", // Update the color field
+        ...prevState,
+        percentage: percentage,
+        color: "#FF9900",
       }));
-      color = "#FF9900";
+      setColor("#FF9900");
     } else {
       setECDISComplete((prevState) => ({
         ...prevState,
         percentage: percentage,
         color: "#00A264",
       }));
-      color = "green";
+      setColor("#00A264");
     }
   }, [percentage, color]);
 
@@ -138,6 +147,8 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail,ecdisDetail }: Prop
     formData.append("issueDate", issuedate1);
     formData.append("expiryDate", exdate1);
     formData.append("neverExpires", checkBox1);
+    formData.append("color", color);
+    formData.append("completed", percentage);
 
     selectedFiles && formData.append("document", selectedFiles);
 
@@ -157,10 +168,10 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail,ecdisDetail }: Prop
   };
 
   const handleEdit = () => {
-    setDisabled(!disabled)
+    setDisabled(!disabled);
+    setIsHideShow(!isHideShow);
     // toast.info("You are now in edit mode. Make your changes.");
   };
-
 
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
@@ -183,7 +194,6 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail,ecdisDetail }: Prop
                 value={trainings}
                 onChange={(e) => setTrainings(e.target.value)}
                 disabled={disabled}
-
               >
                 <option value="" disabled selected>
                   Select
@@ -211,7 +221,6 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail,ecdisDetail }: Prop
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
                 placeholder="Enter Training Center"
                 disabled={disabled}
-
               />
             </div>
 
@@ -229,9 +238,8 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail,ecdisDetail }: Prop
                 value={issuingCountry}
                 onChange={(e) => setIssuingCountry(e.target.value)}
                 disabled={disabled}
-
               >
-                 <option value="" disabled selected>
+                <option value="" disabled selected>
                   Select
                 </option>
                 {countryDrop &&
@@ -259,7 +267,6 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail,ecdisDetail }: Prop
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Certificate Number"
                 disabled={disabled}
-
               />
             </div>
 
@@ -279,30 +286,28 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail,ecdisDetail }: Prop
                 onChange={(e) => setIssueDate1(e.target.value)}
                 disabled={disabled}
                 placeholder="Enter Issue Date"
-
               />
             </div>
 
+            {!checkBox1 && (
+              <div className="">
+                <label
+                  className="text-[14px] leading-[19.07px]  text-[#333333]  "
+                  htmlFor="expiryDate1"
+                >
+                  Expiry Date
+                </label>
 
-            {!checkBox1 && (<div className="">
-              <label
-                className="text-[14px] leading-[19.07px]  text-[#333333]  "
-                htmlFor="expiryDate1"
-              >
-                Expiry Date
-              </label>
-
-              <input
-                id="expiryDate1"
-                type="date"
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                value={exdate1}
-                onChange={(e) => setExDate1(e.target.value)}
-                disabled={disabled}
-                placeholder="Enter Expiry Date"
-
-              />
-            </div>
+                <input
+                  id="expiryDate1"
+                  type="date"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  value={exdate1}
+                  onChange={(e) => setExDate1(e.target.value)}
+                  disabled={disabled}
+                  placeholder="Enter Expiry Date"
+                />
+              </div>
             )}
             {/* <div className="flex  ">
             <input
@@ -319,53 +324,51 @@ const Ecdis = ({ eCDISComplete, setECDISComplete, userDetail,ecdisDetail }: Prop
               Never Expires
             </label>
           </div> */}
-          <div className="grid col-span-2">
-            <div className=" flex items-center  gap-4">
-              <input
-                id="neverExpires"
-                type="checkbox"
-                className="border focus:ring-[#00A264]  text-[#00A264] checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
-                checked={checkBox1}
-                onChange={(e) => setCheckBox1(!checkBox1)}
-                disabled={disabled}
-
-              />
+            <div className="grid col-span-2">
+              <div className=" flex items-center  gap-2">
+                <input
+                  id="neverExpires"
+                  type="checkbox"
+                  className="border focus:ring-[#00A264]  text-[#00A264] checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
+                  checked={checkBox1}
+                  onChange={(e) => setCheckBox1(!checkBox1)}
+                  disabled={disabled}
+                />
+                <label
+                  className="text-[14px] leading-[19.07px]  text-[#333333]"
+                  htmlFor="neverExpires"
+                >
+                  Never Expires
+                </label>
+              </div>
+            </div>
+          </div>
+          {isHideShow && (
+            <div className="flex gap-6 items-center  my-6 ">
               <label
-                className="text-[14px] leading-[19.07px]  text-[#333333]"
-                htmlFor="neverExpires"
+                htmlFor="file-upload1"
+                className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  text-[14px] leading-[19.07px]   hover:bg-[#04714e] focus:outline-none focus:ring-2 "
               >
-                Never Expires
+                Attachment Docoment
               </label>
+              <input
+                id="file-upload1"
+                type="file"
+                className="hidden"
+                onChange={handleFileChanges}
+                disabled={disabled}
+              />
+              {selectedFiles ? (
+                <p className="text-gray-700">
+                  File Selected: {selectedFiles.name}
+                </p>
+              ) : (
+                <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                  No file selected
+                </p>
+              )}
             </div>
-            </div>
-          </div>
-
-          <div className="flex gap-6 items-center  my-6 ">
-            <label
-              htmlFor="file-upload1"
-              className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  text-[14px] leading-[19.07px]   hover:bg-[#04714e] focus:outline-none focus:ring-2 "
-              
-
-            >
-              Attachment Docoment
-            </label>
-            <input
-              id="file-upload1"
-              type="file"
-              className="hidden"
-              onChange={handleFileChanges}
-              disabled={disabled}
-            />
-            {selectedFiles ? (
-              <p className="text-gray-700">
-                File Selected: {selectedFiles.name}
-              </p>
-            ) : (
-              <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                No file selected
-              </p>
-            )}
-          </div>
+          )}
         </div>
 
         {/* Third section */}

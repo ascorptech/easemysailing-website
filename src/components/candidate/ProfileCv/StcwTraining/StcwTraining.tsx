@@ -48,8 +48,8 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
     },
   ]);
 
-
-  const [disabled,setDisabled] = useState(true)
+  const [disabled, setDisabled] = useState(true);
+  const [isHideShow, setIsHideShow] = useState(false);
 
   const [sTCHTrainOption, setSTCHTrainOption] = useState<any>("");
   const [countryDrop, setCountryDrop] = useState<any>([]);
@@ -64,10 +64,7 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
     });
   }, []);
 
- 
-
-
-  const totalFields = 6; 
+  const totalFields = 6;
   const filledFields = stcwTraining.reduce(
     (acc, form) =>
       acc +
@@ -148,16 +145,15 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
     e.preventDefault();
 
     let formData = new FormData();
-    stcwTraining.forEach((element:any) => {
+    stcwTraining.forEach((element: any) => {
       formData.append("document", element?.selectedFile);
       formData.append("trainingName", element?.training);
       formData.append("issuingCountry", element?.trainingCountry);
       formData.append("certificateNumber", element?.number);
       formData.append("issueDate", element?.issuedate);
       formData.append("expiryDate", element?.exdate);
-
-    })
-   let neverExpires = ''
+    });
+    let neverExpires = "";
 
     AddStcwData(userDetail?.userId, neverExpires, formData, AddStcwDataCB);
   };
@@ -202,28 +198,30 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
   // };
 
   const handleEdit = () => {
-    setDisabled(!disabled)
+    setDisabled(!disabled);
+    setIsHideShow(!isHideShow);
     // toast.info("You are now in edit mode. Make your changes.");
   };
-
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
         <div className=" flex flex-col">
           <div className="flex justify-between items-center my-2">
             <h1 className="text-left font-bold">STCW Training</h1>
-            <div className="flex gap-2">
-              <AiOutlinePlus
-                className="text-2xl cursor-pointer"
-                onClick={handleAddForm}
-              />
-              {stcwTraining.length > 1 && (
-                <AiOutlineMinus
+            {isHideShow && (
+              <div className="flex gap-2">
+                <AiOutlinePlus
                   className="text-2xl cursor-pointer"
-                  onClick={() => handleRemoveForm(stcwTraining.length - 1)}
+                  onClick={handleAddForm}
                 />
-              )}
-            </div>
+                {stcwTraining.length > 1 && (
+                  <AiOutlineMinus
+                    className="text-2xl cursor-pointer"
+                    onClick={() => handleRemoveForm(stcwTraining.length - 1)}
+                  />
+                )}
+              </div>
+            )}
           </div>
 
           {stcwTraining.map((field, index) => (
@@ -364,100 +362,58 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
                     Never Expires
                   </label>
                 </div>
-                {/* add extra field */}
-
-                {/* {extraFields.map((field, index) => (
-                <React.Fragment key={index}>
-                  <div className="w-full">
-                    <label
-                      className="block text-[14px] font-[poppins] text-[#333333] mb-1"
-                      htmlFor={`extraField1_${index}`}
-                    >
-                      Extra Field {index * 2 + 1}
-                    </label>
-                    <input
-                      id={`extraField1_${index}`}
-                      type="text"
-                      value={field.field1}
-                      onChange={(e) =>
-                        handleExtraFieldChange(index, e.target.value, "field1")
-                      }
-                      className="border rounded-md w-full h-9 px-2 text-[14px] text-[#333333] focus:outline-[#00A264] border-[#00A264]"
-                      // disabled={disabled}
-                    />
-                  </div>
-                  <div className="w-full">
-                    <label
-                      className="block text-[14px] font-[poppins] text-[#333333] mb-1"
-                      htmlFor={`extraField2_${index}`}
-                    >
-                      Extra Field {index * 2 + 2}
-                    </label>
-                    <input
-                      id={`extraField2_${index}`}
-                      type="text"
-                      value={field.field2}
-                      onChange={(e) =>
-                        handleExtraFieldChange(index, e.target.value, "field2")
-                      }
-                      className="border rounded-md w-full h-9 px-2 text-[14px] text-[#333333] focus:outline-[#00A264] border-[#00A264]"
-                      // disabled={disabled}
-                    />
-                  </div>
-                </React.Fragment>
-              ))} */}
               </div>
-
-              <div className="flex items-center justify-start gap-4 my-6">
-                <div className="flex gap-6 items-center  ">
-                  <label
-                    htmlFor={`file-upload_${index}`}
-                    className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px]   "
-                  >
-                    Attachment Document
-                  </label>
-                  <input
-                    id={`file-upload_${index}`}
-                    type="file"
-                    className="hidden"
-                    onChange={(e) => handleFileChange(index, e)}
-                    disabled={disabled}
-                  />
-                  {/* {selectedFile && (
+              {isHideShow && (
+                <div className="flex items-center justify-start gap-4 my-6">
+                  <div className="flex gap-6 items-center  ">
+                    <label
+                      htmlFor={`file-upload_${index}`}
+                      className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px]   "
+                    >
+                      Attachment Document
+                    </label>
+                    <input
+                      id={`file-upload_${index}`}
+                      type="file"
+                      className="hidden"
+                      onChange={(e) => handleFileChange(index, e)}
+                      disabled={disabled}
+                    />
+                    {/* {selectedFile && (
           <p className="mt-4 text-gray-700">
             File Selected: {selectedFile.name}
           </p>
         )} */}
+                  </div>
+                  {field.selectedFile ? (
+                    <p className="mt-4 text-gray-700">
+                      File Selected: {field.selectedFile.name}
+                    </p>
+                  ) : (
+                    <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                      No File Selected
+                    </p>
+                  )}
                 </div>
-                {field.selectedFile ? (
-                  <p className="mt-4 text-gray-700">
-                    File Selected: {field.selectedFile.name}
-                  </p>
-                ) : (
-                  <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                    No File Selected
-                  </p>
-                )}
-              </div>
-              </div>
+              )}
+            </div>
           ))}
 
-              <div className="flex gap-2 mb-4 mt-4">
-                <button
-                  type="submit"
-                  className="border border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
-                >
-                  Save
-                </button>
-                <Link
-                  href={'#'}
-                  className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
-                  onClick={handleEdit}
-                >
-                  Edit
-                </Link>
-              </div>
-         
+          <div className="flex gap-2 mb-4 mt-4">
+            <button
+              type="submit"
+              className="border border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
+            >
+              Save
+            </button>
+            <Link
+              href={"#"}
+              className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
+              onClick={handleEdit}
+            >
+              Edit
+            </Link>
+          </div>
         </div>
       </form>
     </div>

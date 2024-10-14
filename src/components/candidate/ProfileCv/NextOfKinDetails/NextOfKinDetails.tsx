@@ -6,21 +6,21 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import Link from "next/link";
 
-type PersonalComplete = {
+type NextOfKinComplete = {
   percentage: number;
   color: string;
 };
 
 type Props = {
-  personalComplete: PersonalComplete; // mjrComplete is an object with percentage and color
-  setPersonalComplete: React.Dispatch<React.SetStateAction<PersonalComplete>>;
+  nextOfKinComplete: NextOfKinComplete; // mjrComplete is an object with percentage and color
+  setNextOfKinComplete: React.Dispatch<React.SetStateAction<NextOfKinComplete>>;
   userDetail: any;
   nextOfKinDetail:any;
 };
 
 const NextOfKinDetails = ({
-  personalComplete,
-  setPersonalComplete,
+  nextOfKinComplete,
+  setNextOfKinComplete,
   userDetail,
   nextOfKinDetail
 }: Props) => {
@@ -29,6 +29,7 @@ const NextOfKinDetails = ({
   const [nextKinAddre, setNextKinAddre] = useState("");
   const [nextKinChildren, setNextKinChildren] = useState("");
   const [disabled,setDisabled] = useState(true)
+  const [color,setColor]=useState('')
 
   const totalFields = 4;
   const filledFields = [
@@ -40,32 +41,34 @@ const NextOfKinDetails = ({
 
   // const totalFields = available === "Yes" ? 6 : 5;
 
-  const percentage = (filledFields / totalFields) * 100;
+  // const percentage = (filledFields / totalFields) * 100;
+
+  const percentage:any = totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
   // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
-  let color;
+  // let color;
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
-      setPersonalComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#FF0000", // Update the color field
+      setNextOfKinComplete((prevState) => ({
+        ...prevState, 
+        percentage: percentage,
+        color: "#FF0000", 
       }));
-      color = "red";
+      setColor("#FF0000");
     } else if (percentage <= 70) {
-      setPersonalComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#FF9900", // Update the color field
+      setNextOfKinComplete((prevState) => ({
+        ...prevState, 
+        percentage: percentage, 
+        color: "#FF9900",
       }));
-      color = "#FF9900";
+      setColor("#FF9900");
     } else {
-      setPersonalComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#00A264", // Update the color field
+      setNextOfKinComplete((prevState) => ({
+        ...prevState, 
+        percentage: percentage, 
+        color: "#00A264",
       }));
-      color = "green";
+      setColor("#00A264");
     }
   }, [percentage, color]);
 
@@ -93,11 +96,13 @@ const NextOfKinDetails = ({
       return;
     }
     let data:any = {
-      "id":userDetail?.userId,
-      "nextOfKinName":nextKinName ,
-      "nextOfKinRelationship": nextKinShip,
-      "nextOfKinAddress": nextKinAddre,
-      "numberOfChildren": nextKinChildren,
+      id:userDetail?.userId,
+      nextOfKinName:nextKinName ,
+      nextOfKinRelationship: nextKinShip,
+      nextOfKinAddress: nextKinAddre,
+      numberOfChildren: nextKinChildren,
+      color: color,
+      completed: percentage,
      
   };
   AddNextOfData(data, AddNextOfKindataDB);

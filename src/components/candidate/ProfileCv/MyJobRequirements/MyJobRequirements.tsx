@@ -15,8 +15,8 @@ type MjrComplete = {
 };
 
 type Props = {
-  mjrComplete: MjrComplete; // mjrComplete is an object with percentage and color
-  setMjrComplete: React.Dispatch<React.SetStateAction<MjrComplete>>; // setMjrComplete is a function to update mjrComplete
+  mjrComplete: MjrComplete; 
+  setMjrComplete: React.Dispatch<React.SetStateAction<MjrComplete>>; 
   userDetail: any;
   jobDetail:any
 };
@@ -49,6 +49,8 @@ const MyJobRequirements = ({
       setAlternateVesselType(jobDetail?.alternateVesselType);
       setAvailabilityDate(moment(jobDetail?.availabilityDate).format('YYYY-MM-DD'));
       setAvailable(!jobDetail?.notAvailable ? "No" : "Yes");
+      setSalaryField(jobDetail.expectedSalary)
+      setContractDuration(jobDetail.contractDuration)
     }
   }, []);
 
@@ -69,16 +71,16 @@ const MyJobRequirements = ({
     console.log("user", userDetail);
     if (percentage <= 30) {
       setMjrComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#FF0000", // Update the color field
+        ...prevState, 
+        percentage: percentage, 
+        color: "#FF0000", 
       }));
       setColor("#FF0000");
     } else if (percentage <= 70) {
       setMjrComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#FF9900", // Update the color field
+        ...prevState, 
+        percentage: percentage,
+        color: "#FF9900", 
       }));
       setColor("#FF9900");
     } else {
@@ -108,7 +110,9 @@ const MyJobRequirements = ({
       !alternatePosition ||
       !preferredVesselType ||
       !alternateVesselType ||
-      !available
+      !available||
+      !salaryField||
+      !contractDuration
     ) {
       toast.error("Please fill in all required fields.");
       return;
@@ -123,6 +127,8 @@ const MyJobRequirements = ({
       notAvailable: available == "yes" ? "true" : "false",
       color: color,
       completed: percentage,
+      expectedSalary:salaryField,
+      contractDuration:contractDuration
     };
     if (availabilityDate) {
       data.availabilityDate = availabilityDate ? availabilityDate : "";

@@ -46,6 +46,7 @@ const ContactDetails = ({
   // const [countryCodeDrop, setCountryCodeDrop] = useState<any>([]);
 
   const [disabled, setDisabled] = useState(true);
+  const [color,setColor]=useState('')
 
   useEffect(() => {
     console.log("userDetail", userDetail);
@@ -94,9 +95,11 @@ const ContactDetails = ({
 
   // const totalFields = available === "Yes" ? 6 : 5;
 
-  const percentage = (filledFields / totalFields) * 100;
+  // const percentage = (filledFields / totalFields) * 100;
+
+  const percentage:any = totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
   // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
-  let color;
+  // let color;
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
@@ -105,21 +108,21 @@ const ContactDetails = ({
         percentage: percentage, // Update the percentage field
         color: "#FF0000", // Update the color field
       }));
-      color = "red";
+      setColor("#FF0000");
     } else if (percentage <= 70) {
       setContactComplete((prevState) => ({
         ...prevState, // Spread the previous state to keep any other properties
         percentage: percentage, // Update the percentage field
         color: "#FF9900", // Update the color field
       }));
-      color = "#FF9900";
+      setColor("#FF9900");
     } else {
       setContactComplete((prevState) => ({
         ...prevState, // Spread the previous state to keep any other properties
         percentage: percentage, // Update the percentage field
         color: "#00A264", // Update the color field
       }));
-      color = "green";
+      setColor("#00A264");
     }
   }, [percentage, color]);
 
@@ -140,16 +143,20 @@ const ContactDetails = ({
       directLineCountryCode: rCountrycode,
       directLinePhoneNumber: phoneNumber1,
       emailAddress: email,
-      // "indosNumber": indNumber
+      color: color,
+      completed: percentage,
     };
 
-    // console.log(data);
+   
     AddContactData(data, AddaddressdataDB);
   };
   const AddaddressdataDB = (result: any) => {
     console.log(result);
     if (result?.status == 200 || result?.status == 201) {
       toast.success("Contact submited successfully");
+      setTimeout(() => {
+        window.location.reload()
+      }, 1000);
     } else {
       toast.error("Contact not submited ");
     }

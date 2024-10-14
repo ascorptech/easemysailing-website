@@ -153,7 +153,7 @@ export default function CandiateListing(props: Props) {
     },
   ];
 
-  const [openDropdown, setOpenDropdown] = useState(""); 
+  const [openDropdown, setOpenDropdown] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
 
   const [selectedOption, setSelectedOption] = useState("");
@@ -191,21 +191,19 @@ export default function CandiateListing(props: Props) {
     option.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  
   const toggleDropdown = (dropdown: string) => {
-    setOpenDropdown(openDropdown === dropdown ? "" : dropdown); 
-    setSearchTerm(""); 
+    setOpenDropdown(openDropdown === dropdown ? "" : dropdown);
+    setSearchTerm("");
   };
 
-  
   const selectShipType = (type: any) => {
     setSelectedOption(type);
-    setOpenDropdown(""); 
+    setOpenDropdown("");
   };
 
   const selectRankType = (rank: any) => {
     setSelectedRankOption(rank);
-    setOpenDropdown(""); 
+    setOpenDropdown("");
   };
 
   const selectOption1Type = (option: any) => {
@@ -535,7 +533,7 @@ export default function CandiateListing(props: Props) {
               </th>
 
               <th className="px-4 py-2 border-b border-[#00A264]">
-                availabilityability
+                Availability
               </th>
             </tr>
           </thead>
@@ -548,10 +546,12 @@ export default function CandiateListing(props: Props) {
                 <td className="px-4 py-2 border-b border-[#00A264]">
                   {row.sNo}
                 </td>
-                <td className="px-4 py-2 border-b underline border-[#00A264] text-[#00A264] cursor-pointer">
-                <Link href={`/recruiter/[id]/${row.talentId}`} as={`/recruiter/${row.talentId}`}>
-                {row.talentId}
-                  </Link>
+                <td
+                  key={row.talentId}
+                  className="px-4 py-2 border-b underline border-[#00A264] text-[#00A264] cursor-pointer"
+                >
+<Link href={`/recruiter/candidatelisting/talent/${row.talentId.replace(" ", "")}`}>
+{row.talentId}</Link>
                 </td>
                 <td className="px-4 py-2 border-b border-[#00A264]">
                   {row.nationality}

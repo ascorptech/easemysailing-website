@@ -148,6 +148,7 @@ const Licenses = ({
   // const [selectedFile2, setSelectedFile2] = useState<any>(null);
   const [countryDrop, setCountryDrop] = useState<any>([]);
   const [capacityDrop, setCapacityDrop] = useState<any>([]);
+  const [competencyDrop, setCompetencyDrop] = useState<any>([]);
   const [stcwRegDrop, setStcWRegDrop] = useState<any>([]);
   const [edorTyDrop, setEndorTyDrop] = useState<any>([]);
 
@@ -156,10 +157,14 @@ const Licenses = ({
   // const [showFieldsens, setShowFieldsens] = useState(false);
 
   const [disabled, setDisabled] = useState(true);
+    const [isHideShow, setIsHideShow] = useState(false);
 
   useEffect(() => {
     GetDropdownDetails("capacity", (res: any) => {
       setCapacityDrop(res?.data?.values);
+    });
+    GetDropdownDetails("CERTIFICATEOFCOMPETENCY", (res: any) => {
+      setCompetencyDrop(res?.data?.values);
     });
     GetDropdownDetails("country", (res: any) => {
       // console.log('County',res?.data)
@@ -313,9 +318,9 @@ const Licenses = ({
     console.log(result);
     if (result?.status == 200 || result?.status == 201) {
       toast.success("Licenses submited successfully");
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
+      // setTimeout(() => {
+      //   window.location.reload();
+      // }, 1000);
     } else {
       toast.error("Licenses detail not submited ");
     }
@@ -457,8 +462,10 @@ const Licenses = ({
     setEndorsementsForms(updatedForms);
   };
 
+
   const handleEdit = () => {
     setDisabled(!disabled);
+    setIsHideShow(!isHideShow);
     // toast.info("You are now in edit mode. Make your changes.");
   };
 
@@ -468,17 +475,21 @@ const Licenses = ({
         {/* <div className="mb-3"> */}
         <div className="flex justify-between items-center">
           <h1 className="font-bold  text-left  ">Certificate Of Competency</h1>
-          {!showFields && (
-            <div className="flex gap-2">
-              <AiOutlinePlus
-                className="text-2xl cursor-pointer"
-                onClick={addFieldLic}
-              />
-              {licensesForms.length > 1 && (
-                <AiOutlineMinus
-                  className="text-2xl cursor-pointer"
-                  onClick={() => removeFieldLic(licensesForms.length - 1)}
-                />
+          {isHideShow && (
+            <div>
+              {!showFields && (
+                <div className="flex gap-2">
+                  <AiOutlinePlus
+                    className="text-2xl cursor-pointer"
+                    onClick={addFieldLic}
+                  />
+                  {licensesForms.length > 1 && (
+                    <AiOutlineMinus
+                      className="text-2xl cursor-pointer"
+                      onClick={() => removeFieldLic(licensesForms.length - 1)}
+                    />
+                  )}
+                </div>
               )}
             </div>
           )}
@@ -539,7 +550,7 @@ const Licenses = ({
                       className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1 "
                       htmlFor={`Certificate_${index}`}
                     >
-                      Certificate No
+                     Enter Certificate Number
                     </label>
                     {/* <div className="relative flex items-center  "> */}
                     <input
@@ -580,8 +591,8 @@ const Licenses = ({
                       <option value="" disabled>
                         Select
                       </option>
-                      {capacityDrop &&
-                        capacityDrop?.map((cap: any, index: number) => (
+                      {competencyDrop &&
+                        competencyDrop?.map((cap: any, index: number) => (
                           <option key={index} value={cap}>
                             {cap?.toUpperCase()}
                           </option>
@@ -664,7 +675,7 @@ const Licenses = ({
                         )
                       }
                       className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                      placeholder="Enter  Other Limitation"
+                      placeholder="Enter Other Limitation"
                       disabled={disabled}
                     />
                     {/* </div> */}
@@ -758,30 +769,34 @@ const Licenses = ({
                 ))} */}
                 </div>
                 {/* Attachment Document */}
-                <div className="flex gap-6 items-center  my-6 ">
-                  <label
-                    htmlFor={`medicalfile-upload3_${index}`}
-                    className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px]   "
-                  >
-                    Attachment Document
-                  </label>
-                  <input
-                    id={`medicalfile-upload3_${index}`}
-                    type="file"
-                    className="hidden"
-                    onChange={(e) => handleFileChange(index, e)}
-                    disabled={disabled}
-                  />
-                  {field.selectedFile ? (
-                    <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                      File Selected: {field.selectedFile.name}
-                    </p>
-                  ) : (
-                    <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                      No file selected
-                    </p>
-                  )}
-                </div>
+                {isHideShow && (
+                  <div>
+                    <div className="flex gap-6 items-center  my-6 ">
+                      <label
+                        htmlFor={`medicalfile-upload3_${index}`}
+                        className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px]   "
+                      >
+                        Attachment Document
+                      </label>
+                      <input
+                        id={`medicalfile-upload3_${index}`}
+                        type="file"
+                        className="hidden"
+                        onChange={(e) => handleFileChange(index, e)}
+                        disabled={disabled}
+                      />
+                      {field.selectedFile ? (
+                        <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                          File Selected: {field.selectedFile.name}
+                        </p>
+                      ) : (
+                        <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                          No file selected
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -793,20 +808,22 @@ const Licenses = ({
           <h1 className="text-left font-bold  ">
             Global Maritime Distress and Safety System (GMDSS)
           </h1>
-          <div className="flex gap-2">
-            <AiOutlinePlus
-              className="text-2xl cursor-pointer"
-              onClick={addFieldGlobal}
-            />
-            {globalMaritimeForms.length > 1 && (
-              <AiOutlineMinus
+          {isHideShow && (
+            <div className="flex gap-2">
+              <AiOutlinePlus
                 className="text-2xl cursor-pointer"
-                onClick={() =>
-                  removeFieldGlobal(globalMaritimeForms.length - 1)
-                }
+                onClick={addFieldGlobal}
               />
-            )}
-          </div>
+              {globalMaritimeForms.length > 1 && (
+                <AiOutlineMinus
+                  className="text-2xl cursor-pointer"
+                  onClick={() =>
+                    removeFieldGlobal(globalMaritimeForms.length - 1)
+                  }
+                />
+              )}
+            </div>
+          )}
         </div>
 
         {globalMaritimeForms.map((field1, index) => (
@@ -845,7 +862,7 @@ const Licenses = ({
                   className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1 "
                   htmlFor={`cNumber_${index}`}
                 >
-                  Enter Number
+                  Enter Certificate  Number
                 </label>
                 {/* <div className="relative flex items-center  "> */}
                 <input
@@ -856,7 +873,7 @@ const Licenses = ({
                     handleFormChangeGlobal(index, "number", e.target.value)
                   }
                   className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                  placeholder="Enter Number"
+                  placeholder="Enter Certificate Number"
                   disabled={disabled}
                 />
                 {/* </div> */}
@@ -944,50 +961,55 @@ const Licenses = ({
                 />
               </div>
             </div>
-
-            <div className="flex gap-6 items-center  my-6 ">
-              <label
-                htmlFor={`medicalfile-upload3_${index}`}
-                className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px]   "
-              >
-                Attachment Document
-              </label>
-              <input
-                id={`medicalfile-upload3_${index}`}
-                type="file"
-                className="hidden"
-                onChange={(e) => handleFileChange1(index, e)}
-                disabled={disabled}
-              />
-              {field1.selectedFile1 ? (
-                <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                  File Selected: {field1.selectedFile1.name}
-                </p>
-              ) : (
-                <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                  No file selected
-                </p>
-              )}
-            </div>
+            {isHideShow && (
+              <div className="flex gap-6 items-center  my-6 ">
+                <label
+                  htmlFor={`medicalfile-upload3_${index}`}
+                  className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px]   "
+                >
+                  Attachment Document
+                </label>
+                <input
+                  id={`medicalfile-upload3_${index}`}
+                  type="file"
+                  className="hidden"
+                  onChange={(e) => handleFileChange1(index, e)}
+                  disabled={disabled}
+                />
+                {field1.selectedFile1 ? (
+                  <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                    File Selected: {field1.selectedFile1.name}
+                  </p>
+                ) : (
+                  <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                    No file selected
+                  </p>
+                )}
+              </div>
+            )}
           </div>
         ))}
 
         {/* <div> */}
         <div className="mb-3 flex justify-between items-center">
           <h1 className="font-bold text-left ">Endorsements</h1>
-          {!separatelyCheckBox && (
-            <div className="flex gap-2">
-              <AiOutlinePlus
-                className="text-2xl cursor-pointer"
-                onClick={addFieldEndors}
-              />
-              {endorsementsForms.length > 1 && (
-                <AiOutlineMinus
-                  className="text-2xl cursor-pointer"
-                  onClick={() =>
-                    removeFieldEndors(endorsementsForms.length - 1)
-                  }
-                />
+          {isHideShow && (
+            <div>
+              {!separatelyCheckBox && (
+                <div className="flex gap-2">
+                  <AiOutlinePlus
+                    className="text-2xl cursor-pointer"
+                    onClick={addFieldEndors}
+                  />
+                  {endorsementsForms.length > 1 && (
+                    <AiOutlineMinus
+                      className="text-2xl cursor-pointer"
+                      onClick={() =>
+                        removeFieldEndors(endorsementsForms.length - 1)
+                      }
+                    />
+                  )}
+                </div>
               )}
             </div>
           )}
@@ -1075,7 +1097,7 @@ const Licenses = ({
                         className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1 "
                         htmlFor=""
                       >
-                        Enter Number
+                        Enter Certificate Number
                       </label>
                       {/* <div className="relative flex items-center  "> */}
                       <input
@@ -1089,7 +1111,7 @@ const Licenses = ({
                           )
                         }
                         className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                        placeholder="Enter Number"
+                        placeholder="Enter Certificate Number"
                         disabled={disabled}
                       />
                     </div>
@@ -1191,30 +1213,32 @@ const Licenses = ({
 
                 {/* Attachment Document */}
 
-                <div className="flex gap-6 items-center my-6">
-                  <label
-                    htmlFor={`medicalfile-upload3_${index}`}
-                    className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px]   "
-                  >
-                    Attachment Document
-                  </label>
-                  <input
-                    id={`medicalfile-upload3_${index}`}
-                    type="file"
-                    className="hidden"
-                    onChange={(e) => handleFileChange2(index, e)}
-                    disabled={disabled}
-                  />
-                  {field.selectedFile2 ? (
-                    <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                      File Selected: {field.selectedFile2.name}
-                    </p>
-                  ) : (
-                    <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                      No file selected
-                    </p>
-                  )}
-                </div>
+                {isHideShow && (
+                  <div className="flex gap-6 items-center my-6">
+                    <label
+                      htmlFor={`medicalfile-upload3_${index}`}
+                      className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px]   "
+                    >
+                      Attachment Document
+                    </label>
+                    <input
+                      id={`medicalfile-upload3_${index}`}
+                      type="file"
+                      className="hidden"
+                      onChange={(e) => handleFileChange2(index, e)}
+                      disabled={disabled}
+                    />
+                    {field.selectedFile2 ? (
+                      <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                        File Selected: {field.selectedFile2.name}
+                      </p>
+                    ) : (
+                      <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                        No file selected
+                      </p>
+                    )}
+                  </div>
+                )}
               </div>
             ))}
           </div>

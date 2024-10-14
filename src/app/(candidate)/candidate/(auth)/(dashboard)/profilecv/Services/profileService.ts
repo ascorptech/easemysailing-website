@@ -402,8 +402,8 @@ export const GetOnlinePresenceData = async (id: any, cb: any) => {
 export const AddLicensesData = async (userId: any, data: any, cb: any) => {
     try {
         console.log('Data to be submitted:', data);
-        // let url =`${POSTLICENSES}/${userId}`
-        const response = await postReq(POSTLICENSES, data)
+        let url =`${POSTLICENSES}?userId=${userId}`
+        const response = await postReq(url, data)
         console.log('API response:', response);
         return cb(response)
     } catch (error: any) {

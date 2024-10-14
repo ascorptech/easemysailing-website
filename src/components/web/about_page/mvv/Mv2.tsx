@@ -54,16 +54,67 @@ const Mv2 = () => {
             environmental responsibility within the maritime industry.
           </p>
         </div>
+        <div className="flex flex-col justify-center items-center text-center border-2 shadow-lg rounded-tl-[2rem] rounded-br-[2rem] w-full md:w-[400px] h-auto pt-12 ">
+          <div className="w-[100px] h-[100px] -mt-6">
+            <Image
+              src="/value.png"
+              alt="Value Image"
+              width={100}
+              height={100}
+              className="w-full h-full object-contain"
+              priority
+            />
+          </div>
+          <h1 className="text-xl md:text-2xl lg:text-[36px] lg:leading-[54px] font-semibold mt-2">
+            Value
+          </h1>
+          {/* <p className="mt-2 text-[16px] md:text-base lg:text-[16px] leading-[28px] text-justify text-[#4E4E4E] px-4">
+            We envision a maritime industry where open communication bridges the
+            gaps between seafarers, shipowners, and recruiters, leading to a
+            more inclusive and sustainable future. We aim to promote dialogue
+            that brings to light the difficulties and complexities each group
+            faces, fostering solutions that enhance both social and
+            environmental responsibility within the maritime industry.
+          </p> */}
+          <ul className="list-none font-bold mt-2 text-[16px] md:text-base lg:text-[16px] leading-[28px] text-justify text-[#4E4E4E] px-4 mb-10">
+            <li>
+            <b className="font-extrabold">Transparency:{" "}</b>
+              <span className="font-normal">
+                Open processes and fair dealings in all operations
+              </span>
+            </li>
+            <li>
+            <b className="font-extrabold">Fairness:{" "}</b>
+              <span className="font-normal">
+                Equal respect for all voices, from crew members to shipowners
+              </span>
+            </li>
+            <li>
+            <b className="font-extrabold">Sustainability:{" "}</b>
+              <span className="font-normal">
+                Reducing the environmental impact and promoting greener
+                initiatives
+              </span>
+            </li>
+            <li>
+            <b className="font-extrabold">Community:{" "}</b>
+              <span className="font-normal">
+                Fostering collaboration and understanding through diverse
+                perspectives
+              </span>
+            </li>
+          </ul>
+        </div>
 
         {/* Third div */}
-        <div className="flex flex-col justify-center items-center text-center border-2 shadow-lg rounded-tl-[2rem] rounded-br-[2rem] w-full md:w-[400px] h-auto pt-12 ">
-          <div className="w-[100px] h-[100px] -mt-4">
+        {/* <div className="flex flex-col justify-center items-center text-center border-2 shadow-lg rounded-tl-[2rem] rounded-br-[2rem] w-full md:w-[400px] h-auto pt-10 ">
+          <div className="w-[100px] h-[100px]">
             <Image
               src="/value.png"
               alt="Values Image"
               width={100}
               height={100}
-              className="w-full h-full object-contain -mt-6"
+              className="w-full h-full object-contain"
               priority
             />
           </div>
@@ -98,7 +149,7 @@ const Mv2 = () => {
               </span>
             </li>
           </ul>
-        </div>
+        </div> */}
       </div>
     </div>
   );

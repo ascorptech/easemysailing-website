@@ -13,7 +13,8 @@ import Heading7 from "@/components/web/resource_page/heading7/Heading7";
 
 const ResourceDetailsPage: React.FC = () => {
   const params = useParams(); // useParams hook to get route parameters
-  const { id } = params;
+  // const { id } = params;
+  const id = localStorage.getItem('resId')
 
   const [name, setName] = useState("");
 
@@ -186,7 +187,7 @@ const ResourceDetailsPage: React.FC = () => {
               <h2 className="font-bold text-xl ">More Articles</h2>
               <div className="absolute">
                 {resourcesList?.map((item: any) => (
-                  <Link href={`/resources/${item?.id}`} className=" flex gap-3  mb-2 p-2">
+                  <Link href={`/resources-blogs/${item?.title}`} className=" flex gap-3  mb-2 p-2"  onClick={()=>localStorage.setItem('resId',item?.id)}>
                     <div className="w-24 h-14 border-2 border-green-500">
                       <Image
                         priority

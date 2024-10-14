@@ -1,5 +1,5 @@
 "use client";
-import { GetResourcesList } from '@/app/(web)/resources/Services/resourceService';
+import { GetResourcesList } from '@/app/(web)/resources-blogs/Services/resourceService';
 import React, { useEffect, useState } from 'react'
 // import Heading7 from '../resource_page/heading7/Heading7';
 import Image from 'next/image';
@@ -50,6 +50,7 @@ const ResourcesList = (props: Props) => {
       console.log('res',result)
       if (result?.status==200) {
         setResourcesList(result.data?.content);
+        setTotalPages(result?.data?.totalPages)
       } else {
         setResourcesList([])
       }
@@ -87,7 +88,8 @@ const ResourcesList = (props: Props) => {
           </h2>
           <div dangerouslySetInnerHTML={{__html:resourcesList[0]?.description?.slice(0, 1000)}} className="text-gray-500 text-sm text-justify "/>
           <Link
-            href={`/resources/${resourcesList[0]?.id}`}
+            href={`/resources-blogs/${resourcesList[0]?.title}`}
+            onClick={()=>localStorage.setItem('resId',resourcesList[0]?.id)}
             className="h-8 lg:w-[25%] xl:w-[20%] w-[45%] mt-2 bg-green-700 text-white py-1 px-4 rounded-lg text-sm justify-center items-center flex "
           >
             Read more
@@ -124,7 +126,8 @@ const ResourcesList = (props: Props) => {
               <div dangerouslySetInnerHTML={{__html:item?.description?.slice(0, limit)}} className="text-gray-500 text-sm text-justify mb-2" />
 
               <Link
-                href={`/resources/${item?.id}`}
+                href={`/resources-blogs/${item?.title}`}
+                onClick={()=>localStorage.setItem('resId',item?.id)}
                 className="h-8 mt-2 bg-green-700 text-white py-1 px-4 rounded-lg text-sm"
               >
                 Read more

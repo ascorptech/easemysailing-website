@@ -8,7 +8,7 @@ const page = () => {
     <div className="flex flex-col mb-4">
       <Heading7 />
       <div className="my-5 flex text-center lg:justify-center tracking-wider items-center ">
-        <p className="text-left">
+        <p className="sm:text-left text-center">
         Disclaimer: The views expressed in these articles are the personal opinion of the writer
         </p>
       </div>

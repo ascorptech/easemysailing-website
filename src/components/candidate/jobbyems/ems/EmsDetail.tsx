@@ -3,23 +3,23 @@ import React from 'react'
 
 export default function EmsDetail() {
   return (
-    <div className="mx-2   ">
+    <div className="mx-4 px-2 py-2   ">
       <div>
         <h1 className="font-bold text-[25px]">Maersk Line</h1>
-        <p>Captain</p>
+        <p className="text-[#00A264]">Captain</p>
         <ul className="flex  gap-2 mt-3 bg-[#D6EEEE] ">
           <li className=" ">
             <Link
               href="#"
-              className="inline-flex h-12 justify-between items-center px-4 py-2 bg-[#00A264] text-white  rounded-md shadow-sm  focus:outline-none"
+              className="inline-flex h-10 justify-between items-center px-4 py-2 bg-[#00A264] text-white  rounded-md shadow-sm  focus:outline-none"
             >
               Job Description
             </Link>
           </li>
-          <li className="  ">
+          <li className="">
             <Link
               href="#"
-              className=" inline-flex h-12 justify-between items-center px-4 py-2 bg-white border border-[#00A264] text-[#00A264]  rounded-md shadow-sm focus:outline-none"
+              className=" inline-flex h-10 justify-between items-center px-4 py-2 bg-white border border-[#00A264] text-[#00A264]  rounded-md shadow-sm focus:outline-none"
             >
               More Info
             </Link>
@@ -27,7 +27,7 @@ export default function EmsDetail() {
           <li className="">
             <Link
               href="#"
-              className="inline-flex h-12 justify-between items-center px-4 py-2 bg-white border border-[#00A264] text-[#00A264]  rounded-md shadow-sm focus:outline-none"
+              className="inline-flex h-10 justify-between items-center px-4 py-2 bg-white border border-[#00A264] text-[#00A264]  rounded-md shadow-sm focus:outline-none"
             >
               Recruiter Information
             </Link>

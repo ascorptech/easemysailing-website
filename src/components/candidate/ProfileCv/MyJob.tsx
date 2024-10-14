@@ -335,10 +335,10 @@ const MyJob = () => {
   };
 
   return (
-    <div className=" mx-6 mt-4  ">
-      <div className=" flex justify-between">
-        <div className=" w-[50%] ">
-          <div className=" h-screen overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory ">
+    <div className=" mx-6 mt-4   ">
+      <div className=" flex w-full flex-col justify-center lg:flex-row lg:justify-between lg:gap-4 ">
+        <div className="w-full lg:w-[50%] ">
+          <div className=" lg:h-screen overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory ">
             <div className="">
               <div
                 className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2  border-r-8 border-[${
@@ -977,8 +977,8 @@ const MyJob = () => {
 
         {/* right section */}
 
-        <div className="  w-[48%]">
-          <div className=" h-screen overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory ">
+        <div className="w-full  lg:w-[50%] mt-4 lg:mt-0">
+          <div className=" lg:h-screen overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory ">
             {/* PersonalDetails end */}
 
             {/* Aboutme  start*/}

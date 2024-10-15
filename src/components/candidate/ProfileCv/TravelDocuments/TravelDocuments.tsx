@@ -29,6 +29,7 @@ type Props = {
   >;
   userDetail: any;
   travelDocumentsDetails: any;
+  criminal: any;
 };
 
 const TravelDocuments = ({
@@ -36,6 +37,7 @@ const TravelDocuments = ({
   setTravelComplete,
   userDetail,
   travelDocumentsDetails,
+  criminal,
 }: Props) => {
   const [visaForms, setVisaForms] = useState<TravelDocumentsVisaForms[]>([
     {
@@ -84,7 +86,7 @@ const TravelDocuments = ({
     });
   }, []);
 
-  const totalFields = 21 + visaForms.length * 5;
+  const totalFields = 17 + visaForms.length * 5;
   const filledFields = [
     ...visaForms.flatMap((field) => [
       field.issueAuthority,
@@ -109,6 +111,7 @@ const TravelDocuments = ({
     flagState,
     selectedFileResidence,
     indNumber,
+    issuingAuthority,
   ].filter(Boolean).length;
 
   const percentage = (filledFields / totalFields) * 100;
@@ -154,9 +157,21 @@ const TravelDocuments = ({
   };
 
   const handleFileChangeVisa = (index: number, event: any) => {
-    const updatedForms = [...visaForms];
-    updatedForms[index].selectedFileVisa = event.target.files?.[0] || null;
-    setVisaForms(updatedForms);
+    // const updatedForms = [...visaForms];
+    // updatedForms[index].selectedFileVisa = event.target.files?.[0] || null;
+    // setVisaForms(updatedForms);
+    const file = event.target.files?.[0];
+
+    const reader = new FileReader();
+    reader.onloadend = function () {
+      const imageBinary: any = reader.result;
+      const byteArray = imageBinary.split(",")[1];
+
+      const updatedForms: any = [...visaForms];
+      updatedForms[index].selectedFileVisa = byteArray;
+      setVisaForms(updatedForms);
+    };
+    reader.readAsDataURL(file);
   };
 
   const handleFormChangeVisa = (
@@ -226,41 +241,87 @@ const TravelDocuments = ({
   const handleSubmit = (e: React.FormEvent) => {
     // try {
     e.preventDefault();
+    if (!criminal) {
+      toast.error("Please accept the declaration");
+      return;
+    } else {
+      // let formData = new FormData();
+      // formData.append("passportNumber", number);
+      // formData.append("passportIssuingCountry", issuingAuthority);
+      // formData.append("passportIssueDate", issuedate);
+      // formData.append("passportExpiryDate", exdate);
+      // formData.append("seamansBookNumber", trainingCenter);
+      // formData.append("seamansBookIssuingCountry", flagState);
+      // formData.append("seamansBookIssueDate", issuedate1);
+      // formData.append("seamansBookExpiryDate", exdate1);
 
-    let formData = new FormData();
-    formData.append("passportNumber", number);
-    formData.append("passportIssuingCountry", issuingAuthority);
-    formData.append("passportIssueDate", issuedate);
-    formData.append("passportExpiryDate", exdate);
-    formData.append("seamansBookNumber", trainingCenter);
-    formData.append("seamansBookIssuingCountry", flagState);
-    formData.append("seamansBookIssueDate", issuedate1);
-    formData.append("seamansBookExpiryDate", exdate1);
+      // formData.append("residencePermitIssuingCountry", issuingCountry);
+      // formData.append("residencePermitNumber", permitNumber);
+      // formData.append("residencePermitIssueDate", issueDate2);
+      // formData.append("residencePermitExpiryDate", expDate2);
+      // formData.append("passportDocument", selectedFile);
+      // formData.append("seamansBookDocument", selectedFiles);
 
-    formData.append("residencePermitIssuingCountry", issuingCountry);
-    formData.append("residencePermitNumber", permitNumber);
-    formData.append("residencePermitIssueDate", issueDate2);
-    formData.append("residencePermitExpiryDate", expDate2);
-    formData.append("passportDocument", selectedFile);
-    formData.append("seamansBookDocument", selectedFiles);
+      // formData.append("residencePermitDocument", selectedFileResidence);
 
-    formData.append("residencePermitDocument", selectedFileResidence);
-    visaForms.forEach((element: any) => {
-      formData.append("visaNumber", element?.visaNumber);
-      formData.append("visaIssueDate", element?.issueDateVisa);
-      formData.append("visaExpiryDate", element?.expryDateVisa);
-      formData.append("visaDocument", element?.selectedFileVisa);
-      formData.append("visaIssuingCountry", element?.issueAuthority);
-    });
+      // visaForms.forEach((element: any) => {
+      //   formData.append("visaNumber", element?.visaNumber);
+      //   formData.append("visaIssueDate", element?.issueDateVisa);
+      //   formData.append("visaExpiryDate", element?.expryDateVisa);
+      //   formData.append("visaDocument", element?.selectedFileVisa);
+      //   formData.append("visaIssuingCountry", element?.issueAuthority);
+      // });
 
-    AddTravelDocumentData(
-      userDetail?.userId,
-      biometric,
-      checkBox,
-      formData,
-      AddTravelDocumentDataCB
-    );
+      let data: any = {
+        userId: userDetail?.userId,
+
+        passportNumber: number,
+        passportIssuingCountry: issuingAuthority,
+        passportIssueDate: issuedate,
+        passportExpiryDate: exdate,
+        seamansBookNumber: trainingCenter,
+        seamansBookIssuingCountry: flagState,
+        seamansBookIssueDate: issuedate1,
+        seamansBookExpiryDate: exdate1,
+
+        residencePermitIssuingCountry: issuingCountry,
+        residencePermitNumber: permitNumber,
+        residencePermitIssueDate: issueDate2,
+        residencePermitExpiryDate: expDate2,
+        passportDocument: selectedFile,
+        seamansBookDocument: selectedFiles,
+
+        residencePermitDocument: selectedFileResidence,
+      };
+      const visaArray: any = [];
+      visaForms.forEach((element: any) => {
+        visaArray.push({
+          visaNumber: element?.visaNumber,
+          visaIssueDate: element?.issueDateVisa,
+          visaExpiryDate: element?.expryDateVisa,
+          visaDocument: element?.selectedFileVisa,
+          visaIssuingCountry: element?.issueAuthority,
+        });
+      });
+      data.visaData = visaArray;
+      let finArry: any = [];
+      finArry.push(data);
+      console.log("fin", finArry);
+      AddTravelDocumentData(finArry, AddTravelDocumentDataCB);
+    }
   };
+
+  //  formData.visaData =visaArray;
+
+  // AddTravelDocumentData(
+  //   userDetail?.userId,
+  //   biometric,
+  //   checkBox,
+  //   formData,
+  //   AddTravelDocumentDataCB
+  //   );
+  // }
+  // };
 
   const AddTravelDocumentDataCB = (result: any) => {
     if (result?.status == 200 || result?.status == 201) {

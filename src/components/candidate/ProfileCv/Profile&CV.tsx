@@ -149,12 +149,12 @@ const ProfileCV = () => {
   };
 
   return (
-    <div className="mt-3 px-6 z-50">
-      <div className="flex  flex-col gap-4 lg:gap-0 lg:flex-row lg:justify-between border-2 py-2 px-4">
+    <div className="px-6">
+      <div className="flex flex-col gap-4 lg:gap-0 lg:flex-row lg:justify-between border-2 py-2 px-4 bg-white -z-30">
         <div className="flex md:flex-row flex-col items-center gap-2 ">
         
 
-          <div className="relative w-[115.32px] h-[128.85px] border p-2 -z-30">
+          <div className="relative w-[115.32px] h-[128.85px] border p-2 ">
             <Image
               priority
               width={5000}
@@ -462,7 +462,7 @@ const ProfileCV = () => {
       )} */}
 
       {showEditImagePopup && (
-        <div className="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-70">
+        <div className="top-0  fixed inset-0 z-50 flex justify-center items-center bg-[#000000CC] bg-opacity-70">
           <div className="bg-white rounded-lg p-6 shadow-lg w-[35rem] flex flex-col justify-center items-center">
             <div className="ml-[32rem] -mt-4 ">
               <button className="text-[#00A264]" onClick={closeEditImagePopup}>

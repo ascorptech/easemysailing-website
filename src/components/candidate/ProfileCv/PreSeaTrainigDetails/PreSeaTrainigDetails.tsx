@@ -15,12 +15,14 @@ type Props = {
     React.SetStateAction<PreSeaTrainigComplete>
   >;
   userDetail: any;
+  criminal:any;
 };
 
 const PreSeaTrainigDetails = ({
   preSeaTrainigComplete,
   setPreSeaTrainigComplete,
   userDetail,
+  criminal
 }: Props) => {
   const [permanect, setPermanect] = useState("");
   const [issuedate, setIssueDate] = useState("");
@@ -180,6 +182,10 @@ const PreSeaTrainigDetails = ({
   const handleSubmit = (e: React.FormEvent) => {
     // try {
     e.preventDefault();
+    if (!criminal) {
+      toast.error("Please accept the declaration");
+      return; 
+    } else {
     let formData = new FormData();
 
     {
@@ -219,6 +225,7 @@ const PreSeaTrainigDetails = ({
     }
     AddSeaDetailsData(userDetail?.userId, formData, AddSeaDetailsDataDB);
   };
+}
 
   const AddSeaDetailsDataDB = (result: any) => {
     console.log(result);

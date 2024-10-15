@@ -36,12 +36,15 @@ import {
   GetOnlinePresenceData,
   GetReferencesData,
   GetSeagoingData,
+  GetStcwData,
 } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import { toast } from "react-toastify";
 import { FaPercentage } from "react-icons/fa";
 import ShorJob from "./ShoreJob/ShoreJob";
 
 const MyJob = () => {
+  const [criminal, setCriminal] = useState(false); // Manage criminal checkbox state here
+
   const [profileDetail, setProfileDetail] = useState<any>({});
   const [myJobDetail, setMyJobDetail] = useState<any>({});
   const [aboutMeDetail, setAboutMeDetail] = useState<any>({});
@@ -51,6 +54,8 @@ const MyJob = () => {
   const [contactDetail, setContactDetail] = useState<any>({});
   const [travelDocumentsDetail, setTravelDocumentsDetail] = useState<any>({});
   const [ecdisDetail, setEcdisDetail] = useState<any>({});
+
+  const [sTCWDetail, setSTCWDetail] = useState<any>({});
   const [onlinePresenseDetail, setOnlinePresenseDetail] = useState<any>({});
  
   const [refrencesDetail, setRefrencesDetail] = useState<any>({});
@@ -248,6 +253,14 @@ const MyJob = () => {
         toast.error("No data found");
       }
     });
+
+    GetStcwData(id, (res:any) => {
+      if(res?.status == 200){
+        setSTCWDetail(res?.data)
+      }else {
+        toast.error("No data found")
+      }
+    })
     GetReferencesData(id, (res: any) => {
       if (res?.status == 200) {
         setRefrencesDetail(res?.data);
@@ -404,6 +417,7 @@ const MyJob = () => {
                   setMjrComplete={setMjrComplete}
                   userDetail={profileDetail}
                   jobDetail={myJobDetail}
+                  criminal={criminal}
                 />
               )}
 
@@ -470,6 +484,7 @@ const MyJob = () => {
                   personalComplete={personalComplete}
                   setPersonalComplete={setPersonalComplete}
                   userDetail={profileDetail}
+                  criminal={criminal}
                 />
               )}
 
@@ -541,6 +556,7 @@ const MyJob = () => {
                   setLanguageComplete={setLanguageComplete}
                   userDetail={profileDetail}
                   languageDetail={languageDetail}
+                  criminal={criminal}
                 />
               )}
 
@@ -608,6 +624,7 @@ const MyJob = () => {
                   setOnlinePresenceComplete={setOnlinePresenceComplete}
                   userDetail={profileDetail}
                    onlinePresenceDetail={onlinePresenseDetail}
+                   criminal={criminal}
                 />
               )}
               {/* OnlinePresence end */}
@@ -677,6 +694,7 @@ const MyJob = () => {
                   setLicensesComplete={setLicensesComplete}
                   userDetail={profileDetail}
                   licensesDetail={licencesDetail}
+                  criminal={criminal}
                 />
               )}
 
@@ -744,6 +762,7 @@ const MyJob = () => {
                   setECDISComplete={setECDISComplete}
                   userDetail={profileDetail}
                   ecdisDetail={ecdisDetail}
+                  criminal={criminal}
                 />
               )}
 
@@ -797,6 +816,7 @@ const MyJob = () => {
                   medicalComplete={medicalComplete}
                   setMedicalComplete={setMedicalComplete}
                   userDetail={profileDetail}
+                  criminal={criminal}
                 />
               )}
 
@@ -853,6 +873,7 @@ const MyJob = () => {
                   academicComplete={academicComplete}
                   setAcademicComplete={setAcademicComplete}
                   userDetail={profileDetail}
+                  criminal={criminal}
                 />
               )}
 
@@ -915,6 +936,7 @@ const MyJob = () => {
                   setSeaGoingServiceComplete={setSeaGoingServiceComplete}
                   userDetail={profileDetail}
                   seaGoingServiceDetail={seaGoingServiceDetail}
+                  criminal={criminal}
                 />
               )}
 
@@ -971,6 +993,7 @@ const MyJob = () => {
                   preSeaTrainigComplete={preSeaTrainigComplete}
                   setPreSeaTrainigComplete={setPreSeaTrainigComplete}
                   userDetail={profileDetail}
+                  criminal={criminal}
                 />
               )}
             </div>
@@ -1047,6 +1070,8 @@ const MyJob = () => {
                 setAboutMeComplete={setAboutMeComplete}
                 userDetail={profileDetail}
                 aboutDetail={aboutMeDetail}
+                criminal={criminal}
+                setCriminal={setCriminal}
               />
             )}
             {/* about me end */}
@@ -1122,6 +1147,7 @@ const MyJob = () => {
                 setContactComplete={setContactComplete}
                 userDetail={profileDetail}
                 contactDetail={contactDetail}
+                criminal={criminal}
               />
             )}
             {/* constact details end */}
@@ -1195,6 +1221,7 @@ const MyJob = () => {
                 setNextOfKinComplete={setNextOfComplete}
                 userDetail={profileDetail}
                 nextOfKinDetail={nextOfKinDetail}
+                criminal={criminal}
               />
             )}
 
@@ -1264,11 +1291,16 @@ const MyJob = () => {
                 setTravelComplete={setTravelComplete}
                 userDetail={profileDetail}
                 travelDocumentsDetails={travelDocumentsDetail}
+                criminal={criminal}
               />
             )}
 
             <div
-              className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${sTCWComplete?.color}] mt-3`}
+              className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${
+                  sTCWDetail.color
+                    ? sTCWDetail.color
+                    : sTCWComplete.color
+                }] mt-3`}
             >
               <h1 className="">STCW Training</h1>
               <div className="flex items-center justify-center gap-1">
@@ -1309,9 +1341,17 @@ const MyJob = () => {
                   )}
                 </span>
                 <CircularProgress
-                  percentage={Math.round(sTCWComplete?.percentage)}
-                  color={sTCWComplete.color}
-                />
+                    percentage={Math.round(
+                      sTCWComplete?.percentage
+                        ? sTCWComplete?.percentage
+                        : Number(sTCWDetail?.completed)
+                    )}
+                    color={
+                    sTCWDetail.color
+                        ? sTCWDetail.color
+                        : sTCWComplete.color
+                    }
+                  />
               </div>
             </div>
 
@@ -1320,6 +1360,8 @@ const MyJob = () => {
                 sTCWComplete={sTCWComplete}
                 setSTCWComplete={setSTCWComplete}
                 userDetail={profileDetail}
+                criminal={criminal}
+                sTCWDetail={sTCWDetail}
               />
             )}
 
@@ -1376,6 +1418,7 @@ const MyJob = () => {
                 additionalComplete={additionalComplete}
                 setAdditionalComplete={setAdditionalComplete}
                 userDetail={profileDetail}
+                criminal={criminal}
               />
             )}
 
@@ -1474,6 +1517,7 @@ const MyJob = () => {
                 professionalComplete={professionalComplete}
                 setProfessionalComplete={setProfessionalComplete}
                 userDetail={profileDetail}
+                criminal={criminal}
               />
             )}
 
@@ -1538,6 +1582,7 @@ const MyJob = () => {
                 setRefrencesComplete={setRefrencesComplete}
                 userDetail={profileDetail}
                 refrencesDetail={refrencesDetail}
+                criminal={criminal}
               />
             )}
 
@@ -1593,6 +1638,7 @@ const MyJob = () => {
                 shorJobComplete={shorJobComplete}
                 setShorJobComplete={setShorJobComplete}
                 userDetail={profileDetail}
+                criminal={criminal}
               />
             )}
 
@@ -1645,6 +1691,7 @@ const MyJob = () => {
                 vettingServicesComplete={vettingServicesComplete}
                 setVettingServicesComplete={setVettingServicesComplete}
                 userDetail={profileDetail}
+                criminal={criminal}
               />
             )}
 

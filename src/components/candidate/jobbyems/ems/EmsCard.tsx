@@ -295,19 +295,24 @@ const EmsCard: React.FC<EmsCardProps> = ({
               index === 0 ? "bg-[#D6EEEE]" : "bg-white"
             }`}
           >
-            <div className="flex relative justify-between items-center ">
+            {/* <div className="flex relative justify-between items-center z-0 border border-red-600"> */}
+            <div className="flex justify-between items-center  ">
+            <div className=" ">
+
               <h3 className="  text-base font-semibold ">{item.name}</h3>
-              <div className="flex absolute top-0 right-3 justify-center items-center h-[61px] w-[76px] border shadow-md rounded-md mt-3 p-1  bg-white ">
-                <Image
-                  priority
-                  src={item.logoSrc}
-                  width={100}
-                  height={100}
-                  alt={`${item.name} logo`}
-                  className="h-full w-full object-contain z-0"
-                />
-              </div>
-            </div>
+             
+
+{/* <div className="flex absolute top-0 right-3 justify-center items-center h-[61px] w-[76px] border shadow-md rounded-md mt-3 p-1 bg-white z-0">
+  <Image
+    priority
+    src={item.logoSrc}
+    width={100}
+    height={100}
+    alt={`${item.name} logo`}
+    className="h-full w-full object-contain z-0"
+  />
+</div> */}
+            {/* </div> */}
 
             <div className="text-[#4E4E4E]  text-[16px] leading-[24px]">
               <span className="text-[#00A264] text-sm">Captain, </span>
@@ -353,6 +358,21 @@ const EmsCard: React.FC<EmsCardProps> = ({
                 </span>
                 <span>$123 - $456</span> */}
               </div>
+            </div>
+            </div>
+              <div className="h-full bg-white">
+              <div className="flex justify-center items-center h-[80px] w-[76px] border shadow-md rounded-md  p-1  ">
+                <Image
+                  priority
+                  src={item.logoSrc}
+                  width={100}
+                  height={100}
+                  alt={`${item.name} logo`}
+                  className="h-full w-full object-contain "
+                />
+              </div>
+              </div>
+
             </div>
             <div className="flex justify-between mr-4 pt-1 items-center">
               <Link

@@ -20,6 +20,7 @@ type Props = {
   >; // setMjrComplete is a function to update mjrComplete
   userDetail: any;
   onlinePresenceDetail: any;
+  criminal:any;
 };
 
 const OnlinePresence = ({
@@ -27,6 +28,7 @@ const OnlinePresence = ({
   setOnlinePresenceComplete,
   userDetail,
   onlinePresenceDetail,
+  criminal
 }: Props) => {
   // State for form fields
 
@@ -160,6 +162,11 @@ const OnlinePresence = ({
   const handleSubmit = (e: React.FormEvent) => {
     // try {
     e.preventDefault();
+    if (!criminal) {
+      toast.error("Please accept the declaration");
+      return; 
+    } else {
+
     let data = {
       id: userDetail?.userId,
       whatsappCountryCode: mCountrycode,
@@ -193,6 +200,7 @@ const OnlinePresence = ({
 
     AddOnlinePresenceData(data, AddOnlinePresenceDataCB);
   };
+}
 
   const AddOnlinePresenceDataCB = (result: any) => {
     if (result?.status == 200 || result?.status == 201) {

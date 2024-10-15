@@ -13,7 +13,7 @@ type OtherVaccination = {
   vaccination1: any;
   vaccinationexp: any;
   veccinationCheck: any;
-  selectedFilesOthers: File | null;
+  selectedFilesOthers: any | null;
 };
 
 type MedicalComplete = {
@@ -25,12 +25,14 @@ type Props = {
   medicalComplete: MedicalComplete; // mjrComplete is an object with percentage and color
   setMedicalComplete: React.Dispatch<React.SetStateAction<MedicalComplete>>;
   userDetail: any;
+  criminal: any;
 };
 
 const MedicalCertificates = ({
   medicalComplete,
   setMedicalComplete,
   userDetail,
+  criminal,
 }: Props) => {
   const [otherVaccinationForms, setOtherVaccinationForms] = useState<
     OtherVaccination[]
@@ -212,9 +214,21 @@ const MedicalCertificates = ({
   // };
 
   const handleFileChangesOthers = (index: number, event: any) => {
-    const updatedForms = [...otherVaccinationForms];
-    updatedForms[index].selectedFilesOthers = event.target.files?.[0] || null;
-    setOtherVaccinationForms(updatedForms);
+    const file = event.target.files?.[0];
+
+    const reader = new FileReader();
+    reader.onloadend = function () {
+      const imageBinary: any = reader.result;
+      const byteArray = imageBinary.split(",")[1];
+
+      const updatedForms: any = [...otherVaccinationForms];
+      updatedForms[index].selectedFilesOthers = byteArray;
+      setOtherVaccinationForms(updatedForms);
+    };
+    reader.readAsDataURL(file);
+    // const updatedForms = [...otherVaccinationForms];
+    // updatedForms[index].selectedFilesOthers = event.target.files?.[0] || null;
+    // setOtherVaccinationForms(updatedForms);
   };
 
   const handleFormChangeOthers = (
@@ -253,66 +267,136 @@ const MedicalCertificates = ({
   };
   const handleFileChangesFlag = (event: any) => {
     const file = event.target.files?.[0];
-    if (file) {
-      setSelectedFilesFlag(file);
-    }
+
+    const reader = new FileReader();
+    reader.onloadend = function () {
+      const imageBinary: any = reader.result;
+    };
+    // if (file) {
+    //   setSelectedFilesFlag(file);
+    // }
+    reader.readAsDataURL(file);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!criminal) {
+      toast.error("Please accept the declaration");
+      return;
+    } else {
+      // let formData = new FormData();
+      // otherVaccinationForms.forEach((element: any) => {
+      //   formData.append("otherVaccinationType", element?.medicalType1);
+      //   formData.append("otherVaccinationDate", element?.vaccination1);
+      //   formData.append("otherVaccinationExpiryDate", element?.vaccinationexp);
+      //   formData.append("otherVaccinationDocument", element.selectedFilesOthers);
+      // });
 
-    let formData = new FormData();
-    otherVaccinationForms.forEach((element: any) => {
-      formData.append("otherVaccinationType", element?.medicalType1);
-      formData.append("otherVaccinationDate", element?.vaccination1);
-      formData.append("otherVaccinationExpiryDate", element?.vaccinationexp);
-      formData.append("otherVaccinationDocument", element.selectedFilesOthers);
-    });
+      // formData.append("fitnessType", types2Options);
+      // formData.append("fitnessNumber", number);
+      // formData.append("fitnessIssuingCountry", issuingOptions);
+      // formData.append("fitnessIssuingCity", issuingCity);
+      // formData.append("fitnessMedicalCenter", fMedicalcenter);
+      // formData.append("fitnessIssueDate", issuedate);
+      // formData.append("fitnessExpiryDate", exdate);
+      // // formData.append("fitnessNeverExpires", expires1);
+      // formData.append("fitnessDocument", selectedFile);
 
-    formData.append("fitnessType", types2Options);
-    formData.append("fitnessNumber", number);
-    formData.append("fitnessIssuingCountry", issuingOptions);
-    formData.append("fitnessIssuingCity", issuingCity);
-    formData.append("fitnessMedicalCenter", fMedicalcenter);
-    formData.append("fitnessIssueDate", issuedate);
-    formData.append("fitnessExpiryDate", exdate);
-    // formData.append("fitnessNeverExpires", expires1);
-    formData.append("fitnessDocument", selectedFile);
+      // formData.append("drugTestType", typeOptions);
+      // formData.append("drugTestNumber", medicalNumber);
+      // formData.append("drugTestIssuingCountry", issuingCountryOpt);
+      // formData.append("drugTestIssuingCity", medicalCenter);
+      // formData.append("drugTestCenter", testCenter);
+      // formData.append("drugTestIssueDate", issuedate1);
+      // formData.append("drugTestExpiryDate", exdate1);
+      // // formData.append("drugTestNeverExpires", expires2);
+      // formData.append("drugTestDocument", selectedFiles);
 
-    formData.append("drugTestType", typeOptions);
-    formData.append("drugTestNumber", medicalNumber);
-    formData.append("drugTestIssuingCountry", issuingCountryOpt);
-    formData.append("drugTestIssuingCity", medicalCenter);
-    formData.append("drugTestCenter", testCenter);
-    formData.append("drugTestIssueDate", issuedate1);
-    formData.append("drugTestExpiryDate", exdate1);
-    // formData.append("drugTestNeverExpires", expires2);
-    formData.append("drugTestDocument", selectedFiles);
+      // formData.append("covidVaccineType", medicalType);
+      // formData.append("covidVaccineCountry", covidOptions);
+      // formData.append("covidVaccineMedicalCenter", medicalPhysician);
+      // formData.append("covidVaccineDate1", vaccinationIssue);
+      // // formData.append("covidVaccineExpiryDate1", vaccinationExpiry);
+      // // missing covid19 expiry data
+      // // formData.append("covidVaccineNeverExpires1", expiresMedical);
+      // formData.append("covidVaccineDocument1", selectedFilesCovid);
 
-    formData.append("covidVaccineType", medicalType);
-    formData.append("covidVaccineCountry", covidOptions);
-    formData.append("covidVaccineMedicalCenter", medicalPhysician);
-    formData.append("covidVaccineDate1", vaccinationIssue);
-    // formData.append("covidVaccineExpiryDate1", vaccinationExpiry);
-    // missing covid19 expiry data
-    // formData.append("covidVaccineNeverExpires1", expiresMedical);
-    formData.append("covidVaccineDocument1", selectedFilesCovid);
+      // formData.append("covidVaccineDate2", issuedateCovid);
+      // // formData.append("covidVaccineExpiryDate2", exdateCovid);
+      // // formData.append("covidVaccineNeverExpires2", expires2);
 
-    formData.append("covidVaccineDate2", issuedateCovid);
-    // formData.append("covidVaccineExpiryDate2", exdateCovid);
-    // formData.append("covidVaccineNeverExpires2", expires2);
+      // formData.append("covidVaccineDocument2", "");
 
-    formData.append("covidVaccineDocument2", "");
+      // // formData.append("otherVaccinationNeverExpires", veccinationCheck);
 
-    // formData.append("otherVaccinationNeverExpires", veccinationCheck);
+      // formData.append("flagMedicalType", medicalTypeFlag);
+      // formData.append("flagMedicalVaccinationDate", vaccinationFlag);
+      // formData.append("flagMedicalExpiryDate", vaccinationexpFlag);
+      // // formData.append("flagMedicalNeverExpires", veccinationCheckFlag);
+      // formData.append("flagMedicalDocument", selectedFilesFlag);
 
-    formData.append("flagMedicalType", medicalTypeFlag);
-    formData.append("flagMedicalVaccinationDate", vaccinationFlag);
-    formData.append("flagMedicalExpiryDate", vaccinationexpFlag);
-    // formData.append("flagMedicalNeverExpires", veccinationCheckFlag);
-    formData.append("flagMedicalDocument", selectedFilesFlag);
+      // AddMedicalData(userDetail?.userId, formData, AddmedicalDataDB);
 
-    AddMedicalData(userDetail?.userId, formData, AddmedicalDataDB);
+      let data: any = {
+        userId: userDetail?.userId,
+        fitnessType: types2Options,
+        fitnessNumber: number,
+        fitnessIssuingCountry: issuingOptions,
+        fitnessIssuingCity: issuingCity,
+        fitnessMedicalCenter: fMedicalcenter,
+        fitnessIssueDate: issuedate,
+        fitnessExpiryDate: exdate,
+        // formData.append("fitnessNeverExpires", expires1);
+        fitnessDocument: selectedFile,
+
+        drugTestType: typeOptions,
+        drugTestNumber: medicalNumber,
+        drugTestIssuingCountry: issuingCountryOpt,
+        drugTestIssuingCity: medicalCenter,
+        drugTestCenter: testCenter,
+        drugTestIssueDate: issuedate1,
+        drugTestExpiryDate: exdate1,
+        // formData.append("drugTestNeverExpires", expires2);
+        drugTestDocument: selectedFiles,
+
+        covidVaccineType: medicalType,
+        covidVaccineCountry: covidOptions,
+        covidVaccineMedicalCenter: medicalPhysician,
+        covidVaccineDate1: vaccinationIssue,
+        // formData.append("covidVaccineExpiryDate1", vaccinationExpiry);
+        // missing covid19 expiry data
+        // formData.append("covidVaccineNeverExpires1", expiresMedical);
+        covidVaccineDocument1: selectedFilesCovid,
+
+        covidVaccineDate2: issuedateCovid,
+        // formData.append("covidVaccineExpiryDate2", exdateCovid);
+        // formData.append("covidVaccineNeverExpires2", expires2);
+
+        // formData.append("covidVaccineDocument2", "");
+
+        // formData.append("otherVaccinationNeverExpires", veccinationCheck);
+
+        flagMedicalType: medicalTypeFlag,
+        flagMedicalVaccinationDate: vaccinationFlag,
+        flagMedicalExpiryDate: vaccinationexpFlag,
+        // formData.append("flagMedicalNeverExpires", veccinationCheckFlag);
+        flagMedicalDocument: selectedFilesFlag,
+      };
+      const otherArray: any = [];
+      otherVaccinationForms.forEach((element: any) => {
+        otherArray.push({
+          otherVaccinationType: element?.medicalType1,
+          otherVaccinationDate: element?.vaccination1,
+          otherVaccinationExpiryDate: element?.vaccinationexp,
+          otherVaccinationDocument: element.selectedFilesOthers,
+        });
+      });
+      data.otherData = otherArray;
+
+      let finArry: any = [];
+      finArry.push(data);
+      AddMedicalData(finArry, AddmedicalDataDB);
+    }
   };
 
   const AddmedicalDataDB = (result: any) => {

@@ -16,13 +16,16 @@ type Props = {
   setNextOfKinComplete: React.Dispatch<React.SetStateAction<NextOfKinComplete>>;
   userDetail: any;
   nextOfKinDetail:any;
+  criminal:any;
 };
 
 const NextOfKinDetails = ({
   nextOfKinComplete,
   setNextOfKinComplete,
   userDetail,
-  nextOfKinDetail
+  nextOfKinDetail,
+  criminal
+  
 }: Props) => {
   const [nextKinName, setNextKinName] = useState("");
   const [nextKinShip, setNextKinShip] = useState("");
@@ -84,6 +87,10 @@ const NextOfKinDetails = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!criminal) {
+      toast.error("Please accept the declaration");
+      return; 
+    } else {
     if(
       
       !nextKinName ||
@@ -106,7 +113,7 @@ const NextOfKinDetails = ({
      
   };
   AddNextOfData(data, AddNextOfKindataDB);
-
+}
   
   };
   const AddNextOfKindataDB = (result: any) => {
@@ -169,7 +176,7 @@ const NextOfKinDetails = ({
     // toast.info("You are now in edit mode. Make your changes.");
   };
   return (
-    <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
+    <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 -z-20">
       <form onSubmit={handleSubmit}>
         {/* next of kin details */}
 

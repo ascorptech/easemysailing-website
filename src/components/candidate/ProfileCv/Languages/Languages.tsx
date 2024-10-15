@@ -18,13 +18,15 @@ type Props = {
   setLanguageComplete: React.Dispatch<React.SetStateAction<LanguageComplete>>;
   userDetail: any;
   languageDetail:any;
+  criminal:any
 };
 
 const Languages = ({
   languageComplete,
   setLanguageComplete,
   userDetail,
-  languageDetail
+  languageDetail,
+  criminal
 }: Props) => {
   // State for form fields
   const [language1, setLanguage1] = useState("");
@@ -125,6 +127,10 @@ const Languages = ({
   const handleSubmit = (e: React.FormEvent) => {
     // try {
     e.preventDefault();
+    if (!criminal) {
+      toast.error("Please accept the declaration");
+      return; 
+    } else {
     let formData = new FormData();
 
     // {
@@ -144,6 +150,7 @@ const Languages = ({
     // }
     AddLanguageData(userDetail?.userId, formData, AddLanguagedataDB);
   };
+}
 
   const AddLanguagedataDB = (result: any) => {
     console.log(result);

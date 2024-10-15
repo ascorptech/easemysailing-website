@@ -20,12 +20,14 @@ type Props = {
   setRefrencesComplete: React.Dispatch<React.SetStateAction<RefrencesComplete>>;
   userDetail: any;
   refrencesDetail:any;
+  criminal:any;
 };
 
 const Refrences = ({
   refrencesComplete,
   setRefrencesComplete,
-  userDetail,refrencesDetail
+  userDetail,refrencesDetail,
+  criminal
 }: Props) => {
   const [date, setDate] = useState("");
   const [companyName, setCompanyName] = useState("");
@@ -160,6 +162,11 @@ const Refrences = ({
   const handleSubmit = (e: React.FormEvent) => {
     // try {
     e.preventDefault();
+    if (!criminal) {
+      toast.error("Please accept the declaration");
+      return; 
+    } else {
+
     let formData = new FormData();
     formData.append("issueDate", date);
     formData.append("vesselOrCompanyName", companyName);
@@ -182,6 +189,7 @@ const Refrences = ({
       AddReferencesDataCB
     );
   };
+}
 
   const AddReferencesDataCB = (result: any) => {
     if (result?.status == 200 || result?.status == 201) {

@@ -317,12 +317,12 @@ export const GetReferencesData = async (id: any, cb: any) => {
 
 //medical 
 
-export const AddMedicalData = async (userId: any, data: any, cb: any) => {
+export const AddMedicalData = async (data: any, cb: any) => {
     try {
         console.log('Data to be submitted:', data);
-        let url = `${POSTMEDICAL}/${userId}`
+        // let url = `${POSTMEDICAL}/${userId}`
 
-        const response = await postReq(url, data)
+        const response = await postReq(POSTMEDICAL, data)
         console.log('API response:', response);
         return cb(response)
     } catch (error: any) {

@@ -37,7 +37,7 @@ const ProfileDetails = () => {
     setShowPopup(false); 
     setFilePreview(null); 
     setFileName(""); 
-    setProgress(0);
+    setProgress(0); 
   };
 
   const openEditImagePopup = () => {
@@ -45,8 +45,8 @@ const ProfileDetails = () => {
   };
 
   const closeEditImagePopup = () => {
-    setShowEditImagePopup(false);
-    setFilePreview(null);
+    setShowEditImagePopup(false); 
+    setFilePreview(null); 
     setFileName(""); 
     setProgress(0); 
   };
@@ -92,14 +92,17 @@ const ProfileDetails = () => {
 
   const handleSubmitImageChange = () => {
     if (progress === 100 && filePreview) {
+     
       setProfileImage(filePreview);
 
+      
       closeEditImagePopup();
     }
   };
 
   const handleSubmit = () => {
     if (progress === 100 && fileName) {
+     
       console.log("File submitted:", fileName);
 
       alert(`File "${fileName}" successfully uploaded.`);

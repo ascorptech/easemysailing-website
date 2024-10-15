@@ -203,7 +203,7 @@ const Header: React.FC = () => {
 
                         <li>
                           <Link
-                            href="/podcast-interviews"
+                            href="/podcasts-interviews"
                             className="block px-4 py-1 hover:bg-white hover:text-green-800"
                           >
                             Podcast & Interviews

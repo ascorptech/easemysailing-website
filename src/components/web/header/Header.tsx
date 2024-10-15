@@ -396,7 +396,7 @@ const Header: React.FC = () => {
               </li>
               <li>
                 <Link
-                  href="/podcast-interviews"
+                  href="/podcasts-interviews"
                   className="block py-2 px-3 text-[#00A264] rounded-lg hover:bg-[#00A264] mt-1  hover:text-[#FFFFFF] text-xl"
                   onClick={() => setIsMenuOpen(false)}
                 >

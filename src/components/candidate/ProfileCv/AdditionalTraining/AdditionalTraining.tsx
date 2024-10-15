@@ -8,6 +8,7 @@ import Link from "next/link";
 import React from "react";
 import react, { useEffect, useState } from "react";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
+import { toast } from "react-toastify";
 
 type AdditionalTraining = {
   countryCertifi: string;
@@ -44,12 +45,14 @@ type Props = {
     React.SetStateAction<AdditionalComplete>
   >; // setMjrComplete is a function to update mjrComplete
   userDetail: any;
+  criminal:any;
 };
 
 const AdditionalTraining = ({
   additionalComplete,
   setAdditionalComplete,
   userDetail,
+  criminal
 }: Props) => {
 
 
@@ -285,15 +288,20 @@ const AdditionalTraining = ({
   const handleSubmit = (e: React.FormEvent) => {
     // try {
     e.preventDefault();
+    if (!criminal) {
+      toast.error("Please accept the declaration");
+      return; 
+    } else {
 
     let formData = new FormData();
   };
+}
   const handleEdits = () => {
     setDisabled(!disabled);
     setIsHideShow(!isHideShow);
     // toast.info("You are now in edit mode. Make your changes.");
   };
-
+  
 
 
 

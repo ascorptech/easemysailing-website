@@ -25,12 +25,14 @@ type Props = {
   medicalComplete: MedicalComplete; // mjrComplete is an object with percentage and color
   setMedicalComplete: React.Dispatch<React.SetStateAction<MedicalComplete>>;
   userDetail: any;
+  criminal:any;
 };
 
 const MedicalCertificates = ({
   medicalComplete,
   setMedicalComplete,
   userDetail,
+  criminal
 }: Props) => {
   const [otherVaccinationForms, setOtherVaccinationForms] = useState<
     OtherVaccination[]
@@ -260,6 +262,10 @@ const MedicalCertificates = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!criminal) {
+      toast.error("Please accept the declaration");
+      return; 
+    } else {
 
     let formData = new FormData();
     otherVaccinationForms.forEach((element: any) => {
@@ -314,6 +320,7 @@ const MedicalCertificates = ({
 
     AddMedicalData(userDetail?.userId, formData, AddmedicalDataDB);
   };
+}
 
   const AddmedicalDataDB = (result: any) => {
     console.log(result);

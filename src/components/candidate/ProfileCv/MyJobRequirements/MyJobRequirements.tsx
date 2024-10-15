@@ -14,11 +14,16 @@ type MjrComplete = {
   color: string;
 };
 
+// type mjrDelcearation = {
+//   criminal:any;
+// }
 type Props = {
   mjrComplete: MjrComplete; 
   setMjrComplete: React.Dispatch<React.SetStateAction<MjrComplete>>; 
   userDetail: any;
-  jobDetail:any
+  jobDetail:any;
+  criminal:any; 
+
 };
 
 const MyJobRequirements = ({
@@ -26,10 +31,14 @@ const MyJobRequirements = ({
   setMjrComplete,
   userDetail,
   jobDetail,
+  criminal
+  // mjrDelcearation,
 }: Props) => {
   const [rankDrop, setRankDrop] = useState<any>([]);
   const [shipTypeDrop, setShipTypeDrop] = useState<any>([]);
   const [availabilityDate, setAvailabilityDate] = useState("");
+  const [primaryRank, setPrimaryRank] = useState("");
+
   const [currentPosition, setCurrentPosition] = useState("");
   const [alternatePosition, setAlternatePosition] = useState("");
   const [preferredVesselType, setPreferredVesselType] = useState("");
@@ -40,6 +49,9 @@ const MyJobRequirements = ({
 
   const [disabled, setDisabled] = useState(true);
   const [color,setColor]=useState('')
+  // const [criminal, setCriminal] = useState<any>("");
+
+
 
   useEffect(() => {
     if (jobDetail) {
@@ -104,6 +116,11 @@ const MyJobRequirements = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!criminal) {
+      toast.error("Please accept the declaration");
+      return; 
+    } else {
+   
 
     if (
       !currentPosition ||
@@ -136,6 +153,7 @@ const MyJobRequirements = ({
 
     AddMyJobData(data, AddmyJobdataDB);
   };
+}
 
   const AddmyJobdataDB = (result: any) => {
     console.log(result);
@@ -157,7 +175,7 @@ const MyJobRequirements = ({
   };
 
   return (
-    <div className="container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
+    <div className="container border-2 shadow-lg p-3  mt-[14px] mb-8 -z-30">
       <h2 className="font-bold my-3"> My Job Requirements</h2>
       {/* <MyJob percentage={percentage} color="#FF9900" /> */}
       {/* <CircularProgress percentage={percentage} /> */}
@@ -190,7 +208,7 @@ const MyJobRequirements = ({
               <option value="Training3">Training3</option> */}
             </select>
           </div>
-          {currentPosition && (
+          {/* {currentPosition && (
             <div>
               <label className="text-[14px] leading-[19.07px]  text-[#333333]">
               Primary Rank Choice
@@ -210,12 +228,35 @@ const MyJobRequirements = ({
                       {rank?.toUpperCase()}
                     </option>
                   ))}
-                {/* <option value="Captain">Captain</option>
-              <option value="Captain2">Captain2</option>
-              <option value="Training3">Training3</option> */}
+                
               </select>
             </div>
-          )}
+          )} */}
+
+
+            <div>
+              <label className="text-[14px] leading-[19.07px]  text-[#333333]">
+              Primary Rank Choice
+              </label>
+              <select
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                value={primaryRank}
+                onChange={(e) => setPrimaryRank(e.target.value)}
+                disabled={disabled}
+              >
+                <option value="" disabled>
+                  Select
+                </option>
+                {rankDrop &&
+                  rankDrop?.map((rank: any, index: number) => (
+                    <option key={index} value={rank}>
+                      {rank?.toUpperCase()}
+                    </option>
+                  ))}
+               
+              </select>
+            </div>
+       
 
           <div>
             <label className="text-[14px] leading-[19.07px]  text-[#333333]">

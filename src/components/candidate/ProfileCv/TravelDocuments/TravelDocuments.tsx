@@ -29,6 +29,7 @@ type Props = {
   >;
   userDetail: any;
   travelDocumentsDetails: any;
+  criminal:any;
 };
 
 const TravelDocuments = ({
@@ -36,6 +37,7 @@ const TravelDocuments = ({
   setTravelComplete,
   userDetail,
   travelDocumentsDetails,
+  criminal
 }: Props) => {
   const [visaForms, setVisaForms] = useState<TravelDocumentsVisaForms[]>([
     {
@@ -84,7 +86,7 @@ const TravelDocuments = ({
     });
   }, []);
 
-  const totalFields = 21 + visaForms.length * 5;
+  const totalFields = 17 + visaForms.length * 5;
   const filledFields = [
     ...visaForms.flatMap((field) => [
       field.issueAuthority,
@@ -109,6 +111,7 @@ const TravelDocuments = ({
     flagState,
     selectedFileResidence,
     indNumber,
+    issuingAuthority
   ].filter(Boolean).length;
 
   const percentage = (filledFields / totalFields) * 100;
@@ -154,9 +157,22 @@ const TravelDocuments = ({
   };
 
   const handleFileChangeVisa = (index: number, event: any) => {
-    const updatedForms = [...visaForms];
-    updatedForms[index].selectedFileVisa = event.target.files?.[0] || null;
-    setVisaForms(updatedForms);
+    // const updatedForms = [...visaForms];
+    // updatedForms[index].selectedFileVisa = event.target.files?.[0] || null;
+    // setVisaForms(updatedForms);
+    const file = event.target.files?.[0]
+
+    const reader = new FileReader();
+    reader.onloadend= function() {
+      const imageBinary:any = reader.result;
+      const byteArray = imageBinary.split(',')[1];
+
+      const updatedForms:any = [...visaForms];
+      updatedForms[index].selectedFileVisa= byteArray;
+      setVisaForms(updatedForms);
+    }
+    reader.readAsDataURL(file);
+
   };
 
   const handleFormChangeVisa = (
@@ -226,7 +242,12 @@ const TravelDocuments = ({
   const handleSubmit = (e: React.FormEvent) => {
     // try {
     e.preventDefault();
+    if (!criminal) {
+      toast.error("Please accept the declaration");
+      return; 
+    } else {
 
+      // const visaArray:any = [];
     let formData = new FormData();
     formData.append("passportNumber", number);
     formData.append("passportIssuingCountry", issuingAuthority);
@@ -245,13 +266,33 @@ const TravelDocuments = ({
     formData.append("seamansBookDocument", selectedFiles);
 
     formData.append("residencePermitDocument", selectedFileResidence);
+    // visaForms.forEach((element: any) => {
+    //   formData.append("visaNumber", element?.visaNumber);
+    //   formData.append("visaIssueDate", element?.issueDateVisa);
+    //   formData.append("visaExpiryDate", element?.expryDateVisa);
+    //   formData.append("visaDocument", element?.selectedFileVisa);
+    //   formData.append("visaIssuingCountry", element?.issueAuthority);
+    // });
+    // visaForms.forEach((element: any, index: number) => {
+    //   formData.append(`visaForms[${index}][visaNumber]`, element?.visaNumber);
+    //   formData.append(`visaForms[${index}][visaIssueDate]`, element?.issueDateVisa);
+    //   formData.append(`visaForms[${index}][visaExpiryDate]`, element?.expryDateVisa);
+    //   formData.append(`visaForms[${index}][visaDocument]`, element?.selectedFileVisa);
+    //   formData.append(`visaForms[${index}][visaIssuingCountry]`, element?.issueAuthority);
+    // });
     visaForms.forEach((element: any) => {
-      formData.append("visaNumber", element?.visaNumber);
-      formData.append("visaIssueDate", element?.issueDateVisa);
-      formData.append("visaExpiryDate", element?.expryDateVisa);
-      formData.append("visaDocument", element?.selectedFileVisa);
-      formData.append("visaIssuingCountry", element?.issueAuthority);
+      formData.append("visaForms[]", JSON.stringify({
+        visaNumber: element?.visaNumber,
+        visaIssueDate: element?.issueDateVisa,
+        visaExpiryDate: element?.expryDateVisa,
+        visaDocument: element?.selectedFileVisa,
+        visaIssuingCountry: element?.issueAuthority
+      }));
     });
+
+   
+
+    //  formData.visaData =visaArray;
 
     AddTravelDocumentData(
       userDetail?.userId,
@@ -261,6 +302,7 @@ const TravelDocuments = ({
       AddTravelDocumentDataCB
     );
   };
+}
 
   const AddTravelDocumentDataCB = (result: any) => {
     if (result?.status == 200 || result?.status == 201) {

@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Select from "react-select";
+import { toast } from "react-toastify";
 
 type ShorJobComplete = {
   percentage: number;
@@ -14,12 +15,14 @@ type Props = {
   shorJobComplete: ShorJobComplete;
   setShorJobComplete: React.Dispatch<React.SetStateAction<ShorJobComplete>>;
   userDetail: any;
+  criminal:any;
 };
 
 const ShorJob = ({
   shorJobComplete,
   setShorJobComplete,
   userDetail,
+  criminal
 }: Props) => {
   const [areYouIntrested, setAreYouIntrested] = useState("");
   const [multipleSelection, setMultipleSelection] = useState<any>([]); // Updated to handle react-select's option type
@@ -41,6 +44,11 @@ const ShorJob = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!criminal) {
+      toast.error("Please accept the declaration");
+      return; 
+    } else {
+    }
   };
 
   const totalFields = 1;

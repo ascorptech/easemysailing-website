@@ -5,10 +5,8 @@ type CircularProgressProps = {
   size?: number;
   strokeWidth?: number;
   color?: string;
-  
-
-
 };
+
 
 const CircularProgress: React.FC<CircularProgressProps> = ({
   percentage,

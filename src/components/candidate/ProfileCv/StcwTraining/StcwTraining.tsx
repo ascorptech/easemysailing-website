@@ -29,9 +29,11 @@ type Props = {
   sTCWComplete: STCWComplete; // mjrComplete is an object with percentage and color
   setSTCWComplete: React.Dispatch<React.SetStateAction<STCWComplete>>;
   userDetail: any;
+  sTCWDetail:any;
+  criminal:any;
 };
 
-const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
+const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail,criminal,sTCWDetail }: Props) => {
   const [extraFields, setExtraFields] = useState<
     { field1: string; field2: string }[]
   >([]);
@@ -50,6 +52,7 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
 
   const [disabled, setDisabled] = useState(true);
   const [isHideShow, setIsHideShow] = useState(false);
+  const [color, setColor] = useState("");
 
   const [sTCHTrainOption, setSTCHTrainOption] = useState<any>("");
   const [countryDrop, setCountryDrop] = useState<any>([]);
@@ -80,7 +83,7 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
   );
 
   const percentage = (filledFields / (totalFields * stcwTraining.length)) * 100;
-  let color = "";
+  // let color = "";
 
   // const totalFields = available === "Yes" ? 6 : 5;
 
@@ -95,21 +98,21 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
         percentage: percentage, // Update the percentage field
         color: "#FF0000", // Update the color field
       }));
-      color = "red";
+      setColor("#FF0000");
     } else if (percentage <= 70) {
       setSTCWComplete((prevState) => ({
         ...prevState, // Spread the previous state to keep any other properties
         percentage: percentage, // Update the percentage field
         color: "#FF9900", // Update the color field
       }));
-      color = "#FF9900";
+      setColor("#FF9900");
     } else {
       setSTCWComplete((prevState) => ({
         ...prevState, // Spread the previous state to keep any other properties
         percentage: percentage, // Update the percentage field
         color: "#00A264", // Update the color field
       }));
-      color = "green";
+      setColor("#00A264");
     }
   }, [percentage, color]);
 
@@ -144,6 +147,11 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
     // try {
     e.preventDefault();
 
+    if (!criminal) {
+      toast.error("Please accept the declaration");
+      return; 
+    } else {
+
     let formData = new FormData();
     stcwTraining.forEach((element: any) => {
       formData.append("document", element?.selectedFile);
@@ -157,6 +165,7 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail }: Props) => {
 
     AddStcwData(userDetail?.userId, neverExpires, formData, AddStcwDataCB);
   };
+}
 
   const AddStcwDataCB = (result: any) => {
     if (result?.status == 200 || result?.status == 201) {

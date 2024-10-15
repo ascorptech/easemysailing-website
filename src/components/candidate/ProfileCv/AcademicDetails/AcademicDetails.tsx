@@ -467,6 +467,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
+import { toast } from "react-toastify";
 
 type AcademicComplete = {
   percentage: number;
@@ -491,12 +492,14 @@ type Props = {
   academicComplete: AcademicComplete;
   setAcademicComplete: React.Dispatch<React.SetStateAction<AcademicComplete>>;
   userDetail: any;
+  criminal:any;
 };
 
 const AcademicDetails = ({
   academicComplete,
   setAcademicComplete,
   userDetail,
+  criminal
 }: Props) => {
   const [academicForms, setAcademicForms] = useState<AcademicForm[]>([
     {
@@ -634,7 +637,12 @@ const AcademicDetails = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!criminal) {
+      toast.error("Please accept the declaration");
+      return; 
+    } else {
   };
+}
 
   const handleEdit = () => {
     setDisabled(!disabled);

@@ -17,12 +17,14 @@ type Props = {
     React.SetStateAction<ProfessionalComplete>
   >;
   userDetail: any;
+  criminal:any;
 };
 
 const ProfessionalSkills = ({
   professionalComplete,
   setProfessionalComplete,
   userDetail,
+  criminal
 }: Props) => {
   const [maker, setMaker] = useState("");
   const [sWL, setSWL] = useState("");
@@ -191,6 +193,10 @@ const ProfessionalSkills = ({
   const handleSubmit = (e: React.FormEvent) => {
     // try {
     e.preventDefault();
+    if (!criminal) {
+      toast.error("Please accept the declaration");
+      return; 
+    } else {
 
     let formData = new FormData();
     // formData.append('document', selectedFile);
@@ -226,6 +232,7 @@ const ProfessionalSkills = ({
       AddProfessionalSkillDataCB
     );
   };
+}
 
   const AddProfessionalSkillDataCB = (result: any) => {
     console.log(result);

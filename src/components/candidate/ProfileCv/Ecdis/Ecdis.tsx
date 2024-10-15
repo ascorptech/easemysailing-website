@@ -13,11 +13,15 @@ type ECDISComplete = {
   color: string;
 };
 
+// type Props = {
+//   criminal: boolean; // Receive the criminal state from the parent
+// };
 type Props = {
   eCDISComplete: ECDISComplete;
   setECDISComplete: React.Dispatch<React.SetStateAction<ECDISComplete>>;
   userDetail: any;
   ecdisDetail: any;
+  criminal:any; 
 };
 
 const Ecdis = ({
@@ -25,6 +29,7 @@ const Ecdis = ({
   setECDISComplete,
   userDetail,
   ecdisDetail,
+  criminal 
 }: Props) => {
   const [number, setNumber] = useState("");
   const [issuedate, setIssueDate] = useState("");
@@ -136,6 +141,12 @@ const Ecdis = ({
   };
 
   const handleSubmit = (e: React.FormEvent) => {
+    if (!criminal) {
+      toast.error("Please accept the declaration");
+      return; 
+    } else {
+   
+
     // try {
     e.preventDefault();
     let formData = new FormData();
@@ -151,8 +162,10 @@ const Ecdis = ({
     formData.append("completed", percentage);
 
     selectedFiles && formData.append("document", selectedFiles);
+ 
 
     AddEcdisData(formData, AddEcdisdataDB);
+  }
   };
 
   const AddEcdisdataDB = (result: any) => {

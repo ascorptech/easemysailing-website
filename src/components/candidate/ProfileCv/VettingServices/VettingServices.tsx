@@ -18,12 +18,14 @@ type Props = {
     React.SetStateAction<VettingServicesComplete>
   >;
   userDetail: any;
+  criminal:any;
 };
 
 const VettingServices = ({
   vettingServicesComplete,
   setVettingServicesComplete,
   userDetail,
+  criminal
 }: Props) => {
   // State for form fields
   const [inProgress, setInProgress] = useState(false);
@@ -116,6 +118,10 @@ const VettingServices = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!criminal) {
+      toast.error("Please accept the declaration");
+      return; 
+    } else {
 
     let data: any = {
       id: userDetail.userId,
@@ -133,6 +139,7 @@ const VettingServices = ({
     };
     AddVettingData(data, AddVettingDataCB);
   };
+}
 
   const AddVettingDataCB = (result: any) => {
     console.log(result);

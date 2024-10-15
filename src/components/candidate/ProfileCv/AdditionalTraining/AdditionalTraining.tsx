@@ -18,7 +18,7 @@ type AdditionalTraining = {
   trainingCenter: string;
   countryIC: string;
   neverExpCheck: any;
-  selectedFile: File | null;
+  selectedFile: any | null;
 };
 
 type Professional = {
@@ -32,7 +32,7 @@ type Professional = {
   issuedate1: string;
   exdate1: string;
   neverChecked1: any;
-  selectedFiles: File | null;
+  selectedFiles: any | null;
 };
 
 type AdditionalComplete = {
@@ -45,17 +45,15 @@ type Props = {
     React.SetStateAction<AdditionalComplete>
   >; // setMjrComplete is a function to update mjrComplete
   userDetail: any;
-  criminal:any;
+  criminal: any;
 };
 
 const AdditionalTraining = ({
   additionalComplete,
   setAdditionalComplete,
   userDetail,
-  criminal
+  criminal,
 }: Props) => {
-
-
   const [additionalForms, setAdditionalForms] = useState<AdditionalTraining[]>([
     {
       countryCertifi: "",
@@ -202,9 +200,22 @@ const AdditionalTraining = ({
   //   }
   // };
   const handleFileChange = (index: number, event: any) => {
-    const updatedForms = [...additionalForms];
-    updatedForms[index].selectedFile = event.target.files?.[0] || null;
-    setAdditionalForms(updatedForms);
+    const file = event.target.files?.[0];
+
+    const reader = new FileReader();
+    reader.onloadend = function () {
+      const imageBinary: any = reader.result;
+      const byteArray = imageBinary.split(",")[1];
+
+      const updatedForms: any = [...additionalForms];
+      updatedForms[index].selectedFile = byteArray;
+      setAdditionalForms(updatedForms);
+    };
+    reader.readAsDataURL(file);
+
+    // const updatedForms = [...additionalForms];
+    // updatedForms[index].selectedFile = event.target.files?.[0] || null;
+    // setAdditionalForms(updatedForms);
   };
 
   // const handleFileChanges = (event: any) => {
@@ -246,9 +257,21 @@ const AdditionalTraining = ({
   };
 
   const handleFileChanges = (index: number, event: any) => {
-    const updatedForms = [...professionalForms];
-    updatedForms[index].selectedFiles = event.target.files?.[0] || null;
-    setProfessionalForms(updatedForms);
+    const file = event.target.files?.[0];
+
+    const reader = new FileReader();
+    reader.onloadend = function () {
+      const imageBinary: any = reader.result;
+      const byteArray = imageBinary.split(",")[1];
+
+      const updatedForms: any = [...professionalForms];
+      updatedForms[index].selectedFiles = byteArray;
+      setProfessionalForms(updatedForms);
+    };
+    reader.readAsDataURL(file);
+    // const updatedForms = [...professionalForms];
+    // updatedForms[index].selectedFiles = event.target.files?.[0] || null;
+    // setProfessionalForms(updatedForms);
   };
 
   const handleFormChangePro = (
@@ -290,44 +313,37 @@ const AdditionalTraining = ({
     e.preventDefault();
     if (!criminal) {
       toast.error("Please accept the declaration");
-      return; 
+      return;
     } else {
-
-    let formData = new FormData();
+      let formData = new FormData();
+    }
   };
-}
   const handleEdits = () => {
     setDisabled(!disabled);
     setIsHideShow(!isHideShow);
     // toast.info("You are now in edit mode. Make your changes.");
   };
-  
-
-
-
 
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
         <div className="flex items-center justify-between">
           <h2 className="font-bold">Additional Trainings</h2>
-{ isHideShow  && (
-          <div className="flex gap-2">
-            <AiOutlinePlus
-              className="text-2xl cursor-pointer"
-              onClick={addFieldAddi}
-            />
-            {additionalForms.length > 1 && (
-              <AiOutlineMinus
+          {isHideShow && (
+            <div className="flex gap-2">
+              <AiOutlinePlus
                 className="text-2xl cursor-pointer"
-                onClick={() => removeFieldAdd(additionalForms.length - 1)}
+                onClick={addFieldAddi}
               />
-            )}
-          </div>
+              {additionalForms.length > 1 && (
+                <AiOutlineMinus
+                  className="text-2xl cursor-pointer"
+                  onClick={() => removeFieldAdd(additionalForms.length - 1)}
+                />
+              )}
+            </div>
           )}
         </div>
-
-      
 
         {additionalForms.map((field, index) => (
           <div className="grid grid-cols-2 gap-4">
@@ -349,7 +365,7 @@ const AdditionalTraining = ({
                 disabled={disabled}
               >
                 <option value="" disabled selected>
-                Select 
+                  Select
                 </option>
                 {additionalTraDrop &&
                   additionalTraDrop?.map((addi: any, index: number) => (
@@ -398,7 +414,7 @@ const AdditionalTraining = ({
                 disabled={disabled}
               >
                 <option value="" disabled selected>
-                Select 
+                  Select
                 </option>
                 {countryDrop &&
                   countryDrop?.map((country: any, index: number) => (
@@ -501,36 +517,36 @@ const AdditionalTraining = ({
               </div>
             </div>
             <div className="grid col-span-2">
-            { isHideShow  && (
-              <div className="flex gap-6 items-center ">
-                <div>
-                  <label
-                    htmlFor={`file-upload03_${index}`}
-                    className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px]   "
-                  >
-                    Attachment Document
-                  </label>
-                  <input
-                    id={`file-upload03_${index}`}
-                    type="file"
-                    className="hidden"
-                    onChange={(e) => handleFileChange(index, e)}
-                    disabled={disabled}
-                  />
+              {isHideShow && (
+                <div className="flex gap-6 items-center ">
+                  <div>
+                    <label
+                      htmlFor={`file-upload03_${index}`}
+                      className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px]   "
+                    >
+                      Attachment Document
+                    </label>
+                    <input
+                      id={`file-upload03_${index}`}
+                      type="file"
+                      className="hidden"
+                      onChange={(e) => handleFileChange(index, e)}
+                      disabled={disabled}
+                    />
+                  </div>
+                  <div>
+                    {selectedFile ? (
+                      <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                        File Selected: {selectedFile.name}
+                      </p>
+                    ) : (
+                      <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                        No File Selected
+                      </p>
+                    )}
+                  </div>
                 </div>
-                <div>
-                  {selectedFile ? (
-                    <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                      File Selected: {selectedFile.name}
-                    </p>
-                  ) : (
-                    <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                      No File Selected
-                    </p>
-                  )}
-                </div>
-              </div>
-            )}
+              )}
             </div>
           </div>
         ))}
@@ -541,19 +557,21 @@ const AdditionalTraining = ({
           <div className="flex justify-between mt-3">
             {" "}
             <h1 className=" font-bold">Professional Knowledge Test</h1>
-            { isHideShow  && (
-            <div className="flex gap-2">
-              <AiOutlinePlus
-                className="text-2xl cursor-pointer"
-                onClick={addFieldProff}
-              />
-              {professionalForms.length > 1 && (
-                <AiOutlineMinus
+            {isHideShow && (
+              <div className="flex gap-2">
+                <AiOutlinePlus
                   className="text-2xl cursor-pointer"
-                  onClick={() => removeFieldProf(professionalForms.length - 1)}
+                  onClick={addFieldProff}
                 />
-              )}
-            </div>
+                {professionalForms.length > 1 && (
+                  <AiOutlineMinus
+                    className="text-2xl cursor-pointer"
+                    onClick={() =>
+                      removeFieldProf(professionalForms.length - 1)
+                    }
+                  />
+                )}
+              </div>
             )}
           </div>
         </div>
@@ -578,7 +596,7 @@ const AdditionalTraining = ({
                 disabled={disabled}
               >
                 <option value="" disabled selected>
-                Select 
+                  Select
                 </option>
                 {capacityDrop &&
                   capacityDrop?.map((cap: any, index: number) => (
@@ -607,7 +625,7 @@ const AdditionalTraining = ({
                 disabled={disabled}
               >
                 <option value="" disabled selected>
-                Select 
+                  Select
                 </option>
                 {levelDrop &&
                   levelDrop?.map((lev: any, index: number) => (
@@ -656,7 +674,7 @@ const AdditionalTraining = ({
                 disabled={disabled}
               >
                 <option value="" disabled selected>
-                Select 
+                  Select
                 </option>
                 {levelTestDrop &&
                   levelTestDrop?.map((levTest: any, index: number) => (
@@ -705,7 +723,7 @@ const AdditionalTraining = ({
                 disabled={disabled}
               >
                 <option value="" disabled selected>
-                Select 
+                  Select
                 </option>
                 {countryDrop &&
                   countryDrop?.map((country: any, index: number) => (
@@ -801,36 +819,36 @@ const AdditionalTraining = ({
             </div>
 
             <div className="grid col-span-2 my-2">
-            { isHideShow  && (
-              <div className="flex gap-4 items-center justify-start ">
-                <div>
-                  <label
-                    htmlFor={`file-upload2_${index}`}
-                    className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] text-[14px] leading-[19.07px]   focus:outline-none focus:ring-2 "
-                  >
-                    Attachment Document
-                  </label>
-                  <input
-                    id={`file-upload2_${index}`}
-                    type="file"
-                    className="hidden"
-                    onChange={(e) => handleFileChanges(index, e)}
-                    disabled={disabled}
-                  />
+              {isHideShow && (
+                <div className="flex gap-4 items-center justify-start ">
+                  <div>
+                    <label
+                      htmlFor={`file-upload2_${index}`}
+                      className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] text-[14px] leading-[19.07px]   focus:outline-none focus:ring-2 "
+                    >
+                      Attachment Document
+                    </label>
+                    <input
+                      id={`file-upload2_${index}`}
+                      type="file"
+                      className="hidden"
+                      onChange={(e) => handleFileChanges(index, e)}
+                      disabled={disabled}
+                    />
+                  </div>
+                  <div>
+                    {selectedFiles ? (
+                      <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                        File Selected: {selectedFiles.name}
+                      </p>
+                    ) : (
+                      <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                        No File Selected
+                      </p>
+                    )}
+                  </div>
                 </div>
-                <div>
-                  {selectedFiles ? (
-                    <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                      File Selected: {selectedFiles.name}
-                    </p>
-                  ) : (
-                    <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                      No File Selected
-                    </p>
-                  )}
-                </div>
-              </div>
-            )}
+              )}
             </div>
           </div>
         ))}

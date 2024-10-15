@@ -479,7 +479,7 @@ type AcademicForm = {
   percentage: string;
   startdate: string;
   enddate: string;
-  selectedFile: File | null;
+  selectedFile: any | null;
 };
 type EducationForm = {
   university: string;
@@ -575,9 +575,21 @@ const AcademicDetails = ({
   }, [percentage, color]);
 
   const handleFileChange = (index: number, event: any) => {
-    const updatedForms = [...academicForms];
-    updatedForms[index].selectedFile = event.target.files?.[0] || null;
-    setAcademicForms(updatedForms);
+    const file = event.target.files?.[0]
+
+    const reader = new FileReader();
+    reader.onloadend= function() {
+      const imageBinary:any = reader.result;
+      const byteArray = imageBinary.split(',')[1];
+
+      const updatedForms:any = [...academicForms];
+      updatedForms[index].selectedFile= byteArray;
+      setAcademicForms(updatedForms);
+    }
+    reader.readAsDataURL(file);
+    // const updatedForms = [...academicForms];
+    // updatedForms[index].selectedFile = event.target.files?.[0] || null;
+    // setAcademicForms(updatedForms);
   };
 
   const handleFormChange = (

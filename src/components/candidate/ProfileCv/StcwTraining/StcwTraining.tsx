@@ -17,7 +17,7 @@ type StcwTrainingForm = {
   issuingCountry: string;
   training: string;
   neverExpires: any;
-  selectedFile: File | null;
+  selectedFile: any | null;
 };
 
 type STCWComplete = {
@@ -29,11 +29,17 @@ type Props = {
   sTCWComplete: STCWComplete; // mjrComplete is an object with percentage and color
   setSTCWComplete: React.Dispatch<React.SetStateAction<STCWComplete>>;
   userDetail: any;
-  sTCWDetail:any;
-  criminal:any;
+  sTCWDetail: any;
+  criminal: any;
 };
 
-const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail,criminal,sTCWDetail }: Props) => {
+const StcwTraining = ({
+  sTCWComplete,
+  setSTCWComplete,
+  userDetail,
+  criminal,
+  sTCWDetail,
+}: Props) => {
   const [extraFields, setExtraFields] = useState<
     { field1: string; field2: string }[]
   >([]);
@@ -149,23 +155,46 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail,criminal,sTCWD
 
     if (!criminal) {
       toast.error("Please accept the declaration");
-      return; 
+      return;
     } else {
+      //   let formData = new FormData();
+      //   stcwTraining.forEach((element: any) => {
+      //     formData.append("document", element?.selectedFile);
+      //     formData.append("trainingName", element?.training);
+      //     formData.append("issuingCountry", element?.trainingCountry);
+      //     formData.append("certificateNumber", element?.number);
+      //     formData.append("issueDate", element?.issuedate);
+      //     formData.append("expiryDate", element?.exdate);
+      //   });
+      //   let neverExpires = "";
 
-    let formData = new FormData();
-    stcwTraining.forEach((element: any) => {
-      formData.append("document", element?.selectedFile);
-      formData.append("trainingName", element?.training);
-      formData.append("issuingCountry", element?.trainingCountry);
-      formData.append("certificateNumber", element?.number);
-      formData.append("issueDate", element?.issuedate);
-      formData.append("expiryDate", element?.exdate);
-    });
-    let neverExpires = "";
+      //   AddStcwData(userDetail?.userId, neverExpires, formData, AddStcwDataCB);
+      // };
 
-    AddStcwData(userDetail?.userId, neverExpires, formData, AddStcwDataCB);
+      let data: any = {
+        userId: userDetail?.userId,
+      };
+      const stcwArray: any = [];
+
+      stcwTraining.forEach((element: any) => {
+        stcwArray.push({
+          document: element?.selectedFile,
+          trainingName: element?.training,
+          issuingCountry: element?.trainingCountry,
+          certificateNumber: element?.number,
+          issueDate: element?.issuedate,
+          expiryDate: element?.exdate,
+        });
+      });
+      data.stcwData = stcwArray;
+
+      let finArry: any = [];
+      finArry.push(data);
+      console.log("fin", finArry);
+
+      AddStcwData(finArry, AddStcwDataCB);
+    }
   };
-}
 
   const AddStcwDataCB = (result: any) => {
     if (result?.status == 200 || result?.status == 201) {
@@ -181,9 +210,21 @@ const StcwTraining = ({ sTCWComplete, setSTCWComplete, userDetail,criminal,sTCWD
   // add plus and minus symbole
 
   const handleFileChange = (index: number, event: any) => {
-    const updatedForms = [...stcwTraining];
-    updatedForms[index].selectedFile = event.target.files?.[0] || null;
-    setStcwTraining(updatedForms);
+    const file = event.target.files?.[0];
+
+    const reader = new FileReader();
+    reader.onloadend = function () {
+      const imageBinary: any = reader.result;
+      const byteArray = imageBinary.split(",")[1];
+
+      const updatedForms: any = [...stcwTraining];
+      updatedForms[index].selectedFile = byteArray;
+      setStcwTraining(updatedForms);
+    };
+    reader.readAsDataURL(file);
+    // const updatedForms = [...stcwTraining];
+    // updatedForms[index].selectedFile = event.target.files?.[0] || null;
+    // setStcwTraining(updatedForms);
   };
 
   const handleFormChange = (

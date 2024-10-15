@@ -1,5 +1,5 @@
 "use client";
-import { GetPodcastList } from "@/app/(web)/podcast-list/Services/podcastService";
+import { GetPodcastList } from "@/app/(web)/podcasts-interviews/Services/podcastService";
 import React, { useEffect, useState } from "react";
 import { RxCrossCircled } from "react-icons/rx";
 import Image from "next/image";

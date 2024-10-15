@@ -550,8 +550,14 @@ export default function CandiateListing(props: Props) {
                   key={row.talentId}
                   className="px-4 py-2 border-b underline border-[#00A264] text-[#00A264] cursor-pointer"
                 >
-<Link href={`/recruiter/candidatelisting/talent/${row.talentId.replace(" ", "")}`}>
-{row.talentId}</Link>
+                  <Link
+                    href={`/recruiter/candidatelisting/talent/${row.talentId.replace(
+                      " ",
+                      ""
+                    )}`}
+                  >
+                    {row.talentId}
+                  </Link>
                 </td>
                 <td className="px-4 py-2 border-b border-[#00A264]">
                   {row.nationality}

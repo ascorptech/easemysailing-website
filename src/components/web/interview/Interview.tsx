@@ -31,7 +31,7 @@ const Interview = () => {
           Podcast &<span className="text-[#00A264]"> Interviews</span>
         </h1>
         <Link
-          href="/podcast-list"
+          href="/podcasts-interviews"
           className="h-8 bg-[#00A264] text-white py-2 px-4 rounded-full text-sm flex items-center justify-center mt-4"
         >
           View All

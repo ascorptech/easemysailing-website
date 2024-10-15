@@ -10,7 +10,7 @@ import {
   FaXingSquare,
   FaYoutube
 } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import Image from "next/image";
 import { useEffect } from "react";
 
@@ -51,7 +51,7 @@ const Footer = () => {
           <p className="text-justify">
             EaseMySailing is a platform created by seafarers, for seafarers,
             built on empathy for life at sea and its unique challenges and joys.
-            <Link href="/about" className="text-[#00A264] font-semibold">
+            <Link href="/about-us" className="text-[#00A264] font-semibold">
               {" "}
               Read More
             </Link>
@@ -97,7 +97,7 @@ const Footer = () => {
               </Link>
             </li> */}
             <li className="mt-2">
-              <Link href="/terms" className="hover:text-green-600">
+              <Link href="/terms-conditions" className="hover:text-green-600">
                 Terms and Conditions
               </Link>
             </li>
@@ -147,7 +147,7 @@ const Footer = () => {
           </ul>
           <div className="mt-4 flex p-1 space-x-1 items-center">
             <h2 className="font-semibold">Follow Us :</h2>
-            <Link href="https://www.facebook.com/share/fP79JgxLGNFaQmWc/" className="text-green-600" target="_blank">
+            <Link href="https://www.facebook.com/EaseMySailing" className="text-green-600" target="_blank">
               <FaFacebook  size={18}/>
             </Link>
             <Link href="https://www.instagram.com/easemysailing" className="text-green-600" target="_blank">
@@ -158,6 +158,9 @@ const Footer = () => {
             </Link>
             <Link href="https://youtube.com/@easemysailing?si=EnjVlLHxdlHVtfsf" className="text-green-600" target="_blank">
               <FaYoutube  size={18}/>
+            </Link>
+            <Link href="https://www.linkedin.com/company/easemysailing" className="text-green-600" target="_blank">
+              <FaLinkedin  size={18}/>
             </Link>
           </div>
         </div>

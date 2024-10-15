@@ -18,23 +18,18 @@ type Props = {
     React.SetStateAction<SeaGoingServiceComplete>
   >;
   userDetail: any;
-};
-
-type SeaGoingFiled = {
-  imo: string;
-  VersalName: string;
-  rank:string;
-  tonnage:string;
+  seaGoingServiceDetail: any;
 };
 
 const SeaGoingService = ({
   seaGoingServiceComplete,
   setSeaGoingServiceComplete,
   userDetail,
+  seaGoingServiceDetail,
 }: Props) => {
-  const [fields, setFields] = useState<SeaGoingFiled[]>([
-    { imo: "", VersalName: "" ,rank: "",tonnage:""},
-  ]);
+  // const [imo , setImo] =useState("")
+  // const [versalName, setVercelName] useState ();
+
   const [vercelName, setVercelName] = useState("");
   const [embarkationdate, setEmbarkationDate] = useState("");
   const [disembarkationDate, setDisembarkationDate] = useState("");
@@ -51,7 +46,7 @@ const SeaGoingService = ({
   const [engineDrop, setEngineDrop] = useState<any>([]);
   const [ecdisDrop, setEcdisDrop] = useState<any>([]);
   const [disabled, setDisabled] = useState(true);
-
+  const [color, setColor] = useState("");
 
   useEffect(() => {
     GetDropdownDetails("SEAGOINGEXP", (res: any) => {
@@ -73,20 +68,13 @@ const SeaGoingService = ({
     // })
   }, []);
 
-  // const totalFields = 11;
-  const totalFields = fields.length * 4 + 9;
+  const totalFields = 11;
   const filledFields = [
-    ...fields.map((field) => field.imo),
-    ...fields.map((field) => field.VersalName),
-    ...fields.map((field) => field.rank),
-    ...fields.map((field) => field.tonnage),
-
-
-    // vercelName,
-    // imo,
+    vercelName,
+    imo,
     disembarkationDate,
-    // tonnage,
-    // rank,
+    tonnage,
+    rank,
     enginemake,
     eCDIS,
     embarkationdate,
@@ -95,34 +83,51 @@ const SeaGoingService = ({
     inertGas,
   ].filter(Boolean).length;
 
-  const percentage = (filledFields / totalFields) * 100;
+  const percentage: any =
+    totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
 
-  let color;
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
       setSeaGoingServiceComplete((prevState) => ({
         ...prevState,
-        percentage: percentage, // Update the percentage field
-        color: "#FF0000", // Update the color field
+        percentage: percentage, 
+        color: "#FF0000", 
       }));
-      color = "red";
+      setColor("#FF0000");
     } else if (percentage <= 70) {
       setSeaGoingServiceComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#FF9900", // Update the color field
+        ...prevState, 
+        percentage: percentage, 
+        color: "#FF9900", 
       }));
-      color = "#FF9900";
+      setColor("#FF9900");
     } else {
       setSeaGoingServiceComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#00A264", // Update the color field
+        ...prevState, 
+        percentage: percentage, 
+        color: "#00A264", 
       }));
-      color = "green";
+      setColor("#00A264");
     }
   }, [percentage, color]);
+
+  useEffect(() => {
+    console.log("seaGoing", seaGoingServiceDetail);
+    if (seaGoingServiceDetail) {
+      setDisembarkationDate(seaGoingServiceDetail?.disembarkationDate);
+      setECDIS(seaGoingServiceDetail?.ecdis);
+      setEmbarkationDate(seaGoingServiceDetail?.embarkationDate);
+      setEnginemake(seaGoingServiceDetail?.engineMake);
+      setGearless(seaGoingServiceDetail?.gearless);
+      setImo(seaGoingServiceDetail?.imoNumber);
+      setInertGas(seaGoingServiceDetail?.inertGasSystem);
+      setSeagoingNumber(seaGoingServiceDetail?.netSeagoingDays);
+      setRank(seaGoingServiceDetail?.rank);
+      setTonnage(seaGoingServiceDetail?.tonnage);
+      setVercelName(seaGoingServiceDetail?.vesselName);
+    }
+  },[]);
 
   const handleSubmit = (e: React.FormEvent) => {
     // try {
@@ -159,22 +164,22 @@ const SeaGoingService = ({
     }
   };
 
-  const handleFieldChange = (index: number, name: string, value: string) => {
-    const updatedFields = fields.map((field, i) =>
-      i === index ? { ...field, [name]: value } : field
-    );
-    setFields(updatedFields);
-  };
+  // const handleFieldChange = (index: number, name: string, value: string) => {
+  //   const updatedFields = fields.map((field, i) =>
+  //     i === index ? { ...field, [name]: value } : field
+  //   );
+  //   setFields(updatedFields);
+  // };
 
-  const addField = () => {
-    setFields([...fields, { imo: "", VersalName: "" ,rank:"", tonnage:"" }]);
-  };
+  // const addField = () => {
+  //   setFields([...fields, { imo: "", VersalName: "" ,rank:"", tonnage:"" }]);
+  // };
 
-  const removeField = () => {
-    if (fields.length > 1) {
-      setFields(fields.slice(0, -1));
-    }
-  };
+  // const removeField = () => {
+  //   if (fields.length > 1) {
+  //     setFields(fields.slice(0, -1));
+  //   }
+  // };
 
   const handleEdit = () => {
     setDisabled(!disabled);
@@ -200,25 +205,25 @@ const SeaGoingService = ({
              )} 
           </div> */}
         </div>
-        {fields.map((field, index) => (
-          <div key={index} className="grid grid-cols-2 gap-4">
-            <div className="">
-              <label
-                className="text-[14px] leading-[19.07px]  text-[#333333] "
-                htmlFor="imo"
-              >
-                IMO
-              </label>
-              <input
-                id="imo"
-                type="text"
-                value={imo}
-                onChange={(e) => setImo(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                placeholder="Enter  IMO"
-                disabled={disabled}
-              />
-              {/* <select
+        {/* {fields.map((field, index) => ( */}
+        <div className="grid grid-cols-2 gap-4">
+          <div className="">
+            <label
+              className="text-[14px] leading-[19.07px]  text-[#333333] "
+              htmlFor="imo"
+            >
+              IMO
+            </label>
+            <input
+              id="imo"
+              type="text"
+              value={imo}
+              onChange={(e) => setImo(e.target.value)}
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              placeholder="Enter IMO"
+              disabled={disabled}
+            />
+            {/* <select
               id="imo"
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               name="options"
@@ -235,43 +240,26 @@ const SeaGoingService = ({
                   </option>
                 ))}
             </select> */}
-            </div>
+          </div>
 
-            <div className="   ">
-              <label
-                className="text-[14px] leading-[19.07px]  text-[#333333] "
-                htmlFor="vesselname"
-              >
-                Vessel Name
-              </label>
-              <input
-                id="vesselname"
-                type="text"
-                value={vercelName}
-                onChange={(e) => setVercelName(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                placeholder="Enter  Vessel Name"
-                disabled={disabled}
-              />
-            </div>
+          <div className=" ">
+            <label
+              className="text-[14px] leading-[19.07px]  text-[#333333] "
+              htmlFor="vesselname"
+            >
+              Vessel Name
+            </label>
+            <input
+              id="vesselname"
+              type="text"
+              value={vercelName}
+              onChange={(e) => setVercelName(e.target.value)}
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              placeholder="Enter  Vessel Name"
+              disabled={disabled}
+            />
+          </div>
 
-            {/* <div className="flex justify-start items-center gap-4">
-              {index === fields.length - 1 && (
-                <AiOutlinePlus
-                  className="text-green-600 cursor-pointer"
-                  onClick={addField}
-                />
-              )}
-              {fields.length > 1 && index === fields.length - 1 && (
-                <AiOutlineMinus
-                  className="text-red-600 cursor-pointer"
-                  onClick={removeField}
-                />
-              )}
-            </div> */}
-          {/* </div> */}
-        {/* ))} */}
-        {/* <div className=" grid grid-cols-2 gap-4"> */}
           <div className=" ">
             <label
               className="text-[14px] leading-[19.07px]  text-[#333333]"
@@ -316,14 +304,14 @@ const SeaGoingService = ({
               disabled={disabled}
             />
           </div>
-          </div>
-        ))}
+        </div>
+        {/* ))} */}
 
-          <div className="   my-2">
-            {" "}
-            <h1 className="font-bold"> Seaman Experience Details</h1>
-          </div>
-<div className=" grid grid-cols-2 gap-4">
+        <div className="   my-2">
+          {" "}
+          <h1 className="font-bold"> Seaman Experience Details</h1>
+        </div>
+        <div className=" grid grid-cols-2 gap-4">
           <div className="">
             <label
               className="text-[14px] leading-[19.07px]  text-[#333333] "
@@ -494,7 +482,7 @@ const SeaGoingService = ({
             Save
           </button>
           <Link
-            href={'#'}
+            href={"#"}
             onClick={handleEdit}
             className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
           >

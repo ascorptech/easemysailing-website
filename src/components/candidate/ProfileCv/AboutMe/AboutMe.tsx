@@ -29,7 +29,7 @@ const AboutMe = ({
   const [additional, setAdditional] = useState("");
   const [myFuture, setMyFuture] = useState("");
 
-  const [criminal, setCriminal] = useState("");
+  const [criminal, setCriminal] = useState<any>("");
   const [disabled, setDisabled] = useState(true);
   const [color, setColor]=useState('')
 
@@ -79,18 +79,24 @@ const AboutMe = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('test',criminal)
+    if (!criminal) {
+      toast.error('Please accept the declaration')
+    } else {
+      let data = {
+        id: userDetail?.userId,
+        personalityAndProfessionalAttitude: personality,
+        additionalSeaServiceInfo: additional,
+        futureAimsAndExpectations: myFuture,
+        employmentDeclaration: criminal,
+        color: color,
+        completed: percentage,
+      };
+  
+      AddAboutMeData(data, AddAboutMeDataCB);
+    }
 
-    let data = {
-      id: userDetail?.userId,
-      personalityAndProfessionalAttitude: personality,
-      additionalSeaServiceInfo: additional,
-      futureAimsAndExpectations: myFuture,
-      employmentDeclaration: criminal,
-      color: color,
-      completed: percentage,
-    };
-
-    AddAboutMeData(data, AddAboutMeDataCB);
+    
   };
 
   const AddAboutMeDataCB = (result: any) => {
@@ -204,7 +210,7 @@ const AboutMe = ({
                     id="action"
                     type="checkbox"
                     value={criminal}
-                    onChange={(e) => setCriminal(e.target.value)} 
+                    onChange={(e) => {setCriminal(e.target.checked)}} 
                     className="border rounded-md w-full   px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     // placeholder="Yes/No"
                     disabled={disabled}

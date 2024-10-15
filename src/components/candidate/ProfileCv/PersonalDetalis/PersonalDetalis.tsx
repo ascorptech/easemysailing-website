@@ -167,7 +167,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       {/* <CircularProgress percentage={Math.round(percentage)} color={per} /> */}
-      <h2 className="font-bold">Personal Details</h2>
+      <h2 className="font-bold">Personal Details (As Per Passport)</h2>
 
       <form onSubmit={handleSubmit}>
         <div className="px-2">

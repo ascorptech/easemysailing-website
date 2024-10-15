@@ -26,12 +26,16 @@ const ProfileCV = () => {
   const [feedback, setFeedback] = useState("");
   const [filePreview, setFilePreview] = useState<string | null>(null);
   const [profileImage, setProfileImage] = useState(
-    "/images/candidate/profileCv/profile.png"
+    "/images/avatar-place.jpg"
   );
   const [fileName, setFileName] = useState("");
   const [progress, setProgress] = useState(0);
   const [uploading, setUploading] = useState(false);
   const [showEditImagePopup, setShowEditImagePopup] = useState(false);
+  const [color, setColor] = useState("");
+  const [rank,setRank] = useState("")
+  const [aboutMe,setAboutMe] = useState("")
+
 
   useEffect(() => {
     fetchDetails();
@@ -39,16 +43,22 @@ const ProfileCV = () => {
 
   const fetchDetails = async () => {
     let id = await localStorage.getItem("id");
+    let rnk:any = await localStorage.getItem("rank");
+    let abtMe:any = await localStorage.getItem("aboutMe");
     setProfileDetail({
       name:
         localStorage.getItem("firstName") +
         " " +
         localStorage.getItem("lastName"),
       email: localStorage.getItem("email"),
+      rank: localStorage.getItem('rank')
     });
+    
     GetProfileDetail(id, (res: any) => {
       if (res?.status == 200) {
         setProfileDetail(res?.data);
+        setRank(rnk)
+        setAboutMe(abtMe)
       } else {
         toast.error("No data found");
       }
@@ -139,27 +149,18 @@ const ProfileCV = () => {
   };
 
   return (
-    <div className="   mt-3  px-9">
-      <div className="flex  justify-between border-2 py-2 px-4">
-        <div className="flex gap-2">
-          {/* <div className="w-[115.32px] h-[128.85px] border p-2">
-            <Image
-              priority
-              src="/images/candidate/profileCv/profile.png"
-              alt="image not found"
-              width={100}
-              height={100}
-              className="w-full h-full"
-            />
-          </div> */}
+    <div className="mt-3 px-6 z-50">
+      <div className="flex  flex-col gap-4 lg:gap-0 lg:flex-row lg:justify-between border-2 py-2 px-4">
+        <div className="flex md:flex-row flex-col items-center gap-2 ">
+        
 
-          <div className="relative w-[115.32px] h-[128.85px] border p-2">
+          <div className="relative w-[115.32px] h-[128.85px] border p-2 -z-30">
             <Image
               priority
-              width={200}
-              height={200}
+              width={5000}
+              height={5000}
               src={profileImage} 
-              className="w-full h-full"
+              className="w-full h-full object-fill"
               alt={"Profile Image"}
             />
             {/* Edit profile image */}
@@ -169,8 +170,8 @@ const ProfileCV = () => {
             >
               <Image
                 priority
-                width={20}
-                height={20}
+                width={5000}
+                height={5000}
                 src={"/edit.png"}
                 className="w-6 h-6"
                 alt={"Edit Image"}
@@ -183,31 +184,31 @@ const ProfileCV = () => {
             </h1>
             <p className="text-[#00A264] font-medium text-[16px] leading-[24px]">
               {/* {profileDetail?.rank} */}
-              {profileDetail?.rank || "Rank not available"}
+              {rank?.toLocaleUpperCase() || "Rank not available"}
             </p>
             <div className="flex items-center gap-2">
               <Image
                 priority
                 src="/images/candidate/profileCv/user.png"
                 alt="logo not found"
-                width={300}
-                height={300}
+                width={5000}
+                height={5000}
                 className="object-contain w-[24px] h-[24px]"
               />
               <p className="font-semibold text-[15px] leading-[21px]">
                 About :
                 <span className="font-normal ml-1 text-[15px] leading-[21px]">
-                  {profileDetail?.aboutMe}
+                  {aboutMe}
                 </span>
               </p>
             </div>
             <div className="flex items-center gap-2">
               <Image
                 priority
-                src="/vector1.png"
+                src="/mail.png"
                 alt="logo not found"
-                width={300}
-                height={300}
+                width={5000}
+                height={5000}
                 className="object-contain w-[24px] h-[24px]"
               />
               <p className="font-semibold text-[15px] leading-[21px]">
@@ -226,8 +227,8 @@ const ProfileCV = () => {
               priority
               src="/images/candidate/profileCv/Vector.png"
               alt=""
-              width={200}
-              height={200}
+              width={5000}
+              height={5000}
               className="object-contain w-[24px] h-[24px]"
             />
             <p className="font-semibold text-[15px] leading-[21px]">
@@ -244,8 +245,8 @@ const ProfileCV = () => {
               priority
               src="/images/candidate/profileCv/Group.png"
               alt=""
-              width={500}
-              height={500}
+              width={5000}
+              height={5000}
               className="object-contain w-[24px] h-[24px]"
             />
             <div className="flex items-center justify-center ">
@@ -292,7 +293,7 @@ const ProfileCV = () => {
                   )}
                 </span>
               </p>
-
+{/* 
               {isOpen && (
                 <div className="fixed bg-black  bg-opacity-10 rounded-lg flex mt-32 ml-28 justify-center items-center z-50">
                   <div className="border  shadow-lg p-2 pl-3 rounded-lg bg-white text-[14px] leading-[20px] ">
@@ -301,7 +302,7 @@ const ProfileCV = () => {
                     <p>Ready for joining</p>
                   </div>
                 </div>
-              )}
+              )} */}
             </div>
           </div>
 
@@ -311,8 +312,8 @@ const ProfileCV = () => {
               priority
               src="/images/candidate/profileCv/zondicons_time.png"
               alt=""
-              width={50}
-              height={50}
+              width={5000}
+              height={5000}
               className="object-contain w-[24px] h-[24px]"
             />
             <p className="font-semibold text-[15px] leading-[21px]">
@@ -469,7 +470,7 @@ const ProfileCV = () => {
               </button>
             </div>
             <h3 className="text-xl font-semibold mb-4 text-center">
-              Update Logo
+              Update Profile Picture
             </h3>
 
             <div

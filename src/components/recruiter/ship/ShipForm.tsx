@@ -7,15 +7,15 @@ import { IoIosAddCircleOutline } from "react-icons/io";
 import { FiUpload } from "react-icons/fi";
 
 const ShipForm = () => {
-  const [shipForms, setShipForms] = useState([1]); // Handles the tabs (form indexes)
-  const [activeForm, setActiveForm] = useState(1); //
-  const [showModal, setShowModal] = useState(false); // Track modal visibility
+  const [shipForms, setShipForms] = useState([1]); 
+  const [activeForm, setActiveForm] = useState(1);
+  const [showModal, setShowModal] = useState(false);
   const [showJobModal, setShowJobModal] = useState(false);
-  const [showPopup, setShowPopup] = useState(false); // Control popup visibility for Company Advertisement
-  const [progress, setProgress] = useState(0); // Simulated upload progress
-  const [fileName, setFileName] = useState(""); // Store uploaded file name
-  const [filePreview, setFilePreview] = useState<string | null>(null); // Store file preview
-  const [uploading, setUploading] = useState(false); // For showing upload progress
+  const [showPopup, setShowPopup] = useState(false); 
+  const [progress, setProgress] = useState(0); 
+  const [fileName, setFileName] = useState(""); 
+  const [filePreview, setFilePreview] = useState<string | null>(null); 
+  const [uploading, setUploading] = useState(false); 
 
   const [showJobPostings, setShowJobPostings] = useState(true);
   const [activeJobForm, setActiveJobForm] = useState("Manual Entry");
@@ -56,29 +56,28 @@ const ShipForm = () => {
       if (fileTypes.includes(file.type)) {
         const reader = new FileReader();
         reader.onloadend = () => {
-          setFilePreview(reader.result as string); // Set file preview
+          setFilePreview(reader.result as string);
         };
         reader.readAsDataURL(file);
       } else {
         setFilePreview(null); // Set null if the file is not an image
       }
 
-      setUploading(true); // Start upload progress
-      simulateUpload(); // Simulate upload progress
+      setUploading(true);
+      simulateUpload(); 
     }
   };
 
   const closePopup = () => {
-    setShowPopup(false); // Close the popup
-    setFilePreview(null); // Reset file preview on popup close
-    setFileName(""); // Reset file name on popup close
-    setProgress(0); // Reset progress
+    setShowPopup(false);
+    setFilePreview(null); 
+    setFileName(""); 
+    setProgress(0); 
   };
 
   const handleJobClose = () => {
     setShowJobModal(false);
     setShowJobPostings(true);
-    // setShowModal(true);
   };
 
   const handleJobModel = () => {
@@ -106,7 +105,7 @@ const ShipForm = () => {
       console.log("File submitted:", fileName);
 
       alert(`File "${fileName}" successfully uploaded.`);
-      closePopup(); // Close the popup after submission
+      closePopup();
     }
   };
 
@@ -132,7 +131,7 @@ const ShipForm = () => {
   return (
     <div className="min-h-screen bg-gray-50 p-5">
       {/* Set up a 2-column grid layout */}
-      <div className="grid grid-cols-2 gap-8">
+      <div className="grid grid-cols-2 gap-x-8">
         {/* Left column: Ship form */}
         <div className="bg-white p-2 w-[115%] rounded-lg shadow-md">
           {/* Ship tabs */}
@@ -546,7 +545,7 @@ const ShipForm = () => {
 
           <button
             onClick={handleSubmit}
-            className="mt-6 w-[12rem] ml-[18rem] text-center bg-[#00A264] text-white p-3 rounded-lg"
+            className="mt-6 w-[12rem] ml-[16rem] text-center bg-[#00A264] text-white p-3 rounded-lg"
           >
             Submit
           </button>
@@ -589,7 +588,7 @@ const ShipForm = () => {
         </div>
 
         {/* Right column: Image section */}
-        <div className="relative flex w-[82%] ml-32 items-center justify-center ">
+        <div className="relative flex w-[85%] ml-20 items-center justify-center ">
           {/* <div className=" w-[100%] h-full border rounded-lg shadow-lg bg-white"> */}
 
           {/* Opacity div */}
@@ -614,13 +613,13 @@ const ShipForm = () => {
 
             {/* Tabs */}
             <div className="flex justify-between">
-              <div className="flex space-x-2  p-2 rounded-b-lg">
+              <div className="flex space-x-2 text-sm p-2 rounded-b-lg">
                 <button
                   className={`${
                     activeJobForm === "Specific Crew"
                       ? "bg-[#00A264] text-white"
                       : "bg-white text-[#00A264]"
-                  } border border-[#00A264] px-3 py-1 rounded`}
+                  } border border-[#00A264] px-2 py-1 rounded`}
                   onClick={() => handleTabClick("Specific Crew")}
                 >
                   Specific Crew
@@ -631,7 +630,7 @@ const ShipForm = () => {
                     activeJobForm === "Full Crew"
                       ? "bg-[#00A264] text-white"
                       : "bg-white text-[#00A264]"
-                  } border border-[#00A264] px-3 py-1 rounded`}
+                  } border border-[#00A264] px-2 py-1 rounded`}
                   onClick={() => handleTabClick("Full Crew")}
                 >
                   Full Crew
@@ -642,14 +641,14 @@ const ShipForm = () => {
                     activeJobForm === "Manual Entry"
                       ? "bg-[#00A264] text-white"
                       : "bg-white text-[#00A264]"
-                  } border border-[#00A264] px-3 py-1 rounded`}
+                  } border border-[#00A264] px-2 py-1 rounded`}
                   onClick={() => handleTabClick("Manual Entry")}
                 >
                   Manual Entry
                 </button>
               </div>
 
-              <div className="flex space-x-2  p-2 rounded-b-lg">
+              <div className="flex space-x-2 text-sm p-2 rounded-b-lg">
                 <button
                   onClick={openPopup}
                   className="bg-white flex justify-center  items-center border border-[#00A264] px-1 py-1 rounded text-[#00A264]"

@@ -1,5 +1,3 @@
-// pages/recruiter/Monthly.js
-
 "use client";
 import { useState } from 'react';
 import MonthlyTable from './MonthlyTable';

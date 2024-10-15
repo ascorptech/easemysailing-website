@@ -1,10 +1,10 @@
-import EduContent from '@/components/recruiter/eduems/EduContent'
 import React from 'react'
+import EduButton from '@/components/recruiter/eduems/EduButton'
 
 export default function page() {
   return (
     <div>
-      <EduContent/>
+      <EduButton/>
     </div>
   )
 }

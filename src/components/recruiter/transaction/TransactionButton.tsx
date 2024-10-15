@@ -1,5 +1,3 @@
-// Transaction.js
-
 "use client";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -14,7 +12,7 @@ export default function Transaction() {
   };
 
   return (
-    <div className="p-4 ">
+    <div className="m-4  h-[35rem]">
       <div className="inline-flex rounded-md border-[#00A264] border p-1 shadow-sm">
         <Link
           href="#"

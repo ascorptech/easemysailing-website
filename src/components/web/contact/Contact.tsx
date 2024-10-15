@@ -182,7 +182,7 @@ const Contact = () => {
       return;
     } else {
       if (userInput === captcha) {
-        toast.success('Success');
+        // toast.success('Success Captcha');
         let data = {
           name: name,
           email: email,
@@ -192,7 +192,7 @@ const Contact = () => {
 
         AddContactData(data, AddContactDataCB);
     } else {
-        toast.error('Incorrect');
+        toast.error('Incorrect Captcha');
         const canvas:any = canvasRef.current;
         const ctx = canvas.getContext('2d');
         initializeCaptcha(ctx);

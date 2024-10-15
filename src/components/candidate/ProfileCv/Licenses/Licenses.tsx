@@ -19,7 +19,7 @@ type LicensesForms = {
   otherLimitation: any;
   issueDate: any;
   expiryDate: any;
-  selectedFile: File | null;
+  selectedFile: any | null;
 };
 
 type GlobalMaritime = {
@@ -57,16 +57,16 @@ type Props = {
   licensesComplete: LicensesComplete;
   setLicensesComplete: React.Dispatch<React.SetStateAction<LicensesComplete>>;
   userDetail: any;
+  licensesDetail:any;
 };
 
 const Licenses = ({
   licensesComplete,
   setLicensesComplete,
   userDetail,
+  licensesDetail
 }: Props) => {
-  const [extraFields, setExtraFields] = useState<
-    { field1: string; field2: string }[]
-  >([]);
+
 
   const [licensesForms, setLicensesForms] = useState<LicensesForms[]>([
     {
@@ -153,6 +153,9 @@ const Licenses = ({
   const [edorTyDrop, setEndorTyDrop] = useState<any>([]);
 
   const [showFields, setShowFields] = useState<any>(false);
+  const [color, setColor] = useState("");
+
+
 
   // const [showFieldsens, setShowFieldsens] = useState(false);
 
@@ -220,28 +223,13 @@ const Licenses = ({
       field2.selectedFile2,
       field2.issuingOption,
     ]),
-    // number,
-    // idoNotACoC,
-    // capacity,
-    // issuingOption,
-    // typeOption,
-    // number1,
-    // wRegulation,
-    // issuingCountry,
-    // separatelyCheckBox,
-    // sTCWRegulationOption,
-    // capacityOption,
-    // issueDateOption,
-    // expiryDateOption,
-    // selectedFile1,
-    // selectedFile2,
-    // gMexpiryDate,
-    // gMissueDate,
-    // ...extraFields.flatMap((field) => [field.field1, field.field2]),
+   
   ].filter(Boolean).length;
 
-  const percentage = (filledFields / totalFields) * 100;
-  let color;
+  
+  const percentage: any =
+  totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
+
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
@@ -250,68 +238,119 @@ const Licenses = ({
         percentage: percentage,
         color: "#FF0000",
       }));
-      color = "red";
+     setColor("#FF0000");
     } else if (percentage <= 70) {
       setLicensesComplete((prevState) => ({
         ...prevState,
         percentage: percentage,
         color: "#FF9900",
       }));
-      color = "#FF9900";
+      setColor("#FF9900");
     } else {
       setLicensesComplete((prevState) => ({
         ...prevState,
         percentage: percentage,
         color: "#00A264",
       }));
-      color = "green";
+      setColor("#00A264");
     }
   }, [percentage, color]);
+
+  useEffect(() => {
+    console.log("licensesDetail", licensesDetail)
+     if(licensesDetail){
+    // setLicensesForms.forEach((element:any) =>{
+    //   element.licensesDetail?.cocIssuingAuthority
+
+    //  })
+      
+    }
+  } ,[]);
 
   const handleSubmit = (e: React.FormEvent) => {
     // try {
     e.preventDefault();
-    let formData = new FormData();
-    {
-      licensesForms.forEach((element: any) => {
-        formData.append("cocIssuingAuthority", element?.issueAuthority);
-        formData.append("cocCertificateNumber", element?.certificateNo);
-        formData.append("cocCertificateType", element?.certificateType);
-        formData.append("cocStcwRegulation", element?.sTCWRegulation);
-        formData.append("cocAreaLimitation", element?.areaLimitation);
-        formData.append("cocOtherLimitation", element?.otherLimitation);
-        formData.append("cocIssueDate", element?.issueDate);
-        formData.append("cocExpiryDate", element?.expiryDate);
-        formData.append("cocDocument", element?.selectedFile);
-      });
-      globalMaritimeForms.forEach((element: any) => {
-        formData.append("gmdssIssuingCountry", element?.issuingCountry);
-        formData.append("gmdssNumber", element?.number);
-        formData.append("gmdssCapacity", element?.capacity);
-        formData.append("gmdssStcwRegulation", element?.wRegulation);
-        formData.append("gmdssIssueDate", element?.gMissueDate);
-        formData.append("gmdssExpiryDate", element?.gMexpiryDate);
-        formData.append("gmdssDocument", element?.selectedFile1);
-      });
-      endorsementsForms.forEach((element: any) => {
-        formData.append("endorsementType", element?.typeOption);
-        formData.append("endorsementIssuingCountry", element?.issuingOption);
-        formData.append("endorsementNumber", element?.number1);
-        formData.append("endorsementCapacity", element?.capacityOption);
-        formData.append(
-          "endorsementStcwRegulation",
-          element?.sTCWRegulationOption
-        );
-        formData.append("endorsementIssueDate", element?.issueDateOption);
-        formData.append("endorsementExpiryDate", element?.expiryDateOption);
-        formData.append("endorsementDocument", element?.selectedFile2);
-      });
-
-      formData.append("cocCapacity", showFields);
-
-      formData.append("endorsementsNotIssuedSeparately", separatelyCheckBox);
+    let data:any = {
+     userId: userDetail?.userId,
     }
-    AddLicensesData(userDetail?.userId, formData, AddLicensesdataDB);
+    licensesForms.forEach((element: any) => {
+      data.cocIssuingAuthority = element?.issueAuthority
+      data.cocCertificateNumber = element?.certificateNo
+      data.cocCertificateType = element?.certificateType
+      data.cocStcwRegulation = element?.sTCWRegulation
+      data.cocAreaLimitation = element?.areaLimitation
+      data.cocOtherLimitation = element?.otherLimitation
+      data.cocIssueDate = element?.issueDate
+      data.cocExpiryDate = element?.expiryDate
+      data.cocDocument = element?.selectedFile
+    });
+    globalMaritimeForms.forEach((element: any) => {
+      data.gmdssIssuingCountry =element?.issuingCountry
+      data.gmdssNumber =element?.number
+      data.gmdssCapacity =element?.capacity
+      data.gmdssStcwRegulation =element?.wRegulation
+      data.gmdssIssueDate =element?.gMissueDate
+      data.gmdssExpiryDate =element?.gMexpiryDate
+      data.gmdssDocument =element?.selectedFile1
+    });
+    endorsementsForms.forEach((element: any) => {
+      data.endorsementType = element?.typeOption
+      data.endorsementIssuingCountry = element?.issuingOption
+      data.endorsementNumber = element?.number1
+      data.endorsementCapacity = element?.capacityOption
+      data.endorsementStcwRegulation=
+        element?.sTCWRegulationOption
+      data.endorsementIssueDate = element?.issueDateOption
+      data.endorsementExpiryDate = element?.expiryDateOption
+      data.endorsementDocument = element?.selectedFile2
+    });
+    data.cocCapacity=showFields
+
+      data.endorsementsNotIssuedSeparately=separatelyCheckBox
+    // let formData = new FormData();
+    // {
+    //   licensesForms.forEach((element: any) => {
+    //     formData.append("cocIssuingAuthority", element?.issueAuthority);
+    //     formData.append("cocCertificateNumber", element?.certificateNo);
+    //     formData.append("cocCertificateType", element?.certificateType);
+    //     formData.append("cocStcwRegulation", element?.sTCWRegulation);
+    //     formData.append("cocAreaLimitation", element?.areaLimitation);
+    //     formData.append("cocOtherLimitation", element?.otherLimitation);
+    //     formData.append("cocIssueDate", element?.issueDate);
+    //     formData.append("cocExpiryDate", element?.expiryDate);
+    //     formData.append("cocDocument", element?.selectedFile);
+    //   });
+    //   globalMaritimeForms.forEach((element: any) => {
+    //     formData.append("gmdssIssuingCountry", element?.issuingCountry);
+    //     formData.append("gmdssNumber", element?.number);
+    //     formData.append("gmdssCapacity", element?.capacity);
+    //     formData.append("gmdssStcwRegulation", element?.wRegulation);
+    //     formData.append("gmdssIssueDate", element?.gMissueDate);
+    //     formData.append("gmdssExpiryDate", element?.gMexpiryDate);
+    //     formData.append("gmdssDocument", element?.selectedFile1);
+    //   });
+    //   endorsementsForms.forEach((element: any) => {
+    //     formData.append("endorsementType", element?.typeOption);
+    //     formData.append("endorsementIssuingCountry", element?.issuingOption);
+    //     formData.append("endorsementNumber", element?.number1);
+    //     formData.append("endorsementCapacity", element?.capacityOption);
+    //     formData.append(
+    //       "endorsementStcwRegulation",
+    //       element?.sTCWRegulationOption
+    //     );
+    //     formData.append("endorsementIssueDate", element?.issueDateOption);
+    //     formData.append("endorsementExpiryDate", element?.expiryDateOption);
+    //     formData.append("endorsementDocument", element?.selectedFile2);
+    //   });
+
+    //   formData.append("cocCapacity", showFields);
+
+    //   formData.append("endorsementsNotIssuedSeparately", separatelyCheckBox);
+    // }
+    let finArry :any= []
+    finArry.push(data)
+    console.log('fin',finArry)
+    AddLicensesData( finArry, AddLicensesdataDB);
   };
 
   const AddLicensesdataDB = (result: any) => {
@@ -326,32 +365,7 @@ const Licenses = ({
     }
   };
 
-  // const handleFileChange = (event: any) => {
-  //   const file = event.target.files?.[0];
-  //   if (file) {
-  //     setSelectedFile(file);
-  //   }
-  // };
-
-  // const handleFileChange1 = (event: any) => {
-  //   const file = event.target.files?.[0];
-  //   if (file) {
-  //     setSelectedFile1(file);
-  //   }
-  // };
-
-  // const handleFileChange2 = (event: any) => {
-  //   const file = event.target.files?.[0];
-  //   if (file) {
-  //     setSelectedFile2(file);
-  //   }
-  // };
-
-  // add plus and minus symbole
-
-  // const addFieldPair = () => {
-  //   setExtraFields([...extraFields, { field1: "", field2: "" }]);
-  // };
+  
 
   const handleFormChange = (
     index: number,
@@ -363,10 +377,36 @@ const Licenses = ({
     setLicensesForms(updatedForms);
   };
 
+  // const handleFileChange = (index: number, event: any) => {
+  //   const updatedForms = [...licensesForms];
+  //   updatedForms[index].selectedFile = event.target.files?.[0] || null;
+  //   setLicensesForms(updatedForms);
+  // };
   const handleFileChange = (index: number, event: any) => {
-    const updatedForms = [...licensesForms];
-    updatedForms[index].selectedFile = event.target.files?.[0] || null;
-    setLicensesForms(updatedForms);
+    const file = event.target.files?.[0] || null;
+    // if (file) {
+    //   // Create a Blob from the selected file
+    //   const fileBlob = new Blob([file], { type: file.type });
+  
+    //   // Update the licensesForms array with the Blob
+    //   const updatedForms:any = [...licensesForms];
+    //   updatedForms[index].selectedFile = fileBlob;
+    //   setLicensesForms(updatedForms);
+  
+    //   console.log('File Blob:', fileBlob); // Optional: Logs the Blob to confirm
+    // }
+    const reader = new FileReader();
+        
+    reader.onloadend = function() {
+        const imageBinary:any = reader.result; // this will be a base64 encoded string
+        const byteArray = imageBinary.split(',')[1]; // get only the binary data part
+        
+          const updatedForms:any = [...licensesForms];
+      updatedForms[index].selectedFile = byteArray;
+      setLicensesForms(updatedForms);
+    };
+    
+    reader.readAsDataURL(file);
   };
 
   const addFieldLic = () => {

@@ -9,7 +9,7 @@ const Footer1 = () => {
 
   const handleSubmit =(e:any)=>{
     e.preventDefault();
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     
     if (!emailRegex.test(email)) {
       toast.error("Invalid email format");
@@ -48,9 +48,8 @@ const Footer1 = () => {
               value={email}
               id="email"
               onChange={(e) => {
-                // Remove spaces from the input
-                const value = e.target.value.replace(/\s/g, ""); // Regex to remove all spaces
-                setEmail(value.trimStart());
+                let value = e.target.value.replace(/\s+/g, ''); // Removes all spaces
+                setEmail(value?.trim());
               }}
               onBlur={(e) => {
                 // Basic email validation

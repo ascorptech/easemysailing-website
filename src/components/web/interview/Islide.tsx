@@ -38,12 +38,36 @@ import React, { useRef, useEffect, useState } from "react";
 import { IoMdArrowBack, IoMdArrowForward } from "react-icons/io";
 import Image from "next/image";
 import { RxCrossCircled } from "react-icons/rx";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 const Islide = () => {
   const card = useRef<HTMLDivElement>(null);
   const [podcasts, setPodcasts] = useState<any>([])
   const [selected, setSelected] = useState<any>();
   const [ModalOpen, setModalOpen] = useState(false);
+  const cardContainer = useRef<HTMLDivElement>(null);
+  // slider js start
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 3000, min: 1280 },
+      items: 3
+    },
+    desktop: {
+      breakpoint: { max: 1279, min: 1024 },
+      items: 2
+    },
+    tablet: {
+      breakpoint: { max: 1023, min: 992 },
+      items: 2
+    },
+    mobile: {
+      breakpoint: { max: 991, min: 320 },
+      items: 1
+    },
+    
+  };
 
   useEffect(() => {
     GetRecentPodcast((res: any) => {
@@ -100,44 +124,98 @@ const Islide = () => {
     setModalOpen(false);
   };
 
-  return (<div className="relative flex items-center justify-center mx-2 md:mx-4 lg:mx-0 my-4">
-    <button
+  return (<div className="relative flex-col flex items-center justify-center mx-2 md:mx-4 lg:mx-0 my-4">
+    {/* <button
       onClick={scrollLeft}
       className="absolute left-0 top-20 sm:hidden bg-white p-[5px] rounded-full shadow-md"
       aria-label="Scroll Left"
     >
       <IoMdArrowBack />
-    </button>
+    </button> */}
     {/* <div ref={card} className="flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory w-[90%] mx-auto sm:mx-0 sm:w-full sm:grid sm:grid-rows-1 sm:grid-cols-4 gap-2 sm:gap-10"> */}
-    {podcasts?.length?<div ref={card} className="flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory w-[84%] sm:grid sm:grid-cols-4 sm:grid-rows-1 sm:w-full sm:gap-8">
+    {/* {podcasts?.length?<div ref={card}
+     className="flex flex-row gap-10 overflow-x-scroll">
       {podcasts?.map((item: any, index: any) => (
          <div
          key={index}
-         className="snap-center flex flex-col items-center min-w-[301px] max-w-[14rem] sm:w-[16rem] mx-auto"
+         className="snap-center flex flex-col items-center w-[20rem] sm:w-[16rem] mx-auto"
        >
           <Image
             key={item?.id}
             src={`data:image/png;image/jpg;image/jpeg;base64,${item?.thumbnail}`}
             alt={item?.title}
-            width={100}
-            height={100}
+            width={5000}
+            height={5000}
             priority
-            className="h-full w-full rounded-md mb-10 border border-gray-600 shadow-sm"
+            className="h-full w-[20rem] rounded-md mb-10 border border-gray-600 shadow-sm"
             onClick={() => openModal(item)}
           />
-         </div>
+       </div>
       ))}
 
     </div>:<div className="w-full h-52 flex justify-center items-center">
       <span className="text-[#00A264] text-2xl">No Content Found!</span>
+      </div>} */}
+      {podcasts?.length? <div
+        ref={card}
+        className=" hidden overflow-x-scroll no-scrollbar w-[90%] mx-auto sm:mx-0 sm:w-full sm:grid sm:grid-rows-1 sm:grid-cols-4 gap-2 sm:gap-10">
+      {/* <div
+        ref={cardRef}
+        className="flex flex-row space-x-4 overflow-auto"> */}
+        {podcasts?.map((item: any) => (
+          <div
+            className="mb-10 h-full w-full"
+            key={item.id}
+          >
+            <div className="w-full h-40">
+            <Image
+            key={item?.id}
+            src={`data:image/png;image/jpg;image/jpeg;base64,${item?.thumbnail}`}
+            alt={item?.title}
+            width={5000}
+            height={5000}
+            priority
+            className="h-full w-[20rem] rounded-md mb-10 border border-gray-600 shadow-sm"
+            onClick={() => openModal(item)}
+          />
+             </div>
+          </div>
+        ))}
+      </div>:<div className="w-full h-52 flex justify-center items-center">
+      <span className="text-[#00A264] text-2xl">No Content Found!</span>
       </div>}
-    <button
+      <div className="mobile-slider sm:flex flex-col h-40 w-[90%] justify-center items-center">
+         {podcasts?.length? <Carousel  infinite responsive={responsive} sliderClass="slideCenter">
+          {podcasts?.map((item: any) => (
+          <div
+            className="mb-10 h-full w-full"
+            key={item.id}
+          >
+            <div className="w-full h-40">
+            <Image
+            key={item?.id}
+            src={`data:image/png;image/jpg;image/jpeg;base64,${item?.thumbnail}`}
+            alt={item?.title}
+            width={5000}
+            height={5000}
+            priority
+            className="h-full w-[20rem] rounded-md mb-10 border border-gray-600 shadow-sm"
+            onClick={() => openModal(item)}
+          />
+            </div>
+           </div>
+        ))}
+          </Carousel>:<div className="w-full h-52 flex justify-center items-center">
+      <span className="text-[#00A264] text-2xl">No Content Found!</span>
+      </div>}
+        </div>
+    {/* <button
       onClick={scrollRight}
       className="absolute right-0 top-20 sm:hidden bg-white p-[5px] rounded-full shadow-md"
       aria-label="Scroll Right"
     >
       <IoMdArrowForward />
-    </button>
+    </button> */}
     {/* Popup */}
     {ModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-10">

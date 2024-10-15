@@ -399,11 +399,11 @@ export const GetOnlinePresenceData = async (id: any, cb: any) => {
 //Licenses
 
 
-export const AddLicensesData = async (userId: any, data: any, cb: any) => {
+export const AddLicensesData = async (data: any, cb: any) => {
     try {
         console.log('Data to be submitted:', data);
-        let url =`${POSTLICENSES}?userId=${userId}`
-        const response = await postReq(url, data)
+        // let url =`${POSTLICENSES}?userId=${userId}`
+        const response = await postReq(POSTLICENSES, data)
         console.log('API response:', response);
         return cb(response)
     } catch (error: any) {

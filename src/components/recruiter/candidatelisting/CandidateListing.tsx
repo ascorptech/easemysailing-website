@@ -243,9 +243,9 @@ export default function CandiateListing(props: Props) {
 
       {/* Dropdowns */}
       <div className="flex justify-between items-center">
-        <div className="flex flex-wrap mb-3 space-x-3">
+        <div className="flex flex-wrap mb-3 space-x-4 text-sm items-center ">
           {/* Ship Type Dropdown */}
-          <div className="w-[185px] relative inline-block text-left">
+          <div className=" relative inline-block text-left">
             <button
               onClick={() => toggleDropdown("shipType")}
               className="inline-flex justify-between w-full items-center rounded-md border border-gray-300  bg-white"
@@ -285,12 +285,12 @@ export default function CandiateListing(props: Props) {
           </div>
 
           {/* Rank Dropdown */}
-          <div className="w-[175px] relative inline-block text-left">
+          <div className="w-[120px] relative inline-block text-left">
             <button
               onClick={() => toggleDropdown("rankType")}
               className="inline-flex justify-between w-full rounded-md border border-gray-300  bg-white"
             >
-              <span className="px-2 py-1">
+              <span className="px-1 py-2">
                 {selectedRankOption || "Rank Type"}
               </span>
               <div className="h-9 w-8 flex justify-center items-center rounded-r-md bg-[#00A264]">
@@ -327,12 +327,12 @@ export default function CandiateListing(props: Props) {
           </div>
 
           {/* Experience Dropdown */}
-          <div className="w-[185px] relative inline-block text-left">
+          <div className="w-[120px] relative inline-block text-left">
             <button
               onClick={() => toggleDropdown("option1Type")}
               className="inline-flex justify-between w-full rounded-md border border-gray-300 bg-white"
             >
-              <span className="px-2 py-1">
+              <span className="px-1 py-2">
                 {selectedOption1 || "Experience"}
               </span>
               <div className="h-9 w-8 flex justify-center items-center rounded-r-md bg-[#00A264]">
@@ -369,12 +369,12 @@ export default function CandiateListing(props: Props) {
           </div>
 
           {/* Availability Dropdown */}
-          <div className="w-[185px] relative inline-block text-left">
+          <div className="w-[120px] relative inline-block text-left">
             <button
               onClick={() => toggleDropdown("option2Type")}
               className="inline-flex justify-between w-full rounded-md border border-gray-300  bg-white"
             >
-              <span className="px-6 py-1">
+              <span className="px-1 py-2">
                 {selectedOption2 || "Availability"}
               </span>
               <div className="h-9 w-8 flex justify-center items-center rounded-r-md bg-[#00A264]">
@@ -411,12 +411,12 @@ export default function CandiateListing(props: Props) {
           </div>
 
           {/* Nationality Dropdown */}
-          <div className="w-[185px] relative inline-block text-left">
+          <div className="w-[120px] relative inline-block text-left">
             <button
               onClick={() => toggleDropdown("option3Type")}
               className="inline-flex justify-between w-full rounded-md border border-gray-300  bg-white"
             >
-              <span className="px-6 py-1">
+              <span className="px-1 py-2">
                 {selectedOption3 || "Nationality"}
               </span>
               <div className="h-9 w-8 flex justify-center items-center rounded-r-md bg-[#00A264]">
@@ -453,12 +453,12 @@ export default function CandiateListing(props: Props) {
           </div>
 
           {/* Salary Dropdown */}
-          <div className="w-[185px] relative inline-block text-left">
+          <div className="w-[120px] relative inline-block text-left">
             <button
               onClick={() => toggleDropdown("option4Type")}
               className="inline-flex justify-between w-full rounded-md border border-gray-300  bg-white"
             >
-              <span className="px-6 py-1">{selectedOption4 || "Salary"}</span>
+              <span className="px-1 py-2">{selectedOption4 || "Salary"}</span>
               <div className="h-9 w-8 flex justify-center items-center rounded-r-md bg-[#00A264]">
                 <IoIosArrowDown className=" text-2xl  text-white" />
               </div>
@@ -587,7 +587,7 @@ export default function CandiateListing(props: Props) {
       </div>
 
       {/* three box */}
-      <div className="flex justify-between items-center mt-5">
+      <div className="flex justify-between gap-x-14 items-center mt-5">
         <div className="w-[25rem] h-[120px] bg-[#D1EFE4] border-2 shadow-md rounded-bl-[33px] rounded-tr-[33px] flex">
           <div className="mt-4 ml-5">
             <Image

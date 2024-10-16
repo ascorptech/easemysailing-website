@@ -324,7 +324,7 @@ const Refrences = ({
                     </div>
                     <div>
                       {selectedFile ? (
-                        <p className="mt-4 text-gray-700">
+                        <p className=" text-gray-700">
                           File Selected: {selectedFile.name}
                         </p>
                       ) : (
@@ -406,7 +406,7 @@ const Refrences = ({
                     </div>
                     <div>
                       {selectedFile1 ? (
-                        <p className="mt-4 text-gray-700">
+                        <p className=" text-gray-700">
                           File Selected: {selectedFile1.name}
                         </p>
                       ) : (

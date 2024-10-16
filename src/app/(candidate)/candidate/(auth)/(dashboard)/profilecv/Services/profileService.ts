@@ -37,7 +37,11 @@ const { GETPROFILE,
     GETSEAGOING,
     GETSTCWTRAINING,
     GETTRAVELDOCUMENT,
-    GETVETTING } = apiEndPoints
+    GETVETTING,
+    GETACADEMIC,
+    POSTACADEMIC,
+    GETSHOREJOB,
+    POSTSHOREJOB } = apiEndPoints
 
 
 // Get Profile Detail
@@ -185,11 +189,11 @@ export const GetNextOfData = async (id: any, cb: any) => {
 
 //Language
 
-export const AddLanguageData = async (userId: any, data: any, cb: any) => {
+export const AddLanguageData = async (data: any, cb: any) => {
     try {
         console.log('Data to be submitted:', data);
-        let url = `${POSTLANGUAGE}/${userId}`
-        const response = await patchReq(url, data)
+        // let url = `${POSTLANGUAGE}/${userId}`
+        const response = await patchReq(POSTLANGUAGE, data)
         console.log('API response:', response);
         return cb(response)
     } catch (error: any) {
@@ -450,6 +454,8 @@ export const GetSeaDetailsData = async (id: any, cb: any) => {
     }
 }
 
+
+
 //ECDIS 
 export const AddEcdisData = async (data: any, cb: any) => {
     try {
@@ -494,6 +500,60 @@ export const AddAdditionalData = async (userId: any, data: any, neverExpires: an
 export const GetAdditonalData = async (id: any, cb: any) => {
     try {
         let url = `${GETADDITIIONAL}/${id}`
+        console.log('API URL:', url);
+        const response = await getReq(url);
+        console.log('API response:', response)
+        return cb(response)
+    } catch (error: any) {
+        console.log('err', error)
+        return cb(error?.response)
+    }
+}
+
+//Accamic details
+export const AddAcademicData = async (data: any,  cb: any) => {
+    try {
+        console.log('Data to be submitted:', data);
+        // let url = `${POSTADDITIIONAL}/${userId}/${neverExpires}`
+        const response = await postReq(POSTACADEMIC, data)
+        console.log('API response:', response);
+        return cb(response)
+    } catch (error: any) {
+        console.log('err', error)
+        return cb(error?.response)
+    }
+}
+
+
+export const GetAcademicData = async (id: any, cb: any) => {
+    try {
+         let url = `${GETACADEMIC}/${id}`
+        console.log('API URL:', url);
+        const response = await getReq(url);
+        console.log('API response:', response)
+        return cb(response)
+    } catch (error: any) {
+        console.log('err', error)
+        return cb(error?.response)
+    }
+}
+
+//shor job
+
+export const AddShoreJobData = async (userId: any, data: any, cb: any) => {
+    try {
+        console.log('Data to be submitted:', data);
+        const response = await postReq(POSTSHOREJOB, data)
+        console.log('API response:', response);
+        return cb(response)
+    } catch (error: any) {
+        console.log('err', error)
+        return cb(error?.response)
+    }
+}
+export const GetShoreJobData = async (id: any, cb: any) => {
+    try {
+        let url = `${GETSHOREJOB}/${id}`
         console.log('API URL:', url);
         const response = await getReq(url);
         console.log('API response:', response)

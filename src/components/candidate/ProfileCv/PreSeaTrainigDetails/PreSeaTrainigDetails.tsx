@@ -16,13 +16,15 @@ type Props = {
   >;
   userDetail: any;
   criminal:any;
+  offShoreDetail:any
 };
 
 const PreSeaTrainigDetails = ({
   preSeaTrainigComplete,
   setPreSeaTrainigComplete,
   userDetail,
-  criminal
+  criminal,
+  offShoreDetail
 }: Props) => {
   const [permanect, setPermanect] = useState("");
   const [issuedate, setIssueDate] = useState("");

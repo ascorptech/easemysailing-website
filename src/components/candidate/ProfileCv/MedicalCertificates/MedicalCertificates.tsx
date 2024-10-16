@@ -26,6 +26,7 @@ type Props = {
   setMedicalComplete: React.Dispatch<React.SetStateAction<MedicalComplete>>;
   userDetail: any;
   criminal: any;
+  medicalDetail:any
 };
 
 const MedicalCertificates = ({
@@ -33,6 +34,7 @@ const MedicalCertificates = ({
   setMedicalComplete,
   userDetail,
   criminal,
+  medicalDetail
 }: Props) => {
   const [otherVaccinationForms, setOtherVaccinationForms] = useState<
     OtherVaccination[]
@@ -78,6 +80,8 @@ const MedicalCertificates = ({
   const [medicalType, setMedicalType] = useState("");
   const [vaccinationIssue, setVaccinationIssue] = useState("");
   const [covidOptions, setCovidOptions] = useState("");
+  const [color, setColor] = useState("");
+
   // const [vaccinationExpiry, setVaccinationExpiry] = useState("");
   // const [expiresMedical, setExpiresMedical] = useState<any>(false);
   // const [veccinationCheck, setVeccinationCheck] = useState<any>(false);
@@ -164,7 +168,7 @@ const MedicalCertificates = ({
 
   const percentage = (filledFields / totalFields) * 100;
 
-  let color;
+  // let color;
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
@@ -173,21 +177,22 @@ const MedicalCertificates = ({
         percentage: percentage,
         color: "#FF0000",
       }));
-      color = "red";
+      setColor("#FF0000");
+
     } else if (percentage <= 70) {
       setMedicalComplete((prevState) => ({
         ...prevState,
         percentage: percentage,
         color: "#FF9900",
       }));
-      color = "#FF9900";
+      setColor("#FF9900");
     } else {
       setMedicalComplete((prevState) => ({
         ...prevState,
         percentage: percentage,
         color: "#00A264",
       }));
-      color = "green";
+      setColor("#00A264");
     }
   }, [percentage, color]);
 
@@ -380,6 +385,8 @@ const MedicalCertificates = ({
         flagMedicalExpiryDate: vaccinationexpFlag,
         // formData.append("flagMedicalNeverExpires", veccinationCheckFlag);
         flagMedicalDocument: selectedFilesFlag,
+        color: color,
+        completed: percentage,
       };
       const otherArray: any = [];
       otherVaccinationForms.forEach((element: any) => {

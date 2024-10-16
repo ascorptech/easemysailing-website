@@ -19,13 +19,15 @@ type Props = {
   >;
   userDetail: any;
   criminal:any;
+  vettingServices:any
 };
 
 const VettingServices = ({
   vettingServicesComplete,
   setVettingServicesComplete,
   userDetail,
-  criminal
+  criminal,
+  vettingServices
 }: Props) => {
   // State for form fields
   const [inProgress, setInProgress] = useState(false);

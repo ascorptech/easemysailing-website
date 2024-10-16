@@ -58,21 +58,7 @@ const Languages = ({
   const [color, setColor] = useState("");
   const [isHideShow, setIsHideShow] = useState(false);
 
-  useEffect(() => {
-    if (languageDetail) {
-      console.log("lan", languageDetail);
-      setLanguage1(languageDetail.nativeLanguage);
-      // setAddiLanguage(languageDetail.additionalLanguage);
-      // setLanguageLavel(languageDetail.additionalLanguageLevel);
-      setEnglishLavel(languageDetail.englishLevel);
-      setLanguageTests(languageDetail.testLanguage);
-      setTypeofTest(languageDetail.testType);
-      setResult(languageDetail?.testResult);
-      setTestCenter(languageDetail?.testCenter);
-      setIssuingCountry(languageDetail?.issuingCountry);
-      setDateofTest(moment(languageDetail?.dateOfTest).format("YYYY-MM-DD"));
-    }
-  }, []);
+ 
 
   useEffect(() => {
     GetDropdownDetails("additionallanguagelevel", (res: any) => {
@@ -88,11 +74,11 @@ const Languages = ({
     });
   }, []);
 
-  const totalFields = 9 + additionalLanguageForms.length *2 ;
+  const totalFields = 9 + additionalLanguageForms.length * 2;
   const filledFields = [
-    ...additionalLanguageForms.flatMap((field)=>[
+    ...additionalLanguageForms.flatMap((field) => [
       field.addiLanguage,
-      field.languageLavel
+      field.languageLavel,
     ]),
     language1,
     englishLavel,
@@ -114,27 +100,58 @@ const Languages = ({
     console.log("user", userDetail);
     if (percentage <= 30) {
       setLanguageComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#FF0000", // Update the color field
+        ...prevState, 
+        percentage: percentage,
+        color: "#FF0000",
       }));
       setColor("#FF0000");
     } else if (percentage <= 70) {
       setLanguageComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#FF9900", // Update the color field
+        ...prevState,
+        percentage: percentage, 
+        color: "#FF9900",
       }));
       setColor("#FF9900");
     } else {
       setLanguageComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#00A264", // Update the color field
+        ...prevState, 
+        percentage: percentage, 
+        color: "#00A264", 
       }));
       setColor("#00A264");
     }
   }, [percentage, color]);
+
+  useEffect(() => {
+    if (languageDetail) {
+      console.log("lan", languageDetail);
+      setLanguage1(languageDetail.nativeLanguage);
+      // setAddiLanguage(languageDetail.additionalLanguage);
+      // setLanguageLavel(languageDetail.additionalLanguageLevel);
+      setEnglishLavel(languageDetail.englishLevel);
+      setLanguageTests(languageDetail.testLanguage);
+      setTypeofTest(languageDetail.testType);
+      setResult(languageDetail?.testResult);
+      setTestCenter(languageDetail?.testCenter);
+      setIssuingCountry(languageDetail?.issuingCountry);
+      setDateofTest(moment(languageDetail?.dateOfTest).format("YYYY-MM-DD"));
+    
+    const additionalLanguages = languageDetail.additionalLanguage || [];
+    const additionalLevels = languageDetail.additionalLanguageLevel || [];
+    const combinedLanguages = additionalLanguages.map((language:any, index:any) => ({
+      addiLanguage: language,
+      languageLavel: additionalLevels[index] || "",
+    }));
+
+    // Set additional languages into state
+     setAdditionalLanguageForms(combinedLanguages);
+  }
+}, [languageDetail]);
+    // const addiArray:any = [];
+    // additionalLanguageForms.forEach((element:any) =>{
+      
+    // })
+  // }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     // try {
@@ -143,24 +160,49 @@ const Languages = ({
       toast.error("Please accept the declaration");
       return;
     } else {
-      let formData = new FormData();
+      let data: any = {
+        userId: userDetail?.userId,
+        nativeLanguage: language1,
+        englishLevel: englishLavel,
+        testLanguage: languageTests,
+        testCenter: testCenter,
+        testType: typeofTest,
+        testResult: result,
+        issuingCountry: issuingCountry,
+        dateOfTest: dateofTest,
+        drugTestDocument: selectedFile,
+        color: color,
+        completed: percentage,
+      };
+      const addiArray: any = [];
+      additionalLanguageForms.forEach((element: any) => {
+        addiArray.push({
+          additionalLanguage: element?.addiLanguage,
+          additionalLanguageLevel: element?.languageLavel,
+        });
+      });
+      data.additionalData = addiArray;
+
+      let finArry: any = [];
+      finArry.push(data);
+      AddLanguageData(finArry, AddLanguagedataDB);
 
       // {
-      formData.append("nativeLanguage", language1);
+      // formData.append("nativeLanguage", language1);
       // formData.append("additionalLanguage", addiLanguage);
       // formData.append("additionalLanguageLevel", languageLavel);
-      formData.append("englishLevel", englishLavel);
-      formData.append("testLanguage", languageTests);
-      formData.append("testCenter", testCenter);
-      formData.append("testType", typeofTest);
-      formData.append("testResult", result);
-      formData.append("issuingCountry", issuingCountry);
-      formData.append("dateOfTest", dateofTest);
-      selectedFile && formData.append("document", selectedFile);
-      formData.append("color", color);
-      formData.append("completed", percentage);
+      // formData.append("englishLevel", englishLavel);
+      // formData.append("testLanguage", languageTests);
+      // formData.append("testCenter", testCenter);
+      // formData.append("testType", typeofTest);
+      // formData.append("testResult", result);
+      // formData.append("issuingCountry", issuingCountry);
+      // formData.append("dateOfTest", dateofTest);
+      // selectedFile && formData.append("document", selectedFile);
+      // formData.append("color", color);
+      // formData.append("completed", percentage);
       // }
-      AddLanguageData(userDetail?.userId, formData, AddLanguagedataDB);
+      // AddLanguageData(userDetail?.userId, formData, AddLanguagedataDB);
     }
   };
 
@@ -177,20 +219,20 @@ const Languages = ({
   };
 
   const handleAdditionalLanguage = (
-    index:number,
-    field:keyof AdditionalLanguage,
-    value:any
-  )=> {
+    index: number,
+    field: keyof AdditionalLanguage,
+    value: any
+  ) => {
     const updatedForms = [...additionalLanguageForms];
     updatedForms[index][field] = value;
     setAdditionalLanguageForms(updatedForms);
-  }
+  };
   const addFieldAddi = () => {
     setAdditionalLanguageForms([
       ...additionalLanguageForms,
       {
-       addiLanguage:"",
-       languageLavel:""
+        addiLanguage: "",
+        languageLavel: "",
       },
     ]);
   };
@@ -198,10 +240,6 @@ const Languages = ({
     const updatedForms = additionalLanguageForms.filter((_, i) => i !== index);
     setAdditionalLanguageForms(updatedForms);
   };
-
-
-
-
 
   const handleFileChange = (event: any) => {
     const file = event.target.files?.[0];
@@ -247,72 +285,94 @@ const Languages = ({
 
         <div className="mb-3">
           <div className="flex justify-between items-center">
-          <h1 className="font-bold  ">Additional Language </h1>
-          <div className="flex gap-2">
-                  <AiOutlinePlus
-                    className="text-2xl cursor-pointer"
-                    onClick={addFieldAddi}
-                  />
-                  {additionalLanguageForms.length > 1 && (
-                    <AiOutlineMinus
-                      className="text-2xl cursor-pointer"
-                      onClick={() =>
-                        removeFieldAddi(additionalLanguageForms.length - 1)
-                      }
-                    />
-                  )}
-                </div>
-          </div>
-          {additionalLanguageForms.map((field, index) =>
-          <div  className="grid grid-cols-2 gap-4  ">
-            <div>
-              <label className="text-[14px] leading-[19.07px]  text-[#333333]">
-                Language
-              </label>
-              <select
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                value={field.addiLanguage}
-                onChange={(e) => handleAdditionalLanguage(index,"addiLanguage", e.target.value)}
-                disabled={disabled}
-                required
-              >
-                <option value="" disabled>
-                  Select
-                </option>
-                {languageDrop &&
-                  languageDrop?.map((lang: any, index: number) => (
-                    <option key={index} value={lang}>
-                      {lang?.toUpperCase()}
-                    </option>
-                  ))}
-              </select>
+            <h1 className="font-bold  ">Additional Language </h1>
+            {isHideShow && (
+            <div className="flex gap-2">
+              <AiOutlinePlus
+                className="text-2xl cursor-pointer"
+                onClick={addFieldAddi}
+              />
+              {additionalLanguageForms.length > 1 && (
+                <AiOutlineMinus
+                  className="text-2xl cursor-pointer"
+                  onClick={() =>
+                    removeFieldAddi(additionalLanguageForms.length - 1)
+                  }
+                />
+              )}
             </div>
+            )}
+          </div>
+          {additionalLanguageForms.map((field, index) => (
+            <div className="grid grid-cols-2 gap-4  ">
+              <div>
+                <label
+                  className="text-[14px] leading-[19.07px]  text-[#333333]"
+                  htmlFor={`addiLanguage_${index}`}
+                >
+                  Language
+                </label>
+                <select
+                  id={`addiLanguage_${index}`}
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  value={field.addiLanguage}
+                  onChange={(e) =>
+                    handleAdditionalLanguage(
+                      index,
+                      "addiLanguage",
+                      e.target.value
+                    )
+                  }
+                  disabled={disabled}
+                  required
+                >
+                  <option value="" disabled>
+                    Select
+                  </option>
+                  {languageDrop &&
+                    languageDrop?.map((lang: any, index: number) => (
+                      <option key={index} value={lang}>
+                        {lang?.toUpperCase()}
+                      </option>
+                    ))}
+                </select>
+              </div>
 
-            {/* Preferred Vessel Type */}
-            <div>
-              <label className="text-[14px] leading-[19.07px]  text-[#333333]">
-                Level
-              </label>
-              <select
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                value={field.languageLavel}
-                onChange={(e) => handleAdditionalLanguage(index,"languageLavel",e.target.value)}
-                disabled={disabled}
-                required
-              >
-                <option value="" disabled>
-                  Select
-                </option>
-                {languageLevelDrop &&
-                  languageLevelDrop?.map((lang: any, index: number) => (
-                    <option key={index} value={lang}>
-                      {lang?.toUpperCase()}
-                    </option>
-                  ))}
-              </select>
+              {/* Preferred Vessel Type */}
+              <div>
+                <label
+                  className="text-[14px] leading-[19.07px]  text-[#333333]"
+                  htmlFor={`languageLavel_${index}`}
+                >
+                  Level
+                </label>
+                <select
+                  id={`languageLavel_${index}`}
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  value={field.languageLavel}
+                  onChange={(e) =>
+                    handleAdditionalLanguage(
+                      index,
+                      "languageLavel",
+                      e.target.value
+                    )
+                  }
+                  disabled={disabled}
+                  required
+                >
+                  <option value="" disabled>
+                    Select
+                  </option>
+                  {languageLevelDrop &&
+                    languageLevelDrop?.map((lang: any, index: number) => (
+                      <option key={index} value={lang}>
+                        {lang?.toUpperCase()}
+                      </option>
+                    ))}
+                </select>
+              </div>
             </div>
-          </div>
-          )}
+          ))}
         </div>
 
         <div className="mb-3">

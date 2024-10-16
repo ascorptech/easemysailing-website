@@ -46,6 +46,7 @@ type Props = {
   >; // setMjrComplete is a function to update mjrComplete
   userDetail: any;
   criminal: any;
+  additionalDetail:any
 };
 
 const AdditionalTraining = ({
@@ -53,6 +54,7 @@ const AdditionalTraining = ({
   setAdditionalComplete,
   userDetail,
   criminal,
+  additionalDetail
 }: Props) => {
   const [additionalForms, setAdditionalForms] = useState<AdditionalTraining[]>([
     {
@@ -110,6 +112,8 @@ const AdditionalTraining = ({
   const [capacityDrop, setCapacityDrop] = useState<any>([]);
   const [levelDrop, setLevelDrop] = useState<any>([]);
   const [levelTestDrop, setLevelTestDrop] = useState<any>([]);
+  const [color, setColor] = useState("");
+
   const [disabled, setDisabled] = useState(true);
 
   // const [showFields, setShowFields] = useState(true);
@@ -162,7 +166,7 @@ const AdditionalTraining = ({
 
   const percentage = (filledFields / totalFields) * 100;
   // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
-  let color;
+  // let color;
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
@@ -171,21 +175,21 @@ const AdditionalTraining = ({
         percentage: percentage, // Update the percentage field
         color: "#FF0000", // Update the color field
       }));
-      color = "red";
+      setColor("#FF0000");
     } else if (percentage <= 70) {
       setAdditionalComplete((prevState) => ({
         ...prevState, // Spread the previous state to keep any other properties
         percentage: percentage, // Update the percentage field
         color: "#FF9900", // Update the color field
       }));
-      color = "#FF9900";
+      setColor("#FF9900");
     } else {
       setAdditionalComplete((prevState) => ({
         ...prevState, // Spread the previous state to keep any other properties
         percentage: percentage, // Update the percentage field
         color: "#00A264", // Update the color field
       }));
-      color = "green";
+      setColor("#00A264");
     }
   }, [percentage, color]);
 

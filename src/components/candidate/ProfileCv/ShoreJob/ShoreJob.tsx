@@ -16,17 +16,21 @@ type Props = {
   setShorJobComplete: React.Dispatch<React.SetStateAction<ShorJobComplete>>;
   userDetail: any;
   criminal:any;
+  shorJobDetail:any;
 };
 
 const ShorJob = ({
   shorJobComplete,
   setShorJobComplete,
   userDetail,
-  criminal
+  criminal,
+  shorJobDetail
 }: Props) => {
   const [areYouIntrested, setAreYouIntrested] = useState("");
   const [multipleSelection, setMultipleSelection] = useState<any>([]); // Updated to handle react-select's option type
   const [disabled, setDisabled] = useState(true);
+  const [color, setColor] = useState("");
+
 
   // Adding 10 options for the multi-select dropdown
   const [countryDrop, setCountryDrop] = useState<any>([
@@ -54,7 +58,7 @@ const ShorJob = ({
   const totalFields = 1;
   const filledFields = [areYouIntrested].filter(Boolean).length;
   const percentage = (filledFields / totalFields) * 100;
-  let color = "";
+  // let color = "";
 
   useEffect(() => {
     if (percentage <= 30) {
@@ -63,21 +67,21 @@ const ShorJob = ({
         percentage: percentage,
         color: "#FF0000",
       }));
-      color = "red";
+      setColor("#FF0000");
     } else if (percentage <= 70) {
       setShorJobComplete((prevState) => ({
         ...prevState,
         percentage: percentage,
         color: "#FF9900",
       }));
-      color = "#FF9900";
+      setColor("#FF9900");
     } else {
       setShorJobComplete((prevState) => ({
         ...prevState,
         percentage: percentage,
         color: "#00A264",
       }));
-      color = "green";
+      setColor("#00A264");
     }
   }, [percentage]);
 

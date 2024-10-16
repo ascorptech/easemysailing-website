@@ -18,13 +18,15 @@ type Props = {
   >;
   userDetail: any;
   criminal:any;
+  professionalSkills:any;
 };
 
 const ProfessionalSkills = ({
   professionalComplete,
   setProfessionalComplete,
   userDetail,
-  criminal
+  criminal,
+  professionalSkills
 }: Props) => {
   const [maker, setMaker] = useState("");
   const [sWL, setSWL] = useState("");

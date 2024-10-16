@@ -492,14 +492,16 @@ type Props = {
   academicComplete: AcademicComplete;
   setAcademicComplete: React.Dispatch<React.SetStateAction<AcademicComplete>>;
   userDetail: any;
-  criminal:any;
+  criminal: any;
+  academicDetail: any;
 };
 
 const AcademicDetails = ({
   academicComplete,
   setAcademicComplete,
   userDetail,
-  criminal
+  criminal,
+  academicDetail,
 }: Props) => {
   const [academicForms, setAcademicForms] = useState<AcademicForm[]>([
     {
@@ -575,17 +577,17 @@ const AcademicDetails = ({
   }, [percentage, color]);
 
   const handleFileChange = (index: number, event: any) => {
-    const file = event.target.files?.[0]
+    const file = event.target.files?.[0];
 
     const reader = new FileReader();
-    reader.onloadend= function() {
-      const imageBinary:any = reader.result;
-      const byteArray = imageBinary.split(',')[1];
+    reader.onloadend = function () {
+      const imageBinary: any = reader.result;
+      const byteArray = imageBinary.split(",")[1];
 
-      const updatedForms:any = [...academicForms];
-      updatedForms[index].selectedFile= byteArray;
+      const updatedForms: any = [...academicForms];
+      updatedForms[index].selectedFile = byteArray;
       setAcademicForms(updatedForms);
-    }
+    };
     reader.readAsDataURL(file);
     // const updatedForms = [...academicForms];
     // updatedForms[index].selectedFile = event.target.files?.[0] || null;
@@ -651,10 +653,37 @@ const AcademicDetails = ({
     e.preventDefault();
     if (!criminal) {
       toast.error("Please accept the declaration");
-      return; 
+      return;
     } else {
+      let data: any = {
+        userId: userDetail?.userId,
+      };
+      const acadeArray:any =[];
+      const eduArray: any = [];
+
+      academicForms.forEach((element:any) =>
+      {
+        acadeArray.push({
+          degree: element?.degree,
+          percentage: element?. percentage,
+          startDate: element?.startdate,
+          endDate: element?.enddate,
+          documentUrl: element?.selectedFile
+           
+          
+        })
+      })
+
+      educationForms.forEach((element: any) => {
+        eduArray.push({
+          schoolCollegeUniversity: element?.university,
+          subject: element?.subject,
+          country: element?.issuingCountry,
+          city: element?.city,
+        });
+      });
+    }
   };
-}
 
   const handleEdit = () => {
     setDisabled(!disabled);

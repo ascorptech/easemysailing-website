@@ -31,15 +31,17 @@ const NextOfKinDetails = ({
   const [nextKinShip, setNextKinShip] = useState("");
   const [nextKinAddre, setNextKinAddre] = useState("");
   const [nextKinChildren, setNextKinChildren] = useState("");
+  const [sameAsAddress, setSameAsAddress] = useState<any>(false);
   const [disabled,setDisabled] = useState(true)
   const [color,setColor]=useState('')
 
-  const totalFields = 4;
+  const totalFields = 5;
   const filledFields = [
     nextKinName,
     nextKinShip,
-    nextKinAddre,
+    nextKinAddre  ,
     nextKinChildren,
+    sameAsAddress
   ].filter(Boolean).length;
 
   // const totalFields = available === "Yes" ? 6 : 5;
@@ -262,25 +264,26 @@ const NextOfKinDetails = ({
                 disabled={disabled}
               />
               {/* </div> */}
-              {/* <div className=" flex items-center gap-2 mt-5 ">
+             
+            </div>
+            <div className=" flex items-center gap-2  ">
                   <input
-                    id={`neverExpires_${index}`}
+                    id="sameAsAddress"
                     type="checkbox"
                     className="border focus:ring-[#00A264]  text-[#00A264] checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
-                    checked={field.neverExpires}
+                    checked={sameAsAddress}
                     onChange={(e) =>
-                      handleFormChange(index, "neverExpires", e.target.checked)
-                    }
+                      setSameAsAddress(!sameAsAddress)}
+                    
                     disabled={disabled}
                   />
                   <label
                     className="text-[14px] leading-[19.07px]  text-[#333333]"
-                    htmlFor={`neverExpires_${index}`}
+                    htmlFor="sameAsAddress"
                   >
-                    Never Expires
+                    Same As Address
                   </label>
-                </div> */}
-            </div>
+                </div>
           </div>
         </div>
 

@@ -152,6 +152,8 @@ const SeaGoingService = ({
       netSeagoingDays: seagoingNumber,
       gearless: gearless,
       inertGasSystem: inertGas,
+      color: color,
+      completed: percentage ,
     };
 
     AddSeagoingData(data, AddSeagoingDatacb);

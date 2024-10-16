@@ -121,15 +121,38 @@ const Refrences = ({
   const handleFileChange = (event: any) => {
     const file = event.target.files?.[0];
     if (file) {
-      setSelectedFile(file);
+      const reader = new FileReader();
+        
+    reader.onloadend = function() {
+        const imageBinary:any = reader.result; 
+        const byteArray = imageBinary.split(',')[1]; 
+        setSelectedFile(byteArray);
+    };
+    
+    reader.readAsDataURL(file);
+      
     }
+    // const file = event.target.files?.[0];
+    // if (file) {
+    //   setSelectedFile(file);
+    // }
   };
 
   const handleFileChange1 = (event: any) => {
     const file = event.target.files?.[0];
     if (file) {
-      setSelectedFile1(file);
+      const reader = new FileReader();
+        
+    reader.onloadend = function() {
+        const imageBinary:any = reader.result; 
+        const byteArray = imageBinary.split(',')[1]; 
+        setSelectedFile1(byteArray);
+    };
+    
+    reader.readAsDataURL(file);
+      
     }
+   
   };
 
   useEffect(() => {
@@ -368,13 +391,13 @@ const Refrences = ({
                   <div className="flex gap-4  my-4">
                     <div className="  ">
                       <label
-                        htmlFor="file-upload"
+                        htmlFor="file-uploadsu"
                         className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px]   "
                       >
                         Attachment Document
                       </label>
                       <input
-                        id="file-upload"
+                        id="file-uploadsu"
                         type="file"
                         className="hidden"
                         onChange={handleFileChange1}

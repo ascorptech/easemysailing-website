@@ -142,12 +142,12 @@ const Languages = ({
     //   });
 
     
-    // const additionalLanguages = languageDetail.additionalLanguage || [];
-    // const additionalLevels = languageDetail.additionalLanguageLevel || [];
-    // const combinedLanguages = additionalLanguages.map((language:any, index:any) => ({
-    //   addiLanguage: language,
-    //   languageLavel: additionalLevels[index] || "",
-    // }));
+    const additionalLanguages = languageDetail.additionalLanguage || [];
+    const additionalLevels = languageDetail.additionalLanguageLevel || [];
+    const combinedLanguages = additionalLanguages.map((language:any, index:any) => ({
+      addiLanguage: language,
+      languageLavel: additionalLevels[index] || "",
+    }));
 
     // Set additional languages into state
     //  setAdditionalLanguageForms(combinedLanguages);

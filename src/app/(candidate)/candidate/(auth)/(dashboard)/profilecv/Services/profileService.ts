@@ -270,7 +270,7 @@ export const GetStcwData = async (id: any, cb: any) => {
 export const AddProfessionalSkillData = async (userId: any, metalWorkingCertificateAvailable: any, metalWorkingClassApproved: any, data: any, cb: any) => {
     try {
         console.log('Data to be submitted:', data);
-        let url = `${POSTPROFESSIONALSKILL}/${userId}/${metalWorkingCertificateAvailable}/${metalWorkingClassApproved}`
+        let url = `${POSTPROFESSIONALSKILL}?id=${userId}&metalWorkingCertificateAvailable=${metalWorkingCertificateAvailable}&metalWorkingClassApproved=${metalWorkingClassApproved}`
         const response = await postReq(url, data)
         console.log('API response:', response);
         return cb(response)

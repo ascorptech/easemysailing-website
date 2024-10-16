@@ -114,7 +114,7 @@ const TravelDocuments = ({
     issuingAuthority,
   ].filter(Boolean).length;
 
-  const percentage = (filledFields / totalFields) * 100;
+  const percentage:any = totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
 
   useEffect(() => {
     console.log("user", userDetail);

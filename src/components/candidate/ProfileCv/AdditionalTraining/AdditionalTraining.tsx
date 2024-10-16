@@ -120,16 +120,16 @@ const AdditionalTraining = ({
   const [isHideShow, setIsHideShow] = useState(false);
 
   useEffect(() => {
-    GetDropdownDetails("ProfessionalKnowledgeLevel", (res: any) => {
+    GetDropdownDetails("ProfessionalKnowledgeTest", (res: any) => {
       setLevelDrop(res?.data?.values);
     });
-    GetDropdownDetails("ProfessionalKnowledgeTest", (res: any) => {
+    GetDropdownDetails("ProfessionalKnowledgeTestType", (res: any) => {
       setLevelTestDrop(res?.data?.values);
     });
     GetDropdownDetails("capacity", (res: any) => {
       setCapacityDrop(res?.data?.values);
     });
-    GetDropdownDetails("AdditionalTrainings", (res: any) => {
+    GetDropdownDetails("AdditionalTrainingsCertificates", (res: any) => {
       setAdditionalTraDrop(res?.data?.values);
     });
     GetDropdownDetails("country", (res: any) => {
@@ -164,7 +164,7 @@ const AdditionalTraining = ({
     ]),
   ].filter(Boolean).length;
 
-  const percentage = (filledFields / totalFields) * 100;
+  const percentage:any = totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
   // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
   // let color;
   useEffect(() => {
@@ -320,7 +320,7 @@ const AdditionalTraining = ({
       return;
     } else {
       let data: any = {
-        userId: userDetail?.userId,
+        id: userDetail?.userId,
         color: color,
         completed: percentage,
       };
@@ -417,7 +417,7 @@ const AdditionalTraining = ({
                 disabled={disabled}
               >
                 <option value="" disabled selected>
-                  Select
+                  SELECT
                 </option>
                 {additionalTraDrop &&
                   additionalTraDrop?.map((addi: any, index: number) => (

@@ -464,6 +464,7 @@
 // export default AcademicDetails;
 
 "use client";
+import { AddAcademicData, GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
@@ -530,6 +531,7 @@ const AcademicDetails = ({
   const [countryDrop, setCountryDrop] = useState<any>([]);
   const [disabled, setDisabled] = useState(true);
   const [isHideShow, setIsHideShow] = useState(false);
+  const [color,setColor]=useState('')
 
   const totalFields = educationForms.length * 4 + academicForms.length * 5;
   const filledFields = [
@@ -548,34 +550,41 @@ const AcademicDetails = ({
     ]),
   ].filter(Boolean).length;
 
-  const percentage = (filledFields / totalFields) * 100;
-  let color;
-
+  const percentage:any = totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
+  // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
+  // let color;
   useEffect(() => {
+    console.log("user", userDetail);
     if (percentage <= 30) {
       setAcademicComplete((prevState) => ({
-        ...prevState,
+        ...prevState, 
         percentage: percentage,
-        color: "#FF0000",
+        color: "#FF0000", 
       }));
-      color = "red";
+      setColor("#FF0000");
     } else if (percentage <= 70) {
       setAcademicComplete((prevState) => ({
-        ...prevState,
-        percentage: percentage,
+        ...prevState, 
+        percentage: percentage, 
         color: "#FF9900",
       }));
-      color = "#FF9900";
+      setColor("#FF9900");
     } else {
       setAcademicComplete((prevState) => ({
-        ...prevState,
-        percentage: percentage,
+        ...prevState, 
+        percentage: percentage, 
         color: "#00A264",
       }));
-      color = "green";
+      setColor("#00A264");
     }
   }, [percentage, color]);
 
+  useEffect(() => {
+    GetDropdownDetails("country", (res: any) => {
+      // console.log('County',res?.data)
+      setCountryDrop(res?.data?.values);
+    });
+  }, []);
   const handleFileChange = (index: number, event: any) => {
     const file = event.target.files?.[0];
 
@@ -656,7 +665,9 @@ const AcademicDetails = ({
       return;
     } else {
       let data: any = {
-        userId: userDetail?.userId,
+        id: userDetail?.userId,
+        color: color,
+      completed: percentage,
       };
       const acadeArray:any =[];
       const eduArray: any = [];
@@ -682,6 +693,23 @@ const AcademicDetails = ({
           city: element?.city,
         });
       });
+      data.educations = eduArray
+      data.qualifications = acadeArray
+
+      AddAcademicData(data,AddAcademicDataDB)
+    }
+  };
+
+  const AddAcademicDataDB = (result: any) => {
+    console.log(result);
+    if (result?.status == 200 || result?.status == 201) {
+      console.log(result)
+      toast.success("Academic Details submited successfully");
+      setTimeout(() => {
+        window.location.reload()
+      }, 1000);
+    } else {
+      toast.error("Next Of Kin Details not submited ");
     }
   };
 
@@ -899,11 +927,11 @@ const AcademicDetails = ({
                 disabled={disabled}
               >
                 <option value="">Select</option>
-                {countryDrop.map((country: any) => (
-                  <option key={country.isoCode} value={country.isoCode}>
-                    {country.name}
-                  </option>
-                ))}
+                {countryDrop?.map((country: any, index: number) => (
+                          <option key={index} value={country}>
+                            {country?.toUpperCase()}
+                          </option>
+                        ))}
                 <option value="f">hell </option>
               </select>
             </div>

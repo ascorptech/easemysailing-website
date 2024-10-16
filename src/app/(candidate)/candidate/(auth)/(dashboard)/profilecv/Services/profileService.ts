@@ -430,10 +430,11 @@ export const GetLicencesData = async (id: any, cb: any) => {
 
 // Off Shore Requirements
 
-export const AddSeaDetailsData = async (userId: any, data: any, cb: any) => {
+export const AddSeaDetailsData = async (userId: any,salaryNegotiable:any,neverExpires:any, data: any, cb: any) => {
     try {
-        console.log('Data to be submitted:', data);
-        const response = await postReq(POSTSEADETAILS, data)
+        // console.log('Data to be submitted:', data);
+        let url = `${POSTSEADETAILS}?id=${userId}&salaryNegotiable=${salaryNegotiable}&neverExpires=${neverExpires}`
+        const response = await postReq(url, data)
         console.log('API response:', response);
         return cb(response)
     } catch (error: any) {

@@ -279,6 +279,8 @@ const Licenses = ({
     e.preventDefault();
     let data:any = {
      id: userDetail?.userId,
+     color:color,
+     completed:percentage
     }
     
 

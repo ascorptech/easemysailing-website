@@ -145,21 +145,36 @@ const TravelDocuments = ({
   const handleFileChange = (event: any) => {
     const file = event.target.files?.[0];
     if (file) {
-      setSelectedFile(file);
+      const reader = new FileReader();
+        
+      reader.onloadend = function() {
+          const imageBinary:any = reader.result; 
+          const byteArray = imageBinary.split(',')[1]; 
+          setSelectedFile(byteArray);
+      };
+      
+      reader.readAsDataURL(file);
+     
     }
   };
 
   const handleFileChanges = (event: any) => {
     const file = event.target.files?.[0];
     if (file) {
-      setSelectedFiles(file);
+      const reader = new FileReader();
+
+      reader.onloadend = function () {
+        const imageBinary: any = reader.result;
+        const byteArray = imageBinary.split(",")[1];
+        setSelectedFiles(byteArray);
+      };
+
+      reader.readAsDataURL(file);
     }
   };
 
   const handleFileChangeVisa = (index: number, event: any) => {
-    // const updatedForms = [...visaForms];
-    // updatedForms[index].selectedFileVisa = event.target.files?.[0] || null;
-    // setVisaForms(updatedForms);
+    
     const file = event.target.files?.[0];
 
     const reader = new FileReader();
@@ -205,7 +220,16 @@ const TravelDocuments = ({
   const handleFileChangeResidence = (event: any) => {
     const file = event.target.files?.[0];
     if (file) {
-      setSelectedFileResidence(file);
+      const reader = new FileReader();
+        
+      reader.onloadend = function() {
+          const imageBinary:any = reader.result; 
+          const byteArray = imageBinary.split(',')[1]; 
+          setSelectedFileResidence(byteArray);
+      };
+      
+      reader.readAsDataURL(file);
+     
     }
   };
 
@@ -245,35 +269,10 @@ const TravelDocuments = ({
       toast.error("Please accept the declaration");
       return;
     } else {
-      // let formData = new FormData();
-      // formData.append("passportNumber", number);
-      // formData.append("passportIssuingCountry", issuingAuthority);
-      // formData.append("passportIssueDate", issuedate);
-      // formData.append("passportExpiryDate", exdate);
-      // formData.append("seamansBookNumber", trainingCenter);
-      // formData.append("seamansBookIssuingCountry", flagState);
-      // formData.append("seamansBookIssueDate", issuedate1);
-      // formData.append("seamansBookExpiryDate", exdate1);
-
-      // formData.append("residencePermitIssuingCountry", issuingCountry);
-      // formData.append("residencePermitNumber", permitNumber);
-      // formData.append("residencePermitIssueDate", issueDate2);
-      // formData.append("residencePermitExpiryDate", expDate2);
-      // formData.append("passportDocument", selectedFile);
-      // formData.append("seamansBookDocument", selectedFiles);
-
-      // formData.append("residencePermitDocument", selectedFileResidence);
-
-      // visaForms.forEach((element: any) => {
-      //   formData.append("visaNumber", element?.visaNumber);
-      //   formData.append("visaIssueDate", element?.issueDateVisa);
-      //   formData.append("visaExpiryDate", element?.expryDateVisa);
-      //   formData.append("visaDocument", element?.selectedFileVisa);
-      //   formData.append("visaIssuingCountry", element?.issueAuthority);
-      // });
+      
 
       let data: any = {
-        userId: userDetail?.userId,
+        id: userDetail?.userId,
 
         passportNumber: number,
         passportIssuingCountry: issuingAuthority,
@@ -288,10 +287,12 @@ const TravelDocuments = ({
         residencePermitNumber: permitNumber,
         residencePermitIssueDate: issueDate2,
         residencePermitExpiryDate: expDate2,
-        passportDocument: selectedFile,
-        seamansBookDocument: selectedFiles,
+        passportDocumentUrl: selectedFile,
+        seamansBookDocumentUrl: selectedFiles,
 
-        residencePermitDocument: selectedFileResidence,
+        residencePermitDocumentUrl: selectedFileResidence,
+        color:color,
+        completed:percentage
       };
       const visaArray: any = [];
       visaForms.forEach((element: any) => {
@@ -303,7 +304,7 @@ const TravelDocuments = ({
           visaIssuingCountry: element?.issueAuthority,
         });
       });
-      data.visaData = visaArray;
+      data.visaDetails = visaArray;
       let finArry: any = [];
       finArry.push(data);
       console.log("fin", finArry);
@@ -601,7 +602,7 @@ const TravelDocuments = ({
                 checked={checkBox}
                 onChange={() => setCheckBox(!checkBox)}
                 disabled={disabled}
-                required
+               
               />
               <label
                 className="text-[14px] leading-[19.07px] text-[#333333]"

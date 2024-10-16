@@ -254,16 +254,13 @@ const Languages = ({
       const reader = new FileReader();
         
     reader.onloadend = function() {
-        const imageBinary:any = reader.result; // this will be a base64 encoded string
-        const byteArray = imageBinary.split(',')[1]; // get only the binary data part
-        
-      //     const updatedForms:any = [...licensesForms];
-      // updatedForms[index].selectedFile = byteArray;
+        const imageBinary:any = reader.result; 
+        const byteArray = imageBinary.split(',')[1]; 
       setSelectedFile(byteArray);
     };
     
     reader.readAsDataURL(file);
-      // setSelectedFile(file);
+      
     }
   };
 

@@ -38,6 +38,6 @@ export default{
     GETVETTING:'/api/v1/vetting-services',
     POSTACADEMIC:'/api/educationDetails',
     GETACADEMIC:'/api/educationDetails',
-    POSTSHOREJOB:'/api/shorejobs',
-    GETSHOREJOB:'/api/shorejobs'
+    POSTSHOREJOB:'/api/shoreJobs',
+    GETSHOREJOB:'/api/shoreJobs'
 }

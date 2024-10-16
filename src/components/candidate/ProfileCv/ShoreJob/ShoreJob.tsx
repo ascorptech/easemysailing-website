@@ -69,7 +69,7 @@ const ShorJob = ({
         "interested": areYouIntrested=='Yes'?true:false,
         "color": color,
         "completed": percentage?.toString(),
-        "jobOptions": [JSON.stringify(multipleSelection)]
+        "jobOption": multipleSelection
       }
       AddShoreJobData(data,(result:any)=>{
         if (result?.status == 200|| result?.status==201) {
@@ -154,7 +154,10 @@ const ShorJob = ({
           </div>
 
           {areYouIntrested === "Yes" && (
-            <div className="mt-6">
+            <div >
+              <label className="text-[14px] leading-[19.07px]  text-[#333333]">
+              Interest Options
+            </label>
               <Select
                 isMulti
                 options={jobDrop}

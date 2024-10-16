@@ -124,7 +124,6 @@ const Languages = ({
 
   useEffect(() => {
     if (languageDetail) {
-      console.log("lan", languageDetail);
       setLanguage1(languageDetail.nativeLanguage);
       // setAddiLanguage(languageDetail.additionalLanguage);
       // setLanguageLavel(languageDetail.additionalLanguageLevel);
@@ -136,10 +135,11 @@ const Languages = ({
       setIssuingCountry(languageDetail?.issuingCountry);
       setDateofTest(moment(languageDetail?.dateOfTest).format("YYYY-MM-DD"));
       setSelectedFile(languageDetail?.documentUrl)
-    //  let combineLng =  languageDetail?.additionalLanguages.map((lang:any,index:any) => {
-    //     addiLanguage:lang?.additionalLanguage,
-    //     languageLavel: lang?.aadditionalLevels
-    //   });
+      let combineLng = languageDetail?.additionalLanguages.map((lang: any) => ({
+        addiLanguage: lang?.additionalLanguage,
+        languageLavel: lang?.additionalLanguageLevel
+      }));
+      setAdditionalLanguageForms(combineLng)
 
     
     // const additionalLanguages = languageDetail.additionalLanguage || [];

@@ -302,6 +302,42 @@ const MedicalCertificates = ({
       reader.readAsDataURL(file);
     }
   };
+  
+  useEffect (() => {
+    if(medicalDetail) {
+      setTypes2Options(medicalDetail.fitnessType);
+      setNumber(medicalDetail.fitnessNumber);
+      setIssuingOptions(medicalDetail.fitnessIssuingCountry);
+      setIssuingCity(medicalDetail.fitnessIssuingCity);
+      setIssueDate(medicalDetail.fitnessIssueDate);
+      setExDate(medicalDetail.fitnessExpiryDate);
+      setMedicalPhysician(medicalDetail.covidVaccineMedicalCenter);
+      setFMedicalcenter(medicalDetail.fitnessMedicalCenter);
+      setMedicalNumber(medicalDetail.drugTestNumber);
+      setMedicalCenter(medicalDetail.drugTestIssuingCity);
+      setTestCenter(medicalDetail.drugTestCenter);
+      setIssueDate1(medicalDetail.drugTestIssueDate);
+      setExDate1(medicalDetail.drugTestExpiryDate);
+      setIssueDateCovid(medicalDetail.covidVaccineDate2);
+      
+      // setExpires1(medicalDetail.nativeLanguage);
+      // setExpires2(medicalDetail.nativeLanguage);
+      
+      setTypeOptions(medicalDetail.drugTestType);
+      setIssuingCountryOpt(medicalDetail.drugTestIssuingCountry);
+      setMedicalType(medicalDetail.covidVaccineType);
+      setVaccinationIssue(medicalDetail.covidVaccineDate1);
+      setCovidOptions(medicalDetail.covidVaccineCountry);
+      // setVeccinationCheckFlag(medicalDetail.covidVaccineCountry);
+      setMedicalTypeFlag(medicalDetail.flagMedicalType);
+      setVaccinationFlag(medicalDetail.flagMedicalVaccinationDate);
+      setVaccinationexpFlag(medicalDetail.flagMedicalExpiryDate);
+      setSelectedFilesFlag(medicalDetail.flagMedicalDocumentUrl);
+      setSelectedFile(medicalDetail.fitnessDocumentUrl);
+      setSelectedFiles(medicalDetail.drugTestDocumentUrl);
+      setSelectedFilesCovid(medicalDetail.covidVaccineDocumentUrl1);
+    }
+  },[])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

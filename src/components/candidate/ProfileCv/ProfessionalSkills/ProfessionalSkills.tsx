@@ -188,8 +188,21 @@ const ProfessionalSkills = ({
   const handleFileChange = (event: any) => {
     const file = event.target.files?.[0];
     if (file) {
-      setSelectedFile(file);
+      const reader = new FileReader();
+        
+    reader.onloadend = function() {
+        const imageBinary:any = reader.result; 
+        const byteArray = imageBinary.split(',')[1]; 
+        setSelectedFile(byteArray);
+    };
+    
+    reader.readAsDataURL(file);
+      
     }
+    // const file = event.target.files?.[0];
+    // if (file) {
+    //   setSelectedFile(file);
+    // }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -200,37 +213,35 @@ const ProfessionalSkills = ({
       return; 
     } else {
 
-    // let formData = new FormData();
-    // // formData.append('document', selectedFile);
-    // formData.append("computerSkill", skill);
-    // formData.append("computerSkillLevel", level1);
-    // formData.append("bulkCargo", bulkCargo);
-    // formData.append("tankerCargo", tankerCargo);
-    // formData.append("generalCargo", generalCargo);
-    // formData.append("woodProducts", woodProducts);
-    // formData.append("stowageLashingExperience", stowage);
-    // formData.append("cargoGearType", typeProfessional);
-    // formData.append("cargoGearMaker", maker);
-    // formData.append("cargoGearSWL", sWL);
-    // formData.append("metalWorkingSkill", skillmetal);
-    // formData.append("metalWorkingSkillLevel", levelMetal);
-    // formData.append("tankCoatingType", typeTank);
-    // formData.append("portStateRegionalAgreement", regionalAgreement);
-    // formData.append("portStatePort", port);
-    // formData.append("portStateDate", date);
-    // formData.append("portStateFindings", description);
-    // formData.append("vettingInspectionBy", inspection);
-    // formData.append("vettingPort", port1);
-    // formData.append("vettingDate", vdate);
-    // formData.append("vettingFindings", description1);
-    // formData.append("tradingArea", tradingArea);
-    // formData.append('document',selectedFile);
+    let formData = new FormData();
+    // formData.append('document', selectedFile);
+    formData.append("computerSkill", skill);
+    formData.append("computerSkillLevel", level1);
+    formData.append("bulkCargo", bulkCargo);
+    formData.append("tankerCargo", tankerCargo);
+    formData.append("generalCargo", generalCargo);
+    formData.append("woodProducts", woodProducts);
+    formData.append("stowageLashingExperience", stowage);
+    formData.append("cargoGearType", typeProfessional);
+    formData.append("cargoGearMaker", maker);
+    formData.append("cargoGearSWL", sWL);
+    formData.append("metalWorkingSkill", skillmetal);
+    formData.append("metalWorkingSkillLevel", levelMetal);
+    formData.append("tankCoatingType", typeTank);
+    formData.append("portStateRegionalAgreement", regionalAgreement);
+    formData.append("portStatePort", port);
+    formData.append("portStateDate", date);
+    formData.append("portStateFindings", description);
+    formData.append("vettingInspectionBy", inspection);
+    formData.append("vettingPort", port1);
+    formData.append("vettingDate", vdate);
+    formData.append("vettingFindings", description1);
+    formData.append("tradingArea", tradingArea);
+    formData.append('metalWorkingDocumentUrl',selectedFile);
 
-  // 
-  let data:any = {
-    userId:userDetail?.userId,
-    
-  } 
+    console.log(formData)
+  AddProfessionalSkillData(userDetail?.userId,cAvailable, classApproved,formData, AddProfessionalSkillDataCB)
+  
 
     }
 }

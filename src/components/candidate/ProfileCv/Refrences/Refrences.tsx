@@ -7,7 +7,6 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import moment from "moment";
 
-
 import { useState } from "react";
 import { toast } from "react-toastify";
 
@@ -19,15 +18,16 @@ type Props = {
   refrencesComplete: RefrencesComplete;
   setRefrencesComplete: React.Dispatch<React.SetStateAction<RefrencesComplete>>;
   userDetail: any;
-  refrencesDetail:any;
-  criminal:any;
+  refrencesDetail: any;
+  criminal: any;
 };
 
 const Refrences = ({
   refrencesComplete,
   setRefrencesComplete,
-  userDetail,refrencesDetail,
-  criminal
+  userDetail,
+  refrencesDetail,
+  criminal,
 }: Props) => {
   const [date, setDate] = useState("");
   const [companyName, setCompanyName] = useState("");
@@ -59,8 +59,6 @@ const Refrences = ({
   const [countryCodeDrop, setCountryCodeDrop] = useState<any>([]);
   const [isHideShow, setIsHideShow] = useState(false);
   const [color, setColor] = useState("");
-
-
 
   useEffect(() => {
     GetDropdownDetails("country", (res: any) => {
@@ -94,7 +92,6 @@ const Refrences = ({
   const percentage: any =
     totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
 
- 
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
@@ -135,61 +132,64 @@ const Refrences = ({
     }
   };
 
-
   useEffect(() => {
-    console.log("refrencesDetail", refrencesDetail)
-    if(refrencesDetail){
-      setCompanyName(refrencesDetail?.vesselOrCompanyName)
-      setCompanyName1(refrencesDetail?.referenceCompany)
-      setFirstName(refrencesDetail?.referenceFirstName)
-      setLastName(refrencesDetail?.referenceLastName)
-      setPhoneNumber(refrencesDetail?.referencePhoneNumber)
-      setEmail(refrencesDetail?.referenceEmail)
-      setConsentGiven(refrencesDetail?.consentGiven)
-      setCountryCode1(refrencesDetail?.referenceCountryCode)
+    console.log("refrencesDetail", refrencesDetail);
+    if (refrencesDetail) {
+      setCompanyName(refrencesDetail?.vesselOrCompanyName);
+      setCompanyName1(refrencesDetail?.referenceCompany);
+      setFirstName(refrencesDetail?.referenceFirstName);
+      setLastName(refrencesDetail?.referenceLastName);
+      setPhoneNumber(refrencesDetail?.referencePhoneNumber);
+      setEmail(refrencesDetail?.referenceEmail);
+      setConsentGiven(refrencesDetail?.consentGiven);
+      setCountryCode1(refrencesDetail?.referenceCountryCode);
       // setSelectedFile(refrencesDetail?.)
       // setSelectedFile1(refrencesDetail?.)
-      setIssueDate1(moment(refrencesDetail?.criminalRecordIssueDate).format("YYYY-MM-DD"));
+      setIssueDate1(
+        moment(refrencesDetail?.criminalRecordIssueDate).format("YYYY-MM-DD")
+      );
       setDate(moment(refrencesDetail?.issueDate).format("YYYY-MM-DD"));
       setIssued(moment(refrencesDetail?.issuedBy).format("YYYY-MM-DD"));
-      setIssuingCountry(refrencesDetail?.issuingCountry)
-      
-      
-      
+      setIssuingCountry(refrencesDetail?.issuingCountry);
     }
-  },[])
-  
+  }, []);
+
   const handleSubmit = (e: React.FormEvent) => {
     // try {
     e.preventDefault();
     if (!criminal) {
       toast.error("Please accept the declaration");
-      return; 
+      return;
     } else {
+      let formData = new FormData();
 
-    let formData = new FormData();
-    formData.append("issueDate", date);
-    formData.append("vesselOrCompanyName", companyName);
-    formData.append("referenceCompany", companyName1);
-    formData.append("referenceFirstName", firstName);
-    formData.append("referenceLastName", lastName);
-    formData.append("referencePhoneNumber", phoneNumber);
-    formData.append("referenceEmail", email);
+      formData.append("issueDate", date);
+      formData.append("vesselOrCompanyName", companyName);
+      formData.append("referenceCompany", companyName1);
+      formData.append("referenceFirstName", firstName);
+      formData.append("referenceLastName", lastName);
+      formData.append("referencePhoneNumber", phoneNumber);
+      formData.append("referenceEmail", email);
 
-    formData.append("issuedBy", issued);
-    formData.append("issuingCountry", issuingCountry);
-    formData.append("referenceCountryCode", countryCode1);
-    formData.append("criminalRecordIssueDate", issueDate1);
-    formData.append("document", selectedFile);
-    formData.append("criminalRecordDocument", selectedFile1);
-    AddReferencesData(
-      userDetail?.userId,
-      consentGiven,
-      formData,
-      AddReferencesDataCB
-    );
+      formData.append("issuedBy", issued);
+      formData.append("issuingCountry", issuingCountry);
+      formData.append("referenceCountryCode", countryCode1);
+      formData.append("criminalRecordIssueDate", issueDate1);
+      formData.append("documentUrl", selectedFile);
+      formData.append("criminalRecordDocumentUrl", selectedFile1);
+
+      formData.append("color", color);
+      formData.append("completed", percentage);
+
+
+      AddReferencesData(
+        userDetail?.userId,
+        consentGiven,
+        formData,
+        AddReferencesDataCB
+      );
+    }
   };
-}
 
   const AddReferencesDataCB = (result: any) => {
     if (result?.status == 200 || result?.status == 201) {
@@ -282,35 +282,35 @@ const Refrences = ({
               </div>
 
               <div className="grid col-span-3">
-                { isHideShow && (
-                <div className="flex items-center justify-start gap-4 my-6">
-                  <div className="  ">
-                    <label
-                      htmlFor="file-upload"
-                      className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px]   "
-                    >
-                      Attachment Document
-                    </label>
-                    <input
-                      id="file-upload"
-                      type="file"
-                      className="hidden"
-                      onChange={handleFileChange}
-                      disabled={disabled}
-                    />
+                {isHideShow && (
+                  <div className="flex items-center justify-start gap-4 my-6">
+                    <div className="  ">
+                      <label
+                        htmlFor="file-upload"
+                        className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px]   "
+                      >
+                        Attachment Document
+                      </label>
+                      <input
+                        id="file-upload"
+                        type="file"
+                        className="hidden"
+                        onChange={handleFileChange}
+                        disabled={disabled}
+                      />
+                    </div>
+                    <div>
+                      {selectedFile ? (
+                        <p className="mt-4 text-gray-700">
+                          File Selected: {selectedFile.name}
+                        </p>
+                      ) : (
+                        <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                          No File Selected
+                        </p>
+                      )}
+                    </div>
                   </div>
-                  <div>
-                    {selectedFile ? (
-                      <p className="mt-4 text-gray-700">
-                        File Selected: {selectedFile.name}
-                      </p>
-                    ) : (
-                      <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                        No File Selected
-                      </p>
-                    )}
-                  </div>
-                </div>
                 )}
               </div>
             </div>
@@ -364,36 +364,36 @@ const Refrences = ({
                 </div>
               </div>
               <div className="grid col-span-2 ">
-              { isHideShow && (
-                <div className="flex gap-4  my-4">
-                  <div className="  ">
-                    <label
-                      htmlFor="file-upload"
-                      className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px]   "
-                    >
-                      Attachment Document
-                    </label>
-                    <input
-                      id="file-upload"
-                      type="file"
-                      className="hidden"
-                      onChange={handleFileChange1}
-                      disabled={disabled}
-                    />
+                {isHideShow && (
+                  <div className="flex gap-4  my-4">
+                    <div className="  ">
+                      <label
+                        htmlFor="file-upload"
+                        className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px]   "
+                      >
+                        Attachment Document
+                      </label>
+                      <input
+                        id="file-upload"
+                        type="file"
+                        className="hidden"
+                        onChange={handleFileChange1}
+                        disabled={disabled}
+                      />
+                    </div>
+                    <div>
+                      {selectedFile1 ? (
+                        <p className="mt-4 text-gray-700">
+                          File Selected: {selectedFile1.name}
+                        </p>
+                      ) : (
+                        <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                          No File Selected
+                        </p>
+                      )}
+                    </div>
                   </div>
-                  <div>
-                    {selectedFile1 ? (
-                      <p className="mt-4 text-gray-700">
-                        File Selected: {selectedFile1.name}
-                      </p>
-                    ) : (
-                      <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                        No File Selected
-                      </p>
-                    )}
-                  </div>
-                </div>
-              )}
+                )}
               </div>
             </div>
 

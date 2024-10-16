@@ -224,7 +224,7 @@ const PreSeaTrainigDetails = ({
       formData.append("winchDriveExperience", winchDrive);
       formData.append("color", color);
       formData.append("certificateNumber", number);
-      // formData.append("neverExpires", neverExpires);
+      formData.append("completed", percentage);
     }
     AddSeaDetailsData(userDetail?.userId,salary=='Yes'?'true':'false',neverExpires, formData, AddSeaDetailsDataDB);
   };

@@ -486,11 +486,11 @@ export const GetEcdisData = async (id: any, cb: any) => {
 
 //Additional training
 
-export const AddAdditionalData = async (userId: any, data: any, neverExpires: any, cb: any) => {
+export const AddAdditionalData = async ( data: any, cb: any) => {
     try {
         console.log('Data to be submitted:', data);
-        let url = `${POSTADDITIIONAL}/${userId}/${neverExpires}`
-        const response = await postReq(url, data)
+        // let url = `${POSTADDITIIONAL}/${userId}/${neverExpires}`
+        const response = await postReq(POSTADDITIIONAL, data)
         console.log('API response:', response);
         return cb(response)
     } catch (error: any) {

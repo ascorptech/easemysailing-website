@@ -278,7 +278,7 @@ const Licenses = ({
     // try {
     e.preventDefault();
     let data:any = {
-     userId: userDetail?.userId,
+     id: userDetail?.userId,
     }
     
 
@@ -342,7 +342,7 @@ const Licenses = ({
     cocOtherLimitation: element?.otherLimitation,
     cocIssueDate: element?.issueDate,
     cocExpiryDate: element?.expiryDate,
-    cocDocument: element?.selectedFile,
+    cocDocumentUrl: element?.selectedFile,
   });
 });
 
@@ -354,7 +354,7 @@ globalMaritimeForms.forEach((element: any) => {
     gmdssStcwRegulation: element?.wRegulation,
     gmdssIssueDate: element?.gMissueDate,
     gmdssExpiryDate: element?.gMexpiryDate,
-    gmdssDocument: element?.selectedFile1,
+    gmdssDocumentUrl: element?.selectedFile1,
   });
 });
 
@@ -367,13 +367,13 @@ endorsementsForms.forEach((element: any) => {
     endorsementStcwRegulation: element?.sTCWRegulationOption,
     endorsementIssueDate: element?.issueDateOption,
     endorsementExpiryDate: element?.expiryDateOption,
-    endorsementDocument: element?.selectedFile2,
+    endorsementDocumentUrl: element?.selectedFile2,
   });
 });
 
-  data.cocData = cocArray;
-  data.gmdssData = gmdssArray;
-  data.endorsementData = endorsementArray;
+  data.cocs = cocArray;
+  data.gmdss = gmdssArray;
+  data.endorsements = endorsementArray;
   data.cocCapacity = showFields;
   data.endorsementsNotIssuedSeparately = separatelyCheckBox;
 
@@ -418,10 +418,10 @@ endorsementsForms.forEach((element: any) => {
 
     //   formData.append("endorsementsNotIssuedSeparately", separatelyCheckBox);
     // }
-    let finArry :any= []
-    finArry.push(data)
-    console.log('fin',finArry)
-    AddLicensesData( finArry, AddLicensesdataDB);
+    // let finArry :any= []
+    // finArry.push(data)
+    // console.log('fin',finArry)
+    AddLicensesData( data, AddLicensesdataDB);
 }
   };
 

@@ -351,7 +351,7 @@ const MedicalCertificates = ({
         fitnessIssueDate: issuedate,
         fitnessExpiryDate: exdate,
         // formData.append("fitnessNeverExpires", expires1);
-        fitnessDocument: selectedFile,
+        fitnessDocumentUrl: selectedFile,
 
         drugTestType: typeOptions,
         drugTestNumber: medicalNumber,
@@ -361,7 +361,7 @@ const MedicalCertificates = ({
         drugTestIssueDate: issuedate1,
         drugTestExpiryDate: exdate1,
         // formData.append("drugTestNeverExpires", expires2);
-        drugTestDocument: selectedFiles,
+        drugTestDocumentUrl: selectedFiles,
 
         covidVaccineType: medicalType,
         covidVaccineCountry: covidOptions,
@@ -370,7 +370,7 @@ const MedicalCertificates = ({
         // formData.append("covidVaccineExpiryDate1", vaccinationExpiry);
         // missing covid19 expiry data
         // formData.append("covidVaccineNeverExpires1", expiresMedical);
-        covidVaccineDocument1: selectedFilesCovid,
+        covidVaccineDocumentUrl1: selectedFilesCovid,
 
         covidVaccineDate2: issuedateCovid,
         // formData.append("covidVaccineExpiryDate2", exdateCovid);
@@ -384,7 +384,7 @@ const MedicalCertificates = ({
         flagMedicalVaccinationDate: vaccinationFlag,
         flagMedicalExpiryDate: vaccinationexpFlag,
         // formData.append("flagMedicalNeverExpires", veccinationCheckFlag);
-        flagMedicalDocument: selectedFilesFlag,
+        flagMedicalDocumentUrl: selectedFilesFlag,
         color: color,
         completed: percentage,
       };

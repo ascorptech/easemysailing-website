@@ -156,7 +156,7 @@ const StcwTraining = ({
      
 
       let data: any = {
-        userId: userDetail?.userId,
+        id: userDetail?.userId,
         color: color,
         completed: percentage,
       };
@@ -174,11 +174,11 @@ const StcwTraining = ({
       });
       data.stcwTrainingDetails = stcwArray;
 
-      let finArry: any = [];
-      finArry.push(data);
-      console.log("fin", finArry);
+      // let finArry: any = [];
+      // finArry.push(data);
+      // console.log("fin", finArry);
 
-      AddStcwData(finArry, AddStcwDataCB);
+      AddStcwData(data, AddStcwDataCB);
     }
   };
 

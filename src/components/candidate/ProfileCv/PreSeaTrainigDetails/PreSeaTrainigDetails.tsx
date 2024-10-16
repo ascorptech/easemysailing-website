@@ -68,6 +68,7 @@ const PreSeaTrainigDetails = ({
   const [winchDiveDrop, setWinchDiveDrop] = useState<any>([])
   const [disabled,setDisabled] = useState(true)
   const [isHideShow, setIsHideShow] = useState(false);
+  const [color,setColor]=useState('')
 
 
 
@@ -145,32 +146,32 @@ const PreSeaTrainigDetails = ({
 
   // const totalFields = available === "Yes" ? 6 : 5;
 
-  const percentage = (filledFields / totalFields) * 100;
+  const percentage:any = totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
   // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
-  let color;
+  // let color;
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
       setPreSeaTrainigComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#FF0000", // Update the color field
+        ...prevState, 
+        percentage: percentage,
+        color: "#FF0000", 
       }));
-      color = "red";
+      setColor("#FF0000");
     } else if (percentage <= 70) {
       setPreSeaTrainigComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#FF9900", // Update the color field
+        ...prevState, 
+        percentage: percentage, 
+        color: "#FF9900",
       }));
-      color = "#FF9900";
+      setColor("#FF9900");
     } else {
       setPreSeaTrainigComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#00A264", // Update the color field
+        ...prevState, 
+        percentage: percentage, 
+        color: "#00A264",
       }));
-      color = "green";
+      setColor("#00A264");
     }
   }, [percentage, color]);
 
@@ -192,40 +193,40 @@ const PreSeaTrainigDetails = ({
 
     {
       formData.append("permanentPerDay", permanect);
+      formData.append("currency", currency);
+      formData.append("minTimeOnBoardWeeks", timeonBoard);
+      formData.append("maxTimeOnBoardWeeks", maxTimeonBoard);
+      formData.append("minTimeAtHomeWeeks", minTimeonHome);
+      formData.append("maxTimeAtHomeWeeks", maxTimeonHome);
+      formData.append("certificate", certificate);
+      formData.append("trainingCenter", trainingCenter);
+      formData.append("issuingCountry", issuingCountry);
       formData.append("issueDate", issuedate);
       formData.append("expiryDate", exdate);
       formData.append("document", selectedFile);
-      formData.append("trainingCenter", trainingCenter);
-      formData.append("salaryNegotiable", salary);
-      formData.append("certificateNumber", number);
+      formData.append("pumpType", pumpType);
       formData.append("crewManager", crewManager);
       formData.append("technicalManager", technicalManager);
       formData.append("operator", operator);
-      formData.append("document", vesselType);
+      formData.append("companyNameOrShipType", vesselType);
       formData.append(
         "vesselTypeCommercialSpecification",
         commercialSpecification
       );
       formData.append("vesselTypeDesignSpecification", designSpecification);
       formData.append("dpHours", dPHours);
-      formData.append("rigMoveNumber", numberOfrig);
-      formData.append("winchDriveExperience", winchDrive);
-      formData.append("tradingArea", tradingArea);
-      formData.append("waterDepth", waterDepth);
-      formData.append("movedItem", moveditem);
-      formData.append("rigMoveRank", rank);
       formData.append("rigMoveVesselType", vesselType1);
-      formData.append("pumpType", pumpType);
-      formData.append("issuingCountry", issuingCountry);
-      formData.append("certificate", certificate);
-      formData.append("maxTimeAtHomeWeeks", maxTimeonHome);
-      formData.append("minTimeAtHomeWeeks", minTimeonHome);
-      formData.append("maxTimeOnBoardWeeks", maxTimeonBoard);
-      formData.append("minTimeOnBoardWeeks", timeonBoard);
-      formData.append("currency", currency);
-      formData.append("neverExpires", neverExpires);
+      formData.append("rigMoveRank", rank);
+      formData.append("rigMoveNumber", numberOfrig);
+      formData.append("movedItem", moveditem);
+      formData.append("waterDepth", waterDepth);
+      formData.append("tradingArea", tradingArea);
+      formData.append("winchDriveExperience", winchDrive);
+      formData.append("color", color);
+      formData.append("certificateNumber", number);
+      formData.append("completed", percentage);
     }
-    AddSeaDetailsData(userDetail?.userId, formData, AddSeaDetailsDataDB);
+    AddSeaDetailsData(userDetail?.userId,salary=='Yes'?'true':'false',neverExpires, formData, AddSeaDetailsDataDB);
   };
 }
 
@@ -285,7 +286,7 @@ const PreSeaTrainigDetails = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Select
+                SELECT
               </option>
               {currencyDrop &&
                 currencyDrop?.map((cu: any, index: number) => (
@@ -303,15 +304,24 @@ const PreSeaTrainigDetails = ({
             >
               Salary is Negotiable
             </label>
-            <input
+            <select
               id="salaryis"
-              type="text"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              name="options"
               value={salary}
               onChange={(e) => setSalary(e.target.value)}
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              placeholder="Yes/No"
               disabled={disabled}
-            />
+            >
+              <option value="" disabled selected>
+                SELECT
+              </option>
+                  <option value={'Yes'}>
+                    Yes
+                  </option>
+                  <option value={'No'}>
+                    No
+                  </option>
+            </select>
           </div>
 
           <div className="grid col-span-2">
@@ -334,7 +344,7 @@ const PreSeaTrainigDetails = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Select 
+                SELECT
               </option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -366,7 +376,7 @@ const PreSeaTrainigDetails = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-              Select 
+              SELECT
               </option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -398,7 +408,7 @@ const PreSeaTrainigDetails = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-              Select 
+              SELECT
               </option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -430,7 +440,7 @@ const PreSeaTrainigDetails = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-              Select 
+              SELECT
               </option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -467,7 +477,7 @@ const PreSeaTrainigDetails = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Select
+                SELECT
               </option>
               {trainingDrop &&
                 trainingDrop?.map((train: any, index: number) => (
@@ -511,7 +521,7 @@ const PreSeaTrainigDetails = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-              Select 
+              SELECT 
               </option>
               {countryDrop &&
                   countryDrop?.map((country: any, index: number) => (
@@ -655,7 +665,7 @@ const PreSeaTrainigDetails = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Select
+                SELECT
               </option>
               {imoDrop &&
                 imoDrop?.map((im: any, index: number) => (
@@ -777,7 +787,7 @@ const PreSeaTrainigDetails = ({
               className="text-[14px] leading-[19.07px]  text-[#333333]"
               htmlFor="vesseltype"
             >
-              Vessel type
+              Vessel Type
             </label>
             <select
               id="vesseltype"
@@ -788,7 +798,7 @@ const PreSeaTrainigDetails = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Select
+                SELECT
               </option>
               {shipTypeDrop && shipTypeDrop?.map((ship: any, index: number) => (
                 <option key={index} value={ship}>{ship?.toUpperCase()}</option>
@@ -812,7 +822,7 @@ const PreSeaTrainigDetails = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Select
+                SELECT
               </option>
               {rankDrop && rankDrop?.map((rank: any, index: number) => (
                 <option key={index} value={rank}>{rank?.toUpperCase()}</option>
@@ -854,7 +864,7 @@ const PreSeaTrainigDetails = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Select
+                SELECT
               </option>
               {rigMoveDrop && rigMoveDrop?.map((rigM: any, index: number) => (
                 <option key={index} value={rigM}>{rigM?.toUpperCase()}</option>
@@ -877,7 +887,7 @@ const PreSeaTrainigDetails = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Select
+                SELECT
               </option>
               {rigMoveWaterDrop && rigMoveWaterDrop?.map((rigMW: any, index: number) => (
                 <option key={index} value={rigMW}>{rigMW?.toUpperCase()}</option>
@@ -901,7 +911,7 @@ const PreSeaTrainigDetails = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Select
+                SELECT
               </option>
               {tradingAreaDrop && tradingAreaDrop?.map((tArea: any, index: number) => (
                 <option key={index} value={tArea}>{tArea?.toUpperCase()}</option>
@@ -925,7 +935,7 @@ const PreSeaTrainigDetails = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-              Select 
+              SELECT 
               </option>
               {winchDiveDrop && winchDiveDrop?.map((dive: any, index: number) => (
                 <option key={index} value={dive}>{dive?.toUpperCase()}</option>

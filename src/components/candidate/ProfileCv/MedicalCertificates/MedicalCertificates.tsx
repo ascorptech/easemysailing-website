@@ -420,15 +420,15 @@ const MedicalCertificates = ({
       });
       data.otherVaccinations = otherArray;
 
-      let finArry: any = [];
-      finArry.push(data);
-      AddMedicalData(finArry, AddmedicalDataDB);
+      // let finArry: any = [];
+      // finArry.push(data);
+      AddMedicalData(data, AddmedicalDataDB);
     }
   };
 
   const AddmedicalDataDB = (result: any) => {
     console.log(result);
-    if (result?.status == 200) {
+    if (result?.status == 200||result?.status == 201) {
       toast.success("medical  submited successfully");
       setTimeout(() => {
         window.location.reload();

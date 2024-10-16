@@ -79,11 +79,11 @@ const NextOfKinDetails = ({
 
   useEffect(() => {
     if (nextOfKinDetail) {
-      console.log('nnnn',nextOfKinDetail?.nextOfKinName)
       setNextKinName(nextOfKinDetail.nextOfKinName);
       setNextKinShip(nextOfKinDetail.nextOfKinRelationship);
       setNextKinAddre(nextOfKinDetail.nextOfKinAddress);
       setNextKinChildren(nextOfKinDetail.numberOfChildren);
+      setSameAsAddress(nextOfKinDetail?.sameAddress)
       }
   }, [])
 
@@ -94,10 +94,8 @@ const NextOfKinDetails = ({
       return; 
     } else {
     if(
-      
       !nextKinName ||
       !nextKinShip ||
-      !nextKinAddre ||
       !nextKinChildren
     )
     {
@@ -110,6 +108,7 @@ const NextOfKinDetails = ({
       nextOfKinRelationship: nextKinShip,
       nextOfKinAddress: nextKinAddre,
       numberOfChildren: nextKinChildren,
+      sameAddress:sameAsAddress,
       color: color,
       completed: percentage,
      
@@ -281,7 +280,7 @@ const NextOfKinDetails = ({
                     className="text-[14px] leading-[19.07px]  text-[#333333]"
                     htmlFor="sameAsAddress"
                   >
-                    Same As Address
+                    Same As Contact Details Address
                   </label>
                 </div>
           </div>

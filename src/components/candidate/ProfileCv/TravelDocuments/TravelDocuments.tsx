@@ -305,10 +305,10 @@ const TravelDocuments = ({
         });
       });
       data.visaDetails = visaArray;
-      let finArry: any = [];
-      finArry.push(data);
-      console.log("fin", finArry);
-      AddTravelDocumentData(finArry, AddTravelDocumentDataCB);
+      // let finArry: any = [];
+      // finArry.push(data);
+      // console.log("fin", finArry);
+      AddTravelDocumentData(data, AddTravelDocumentDataCB);
     }
   };
 

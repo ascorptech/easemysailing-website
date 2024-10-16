@@ -109,11 +109,11 @@ const PreSeaTrainigDetails = ({
   //     setSelectedFile(event.target.files[0]);
   //   };
 
-  const totalFields = 30;
+  const totalFields = 29;
   const filledFields = [
     permanect,
     issuedate,
-    exdate,
+    exdate || neverExpires,
     selectedFile,
     trainingCenter,
     salary,
@@ -140,7 +140,7 @@ const PreSeaTrainigDetails = ({
     maxTimeonBoard,
     timeonBoard,
     currency,
-    neverExpires,
+    
   ].filter(Boolean).length;
 
   // const totalFields = available === "Yes" ? 6 : 5;
@@ -558,6 +558,7 @@ const PreSeaTrainigDetails = ({
               placeholder="Enter Issue Date"
             />
           </div>
+          {!neverExpires && (
           <div>
             <label
               className="text-[14px] leading-[19.07px]  text-[#333333]  "
@@ -577,8 +578,9 @@ const PreSeaTrainigDetails = ({
             />
             {/* </div> */}
           </div>
+          )}
 
-          <div className=" flex gap-2 items-center">
+          <div className=" flex gap-2 items-center mt-5">
             <div>
             <input
               id="neverExpires01"

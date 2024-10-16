@@ -139,6 +139,7 @@ const MyJobRequirements = ({
       id: userDetail?.userId,
       currentPosition: currentPosition,
       alternatePosition: alternatePosition,
+      primaryRankChoice:primaryRank,
       preferredVesselType: preferredVesselType,
       alternateVesselType: alternateVesselType,
       notAvailable: available == "yes" ? "true" : "false",

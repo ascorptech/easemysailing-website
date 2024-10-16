@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import CircularProgress from "../CircularProgress";
+import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import {
   AddLanguageData,
   GetDropdownDetails,
@@ -13,12 +13,17 @@ type LanguageComplete = {
   percentage: number;
   color: string;
 };
+type AdditionalLanguage = {
+  addiLanguage: any;
+  languageLavel: any;
+};
+
 type Props = {
   languageComplete: LanguageComplete;
   setLanguageComplete: React.Dispatch<React.SetStateAction<LanguageComplete>>;
   userDetail: any;
-  languageDetail:any;
-  criminal:any
+  languageDetail: any;
+  criminal: any;
 };
 
 const Languages = ({
@@ -26,12 +31,16 @@ const Languages = ({
   setLanguageComplete,
   userDetail,
   languageDetail,
-  criminal
+  criminal,
 }: Props) => {
   // State for form fields
+  const [additionalLanguageForms, setAdditionalLanguageForms] = useState<
+    AdditionalLanguage[]
+  >([{ addiLanguage: "", languageLavel: "" }]);
+
   const [language1, setLanguage1] = useState("");
-  const [addiLanguage, setAddiLanguage] = useState("");
-  const [languageLavel, setLanguageLavel] = useState("");
+  // const [addiLanguage, setAddiLanguage] = useState("");
+  // const [languageLavel, setLanguageLavel] = useState("");
   const [englishLavel, setEnglishLavel] = useState("");
   const [languageTests, setLanguageTests] = useState("");
   const [languageLevelDrop, setLanguageLevelDrop] = useState<any>([]);
@@ -46,24 +55,24 @@ const Languages = ({
   const [disabled, setDisabled] = useState(true);
 
   const [selectedFile, setSelectedFile] = useState<any>(null);
-  const [color,setColor]=useState('')
+  const [color, setColor] = useState("");
   const [isHideShow, setIsHideShow] = useState(false);
 
   useEffect(() => {
     if (languageDetail) {
-     console.log('lan',languageDetail)
-     setLanguage1(languageDetail.nativeLanguage);
-     setAddiLanguage(languageDetail.additionalLanguage);
-     setLanguageLavel(languageDetail.additionalLanguageLevel);
-     setEnglishLavel(languageDetail.englishLevel);
-     setLanguageTests(languageDetail.testLanguage);
-     setTypeofTest(languageDetail.testType);
-     setResult(languageDetail?.testResult)
-     setTestCenter(languageDetail?.testCenter)
-     setIssuingCountry(languageDetail?.issuingCountry)
-     setDateofTest(moment(languageDetail?.dateOfTest).format('YYYY-MM-DD'))
-      }
-  }, [])
+      console.log("lan", languageDetail);
+      setLanguage1(languageDetail.nativeLanguage);
+      // setAddiLanguage(languageDetail.additionalLanguage);
+      // setLanguageLavel(languageDetail.additionalLanguageLevel);
+      setEnglishLavel(languageDetail.englishLevel);
+      setLanguageTests(languageDetail.testLanguage);
+      setTypeofTest(languageDetail.testType);
+      setResult(languageDetail?.testResult);
+      setTestCenter(languageDetail?.testCenter);
+      setIssuingCountry(languageDetail?.issuingCountry);
+      setDateofTest(moment(languageDetail?.dateOfTest).format("YYYY-MM-DD"));
+    }
+  }, []);
 
   useEffect(() => {
     GetDropdownDetails("additionallanguagelevel", (res: any) => {
@@ -79,11 +88,13 @@ const Languages = ({
     });
   }, []);
 
-  const totalFields = 11;
+  const totalFields = 9 + additionalLanguageForms.length *2 ;
   const filledFields = [
+    ...additionalLanguageForms.flatMap((field)=>[
+      field.addiLanguage,
+      field.languageLavel
+    ]),
     language1,
-    addiLanguage,
-    languageLavel,
     englishLavel,
     languageTests,
     testCenter,
@@ -95,9 +106,10 @@ const Languages = ({
   ].filter(Boolean).length;
 
   // const percentage = (filledFields / totalFields) * 100;
-  const percentage:any = totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
+  const percentage: any =
+    totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
   // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
-  
+
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
@@ -129,14 +141,14 @@ const Languages = ({
     e.preventDefault();
     if (!criminal) {
       toast.error("Please accept the declaration");
-      return; 
+      return;
     } else {
-    let formData = new FormData();
+      let formData = new FormData();
 
-    // {
+      // {
       formData.append("nativeLanguage", language1);
-      formData.append("additionalLanguage", addiLanguage);
-      formData.append("additionalLanguageLevel", languageLavel);
+      // formData.append("additionalLanguage", addiLanguage);
+      // formData.append("additionalLanguageLevel", languageLavel);
       formData.append("englishLevel", englishLavel);
       formData.append("testLanguage", languageTests);
       formData.append("testCenter", testCenter);
@@ -145,12 +157,12 @@ const Languages = ({
       formData.append("issuingCountry", issuingCountry);
       formData.append("dateOfTest", dateofTest);
       selectedFile && formData.append("document", selectedFile);
-      formData.append('color',color);
-      formData.append('completed',percentage);
-    // }
-    AddLanguageData(userDetail?.userId, formData, AddLanguagedataDB);
+      formData.append("color", color);
+      formData.append("completed", percentage);
+      // }
+      AddLanguageData(userDetail?.userId, formData, AddLanguagedataDB);
+    }
   };
-}
 
   const AddLanguagedataDB = (result: any) => {
     console.log(result);
@@ -163,6 +175,33 @@ const Languages = ({
       toast.error("Language detail not submited ");
     }
   };
+
+  const handleAdditionalLanguage = (
+    index:number,
+    field:keyof AdditionalLanguage,
+    value:any
+  )=> {
+    const updatedForms = [...additionalLanguageForms];
+    updatedForms[index][field] = value;
+    setAdditionalLanguageForms(updatedForms);
+  }
+  const addFieldAddi = () => {
+    setAdditionalLanguageForms([
+      ...additionalLanguageForms,
+      {
+       addiLanguage:"",
+       languageLavel:""
+      },
+    ]);
+  };
+  const removeFieldAddi = (index: number) => {
+    const updatedForms = additionalLanguageForms.filter((_, i) => i !== index);
+    setAdditionalLanguageForms(updatedForms);
+  };
+
+
+
+
 
   const handleFileChange = (event: any) => {
     const file = event.target.files?.[0];
@@ -207,17 +246,33 @@ const Languages = ({
         </div>
 
         <div className="mb-3">
-          {" "}
+          <div className="flex justify-between items-center">
           <h1 className="font-bold  ">Additional Language </h1>
-          <div className="grid grid-cols-2 gap-4  ">
+          <div className="flex gap-2">
+                  <AiOutlinePlus
+                    className="text-2xl cursor-pointer"
+                    onClick={addFieldAddi}
+                  />
+                  {additionalLanguageForms.length > 1 && (
+                    <AiOutlineMinus
+                      className="text-2xl cursor-pointer"
+                      onClick={() =>
+                        removeFieldAddi(additionalLanguageForms.length - 1)
+                      }
+                    />
+                  )}
+                </div>
+          </div>
+          {additionalLanguageForms.map((field, index) =>
+          <div  className="grid grid-cols-2 gap-4  ">
             <div>
               <label className="text-[14px] leading-[19.07px]  text-[#333333]">
                 Language
               </label>
               <select
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                value={addiLanguage}
-                onChange={(e) => setAddiLanguage(e.target.value)}
+                value={field.addiLanguage}
+                onChange={(e) => handleAdditionalLanguage(index,"addiLanguage", e.target.value)}
                 disabled={disabled}
                 required
               >
@@ -240,8 +295,8 @@ const Languages = ({
               </label>
               <select
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                value={languageLavel}
-                onChange={(e) => setLanguageLavel(e.target.value)}
+                value={field.languageLavel}
+                onChange={(e) => handleAdditionalLanguage(index,"languageLavel",e.target.value)}
                 disabled={disabled}
                 required
               >
@@ -257,6 +312,7 @@ const Languages = ({
               </select>
             </div>
           </div>
+          )}
         </div>
 
         <div className="mb-3">
@@ -420,36 +476,36 @@ const Languages = ({
         </div>
 
         {/* Attachment Document */}
-       {isHideShow && (
-        <div className="flex gap-6 items-center  my-6 ">
-          <div>
-          <label
-            htmlFor="medicalfile-upload3"
-            className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px]   "
-          >
-            Attachment Document
-          </label>
-          <input
-            id="medicalfile-upload3"
-            type="file"
-            className="hidden"
-            onChange={handleFileChange}
-            disabled={disabled}
-          />
-          </div> <div>
-          {selectedFile ? (
-            <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-              File Selected: {selectedFile.name}
-            </p>
-          ) : (
-            <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-              No file selected
-            </p>
-          )}
+        {isHideShow && (
+          <div className="flex gap-6 items-center  my-6 ">
+            <div>
+              <label
+                htmlFor="medicalfile-upload3"
+                className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px]   "
+              >
+                Attachment Document
+              </label>
+              <input
+                id="medicalfile-upload3"
+                type="file"
+                className="hidden"
+                onChange={handleFileChange}
+                disabled={disabled}
+              />
+            </div>{" "}
+            <div>
+              {selectedFile ? (
+                <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                  File Selected: {selectedFile.name}
+                </p>
+              ) : (
+                <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                  No file selected
+                </p>
+              )}
+            </div>
           </div>
-        </div>
-        )} 
-
+        )}
 
         <div className="flex gap-2 mb-4 mt-4">
           <button

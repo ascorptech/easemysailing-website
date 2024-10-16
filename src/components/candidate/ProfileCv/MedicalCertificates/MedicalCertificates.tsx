@@ -131,7 +131,6 @@ const MedicalCertificates = ({
       field.selectedFilesOthers,
       field.vaccination1,
       field.vaccinationexp || field.veccinationCheck,
-      ,
     ]),
     number,
     issuedate,

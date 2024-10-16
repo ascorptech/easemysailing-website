@@ -40,9 +40,7 @@ const StcwTraining = ({
   criminal,
   sTCWDetail,
 }: Props) => {
-  const [extraFields, setExtraFields] = useState<
-    { field1: string; field2: string }[]
-  >([]);
+
 
   const [stcwTraining, setStcwTraining] = useState<StcwTrainingForm[]>([
     {

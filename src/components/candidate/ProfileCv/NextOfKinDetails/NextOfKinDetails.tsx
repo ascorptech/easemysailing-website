@@ -262,6 +262,24 @@ const NextOfKinDetails = ({
                 disabled={disabled}
               />
               {/* </div> */}
+              {/* <div className=" flex items-center gap-2 mt-5 ">
+                  <input
+                    id={`neverExpires_${index}`}
+                    type="checkbox"
+                    className="border focus:ring-[#00A264]  text-[#00A264] checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
+                    checked={field.neverExpires}
+                    onChange={(e) =>
+                      handleFormChange(index, "neverExpires", e.target.checked)
+                    }
+                    disabled={disabled}
+                  />
+                  <label
+                    className="text-[14px] leading-[19.07px]  text-[#333333]"
+                    htmlFor={`neverExpires_${index}`}
+                  >
+                    Never Expires
+                  </label>
+                </div> */}
             </div>
           </div>
         </div>

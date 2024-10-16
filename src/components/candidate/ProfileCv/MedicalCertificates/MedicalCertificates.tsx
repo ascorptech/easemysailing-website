@@ -337,7 +337,7 @@ const MedicalCertificates = ({
       setSelectedFiles(medicalDetail.drugTestDocumentUrl);
       setSelectedFilesCovid(medicalDetail.covidVaccineDocumentUrl1);
     }
-  })
+  },[])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

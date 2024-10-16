@@ -241,8 +241,7 @@ const ProfessionalSkills = ({
     formData.append("tradingArea", tradingArea);
     formData.append('metalWorkingDocumentUrl',selectedFile);
     formData.append('color',color);
-
-    console.log(formData)
+    formData.append('completed',percentage)
   AddProfessionalSkillData(userDetail?.userId,cAvailable, classApproved,formData, AddProfessionalSkillDataCB)
   
 

@@ -9,6 +9,7 @@ import moment from "moment";
 
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { countryCodeDrop } from "@/constants/constants";
 
 type RefrencesComplete = {
   percentage: number;
@@ -47,7 +48,7 @@ const Refrences = ({
   // const [countryCode, setCountryCode] = useState("");
   // const [country, setCountry] = useState("");
 
-  const [countryCode1, setCountryCode1] = useState("");
+  const [countryCode1, setCountryCode1] = useState("+91");
   // const [ document2, setDocument2] = useState("");
   const [selectedFile, setSelectedFile] = useState<any>(null);
   const [selectedFile1, setSelectedFile1] = useState<any>(null);
@@ -56,7 +57,7 @@ const Refrences = ({
 
   const [issueDate1, setIssueDate1] = useState("");
   const [countryDrop, setCountryDrop] = useState<any>([]);
-  const [countryCodeDrop, setCountryCodeDrop] = useState<any>([]);
+  // const [countryCodeDrop, setCountryCodeDrop] = useState<any>([]);
   const [isHideShow, setIsHideShow] = useState(false);
   const [color, setColor] = useState("");
 
@@ -65,10 +66,10 @@ const Refrences = ({
       // console.log('County',res?.data)
       setCountryDrop(res?.data?.values);
     });
-    GetDropdownDetails("countryCode", (res: any) => {
-      // console.log('County',res?.data)
-      setCountryCodeDrop(res?.data?.values);
-    });
+    // GetDropdownDetails("countryCode", (res: any) => {
+    //   // console.log('County',res?.data)
+    //   setCountryCodeDrop(res?.data?.values);
+    // });
   }, []);
 
   const totalFields = 14;
@@ -476,12 +477,12 @@ const Refrences = ({
                   disabled={disabled}
                 >
                   <option value="" disabled>
-                    Select
+                    SELECT
                   </option>
                   {countryCodeDrop &&
                     countryCodeDrop?.map((code: any, index: number) => (
-                      <option key={index} value={code}>
-                        {code?.toUpperCase()}
+                      <option key={index} value={code?.phoneCode}>
+                        {code?.flag +''+ code?.phoneCode}
                       </option>
                     ))}
                 </select>

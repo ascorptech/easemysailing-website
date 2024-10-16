@@ -296,7 +296,7 @@ export const GetProfessionalSkillData = async (id: any, cb: any) => {
 export const AddReferencesData = async (userId: any, consentGiven: any, data: any, cb: any) => {
     try {
         console.log('Data to be submitted:', data);
-        let url = `${POSTREFERENCE}/${userId}/${consentGiven}`
+        let url = `${POSTREFERENCE}?id=${userId}&consentGiven=${consentGiven}`
         const response = await postReq(url, data)
         console.log('API response:', response);
         return cb(response)
@@ -541,7 +541,7 @@ export const GetAcademicData = async (id: any, cb: any) => {
 
 //shor job
 
-export const AddShoreJobData = async (userId: any, data: any, cb: any) => {
+export const AddShoreJobData = async (data: any, cb: any) => {
     try {
         console.log('Data to be submitted:', data);
         const response = await postReq(POSTSHOREJOB, data)

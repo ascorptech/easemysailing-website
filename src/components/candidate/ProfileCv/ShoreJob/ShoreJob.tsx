@@ -1,4 +1,5 @@
 "use client";
+import { AddShoreJobData, GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Select from "react-select";
@@ -33,7 +34,7 @@ const ShorJob = ({
 
 
   // Adding 10 options for the multi-select dropdown
-  const [countryDrop, setCountryDrop] = useState<any>([
+  const [jobDrop, setJobDrop] = useState<any>([
     { label: "Option 1", value: "1" },
     { label: "Option 2", value: "2" },
     { label: "Option 3", value: "3" },
@@ -46,14 +47,43 @@ const ShorJob = ({
     { label: "Option 10", value: "10" },
   ]);
 
+  useEffect(() => {
+
+    GetDropdownDetails("shorejobinterest", (res: any) => {
+      // console.log('County',res?.data)
+      
+      
+      let tempArray = res?.data?.values.map((element: any) => ({ label: element?.toUpperCase(), value: element }));
+      setJobDrop(tempArray);
+    });
+  }, []);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!criminal) {
       toast.error("Please accept the declaration");
       return; 
     } else {
+      let data ={
+        "id": userDetail?.userId,
+        "interested": areYouIntrested=='Yes'?true:false,
+        "color": color,
+        "completed": percentage?.toString(),
+        "jobOptions": [JSON.stringify(multipleSelection)]
+      }
+      AddShoreJobData(data,(result:any)=>{
+        if (result?.status == 200|| result?.status==201) {
+          toast.success("Shore Job submited successfully");
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);
+        } else {
+          toast.error("Shore Job not submited ");
+        }
+      })
     }
   };
+  
 
   const totalFields = 1;
   const filledFields = [areYouIntrested].filter(Boolean).length;
@@ -127,7 +157,7 @@ const ShorJob = ({
             <div className="mt-6">
               <Select
                 isMulti
-                options={countryDrop}
+                options={jobDrop}
                 value={multipleSelection}
                 onChange={handleMultiSelectChange}
                 isDisabled={disabled}

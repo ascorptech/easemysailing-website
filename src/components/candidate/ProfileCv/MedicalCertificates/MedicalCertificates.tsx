@@ -26,7 +26,7 @@ type Props = {
   setMedicalComplete: React.Dispatch<React.SetStateAction<MedicalComplete>>;
   userDetail: any;
   criminal: any;
-  medicalDetail:any
+  medicalDetail: any;
 };
 
 const MedicalCertificates = ({
@@ -34,7 +34,7 @@ const MedicalCertificates = ({
   setMedicalComplete,
   userDetail,
   criminal,
-  medicalDetail
+  medicalDetail,
 }: Props) => {
   const [otherVaccinationForms, setOtherVaccinationForms] = useState<
     OtherVaccination[]
@@ -128,7 +128,7 @@ const MedicalCertificates = ({
     });
   }, []);
 
-  const totalFields = 26 + otherVaccinationForms.length * 5;
+  const totalFields = 26 + otherVaccinationForms.length *4 ;
   const filledFields = [
     ...otherVaccinationForms.flatMap((field) => [
       field.medicalType1,
@@ -178,7 +178,6 @@ const MedicalCertificates = ({
         color: "#FF0000",
       }));
       setColor("#FF0000");
-
     } else if (percentage <= 70) {
       setMedicalComplete((prevState) => ({
         ...prevState,
@@ -198,16 +197,29 @@ const MedicalCertificates = ({
 
   const handleFileChange = (event: any) => {
     const file = event.target.files?.[0];
-    if (file) {
-      setSelectedFile(file);
-    }
+    if(file){
+      // setSelectedFile (file)
+    const reader = new FileReader();
+    reader.onloadend = function () {
+      const imageBinary: any = reader.result;
+      const byteArray = imageBinary.split(",")[1];
+      setSelectedFile(byteArray);
+    };
+    reader.readAsDataURL(file);
+  }
   };
 
   const handleFileChanges = (event: any) => {
     const file = event.target.files?.[0];
-    if (file) {
-      setSelectedFiles(file);
-    }
+  
+    const reader = new FileReader();
+    reader.onloadend = function () {
+      const imageBinary: any = reader.result;
+      const byteArray = imageBinary.split(",")[1];
+      setSelectedFiles(byteArray);
+    };
+    reader.readAsDataURL(file);
+   
   };
 
   // const handleFileChangesOthers = (event: any) => {
@@ -265,21 +277,30 @@ const MedicalCertificates = ({
 
   const handleFileChangesCovid = (event: any) => {
     const file = event.target.files?.[0];
-    if (file) {
-      setSelectedFilesCovid(file);
-    }
+  
+      const reader = new FileReader();
+      reader.onloadend = function () {
+        const imageBinary: any = reader.result;
+        const byteArray = imageBinary.split(",")[1];
+        setSelectedFilesCovid(byteArray);
+      };
+      reader.readAsDataURL(file);
+
+     
+   
   };
   const handleFileChangesFlag = (event: any) => {
     const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = function () {
+        const imageBinary: any = reader.result;
+        const byteArray = imageBinary.split(",")[1];
+        setSelectedFilesFlag(byteArray);
+      };
 
-    const reader = new FileReader();
-    reader.onloadend = function () {
-      const imageBinary: any = reader.result;
-    };
-    // if (file) {
-    //   setSelectedFilesFlag(file);
-    // }
-    reader.readAsDataURL(file);
+      reader.readAsDataURL(file);
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -342,7 +363,7 @@ const MedicalCertificates = ({
       // AddMedicalData(userDetail?.userId, formData, AddmedicalDataDB);
 
       let data: any = {
-        userId: userDetail?.userId,
+        id: userDetail?.userId,
         fitnessType: types2Options,
         fitnessNumber: number,
         fitnessIssuingCountry: issuingOptions,
@@ -351,7 +372,7 @@ const MedicalCertificates = ({
         fitnessIssueDate: issuedate,
         fitnessExpiryDate: exdate,
         // formData.append("fitnessNeverExpires", expires1);
-        fitnessDocument: selectedFile,
+        fitnessDocumentUrl: selectedFile,
 
         drugTestType: typeOptions,
         drugTestNumber: medicalNumber,
@@ -361,7 +382,7 @@ const MedicalCertificates = ({
         drugTestIssueDate: issuedate1,
         drugTestExpiryDate: exdate1,
         // formData.append("drugTestNeverExpires", expires2);
-        drugTestDocument: selectedFiles,
+        drugTestDocumentUrl: selectedFiles,
 
         covidVaccineType: medicalType,
         covidVaccineCountry: covidOptions,
@@ -370,7 +391,7 @@ const MedicalCertificates = ({
         // formData.append("covidVaccineExpiryDate1", vaccinationExpiry);
         // missing covid19 expiry data
         // formData.append("covidVaccineNeverExpires1", expiresMedical);
-        covidVaccineDocument1: selectedFilesCovid,
+        covidVaccineDocumentUrl1: selectedFilesCovid,
 
         covidVaccineDate2: issuedateCovid,
         // formData.append("covidVaccineExpiryDate2", exdateCovid);
@@ -384,7 +405,7 @@ const MedicalCertificates = ({
         flagMedicalVaccinationDate: vaccinationFlag,
         flagMedicalExpiryDate: vaccinationexpFlag,
         // formData.append("flagMedicalNeverExpires", veccinationCheckFlag);
-        flagMedicalDocument: selectedFilesFlag,
+        flagMedicalDocumentUrl: selectedFilesFlag,
         color: color,
         completed: percentage,
       };
@@ -394,10 +415,10 @@ const MedicalCertificates = ({
           otherVaccinationType: element?.medicalType1,
           otherVaccinationDate: element?.vaccination1,
           otherVaccinationExpiryDate: element?.vaccinationexp,
-          otherVaccinationDocument: element.selectedFilesOthers,
+          otherVaccinationDocumentUrl: element.selectedFilesOthers,
         });
       });
-      data.otherData = otherArray;
+      data.otherVaccinations = otherArray;
 
       let finArry: any = [];
       finArry.push(data);

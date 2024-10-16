@@ -138,7 +138,7 @@ const Languages = ({
       setSelectedFile(languageDetail?.documentUrl)
     //  let combineLng =  languageDetail?.additionalLanguages.map((lang:any,index:any) => {
     //     addiLanguage:lang?.additionalLanguage,
-    //     languageLavel: lang?.additionalLanguageLevel
+    //     languageLavel: lang?.aadditionalLevels
     //   });
 
     

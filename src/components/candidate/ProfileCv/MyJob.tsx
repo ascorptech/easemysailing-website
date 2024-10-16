@@ -226,6 +226,12 @@ const MyJob = () => {
           "aboutMe",
           res?.data?.personalityAndProfessionalAttitude
         );
+        if (res?.data?.employmentDeclaration=='true') {
+          setCriminal(true)
+        }
+        else{
+          setCriminal(false)
+        }
       } else {
         toast.error("No data found");
       }

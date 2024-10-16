@@ -193,7 +193,7 @@ export const AddLanguageData = async (data: any, cb: any) => {
     try {
         console.log('Data to be submitted:', data);
         // let url = `${POSTLANGUAGE}/${userId}`
-        const response = await patchReq(POSTLANGUAGE, data)
+        const response = await postReq(POSTLANGUAGE, data)
         console.log('API response:', response);
         return cb(response)
     } catch (error: any) {

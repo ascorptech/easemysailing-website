@@ -135,16 +135,22 @@ const Languages = ({
       setTestCenter(languageDetail?.testCenter);
       setIssuingCountry(languageDetail?.issuingCountry);
       setDateofTest(moment(languageDetail?.dateOfTest).format("YYYY-MM-DD"));
+      setSelectedFile(languageDetail?.documentUrl)
+    //  let combineLng =  languageDetail?.additionalLanguages.map((lang:any,index:any) => {
+    //     addiLanguage:lang?.additionalLanguage,
+    //     languageLavel: lang?.additionalLanguageLevel
+    //   });
+
     
-    const additionalLanguages = languageDetail.additionalLanguage || [];
-    const additionalLevels = languageDetail.additionalLanguageLevel || [];
-    const combinedLanguages = additionalLanguages.map((language:any, index:any) => ({
-      addiLanguage: language,
-      languageLavel: additionalLevels[index] || "",
-    }));
+    // const additionalLanguages = languageDetail.additionalLanguage || [];
+    // const additionalLevels = languageDetail.additionalLanguageLevel || [];
+    // const combinedLanguages = additionalLanguages.map((language:any, index:any) => ({
+    //   addiLanguage: language,
+    //   languageLavel: additionalLevels[index] || "",
+    // }));
 
     // Set additional languages into state
-     setAdditionalLanguageForms(combinedLanguages);
+    //  setAdditionalLanguageForms(combinedLanguages);
   }
 }, [languageDetail]);
     // const addiArray:any = [];
@@ -161,7 +167,7 @@ const Languages = ({
       return;
     } else {
       let data: any = {
-        userId: userDetail?.userId,
+        id: userDetail?.userId,
         nativeLanguage: language1,
         englishLevel: englishLavel,
         testLanguage: languageTests,
@@ -170,7 +176,7 @@ const Languages = ({
         testResult: result,
         issuingCountry: issuingCountry,
         dateOfTest: dateofTest,
-        drugTestDocument: selectedFile,
+        documentUrl: selectedFile,
         color: color,
         completed: percentage,
       };
@@ -181,11 +187,12 @@ const Languages = ({
           additionalLanguageLevel: element?.languageLavel,
         });
       });
-      data.additionalData = addiArray;
+      data.additionalLanguages = addiArray;
 
-      let finArry: any = [];
-      finArry.push(data);
-      AddLanguageData(finArry, AddLanguagedataDB);
+      // let finArry: any = [];
+      // finArry.push(data);
+      console.log('data',data)
+      AddLanguageData(data, AddLanguagedataDB);
 
       // {
       // formData.append("nativeLanguage", language1);
@@ -244,7 +251,19 @@ const Languages = ({
   const handleFileChange = (event: any) => {
     const file = event.target.files?.[0];
     if (file) {
-      setSelectedFile(file);
+      const reader = new FileReader();
+        
+    reader.onloadend = function() {
+        const imageBinary:any = reader.result; // this will be a base64 encoded string
+        const byteArray = imageBinary.split(',')[1]; // get only the binary data part
+        
+      //     const updatedForms:any = [...licensesForms];
+      // updatedForms[index].selectedFile = byteArray;
+      setSelectedFile(byteArray);
+    };
+    
+    reader.readAsDataURL(file);
+      // setSelectedFile(file);
     }
   };
 

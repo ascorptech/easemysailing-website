@@ -829,7 +829,7 @@ const MedicalCertificates = ({
                     htmlFor="file-uploadmedical"
                     className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2  text-[14px] leading-[19.07px]   "
                   >
-                    Attachment Docoment
+                    Attachment Document
                   </label>
                   <input
                     id="file-uploadmedical"
@@ -1025,7 +1025,7 @@ const MedicalCertificates = ({
                     htmlFor="file-uploadmedicalvaccine"
                     className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2  text-[14px] leading-[19.07px]  "
                   >
-                    Attachment Docoment
+                    Attachment Document
                   </label>
                   <input
                     id="file-uploadmedicalvaccine"
@@ -1183,7 +1183,7 @@ const MedicalCertificates = ({
                       htmlFor={`file-uploadmedicalvaccine_${index}`}
                       className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2  text-[14px] leading-[19.07px]  "
                     >
-                      Attachment Docoment
+                      Attachment Document
                     </label>
                     <input
                       id={`file-uploadmedicalvaccine_${index}`}
@@ -1302,7 +1302,7 @@ const MedicalCertificates = ({
                       htmlFor={`file-uploadmedicalvaccine_${index}`}
                       className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2  text-[14px] leading-[19.07px]  "
                     >
-                      Attachment Docoment
+                      Attachment Document
                     </label>
                     <input
                       id={`file-uploadmedicalvaccine_${index}`}
@@ -1435,7 +1435,7 @@ const MedicalCertificates = ({
                     htmlFor="file-uploadmedicalvaccineflag"
                     className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2  text-[14px] leading-[19.07px]  "
                   >
-                    Attachment Docoment
+                    Attachment Document
                   </label>
                   <input
                     id="file-uploadmedicalvaccineflag"

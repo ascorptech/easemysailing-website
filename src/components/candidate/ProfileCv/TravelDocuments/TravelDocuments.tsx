@@ -891,7 +891,7 @@ const TravelDocuments = ({
                     htmlFor="file-uploadpermit"
                     className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] text-[14px] leading-[19.07px]   focus:outline-none focus:ring-2  "
                   >
-                    Attachment Docoment
+                    Attachment Document
                   </label>
                   <input
                     id="file-uploadpermit"

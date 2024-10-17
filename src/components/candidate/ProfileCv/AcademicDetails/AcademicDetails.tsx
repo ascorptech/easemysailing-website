@@ -465,6 +465,7 @@
 
 "use client";
 import { AddAcademicData, GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import moment from "moment";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
@@ -549,6 +550,28 @@ const AcademicDetails = ({
       form.selectedFile,
     ]),
   ].filter(Boolean).length;
+
+  useEffect(() => {
+    if (academicDetail) {
+      
+      let combineLng = academicDetail?.educations.map((lang: any) => ({
+        university: lang?.schoolCollegeUniversity,
+        subject: lang?.subject,
+        issuingCountry: lang?.country,
+        city: lang?.city,
+      }));
+      setEducationForms(combineLng)
+      let combineLng1 = academicDetail?.qualifications.map((lang: any) => ({
+        degree: lang?.degree,
+        percentage: lang?.percentage,
+        startdate: moment(lang?.startDate).format('YYYY-MM-DD'),
+        enddate: moment(lang?.endDate).format('YYYY-MM-DD'),
+        selectedFile: lang?.documentUrl,
+      }));
+      setAcademicForms(combineLng1)
+
+  }
+}, [academicDetail]);
 
   const percentage:any = totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
   // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;

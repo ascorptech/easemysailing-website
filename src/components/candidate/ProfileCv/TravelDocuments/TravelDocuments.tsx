@@ -9,6 +9,7 @@ import {
 } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import { toast } from "react-toastify";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import moment from "moment";
 
 type TravelDocumentsVisaForms = {
   issueAuthority: string;
@@ -236,28 +237,34 @@ const TravelDocuments = ({
   useEffect(() => {
     console.log("travelDoc", travelDocumentsDetails);
     if (travelDocumentsDetails) {
+      setIssuingAuthority(travelDocumentsDetails?.passportIssuingCountry);
       setNumber(travelDocumentsDetails?.passportNumber);
-      setIssueDate(travelDocumentsDetails?.passportIssueDate);
-      setExDate(travelDocumentsDetails?.passportExpiryDate);
+      setIssueDate(moment(travelDocumentsDetails?.passportIssueDate).format('YYYY-MM-DD'));
+      setExDate(moment(travelDocumentsDetails?.passportExpiryDate).format('YYYY-MM-DD'));
+      setBiometric(travelDocumentsDetails?.passportBiometric=='true'?'Yes':'No');
+      setSelectedFile(travelDocumentsDetails?.passportDocumentUrl)
 
+
+
+
+      
       setIssuingCountry(travelDocumentsDetails?.residencePermitIssuingCountry);
 
       setIssueDate2(travelDocumentsDetails?.residencePermitIssueDate);
 
       setExpDate2(travelDocumentsDetails?.passportIssueDate);
 
-      setSelectedFile(travelDocumentsDetails?.passportIssueDate);
 
       setSelectedFiles(travelDocumentsDetails?.passportIssueDate);
       setSelectedFileResidence(travelDocumentsDetails?.passportIssueDate);
 
-      setTrainingCenter(travelDocumentsDetails?.passportIssueDate);
-      setIssueDate1(travelDocumentsDetails?.passportIssueDate);
-      setExDate1(travelDocumentsDetails?.passportIssueDate);
+      setTrainingCenter(travelDocumentsDetails?.seamansBookNumber);
+      setIssueDate1(moment(travelDocumentsDetails?.seamansBookIssueDate).format('YYYY-MM-DD'));
+      setExDate1(moment(travelDocumentsDetails?.seamansBookExpiryDate).format('YYYY-MM-DD'));
       setPermitNumber(travelDocumentsDetails?.passportIssueDate);
-      setIssuingAuthority(travelDocumentsDetails?.passportIssueDate);
-      setBiometric(travelDocumentsDetails?.passportIssueDate);
-      setFlagState(travelDocumentsDetails?.passportIssueDate);
+      
+      
+      
       setIndNumber(travelDocumentsDetails?.passportIssueDate);
     }
   }, []);
@@ -289,7 +296,7 @@ const TravelDocuments = ({
         residencePermitExpiryDate: expDate2,
         passportDocumentUrl: selectedFile,
         seamansBookDocumentUrl: selectedFiles,
-
+        passportBiometric:biometric=='Yes'?true:false,
         residencePermitDocumentUrl: selectedFileResidence,
         color:color,
         completed:percentage
@@ -364,7 +371,7 @@ const TravelDocuments = ({
               required
             >
               <option value="" disabled selected>
-                Select
+                SELECT
               </option>
               {countryDrop &&
                 countryDrop?.map((country: any, index: number) => (
@@ -522,7 +529,7 @@ const TravelDocuments = ({
               required
             >
               <option value="" disabled selected>
-                Select
+                SELECT
               </option>
               {countryDrop &&
                 countryDrop?.map((country: any, index: number) => (

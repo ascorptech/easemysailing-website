@@ -7,6 +7,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
+import moment from "moment";
 
 type OtherVaccination = {
   medicalType1: any;
@@ -115,11 +116,9 @@ const MedicalCertificates = ({
       setDrugDrop(res?.data?.values);
     });
     GetDropdownDetails("COVID-19VACCINETYPE", (res: any) => {
-      console.log("vac", res?.data);
       setVaccineTypeDrop(res?.data?.values);
     });
     GetDropdownDetails("OTHERVACCINATIONTYPE", (res: any) => {
-      console.log("vac", res?.data);
       setOtherVaccineTypeDrop(res?.data?.values);
     });
     GetDropdownDetails("country", (res: any) => {
@@ -309,29 +308,36 @@ const MedicalCertificates = ({
       setNumber(medicalDetail.fitnessNumber);
       setIssuingOptions(medicalDetail.fitnessIssuingCountry);
       setIssuingCity(medicalDetail.fitnessIssuingCity);
-      setIssueDate(medicalDetail.fitnessIssueDate);
-      setExDate(medicalDetail.fitnessExpiryDate);
+      setIssueDate(moment(medicalDetail.fitnessIssueDate).format('YYYY-MM-DD'));
+      setExDate(moment(medicalDetail.fitnessExpiryDate).format('YYYY-MM-DD'));
       setMedicalPhysician(medicalDetail.covidVaccineMedicalCenter);
       setFMedicalcenter(medicalDetail.fitnessMedicalCenter);
       setMedicalNumber(medicalDetail.drugTestNumber);
       setMedicalCenter(medicalDetail.drugTestIssuingCity);
       setTestCenter(medicalDetail.drugTestCenter);
-      setIssueDate1(medicalDetail.drugTestIssueDate);
-      setExDate1(medicalDetail.drugTestExpiryDate);
-      setIssueDateCovid(medicalDetail.covidVaccineDate2);
-      
+      setIssueDate1(moment(medicalDetail.drugTestIssueDate).format('YYYY-MM-DD'));
+      setExDate1(moment(medicalDetail.drugTestExpiryDate).format('YYYY-MM-DD'));
+      setIssueDateCovid(moment(medicalDetail.covidVaccineDate2).format('YYYY-MM-DD'));
+
+      let combineLng = medicalDetail?.otherVaccinations.map((lang: any) => ({
+        medicalType1: lang?.otherVaccinationType,
+        vaccination1: moment(lang?.otherVaccinationDate).format('YYYY-MM-DD'),
+        vaccinationexp: moment(lang?.otherVaccinationExpiryDate).format('YYYY-MM-DD'),
+        selectedFilesOthers: lang?.otherVaccinationDocumentUrl
+      }));
+      setOtherVaccinationForms(combineLng)
       // setExpires1(medicalDetail.nativeLanguage);
       // setExpires2(medicalDetail.nativeLanguage);
       
       setTypeOptions(medicalDetail.drugTestType);
       setIssuingCountryOpt(medicalDetail.drugTestIssuingCountry);
       setMedicalType(medicalDetail.covidVaccineType);
-      setVaccinationIssue(medicalDetail.covidVaccineDate1);
+      setVaccinationIssue(moment(medicalDetail.covidVaccineDate1).format('YYYY-MM-DD'));
       setCovidOptions(medicalDetail.covidVaccineCountry);
       // setVeccinationCheckFlag(medicalDetail.covidVaccineCountry);
       setMedicalTypeFlag(medicalDetail.flagMedicalType);
-      setVaccinationFlag(medicalDetail.flagMedicalVaccinationDate);
-      setVaccinationexpFlag(medicalDetail.flagMedicalExpiryDate);
+      setVaccinationFlag(moment(medicalDetail.flagMedicalVaccinationDate).format('YYYY-MM-DD'));
+      setVaccinationexpFlag(moment(medicalDetail.flagMedicalExpiryDate).format('YYYY-MM-DD'));
       setSelectedFilesFlag(medicalDetail.flagMedicalDocumentUrl);
       setSelectedFile(medicalDetail.fitnessDocumentUrl);
       setSelectedFiles(medicalDetail.drugTestDocumentUrl);

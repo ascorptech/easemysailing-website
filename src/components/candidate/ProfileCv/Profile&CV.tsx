@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { RiArrowDownSLine } from "react-icons/ri";
 import { X } from "lucide-react";
 import { FaStar } from "react-icons/fa";
-import { GetProfileDetail } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import { AddProfileData, GetProfileDetail } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import { toast } from "react-toastify";
 import { IoIosCloseCircle } from "react-icons/io";
 
@@ -29,6 +29,7 @@ const ProfileCV = () => {
     "/images/avatar-place.jpg"
   );
   const [fileName, setFileName] = useState("");
+  const [file, setFile] = useState("");
   const [progress, setProgress] = useState(0);
   const [uploading, setUploading] = useState(false);
   const [showEditImagePopup, setShowEditImagePopup] = useState(false);
@@ -59,6 +60,7 @@ const ProfileCV = () => {
         setProfileDetail(res?.data);
         setRank(rnk)
         setAboutMe(abtMe)
+        setProfileImage(`data:image/png;image/jpg;image/jpeg;base64,${res?.data?.imageUrl}`)
       } else {
         toast.error("No data found");
       }
@@ -92,7 +94,8 @@ const ProfileCV = () => {
   };
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0];
+      const file:any = e.target.files[0];
+      setFile(file); 
       setFileName(file.name); 
 
      
@@ -140,7 +143,19 @@ const ProfileCV = () => {
     if (progress === 100 && filePreview) {
       setProfileImage(filePreview);
 
-      closeEditImagePopup();
+      let data = {
+        image:file
+      }
+      let formData = new FormData();
+      formData.append("image", data.image);
+      AddProfileData(profileDetail?.userId,formData, (result:any)=>{
+        if (result?.status == 200) {
+          toast.success("Profile Picture submited successfully");
+          closeEditImagePopup();
+        } else {
+          toast.error("Profile Picture not submited ");
+        }
+      });
     }
   };
 

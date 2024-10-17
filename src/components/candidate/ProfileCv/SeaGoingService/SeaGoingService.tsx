@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
+import moment from "moment";
 
 type SeaGoingServiceComplete = {
   percentage: number;
@@ -117,9 +118,9 @@ const SeaGoingService = ({
   useEffect(() => {
     console.log("seaGoing", seaGoingServiceDetail);
     if (seaGoingServiceDetail) {
-      setDisembarkationDate(seaGoingServiceDetail?.disembarkationDate);
+      setDisembarkationDate(moment(seaGoingServiceDetail?.disembarkationDate).format('YYYY-MM-DD'));
       setECDIS(seaGoingServiceDetail?.ecdis);
-      setEmbarkationDate(seaGoingServiceDetail?.embarkationDate);
+      setEmbarkationDate(moment(seaGoingServiceDetail?.embarkationDate).format('YYYY-MM-DD'));
       setEnginemake(seaGoingServiceDetail?.engineMake);
       setGearless(seaGoingServiceDetail?.gearless);
       setImo(seaGoingServiceDetail?.imoNumber);
@@ -129,7 +130,7 @@ const SeaGoingService = ({
       setTonnage(seaGoingServiceDetail?.tonnage);
       setVercelName(seaGoingServiceDetail?.vesselName);
     }
-  },[]);
+  },[seaGoingServiceDetail]);
 
   const handleSubmit = (e: React.FormEvent) => {
     // try {

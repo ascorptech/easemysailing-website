@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AddSeaDetailsData, GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import moment from "moment";
 
 type PreSeaTrainigComplete = {
   percentage: number;
@@ -181,6 +182,40 @@ const PreSeaTrainigDetails = ({
       setSelectedFile(file);
     }
   };
+
+  useEffect(() => {
+    console.log("seaGoing", offShoreDetail);
+    if (offShoreDetail) {
+      setPermanect(offShoreDetail?.permanentPerDay)
+      setCurrency(offShoreDetail?.currency)
+      setSalary(offShoreDetail?.salaryNegotiable?'Yes':'No')
+      setTimeonBoard(offShoreDetail?.minTimeOnBoardWeeks)
+      setMaxTimeonBoard(offShoreDetail?.maxTimeOnBoardWeeks)
+      setMinTimeonHome(offShoreDetail?.minTimeAtHomeWeeks)
+      setMaxTimeonHome(offShoreDetail?.maxTimeAtHomeWeeks)
+      setCertificate(offShoreDetail?.certificate)
+      setTrainingCenter(offShoreDetail?.trainingCenter)
+      setIssuingCountry(offShoreDetail?.issuingCountry)
+      setIssueDate(moment(offShoreDetail?.issueDate).format('YYYY-MM-DD'))
+      setNeverExpires(offShoreDetail?.neverExpires)
+      setSelectedFile(offShoreDetail?.documentUrl)
+      setNumber(offShoreDetail?.certificateNumber)
+      setPumpType(offShoreDetail?.pumpType)
+      setCrewManager(offShoreDetail?.crewManager)
+      setTechnicalManager(offShoreDetail?.technicalManager)
+      setOperator(offShoreDetail?.operator)
+      setCommercialSpecification(offShoreDetail?.vesselTypeCommercialSpecification)
+      setDesignSpecification(offShoreDetail?.vesselTypeDesignSpecification)
+      setDPHours(offShoreDetail?.dpHours)
+      setVesselType1(offShoreDetail?.rigMoveVesselType)
+      setRank(offShoreDetail?.rigMoveRank)
+      setNumberOfrig(offShoreDetail?.rigMoveNumber)
+      setMoveditem(offShoreDetail?.movedItem)
+      setWaterDepth(offShoreDetail?.waterDepth)
+      setTradingArea(offShoreDetail?.tradingArea)
+      setWinchDrive(offShoreDetail?.winchDriveExperience)
+    }
+  },[offShoreDetail]);
 
   const handleSubmit = (e: React.FormEvent) => {
     // try {

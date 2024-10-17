@@ -47,7 +47,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail, crimi
     })
   }, [])
 
-  const totalFields = 11;
+  const totalFields = 10;
   const filledFields = [
     firstName,
     middleName,

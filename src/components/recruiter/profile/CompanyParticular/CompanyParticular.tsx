@@ -29,25 +29,19 @@ const CompanyParticular = ({
   const [personPhone, setPersonPhone] = useState("");
   const [cmpSite, setCmpSite] = useState("");
   const [cmpTel, setCmpTel] = useState("");
-  const [address, setAddress] = useState("");
+  const [nearestAirport, setNearestAirport] = useState("");
   const [gstNum, setGstNum] = useState("");
-  // const [numOfUser, setNumOfUser] = useState("");
-  // const [numOfShip, setNumOfShip] = useState("");
-  // const [typeShip, setTypeShip] = useState("");
-  // const [shipType, setShipType] = useState("");
-  // const [crewNational, setCrewNational] = useState("");
-  // const [crewMatrix, setCrewMatrix] = useState("");
-  // const [crewWelfare, setCrewWelfare] = useState("");
-  // const [cmpAdd, setCpmAdd] = useState<any>(null);
-  // const [licence, setLicence] = useState("");
-  // const [isoCerti, setIsoCerti] = useState<any>(null);
-  // const [bankName, setBankName] = useState("");
-  // const [acNumber, setAcNumber] = useState("");
-  // const [acType, setAcType] = useState("");
-  // const [iFSC, setIfsc] = useState("");
-  // const [swiftCode, setSwiftCode] = useState("");
+
   const [rCountrycode, setRCountrycode] = useState("+91");
   const [mCountrycode, setMCountrycode] = useState("+91");
+  const [postalCode, setPostalCode] = useState("");
+  const [cityName, setCityName] = useState("");
+  const [country1, setCountry1] = useState("");
+  const [addInfo, setAddInfo] = useState("");
+  const [number, setNumber] = useState("");
+  const [address, setAddress] = useState("");
+  const [state, setState] = useState("");
+
   // const [countryCodeDrop, setCountryCodeDrop] = useState<any>([]);
 
   // const [mCountryTel, setMCountryTel] = useState("+91");
@@ -86,7 +80,7 @@ const CompanyParticular = ({
   //     setSelectedFile(event.target.files[0]);
   //   };
 
-  const totalFields = 9;
+  const totalFields = 16;
   const filledFields = [
     cmpName,
     cmpType,
@@ -95,24 +89,15 @@ const CompanyParticular = ({
     personPhone,
     cmpSite,
     cmpTel,
-    address,
     gstNum,
-    // cmpLogo,
-    // numOfUser,
-    // numOfShip,
-    // typeShip,
-    // shipType,
-    // crewNational,
-    // crewMatrix,
-    // crewWelfare,
-    // cmpAdd,
-    // licence,
-    // isoCerti,
-    // bankName,
-    // acNumber,
-    // acType,
-    // iFSC,
-    // swiftCode,
+    nearestAirport,
+    address,
+    number,
+    addInfo,
+    postalCode,
+    state,
+    cityName,
+    country1,
   ].filter(Boolean).length;
 
   // const totalFields = available === "Yes" ? 6 : 5;
@@ -220,7 +205,7 @@ const CompanyParticular = ({
                 value={cmpName}
                 onChange={(e) => setCmpname(e.target.value)}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-                placeholder="Company Name"
+                placeholder="Enter Company Name"
                 disabled={disabled}
                 required
               />
@@ -248,36 +233,6 @@ const CompanyParticular = ({
               </select>
             </div>
 
-            {/* <div className="   ">
-              <label
-                className="text-[14px] leading-[19.07px]  text-[#333333] "
-                htmlFor="trainingC"
-              >
-                Company Logo
-              </label>
-              <div className="flex gap-6 items-center  ">
-                <label
-                  htmlFor="logo-upload1"
-                  className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  text-[14px] leading-[19.07px]   hover:bg-[#04714e] focus:outline-none focus:ring-2 "
-                >
-                  Upload photo
-                </label>
-                <input
-                  id="logo-upload1"
-                  type="file"
-                  className="hidden"
-                  onChange={handleFileChanges}
-                />
-                {cmpLogo ? (
-                  <p className="text-gray-700">File Selected: {cmpLogo.name}</p>
-                ) : (
-                  <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                    No file selected
-                  </p>
-                )}
-              </div>
-            </div> */}
-
             <div className="   ">
               <label
                 className="text-[14px] leading-[19.07px]  text-[#333333] "
@@ -291,7 +246,7 @@ const CompanyParticular = ({
                 value={contactPerson}
                 onChange={(e) => setContactPerson(e.target.value)}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-                placeholder="Person"
+                placeholder="Enter Contact Person"
                 disabled={disabled}
                 required
               />
@@ -310,19 +265,21 @@ const CompanyParticular = ({
                 value={contactPersonEmail}
                 onChange={(e) => setContactPersonEmail(e.target.value)}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-                placeholder="Email Id"
+                placeholder="Enter Email Id"
                 disabled={disabled}
                 required
               />
             </div>
-
-            <div className="flex items-center justify-between gap-4 ">
+          </div>
+          {/* Contact Person section */}
+          <div className="grid grid-cols-1 gap-4 mt-3">
+            <div className="flex items-center gap-4 ">
               <div className="flex flex-col  ">
-                <label className="text-[14px] leading-[19.07px]  text-[#333333]  ">
+                <label className="text-[14px] leading-[23px]  text-[#333333]  ">
                   Country Code
                 </label>
                 <select
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[13.7px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={mCountrycode}
                   onChange={(e) => setMCountrycode(e.target.value)}
                   disabled={disabled}
@@ -338,10 +295,9 @@ const CompanyParticular = ({
                     ))}
                 </select>
               </div>
-
-              <div className="w-[75%] ">
+              <div className="w-[40%] ">
                 <label
-                  className="text-[13.7px] leading-[19.07px]  text-[#333333] "
+                  className="text-[14px] leading-[19.07px]  text-[#333333] "
                   htmlFor="contactNo"
                 >
                   Contact Person Phone Number
@@ -352,13 +308,15 @@ const CompanyParticular = ({
                   value={personPhone}
                   onChange={(e) => setPersonPhone(e.target.value)}
                   className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-                  placeholder="Phone No."
+                  placeholder="Enter Phone Number"
                   disabled={disabled}
                   required
                 />
               </div>
             </div>
+          </div>
 
+          <div className="grid grid-cols-2 gap-4 mt-3">
             <div className="   ">
               <label
                 className="text-[14px] leading-[19px]  text-[#333333] "
@@ -372,13 +330,32 @@ const CompanyParticular = ({
                 value={cmpSite}
                 onChange={(e) => setCmpSite(e.target.value)}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-                placeholder="website"
+                placeholder="Enter Company Website"
                 disabled={disabled}
                 required
               />
             </div>
-
-            <div className="flex items-center justify-between gap-4 ">
+            <div className="   ">
+              <label
+                className="text-[14px] leading-[19.07px]  text-[#333333] "
+                htmlFor="gstno"
+              >
+                GST Number or VAT or Other Taxes
+              </label>
+              <input
+                id="gstno"
+                type="text"
+                value={gstNum}
+                onChange={(e) => setGstNum(e.target.value)}
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+                placeholder="Enter GST or VAT Number"
+                disabled={disabled}
+                required
+              />
+            </div>
+          </div>
+          <div className="grid grid-cols-1 gap-4 mt-3">
+            <div className="flex items-center gap-4 ">
               <div className="flex flex-col  ">
                 <label className="text-[14px] leading-[19.07px]  text-[#333333]  ">
                   Country Code
@@ -401,12 +378,12 @@ const CompanyParticular = ({
                 </select>
               </div>
 
-              <div className="w-[75%] ">
+              <div className="w-[40%] ">
                 <label
-                  className="text-[13.7px] leading-[19.07px]  text-[#333333] "
+                  className="text-[14px] leading-[19.07px]  text-[#333333] "
                   htmlFor="telNo"
                 >
-                  Company Tel
+                  Company Telephone Number
                 </label>
                 <input
                   id="telNo"
@@ -414,369 +391,161 @@ const CompanyParticular = ({
                   value={cmpTel}
                   onChange={(e) => setCmpTel(e.target.value)}
                   className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-                  placeholder="Tel. no."
+                  placeholder="Enter Telephone Number"
                   disabled={disabled}
                   required
                 />
               </div>
             </div>
 
-            <div className="   ">
-              <label
-                className="text-[14px] leading-[19.07px]  text-[#333333] "
-                htmlFor="address"
-              >
-                Address
-              </label>
-              <input
-                id="address"
-                type="text"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-                placeholder="Address"
-                disabled={disabled}
-                required
-              />
+            {/* Address Section */}
+            <div className="grid col-span-2 ">
+              <h1 className="font-bold">Address</h1>
             </div>
+            <div className="grid grid-cols-2 gap-4 ">
+              <div className="flex items-center justify-between gap-4  ">
+                {" "}
+                <div className="w-full ">
+                  <label
+                    className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
+                    htmlFor="street"
+                  >
+                    Street Name
+                  </label>
+                  {/* <div className="relative flex items-center  "> */}
+                  <input
+                    id="street"
+                    type="text"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                    className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder="Enter Street Name"
+                    disabled={disabled}
+                  />
+                  {/* </div> */}
+                </div>
+              </div>
+              <div className="w-full ">
+                <label
+                  className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
+                  htmlFor="number"
+                >
+                  Enter Street Number
+                </label>
+                <div className="relative flex items-center  ">
+                  <input
+                    id="number"
+                    type="text"
+                    value={number}
+                    onChange={(e) => setNumber(e.target.value)}
+                    className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder=" Enter Street Number"
+                    disabled={disabled}
+                  />
+                </div>
+              </div>
 
-            <div className="   ">
-              <label
-                className="text-[14px] leading-[19.07px]  text-[#333333] "
-                htmlFor="gstno"
-              >
-                GST Number or VAT or Other Taxes
-              </label>
-              <input
-                id="gstno"
-                type="text"
-                value={gstNum}
-                onChange={(e) => setGstNum(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-                placeholder="Enter Number"
-                disabled={disabled}
-                required
-              />
-            </div>
+              <div className=" ">
+                <label
+                  className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
+                  htmlFor="addinfo"
+                >
+                  Add. Info (c/o etc.)
+                </label>
+                <div className="relative flex items-center  ">
+                  <input
+                    id="addinfo"
+                    type="text"
+                    value={addInfo}
+                    onChange={(e) => setAddInfo(e.target.value)}
+                    className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder="Enter Add. Info (c/o etc.)"
+                    disabled={disabled}
+                  />
+                </div>
+              </div>
 
-            {/* <div className="   ">
-              <label
-                className="text-[14px] leading-[19.07px]  text-[#333333] "
-                htmlFor="userNo"
-              >
-                Number of User
-              </label>
-              <input
-                id="userNo"
-                type="text"
-                value={numOfUser}
-                onChange={(e) => setNumOfUser(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-                placeholder="Enter Number"
-                required
-              />
-            </div>
-            <div className="   ">
-              <label
-                className="text-[14px] leading-[19.07px]  text-[#333333] "
-                htmlFor="shipname"
-              >
-                Number of Ships
-              </label>
-              <input
-                id="shipname"
-                type="text"
-                value={numOfShip}
-                onChange={(e) => setNumOfShip(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-                placeholder="Enter Number"
-                required
-              />
-            </div>
-            <div className=" ">
-              <label
-                className="text-[14px] leading-[19.07px]  text-[#333333]"
-                htmlFor="shipType"
-              >
-                Type of Ships
-              </label>
-              <select
-                id="shipType"
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                name="options"
-                value={typeShip}
-                onChange={(e) => setTypeShip(e.target.value)}
-              >
-                <option value="" disabled selected>
-                  Ship Type
-                </option>
-                
-              </select>
-            </div> */}
-
-            {/* <div className=" ">
-              <label
-                className="text-[14px] leading-[19.07px]  text-[#333333]"
-                htmlFor="crewN"
-              >
-                Crew Nationality Preference
-              </label>
-              <select
-                id="crewN"
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                name="options"
-                value={crewNational}
-                onChange={(e) => setCrewNational(e.target.value)}
-              >
-                <option value="" disabled selected>
-                  Country
-                </option>
-                {countryDrop &&
-                  countryDrop?.map((country: any, index: number) => (
-                    <option key={index} value={country}>
-                      {country?.toUpperCase()}
+              <div className="flex items-center gap-4">
+                <div className="flex flex-col w-full  ">
+                  <label className="text-[14px] leading-[19.07px]  text-[#333333] mb-2 ">
+                    Country
+                  </label>{" "}
+                  <select
+                    className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    value={country1}
+                    onChange={(e) => setCountry1(e.target.value)}
+                    disabled={disabled}
+                  >
+                    <option value="" disabled>
+                      Select
                     </option>
-                  ))}
-              </select>
-            </div> */}
-            {/* <div className=""> */}
-
-            {/* <div className="   ">
-              <label
-                className="text-[14px] leading-[19.07px]  text-[#333333] "
-                htmlFor="matrix"
-              >
-                Crew Training Matrix
-              </label>
-              <input
-                id="matrix"
-                type="number"
-                value={crewMatrix}
-                onChange={(e) => setCrewMatrix(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                placeholder="Enter Number"
-                required
-              />
-            </div> */}
-
-            {/* </div> */}
-            {/* <div className="">
-              <label
-                className="text-[14px] leading-[19.07px]  text-[#333333]"
-                htmlFor="crewW"
-              >
-                Crew Welfare Initiative
-              </label>
-              <input
-                id="crewW"
-                type="text"
-                value={crewWelfare}
-                onChange={(e) => setCrewWelfare(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-                placeholder="Enter Number"
-                required
-              />
-            </div> */}
-
-            {/* <div className="">
-              <label
-                className="text-[14px] leading-[19.07px]  text-[#333333]  "
-                htmlFor="pdf-upload1"
-              >
-                Company Advertisement : Upload PDF
-              </label>
-
-              <div className="flex gap-6 items-center ">
-                <label
-                  htmlFor="pdf-upload1"
-                  className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  text-[14px] leading-[19.07px]   hover:bg-[#04714e] focus:outline-none focus:ring-2 "
-                >
-                  Attach Docoment
-                </label>
-                <input
-                  id="pdf-upload1"
-                  type="file"
-                  className="hidden"
-                  onChange={handleFileChange}
-                />
-                {cmpAdd ? (
-                  <p className="text-gray-700">File Selected: {cmpAdd.name}</p>
-                ) : (
-                  <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                    No file selected
-                  </p>
-                )}
+                    {countryDrop &&
+                      countryDrop?.map((country: any, index: number) => (
+                        <option key={index} value={country}>
+                          {country?.toUpperCase()}
+                        </option>
+                      ))}
+                  </select>
+                </div>
               </div>
-            </div> */}
-
-            {/* <div className=" ">
-              <label
-                className="text-[14px] leading-[19.07px]  text-[#333333]"
-                htmlFor="shipType"
-              >
-                Ship Type
-              </label>
-              <select
-                id="shipType"
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                name="options"
-                value={shipType}
-                onChange={(e) => setShipType(e.target.value)}
-              >
-                <option value="" disabled selected>
-                  Ship
-                </option>
-                
-              </select>
-            </div> */}
-            {/* <div className="">
-              <label
-                className="text-[14px] leading-[19.07px]  text-[#333333]  "
-                htmlFor="licence"
-              >
-                Recruitment & Placement License
-              </label>
-
-              <input
-                id="licence"
-                type="text"
-                value={licence}
-                onChange={(e) => setLicence(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-                placeholder="Licence"
-                required
-              />
-            </div> */}
-
-            {/* <div className="">
-              <label
-                className="text-[14px] leading-[19.07px]  text-[#333333]  "
-                htmlFor="expiryDate1"
-              >
-                ISO Certificate : Upload attachment
-              </label>
-
-              <div className="flex gap-6 items-center   ">
+              <div className="w-full">
                 <label
-                  htmlFor="iso-upload"
-                  className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  text-[14px] leading-[19.07px]   hover:bg-[#04714e] focus:outline-none focus:ring-2 "
+                  className="text-[14px] leading-[19.07px]  text-[#333333] mb-2 "
+                  htmlFor="state"
                 >
-                  Attach Docoment
+                  State/Province
                 </label>
-                <input
-                  id="iso-upload"
-                  type="file"
-                  className="hidden"
-                  onChange={handleIsoChanges}
-                />
-                {isoCerti ? (
-                  <p className="text-gray-700">
-                    File Selected: {isoCerti.name}
-                  </p>
-                ) : (
-                  <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                    No file selected
-                  </p>
-                )}
+                <div className="relative flex items-center  ">
+                  <input
+                    id="state"
+                    type="text"
+                    value={state}
+                    onChange={(e) => setState(e.target.value)}
+                    className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder="Enter  State/Province"
+                    disabled={disabled}
+                  />
+                </div>
               </div>
-            </div> */}
 
-            {/* <div className=" ">
-              <label
-                className="text-[14px] leading-[19.07px]  text-[#333333]"
-                htmlFor="bankName"
-              >
-                Bank Name
-              </label>
-              <select
-                id="bankName"
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                name="bankName"
-                value={bankName}
-                onChange={(e) => setBankName(e.target.value)}
-              >
-                <option value="" disabled selected>
-                  Bank
-                </option>
-              
-              </select>
-            </div> */}
-            {/* <div className="">
-              <label
-                className="text-[14px] leading-[19.07px]  text-[#333333]  "
-                htmlFor="accountN"
-              >
-                A/C Number
-              </label>
-
-              <input
-                id="accountN"
-                type="number"
-                value={acNumber}
-                onChange={(e) => setAcNumber(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-                placeholder="A/C Number"
-                required
-              />
-            </div> */}
-
-            {/* <div className="">
-              <label
-                className="text-[14px] leading-[19.07px]  text-[#333333]  "
-                htmlFor="setac"
-              >
-                A/C TYPE
-              </label>
-
-              <input
-                id="setac"
-                type="text"
-                value={acType}
-                onChange={(e) => setAcType(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-                placeholder="Tpye"
-                required
-              />
-            </div> */}
-
-            {/* <div className="">
-              <label
-                className="text-[14px] leading-[19.07px]  text-[#333333]  "
-                htmlFor="setifsc"
-              >
-                IFSC CODE
-              </label>
-
-              <input
-                id="setifsc"
-                type="text"
-                value={iFSC}
-                onChange={(e) => setIfsc(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-                placeholder="Code"
-                required
-              />
-            </div> */}
-
-            {/* <div className="">
-              <label
-                className="text-[14px] leading-[19.07px]  text-[#333333]  "
-                htmlFor="swiftC"
-              >
-                SWIFT CODE
-              </label>
-
-              <input
-                id="swiftC"
-                type="text"
-                value={swiftCode}
-                onChange={(e) => setSwiftCode(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-                placeholder="Code"
-                required
-              />
-            </div> */}
-
+              <div className="flex items-center gap-4 w-full">
+                <div className="w-full ">
+                  <label
+                    className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
+                    htmlFor="cityName"
+                  >
+                    City
+                  </label>
+                  <div className="relative flex items-center  ">
+                    <input
+                      id="cityName"
+                      type="text"
+                      value={cityName}
+                      onChange={(e) => setCityName(e.target.value)}
+                      className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                      placeholder="Enter  City"
+                      disabled={disabled}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="w-full">
+                <label className="text-[14px] leading-[19.07px]  text-[#333333] mb-2 ">
+                  Postal Code/ZIP Code
+                </label>
+                <div className="relative flex items-center  ">
+                  <input
+                    id="addinfo"
+                    type="number"
+                    value={postalCode}
+                    onChange={(e) => setPostalCode(e.target.value)}
+                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder="Enter Postal Code/ZIP Code"
+                    disabled={disabled}
+                  />
+                </div>
+              </div>
+            
             <div className="flex gap-2 mb-4 mt-5">
               <button
                 type="submit"
@@ -791,6 +560,7 @@ const CompanyParticular = ({
               >
                 Edit
               </Link>
+            </div>
             </div>
           </div>
         </div>

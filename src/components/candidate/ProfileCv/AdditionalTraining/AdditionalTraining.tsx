@@ -46,6 +46,7 @@ type Props = {
   >; // setMjrComplete is a function to update mjrComplete
   userDetail: any;
   criminal: any;
+  additionalDetail: any;
 };
 
 const AdditionalTraining = ({
@@ -53,6 +54,7 @@ const AdditionalTraining = ({
   setAdditionalComplete,
   userDetail,
   criminal,
+  additionalDetail,
 }: Props) => {
   const [additionalForms, setAdditionalForms] = useState<AdditionalTraining[]>([
     {
@@ -110,22 +112,24 @@ const AdditionalTraining = ({
   const [capacityDrop, setCapacityDrop] = useState<any>([]);
   const [levelDrop, setLevelDrop] = useState<any>([]);
   const [levelTestDrop, setLevelTestDrop] = useState<any>([]);
+  const [color, setColor] = useState("");
+
   const [disabled, setDisabled] = useState(true);
 
   // const [showFields, setShowFields] = useState(true);
   const [isHideShow, setIsHideShow] = useState(false);
 
   useEffect(() => {
-    GetDropdownDetails("ProfessionalKnowledgeLevel", (res: any) => {
+    GetDropdownDetails("ProfessionalKnowledgeTest", (res: any) => {
       setLevelDrop(res?.data?.values);
     });
-    GetDropdownDetails("ProfessionalKnowledgeTest", (res: any) => {
+    GetDropdownDetails("ProfessionalKnowledgeTestType", (res: any) => {
       setLevelTestDrop(res?.data?.values);
     });
     GetDropdownDetails("capacity", (res: any) => {
       setCapacityDrop(res?.data?.values);
     });
-    GetDropdownDetails("AdditionalTrainings", (res: any) => {
+    GetDropdownDetails("AdditionalTrainingsCertificates", (res: any) => {
       setAdditionalTraDrop(res?.data?.values);
     });
     GetDropdownDetails("country", (res: any) => {
@@ -160,9 +164,9 @@ const AdditionalTraining = ({
     ]),
   ].filter(Boolean).length;
 
-  const percentage = (filledFields / totalFields) * 100;
+  const percentage:any = totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
   // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
-  let color;
+  // let color;
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
@@ -171,21 +175,21 @@ const AdditionalTraining = ({
         percentage: percentage, // Update the percentage field
         color: "#FF0000", // Update the color field
       }));
-      color = "red";
+      setColor("#FF0000");
     } else if (percentage <= 70) {
       setAdditionalComplete((prevState) => ({
         ...prevState, // Spread the previous state to keep any other properties
         percentage: percentage, // Update the percentage field
         color: "#FF9900", // Update the color field
       }));
-      color = "#FF9900";
+      setColor("#FF9900");
     } else {
       setAdditionalComplete((prevState) => ({
         ...prevState, // Spread the previous state to keep any other properties
         percentage: percentage, // Update the percentage field
         color: "#00A264", // Update the color field
       }));
-      color = "green";
+      setColor("#00A264");
     }
   }, [percentage, color]);
 
@@ -315,7 +319,55 @@ const AdditionalTraining = ({
       toast.error("Please accept the declaration");
       return;
     } else {
-      let formData = new FormData();
+      let data: any = {
+        id: userDetail?.userId,
+        color: color,
+        completed: percentage,
+      };
+      const addiArray: any = [];
+      const profArray: any = [];
+      additionalForms.forEach((element: any) => {
+        addiArray.push({
+          certificate: element?.countryCertifi,
+          trainingCenter: element?.number,
+          issuingCountry: element?.number,
+          certificateNumber: element?.number,
+          issueDate: element?.issuedate,
+          expiryDate: element?.exdate,
+          neverExpires: true,
+          documentUrl: element?.selectedFile,
+        });
+      });
+      professionalForms.forEach((element: any) => {
+        profArray.push({
+          capacity: element?.capacity,
+          level: element?.level,
+          trainingCenter: element?.trainingCenter1,
+          testType: element?.typeOfTest,
+          result: element?.result,
+          issuingCountry: element?.issuingCountry,
+          certificateNumber: element?.eCDISNumber,
+          issueDate: element?.issuedate1,
+          expiryDate: element?.exdate1,
+          neverExpires: element?.neverChecked1,
+          documentUrl: element?.selectedFiles,
+        });
+      });
+      data.addiTrainings = addiArray;
+      data.professionalKnowledgeTests = profArray;
+
+      AddAdditionalData(data, AddAdditionDB);
+    }
+  };
+  const AddAdditionDB = (result: any) => {
+    console.log(result);
+    if (result?.status == 200 || result?.status == 201) {
+      toast.success("Additional Detail submited successfully");
+      // setTimeout(() => {
+      //   window.location.reload();
+      // }, 1000);
+    } else {
+      toast.error("Additional Detail submited not submited ");
     }
   };
   const handleEdits = () => {
@@ -365,7 +417,7 @@ const AdditionalTraining = ({
                 disabled={disabled}
               >
                 <option value="" disabled selected>
-                  Select
+                  SELECT
                 </option>
                 {additionalTraDrop &&
                   additionalTraDrop?.map((addi: any, index: number) => (
@@ -521,13 +573,13 @@ const AdditionalTraining = ({
                 <div className="flex gap-6 items-center ">
                   <div>
                     <label
-                      htmlFor={`file-upload03_${index}`}
+                      htmlFor={`file-uploads03_${index}`}
                       className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px]   "
                     >
                       Attachment Document
                     </label>
                     <input
-                      id={`file-upload03_${index}`}
+                      id={`file-uploads03_${index}`}
                       type="file"
                       className="hidden"
                       onChange={(e) => handleFileChange(index, e)}
@@ -535,9 +587,9 @@ const AdditionalTraining = ({
                     />
                   </div>
                   <div>
-                    {selectedFile ? (
+                    {field.selectedFile ? (
                       <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                        File Selected: {selectedFile.name}
+                        File Selected: {field.selectedFile.name}
                       </p>
                     ) : (
                       <p className="text-[14px] leading-[19.07px]  text-[#333333]">
@@ -837,9 +889,9 @@ const AdditionalTraining = ({
                     />
                   </div>
                   <div>
-                    {selectedFiles ? (
+                    {fields.selectedFiles ? (
                       <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                        File Selected: {selectedFiles.name}
+                        File Selected: {fields.selectedFiles.name}
                       </p>
                     ) : (
                       <p className="text-[14px] leading-[19.07px]  text-[#333333]">

@@ -26,6 +26,7 @@ type Props = {
   setMedicalComplete: React.Dispatch<React.SetStateAction<MedicalComplete>>;
   userDetail: any;
   criminal: any;
+  medicalDetail: any;
 };
 
 const MedicalCertificates = ({
@@ -33,6 +34,7 @@ const MedicalCertificates = ({
   setMedicalComplete,
   userDetail,
   criminal,
+  medicalDetail,
 }: Props) => {
   const [otherVaccinationForms, setOtherVaccinationForms] = useState<
     OtherVaccination[]
@@ -78,6 +80,8 @@ const MedicalCertificates = ({
   const [medicalType, setMedicalType] = useState("");
   const [vaccinationIssue, setVaccinationIssue] = useState("");
   const [covidOptions, setCovidOptions] = useState("");
+  const [color, setColor] = useState("");
+
   // const [vaccinationExpiry, setVaccinationExpiry] = useState("");
   // const [expiresMedical, setExpiresMedical] = useState<any>(false);
   // const [veccinationCheck, setVeccinationCheck] = useState<any>(false);
@@ -124,14 +128,13 @@ const MedicalCertificates = ({
     });
   }, []);
 
-  const totalFields = 26 + otherVaccinationForms.length * 5;
+  const totalFields = 26 + otherVaccinationForms.length *4 ;
   const filledFields = [
     ...otherVaccinationForms.flatMap((field) => [
       field.medicalType1,
       field.selectedFilesOthers,
       field.vaccination1,
       field.vaccinationexp || field.veccinationCheck,
-      ,
     ]),
     number,
     issuedate,
@@ -165,7 +168,7 @@ const MedicalCertificates = ({
 
   const percentage = (filledFields / totalFields) * 100;
 
-  let color;
+  // let color;
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
@@ -174,36 +177,49 @@ const MedicalCertificates = ({
         percentage: percentage,
         color: "#FF0000",
       }));
-      color = "red";
+      setColor("#FF0000");
     } else if (percentage <= 70) {
       setMedicalComplete((prevState) => ({
         ...prevState,
         percentage: percentage,
         color: "#FF9900",
       }));
-      color = "#FF9900";
+      setColor("#FF9900");
     } else {
       setMedicalComplete((prevState) => ({
         ...prevState,
         percentage: percentage,
         color: "#00A264",
       }));
-      color = "green";
+      setColor("#00A264");
     }
   }, [percentage, color]);
 
   const handleFileChange = (event: any) => {
     const file = event.target.files?.[0];
-    if (file) {
-      setSelectedFile(file);
-    }
+    if(file){
+      // setSelectedFile (file)
+    const reader = new FileReader();
+    reader.onloadend = function () {
+      const imageBinary: any = reader.result;
+      const byteArray = imageBinary.split(",")[1];
+      setSelectedFile(byteArray);
+    };
+    reader.readAsDataURL(file);
+  }
   };
 
   const handleFileChanges = (event: any) => {
     const file = event.target.files?.[0];
-    if (file) {
-      setSelectedFiles(file);
-    }
+  
+    const reader = new FileReader();
+    reader.onloadend = function () {
+      const imageBinary: any = reader.result;
+      const byteArray = imageBinary.split(",")[1];
+      setSelectedFiles(byteArray);
+    };
+    reader.readAsDataURL(file);
+   
   };
 
   // const handleFileChangesOthers = (event: any) => {
@@ -261,22 +277,67 @@ const MedicalCertificates = ({
 
   const handleFileChangesCovid = (event: any) => {
     const file = event.target.files?.[0];
-    if (file) {
-      setSelectedFilesCovid(file);
-    }
+  
+      const reader = new FileReader();
+      reader.onloadend = function () {
+        const imageBinary: any = reader.result;
+        const byteArray = imageBinary.split(",")[1];
+        setSelectedFilesCovid(byteArray);
+      };
+      reader.readAsDataURL(file);
+
+     
+   
   };
   const handleFileChangesFlag = (event: any) => {
     const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = function () {
+        const imageBinary: any = reader.result;
+        const byteArray = imageBinary.split(",")[1];
+        setSelectedFilesFlag(byteArray);
+      };
 
-    const reader = new FileReader();
-    reader.onloadend = function () {
-      const imageBinary: any = reader.result;
-    };
-    // if (file) {
-    //   setSelectedFilesFlag(file);
-    // }
-    reader.readAsDataURL(file);
+      reader.readAsDataURL(file);
+    }
   };
+  
+  useEffect (() => {
+    if(medicalDetail) {
+      setTypes2Options(medicalDetail.fitnessType);
+      setNumber(medicalDetail.fitnessNumber);
+      setIssuingOptions(medicalDetail.fitnessIssuingCountry);
+      setIssuingCity(medicalDetail.fitnessIssuingCity);
+      setIssueDate(medicalDetail.fitnessIssueDate);
+      setExDate(medicalDetail.fitnessExpiryDate);
+      setMedicalPhysician(medicalDetail.covidVaccineMedicalCenter);
+      setFMedicalcenter(medicalDetail.fitnessMedicalCenter);
+      setMedicalNumber(medicalDetail.drugTestNumber);
+      setMedicalCenter(medicalDetail.drugTestIssuingCity);
+      setTestCenter(medicalDetail.drugTestCenter);
+      setIssueDate1(medicalDetail.drugTestIssueDate);
+      setExDate1(medicalDetail.drugTestExpiryDate);
+      setIssueDateCovid(medicalDetail.covidVaccineDate2);
+      
+      // setExpires1(medicalDetail.nativeLanguage);
+      // setExpires2(medicalDetail.nativeLanguage);
+      
+      setTypeOptions(medicalDetail.drugTestType);
+      setIssuingCountryOpt(medicalDetail.drugTestIssuingCountry);
+      setMedicalType(medicalDetail.covidVaccineType);
+      setVaccinationIssue(medicalDetail.covidVaccineDate1);
+      setCovidOptions(medicalDetail.covidVaccineCountry);
+      // setVeccinationCheckFlag(medicalDetail.covidVaccineCountry);
+      setMedicalTypeFlag(medicalDetail.flagMedicalType);
+      setVaccinationFlag(medicalDetail.flagMedicalVaccinationDate);
+      setVaccinationexpFlag(medicalDetail.flagMedicalExpiryDate);
+      setSelectedFilesFlag(medicalDetail.flagMedicalDocumentUrl);
+      setSelectedFile(medicalDetail.fitnessDocumentUrl);
+      setSelectedFiles(medicalDetail.drugTestDocumentUrl);
+      setSelectedFilesCovid(medicalDetail.covidVaccineDocumentUrl1);
+    }
+  },[])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -338,7 +399,7 @@ const MedicalCertificates = ({
       // AddMedicalData(userDetail?.userId, formData, AddmedicalDataDB);
 
       let data: any = {
-        userId: userDetail?.userId,
+        id: userDetail?.userId,
         fitnessType: types2Options,
         fitnessNumber: number,
         fitnessIssuingCountry: issuingOptions,
@@ -347,7 +408,7 @@ const MedicalCertificates = ({
         fitnessIssueDate: issuedate,
         fitnessExpiryDate: exdate,
         // formData.append("fitnessNeverExpires", expires1);
-        fitnessDocument: selectedFile,
+        fitnessDocumentUrl: selectedFile,
 
         drugTestType: typeOptions,
         drugTestNumber: medicalNumber,
@@ -357,7 +418,7 @@ const MedicalCertificates = ({
         drugTestIssueDate: issuedate1,
         drugTestExpiryDate: exdate1,
         // formData.append("drugTestNeverExpires", expires2);
-        drugTestDocument: selectedFiles,
+        drugTestDocumentUrl: selectedFiles,
 
         covidVaccineType: medicalType,
         covidVaccineCountry: covidOptions,
@@ -366,7 +427,7 @@ const MedicalCertificates = ({
         // formData.append("covidVaccineExpiryDate1", vaccinationExpiry);
         // missing covid19 expiry data
         // formData.append("covidVaccineNeverExpires1", expiresMedical);
-        covidVaccineDocument1: selectedFilesCovid,
+        covidVaccineDocumentUrl1: selectedFilesCovid,
 
         covidVaccineDate2: issuedateCovid,
         // formData.append("covidVaccineExpiryDate2", exdateCovid);
@@ -380,7 +441,9 @@ const MedicalCertificates = ({
         flagMedicalVaccinationDate: vaccinationFlag,
         flagMedicalExpiryDate: vaccinationexpFlag,
         // formData.append("flagMedicalNeverExpires", veccinationCheckFlag);
-        flagMedicalDocument: selectedFilesFlag,
+        flagMedicalDocumentUrl: selectedFilesFlag,
+        color: color,
+        completed: percentage,
       };
       const otherArray: any = [];
       otherVaccinationForms.forEach((element: any) => {
@@ -388,20 +451,20 @@ const MedicalCertificates = ({
           otherVaccinationType: element?.medicalType1,
           otherVaccinationDate: element?.vaccination1,
           otherVaccinationExpiryDate: element?.vaccinationexp,
-          otherVaccinationDocument: element.selectedFilesOthers,
+          otherVaccinationDocumentUrl: element.selectedFilesOthers,
         });
       });
-      data.otherData = otherArray;
+      data.otherVaccinations = otherArray;
 
-      let finArry: any = [];
-      finArry.push(data);
-      AddMedicalData(finArry, AddmedicalDataDB);
+      // let finArry: any = [];
+      // finArry.push(data);
+      AddMedicalData(data, AddmedicalDataDB);
     }
   };
 
   const AddmedicalDataDB = (result: any) => {
     console.log(result);
-    if (result?.status == 200) {
+    if (result?.status == 200||result?.status == 201) {
       toast.success("medical  submited successfully");
       setTimeout(() => {
         window.location.reload();
@@ -802,7 +865,7 @@ const MedicalCertificates = ({
                     htmlFor="file-uploadmedical"
                     className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2  text-[14px] leading-[19.07px]   "
                   >
-                    Attachment Docoment
+                    Attachment Document
                   </label>
                   <input
                     id="file-uploadmedical"
@@ -998,7 +1061,7 @@ const MedicalCertificates = ({
                     htmlFor="file-uploadmedicalvaccine"
                     className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2  text-[14px] leading-[19.07px]  "
                   >
-                    Attachment Docoment
+                    Attachment Document
                   </label>
                   <input
                     id="file-uploadmedicalvaccine"
@@ -1156,7 +1219,7 @@ const MedicalCertificates = ({
                       htmlFor={`file-uploadmedicalvaccine_${index}`}
                       className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2  text-[14px] leading-[19.07px]  "
                     >
-                      Attachment Docoment
+                      Attachment Document
                     </label>
                     <input
                       id={`file-uploadmedicalvaccine_${index}`}
@@ -1275,7 +1338,7 @@ const MedicalCertificates = ({
                       htmlFor={`file-uploadmedicalvaccine_${index}`}
                       className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2  text-[14px] leading-[19.07px]  "
                     >
-                      Attachment Docoment
+                      Attachment Document
                     </label>
                     <input
                       id={`file-uploadmedicalvaccine_${index}`}
@@ -1408,7 +1471,7 @@ const MedicalCertificates = ({
                     htmlFor="file-uploadmedicalvaccineflag"
                     className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2  text-[14px] leading-[19.07px]  "
                   >
-                    Attachment Docoment
+                    Attachment Document
                   </label>
                   <input
                     id="file-uploadmedicalvaccineflag"

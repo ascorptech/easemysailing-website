@@ -40,10 +40,6 @@ const StcwTraining = ({
   criminal,
   sTCWDetail,
 }: Props) => {
-  const [extraFields, setExtraFields] = useState<
-    { field1: string; field2: string }[]
-  >([]);
-
   const [stcwTraining, setStcwTraining] = useState<StcwTrainingForm[]>([
     {
       number: "",
@@ -100,23 +96,23 @@ const StcwTraining = ({
     console.log("user", userDetail);
     if (percentage <= 30) {
       setSTCWComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#FF0000", // Update the color field
+        ...prevState, 
+        percentage: percentage, 
+        color: "#FF0000", 
       }));
       setColor("#FF0000");
     } else if (percentage <= 70) {
       setSTCWComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#FF9900", // Update the color field
+        ...prevState, 
+        percentage: percentage,
+        color: "#FF9900", 
       }));
       setColor("#FF9900");
     } else {
       setSTCWComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#00A264", // Update the color field
+        ...prevState, 
+        percentage: percentage, 
+        color: "#00A264", 
       }));
       setColor("#00A264");
     }
@@ -157,28 +153,18 @@ const StcwTraining = ({
       toast.error("Please accept the declaration");
       return;
     } else {
-      //   let formData = new FormData();
-      //   stcwTraining.forEach((element: any) => {
-      //     formData.append("document", element?.selectedFile);
-      //     formData.append("trainingName", element?.training);
-      //     formData.append("issuingCountry", element?.trainingCountry);
-      //     formData.append("certificateNumber", element?.number);
-      //     formData.append("issueDate", element?.issuedate);
-      //     formData.append("expiryDate", element?.exdate);
-      //   });
-      //   let neverExpires = "";
-
-      //   AddStcwData(userDetail?.userId, neverExpires, formData, AddStcwDataCB);
-      // };
+     
 
       let data: any = {
-        userId: userDetail?.userId,
+        id: userDetail?.userId,
+        color: color,
+        completed: percentage,
       };
       const stcwArray: any = [];
 
       stcwTraining.forEach((element: any) => {
         stcwArray.push({
-          document: element?.selectedFile,
+          documentUrl: element?.selectedFile,
           trainingName: element?.training,
           issuingCountry: element?.trainingCountry,
           certificateNumber: element?.number,
@@ -186,13 +172,13 @@ const StcwTraining = ({
           expiryDate: element?.exdate,
         });
       });
-      data.stcwData = stcwArray;
+      data.stcwTrainingDetails = stcwArray;
 
-      let finArry: any = [];
-      finArry.push(data);
-      console.log("fin", finArry);
+      // let finArry: any = [];
+      // finArry.push(data);
+      // console.log("fin", finArry);
 
-      AddStcwData(finArry, AddStcwDataCB);
+      AddStcwData(data, AddStcwDataCB);
     }
   };
 

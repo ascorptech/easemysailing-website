@@ -17,14 +17,16 @@ type Props = {
     React.SetStateAction<ProfessionalComplete>
   >;
   userDetail: any;
-  criminal:any;
+  criminal: any;
+  professionalSkills: any;
 };
 
 const ProfessionalSkills = ({
   professionalComplete,
   setProfessionalComplete,
   userDetail,
-  criminal
+  criminal,
+  professionalSkills,
 }: Props) => {
   const [maker, setMaker] = useState("");
   const [sWL, setSWL] = useState("");
@@ -73,30 +75,32 @@ const ProfessionalSkills = ({
 
   const [countryDrop, setCountryDrop] = useState<any>([]);
   const [isHideShow, setIsHideShow] = useState(false);
+  const [color, setColor] = useState("");
 
   useEffect(() => {
-    GetDropdownDetails("ProfessionalKnowledgeTest", (res: any) => {
+    GetDropdownDetails("AdditionalTrainingsCertificates", (res: any) => {
+      console.log('res',res?.data)
       setProfessionalTstDrop(res?.data?.values);
     });
-    GetDropdownDetails("ProfessionalKnowledgeLevel", (res: any) => {
+    GetDropdownDetails("ProfessionalKnowledgeTest", (res: any) => {
       setProfessionalLvlDrop(res?.data?.values);
     });
     GetDropdownDetails("CARGOGEAREXPERIENCE", (res: any) => {
       setCargoGearDrop(res?.data?.values);
     });
-    GetDropdownDetails("ProfessionalKnowledgeLevel", (res: any) => {
+    GetDropdownDetails("CARGOGEAREXPERIENCE", (res: any) => {
       setCargoBulkDrop(res?.data?.values);
     });
-    GetDropdownDetails("ProfessionalKnowledgeLevel", (res: any) => {
+    GetDropdownDetails("CARGOGEAREXPERIENCE", (res: any) => {
       setCargoTankerDrop(res?.data?.values);
     });
-    GetDropdownDetails("ProfessionalKnowledgeLevel", (res: any) => {
+    GetDropdownDetails("CARGOGEAREXPERIENCE", (res: any) => {
       setCargoGeneralDrop(res?.data?.values);
     });
-    GetDropdownDetails("ProfessionalKnowledgeLevel", (res: any) => {
+    GetDropdownDetails("CARGOGEAREXPERIENCE", (res: any) => {
       setWoodProDrop(res?.data?.values);
     });
-    GetDropdownDetails("ProfessionalKnowledgeLevel", (res: any) => {
+    GetDropdownDetails("CARGOGEAREXPERIENCE", (res: any) => {
       setStowageDrop(res?.data?.values);
     });
     GetDropdownDetails("METALWORKINGSKILLS", (res: any) => {
@@ -108,7 +112,7 @@ const ProfessionalSkills = ({
     GetDropdownDetails("TANKCOATINGTYPEEXPERIENCE", (res: any) => {
       setTankTypeDrop(res?.data?.values);
     });
-    GetDropdownDetails("ProfessionalKnowledgeLevel", (res: any) => {
+    GetDropdownDetails("RegionalAgreement", (res: any) => {
       setRegionalAgDrop(res?.data?.values);
     });
     GetDropdownDetails("ProfessionalKnowledgeLevel", (res: any) => {
@@ -141,7 +145,6 @@ const ProfessionalSkills = ({
     typeTank,
     cAvailable,
     classApproved,
-    classApproved,
     port,
     port1,
     tradingArea,
@@ -154,40 +157,52 @@ const ProfessionalSkills = ({
     inspection,
   ].filter(Boolean).length;
 
-  const percentage = (filledFields / totalFields) * 100;
-
-  let color;
+  const percentage:any = totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
+  // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
+  // let color;
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
       setProfessionalComplete((prevState) => ({
-        ...prevState,
-        percentage: percentage,
-        color: "#FF0000",
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: "#FF0000", // Update the color field
       }));
-      color = "red";
+      setColor("#FF0000");
     } else if (percentage <= 70) {
       setProfessionalComplete((prevState) => ({
-        ...prevState,
-        percentage: percentage,
-        color: "#FF9900",
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: "#FF9900", // Update the color field
       }));
-      color = "#FF9900";
+      setColor("#FF9900");
     } else {
       setProfessionalComplete((prevState) => ({
-        ...prevState,
-        percentage: percentage,
-        color: "#00A264",
+        ...prevState, // Spread the previous state to keep any other properties
+        percentage: percentage, // Update the percentage field
+        color: "#00A264", // Update the color field
       }));
-      color = "green";
+      setColor("#00A264");
     }
   }, [percentage, color]);
 
   const handleFileChange = (event: any) => {
     const file = event.target.files?.[0];
     if (file) {
-      setSelectedFile(file);
+      const reader = new FileReader();
+
+      reader.onloadend = function () {
+        const imageBinary: any = reader.result;
+        const byteArray = imageBinary.split(",")[1];
+        setSelectedFile(byteArray);
+      };
+
+      reader.readAsDataURL(file);
     }
+    // const file = event.target.files?.[0];
+    // if (file) {
+    //   setSelectedFile(file);
+    // }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -195,43 +210,64 @@ const ProfessionalSkills = ({
     e.preventDefault();
     if (!criminal) {
       toast.error("Please accept the declaration");
-      return; 
+      return;
     } else {
-
-    // let formData = new FormData();
-    // // formData.append('document', selectedFile);
-    // formData.append("computerSkill", skill);
-    // formData.append("computerSkillLevel", level1);
-    // formData.append("bulkCargo", bulkCargo);
-    // formData.append("tankerCargo", tankerCargo);
-    // formData.append("generalCargo", generalCargo);
-    // formData.append("woodProducts", woodProducts);
-    // formData.append("stowageLashingExperience", stowage);
-    // formData.append("cargoGearType", typeProfessional);
-    // formData.append("cargoGearMaker", maker);
-    // formData.append("cargoGearSWL", sWL);
-    // formData.append("metalWorkingSkill", skillmetal);
-    // formData.append("metalWorkingSkillLevel", levelMetal);
-    // formData.append("tankCoatingType", typeTank);
-    // formData.append("portStateRegionalAgreement", regionalAgreement);
-    // formData.append("portStatePort", port);
-    // formData.append("portStateDate", date);
-    // formData.append("portStateFindings", description);
-    // formData.append("vettingInspectionBy", inspection);
-    // formData.append("vettingPort", port1);
-    // formData.append("vettingDate", vdate);
-    // formData.append("vettingFindings", description1);
-    // formData.append("tradingArea", tradingArea);
-    // formData.append('document',selectedFile);
-
-  // 
-  let data:any = {
-    userId:userDetail?.userId,
-    
-  } 
+      let formData = new FormData();
+      // formData.append('document', selectedFile);
+      formData.append("computerSkill", skill);
+      formData.append("computerSkillLevel", level1);
+      formData.append("bulkCargo", bulkCargo);
+      formData.append("tankerCargo", tankerCargo);
+      formData.append("generalCargo", generalCargo);
+      formData.append("woodProducts", woodProducts);
+      formData.append("stowageLashingExperience", stowage);
+      formData.append("cargoGearType", typeProfessional);
+      formData.append("cargoGearMaker", maker);
+      formData.append("cargoGearSWL", sWL);
+      formData.append("metalWorkingSkill", skillmetal);
+      formData.append("metalWorkingSkillLevel", levelMetal);
+      formData.append("tankCoatingType", typeTank);
+      formData.append("portStateRegionalAgreement", regionalAgreement);
+      formData.append("portStatePort", port);
+      formData.append("portStateDate", date);
+      formData.append("portStateFindings", description);
+      formData.append("vettingInspectionBy", inspection);
+      formData.append("vettingPort", port1);
+      formData.append("vettingDate", vdate);
+      formData.append("vettingFindings", description1);
+      formData.append("tradingArea", tradingArea);
+      formData.append("metalWorkingDocumentUrl", selectedFile);
+    // formData.append('document', selectedFile);
+    formData.append("computerSkill", skill);
+    formData.append("computerSkillLevel", level1);
+    formData.append("bulkCargo", bulkCargo);
+    formData.append("tankerCargo", tankerCargo);
+    formData.append("generalCargo", generalCargo);
+    formData.append("woodProducts", woodProducts);
+    formData.append("stowageLashingExperience", stowage);
+    formData.append("cargoGearType", typeProfessional);
+    formData.append("cargoGearMaker", maker);
+    formData.append("cargoGearSWL", sWL);
+    formData.append("metalWorkingSkill", skillmetal);
+    formData.append("metalWorkingSkillLevel", levelMetal);
+    formData.append("tankCoatingType", typeTank);
+    formData.append("portStateRegionalAgreement", regionalAgreement);
+    formData.append("portStatePort", port);
+    formData.append("portStateDate", date);
+    formData.append("portStateFindings", description);
+    formData.append("vettingInspectionBy", inspection);
+    formData.append("vettingPort", port1);
+    formData.append("vettingDate", vdate);
+    formData.append("vettingFindings", description1);
+    formData.append("tradingArea", tradingArea);
+    formData.append('metalWorkingDocumentUrl',selectedFile);
+    formData.append('color',color);
+    formData.append('completed',percentage)
+  AddProfessionalSkillData(userDetail?.userId,cAvailable, classApproved,formData, AddProfessionalSkillDataCB)
+  
 
     }
-}
+  };
 
   const AddProfessionalSkillDataCB = (result: any) => {
     console.log(result);
@@ -701,7 +737,7 @@ const ProfessionalSkills = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Select
+                SELECT
               </option>
 
               {countryDrop &&
@@ -784,12 +820,12 @@ const ProfessionalSkills = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Select
+                SELECT
               </option>
-              {portDrop &&
-                portDrop?.map((tst: any, index: number) => (
-                  <option key={index} value={tst}>
-                    {tst?.toUpperCase()}
+              {countryDrop &&
+                countryDrop?.map((country: any, index: number) => (
+                  <option key={index} value={country}>
+                    {country?.toUpperCase()}
                   </option>
                 ))}
             </select>
@@ -846,7 +882,7 @@ const ProfessionalSkills = ({
                 disabled={disabled}
               >
                 <option value="" disabled selected>
-                  Select
+                  SELECT
                 </option>
                 {tradingAreaDrop &&
                   tradingAreaDrop?.map((tst: any, index: number) => (

@@ -37,6 +37,13 @@ import {
   GetReferencesData,
   GetSeagoingData,
   GetStcwData,
+  GetMedicalData,
+  GetAdditonalData,
+  GetSeaDetailsData,
+  GetVettingData,
+  GetProfessionalSkillData,
+  GetAcademicData,
+  GetShoreJobData,
 } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import { toast } from "react-toastify";
 import { FaPercentage } from "react-icons/fa";
@@ -54,10 +61,20 @@ const MyJob = () => {
   const [contactDetail, setContactDetail] = useState<any>({});
   const [travelDocumentsDetail, setTravelDocumentsDetail] = useState<any>({});
   const [ecdisDetail, setEcdisDetail] = useState<any>({});
+  const [medicalDetail, setMedicalDetail] = useState<any>({});
+  const [academicDetails, setAcademicDetails] = useState<any>({});
+ 
+  const [offShoreDetail, setOffShoreDetail] = useState<any>({});
+
+  const [professionalDetail, setprofessionalDetail] = useState<any>({});
+
+  const [shoreJobDetail, setShoreJobDetail] = useState<any>({});
+  const [verificationDetail, setVerificationDetail] = useState<any>({});
 
   const [sTCWDetail, setSTCWDetail] = useState<any>({});
+  const [additionalDetail, setAdditionalDetail] = useState<any>({});
   const [onlinePresenseDetail, setOnlinePresenseDetail] = useState<any>({});
- 
+
   const [refrencesDetail, setRefrencesDetail] = useState<any>({});
   const [seaGoingServiceDetail, setseaGoingServiceDetail] = useState<any>({});
   const [isOpen, setIsOpen] = useState(false); // State to toggle
@@ -197,7 +214,7 @@ const MyJob = () => {
     GetMyjob(id, (res: any) => {
       if (res?.status == 200) {
         setMyJobDetail(res?.data);
-        localStorage.setItem('rank',res?.data?.currentPosition)
+        localStorage.setItem("rank", res?.data?.currentPosition);
       } else {
         toast.error("No data found");
       }
@@ -205,7 +222,16 @@ const MyJob = () => {
     GetAboutMe(id, (res: any) => {
       if (res?.status == 200) {
         setAboutMeDetail(res?.data);
-        localStorage.setItem('aboutMe',res?.data?.personalityAndProfessionalAttitude)
+        localStorage.setItem(
+          "aboutMe",
+          res?.data?.personalityAndProfessionalAttitude
+        );
+        if (res?.data?.employmentDeclaration=='true') {
+          setCriminal(true)
+        }
+        else{
+          setCriminal(false)
+        }
       } else {
         toast.error("No data found");
       }
@@ -239,6 +265,30 @@ const MyJob = () => {
         toast.error("No data found");
       }
     });
+
+    GetAcademicData(id, (res: any) => {
+      if (res?.status == 200) {
+        setAcademicDetails(res?.data);
+      } else {
+        toast.error("No data found");
+      }
+    });
+
+    GetAdditonalData(id, (res: any) => {
+      if (res?.status == 200) {
+        setAdditionalDetail(res?.data);
+      } else {
+        toast.error("No data found");
+      }
+    });
+
+    GetMedicalData(id, (res: any) => {
+      if (res?.status == 200) {
+        setMedicalDetail(res?.data);
+      } else {
+        toast.error("No data found");
+      }
+    });
     GetContact(id, (res: any) => {
       if (res?.status == 200) {
         setContactDetail(res?.data);
@@ -254,13 +304,14 @@ const MyJob = () => {
       }
     });
 
-    GetStcwData(id, (res:any) => {
-      if(res?.status == 200){
-        setSTCWDetail(res?.data)
-      }else {
-        toast.error("No data found")
+    GetStcwData(id, (res: any) => {
+      if (res?.status == 200) {
+        setSTCWDetail(res?.data);
+      } else {
+        toast.error("No data found");
       }
-    })
+    });
+
     GetReferencesData(id, (res: any) => {
       if (res?.status == 200) {
         setRefrencesDetail(res?.data);
@@ -268,14 +319,44 @@ const MyJob = () => {
         toast.error("No data found");
       }
     });
+    GetSeaDetailsData(id, (res: any) => {
+      if (res?.status == 200) {
+        setOffShoreDetail(res?.data);
+      } else {
+        toast.error("No data found");
+      }
+    });
+
+    GetShoreJobData(id, (res: any) => {
+      if (res?.status == 200) {
+        setShoreJobDetail(res?.data);
+      } else {
+        toast.error("No data found");
+      }
+    });
+
+    GetVettingData(id, (res: any) => {
+      if (res?.status == 200) {
+        setVerificationDetail(res?.data);
+      } else {
+        toast.error("No data found");
+      }
+    });
+    GetProfessionalSkillData(id, (res: any) => {
+      if (res?.status == 200) {
+        setprofessionalDetail(res?.data);
+      } else {
+        toast.error("No data found");
+      }
+    });
 
     GetSeagoingData(id, (res: any) => {
-    if (res?.status == 200) {
-      setseaGoingServiceDetail(res?.data);
-    } else {
-      toast.error("No data found");
-    }
-    })
+      if (res?.status == 200) {
+        setseaGoingServiceDetail(res?.data);
+      } else {
+        toast.error("No data found");
+      }
+    });
 
     GetEcdisData(id, (res: any) => {
       if (res?.status == 200) {
@@ -563,7 +644,9 @@ const MyJob = () => {
               {/* OnlinePresence start */}
               <div
                 className={` mt-3 flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${
-                  onlinePresenseDetail.color ? onlinePresenseDetail.color : onlinePresenceComplete.color
+                  onlinePresenseDetail.color
+                    ? onlinePresenseDetail.color
+                    : onlinePresenceComplete.color
                 }]`}
               >
                 <h1 className="">Online Presence</h1>
@@ -604,7 +687,7 @@ const MyJob = () => {
                       </svg>
                     )}
                   </span>
-                 
+
                   <CircularProgress
                     percentage={Math.round(
                       onlinePresenceComplete?.percentage
@@ -612,7 +695,9 @@ const MyJob = () => {
                         : Number(onlinePresenseDetail?.completed)
                     )}
                     color={
-                      onlinePresenseDetail.color ? onlinePresenseDetail.color : onlinePresenceComplete.color
+                      onlinePresenseDetail.color
+                        ? onlinePresenseDetail.color
+                        : onlinePresenceComplete.color
                     }
                   />
                 </div>
@@ -623,8 +708,8 @@ const MyJob = () => {
                   onlinePresenceComplete={onlinePresenceComplete}
                   setOnlinePresenceComplete={setOnlinePresenceComplete}
                   userDetail={profileDetail}
-                   onlinePresenceDetail={onlinePresenseDetail}
-                   criminal={criminal}
+                  onlinePresenceDetail={onlinePresenseDetail}
+                  criminal={criminal}
                 />
               )}
               {/* OnlinePresence end */}
@@ -632,7 +717,9 @@ const MyJob = () => {
               {/* OnlinePresence start */}
               <div
                 className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8  border-[${
-                  licencesDetail.color ? licencesDetail.color : licensesComplete.color
+                  licencesDetail.color
+                    ? licencesDetail.color
+                    : licensesComplete.color
                 }] mt-3`}
               >
                 <h1 className="">Licenses</h1>
@@ -767,7 +854,11 @@ const MyJob = () => {
               )}
 
               <div
-                className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${medicalComplete?.color}] mt-3`}
+                className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${
+                  medicalDetail.color
+                    ? medicalDetail.color
+                    : medicalComplete.color
+                }] mt-3`}
               >
                 <h2 className="">Medical Certificates</h2>
                 <div className="flex items-center justify-center gap-1">
@@ -805,8 +896,16 @@ const MyJob = () => {
                     )}
                   </span>
                   <CircularProgress
-                    percentage={Math.round(medicalComplete?.percentage)}
-                    color={medicalComplete.color}
+                    percentage={
+                      Math.round(medicalComplete?.percentage)
+                        ? Math.round(medicalComplete?.percentage)
+                        : Number(medicalDetail?.completed)
+                    }
+                    color={
+                      medicalDetail.color
+                        ? medicalDetail?.color
+                        : medicalComplete?.color
+                    }
                   />
                 </div>
               </div>
@@ -817,11 +916,16 @@ const MyJob = () => {
                   setMedicalComplete={setMedicalComplete}
                   userDetail={profileDetail}
                   criminal={criminal}
+                  medicalDetail={medicalDetail}
                 />
               )}
 
               <div
-                className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${academicComplete?.color}] mt-3`}
+                className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${
+                  academicDetails.color
+                    ? academicDetails?.color
+                    : academicComplete?.color
+                }] mt-3`}
               >
                 <h2 className="">Academic Details</h2>
                 <div className="flex items-center justify-center gap-1">
@@ -862,8 +966,16 @@ const MyJob = () => {
                     )}
                   </span>
                   <CircularProgress
-                    percentage={Math.round(academicComplete?.percentage)}
-                    color={academicComplete.color}
+                    percentage={
+                      Math.round(academicComplete?.percentage)
+                        ? Math.round(academicComplete?.percentage)
+                        : Number(academicDetails?.completed)
+                    }
+                    color={
+                      academicDetails.color
+                        ? academicDetails?.color
+                        : academicComplete?.color
+                    }
                   />
                 </div>
               </div>
@@ -874,12 +986,16 @@ const MyJob = () => {
                   setAcademicComplete={setAcademicComplete}
                   userDetail={profileDetail}
                   criminal={criminal}
+                  academicDetail={academicDetails}
+
                 />
               )}
 
               <div
                 className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${
-                  seaGoingServiceDetail.color ? seaGoingServiceDetail.color : seaGoingServiceComplete.color
+                  seaGoingServiceDetail.color
+                    ? seaGoingServiceDetail.color
+                    : seaGoingServiceComplete.color
                 }] mt-3`}
               >
                 <h2 className="">SeaGoing Experience </h2>
@@ -924,7 +1040,9 @@ const MyJob = () => {
                         : Number(seaGoingServiceDetail?.completed)
                     )}
                     color={
-                      seaGoingServiceDetail.color ? seaGoingServiceDetail.color : seaGoingServiceComplete.color
+                      seaGoingServiceDetail.color
+                        ? seaGoingServiceDetail.color
+                        : seaGoingServiceComplete.color
                     }
                   />
                 </div>
@@ -941,7 +1059,11 @@ const MyJob = () => {
               )}
 
               <div
-                className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${preSeaTrainigComplete?.color}] mt-3`}
+                className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${
+                  offShoreDetail.color
+                    ? offShoreDetail?.color
+                    : preSeaTrainigComplete?.color
+                }] mt-3`}
               >
                 <h2 className="">Off Shore Requirements</h2>
                 <div className="flex items-center justify-center gap-1">
@@ -982,8 +1104,16 @@ const MyJob = () => {
                     )}
                   </span>
                   <CircularProgress
-                    percentage={Math.round(preSeaTrainigComplete?.percentage)}
-                    color={preSeaTrainigComplete.color}
+                    percentage={
+                      Math.round(preSeaTrainigComplete?.percentage)
+                        ? Math.round(preSeaTrainigComplete?.percentage)
+                        : Number(offShoreDetail?.completed)
+                    }
+                    color={
+                      offShoreDetail.color
+                        ? offShoreDetail?.color
+                        : preSeaTrainigComplete?.color
+                    }
                   />
                 </div>
               </div>
@@ -994,6 +1124,7 @@ const MyJob = () => {
                   setPreSeaTrainigComplete={setPreSeaTrainigComplete}
                   userDetail={profileDetail}
                   criminal={criminal}
+                  offShoreDetail={offShoreDetail}
                 />
               )}
             </div>
@@ -1297,10 +1428,8 @@ const MyJob = () => {
 
             <div
               className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${
-                  sTCWDetail.color
-                    ? sTCWDetail.color
-                    : sTCWComplete.color
-                }] mt-3`}
+                sTCWDetail.color ? sTCWDetail.color : sTCWComplete.color
+              }] mt-3`}
             >
               <h1 className="">STCW Training</h1>
               <div className="flex items-center justify-center gap-1">
@@ -1341,17 +1470,15 @@ const MyJob = () => {
                   )}
                 </span>
                 <CircularProgress
-                    percentage={Math.round(
-                      sTCWComplete?.percentage
-                        ? sTCWComplete?.percentage
-                        : Number(sTCWDetail?.completed)
-                    )}
-                    color={
-                    sTCWDetail.color
-                        ? sTCWDetail.color
-                        : sTCWComplete.color
-                    }
-                  />
+                  percentage={Math.round(
+                    sTCWComplete?.percentage
+                      ? sTCWComplete?.percentage
+                      : Number(sTCWDetail?.completed)
+                  )}
+                  color={
+                    sTCWDetail.color ? sTCWDetail.color : sTCWComplete.color
+                  }
+                />
               </div>
             </div>
 
@@ -1366,7 +1493,11 @@ const MyJob = () => {
             )}
 
             <div
-              className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${additionalComplete?.color}] mt-3`}
+              className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${
+                additionalDetail.color
+                  ? additionalDetail.color
+                  : additionalComplete.color
+              }] mt-3`}
             >
               <h2 className="">Additional Trainings</h2>
               <div className="flex items-center justify-center gap-1">
@@ -1407,8 +1538,16 @@ const MyJob = () => {
                   )}
                 </span>
                 <CircularProgress
-                  percentage={Math.round(additionalComplete?.percentage)}
-                  color={additionalComplete.color}
+                  percentage={Math.round(
+                    additionalComplete?.percentage
+                      ? additionalComplete?.percentage
+                      : Number(additionalDetail?.completed)
+                  )}
+                  color={
+                    additionalDetail.color
+                      ? additionalDetail.color
+                      : additionalComplete.color
+                  }
                 />
               </div>
             </div>
@@ -1419,6 +1558,7 @@ const MyJob = () => {
                 setAdditionalComplete={setAdditionalComplete}
                 userDetail={profileDetail}
                 criminal={criminal}
+                additionalDetail={additionalDetail}
               />
             )}
 
@@ -1465,7 +1605,11 @@ const MyJob = () => {
             {educationOpen && <Education educationComplete={educationComplete} setEducationComplete={setEducationComplete}  userDetail={profileDetail}/>} */}
 
             <div
-              className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${professionalComplete?.color}] mt-3`}
+              className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${
+                professionalDetail.color
+                  ? professionalDetail.color
+                  : professionalComplete.color
+              }] mt-3`}
             >
               <h2 className="">Professional SKills</h2>
               <div className="flex items-center justify-center gap-1">
@@ -1506,8 +1650,16 @@ const MyJob = () => {
                   )}
                 </span>
                 <CircularProgress
-                  percentage={Math.round(professionalComplete?.percentage)}
-                  color={professionalComplete.color}
+                  percentage={Math.round(
+                    professionalComplete?.percentage
+                      ? professionalComplete?.percentage
+                      : Number(professionalDetail?.completed)
+                  )}
+                  color={
+                    professionalDetail.color
+                      ? professionalDetail.color
+                      : professionalComplete.color
+                  }
                 />
               </div>
             </div>
@@ -1518,13 +1670,16 @@ const MyJob = () => {
                 setProfessionalComplete={setProfessionalComplete}
                 userDetail={profileDetail}
                 criminal={criminal}
+                professionalSkills={professionalDetail}
               />
             )}
 
             <div
               className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${
-                  refrencesDetail.color ? refrencesDetail.color : refrencesComplete.color
-                }] mt-3`}
+                refrencesDetail.color
+                  ? refrencesDetail.color
+                  : refrencesComplete.color
+              }] mt-3`}
             >
               <h2 className="">References</h2>
               <div className="flex items-center justify-center gap-1">
@@ -1565,15 +1720,17 @@ const MyJob = () => {
                   )}
                 </span>
                 <CircularProgress
-                    percentage={Math.round(
-                      refrencesComplete?.percentage
-                        ? refrencesComplete?.percentage
-                        : Number(refrencesDetail?.completed)
-                    )}
-                    color={
-                      refrencesDetail.color ? refrencesDetail.color : refrencesComplete.color
-                    }
-                  />
+                  percentage={Math.round(
+                    refrencesComplete?.percentage
+                      ? refrencesComplete?.percentage
+                      : Number(refrencesDetail?.completed)
+                  )}
+                  color={
+                    refrencesDetail.color
+                      ? refrencesDetail.color
+                      : refrencesComplete.color
+                  }
+                />
               </div>
             </div>
             {refOpen && (
@@ -1587,7 +1744,11 @@ const MyJob = () => {
             )}
 
             <div
-              className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${shorJobComplete?.color}] mt-3`}
+              className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${
+                shoreJobDetail.color
+                    ? shoreJobDetail?.color
+                    : shorJobComplete?.color
+                }] mt-3`}
             >
               <h2 className="">Shore Job</h2>
               <div className="flex items-center justify-center gap-1">
@@ -1628,9 +1789,17 @@ const MyJob = () => {
                   )}
                 </span>
                 <CircularProgress
-                  percentage={Math.round(shorJobComplete?.percentage)}
-                  color={shorJobComplete.color}
-                />
+                    percentage={
+                      Math.round(shorJobComplete?.percentage)
+                        ? Math.round(shorJobComplete?.percentage)
+                        : Number(shoreJobDetail?.completed)
+                    }
+                    color={
+                      shoreJobDetail.color
+                        ? shoreJobDetail?.color
+                        : shorJobComplete?.color
+                    }
+                  />
               </div>
             </div>
             {shorOpen && (
@@ -1639,11 +1808,16 @@ const MyJob = () => {
                 setShorJobComplete={setShorJobComplete}
                 userDetail={profileDetail}
                 criminal={criminal}
+                shorJobDetail={shoreJobDetail}
               />
             )}
 
             <div
-              className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${vettingServicesComplete?.color}] mt-3`}
+              className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${
+                professionalDetail.color
+                  ? professionalDetail.color
+                  : professionalComplete.color
+              }] mt-3`}
             >
               <h2 className="">Verification Status</h2>
               <div className="flex items-center justify-center gap-1">
@@ -1681,8 +1855,16 @@ const MyJob = () => {
                   )}
                 </span>
                 <CircularProgress
-                  percentage={Math.round(vettingServicesComplete?.percentage)}
-                  color={vettingServicesComplete.color}
+                  percentage={Math.round(
+                    vettingServicesComplete?.percentage
+                      ? vettingServicesComplete?.percentage
+                      : Number(verificationDetail?.completed)
+                  )}
+                  color={
+                    verificationDetail.color
+                      ? verificationDetail.color
+                      : vettingServicesComplete.color
+                  }
                 />
               </div>
             </div>
@@ -1692,6 +1874,7 @@ const MyJob = () => {
                 setVettingServicesComplete={setVettingServicesComplete}
                 userDetail={profileDetail}
                 criminal={criminal}
+                vettingServices={verificationDetail}
               />
             )}
 

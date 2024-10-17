@@ -1,4 +1,5 @@
 "use client";
+import { AddShoreJobData, GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Select from "react-select";
@@ -16,20 +17,24 @@ type Props = {
   setShorJobComplete: React.Dispatch<React.SetStateAction<ShorJobComplete>>;
   userDetail: any;
   criminal:any;
+  shorJobDetail:any;
 };
 
 const ShorJob = ({
   shorJobComplete,
   setShorJobComplete,
   userDetail,
-  criminal
+  criminal,
+  shorJobDetail
 }: Props) => {
   const [areYouIntrested, setAreYouIntrested] = useState("");
   const [multipleSelection, setMultipleSelection] = useState<any>([]); // Updated to handle react-select's option type
   const [disabled, setDisabled] = useState(true);
+  const [color, setColor] = useState("");
+
 
   // Adding 10 options for the multi-select dropdown
-  const [countryDrop, setCountryDrop] = useState<any>([
+  const [jobDrop, setJobDrop] = useState<any>([
     { label: "Option 1", value: "1" },
     { label: "Option 2", value: "2" },
     { label: "Option 3", value: "3" },
@@ -42,19 +47,48 @@ const ShorJob = ({
     { label: "Option 10", value: "10" },
   ]);
 
+  useEffect(() => {
+
+    GetDropdownDetails("shorejobinterest", (res: any) => {
+      // console.log('County',res?.data)
+      
+      
+      let tempArray = res?.data?.values.map((element: any) => ({ label: element?.toUpperCase(), value: element }));
+      setJobDrop(tempArray);
+    });
+  }, []);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!criminal) {
       toast.error("Please accept the declaration");
       return; 
     } else {
+      let data ={
+        "id": userDetail?.userId,
+        "interested": areYouIntrested=='Yes'?true:false,
+        "color": color,
+        "completed": percentage?.toString(),
+        "jobOption": multipleSelection
+      }
+      AddShoreJobData(data,(result:any)=>{
+        if (result?.status == 200|| result?.status==201) {
+          toast.success("Shore Job submited successfully");
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);
+        } else {
+          toast.error("Shore Job not submited ");
+        }
+      })
     }
   };
+  
 
   const totalFields = 1;
   const filledFields = [areYouIntrested].filter(Boolean).length;
   const percentage = (filledFields / totalFields) * 100;
-  let color = "";
+  // let color = "";
 
   useEffect(() => {
     if (percentage <= 30) {
@@ -63,21 +97,21 @@ const ShorJob = ({
         percentage: percentage,
         color: "#FF0000",
       }));
-      color = "red";
+      setColor("#FF0000");
     } else if (percentage <= 70) {
       setShorJobComplete((prevState) => ({
         ...prevState,
         percentage: percentage,
         color: "#FF9900",
       }));
-      color = "#FF9900";
+      setColor("#FF9900");
     } else {
       setShorJobComplete((prevState) => ({
         ...prevState,
         percentage: percentage,
         color: "#00A264",
       }));
-      color = "green";
+      setColor("#00A264");
     }
   }, [percentage]);
 
@@ -120,10 +154,13 @@ const ShorJob = ({
           </div>
 
           {areYouIntrested === "Yes" && (
-            <div className="mt-6">
+            <div >
+              <label className="text-[14px] leading-[19.07px]  text-[#333333]">
+              Interest Options
+            </label>
               <Select
                 isMulti
-                options={countryDrop}
+                options={jobDrop}
                 value={multipleSelection}
                 onChange={handleMultiSelectChange}
                 isDisabled={disabled}

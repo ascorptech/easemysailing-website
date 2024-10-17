@@ -26,10 +26,10 @@ const Header: React.FC<HeaderProps> = ({ sidebarToggle, setSidebarToggle }) => {
   }
   
   return (
-    <div className="bg-[#EBEBEB] flex items-center justify-between sticky top-0 -z-30">
-      <div className="ml-4">
+    <div className="bg-[#EBEBEB] flex items-center justify-between sticky top-0 -z-30 ">
+      <div className="ml-4 ">
         <FaBars
-          className="text-green-700 text-2xl cursor-pointer"
+          className="text-green-700 text-2xl cursor-pointer "
           onClick={() => setSidebarToggle(!sidebarToggle)}
         />
       </div>

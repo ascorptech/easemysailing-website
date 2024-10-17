@@ -37,7 +37,11 @@ const { GETPROFILE,
     GETSEAGOING,
     GETSTCWTRAINING,
     GETTRAVELDOCUMENT,
-    GETVETTING } = apiEndPoints
+    GETVETTING,
+    GETACADEMIC,
+    POSTACADEMIC,
+    GETSHOREJOB,
+    POSTSHOREJOB } = apiEndPoints
 
 
 // Get Profile Detail
@@ -185,11 +189,11 @@ export const GetNextOfData = async (id: any, cb: any) => {
 
 //Language
 
-export const AddLanguageData = async (userId: any, data: any, cb: any) => {
+export const AddLanguageData = async (data: any, cb: any) => {
     try {
         console.log('Data to be submitted:', data);
-        let url = `${POSTLANGUAGE}/${userId}`
-        const response = await patchReq(url, data)
+        // let url = `${POSTLANGUAGE}/${userId}`
+        const response = await postReq(POSTLANGUAGE, data)
         console.log('API response:', response);
         return cb(response)
     } catch (error: any) {
@@ -266,7 +270,7 @@ export const GetStcwData = async (id: any, cb: any) => {
 export const AddProfessionalSkillData = async (userId: any, metalWorkingCertificateAvailable: any, metalWorkingClassApproved: any, data: any, cb: any) => {
     try {
         console.log('Data to be submitted:', data);
-        let url = `${POSTPROFESSIONALSKILL}/${userId}/${metalWorkingCertificateAvailable}/${metalWorkingClassApproved}`
+        let url = `${POSTPROFESSIONALSKILL}?id=${userId}&metalWorkingCertificateAvailable=${metalWorkingCertificateAvailable}&metalWorkingClassApproved=${metalWorkingClassApproved}`
         const response = await postReq(url, data)
         console.log('API response:', response);
         return cb(response)
@@ -292,7 +296,7 @@ export const GetProfessionalSkillData = async (id: any, cb: any) => {
 export const AddReferencesData = async (userId: any, consentGiven: any, data: any, cb: any) => {
     try {
         console.log('Data to be submitted:', data);
-        let url = `${POSTREFERENCE}/${userId}/${consentGiven}`
+        let url = `${POSTREFERENCE}?id=${userId}&consentGiven=${consentGiven}`
         const response = await postReq(url, data)
         console.log('API response:', response);
         return cb(response)
@@ -426,10 +430,11 @@ export const GetLicencesData = async (id: any, cb: any) => {
 
 // Off Shore Requirements
 
-export const AddSeaDetailsData = async (userId: any, data: any, cb: any) => {
+export const AddSeaDetailsData = async (userId: any,salaryNegotiable:any,neverExpires:any, data: any, cb: any) => {
     try {
-        console.log('Data to be submitted:', data);
-        const response = await postReq(POSTSEADETAILS, data)
+        // console.log('Data to be submitted:', data);
+        let url = `${POSTSEADETAILS}?id=${userId}&salaryNegotiable=${salaryNegotiable}&neverExpires=${neverExpires}`
+        const response = await postReq(url, data)
         console.log('API response:', response);
         return cb(response)
     } catch (error: any) {
@@ -449,6 +454,8 @@ export const GetSeaDetailsData = async (id: any, cb: any) => {
         return cb(error?.response)
     }
 }
+
+
 
 //ECDIS 
 export const AddEcdisData = async (data: any, cb: any) => {
@@ -479,11 +486,11 @@ export const GetEcdisData = async (id: any, cb: any) => {
 
 //Additional training
 
-export const AddAdditionalData = async (userId: any, data: any, neverExpires: any, cb: any) => {
+export const AddAdditionalData = async ( data: any, cb: any) => {
     try {
         console.log('Data to be submitted:', data);
-        let url = `${POSTADDITIIONAL}/${userId}/${neverExpires}`
-        const response = await postReq(url, data)
+        // let url = `${POSTADDITIIONAL}/${userId}/${neverExpires}`
+        const response = await postReq(POSTADDITIIONAL, data)
         console.log('API response:', response);
         return cb(response)
     } catch (error: any) {
@@ -494,6 +501,60 @@ export const AddAdditionalData = async (userId: any, data: any, neverExpires: an
 export const GetAdditonalData = async (id: any, cb: any) => {
     try {
         let url = `${GETADDITIIONAL}/${id}`
+        console.log('API URL:', url);
+        const response = await getReq(url);
+        console.log('API response:', response)
+        return cb(response)
+    } catch (error: any) {
+        console.log('err', error)
+        return cb(error?.response)
+    }
+}
+
+//Accamic details
+export const AddAcademicData = async (data: any,  cb: any) => {
+    try {
+        console.log('Data to be submitted:', data);
+        // let url = `${POSTADDITIIONAL}/${userId}/${neverExpires}`
+        const response = await postReq(POSTACADEMIC, data)
+        console.log('API response:', response);
+        return cb(response)
+    } catch (error: any) {
+        console.log('err', error)
+        return cb(error?.response)
+    }
+}
+
+
+export const GetAcademicData = async (id: any, cb: any) => {
+    try {
+         let url = `${GETACADEMIC}/${id}`
+        console.log('API URL:', url);
+        const response = await getReq(url);
+        console.log('API response:', response)
+        return cb(response)
+    } catch (error: any) {
+        console.log('err', error)
+        return cb(error?.response)
+    }
+}
+
+//shor job
+
+export const AddShoreJobData = async (data: any, cb: any) => {
+    try {
+        console.log('Data to be submitted:', data);
+        const response = await postReq(POSTSHOREJOB, data)
+        console.log('API response:', response);
+        return cb(response)
+    } catch (error: any) {
+        console.log('err', error)
+        return cb(error?.response)
+    }
+}
+export const GetShoreJobData = async (id: any, cb: any) => {
+    try {
+        let url = `${GETSHOREJOB}/${id}`
         console.log('API URL:', url);
         const response = await getReq(url);
         console.log('API response:', response)

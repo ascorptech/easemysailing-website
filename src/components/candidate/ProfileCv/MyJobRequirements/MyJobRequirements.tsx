@@ -56,6 +56,7 @@ const MyJobRequirements = ({
   useEffect(() => {
     if (jobDetail) {
       setCurrentPosition(jobDetail?.currentPosition);
+      setPrimaryRank(jobDetail?.primaryRankChoice);
       setAlternatePosition(jobDetail?.alternatePosition);
       setPreferredVesselType(jobDetail?.preferredVesselType);
       setAlternateVesselType(jobDetail?.alternateVesselType);
@@ -139,6 +140,7 @@ const MyJobRequirements = ({
       id: userDetail?.userId,
       currentPosition: currentPosition,
       alternatePosition: alternatePosition,
+      primaryRankChoice:primaryRank,
       preferredVesselType: preferredVesselType,
       alternateVesselType: alternateVesselType,
       notAvailable: available == "yes" ? "true" : "false",
@@ -190,7 +192,10 @@ const MyJobRequirements = ({
             <select
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={currentPosition}
-              onChange={(e) => setCurrentPosition(e.target.value)}
+              onChange={(e) => {
+                setCurrentPosition(e.target.value);
+                setPrimaryRank(e.target.value)
+              }}
               disabled={disabled}
               required
             >

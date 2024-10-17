@@ -7,10 +7,15 @@ import CompanyParticular from "./CompanyParticular/CompanyParticular";
 import { toast } from "react-toastify";
 import FleetForm from "./FleetDetails/FleetDetails";
 import UserDetails from "./userdetails/UserDetails";
+import Accred from "./accredation/Accred";
+import KycDetails from "./kyc/KycDetails";
+import OwnerCrew from "./ownerCrew/OwnerCrew";
 const Form = () => {
   const [fleetDetail, setFleetDetail] = useState<any>({});
   const [userDetail, setUserDetail] = useState<any>({});
-
+  const [accredDetail, setAccredDetail] = useState<any>({});
+  const [kycDetail, setKycDetail] = useState<any>({});
+  const [ownerDetail, setOwnerCrewDetail] = useState<any>({});
   const [companyParticular, setCompanyParticular] = useState<any>({
     percentage: 0,
     color: "#FF0000",
@@ -26,6 +31,20 @@ const Form = () => {
     color: "#FF0000",
   });
 
+  const [accredComplete, setAccredComplete] = useState<any>({
+    percentage: 0,
+    color: "#FF0000",
+  });
+
+  const [kycComplete, setKycComplete] = useState<any>({
+    percentage: 0,
+    color: "#FF0000",
+  });
+
+  const [ownerComplete, setOwnerComplete] = useState<any>({
+    percentage: 0,
+    color: "#FF0000",
+  });
   // left side usestate
   const [isOpen, setIsOpen] = useState(false); // State to toggle
   const [accredationsOpen, setAccredationsOpen] = useState(false);
@@ -56,7 +75,7 @@ const Form = () => {
     setIsOpen(!isOpen); // Toggle open/close
   };
 
-  const hendleAboutMe = () => {
+  const hendleFleet = () => {
     setFleetDetailOpen(!fleetDetailOpen);
   };
 
@@ -118,9 +137,14 @@ const Form = () => {
                 />
               )}
 
-              {/* Fleet Details */}
+              {/* Accredations */}
 
-              <div className="flex justify-between items-center rounded-md   bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
+              <div
+                className={`mt-3 flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${
+                  accredDetail.color ? accredDetail.color : accredComplete.color
+                }]`}
+              >
+                {" "}
                 <h1 className="">Accredations</h1>
                 <div className="flex items-center justify-center gap-1">
                   <span
@@ -159,16 +183,39 @@ const Form = () => {
                       </svg>
                     )}
                   </span>
-                  <CircularProgress percentage={100} color="#FF0000" />
+                  <CircularProgress
+                    percentage={Math.round(
+                      accredComplete?.percentage
+                        ? accredComplete?.percentage
+                        : Number(accredDetail?.completed)
+                    )}
+                    color={
+                      accredDetail.color
+                        ? accredDetail.color
+                        : accredComplete.color
+                    }
+                  />{" "}
                 </div>
               </div>
-              {/* {nKOpen && <NextOfKinDetails userDetail={undefined} />} */}
-              {/* {nKOpen && <NextOfKinDetails />} */}
+              {accredationsOpen && (
+                <Accred
+                  AccredComplete={accredComplete}
+                  setAccredComplete={setAccredComplete}
+                  userDetail={undefined}
+                  sTCWDetail={undefined}
+                  criminal={undefined}
+                />
+              )}
+              {/* Accred Form end */}
 
-              <div className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3">
-                <Link href="#" className="">
-                  Owner Specific Crew Training Requirements
-                </Link>
+              {/* {Owner Specific Crew Training Requirements/>} */}
+
+              <div
+                className={`mt-3 flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${
+                  ownerDetail.color ? ownerDetail.color : ownerComplete.color
+                }]`}
+              >
+                <h1 className=""> Owner Specific Crew Training Requirements</h1>
                 <div className="flex items-center justify-center gap-1">
                   <span
                     className="ml-2 cursor-pointer"
@@ -206,9 +253,29 @@ const Form = () => {
                       </svg>
                     )}
                   </span>
-                  <CircularProgress percentage={100} color="#FF0000" />
+                  <CircularProgress
+                    percentage={Math.round(
+                      ownerComplete?.percentage
+                        ? ownerComplete?.percentage
+                        : Number(ownerDetail?.completed)
+                    )}
+                    color={
+                      ownerDetail.color
+                        ? ownerDetail.color
+                        : ownerComplete.color
+                    }
+                  />{" "}
                 </div>
               </div>
+              {ownerCrewOpen && (
+                <OwnerCrew
+                  OwnerCrewComplete={ownerComplete}
+                  setOwnerCrewComplete={setOwnerComplete}
+                  userDetail={undefined}
+                  OwnerCrewDetail={undefined}
+                  criminal={undefined}
+                />
+              )}
 
               {/* {languageOpen && <Languages />}  */}
 
@@ -264,7 +331,6 @@ const Form = () => {
         <div className="w-full  lg:w-[50%] mt-4 lg:mt-0">
           <div className=" lg:h-screen overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory ">
             {/* Fleet Details*/}
-
             <div
               className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${
                 fleetDetail.color ? fleetDetail.color : fleetComplete.color
@@ -273,7 +339,7 @@ const Form = () => {
               {" "}
               <h2 className="">Fleet Details and Crew Welfare</h2>
               <div className="flex items-center justify-center gap-1">
-                <span className="ml-2 cursor-pointer" onClick={hendleAboutMe}>
+                <span className="ml-2 cursor-pointer" onClick={hendleFleet}>
                   {fleetDetailOpen ? (
                     <svg
                       className="w-6 h-6 transform rotate-180 transition-transform"
@@ -327,18 +393,17 @@ const Form = () => {
                 criminal={undefined}
               />
             )}
-            {/* about me end */}
-
+            {/* Fleet Form end */}
             {/* Kyc Details */}
             <div
-              className="flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[#FF0000] mt-3"
-              onClick={handlekyc}
+              className={`flex justify-between items-center rounded-md mt-3 bg-[#D6EEEE] p-2 border-r-8 border-[${
+                kycDetail.color ? kycDetail.color : kycComplete.color
+              }]`}
             >
-              <Link href="#" className="">
-                KYC Details
-              </Link>
+              <h2 className="">KYC Details</h2>
+
               <div className="flex items-center justify-center gap-1">
-                <span className="ml-2 cursor-pointer">
+                <span className="ml-2 cursor-pointer" onClick={handlekyc}>
                   {kycDetailsOpen ? (
                     <svg
                       className="w-6 h-6 transform rotate-180 transition-transform"
@@ -371,13 +436,26 @@ const Form = () => {
                     </svg>
                   )}
                 </span>
-                <CircularProgress percentage={100} color="#FF0000" />
+                <CircularProgress
+                  percentage={Math.round(
+                    kycComplete?.percentage
+                      ? kycComplete?.percentage
+                      : Number(kycDetail?.completed)
+                  )}
+                  color={kycDetail.color ? kycDetail.color : kycComplete.color}
+                />{" "}
               </div>
             </div>
-
-            {/* {cDOpen && <ContactDetails />} */}
+            {kycDetailsOpen && (
+              <KycDetails
+                KycDetailsComplete={kycComplete}
+                setKycDetailsComplete={setKycComplete}
+                userDetail={undefined}
+                sTCWDetail={undefined}
+                criminal={undefined}
+              />
+            )}{" "}
             {/* kyc details end */}
-
             {/* User Details */}
             <div
               className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] mt-3 p-2 border-r-8 border-[${

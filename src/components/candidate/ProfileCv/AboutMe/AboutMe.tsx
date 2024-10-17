@@ -6,17 +6,15 @@ import { AddAboutMeData } from "@/app/(candidate)/candidate/(auth)/(dashboard)/p
 import { toast } from "react-toastify";
 import { Link } from "lucide-react";
 
-
-
 type AboutMeComplete = {
   percentage: number;
   color: string;
 };
 type Props = {
-  aboutMeComplete: AboutMeComplete; 
-  setAboutMeComplete: React.Dispatch<React.SetStateAction<AboutMeComplete>>; 
+  aboutMeComplete: AboutMeComplete;
+  setAboutMeComplete: React.Dispatch<React.SetStateAction<AboutMeComplete>>;
   userDetail: any;
-  aboutDetail:any;
+  aboutDetail: any;
   criminal: boolean; // Receive global criminal state
   setCriminal: React.Dispatch<React.SetStateAction<boolean>>; // Receive setter for global state
 };
@@ -28,7 +26,6 @@ const AboutMe = ({
   aboutDetail,
   criminal,
   setCriminal,
-  
 }: Props) => {
   const [personality, setPersonality] = useState("");
   const [additional, setAdditional] = useState("");
@@ -36,7 +33,7 @@ const AboutMe = ({
 
   // const [criminal, setCriminal] = useState<any>("");
   const [disabled, setDisabled] = useState(true);
-  const [color, setColor]=useState('')
+  const [color, setColor] = useState("");
 
   const totalFields = 4;
   const filledFields = [personality, additional, myFuture, criminal].filter(
@@ -44,15 +41,16 @@ const AboutMe = ({
   ).length;
 
   useEffect(() => {
-    console.log('ab',aboutDetail)
+    console.log("ab", aboutDetail);
     if (aboutDetail) {
-      setPersonality(aboutDetail?.personalityAndProfessionalAttitude)
-      setAdditional(aboutDetail?.additionalSeaServiceInfo)
-      setMyFuture(aboutDetail?.futureAimsAndExpectations)
-      }
-  }, [])
+      setPersonality(aboutDetail?.personalityAndProfessionalAttitude);
+      setAdditional(aboutDetail?.additionalSeaServiceInfo);
+      setMyFuture(aboutDetail?.futureAimsAndExpectations);
+    }
+  }, []);
 
-  const percentage:any = totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
+  const percentage: any =
+    totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
 
   // const percentage = (filledFields / totalFields) * 100;
   // let color;
@@ -60,23 +58,23 @@ const AboutMe = ({
     console.log("user", userDetail);
     if (percentage <= 30) {
       setAboutMeComplete((prevState) => ({
-        ...prevState, 
-        percentage: percentage, 
-        color: "#FF0000", 
+        ...prevState,
+        percentage: percentage,
+        color: "#FF0000",
       }));
       setColor("#FF0000");
     } else if (percentage <= 70) {
       setAboutMeComplete((prevState) => ({
-        ...prevState, 
-        percentage: percentage, 
+        ...prevState,
+        percentage: percentage,
         color: "#FF9900",
       }));
       setColor("#FF9900");
     } else {
       setAboutMeComplete((prevState) => ({
         ...prevState,
-        percentage: percentage, 
-        color: "#00A264", 
+        percentage: percentage,
+        color: "#00A264",
       }));
       setColor("#00A264");
     }
@@ -84,9 +82,9 @@ const AboutMe = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('test',criminal)
+    console.log("test", criminal);
     if (!criminal) {
-      toast.error('Please accept the declaration')
+      toast.error("Please accept the declaration");
       return;
     } else {
       let data = {
@@ -98,11 +96,9 @@ const AboutMe = ({
         color: color,
         completed: percentage,
       };
-  
+
       AddAboutMeData(data, AddAboutMeDataCB);
     }
-
-    
   };
 
   const AddAboutMeDataCB = (result: any) => {
@@ -122,6 +118,23 @@ const AboutMe = ({
   const handleEdits = () => {
     setDisabled(!disabled);
     // toast.info("You are now in edit mode. Make your changes.");
+  };
+
+  const wordCount = (text: string) => {
+    return text.trim().split(/\s+/).length;
+  };
+
+  const handleInputChange = (
+    value: string,
+    setValue: React.Dispatch<React.SetStateAction<string>>
+  ) => {
+    const words = wordCount(value);
+    if (words <= 250) {
+      setValue(value);
+    } else {
+      const trimmedWords = value.split(/\s+/).slice(0, 250).join(" ");
+      setValue(trimmedWords);
+    }
   };
 
   return (
@@ -146,7 +159,9 @@ const AboutMe = ({
                   id="personality"
                   type="text"
                   value={personality}
-                  onChange={(e) => setPersonality(e.target.value.slice(0, 25))} 
+                  onChange={(e) =>
+                    handleInputChange(e.target.value, setPersonality)
+                  }
                   className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder=" My Personality And Professional Attitude"
                   disabled={disabled}
@@ -163,7 +178,9 @@ const AboutMe = ({
                   id="additional"
                   type="text"
                   value={additional}
-                  onChange={(e) => setAdditional(e.target.value.slice(0, 25))}
+                  onChange={(e) =>
+                    handleInputChange(e.target.value, setAdditional)
+                  }
                   className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder="  Additional Information About My Past Sea Service"
                   disabled={disabled}
@@ -181,7 +198,9 @@ const AboutMe = ({
                     id="future"
                     type="text"
                     value={myFuture}
-                    onChange={(e) => setMyFuture(e.target.value.slice(0, 25))} 
+                    onChange={(e) =>
+                      handleInputChange(e.target.value, setMyFuture)
+                    }
                     className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="  My Future Aims And Expectations"
                     disabled={disabled}
@@ -210,27 +229,29 @@ const AboutMe = ({
               </div> */}
 
               <div className="flex gap-2 ">
-               
                 <div className="  ">
                   <input
                     id="action"
                     type="checkbox"
                     // value={criminal}
                     checked={criminal}
-                    onChange={(e) => {setCriminal(e.target.checked)}} 
+                    onChange={(e) => {
+                      setCriminal(e.target.checked);
+                    }}
                     className="border rounded-md w-full   px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     // placeholder="Yes/No"
                     disabled={disabled}
                   />
-                  </div>
-                  <div>
-                   <label
-                  className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
-                  htmlFor="action"
-                >
-                  I declare that I was never dismissed by any of my former employers because of drug or alcohol abuse, discrimination, sexual abuse or any criminal action.
-                </label>
-                
+                </div>
+                <div>
+                  <label
+                    className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
+                    htmlFor="action"
+                  >
+                    I declare that I was never dismissed by any of my former
+                    employers because of drug or alcohol abuse, discrimination,
+                    sexual abuse or any criminal action.
+                  </label>
                 </div>
               </div>
             </div>

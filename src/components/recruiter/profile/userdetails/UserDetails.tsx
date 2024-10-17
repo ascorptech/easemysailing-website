@@ -375,7 +375,7 @@ const UserDetails = ({
                     </select>
                   </div>
 
-                  <div className="w-[78%] ">
+                  <div className="w-[65%] ">
                     <label
                       className="block text-[14px] leading-[19.07px]  text-[#333333] "
                       htmlFor="phonenumber2"
@@ -426,7 +426,7 @@ const UserDetails = ({
                     </select>
                   </div>
 
-                  <div className="w-[78%] ">
+                  <div className="w-[65%] ">
                     <label
                       className="block text-[14px] leading-[19.07px]  text-[#333333] "
                       htmlFor="phonenumber2"
@@ -469,7 +469,8 @@ const UserDetails = ({
                       handleFormChange(index, "totaluser", e.target.value)
                     }
                     className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-                    placeholder="Enter Total Users"
+                    // placeholder="Total Users"
+                    readOnly
                     disabled={disabled}
                   />
                 </div>
@@ -489,7 +490,8 @@ const UserDetails = ({
                       handleFormChange(index, "regUser", e.target.value)
                     }
                     className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-                    placeholder="Enter Registered Users"
+                    // placeholder="Enter Registered Users"
+                    readOnly
                     disabled={disabled}
                   />
                 </div>
@@ -509,7 +511,8 @@ const UserDetails = ({
                       handleFormChange(index, "remUser", e.target.value)
                     }
                     className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-                    placeholder="Enter Remainging Users"
+                    // placeholder="Enter Remainging Users"
+                    readOnly
                     disabled={disabled}
                   />
                 </div>
@@ -528,7 +531,8 @@ const UserDetails = ({
                       handleFormChange(index, "mLevel", e.target.value)
                     }
                     className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-                    placeholder="Enter Manager Lavel Users"
+                    // placeholder="Enter Manager Lavel Users"
+                    readOnly
                     disabled={disabled}
                   />
                 </div>
@@ -547,7 +551,8 @@ const UserDetails = ({
                       handleFormChange(index, "slevel", e.target.value)
                     }
                     className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-                    placeholder="Enter Support Level Users"
+                    // placeholder="Enter Support Level Users"
+                    readOnly
                     disabled={disabled}
                   />
                 </div>

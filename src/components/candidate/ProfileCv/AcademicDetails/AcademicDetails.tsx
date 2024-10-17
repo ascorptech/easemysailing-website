@@ -464,7 +464,10 @@
 // export default AcademicDetails;
 
 "use client";
-import { AddAcademicData, GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import {
+  AddAcademicData,
+  GetDropdownDetails,
+} from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import moment from "moment";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -532,7 +535,7 @@ const AcademicDetails = ({
   const [countryDrop, setCountryDrop] = useState<any>([]);
   const [disabled, setDisabled] = useState(true);
   const [isHideShow, setIsHideShow] = useState(false);
-  const [color,setColor]=useState('')
+  const [color, setColor] = useState("");
 
   const totalFields = educationForms.length * 4 + academicForms.length * 5;
   const filledFields = [
@@ -553,49 +556,48 @@ const AcademicDetails = ({
 
   useEffect(() => {
     if (academicDetail) {
-      
       let combineLng = academicDetail?.educations.map((lang: any) => ({
         university: lang?.schoolCollegeUniversity,
         subject: lang?.subject,
         issuingCountry: lang?.country,
         city: lang?.city,
       }));
-      setEducationForms(combineLng)
+      setEducationForms(combineLng);
       let combineLng1 = academicDetail?.qualifications.map((lang: any) => ({
         degree: lang?.degree,
         percentage: lang?.percentage,
-        startdate: moment(lang?.startDate).format('YYYY-MM-DD'),
-        enddate: moment(lang?.endDate).format('YYYY-MM-DD'),
+        startdate: moment(lang?.startDate).format("YYYY-MM-DD"),
+        enddate: moment(lang?.endDate).format("YYYY-MM-DD"),
         selectedFile: lang?.documentUrl,
       }));
-      setAcademicForms(combineLng1)
+      setAcademicForms(combineLng1);
+    }
+  }, [academicDetail]);
 
-  }
-}, [academicDetail]);
-
-  const percentage:any = totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
+  const percentage: any =
+    totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
   // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
   // let color;
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
       setAcademicComplete((prevState) => ({
-        ...prevState, 
+        ...prevState,
         percentage: percentage,
-        color: "#FF0000", 
+        color: "#FF0000",
       }));
       setColor("#FF0000");
     } else if (percentage <= 70) {
       setAcademicComplete((prevState) => ({
-        ...prevState, 
-        percentage: percentage, 
+        ...prevState,
+        percentage: percentage,
         color: "#FF9900",
       }));
       setColor("#FF9900");
     } else {
       setAcademicComplete((prevState) => ({
-        ...prevState, 
-        percentage: percentage, 
+        ...prevState,
+        percentage: percentage,
         color: "#00A264",
       }));
       setColor("#00A264");
@@ -690,23 +692,20 @@ const AcademicDetails = ({
       let data: any = {
         id: userDetail?.userId,
         color: color,
-      completed: percentage,
+        completed: percentage,
       };
-      const acadeArray:any =[];
+      const acadeArray: any = [];
       const eduArray: any = [];
 
-      academicForms.forEach((element:any) =>
-      {
+      academicForms.forEach((element: any) => {
         acadeArray.push({
           degree: element?.degree,
-          percentage: element?. percentage,
+          percentage: element?.percentage,
           startDate: element?.startdate,
           endDate: element?.enddate,
-          documentUrl: element?.selectedFile
-           
-          
-        })
-      })
+          documentUrl: element?.selectedFile,
+        });
+      });
 
       educationForms.forEach((element: any) => {
         eduArray.push({
@@ -716,20 +715,20 @@ const AcademicDetails = ({
           city: element?.city,
         });
       });
-      data.educations = eduArray
-      data.qualifications = acadeArray
+      data.educations = eduArray;
+      data.qualifications = acadeArray;
 
-      AddAcademicData(data,AddAcademicDataDB)
+      AddAcademicData(data, AddAcademicDataDB);
     }
   };
 
   const AddAcademicDataDB = (result: any) => {
     console.log(result);
     if (result?.status == 200 || result?.status == 201) {
-      console.log(result)
+      console.log(result);
       toast.success("Academic Details submited successfully");
       setTimeout(() => {
-        window.location.reload()
+        window.location.reload();
       }, 1000);
     } else {
       toast.error("Next Of Kin Details not submited ");
@@ -739,6 +738,23 @@ const AcademicDetails = ({
   const handleEdit = () => {
     setDisabled(!disabled);
     setIsHideShow(!isHideShow);
+  };
+
+  const handleValidationChange = (valid: any) => (e: any) => {
+    const value = e.target.value;
+    const alphabeticValue = value.replace(/[^A-Za-z\s]/g, "");
+    valid(alphabeticValue);
+  };
+
+  const handlePhoneNumberChange = (setter: any) => (e: any) => {
+    let value = e.target.value;
+
+    value = value.replace(/[^0-9]/g, "");
+    // setter(value);
+
+    if (value.length <= 2) {
+      setter(value);
+    }
   };
 
   return (
@@ -776,9 +792,13 @@ const AcademicDetails = ({
                 id={`degree_${index}`}
                 type="text"
                 value={field.degree}
-                onChange={(e) =>
-                  handleFormChange(index, "degree", e.target.value)
-                }
+                onChange={(e) => {
+                  const value = e.target.value.replace(/[^a-zA-Z\s]/g, ""); // Allow only alphabets and spaces
+                  handleFormChange(index, "degree", value);
+                }}
+                // onChange={(e) =>
+                //   handleFormChange(index, "degree", e.target.value)
+                // }
                 className="border rounded-md w-full h-9 px-2 text-[14px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Degree"
                 disabled={disabled}
@@ -793,11 +813,16 @@ const AcademicDetails = ({
               </label>
               <input
                 id={`percetnge_${index}`}
-                type="number"
+                type="text"
                 value={field.percentage}
-                onChange={(e) =>
-                  handleFormChange(index, "percentage", e.target.value)
-                }
+                onChange={(e) => {
+                  const value: any = e.target.value.replace(/[^0-9.]/g, "");
+
+                  handleFormChange(index, "percentage", value);
+                }}
+                // onChange={(e) =>
+                //   handleFormChange(index, "percentage", e.target.value)
+                // }
                 className="border rounded-md w-full h-9 px-2 text-[14px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Percentage"
                 disabled={disabled}
@@ -893,9 +918,10 @@ const AcademicDetails = ({
                 id="university"
                 type="text"
                 value={fields.university}
-                onChange={(e) =>
-                  handleFormChangeEdu(index, "university", e.target.value)
-                }
+                onChange={(e) => {
+                  const value = e.target.value.replace(/[^a-zA-Z\s]/g, "");
+                  handleFormChangeEdu(index, "university", value);
+                }}
                 className="border rounded-md w-full h-9 px-2 text-[14px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Your University"
                 disabled={disabled}
@@ -909,9 +935,10 @@ const AcademicDetails = ({
                 id="subject"
                 type="text"
                 value={fields.subject}
-                onChange={(e) =>
-                  handleFormChangeEdu(index, "subject", e.target.value)
-                }
+                onChange={(e) => {
+                  const value = e.target.value.replace(/[^a-zA-Z\s]/g, "");
+                  handleFormChangeEdu(index, "subject", e.target.value);
+                }}
                 className="border rounded-md w-full h-9 px-2 text-[14px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Your Subject"
                 disabled={disabled}
@@ -925,9 +952,10 @@ const AcademicDetails = ({
                 id="city"
                 type="text"
                 value={fields.city}
-                onChange={(e) =>
+                onChange={(e) =>{
+                  const value = e.target.value.replace(/[^a-zA-Z\s]/g, "");
                   handleFormChangeEdu(index, "city", e.target.value)
-                }
+                }}
                 className="border rounded-md w-full h-9 px-2 text-[14px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Your City"
                 disabled={disabled}
@@ -951,10 +979,10 @@ const AcademicDetails = ({
               >
                 <option value="">Select</option>
                 {countryDrop?.map((country: any, index: number) => (
-                          <option key={index} value={country}>
-                            {country?.toUpperCase()}
-                          </option>
-                        ))}
+                  <option key={index} value={country}>
+                    {country?.toUpperCase()}
+                  </option>
+                ))}
                 <option value="f">hell </option>
               </select>
             </div>

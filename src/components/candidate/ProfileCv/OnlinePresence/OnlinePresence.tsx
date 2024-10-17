@@ -220,14 +220,24 @@ const OnlinePresence = ({
     // toast.info("You are now in edit mode. Make your changes.");
   };
 
+  const handlePhoneNumberChange = (setter:any) => (e:any) => {
+    let value = e.target.value;
+    // Remove any non-numeric characters
+    value = value.replace(/[^0-9]/g, '');
+    // Limit to 10 digits
+    if (value.length <= 10) {
+      setter(value);
+    }
+  };
+
   return (
     <div className="container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
-        {/* <div className="  "> */}
+       
         <div className="my-5 ">
           <h1 className="mb-2  font-bold">Social Media & Messanger in use</h1>
           <div className="grid grid-cols-2  gap-2 ">
-            {/* <div className="w-full"> */}
+            
 
             <div className=" w-full">
               <input
@@ -240,15 +250,10 @@ const OnlinePresence = ({
                 WhatsApp
               </label>
 
-              {/* Conditionally render WhatsApp input box */}
+              
               {whatsApp && (
                 <div className="mt-4 flex gap-2 ">
-                  {/* <label
-                className="p-2 text-[14px] leading-[19.07px]  text-[#333333]"
-                htmlFor="whatsAppId"
-              >
-                WhatsApp Number
-              </label> */}
+                
                   <div className="w-[40%] ">
                     <select
                       className="border rounded-md w-full   h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
@@ -264,22 +269,20 @@ const OnlinePresence = ({
                         ))}
                     </select>
                   </div>
-                  {/* <div className=""> */}
+                  
                   <input
                     id="whatsAppId"
                     type="text"
                     className="border rounded-md  h-9 px-2 w-[90%] text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter WhatsApp Number"
                     value={whatsAppId}
-                    onChange={(e) => setWhatsAppId(e.target.value)}
+                    onChange={handlePhoneNumberChange(setWhatsAppId)}
                     disabled={disabled}
                   />
-                  {/* </div> */}
+                 
                 </div>
               )}
             </div>
-            {/* </div> */}
-
             <div className="w-full">
               <div>
                 {" "}
@@ -296,12 +299,7 @@ const OnlinePresence = ({
               </div>
               {weChat && (
                 <div className="mt-4 flex  gap-2">
-                  {/* <label
-                className="p-2 text-[14px] leading-[19.07px]  text-[#333333]"
-                htmlFor="whatsAppId"
-              >
-                WeChat Number
-              </label> */}
+                
 
                   <div className="w-[40%] ">
                     <select
@@ -319,12 +317,12 @@ const OnlinePresence = ({
                     </select>
                   </div>
                   <input
-                    id="whatsAppId"
+                  
                     type="text"
                     className="border rounded-md  h-9 px-2 w-[90%] text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter WeChat Number"
                     value={weChatId}
-                    onChange={(e) => setWeChatId(e.target.value)}
+                    onChange={handlePhoneNumberChange(setWeChatId)}
                     disabled={disabled}
                   />
                 </div>
@@ -393,12 +391,12 @@ const OnlinePresence = ({
                     </select>
                   </div>
                   <input
-                    id="whatsAppId"
+                    
                     type="text"
                     className="border rounded-md  h-9 px-2 w-[80%] text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter Telegram Number"
                     value={telegramId}
-                    onChange={(e) => setTelegramId(e.target.value)}
+                    onChange={handlePhoneNumberChange(setTelegramId)}
                     disabled={disabled}
                   />
                 </div>
@@ -442,7 +440,7 @@ const OnlinePresence = ({
                     className="border rounded-md  h-9 px-2 w-[90%] text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter viber Number"
                     value={viberId}
-                    onChange={(e) => setViberId(e.target.value)}
+                    onChange={handlePhoneNumberChange(setViberId)}
                     disabled={disabled}
                   />
                 </div>

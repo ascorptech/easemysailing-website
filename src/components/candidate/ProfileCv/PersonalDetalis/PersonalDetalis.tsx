@@ -14,11 +14,12 @@ type PersonalComplete = {
 };
 type Props={
   personalComplete: PersonalComplete; 
-  setPersonalComplete: React.Dispatch<React.SetStateAction<PersonalComplete>>; // setMjrComplete is a function to update mjrComplete
-  userDetail:any
+  setPersonalComplete: React.Dispatch<React.SetStateAction<PersonalComplete>>;
+  userDetail:any;
+  criminal:any;
 }
 
-const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props) => {
+const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail, criminal}:Props) => {
   const [firstName, setFirstName] = useState("");
   const [middleName, setmidddleName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -120,6 +121,11 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
   const handleSubmit = async (e: React.FormEvent) => {
     // try {
     e.preventDefault(); 
+    if (!criminal) {
+      toast.error("Please accept the declaration");
+      return; 
+    } else {
+
     let formData = new FormData();
     // formData.append('userId',userDetail?.userId);
     formData.append('firstName',firstName);
@@ -136,6 +142,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
     formData.append('completed',percentage);
     AddProfileData(userDetail?.userId,formData, AddaddressdataDB);
   };
+}
   const AddaddressdataDB = (result: any) => {
     console.log(result);
     if (result?.status == 200) {
@@ -165,7 +172,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail}:Props
   };
 
   return (
-    <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
+    <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8  ">
       {/* <CircularProgress percentage={Math.round(percentage)} color={per} /> */}
       <h2 className="font-bold">Personal Details (As Per Passport)</h2>
 

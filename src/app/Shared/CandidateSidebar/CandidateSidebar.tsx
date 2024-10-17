@@ -19,22 +19,22 @@ interface sidebarProps {
 }
 
 const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
-  const navigate = useRouter()
+  const navigate = useRouter();
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   const pathname = usePathname();
   const onLogout = () => {
     localStorage.clear();
     document.cookie = `token=${""}; path=/candidate`;
-    navigate.push('/candidate')
+    navigate.push("/candidate");
   };
 
   const handleLogoutClick = () => {
-    setShowLogoutModal(true); 
+    setShowLogoutModal(true);
   };
 
   const handleCloseModal = () => {
-    setShowLogoutModal(false); 
+    setShowLogoutModal(false);
   };
 
   return (
@@ -180,10 +180,10 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
       </ul>
       {/* Logout Modal */}
       {showLogoutModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
+        <div className="fixed inset-0 flex items-center justify-center bg-[#000000CC] bg-opacity-70 z-[99999]">
           <div className="bg-white py-4 h-[330px] rounded shadow-lg  w-80 flex flex-col items-center justify-center relative">
             <div
-              className="absolute w-4 h-4 top-1 right-1 cursor-pointer"
+              className="absolute w-4 h-4 top-1 right-1 cursor-pointer z-[10001]"
               onClick={handleCloseModal}
             >
               <Image
@@ -213,20 +213,18 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
               Are you sure you want to logout?
             </p>
             <div className="flex gap-4">
-            <Link
-                href="#"
+              <button
                 onClick={onLogout}
                 className="  border border-[#00A264] w-24 py-1 rounded-md text-white bg-[#00A264] text-center"
               >
                 Yes
-              </Link>
+              </button>
               <button
                 onClick={handleCloseModal}
                 className="bg-[#D1FEE4] w-24 py-1 rounded-md hover:bg-[#00A264]hover:tex-white text-[#00A264] border border-[#00A264] hover:text-white hover:bg-[#00A264] text-center "
               >
                 No
               </button>
-              
             </div>
           </div>
         </div>

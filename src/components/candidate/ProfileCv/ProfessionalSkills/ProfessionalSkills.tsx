@@ -17,12 +17,14 @@ type Props = {
     React.SetStateAction<ProfessionalComplete>
   >;
   userDetail: any;
+  criminal:any;
 };
 
 const ProfessionalSkills = ({
   professionalComplete,
   setProfessionalComplete,
   userDetail,
+  criminal
 }: Props) => {
   const [maker, setMaker] = useState("");
   const [sWL, setSWL] = useState("");
@@ -191,41 +193,45 @@ const ProfessionalSkills = ({
   const handleSubmit = (e: React.FormEvent) => {
     // try {
     e.preventDefault();
+    if (!criminal) {
+      toast.error("Please accept the declaration");
+      return; 
+    } else {
 
-    let formData = new FormData();
-    // formData.append('document', selectedFile);
-    formData.append("computerSkill", skill);
-    formData.append("computerSkillLevel", level1);
-    formData.append("bulkCargo", bulkCargo);
-    formData.append("tankerCargo", tankerCargo);
-    formData.append("generalCargo", generalCargo);
-    formData.append("woodProducts", woodProducts);
-    formData.append("stowageLashingExperience", stowage);
-    formData.append("cargoGearType", typeProfessional);
-    formData.append("cargoGearMaker", maker);
-    formData.append("cargoGearSWL", sWL);
-    formData.append("metalWorkingSkill", skillmetal);
-    formData.append("metalWorkingSkillLevel", levelMetal);
-    formData.append("tankCoatingType", typeTank);
-    formData.append("portStateRegionalAgreement", regionalAgreement);
-    formData.append("portStatePort", port);
-    formData.append("portStateDate", date);
-    formData.append("portStateFindings", description);
-    formData.append("vettingInspectionBy", inspection);
-    formData.append("vettingPort", port1);
-    formData.append("vettingDate", vdate);
-    formData.append("vettingFindings", description1);
-    formData.append("tradingArea", tradingArea);
+    // let formData = new FormData();
+    // // formData.append('document', selectedFile);
+    // formData.append("computerSkill", skill);
+    // formData.append("computerSkillLevel", level1);
+    // formData.append("bulkCargo", bulkCargo);
+    // formData.append("tankerCargo", tankerCargo);
+    // formData.append("generalCargo", generalCargo);
+    // formData.append("woodProducts", woodProducts);
+    // formData.append("stowageLashingExperience", stowage);
+    // formData.append("cargoGearType", typeProfessional);
+    // formData.append("cargoGearMaker", maker);
+    // formData.append("cargoGearSWL", sWL);
+    // formData.append("metalWorkingSkill", skillmetal);
+    // formData.append("metalWorkingSkillLevel", levelMetal);
+    // formData.append("tankCoatingType", typeTank);
+    // formData.append("portStateRegionalAgreement", regionalAgreement);
+    // formData.append("portStatePort", port);
+    // formData.append("portStateDate", date);
+    // formData.append("portStateFindings", description);
+    // formData.append("vettingInspectionBy", inspection);
+    // formData.append("vettingPort", port1);
+    // formData.append("vettingDate", vdate);
+    // formData.append("vettingFindings", description1);
+    // formData.append("tradingArea", tradingArea);
     // formData.append('document',selectedFile);
 
-    AddProfessionalSkillData(
-      userDetail?.userId,
-      cAvailable,
-      classApproved,
-      formData,
-      AddProfessionalSkillDataCB
-    );
-  };
+  // 
+  let data:any = {
+    userId:userDetail?.userId,
+    
+  } 
+
+    }
+}
 
   const AddProfessionalSkillDataCB = (result: any) => {
     console.log(result);

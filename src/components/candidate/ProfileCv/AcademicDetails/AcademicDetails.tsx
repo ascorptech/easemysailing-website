@@ -467,6 +467,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
+import { toast } from "react-toastify";
 
 type AcademicComplete = {
   percentage: number;
@@ -478,7 +479,7 @@ type AcademicForm = {
   percentage: string;
   startdate: string;
   enddate: string;
-  selectedFile: File | null;
+  selectedFile: any | null;
 };
 type EducationForm = {
   university: string;
@@ -491,12 +492,14 @@ type Props = {
   academicComplete: AcademicComplete;
   setAcademicComplete: React.Dispatch<React.SetStateAction<AcademicComplete>>;
   userDetail: any;
+  criminal:any;
 };
 
 const AcademicDetails = ({
   academicComplete,
   setAcademicComplete,
   userDetail,
+  criminal
 }: Props) => {
   const [academicForms, setAcademicForms] = useState<AcademicForm[]>([
     {
@@ -572,9 +575,21 @@ const AcademicDetails = ({
   }, [percentage, color]);
 
   const handleFileChange = (index: number, event: any) => {
-    const updatedForms = [...academicForms];
-    updatedForms[index].selectedFile = event.target.files?.[0] || null;
-    setAcademicForms(updatedForms);
+    const file = event.target.files?.[0]
+
+    const reader = new FileReader();
+    reader.onloadend= function() {
+      const imageBinary:any = reader.result;
+      const byteArray = imageBinary.split(',')[1];
+
+      const updatedForms:any = [...academicForms];
+      updatedForms[index].selectedFile= byteArray;
+      setAcademicForms(updatedForms);
+    }
+    reader.readAsDataURL(file);
+    // const updatedForms = [...academicForms];
+    // updatedForms[index].selectedFile = event.target.files?.[0] || null;
+    // setAcademicForms(updatedForms);
   };
 
   const handleFormChange = (
@@ -634,7 +649,12 @@ const AcademicDetails = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!criminal) {
+      toast.error("Please accept the declaration");
+      return; 
+    } else {
   };
+}
 
   const handleEdit = () => {
     setDisabled(!disabled);

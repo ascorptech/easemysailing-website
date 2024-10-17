@@ -203,7 +203,7 @@ const Header: React.FC = () => {
 
                         <li>
                           <Link
-                            href="/podcast-interviews"
+                            href="/podcasts-interviews"
                             className="block px-4 py-1 hover:bg-white hover:text-green-800"
                           >
                             Podcast & Interviews
@@ -396,7 +396,7 @@ const Header: React.FC = () => {
               </li>
               <li>
                 <Link
-                  href="/podcast-interviews"
+                  href="/podcasts-interviews"
                   className="block py-2 px-3 text-[#00A264] rounded-lg hover:bg-[#00A264] mt-1  hover:text-[#FFFFFF] text-xl"
                   onClick={() => setIsMenuOpen(false)}
                 >

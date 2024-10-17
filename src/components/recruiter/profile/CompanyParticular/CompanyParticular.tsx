@@ -1,6 +1,7 @@
 "use client";
 import { GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
+import { countryCodeDrop } from "@/constants/constants";
 
 import { act, useEffect, useState } from "react";
 import { toast } from "react-toastify";
@@ -11,7 +12,7 @@ type CompanyComplete = {
 };
 
 type Props = {
-  companyParticular: CompanyComplete; 
+  companyParticular: CompanyComplete;
   setCompanyParticular: React.Dispatch<React.SetStateAction<CompanyComplete>>;
   // userDetail: any;
 };
@@ -22,7 +23,7 @@ const CompanyParticular = ({
 }: Props) => {
   const [cmpName, setCmpname] = useState("");
   const [cmpType, setCmpType] = useState("");
-  const [cmpLogo, setCpmLogo] = useState<any>(null);
+  // const [cmpLogo, setCpmLogo] = useState<any>(null);
   const [contactPerson, setContactPerson] = useState("");
   const [contactPersonEmail, setContactPersonEmail] = useState("");
   const [personPhone, setPersonPhone] = useState("");
@@ -30,32 +31,33 @@ const CompanyParticular = ({
   const [cmpTel, setCmpTel] = useState("");
   const [address, setAddress] = useState("");
   const [gstNum, setGstNum] = useState("");
-  const [numOfUser, setNumOfUser] = useState("");
-  const [numOfShip, setNumOfShip] = useState("");
-  const [typeShip, setTypeShip] = useState("");
-  const [shipType, setShipType] = useState("");
-  const [crewNational, setCrewNational] = useState("");
-  const [crewMatrix, setCrewMatrix] = useState("");
-  const [crewWelfare, setCrewWelfare] = useState("");
-  const [cmpAdd, setCpmAdd] = useState<any>(null);
-  const [licence, setLicence] = useState("");
-  const [isoCerti, setIsoCerti] = useState<any>(null);
-  const [bankName, setBankName] = useState("");
-  const [acNumber, setAcNumber] = useState("");
-  const [acType, setAcType] = useState("");
-  const [iFSC, setIfsc] = useState("");
-  const [swiftCode, setSwiftCode] = useState("");
-
+  // const [numOfUser, setNumOfUser] = useState("");
+  // const [numOfShip, setNumOfShip] = useState("");
+  // const [typeShip, setTypeShip] = useState("");
+  // const [shipType, setShipType] = useState("");
+  // const [crewNational, setCrewNational] = useState("");
+  // const [crewMatrix, setCrewMatrix] = useState("");
+  // const [crewWelfare, setCrewWelfare] = useState("");
+  // const [cmpAdd, setCpmAdd] = useState<any>(null);
+  // const [licence, setLicence] = useState("");
+  // const [isoCerti, setIsoCerti] = useState<any>(null);
+  // const [bankName, setBankName] = useState("");
+  // const [acNumber, setAcNumber] = useState("");
+  // const [acType, setAcType] = useState("");
+  // const [iFSC, setIfsc] = useState("");
+  // const [swiftCode, setSwiftCode] = useState("");
+  const [rCountrycode, setRCountrycode] = useState("+91");
   const [mCountrycode, setMCountrycode] = useState("+91");
-  const [countryCodeDrop, setCountryCodeDrop] = useState<any>([]);
+  // const [countryCodeDrop, setCountryCodeDrop] = useState<any>([]);
 
-  const [mCountryTel, setMCountryTel] = useState("+91");
+  // const [mCountryTel, setMCountryTel] = useState("+91");
   const [countryCodeTel, setCountryCodeTel] = useState<any>([]);
 
   // const [exdate1, setExDate1] = useState("");
   // const [checkBox1, setCheckBox1] = useState<any>(false);
   const [countryDrop, setCountryDrop] = useState<any>([]);
   // const [trainDrop, setTrainDrop] = useState<any>([]);
+  const [disabled, setDisabled] = useState(true);
 
   useEffect(() => {
     GetDropdownDetails("country", (res: any) => {
@@ -64,9 +66,8 @@ const CompanyParticular = ({
     });
     GetDropdownDetails("countryCode", (res: any) => {
       // console.log('County',res?.data)
-      setCountryCodeDrop(res?.data?.values);
+      // setCountryCodeDrop(res?.data?.values);
       setCountryCodeTel(res?.data?.values);
-
     });
   }, []);
 
@@ -85,11 +86,10 @@ const CompanyParticular = ({
   //     setSelectedFile(event.target.files[0]);
   //   };
 
-  const totalFields = 25;
+  const totalFields = 9;
   const filledFields = [
     cmpName,
     cmpType,
-    cmpLogo,
     contactPerson,
     contactPersonEmail,
     personPhone,
@@ -97,21 +97,22 @@ const CompanyParticular = ({
     cmpTel,
     address,
     gstNum,
-    numOfUser,
-    numOfShip,
-    typeShip,
-    shipType,
-    crewNational,
-    crewMatrix,
-    crewWelfare,
-    cmpAdd,
-    licence,
-    isoCerti,
-    bankName,
-    acNumber,
-    acType,
-    iFSC,
-    swiftCode,
+    // cmpLogo,
+    // numOfUser,
+    // numOfShip,
+    // typeShip,
+    // shipType,
+    // crewNational,
+    // crewMatrix,
+    // crewWelfare,
+    // cmpAdd,
+    // licence,
+    // isoCerti,
+    // bankName,
+    // acNumber,
+    // acType,
+    // iFSC,
+    // swiftCode,
   ].filter(Boolean).length;
 
   // const totalFields = available === "Yes" ? 6 : 5;
@@ -123,16 +124,16 @@ const CompanyParticular = ({
     // console.log("user", userDetail);
     if (percentage <= 30) {
       setCompanyParticular((prevState) => ({
-        ...prevState,  
-        percentage: percentage,  
-        color: "#FF0000",  
+        ...prevState,
+        percentage: percentage,
+        color: "#FF0000",
       }));
       color = "red";
     } else if (percentage <= 70) {
       setCompanyParticular((prevState) => ({
-        ...prevState,  
-        percentage: percentage,  
-        color: "#FF9900",  
+        ...prevState,
+        percentage: percentage,
+        color: "#FF9900",
       }));
       color = "#FF9900";
     } else {
@@ -145,25 +146,29 @@ const CompanyParticular = ({
     }
   }, [percentage, color]);
 
-  const handleFileChange = (event: any) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      setCpmAdd(file);
-    }
-  };
+  // const handleFileChange = (event: any) => {
+  //   const file = event.target.files?.[0];
+  //   if (file) {
+  //     setCpmAdd(file);
+  //   }
+  // };
 
-  const handleFileChanges = (event: any) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      setCpmLogo(file);
-    }
-  };
+  // const handleFileChanges = (event: any) => {
+  //   const file = event.target.files?.[0];
+  //   if (file) {
+  //     setCpmLogo(file);
+  //   }
+  // };
 
-  const handleIsoChanges = (event: any) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      setIsoCerti(file);
-    }
+  // const handleIsoChanges = (event: any) => {
+  //   const file = event.target.files?.[0];
+  //   if (file) {
+  //     setIsoCerti(file);
+  //   }
+  // };
+
+  const handleEdit = () => {
+    setDisabled(!disabled);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -216,6 +221,7 @@ const CompanyParticular = ({
                 onChange={(e) => setCmpname(e.target.value)}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
                 placeholder="Company Name"
+                disabled={disabled}
                 required
               />
             </div>
@@ -232,21 +238,17 @@ const CompanyParticular = ({
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 name="options"
                 value={cmpType}
+                disabled={disabled}
                 onChange={(e) => setCmpType(e.target.value)}
               >
-                <option value="" disabled selected>
-                  Company
-                </option>
-                {/* {trainDrop &&
-                  trainDrop?.map((train: any, index: number) => (
-                    <option key={index} value={train}>
-                      {train?.toUpperCase()}
-                    </option>
-                  ))} */}
+                <option value="">Select Type</option>
+                <option value="ownership">Ownership</option>
+                <option value="shipManagement">Ship Management</option>
+                <option value="crewManagement">Crew Management</option>
               </select>
             </div>
 
-            <div className="   ">
+            {/* <div className="   ">
               <label
                 className="text-[14px] leading-[19.07px]  text-[#333333] "
                 htmlFor="trainingC"
@@ -274,7 +276,7 @@ const CompanyParticular = ({
                   </p>
                 )}
               </div>
-            </div>
+            </div> */}
 
             <div className="   ">
               <label
@@ -290,6 +292,7 @@ const CompanyParticular = ({
                 onChange={(e) => setContactPerson(e.target.value)}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
                 placeholder="Person"
+                disabled={disabled}
                 required
               />
             </div>
@@ -308,41 +311,29 @@ const CompanyParticular = ({
                 onChange={(e) => setContactPersonEmail(e.target.value)}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
                 placeholder="Email Id"
+                disabled={disabled}
                 required
               />
             </div>
 
-            {/* <div className="   ">
-              <label
-                className="text-[14px] leading-[19.07px]  text-[#333333] "
-                htmlFor="contactNo"
-              >
-                Contact Person Phone Number
-              </label>
-              <input
-                id="contactNo"
-                type="number"
-                value={personPhone}
-                onChange={(e) => setPersonPhone(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-                placeholder="Phone No."
-                required
-              />
-            </div> */}
             <div className="flex items-center justify-between gap-4 ">
               <div className="flex flex-col  ">
-                <label className="text-[11.6px] leading-[22.07px]  text-[#333333] ">
+                <label className="text-[14px] leading-[19.07px]  text-[#333333]  ">
                   Country Code
                 </label>
                 <select
-                  className="border rounded-md w-full h-[37px]  px-2    text-[14px] leading-[19.07px] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   value={mCountrycode}
                   onChange={(e) => setMCountrycode(e.target.value)}
+                  disabled={disabled}
                 >
+                  <option value="" disabled selected>
+                    Select
+                  </option>
                   {countryCodeDrop &&
                     countryCodeDrop?.map((code: any, index: number) => (
-                      <option key={index} value={code}>
-                        {code?.toUpperCase()}
+                      <option key={index} value={code?.phoneCode}>
+                        {code?.flag + " " + code?.phoneCode}
                       </option>
                     ))}
                 </select>
@@ -362,6 +353,7 @@ const CompanyParticular = ({
                   onChange={(e) => setPersonPhone(e.target.value)}
                   className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
                   placeholder="Phone No."
+                  disabled={disabled}
                   required
                 />
               </div>
@@ -381,24 +373,29 @@ const CompanyParticular = ({
                 onChange={(e) => setCmpSite(e.target.value)}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
                 placeholder="website"
+                disabled={disabled}
                 required
               />
             </div>
 
             <div className="flex items-center justify-between gap-4 ">
               <div className="flex flex-col  ">
-              <label className="text-[11.6px] leading-[22.07px]  text-[#333333] ">
-              Country Code
+                <label className="text-[14px] leading-[19.07px]  text-[#333333]  ">
+                  Country Code
                 </label>
                 <select
-                  className="border rounded-md w-full h-[37px]   px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                  value={mCountryTel}
-                  onChange={(e) => setMCountryTel(e.target.value)}
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  value={rCountrycode}
+                  onChange={(e) => setRCountrycode(e.target.value)}
+                  disabled={disabled}
                 >
-                  {countryCodeTel &&
-                    countryCodeTel?.map((code: any, index: number) => (
-                      <option key={index} value={code}>
-                        {code?.toUpperCase()}
+                  <option value="" disabled selected>
+                    Select
+                  </option>
+                  {countryCodeDrop &&
+                    countryCodeDrop?.map((code: any, index: number) => (
+                      <option key={index} value={code?.phoneCode}>
+                        {code?.flag + " " + code?.phoneCode}
                       </option>
                     ))}
                 </select>
@@ -418,6 +415,7 @@ const CompanyParticular = ({
                   onChange={(e) => setCmpTel(e.target.value)}
                   className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
                   placeholder="Tel. no."
+                  disabled={disabled}
                   required
                 />
               </div>
@@ -437,6 +435,7 @@ const CompanyParticular = ({
                 onChange={(e) => setAddress(e.target.value)}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
                 placeholder="Address"
+                disabled={disabled}
                 required
               />
             </div>
@@ -455,11 +454,12 @@ const CompanyParticular = ({
                 onChange={(e) => setGstNum(e.target.value)}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
                 placeholder="Enter Number"
+                disabled={disabled}
                 required
               />
             </div>
 
-            <div className="   ">
+            {/* <div className="   ">
               <label
                 className="text-[14px] leading-[19.07px]  text-[#333333] "
                 htmlFor="userNo"
@@ -510,16 +510,11 @@ const CompanyParticular = ({
                 <option value="" disabled selected>
                   Ship Type
                 </option>
-                {/* {countryDrop &&
-                  countryDrop?.map((country: any, index: number) => (
-                    <option key={index} value={country}>
-                      {country?.toUpperCase()}
-                    </option>
-                  ))} */}
+                
               </select>
-            </div>
+            </div> */}
 
-            <div className=" ">
+            {/* <div className=" ">
               <label
                 className="text-[14px] leading-[19.07px]  text-[#333333]"
                 htmlFor="crewN"
@@ -543,10 +538,10 @@ const CompanyParticular = ({
                     </option>
                   ))}
               </select>
-            </div>
+            </div> */}
             {/* <div className=""> */}
 
-            <div className="   ">
+            {/* <div className="   ">
               <label
                 className="text-[14px] leading-[19.07px]  text-[#333333] "
                 htmlFor="matrix"
@@ -562,10 +557,10 @@ const CompanyParticular = ({
                 placeholder="Enter Number"
                 required
               />
-            </div>
+            </div> */}
 
             {/* </div> */}
-            <div className="">
+            {/* <div className="">
               <label
                 className="text-[14px] leading-[19.07px]  text-[#333333]"
                 htmlFor="crewW"
@@ -581,9 +576,9 @@ const CompanyParticular = ({
                 placeholder="Enter Number"
                 required
               />
-            </div>
+            </div> */}
 
-            <div className="">
+            {/* <div className="">
               <label
                 className="text-[14px] leading-[19.07px]  text-[#333333]  "
                 htmlFor="pdf-upload1"
@@ -612,9 +607,9 @@ const CompanyParticular = ({
                   </p>
                 )}
               </div>
-            </div>
+            </div> */}
 
-            <div className=" ">
+            {/* <div className=" ">
               <label
                 className="text-[14px] leading-[19.07px]  text-[#333333]"
                 htmlFor="shipType"
@@ -631,15 +626,10 @@ const CompanyParticular = ({
                 <option value="" disabled selected>
                   Ship
                 </option>
-                {/* {countryDrop &&
-                  countryDrop?.map((country: any, index: number) => (
-                    <option key={index} value={country}>
-                      {country?.toUpperCase()}
-                    </option>
-                  ))} */}
+                
               </select>
-            </div>
-            <div className="">
+            </div> */}
+            {/* <div className="">
               <label
                 className="text-[14px] leading-[19.07px]  text-[#333333]  "
                 htmlFor="licence"
@@ -656,9 +646,9 @@ const CompanyParticular = ({
                 placeholder="Licence"
                 required
               />
-            </div>
+            </div> */}
 
-            <div className="">
+            {/* <div className="">
               <label
                 className="text-[14px] leading-[19.07px]  text-[#333333]  "
                 htmlFor="expiryDate1"
@@ -689,9 +679,9 @@ const CompanyParticular = ({
                   </p>
                 )}
               </div>
-            </div>
+            </div> */}
 
-            <div className=" ">
+            {/* <div className=" ">
               <label
                 className="text-[14px] leading-[19.07px]  text-[#333333]"
                 htmlFor="bankName"
@@ -708,15 +698,10 @@ const CompanyParticular = ({
                 <option value="" disabled selected>
                   Bank
                 </option>
-                {/* {countryDrop &&
-                  countryDrop?.map((country: any, index: number) => (
-                    <option key={index} value={country}>
-                      {country?.toUpperCase()}
-                    </option>
-                  ))} */}
+              
               </select>
-            </div>
-            <div className="">
+            </div> */}
+            {/* <div className="">
               <label
                 className="text-[14px] leading-[19.07px]  text-[#333333]  "
                 htmlFor="accountN"
@@ -733,9 +718,9 @@ const CompanyParticular = ({
                 placeholder="A/C Number"
                 required
               />
-            </div>
+            </div> */}
 
-            <div className="">
+            {/* <div className="">
               <label
                 className="text-[14px] leading-[19.07px]  text-[#333333]  "
                 htmlFor="setac"
@@ -752,9 +737,9 @@ const CompanyParticular = ({
                 placeholder="Tpye"
                 required
               />
-            </div>
+            </div> */}
 
-            <div className="">
+            {/* <div className="">
               <label
                 className="text-[14px] leading-[19.07px]  text-[#333333]  "
                 htmlFor="setifsc"
@@ -771,9 +756,9 @@ const CompanyParticular = ({
                 placeholder="Code"
                 required
               />
-            </div>
+            </div> */}
 
-            <div className="">
+            {/* <div className="">
               <label
                 className="text-[14px] leading-[19.07px]  text-[#333333]  "
                 htmlFor="swiftC"
@@ -790,7 +775,7 @@ const CompanyParticular = ({
                 placeholder="Code"
                 required
               />
-            </div>
+            </div> */}
 
             <div className="flex gap-2 mb-4 mt-5">
               <button
@@ -801,85 +786,14 @@ const CompanyParticular = ({
               </button>
               <Link
                 href="#"
+                onClick={handleEdit}
                 className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
               >
                 Edit
               </Link>
             </div>
-
-            {/* <div className="flex  ">
-            <input
-              id="neverExpires"
-              type="checkbox"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-              //   value={exdate}
-              //   onChange={(e) => setExDate(e.target.value)}
-            />
-            <label
-              className="text-[14px] leading-[19.07px]  text-[#333333]"
-              htmlFor="neverExpires"
-            >
-              Never Expires
-            </label>
-          </div> */}
-            {/* <div className=" flex items-center  gap-4">
-              <input
-                id="neverExpires"
-                type="checkbox"
-                className="border focus:ring-[#00A264]  text-[#00A264] checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264] "
-                checked={checkBox1}
-                onChange={(e) => setCheckBox1(!checkBox1)}
-              />
-              <label
-                className="text-[14px] leading-[19.07px]  text-[#333333]"
-                htmlFor="neverExpires"
-              >
-                Never Expires
-              </label>
-            </div> */}
           </div>
-
-          {/* <div className="flex gap-6 items-center  my-6 ">
-            <label
-              htmlFor="file-upload1"
-              className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  text-[14px] leading-[19.07px]   hover:bg-[#04714e] focus:outline-none focus:ring-2 "
-            >
-              Attach Docoment
-            </label>
-            <input
-              id="file-upload1"
-              type="file"
-              className="hidden"
-              onChange={handleFileChanges}
-            />
-            {selectedFiles ? (
-              <p className="text-gray-700">
-                File Selected: {selectedFiles.name}
-              </p>
-            ) : (
-              <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                No file selected
-              </p>
-            )}
-          </div> */}
         </div>
-
-        {/* Third section */}
-
-        {/* <div className="flex gap-2 mb-4 mt-4">
-          <button
-            type="submit"
-            className="border border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
-          >
-            Save
-          </button>
-          <Link
-            href="#"
-            className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
-          >
-            Edit
-          </Link>
-        </div> */}
       </form>
     </div>
   );

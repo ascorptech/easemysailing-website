@@ -19,6 +19,7 @@ type Props = {
   >;
   userDetail: any;
   seaGoingServiceDetail: any;
+  criminal:any
 };
 
 const SeaGoingService = ({
@@ -26,6 +27,7 @@ const SeaGoingService = ({
   setSeaGoingServiceComplete,
   userDetail,
   seaGoingServiceDetail,
+  criminal
 }: Props) => {
   // const [imo , setImo] =useState("")
   // const [versalName, setVercelName] useState ();
@@ -132,6 +134,11 @@ const SeaGoingService = ({
   const handleSubmit = (e: React.FormEvent) => {
     // try {
     e.preventDefault();
+    if (!criminal) {
+      toast.error("Please accept the declaration");
+      return; 
+    } else {
+
     let data = {
       id: userDetail?.userId,
       vesselName: vercelName,
@@ -149,6 +156,7 @@ const SeaGoingService = ({
 
     AddSeagoingData(data, AddSeagoingDatacb);
   };
+}
 
   const AddSeagoingDatacb = (result: any) => {
     console.log("res", result);

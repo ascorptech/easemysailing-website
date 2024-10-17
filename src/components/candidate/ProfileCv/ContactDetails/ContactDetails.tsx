@@ -20,13 +20,15 @@ type Props = {
   setContactComplete: React.Dispatch<React.SetStateAction<ContactComplete>>; // setMjrComplete is a function to update mjrComplete
   userDetail: any;
   contactDetail:any;
+  criminal:any;
 };
 
 const ContactDetails = ({
   contactComplete,
   setContactComplete,
   userDetail,
-  contactDetail
+  contactDetail,
+  criminal
 }: Props) => {
   const [address, setAddress] = useState("");
   const [number, setNumber] = useState("");
@@ -128,6 +130,11 @@ const ContactDetails = ({
 
   const handlesubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!criminal) {
+      toast.error("Please accept the declaration");
+      return; 
+    } else {
+
     let data = {
       id: userDetail?.userId,
       street: address,
@@ -150,6 +157,8 @@ const ContactDetails = ({
    
     AddContactData(data, AddaddressdataDB);
   };
+}
+
   const AddaddressdataDB = (result: any) => {
     console.log(result);
     if (result?.status == 200 || result?.status == 201) {

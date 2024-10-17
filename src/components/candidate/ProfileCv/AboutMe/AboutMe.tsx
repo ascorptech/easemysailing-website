@@ -17,19 +17,24 @@ type Props = {
   setAboutMeComplete: React.Dispatch<React.SetStateAction<AboutMeComplete>>; 
   userDetail: any;
   aboutDetail:any;
+  criminal: boolean; // Receive global criminal state
+  setCriminal: React.Dispatch<React.SetStateAction<boolean>>; // Receive setter for global state
 };
 
 const AboutMe = ({
   aboutMeComplete,
   setAboutMeComplete,
   userDetail,
-  aboutDetail
+  aboutDetail,
+  criminal,
+  setCriminal,
+  
 }: Props) => {
   const [personality, setPersonality] = useState("");
   const [additional, setAdditional] = useState("");
   const [myFuture, setMyFuture] = useState("");
 
-  const [criminal, setCriminal] = useState<any>("");
+  // const [criminal, setCriminal] = useState<any>("");
   const [disabled, setDisabled] = useState(true);
   const [color, setColor]=useState('')
 
@@ -82,6 +87,7 @@ const AboutMe = ({
     console.log('test',criminal)
     if (!criminal) {
       toast.error('Please accept the declaration')
+      return;
     } else {
       let data = {
         id: userDetail?.userId,
@@ -209,7 +215,8 @@ const AboutMe = ({
                   <input
                     id="action"
                     type="checkbox"
-                    value={criminal}
+                    // value={criminal}
+                    checked={criminal}
                     onChange={(e) => {setCriminal(e.target.checked)}} 
                     className="border rounded-md w-full   px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     // placeholder="Yes/No"

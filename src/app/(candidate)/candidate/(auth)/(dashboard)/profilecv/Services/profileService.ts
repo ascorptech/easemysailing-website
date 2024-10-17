@@ -211,11 +211,11 @@ export const GetLanguageData = async (id: any, cb: any) => {
 }
 //Travel Document
 
-export const AddTravelDocumentData = async (userId: any, passportBiometric: any, seamansBookNeverExpires: any, data: any, cb: any) => {
+export const AddTravelDocumentData = async (data: any, cb: any) => {
     try {
         console.log('Data to be submitted:', data);
-        let url = `${POSTTRAVELDOCUMENT}/${userId}/${passportBiometric}/${seamansBookNeverExpires}`
-        const response = await postReq(url, data)
+        // let url = `${POSTTRAVELDOCUMENT}/${userId}/${passportBiometric}/${seamansBookNeverExpires}`
+        const response = await postReq(POSTTRAVELDOCUMENT, data)
         console.log('API response:', response);
         return cb(response)
     } catch (error: any) {
@@ -237,11 +237,11 @@ export const GetTravelDocumentData = async (id: any, cb: any) => {
 }
 //STCW Training
 
-export const AddStcwData = async (userId: any, neverExpires: any, data: any, cb: any) => {
+export const AddStcwData = async (data: any, cb: any) => {
     try {
         console.log('Data to be submitted:', data);
-        let url = `${POSTSTCWTRAINING}/${userId}/${neverExpires}`
-        const response = await postReq(url, data)
+        // let url = `${POSTSTCWTRAINING}/${userId}/${neverExpires}`
+        const response = await postReq(POSTSTCWTRAINING, data)
         console.log('API response:', response);
         return cb(response)
     } catch (error: any) {
@@ -317,12 +317,12 @@ export const GetReferencesData = async (id: any, cb: any) => {
 
 //medical 
 
-export const AddMedicalData = async (userId: any, data: any, cb: any) => {
+export const AddMedicalData = async (data: any, cb: any) => {
     try {
         console.log('Data to be submitted:', data);
-        let url = `${POSTMEDICAL}/${userId}`
+        // let url = `${POSTMEDICAL}/${userId}`
 
-        const response = await postReq(url, data)
+        const response = await postReq(POSTMEDICAL, data)
         console.log('API response:', response);
         return cb(response)
     } catch (error: any) {

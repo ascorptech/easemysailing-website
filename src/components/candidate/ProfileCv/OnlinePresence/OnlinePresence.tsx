@@ -20,7 +20,7 @@ type Props = {
   >; // setMjrComplete is a function to update mjrComplete
   userDetail: any;
   onlinePresenceDetail: any;
-  criminal:any;
+  criminal: any;
 };
 
 const OnlinePresence = ({
@@ -28,7 +28,7 @@ const OnlinePresence = ({
   setOnlinePresenceComplete,
   userDetail,
   onlinePresenceDetail,
-  criminal
+  criminal,
 }: Props) => {
   // State for form fields
 
@@ -136,7 +136,7 @@ const OnlinePresence = ({
       setTCountrycode(onlinePresenceDetail?.telegramCountryCode);
       setVCountrycode(onlinePresenceDetail?.viberCountryCode);
       setWhatsApp(onlinePresenceDetail?.whatsapp);
-      setWhatsAppId(onlinePresenceDetail?. whatsappNumber);
+      setWhatsAppId(onlinePresenceDetail?.whatsappNumber);
 
       setWeChat(onlinePresenceDetail?.weChat);
       setWeChatId(onlinePresenceDetail?.weChatNumber);
@@ -162,45 +162,47 @@ const OnlinePresence = ({
   const handleSubmit = (e: React.FormEvent) => {
     // try {
     e.preventDefault();
+    if (!validateInputs()) {
+      return;
+    }
     if (!criminal) {
       toast.error("Please accept the declaration");
-      return; 
+      return;
     } else {
+      let data = {
+        id: userDetail?.userId,
+        whatsappCountryCode: mCountrycode,
+        whatsapp: whatsApp,
+        weChat: weChat,
+        weChatCountryCode: wCountrycode,
+        facebookMessenger: facebookMess,
+        telegram: telegram,
+        telegramCountryCode: tCountrycode,
+        viber: viber,
+        viberCountryCode: vCountrycode,
+        whatsappNumber: whatsAppId,
+        weChatNumber: weChatId,
+        facebookMessengerId: facebookMessId,
+        telegramNumber: telegramId,
+        viberNumber: viberId,
+        skypeId: skypeId,
+        linkedIn: linkedIn,
+        facebook: twitter,
+        instagram: instagram,
+        other: other,
 
-    let data = {
-      id: userDetail?.userId,
-      whatsappCountryCode: mCountrycode,
-      whatsapp: whatsApp,
-      weChat: weChat,
-      weChatCountryCode: wCountrycode,
-      facebookMessenger: facebookMess,
-      telegram: telegram,
-      telegramCountryCode: tCountrycode,
-      viber: viber,
-      viberCountryCode: vCountrycode,
-      whatsappNumber: whatsAppId,
-      weChatNumber: weChatId,
-      facebookMessengerId: facebookMessId,
-      telegramNumber: telegramId,
-      viberNumber: viberId,
-      skypeId: skypeId,
-      linkedIn: linkedIn,
-      facebook: twitter,
-      instagram: instagram,
-      other: other,
+        linkedInProfileUrl: linkedInId,
+        facebookProfileUrl: twitterId,
+        instagramProfileUrl: instagramId,
+        otherSocialMediaName: otherId,
+        otherSocialMediaContact: "",
+        color: color,
+        completed: percentage,
+      };
 
-      linkedInProfileUrl: linkedInId,
-      facebookProfileUrl: twitterId,
-      instagramProfileUrl: instagramId,
-      otherSocialMediaName: otherId,
-      otherSocialMediaContact: "",
-      color: color,
-      completed: percentage,
-    };
-
-    AddOnlinePresenceData(data, AddOnlinePresenceDataCB);
+      AddOnlinePresenceData(data, AddOnlinePresenceDataCB);
+    }
   };
-}
 
   const AddOnlinePresenceDataCB = (result: any) => {
     if (result?.status == 200 || result?.status == 201) {
@@ -220,15 +222,98 @@ const OnlinePresence = ({
     // toast.info("You are now in edit mode. Make your changes.");
   };
 
+  const handlePhoneNumberChange = (setter: any) => (e: any) => {
+    let value = e.target.value;
+    // Remove any non-numeric characters
+    value = value.replace(/[^0-9]/g, "");
+    // Limit to 10 digits
+    if (value.length <= 10) {
+      setter(value);
+    }
+  };
+
+  const validateInputs = () => {
+    let formIsValid = true;
+    let newErrors = {
+      whatsAppId: "",
+      viberId: "",
+      telegramId: "",
+      weChatId: "",
+    };
+
+    // const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    // if (!email.trim()) {
+    //   newErrors.email = "Email is required";
+    //   formIsValid = false;
+    // } else if (!emailRegex.test(email)) {
+    //   newErrors.email = "Invalid email format";
+    //   formIsValid = false;
+    // }
+    if (!whatsAppId?.trim()) {
+      newErrors.whatsAppId = "Phone number is required";
+      formIsValid = false;
+    } else if (/^\d{13}$/.test(whatsAppId)) {
+      console.log("phone", whatsAppId.length);
+      newErrors.whatsAppId = "Phone number must be 10 digits";
+      formIsValid = false;
+    } else if (whatsAppId.length < 7) {
+      newErrors.whatsAppId = "Phone number must be minimum 7 digits";
+      formIsValid = false;
+    }
+
+    if (!viberId?.trim()) {
+      newErrors.viberId = "Phone number is required";
+      formIsValid = false;
+    } else if (/^\d{13}$/.test(viberId)) {
+      console.log("phone", viberId.length);
+      newErrors.viberId = "Phone number must be 10 digits";
+      formIsValid = false;
+    } else if (viberId.length < 7) {
+      newErrors.viberId = "Phone number must be minimum 7 digits";
+      formIsValid = false;
+    }
+
+    if (!telegramId?.trim()) {
+      newErrors.telegramId = "Phone number is required";
+      formIsValid = false;
+    } else if (/^\d{13}$/.test(telegramId)) {
+      console.log("phone", telegramId.length);
+      newErrors.telegramId = "Phone number must be 10 digits";
+      formIsValid = false;
+    } else if (telegramId.length < 7) {
+      newErrors.telegramId = "Phone number must be minimum 7 digits";
+      formIsValid = false;
+    }
+    if (!weChatId?.trim()) {
+      newErrors.weChatId = "Phone number is required";
+      formIsValid = false;
+    } else if (/^\d{13}$/.test(weChatId)) {
+      console.log("phone", weChatId.length);
+      newErrors.viberId = "Phone number must be 10 digits";
+      formIsValid = false;
+    } else if (weChatId.length < 7) {
+      newErrors.weChatId = "Phone number must be minimum 7 digits";
+      formIsValid = false;
+    }
+
+    // if (!textarea.trim()) {
+    //   newErrors.message = "Message is required";
+    //   formIsValid = false;
+    // } else if (textarea.length < 10) { // Adjust the minimum length as needed
+    //   newErrors.message = "Message must be at least 10 characters long.";
+    //   formIsValid = false;
+    // }
+
+    // setErrors(newErrors);
+    return formIsValid;
+  };
+
   return (
     <div className="container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
-        {/* <div className="  "> */}
         <div className="my-5 ">
           <h1 className="mb-2  font-bold">Social Media & Messanger in use</h1>
           <div className="grid grid-cols-2  gap-2 ">
-            {/* <div className="w-full"> */}
-
             <div className=" w-full">
               <input
                 type="checkbox"
@@ -240,15 +325,8 @@ const OnlinePresence = ({
                 WhatsApp
               </label>
 
-              {/* Conditionally render WhatsApp input box */}
               {whatsApp && (
                 <div className="mt-4 flex gap-2 ">
-                  {/* <label
-                className="p-2 text-[14px] leading-[19.07px]  text-[#333333]"
-                htmlFor="whatsAppId"
-              >
-                WhatsApp Number
-              </label> */}
                   <div className="w-[40%] ">
                     <select
                       className="border rounded-md w-full   h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
@@ -264,22 +342,33 @@ const OnlinePresence = ({
                         ))}
                     </select>
                   </div>
-                  {/* <div className=""> */}
+
                   <input
                     id="whatsAppId"
                     type="text"
                     className="border rounded-md  h-9 px-2 w-[90%] text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter WhatsApp Number"
                     value={whatsAppId}
-                    onChange={(e) => setWhatsAppId(e.target.value)}
+                    // onChange={handlePhoneNumberChange(setWhatsAppId)}
+                    maxLength={12} // Maximum 12 digits
+                    onChange={(e) => {
+                      // Allow only numeric input
+                      const value = e.target.value;
+                      if (/^\d*$/.test(value)) {
+                        // Regex to allow only digits
+                        setWhatsAppId(value.trimStart());
+                      }
+                    }}
+                    onBlur={(e) => {
+                      if (e.target.value.length < 7) {
+                        toast.error("Phone number must be at least 7 digits long");
+                      }
+                    }}
                     disabled={disabled}
                   />
-                  {/* </div> */}
                 </div>
               )}
             </div>
-            {/* </div> */}
-
             <div className="w-full">
               <div>
                 {" "}
@@ -296,13 +385,6 @@ const OnlinePresence = ({
               </div>
               {weChat && (
                 <div className="mt-4 flex  gap-2">
-                  {/* <label
-                className="p-2 text-[14px] leading-[19.07px]  text-[#333333]"
-                htmlFor="whatsAppId"
-              >
-                WeChat Number
-              </label> */}
-
                   <div className="w-[40%] ">
                     <select
                       className="border rounded-md w-full   h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
@@ -319,12 +401,23 @@ const OnlinePresence = ({
                     </select>
                   </div>
                   <input
-                    id="whatsAppId"
                     type="text"
                     className="border rounded-md  h-9 px-2 w-[90%] text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter WeChat Number"
                     value={weChatId}
-                    onChange={(e) => setWeChatId(e.target.value)}
+                    // onChange={handlePhoneNumberChange(setWeChatId)}
+                    maxLength={12} // Maximum 12 digits
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      if (/^\d*$/.test(value)) {
+                        setWeChatId(value.trimStart());
+                      }
+                    }}
+                    onBlur={(e) => {
+                      if (e.target.value.length < 7) {
+                        toast.error("Phone number must be at least 7 digits long");
+                      }
+                    }}
                     disabled={disabled}
                   />
                 </div>
@@ -393,12 +486,23 @@ const OnlinePresence = ({
                     </select>
                   </div>
                   <input
-                    id="whatsAppId"
                     type="text"
                     className="border rounded-md  h-9 px-2 w-[80%] text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter Telegram Number"
                     value={telegramId}
-                    onChange={(e) => setTelegramId(e.target.value)}
+                    // onChange={handlePhoneNumberChange(setTelegramId)}
+                    maxLength={12} // Maximum 12 digits
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      if (/^\d*$/.test(value)) {
+                        setTelegramId(value.trimStart());
+                      }
+                    }}
+                    onBlur={(e) => {
+                      if (e.target.value.length < 7) {
+                        toast.error("Phone number must be at least 7 digits long");
+                      }
+                    }}
                     disabled={disabled}
                   />
                 </div>
@@ -442,7 +546,19 @@ const OnlinePresence = ({
                     className="border rounded-md  h-9 px-2 w-[90%] text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter viber Number"
                     value={viberId}
-                    onChange={(e) => setViberId(e.target.value)}
+                    // onChange={handlePhoneNumberChange(setViberId)}
+                    maxLength={12} // Maximum 12 digits
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      if (/^\d*$/.test(value)) {
+                        setViberId(value.trimStart());
+                      }
+                    }}
+                    onBlur={(e) => {
+                      if (e.target.value.length < 7) {
+                        toast.error("Phone number must be at least 7 digits long");
+                      }
+                    }}
                     disabled={disabled}
                   />
                 </div>

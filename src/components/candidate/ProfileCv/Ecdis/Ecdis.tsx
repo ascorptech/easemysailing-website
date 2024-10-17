@@ -136,8 +136,20 @@ const Ecdis = ({
   const handleFileChanges = (event: any) => {
     const file = event.target.files?.[0];
     if (file) {
-      setSelectedFiles(file);
+      const reader = new FileReader();
+
+      reader.onloadend = function () {
+        const imageBinary: any = reader.result;
+        const byteArray = imageBinary.split(",")[1];
+        setSelectedFiles(byteArray);
+      };
+
+      reader.readAsDataURL(file);
     }
+    // const file = event.target.files?.[0];
+    // if (file) {
+    //   setSelectedFiles(file);
+    // }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -161,7 +173,7 @@ const Ecdis = ({
     formData.append("color", color);
     formData.append("completed", percentage);
 
-    selectedFiles && formData.append("document", selectedFiles);
+    selectedFiles && formData.append("documentUrl", selectedFiles);
  
 
     AddEcdisData(formData, AddEcdisdataDB);
@@ -184,6 +196,12 @@ const Ecdis = ({
     setDisabled(!disabled);
     setIsHideShow(!isHideShow);
     // toast.info("You are now in edit mode. Make your changes.");
+  };
+
+  const handleValidationChange = (valid: any) => (e: any) => {
+    const value = e.target.value;
+    const alphabeticValue = value.replace(/[^A-Za-z\s]/g, ""); 
+    valid(alphabeticValue);
   };
 
   return (
@@ -230,7 +248,7 @@ const Ecdis = ({
                 id="trainingC"
                 type="text"
                 value={trainingCenter}
-                onChange={(e) => setTrainingCenter(e.target.value)}
+                onChange={handleValidationChange(setTrainingCenter)}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
                 placeholder="Enter Training Center"
                 disabled={disabled}

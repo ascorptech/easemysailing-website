@@ -33,14 +33,13 @@ const Languages = ({
   languageDetail,
   criminal,
 }: Props) => {
-  // State for form fields
+ 
   const [additionalLanguageForms, setAdditionalLanguageForms] = useState<
     AdditionalLanguage[]
   >([{ addiLanguage: "", languageLavel: "" }]);
 
   const [language1, setLanguage1] = useState("");
-  // const [addiLanguage, setAddiLanguage] = useState("");
-  // const [languageLavel, setLanguageLavel] = useState("");
+ 
   const [englishLavel, setEnglishLavel] = useState("");
   const [languageTests, setLanguageTests] = useState("");
   const [languageLevelDrop, setLanguageLevelDrop] = useState<any>([]);
@@ -57,8 +56,6 @@ const Languages = ({
   const [selectedFile, setSelectedFile] = useState<any>(null);
   const [color, setColor] = useState("");
   const [isHideShow, setIsHideShow] = useState(false);
-
- 
 
   useEffect(() => {
     GetDropdownDetails("additionallanguagelevel", (res: any) => {
@@ -100,7 +97,7 @@ const Languages = ({
     console.log("user", userDetail);
     if (percentage <= 30) {
       setLanguageComplete((prevState) => ({
-        ...prevState, 
+        ...prevState,
         percentage: percentage,
         color: "#FF0000",
       }));
@@ -108,15 +105,15 @@ const Languages = ({
     } else if (percentage <= 70) {
       setLanguageComplete((prevState) => ({
         ...prevState,
-        percentage: percentage, 
+        percentage: percentage,
         color: "#FF9900",
       }));
       setColor("#FF9900");
     } else {
       setLanguageComplete((prevState) => ({
-        ...prevState, 
-        percentage: percentage, 
-        color: "#00A264", 
+        ...prevState,
+        percentage: percentage,
+        color: "#00A264",
       }));
       setColor("#00A264");
     }
@@ -177,23 +174,6 @@ const Languages = ({
       // let finArry: any = [];
       // finArry.push(data);
       AddLanguageData(data, AddLanguagedataDB);
-
-      // {
-      // formData.append("nativeLanguage", language1);
-      // formData.append("additionalLanguage", addiLanguage);
-      // formData.append("additionalLanguageLevel", languageLavel);
-      // formData.append("englishLevel", englishLavel);
-      // formData.append("testLanguage", languageTests);
-      // formData.append("testCenter", testCenter);
-      // formData.append("testType", typeofTest);
-      // formData.append("testResult", result);
-      // formData.append("issuingCountry", issuingCountry);
-      // formData.append("dateOfTest", dateofTest);
-      // selectedFile && formData.append("document", selectedFile);
-      // formData.append("color", color);
-      // formData.append("completed", percentage);
-      // }
-      // AddLanguageData(userDetail?.userId, formData, AddLanguagedataDB);
     }
   };
 
@@ -236,15 +216,14 @@ const Languages = ({
     const file = event.target.files?.[0];
     if (file) {
       const reader = new FileReader();
-        
-    reader.onloadend = function() {
-        const imageBinary:any = reader.result; 
-        const byteArray = imageBinary.split(',')[1]; 
-      setSelectedFile(byteArray);
-    };
-    
-    reader.readAsDataURL(file);
-      
+
+      reader.onloadend = function () {
+        const imageBinary: any = reader.result;
+        const byteArray = imageBinary.split(",")[1];
+        setSelectedFile(byteArray);
+      };
+
+      reader.readAsDataURL(file);
     }
   };
 
@@ -252,6 +231,12 @@ const Languages = ({
     setDisabled(!disabled);
     setIsHideShow(!isHideShow);
     // toast.info("You are now in edit mode. Make your changes.");
+  };
+
+  const handleValidationChange = (valid: any) => (e: any) => {
+    const value = e.target.value;
+    const alphabeticValue = value.replace(/[^A-Za-z\s]/g, "");
+    valid(alphabeticValue);
   };
   return (
     <div className="container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
@@ -287,20 +272,20 @@ const Languages = ({
           <div className="flex justify-between items-center">
             <h1 className="font-bold  ">Additional Language </h1>
             {isHideShow && (
-            <div className="flex gap-2">
-              <AiOutlinePlus
-                className="text-2xl cursor-pointer"
-                onClick={addFieldAddi}
-              />
-              {additionalLanguageForms.length > 1 && (
-                <AiOutlineMinus
+              <div className="flex gap-2">
+                <AiOutlinePlus
                   className="text-2xl cursor-pointer"
-                  onClick={() =>
-                    removeFieldAddi(additionalLanguageForms.length - 1)
-                  }
+                  onClick={addFieldAddi}
                 />
-              )}
-            </div>
+                {additionalLanguageForms.length > 1 && (
+                  <AiOutlineMinus
+                    className="text-2xl cursor-pointer"
+                    onClick={() =>
+                      removeFieldAddi(additionalLanguageForms.length - 1)
+                    }
+                  />
+                )}
+              </div>
             )}
           </div>
           {additionalLanguageForms.map((field, index) => (
@@ -444,7 +429,7 @@ const Languages = ({
                 id="testceter"
                 type="text"
                 value={testCenter}
-                onChange={(e) => setTestCenter(e.target.value)}
+                onChange={handleValidationChange(setTestCenter)}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Test Center"
                 disabled={disabled}
@@ -463,7 +448,7 @@ const Languages = ({
                 id="cityName"
                 type="text"
                 value={typeofTest}
-                onChange={(e) => setTypeofTest(e.target.value)}
+                onChange={handleValidationChange(setTypeofTest)}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Type of Test"
                 disabled={disabled}
@@ -481,7 +466,7 @@ const Languages = ({
                 id="result1"
                 type="text"
                 value={result}
-                onChange={(e) => setResult(e.target.value)}
+                onChange={handleValidationChange(setResult)}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Result"
                 disabled={disabled}

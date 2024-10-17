@@ -19,8 +19,8 @@ type Props = {
   contactComplete: ContactComplete; // mjrComplete is an object with percentage and color
   setContactComplete: React.Dispatch<React.SetStateAction<ContactComplete>>; // setMjrComplete is a function to update mjrComplete
   userDetail: any;
-  contactDetail:any;
-  criminal:any;
+  contactDetail: any;
+  criminal: any;
 };
 
 const ContactDetails = ({
@@ -28,7 +28,7 @@ const ContactDetails = ({
   setContactComplete,
   userDetail,
   contactDetail,
-  criminal
+  criminal,
 }: Props) => {
   const [address, setAddress] = useState("");
   const [number, setNumber] = useState("");
@@ -48,7 +48,7 @@ const ContactDetails = ({
   // const [countryCodeDrop, setCountryCodeDrop] = useState<any>([]);
 
   const [disabled, setDisabled] = useState(true);
-  const [color,setColor]=useState('')
+  const [color, setColor] = useState("");
 
   useEffect(() => {
     console.log("userDetail", userDetail);
@@ -58,14 +58,14 @@ const ContactDetails = ({
       setAddInfo(contactDetail?.additionalInfo);
       setPostalCode(contactDetail?.postalCode);
       setEmail(contactDetail?.emailAddress);
-      setCountry1(contactDetail?.country)
-      setCityName(contactDetail?.city)
-      setState(contactDetail?.state)
-      setRCountrycode(contactDetail?.mobileCountryCode)
-      setPhoneNumber(contactDetail?.mobilePhoneNumber)
-      setMCountrycode(contactDetail?.directLineCountryCode)
-      setPhoneNumber1(contactDetail?.directLinePhoneNumber)
-      setNearestAirport(contactDetail?.nearestAirport)
+      setCountry1(contactDetail?.country);
+      setCityName(contactDetail?.city);
+      setState(contactDetail?.state);
+      setRCountrycode(contactDetail?.mobileCountryCode);
+      setPhoneNumber(contactDetail?.mobilePhoneNumber);
+      setMCountrycode(contactDetail?.directLineCountryCode);
+      setPhoneNumber1(contactDetail?.directLinePhoneNumber);
+      setNearestAirport(contactDetail?.nearestAirport);
     }
   }, []);
 
@@ -99,7 +99,8 @@ const ContactDetails = ({
 
   // const percentage = (filledFields / totalFields) * 100;
 
-  const percentage:any = totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
+  const percentage: any =
+    totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
   // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
   // let color;
   useEffect(() => {
@@ -130,41 +131,42 @@ const ContactDetails = ({
 
   const handlesubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!validateInputs()) {
+      return;
+    }
     if (!criminal) {
       toast.error("Please accept the declaration");
-      return; 
+      return;
     } else {
+      let data = {
+        id: userDetail?.userId,
+        street: address,
+        number: number,
+        additionalInfo: addInfo,
+        postalCode: postalCode,
+        city: cityName,
+        state: state,
+        country: country1,
+        nearestAirport: nearestAirport,
+        mobileCountryCode: mCountrycode,
+        mobilePhoneNumber: phoneNumber,
+        directLineCountryCode: rCountrycode,
+        directLinePhoneNumber: phoneNumber1,
+        emailAddress: email,
+        color: color,
+        completed: percentage,
+      };
 
-    let data = {
-      id: userDetail?.userId,
-      street: address,
-      number: number,
-      additionalInfo: addInfo,
-      postalCode: postalCode,
-      city: cityName,
-      state: state,
-      country: country1,
-      nearestAirport: nearestAirport,
-      mobileCountryCode: mCountrycode,
-      mobilePhoneNumber: phoneNumber,
-      directLineCountryCode: rCountrycode,
-      directLinePhoneNumber: phoneNumber1,
-      emailAddress: email,
-      color: color,
-      completed: percentage,
-    };
-
-   
-    AddContactData(data, AddaddressdataDB);
+      AddContactData(data, AddaddressdataDB);
+    }
   };
-}
 
   const AddaddressdataDB = (result: any) => {
     console.log(result);
     if (result?.status == 200 || result?.status == 201) {
       toast.success("Contact submited successfully");
       setTimeout(() => {
-        window.location.reload()
+        window.location.reload();
       }, 1000);
     } else {
       toast.error("Contact not submited ");
@@ -172,6 +174,59 @@ const ContactDetails = ({
   };
   const handleEdit = () => {
     setDisabled(!disabled);
+  };
+
+
+  const validateInputs = () => {
+    let formIsValid = true;
+    let newErrors = {
+      email: "",
+      phoneNumber: "",
+      phoneNumber1: "",
+    };
+   
+
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!email.trim()) {
+      newErrors.email = "Email is required";
+      formIsValid = false;
+    } else if (!emailRegex.test(email)) {
+      newErrors.email = "Invalid email format";
+      formIsValid = false;
+    }
+    if (!phoneNumber.trim()) {
+      newErrors.phoneNumber = "Phone number is required";
+      formIsValid = false;
+    } else if (/^\d{13}$/.test(phoneNumber)) {
+      console.log('phone', phoneNumber.length)
+      newErrors.phoneNumber = "Phone number must be 10 digits";
+      formIsValid = false;
+    } else if (phoneNumber.length < 7) {
+      newErrors.phoneNumber = "Phone number must be minimum 7 digits";
+      formIsValid = false;
+    }
+    if (!phoneNumber1.trim()) {
+      newErrors.phoneNumber1 = "Phone number is required";
+      formIsValid = false;
+    } else if (/^\d{13}$/.test(phoneNumber1)) {
+      console.log('phone', phoneNumber1.length)
+      newErrors.phoneNumber = "Phone number must be 10 digits";
+      formIsValid = false;
+    } else if (phoneNumber1.length < 7) {
+      newErrors.phoneNumber1 = "Phone number must be minimum 7 digits";
+      formIsValid = false;
+    }
+
+    // if (!textarea.trim()) {
+    //   newErrors.message = "Message is required";
+    //   formIsValid = false;
+    // } else if (textarea.length < 10) { // Adjust the minimum length as needed
+    //   newErrors.message = "Message must be at least 10 characters long.";
+    //   formIsValid = false;
+    // }
+
+    // setErrors(newErrors);
+    return formIsValid;
   };
 
   return (
@@ -194,7 +249,10 @@ const ContactDetails = ({
                   id="street"
                   type="text"
                   value={address}
-                  onChange={(e) => setAddress(e.target.value)}
+                  onChange={(e) => {
+                    const value = e.target.value.replace(/[^a-zA-Z ]/g, "");
+                    setAddress(value);
+                  }}
                   className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder="Enter Street"
                   disabled={disabled}
@@ -206,14 +264,17 @@ const ContactDetails = ({
                   className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
                   htmlFor="number"
                 >
-                 Enter Number
+                  Enter Number
                 </label>
                 <div className="relative flex items-center  ">
                   <input
                     id="number"
                     type="text"
                     value={number}
-                    onChange={(e) => setNumber(e.target.value)}
+                    onChange={(e) => {
+                      const value = e.target.value.replace(/[^0-9 ]/g, "");
+                      setNumber(value);
+                    }}
                     className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder=" Enter Number"
                     disabled={disabled}
@@ -234,7 +295,10 @@ const ContactDetails = ({
                   id="addinfo"
                   type="text"
                   value={addInfo}
-                  onChange={(e) => setAddInfo(e.target.value)}
+                  onChange={(e) => {
+                    const value = e.target.value.replace(/[^a-zA-Z ]/g, "");
+                    setAddInfo(value);
+                  }}
                   className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder="Enter Add. Info (c/o etc.)"
                   disabled={disabled}
@@ -277,7 +341,10 @@ const ContactDetails = ({
                     id="state"
                     type="text"
                     value={state}
-                    onChange={(e) => setState(e.target.value)}
+                    onChange={(e) => {
+                      const value = e.target.value.replace(/[^a-zA-Z ]/g, "");
+                      setState(value);
+                    }}
                     className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter  State/Province"
                     disabled={disabled}
@@ -301,9 +368,12 @@ const ContactDetails = ({
                     id="cityName"
                     type="text"
                     value={cityName}
-                    onChange={(e) => setCityName(e.target.value)}
+                    onChange={(e) => {
+                      const value = e.target.value.replace(/[^a-zA-Z ]/g, "");
+                      setCityName(value);
+                    }}
                     className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    placeholder="Enter  City"
+                    placeholder="Enter City"
                     disabled={disabled}
                   />
                 </div>
@@ -316,9 +386,12 @@ const ContactDetails = ({
                 <div className="relative flex items-center  ">
                   <input
                     id="addinfo"
-                    type="number"
+                    type="text"
                     value={postalCode}
-                    onChange={(e) => setPostalCode(e.target.value)}
+                    onChange={(e) => {
+                      const value = e.target.value.replace(/[^0-9 ]/g, "");
+                      setPostalCode(value);
+                    }}
                     className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter Postal Code/ZIP Code"
                     disabled={disabled}
@@ -342,27 +415,16 @@ const ContactDetails = ({
                   id="nearestAirport"
                   type="text"
                   value={nearestAirport}
-                  onChange={(e) => setNearestAirport(e.target.value)}
+                  onChange={(e) => {
+                    const value = e.target.value.replace(/[^a-zA-Z ]/g, "");
+                    setNearestAirport(value);
+                  }}
                   className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder="Enter Nearest Airport"
                   disabled={disabled}
                 />
               </div>
-              {/* <select
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                value={nACountrycode}
-                onChange={(e) => setNACountrycode(e.target.value)}
-              >
-                <option value="" disabled>
-                  country
-                </option>
-                {countryDrop && countryDrop?.map((country: any, index: number) => (
-                    <option key={index} value={country}>{country?.toUpperCase()}</option>
-                  ))}
-              </select> */}
             </div>
-
-            {/* counstry and city section start*/}
 
             <div className="grid col-span-2 ">
               <h1 className="font-bold">Mobile Phone</h1>
@@ -385,7 +447,7 @@ const ContactDetails = ({
                   {countryCodeDrop &&
                     countryCodeDrop?.map((code: any, index: number) => (
                       <option key={index} value={code?.phoneCode}>
-                        {code?.flag+' '+code?.phoneCode}
+                        {code?.flag + " " + code?.phoneCode}
                       </option>
                     ))}
                 </select>
@@ -403,7 +465,25 @@ const ContactDetails = ({
                     id="number"
                     type="text"
                     value={phoneNumber}
-                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    // onChange={(e) => {
+                    //   const value = e.target.value.replace(/[^0-9]/g, "");
+                    //   if (value.length <= 10) {
+                    //     setPhoneNumber(value);
+                    //   }
+                    // }}
+                    maxLength={12} // Maximum 12 digits
+                    onChange={(e) => {
+                      // Allow only numeric input
+                      const value = e.target.value;
+                      if (/^\d*$/.test(value)) { // Regex to allow only digits
+                        setPhoneNumber(value.trimStart());
+                      }
+                    }}
+                    onBlur={(e) => {
+                      if (e.target.value.length < 7) {
+                        toast.error("Phone number must be at least 7 digits long");
+                      }
+                    }}
                     className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter Phone Number"
                     disabled={disabled}
@@ -432,7 +512,7 @@ const ContactDetails = ({
                   {countryCodeDrop &&
                     countryCodeDrop?.map((code: any, index: number) => (
                       <option key={index} value={code?.phoneCode}>
-                        {code?.flag+' '+code?.phoneCode}
+                        {code?.flag + " " + code?.phoneCode}
                       </option>
                     ))}
                 </select>
@@ -450,7 +530,25 @@ const ContactDetails = ({
                     id="phonenumber2"
                     type="text"
                     value={phoneNumber1}
-                    onChange={(e) => setPhoneNumber1(e.target.value)}
+                    // onChange={(e) => {
+                    //   const value = e.target.value.replace(/[^0-9]/g, "");
+                    //   if (value.length <= 10) {
+                    //     setPhoneNumber1(value);
+                    //   }
+                    // }}
+                    maxLength={12} // Maximum 12 digits
+                    onChange={(e) => {
+                      // Allow only numeric input
+                      const value = e.target.value;
+                      if (/^\d*$/.test(value)) { // Regex to allow only digits
+                        setPhoneNumber1(value.trimStart());
+                      }
+                    }}
+                    onBlur={(e) => {
+                      if (e.target.value.length < 7) {
+                        toast.error("Phone number must be at least 7 digits long");
+                      }
+                    }}
                     className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter Phone Number"
                     disabled={disabled}
@@ -473,7 +571,23 @@ const ContactDetails = ({
                     id="emails"
                     type="email"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    // onChange={(e) => {
+                    //   const value = e.target.value.replace(
+                    //     /[^a-zA-Z0-9@_.]/g,
+                    //     ""
+                    //   );
+                    //   setEmail(value);
+                    // }}
+                    onChange={(e) => {
+                      let value = e.target.value.replace(/\s+/g, ''); // Removes all spaces
+                      setEmail(value?.trim());
+                    }}
+                    onBlur={(e) => {
+                      // Basic email validation
+                      if (!e.target.validity.valid) {
+                        toast.error("Please enter a valid email address.");
+                      }
+                    }}
                     className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter Email Address"
                     disabled={disabled}

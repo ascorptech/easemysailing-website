@@ -156,18 +156,15 @@ const MedicalCertificates = ({
     medicalType,
     vaccinationIssue,
     covidOptions,
-    // vaccinationExpiry,
     medicalTypeFlag,
     vaccinationFlag,
     vaccinationexpFlag || veccinationCheckFlag,
     selectedFilesFlag,
-    // exdateCovid || expiresMedical,
     issuedateCovid,
   ].filter(Boolean).length;
 
-  const percentage = (filledFields / totalFields) * 100;
-
-  // let color;
+  const percentage: any =
+  totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {

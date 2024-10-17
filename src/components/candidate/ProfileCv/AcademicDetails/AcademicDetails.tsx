@@ -91,35 +91,39 @@ const AcademicDetails = ({
 
   useEffect(() => {
     if (academicDetail) {
-      let combineLng = academicDetail?.educations?.length?academicDetail?.educations?.map((lang: any) => ({
-        university: lang?.schoolCollegeUniversity,
-        subject: lang?.subject,
-        issuingCountry: lang?.country,
-        city: lang?.city,
-      })):[
-        {
-          degree: "",
-          percentage: "",
-          startdate: "",
-          enddate: "",
-          selectedFile: null,
-        },
-      ];
+      let combineLng = academicDetail?.educations?.length
+        ? academicDetail?.educations?.map((lang: any) => ({
+            university: lang?.schoolCollegeUniversity,
+            subject: lang?.subject,
+            issuingCountry: lang?.country,
+            city: lang?.city,
+          }))
+        : [
+            {
+              university: "",
+              subject: "",
+              city: "",
+              issuingCountry: "",
+            },
+          ];
       setEducationForms(combineLng);
-      let combineLng1 = academicDetail?.qualifications?.lenght?academicDetail?.qualifications?.map((lang: any) => ({
-        degree: lang?.degree,
-        percentage: lang?.percentage,
-        startdate: moment(lang?.startDate).format("YYYY-MM-DD"),
-        enddate: moment(lang?.endDate).format("YYYY-MM-DD"),
-        selectedFile: lang?.documentUrl,
-      })):[
-        {
-          university: "",
-          subject: "",
-          city: "",
-          issuingCountry: "",
-        },
-      ];
+      let combineLng1 = academicDetail?.qualifications?.length
+        ? academicDetail?.qualifications?.map((lang: any) => ({
+            degree: lang?.degree,
+            percentage: lang?.percentage,
+            startdate: moment(lang?.startDate).format("YYYY-MM-DD"),
+            enddate: moment(lang?.endDate).format("YYYY-MM-DD"),
+            selectedFile: lang?.documentUrl,
+          }))
+        : [
+            {
+              degree: "",
+              percentage: "",
+              startdate: "",
+              enddate: "",
+              selectedFile: null,
+            },
+          ];
       setAcademicForms(combineLng1);
     }
   }, [academicDetail]);
@@ -343,7 +347,7 @@ const AcademicDetails = ({
                 type="text"
                 value={field.degree}
                 onChange={(e) => {
-                  const value = e.target.value.replace(/[^a-zA-Z\s]/g, ""); // Allow only alphabets and spaces
+                  const value = e.target.value.replace(/[^a-zA-Z\s]/g, ""); 
                   handleFormChange(index, "degree", value);
                 }}
                 // onChange={(e) =>
@@ -487,7 +491,7 @@ const AcademicDetails = ({
                 value={fields.subject}
                 onChange={(e) => {
                   const value = e.target.value.replace(/[^a-zA-Z\s]/g, "");
-                  handleFormChangeEdu(index, "subject", e.target.value);
+                  handleFormChangeEdu(index, "subject", value);
                 }}
                 className="border rounded-md w-full h-9 px-2 text-[14px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Your Subject"
@@ -504,7 +508,7 @@ const AcademicDetails = ({
                 value={fields.city}
                 onChange={(e) => {
                   const value = e.target.value.replace(/[^a-zA-Z\s]/g, "");
-                  handleFormChangeEdu(index, "city", e.target.value);
+                  handleFormChangeEdu(index, "city",value);
                 }}
                 className="border rounded-md w-full h-9 px-2 text-[14px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Your City"

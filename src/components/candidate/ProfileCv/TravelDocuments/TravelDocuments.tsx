@@ -411,9 +411,12 @@ const TravelDocuments = ({
             </label>
             <input
               id="passportnumber"
-              type="number"
+              type="text"
               value={number}
-              onChange={(e) => setNumber(e.target.value)}
+              onChange={(e) => {
+                const value = e.target.value.replace(/[^0-9. ]/g, "");
+                setNumber(value);
+              }}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder="Enter  Passport Number"
               disabled={disabled}
@@ -570,7 +573,8 @@ const TravelDocuments = ({
               id="seamanbook"
               type="text"
               value={trainingCenter}
-              onChange={(e) => setTrainingCenter(e.target.value)}
+              onChange={(e) => {
+                const value = e.target.value.replace(/[^0-9. ]/g, ""); setTrainingCenter(e.target.value)}}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder="Enter  Seaman Book No."
               disabled={disabled}
@@ -674,7 +678,6 @@ const TravelDocuments = ({
           </div>
         </div>
 
-        {/* <div className=" grid col-span-2  my-2"> */}
         <div className="flex items-center justify-between">
           <h1 className="font-bold ">VISA</h1>
           {isHideShow && (
@@ -734,9 +737,10 @@ const TravelDocuments = ({
                 id={`visanumber01_${index}`}
                 type="text"
                 value={field.visaNumber}
-                onChange={(e) =>
-                  handleFormChangeVisa(index, "visaNumber", e.target.value)
-                }
+                onChange={(e) =>{
+                  const value = e.target.value.replace(/[^0-9. ]/g, "");
+                  handleFormChangeVisa(index, "visaNumber", value)
+                }}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Visa Number"
                 disabled={disabled}
@@ -864,7 +868,8 @@ const TravelDocuments = ({
               id="seamanPermit"
               type="text"
               value={permitNumber}
-              onChange={(e) => setPermitNumber(e.target.value)}
+              onChange={(e) =>{
+                const value = e.target.value.replace(/[^0-9 ]/g, ""); setPermitNumber(value)}}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder="Enter Number"
               disabled={disabled}
@@ -954,7 +959,8 @@ const TravelDocuments = ({
                 id="inumber"
                 type="text"
                 value={indNumber}
-                onChange={(e) => setIndNumber(e.target.value)}
+                onChange={(e) =>{
+                  const value = e.target.value.replace(/[^0-9 ]/g, ""); setIndNumber(value)}}
                 className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter INDoS Number"
                 disabled={disabled}

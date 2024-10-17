@@ -33,14 +33,13 @@ const Languages = ({
   languageDetail,
   criminal,
 }: Props) => {
-  // State for form fields
+ 
   const [additionalLanguageForms, setAdditionalLanguageForms] = useState<
     AdditionalLanguage[]
   >([{ addiLanguage: "", languageLavel: "" }]);
 
   const [language1, setLanguage1] = useState("");
-  // const [addiLanguage, setAddiLanguage] = useState("");
-  // const [languageLavel, setLanguageLavel] = useState("");
+ 
   const [englishLavel, setEnglishLavel] = useState("");
   const [languageTests, setLanguageTests] = useState("");
   const [languageLevelDrop, setLanguageLevelDrop] = useState<any>([]);

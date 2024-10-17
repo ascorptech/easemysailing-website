@@ -160,29 +160,28 @@ const ProfessionalSkills = ({
 
   const percentage: any =
     totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
-  // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
-  // let color;
+  
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
       setProfessionalComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#FF0000", // Update the color field
+        ...prevState, 
+        percentage: percentage, 
+        color: "#FF0000", 
       }));
       setColor("#FF0000");
     } else if (percentage <= 70) {
       setProfessionalComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#FF9900", // Update the color field
+        ...prevState, 
+        percentage: percentage, 
+        color: "#FF9900", 
       }));
       setColor("#FF9900");
     } else {
       setProfessionalComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#00A264", // Update the color field
+        ...prevState, 
+        percentage: percentage, 
+        color: "#00A264", 
       }));
       setColor("#00A264");
     }
@@ -201,10 +200,7 @@ const ProfessionalSkills = ({
 
       reader.readAsDataURL(file);
     }
-    // const file = event.target.files?.[0];
-    // if (file) {
-    //   setSelectedFile(file);
-    // }
+    
   };
 
   useEffect(() => {
@@ -254,7 +250,6 @@ const ProfessionalSkills = ({
       return;
     } else {
       let formData = new FormData();
-      // formData.append('document', selectedFile);
       formData.append("computerSkill", skill);
       formData.append("computerSkillLevel", level1);
       formData.append("bulkCargo", bulkCargo);
@@ -278,30 +273,7 @@ const ProfessionalSkills = ({
       formData.append("vettingFindings", description1);
       formData.append("tradingArea", tradingArea);
       formData.append("metalWorkingDocumentUrl", selectedFile);
-      // formData.append('document', selectedFile);
-      // formData.append("computerSkill", skill);
-      // formData.append("computerSkillLevel", level1);
-      // formData.append("bulkCargo", bulkCargo);
-      // formData.append("tankerCargo", tankerCargo);
-      // formData.append("generalCargo", generalCargo);
-      // formData.append("woodProducts", woodProducts);
-      // formData.append("stowageLashingExperience", stowage);
-      // formData.append("cargoGearType", typeProfessional);
-      // formData.append("cargoGearMaker", maker);
-      // formData.append("cargoGearSWL", sWL);
-      // formData.append("metalWorkingSkill", skillmetal);
-      // formData.append("metalWorkingSkillLevel", levelMetal);
-      // formData.append("tankCoatingType", typeTank);
-      // formData.append("portStateRegionalAgreement", regionalAgreement);
-      // formData.append("portStatePort", port);
-      // formData.append("portStateDate", date);
-      // formData.append("portStateFindings", description);
-      // formData.append("vettingInspectionBy", inspection);
-      // formData.append("vettingPort", port1);
-      // formData.append("vettingDate", vdate);
-      // formData.append("vettingFindings", description1);
-      // formData.append("tradingArea", tradingArea);
-      // formData.append('metalWorkingDocumentUrl',selectedFile);
+      
       formData.append("color", color);
       formData.append("completed", percentage);
       AddProfessionalSkillData(
@@ -329,7 +301,6 @@ const ProfessionalSkills = ({
   const handleEdit = () => {
     setDisabled(!disabled);
     setIsHideShow(!isHideShow);
-    // toast.info("You are now in edit mode. Make your changes.");
   };
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
@@ -556,7 +527,7 @@ const ProfessionalSkills = ({
           </div>
           <div className="   ">
             <label
-              className="text-[14px] leading-[19.07px]  text-[#333333] "
+              className="text-[14px] leading-[19.07px] text-[#333333] "
               htmlFor="maker"
             >
               Maker
@@ -565,9 +536,10 @@ const ProfessionalSkills = ({
               id="maker"
               type="text"
               value={maker}
-              onChange={(e) => setMaker(e.target.value)}
+              onChange={(e) =>{
+                const value = e.target.value.replace(/[^a-zA-Z ]/g, ""); setMaker(value)}}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              placeholder="Enter  Maker"
+              placeholder="Enter Maker"
               disabled={disabled}
             />
           </div>
@@ -582,7 +554,8 @@ const ProfessionalSkills = ({
               id="swl"
               type="text"
               value={sWL}
-              onChange={(e) => setSWL(e.target.value)}
+              onChange={(e) =>{
+                const value = e.target.value.replace(/[^a-zA-Z ]/g, ""); setSWL(value)}}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder="Enter SWL"
               disabled={disabled}
@@ -654,7 +627,6 @@ const ProfessionalSkills = ({
               value={cAvailable}
               onChange={(e) => setCAvailable(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              // placeholder="Yes/No"
               disabled={disabled}
             >
               <option value="" disabled selected>
@@ -800,12 +772,7 @@ const ProfessionalSkills = ({
                     {country?.toUpperCase()}
                   </option>
                 ))}
-              {/* {portDrop &&
-                portDrop?.map((tst: any, index: number) => (
-                  <option key={index} value={tst}>
-                    {tst?.toUpperCase()}
-                  </option>
-                ))} */}
+             
             </select>
           </div>
           <div className="">
@@ -815,7 +782,6 @@ const ProfessionalSkills = ({
             >
               Date
             </label>
-            {/* <div className="flex items-center gap-4 mt-2"> */}
             <input
               id="expiryDate"
               type="date"
@@ -825,7 +791,6 @@ const ProfessionalSkills = ({
               disabled={disabled}
               placeholder="Enter  Date"
             />
-            {/* </div> */}
           </div>
 
           <div className="grid col-span-2   ">
@@ -835,7 +800,8 @@ const ProfessionalSkills = ({
             <input
               type="text"
               value={description}
-              onChange={(e) => setDescription(e.target.value)}
+              onChange={(e) =>{
+                const value = e.target.value.replace(/[^a-zA-Z0-9 ]/g, ""); setDescription(value)}}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder="Yes/No"
               disabled={disabled}
@@ -852,7 +818,8 @@ const ProfessionalSkills = ({
             <input
               type="text"
               value={inspection}
-              onChange={(e) => setInspection(e.target.value)}
+              onChange={(e) =>{
+                const value = e.target.value.replace(/[^a-zA-Z ]/g, ""); setInspection(value)}}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder="Enter  Inspection By"
               disabled={disabled}
@@ -911,7 +878,8 @@ const ProfessionalSkills = ({
             <input
               type="text"
               value={description1}
-              onChange={(e) => setDescription1(e.target.value)}
+              onChange={(e) => {
+                const value = e.target.value.replace(/[^a-zA-Z ]/g, "");setDescription1(value)}}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder="Yes/No"
               disabled={disabled}

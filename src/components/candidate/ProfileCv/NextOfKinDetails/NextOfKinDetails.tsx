@@ -79,10 +79,10 @@ const NextOfKinDetails = ({
 
   useEffect(() => {
     if (nextOfKinDetail) {
-      setNextKinName(nextOfKinDetail.nextOfKinName);
-      setNextKinShip(nextOfKinDetail.nextOfKinRelationship);
-      setNextKinAddre(nextOfKinDetail.nextOfKinAddress);
-      setNextKinChildren(nextOfKinDetail.numberOfChildren);
+      setNextKinName(nextOfKinDetail?.nextOfKinName);
+      setNextKinShip(nextOfKinDetail?.nextOfKinRelationship);
+      setNextKinAddre(nextOfKinDetail?.nextOfKinAddress);
+      setNextKinChildren(nextOfKinDetail?.numberOfChildren);
       setSameAsAddress(nextOfKinDetail?.sameAddress)
       }
   }, [])
@@ -199,7 +199,8 @@ const NextOfKinDetails = ({
                 id="NextofKinName"
                 type="text"
                 value={nextKinName}
-                onChange={(e) => setNextKinName(e.target.value)}
+                onChange={(e) => {
+                  const value = e.target.value.replace(/[^a-zA-Z ]/g, "");setNextKinName(value)}}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"                disabled={disabled}
                 placeholder="Enter Next of Kin Name"
                
@@ -218,7 +219,8 @@ const NextOfKinDetails = ({
                 id="nextofkineship"
                 type="text"
                 value={nextKinShip}
-                onChange={(e) => setNextKinShip(e.target.value)}
+                onChange={(e) =>{
+                  const value = e.target.value.replace(/[^a-zA-Z ]/g, ""); setNextKinShip(value)}}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Next of Kin Relation Ship"
                 disabled={disabled}
@@ -237,7 +239,8 @@ const NextOfKinDetails = ({
                 id="nextofkinaddres"
                 type="text"
                 value={nextKinAddre}
-                onChange={(e) => setNextKinAddre(e.target.value)}
+                onChange={(e) => {
+                  const value = e.target.value.replace(/[^a-zA-Z ]/g, "");setNextKinAddre(value)}}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Next of Kin Address"
                 disabled={disabled}
@@ -255,9 +258,10 @@ const NextOfKinDetails = ({
               {/* <div className="relative flex items-center  "> */}
               <input
                 id="numberofchildren"
-                type="number"
+                type="text"
                 value={nextKinChildren}
-                onChange={(e) => setNextKinChildren(e.target.value)}
+                onChange={(e) =>{
+                  const value = e.target.value.replace(/[^0-9. ]/g, ""); setNextKinChildren(value)}}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Number of Children"
                 disabled={disabled}

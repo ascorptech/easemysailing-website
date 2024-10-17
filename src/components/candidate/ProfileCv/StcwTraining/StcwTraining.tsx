@@ -145,12 +145,7 @@ const StcwTraining = ({
     }
   }, [percentage, color]);
 
-  // const handleFileChange = (event: any) => {
-  //   const file = event.target.files?.[0];
-  //   if (file) {
-  //     setSelectedFile(file);
-  //   }
-  // };
+  
 
   const handleAddForm = () => {
     setStcwTraining([
@@ -201,9 +196,7 @@ const StcwTraining = ({
       });
       data.stcwTrainingDetails = stcwArray;
 
-      // let finArry: any = [];
-      // finArry.push(data);
-      // console.log("fin", finArry);
+      
 
       AddStcwData(data, AddStcwDataCB);
     }
@@ -235,9 +228,7 @@ const StcwTraining = ({
       setStcwTraining(updatedForms);
     };
     reader.readAsDataURL(file);
-    // const updatedForms = [...stcwTraining];
-    // updatedForms[index].selectedFile = event.target.files?.[0] || null;
-    // setStcwTraining(updatedForms);
+    
   };
 
   const handleFormChange = (
@@ -250,15 +241,7 @@ const StcwTraining = ({
     setStcwTraining(updatedForms);
   };
 
-  // const handleExtraFieldChange = (
-  //   index: number,
-  //   value: string,
-  //   field: "field1" | "field2"
-  // ) => {
-  //   const updatedFields = [...extraFields];
-  //   updatedFields[index][field] = value;
-  //   setExtraFields(updatedFields);
-  // };
+ 
 
   const handleEdit = () => {
     setDisabled(!disabled);
@@ -358,8 +341,9 @@ const StcwTraining = ({
                     id={`number12_${index}`}
                     type="text"
                     value={field.number}
-                    onChange={(e) =>
-                      handleFormChange(index, "number", e.target.value)
+                    onChange={(e) =>{
+                      const value = e.target.value.replace(/[^0-9. ]/g, "");
+                      handleFormChange(index, "number", value)}
                     }
                     className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
                     placeholder="Enter Certificate Number"

@@ -457,9 +457,10 @@ const AdditionalTraining = ({
                 id={`trainingC1_${index}`}
                 type="text"
                 value={field.trainingCenter}
-                onChange={(e) =>
-                  handleFormChangeAdd(index, "trainingCenter", e.target.value)
-                }
+                onChange={(e) =>{
+                  const value = e.target.value.replace(/[^a-zA-Z ]/g, "");
+                  handleFormChangeAdd(index, "trainingCenter", value)
+                }}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
                 placeholder="Enter Training Center"
                 disabled={disabled}
@@ -506,11 +507,12 @@ const AdditionalTraining = ({
               </label>
               <input
                 id={`numberA_${index}`}
-                type="number"
+                type="text"
                 value={field.number}
-                onChange={(e) =>
-                  handleFormChangeAdd(index, "number", e.target.value)
-                }
+                onChange={(e) =>{
+                  const value = e.target.value.replace(/[^0-9 ]/g, "");
+                  handleFormChangeAdd(index, "number", value)
+                }}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder=" Enter Certificate Number"
                 disabled={disabled}
@@ -717,8 +719,9 @@ const AdditionalTraining = ({
                 id={`trainingCe_${index}`}
                 type="text"
                 value={fields.trainingCenter1}
-                onChange={(e) =>
-                  handleFormChangePro(index, "trainingCenter1", e.target.value)
+                onChange={(e) =>{
+                  const value = e.target.value.replace(/[^a-zA-z ]/g, "");
+                  handleFormChangePro(index, "trainingCenter1", value)}
                 }
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Training Center"
@@ -766,11 +769,12 @@ const AdditionalTraining = ({
                 id={`result_${index}`}
                 type="text"
                 value={fields.result}
-                onChange={(e) =>
-                  handleFormChangePro(index, "result", e.target.value)
+                onChange={(e) =>{
+                  const value = e.target.value.replace(/[^a-zA-Z ]/g, "");
+                  handleFormChangePro(index, "result", value)}
                 }
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                placeholder="Enter  Result"
+                placeholder="Enter Result"
                 disabled={disabled}
               />
             </div>
@@ -814,10 +818,11 @@ const AdditionalTraining = ({
               </label>
               <input
                 id={`proNumber1_${index}`}
-                type="number"
+                type="text"
                 value={fields.eCDISNumber}
-                onChange={(e) =>
-                  handleFormChangePro(index, "eCDISNumber", e.target.value)
+                onChange={(e) =>{
+                  const value = e.target.value.replace(/[^0-9 ]/g, "");
+                  handleFormChangePro(index, "eCDISNumber", value)}
                 }
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Certificate Number"

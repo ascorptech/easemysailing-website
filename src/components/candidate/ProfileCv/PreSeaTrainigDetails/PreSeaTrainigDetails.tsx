@@ -1,6 +1,9 @@
 "use client";
 import Link from "next/link";
-import { AddSeaDetailsData, GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import {
+  AddSeaDetailsData,
+  GetDropdownDetails,
+} from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import moment from "moment";
@@ -16,8 +19,8 @@ type Props = {
     React.SetStateAction<PreSeaTrainigComplete>
   >;
   userDetail: any;
-  criminal:any;
-  offShoreDetail:any
+  criminal: any;
+  offShoreDetail: any;
 };
 
 const PreSeaTrainigDetails = ({
@@ -25,7 +28,7 @@ const PreSeaTrainigDetails = ({
   setPreSeaTrainigComplete,
   userDetail,
   criminal,
-  offShoreDetail
+  offShoreDetail,
 }: Props) => {
   const [permanect, setPermanect] = useState("");
   const [issuedate, setIssueDate] = useState("");
@@ -57,21 +60,19 @@ const PreSeaTrainigDetails = ({
   const [timeonBoard, setTimeonBoard] = useState("");
   const [currency, setCurrency] = useState("");
   const [neverExpires, setNeverExpires] = useState<any>(false);
-  const [currencyDrop,setCurrencyDrop] = useState<any>([])
-  const [trainingDrop,setTrainingDrop] = useState<any>([])
-  const [countryDrop,setCountryDrop] = useState<any>([])
+  const [currencyDrop, setCurrencyDrop] = useState<any>([]);
+  const [trainingDrop, setTrainingDrop] = useState<any>([]);
+  const [countryDrop, setCountryDrop] = useState<any>([]);
   const [imoDrop, setImoDrop] = useState([]);
-  const [shipTypeDrop, setShipTypeDrop] = useState<any>([])
-  const [rankDrop, setRankDrop] = useState<any>([])
-  const [rigMoveDrop, setRigMoveDrop] = useState<any>([])
-  const [rigMoveWaterDrop, setRigMoveWaterDrop] = useState<any>([])
-  const [tradingAreaDrop, setTradingAreaDrop] = useState<any>([])
-  const [winchDiveDrop, setWinchDiveDrop] = useState<any>([])
-  const [disabled,setDisabled] = useState(true)
+  const [shipTypeDrop, setShipTypeDrop] = useState<any>([]);
+  const [rankDrop, setRankDrop] = useState<any>([]);
+  const [rigMoveDrop, setRigMoveDrop] = useState<any>([]);
+  const [rigMoveWaterDrop, setRigMoveWaterDrop] = useState<any>([]);
+  const [tradingAreaDrop, setTradingAreaDrop] = useState<any>([]);
+  const [winchDiveDrop, setWinchDiveDrop] = useState<any>([]);
+  const [disabled, setDisabled] = useState(true);
   const [isHideShow, setIsHideShow] = useState(false);
-  const [color,setColor]=useState('')
-
-
+  const [color, setColor] = useState("");
 
   useEffect(() => {
     GetDropdownDetails("countryCurrencyCode", (res: any) => {
@@ -83,13 +84,13 @@ const PreSeaTrainigDetails = ({
     GetDropdownDetails("shipType", (res: any) => {
       setShipTypeDrop(res?.data?.values);
     });
-    GetDropdownDetails('rank', (res: any) => {
-      setRankDrop(res?.data?.values)
-    })
-    GetDropdownDetails('country', (res: any) => {
+    GetDropdownDetails("rank", (res: any) => {
+      setRankDrop(res?.data?.values);
+    });
+    GetDropdownDetails("country", (res: any) => {
       // console.log('County',res?.data)
-      setCountryDrop(res?.data?.values)
-    })
+      setCountryDrop(res?.data?.values);
+    });
     GetDropdownDetails("SEAGOINGEXP", (res: any) => {
       setImoDrop(res?.data?.values);
     });
@@ -142,34 +143,34 @@ const PreSeaTrainigDetails = ({
     maxTimeonBoard,
     timeonBoard,
     currency,
-    
   ].filter(Boolean).length;
 
   // const totalFields = available === "Yes" ? 6 : 5;
 
-  const percentage:any = totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
+  const percentage: any =
+    totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
   // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
   // let color;
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
       setPreSeaTrainigComplete((prevState) => ({
-        ...prevState, 
+        ...prevState,
         percentage: percentage,
-        color: "#FF0000", 
+        color: "#FF0000",
       }));
       setColor("#FF0000");
     } else if (percentage <= 70) {
       setPreSeaTrainigComplete((prevState) => ({
-        ...prevState, 
-        percentage: percentage, 
+        ...prevState,
+        percentage: percentage,
         color: "#FF9900",
       }));
       setColor("#FF9900");
     } else {
       setPreSeaTrainigComplete((prevState) => ({
-        ...prevState, 
-        percentage: percentage, 
+        ...prevState,
+        percentage: percentage,
         color: "#00A264",
       }));
       setColor("#00A264");
@@ -186,84 +187,92 @@ const PreSeaTrainigDetails = ({
   useEffect(() => {
     console.log("seaGoing", offShoreDetail);
     if (offShoreDetail) {
-      setPermanect(offShoreDetail?.permanentPerDay)
-      setCurrency(offShoreDetail?.currency)
-      setSalary(offShoreDetail?.salaryNegotiable?'Yes':'No')
-      setTimeonBoard(offShoreDetail?.minTimeOnBoardWeeks)
-      setMaxTimeonBoard(offShoreDetail?.maxTimeOnBoardWeeks)
-      setMinTimeonHome(offShoreDetail?.minTimeAtHomeWeeks)
-      setMaxTimeonHome(offShoreDetail?.maxTimeAtHomeWeeks)
-      setCertificate(offShoreDetail?.certificate)
-      setTrainingCenter(offShoreDetail?.trainingCenter)
-      setIssuingCountry(offShoreDetail?.issuingCountry)
-      setIssueDate(moment(offShoreDetail?.issueDate).format('YYYY-MM-DD'))
-      setNeverExpires(offShoreDetail?.neverExpires)
-      setSelectedFile(offShoreDetail?.documentUrl)
-      setNumber(offShoreDetail?.certificateNumber)
-      setPumpType(offShoreDetail?.pumpType)
-      setCrewManager(offShoreDetail?.crewManager)
-      setTechnicalManager(offShoreDetail?.technicalManager)
-      setOperator(offShoreDetail?.operator)
-      setCommercialSpecification(offShoreDetail?.vesselTypeCommercialSpecification)
-      setDesignSpecification(offShoreDetail?.vesselTypeDesignSpecification)
-      setDPHours(offShoreDetail?.dpHours)
-      setVesselType1(offShoreDetail?.rigMoveVesselType)
-      setRank(offShoreDetail?.rigMoveRank)
-      setNumberOfrig(offShoreDetail?.rigMoveNumber)
-      setMoveditem(offShoreDetail?.movedItem)
-      setWaterDepth(offShoreDetail?.waterDepth)
-      setTradingArea(offShoreDetail?.tradingArea)
-      setWinchDrive(offShoreDetail?.winchDriveExperience)
+      setPermanect(offShoreDetail?.permanentPerDay);
+      setCurrency(offShoreDetail?.currency);
+      setSalary(offShoreDetail?.salaryNegotiable ? "Yes" : "No");
+      setTimeonBoard(offShoreDetail?.minTimeOnBoardWeeks);
+      setMaxTimeonBoard(offShoreDetail?.maxTimeOnBoardWeeks);
+      setMinTimeonHome(offShoreDetail?.minTimeAtHomeWeeks);
+      setMaxTimeonHome(offShoreDetail?.maxTimeAtHomeWeeks);
+      setCertificate(offShoreDetail?.certificate);
+      setTrainingCenter(offShoreDetail?.trainingCenter);
+      setIssuingCountry(offShoreDetail?.issuingCountry);
+      setIssueDate(moment(offShoreDetail?.issueDate).format("YYYY-MM-DD"));
+      setNeverExpires(offShoreDetail?.neverExpires);
+      setSelectedFile(offShoreDetail?.documentUrl);
+      setNumber(offShoreDetail?.certificateNumber);
+      setPumpType(offShoreDetail?.pumpType);
+      setCrewManager(offShoreDetail?.crewManager);
+      setTechnicalManager(offShoreDetail?.technicalManager);
+      setOperator(offShoreDetail?.operator);
+      setCommercialSpecification(
+        offShoreDetail?.vesselTypeCommercialSpecification
+      );
+      setDesignSpecification(offShoreDetail?.vesselTypeDesignSpecification);
+      setDPHours(offShoreDetail?.dpHours);
+      setVesselType1(offShoreDetail?.rigMoveVesselType);
+      setRank(offShoreDetail?.rigMoveRank);
+      setNumberOfrig(offShoreDetail?.rigMoveNumber);
+      setMoveditem(offShoreDetail?.movedItem);
+      setWaterDepth(offShoreDetail?.waterDepth);
+      setTradingArea(offShoreDetail?.tradingArea);
+      setWinchDrive(offShoreDetail?.winchDriveExperience);
     }
-  },[offShoreDetail]);
+  }, [offShoreDetail]);
 
   const handleSubmit = (e: React.FormEvent) => {
     // try {
     e.preventDefault();
     if (!criminal) {
       toast.error("Please accept the declaration");
-      return; 
+      return;
     } else {
-    let formData = new FormData();
+      let formData = new FormData();
 
-    {
-      formData.append("permanentPerDay", permanect);
-      formData.append("currency", currency);
-      formData.append("minTimeOnBoardWeeks", timeonBoard);
-      formData.append("maxTimeOnBoardWeeks", maxTimeonBoard);
-      formData.append("minTimeAtHomeWeeks", minTimeonHome);
-      formData.append("maxTimeAtHomeWeeks", maxTimeonHome);
-      formData.append("certificate", certificate);
-      formData.append("trainingCenter", trainingCenter);
-      formData.append("issuingCountry", issuingCountry);
-      formData.append("issueDate", issuedate);
-      formData.append("expiryDate", exdate);
-      formData.append("document", selectedFile);
-      formData.append("pumpType", pumpType);
-      formData.append("crewManager", crewManager);
-      formData.append("technicalManager", technicalManager);
-      formData.append("operator", operator);
-      formData.append("companyNameOrShipType", vesselType);
-      formData.append(
-        "vesselTypeCommercialSpecification",
-        commercialSpecification
+      {
+        formData.append("permanentPerDay", permanect);
+        formData.append("currency", currency);
+        formData.append("minTimeOnBoardWeeks", timeonBoard);
+        formData.append("maxTimeOnBoardWeeks", maxTimeonBoard);
+        formData.append("minTimeAtHomeWeeks", minTimeonHome);
+        formData.append("maxTimeAtHomeWeeks", maxTimeonHome);
+        formData.append("certificate", certificate);
+        formData.append("trainingCenter", trainingCenter);
+        formData.append("issuingCountry", issuingCountry);
+        formData.append("issueDate", issuedate);
+        formData.append("expiryDate", exdate);
+        formData.append("document", selectedFile);
+        formData.append("pumpType", pumpType);
+        formData.append("crewManager", crewManager);
+        formData.append("technicalManager", technicalManager);
+        formData.append("operator", operator);
+        formData.append("companyNameOrShipType", vesselType);
+        formData.append(
+          "vesselTypeCommercialSpecification",
+          commercialSpecification
+        );
+        formData.append("vesselTypeDesignSpecification", designSpecification);
+        formData.append("dpHours", dPHours);
+        formData.append("rigMoveVesselType", vesselType1);
+        formData.append("rigMoveRank", rank);
+        formData.append("rigMoveNumber", numberOfrig);
+        formData.append("movedItem", moveditem);
+        formData.append("waterDepth", waterDepth);
+        formData.append("tradingArea", tradingArea);
+        formData.append("winchDriveExperience", winchDrive);
+        formData.append("color", color);
+        formData.append("certificateNumber", number);
+        formData.append("completed", percentage);
+      }
+      AddSeaDetailsData(
+        userDetail?.userId,
+        salary == "Yes" ? "true" : "false",
+        neverExpires,
+        formData,
+        AddSeaDetailsDataDB
       );
-      formData.append("vesselTypeDesignSpecification", designSpecification);
-      formData.append("dpHours", dPHours);
-      formData.append("rigMoveVesselType", vesselType1);
-      formData.append("rigMoveRank", rank);
-      formData.append("rigMoveNumber", numberOfrig);
-      formData.append("movedItem", moveditem);
-      formData.append("waterDepth", waterDepth);
-      formData.append("tradingArea", tradingArea);
-      formData.append("winchDriveExperience", winchDrive);
-      formData.append("color", color);
-      formData.append("certificateNumber", number);
-      formData.append("completed", percentage);
     }
-    AddSeaDetailsData(userDetail?.userId,salary=='Yes'?'true':'false',neverExpires, formData, AddSeaDetailsDataDB);
   };
-}
 
   const AddSeaDetailsDataDB = (result: any) => {
     console.log(result);
@@ -278,7 +287,7 @@ const PreSeaTrainigDetails = ({
   };
 
   const handleEdit = () => {
-    setDisabled(!disabled)
+    setDisabled(!disabled);
     setIsHideShow(!isHideShow);
     // toast.info("You are now in edit mode. Make your changes.");
   };
@@ -286,7 +295,7 @@ const PreSeaTrainigDetails = ({
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
-        <h1 className=" font-bold">  Salary Expectation</h1>
+        <h1 className=" font-bold"> Salary Expectation</h1>
         <div className="grid grid-cols-2 gap-4">
           <div className="   ">
             <label
@@ -299,7 +308,10 @@ const PreSeaTrainigDetails = ({
               id="permanent"
               type="text"
               value={permanect}
-              onChange={(e) => setPermanect(e.target.value)}
+              onChange={(e) => {
+                const value = e.target.value.replace(/[^a-zA-Z0-9 ]/g, "");
+                setPermanect(value);
+              }}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder="Enter  Permanent (per day)"
               disabled={disabled}
@@ -350,12 +362,8 @@ const PreSeaTrainigDetails = ({
               <option value="" disabled selected>
                 SELECT
               </option>
-                  <option value={'Yes'}>
-                    Yes
-                  </option>
-                  <option value={'No'}>
-                    No
-                  </option>
+              <option value={"Yes"}>Yes</option>
+              <option value={"No"}>No</option>
             </select>
           </div>
 
@@ -411,7 +419,7 @@ const PreSeaTrainigDetails = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-              SELECT
+                SELECT
               </option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -443,7 +451,7 @@ const PreSeaTrainigDetails = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-              SELECT
+                SELECT
               </option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -475,7 +483,7 @@ const PreSeaTrainigDetails = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-              SELECT
+                SELECT
               </option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -534,7 +542,10 @@ const PreSeaTrainigDetails = ({
               id="trainingCenter"
               type="text"
               value={trainingCenter}
-              onChange={(e) => setTrainingCenter(e.target.value)}
+              onChange={(e) => {
+                const value = e.target.value.replace(/[^a-zA-Z ]/g, "");
+                setTrainingCenter(value);
+              }}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder="Enter  Training Center"
               disabled={disabled}
@@ -556,14 +567,14 @@ const PreSeaTrainigDetails = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-              SELECT 
+                SELECT
               </option>
               {countryDrop &&
-                  countryDrop?.map((country: any, index: number) => (
-                    <option key={index} value={country}>
-                      {country?.toUpperCase()}
-                    </option>
-                  ))}
+                countryDrop?.map((country: any, index: number) => (
+                  <option key={index} value={country}>
+                    {country?.toUpperCase()}
+                  </option>
+                ))}
             </select>
           </div>
 
@@ -572,13 +583,13 @@ const PreSeaTrainigDetails = ({
               className="text-[14px] leading-[19.07px]  text-[#333333] "
               htmlFor="number01"
             >
-            Enter Certificate Number
+              Enter Certificate Number
             </label>
             <input
               id="number01"
               type="text"
               value={number}
-              onChange={(e) => setNumber(e.target.value)}
+              onChange={(e) =>{const value = e.target.value.replace(/[^0-9 ]/g, "");setNumber(value)}} 
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder="Enter Certificate Number"
               disabled={disabled}
@@ -604,79 +615,79 @@ const PreSeaTrainigDetails = ({
             />
           </div>
           {!neverExpires && (
-          <div>
-            <label
-              className="text-[14px] leading-[19.07px]  text-[#333333]  "
-              htmlFor="expiryDate"
-            >
-              Expiry Date
-            </label>
-            {/* <div className="flex items-center gap-4 "> */}
-            <input
-              id="expiryDate"
-              type="date"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              value={exdate}
-              onChange={(e) => setExDate(e.target.value)}
-              disabled={disabled}
-              placeholder="Enter  Expiry Date"
-            />
-            {/* </div> */}
-          </div>
+            <div>
+              <label
+                className="text-[14px] leading-[19.07px]  text-[#333333]  "
+                htmlFor="expiryDate"
+              >
+                Expiry Date
+              </label>
+              {/* <div className="flex items-center gap-4 "> */}
+              <input
+                id="expiryDate"
+                type="date"
+                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                value={exdate}
+                onChange={(e) => setExDate(e.target.value)}
+                disabled={disabled}
+                placeholder="Enter  Expiry Date"
+              />
+              {/* </div> */}
+            </div>
           )}
 
           <div className=" flex gap-2 items-center mt-5">
             <div>
-            <input
-              id="neverExpires01"
-              type="checkbox"
-              className="border focus:ring-[#00A264] text-[14px] leading-[19.07px]  text-[#333333]  checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264]"
-              checked={neverExpires}
-              onChange={() => setNeverExpires(!neverExpires)}
-              disabled={disabled}
-            />
+              <input
+                id="neverExpires01"
+                type="checkbox"
+                className="border focus:ring-[#00A264] text-[14px] leading-[19.07px]  text-[#333333]  checked:border-transparent checked:bg-[#00A264] focus:outline-green-300  rounded-md border-[#00A264]"
+                checked={neverExpires}
+                onChange={() => setNeverExpires(!neverExpires)}
+                disabled={disabled}
+              />
             </div>
             <div>
-            <label
-              className="text-[14px] leading-[19.07px]  text-[#333333]"
-              htmlFor="neverExpires01"
-            >
-              Never Expires
-            </label>
+              <label
+                className="text-[14px] leading-[19.07px]  text-[#333333]"
+                htmlFor="neverExpires01"
+              >
+                Never Expires
+              </label>
             </div>
           </div>
 
           <div className="grid col-span-2">
-          { isHideShow && (
-             <div className="flex gap-4 items-center  ">
-              <label
-                htmlFor="file-upload"
-                className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] "
-              >
-                Attachment Document
-              </label>
-              <input
-                id="file-upload"
-                type="file"
-                className="hidden"
-                onChange={handleFileChange}
-                disabled={disabled}
-              />
+            {isHideShow && (
+              <div className="flex gap-4 items-center  ">
+                <label
+                  htmlFor="file-upload"
+                  className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px] "
+                >
+                  Attachment Document
+                </label>
+                <input
+                  id="file-upload"
+                  type="file"
+                  className="hidden"
+                  onChange={handleFileChange}
+                  disabled={disabled}
+                />
 
-              {/* </div> */}
-              <div>
-                {selectedFile ? (
-                  <p className="mt-4 text-gray-700">
-                    File Selected: {selectedFile.name}
-                  </p>
-                ) : (
-                  <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                    No File Selected
-                  </p>
-                )}
+                {/* </div> */}
+                <div>
+                  {selectedFile ? (
+                    <p className="mt-4 text-gray-700">
+                      File Selected: {selectedFile.name}
+                    </p>
+                  ) : (
+                    <p className="text-[14px] leading-[19.07px]  text-[#333333]">
+                      No File Selected
+                    </p>
+                  )}
+                </div>
               </div>
-            </div>
-             )}
+            )}
           </div>
 
           {/* <div className="grid col-span-2 ">
@@ -712,12 +723,12 @@ const PreSeaTrainigDetails = ({
           </div>
           <div className="   ">
             <label className="text-[14px] leading-[19.07px]  text-[#333333] ">
-            Company Crew Manager
+              Company Crew Manager
             </label>
             <input
               type="text"
               value={crewManager}
-              onChange={(e) => setCrewManager(e.target.value)}
+              onChange={(e) => {const value = e.target.value.replace(/[^a-zA-Z ]/g, "");setCrewManager(value)}}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder="Enter  Company Crew Manager"
               disabled={disabled}
@@ -730,7 +741,7 @@ const PreSeaTrainigDetails = ({
             <input
               type="text"
               value={technicalManager}
-              onChange={(e) => setTechnicalManager(e.target.value)}
+              onChange={(e) =>{const value = e.target.value.replace(/[^a-zA-Z ]/g, ""); setTechnicalManager(value)}}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder="Enter Technical Manager"
               disabled={disabled}
@@ -743,7 +754,7 @@ const PreSeaTrainigDetails = ({
             <input
               type="text"
               value={operator}
-              onChange={(e) => setOperator(e.target.value)}
+              onChange={(e) => {const value = e.target.value.replace(/[^a-zA-Z ]/g, "");setOperator(value)}}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder="Enter Operator"
               disabled={disabled}
@@ -755,12 +766,12 @@ const PreSeaTrainigDetails = ({
           </div> */}
           <div className="   ">
             <label className="text-[14px] leading-[19.07px]  text-[#333333] ">
-            Company Vessel Type
+              Company Vessel Type
             </label>
             <input
               type="text"
               value={vesselType}
-              onChange={(e) => setVesselType(e.target.value)}
+              onChange={(e) =>{const value = e.target.value.replace(/[^a-zA-Z ]/g, ""); setVesselType(value)}}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder="Enter Company Vessel Type"
               disabled={disabled}
@@ -769,12 +780,12 @@ const PreSeaTrainigDetails = ({
 
           <div className="   ">
             <label className="text-[14px] leading-[19.07px]  text-[#333333] ">
-              Vessel Type - Commercial Specification
+              Vessel Type-Commercial Specification
             </label>
             <input
               type="text"
               value={commercialSpecification}
-              onChange={(e) => setCommercialSpecification(e.target.value)}
+              onChange={(e) => {const value = e.target.value.replace(/[^a-zA-Z ]/g, "");setCommercialSpecification(value)}}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder="Enter Commercial Specification"
               disabled={disabled}
@@ -783,12 +794,12 @@ const PreSeaTrainigDetails = ({
 
           <div className="   ">
             <label className="text-[14px] leading-[19.07px]  text-[#333333] ">
-              Vessel Type - Design Specification
+              Vessel Type-Design Specification
             </label>
             <input
               type="text"
               value={designSpecification}
-              onChange={(e) => setDesignSpecification(e.target.value)}
+              onChange={(e) =>{const value = e.target.value.replace(/[^a-zA-Z ]/g, ""); setDesignSpecification(value)}}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder="Enter Design Specification"
               disabled={disabled}
@@ -805,7 +816,7 @@ const PreSeaTrainigDetails = ({
               <input
                 type="text"
                 value={dPHours}
-                onChange={(e) => setDPHours(e.target.value)}
+                onChange={(e) => {const value = e.target.value.replace(/[^a-zA-Z0-9. ]/g, "");setDPHours(value)}}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
                 placeholder="Enter  DP hours"
                 disabled={disabled}
@@ -835,9 +846,12 @@ const PreSeaTrainigDetails = ({
               <option value="" disabled selected>
                 SELECT
               </option>
-              {shipTypeDrop && shipTypeDrop?.map((ship: any, index: number) => (
-                <option key={index} value={ship}>{ship?.toUpperCase()}</option>
-              ))}
+              {shipTypeDrop &&
+                shipTypeDrop?.map((ship: any, index: number) => (
+                  <option key={index} value={ship}>
+                    {ship?.toUpperCase()}
+                  </option>
+                ))}
             </select>
           </div>
 
@@ -859,9 +873,12 @@ const PreSeaTrainigDetails = ({
               <option value="" disabled selected>
                 SELECT
               </option>
-              {rankDrop && rankDrop?.map((rank: any, index: number) => (
-                <option key={index} value={rank}>{rank?.toUpperCase()}</option>
-              ))}
+              {rankDrop &&
+                rankDrop?.map((rank: any, index: number) => (
+                  <option key={index} value={rank}>
+                    {rank?.toUpperCase()}
+                  </option>
+                ))}
             </select>
           </div>
           {/* <div className=""> */}
@@ -875,9 +892,9 @@ const PreSeaTrainigDetails = ({
             </label>
             <input
               id="numberOfrig"
-              type="number"
+              type="text"
               value={numberOfrig}
-              onChange={(e) => setNumberOfrig(e.target.value)}
+              onChange={(e) =>{const value = e.target.value.replace(/[^0-9.]/g, ""); setNumberOfrig(value)}}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder="Enter Number of rig moves"
               disabled={disabled}
@@ -901,9 +918,12 @@ const PreSeaTrainigDetails = ({
               <option value="" disabled selected>
                 SELECT
               </option>
-              {rigMoveDrop && rigMoveDrop?.map((rigM: any, index: number) => (
-                <option key={index} value={rigM}>{rigM?.toUpperCase()}</option>
-              ))}
+              {rigMoveDrop &&
+                rigMoveDrop?.map((rigM: any, index: number) => (
+                  <option key={index} value={rigM}>
+                    {rigM?.toUpperCase()}
+                  </option>
+                ))}
             </select>
           </div>
           <div className=" ">
@@ -924,9 +944,12 @@ const PreSeaTrainigDetails = ({
               <option value="" disabled selected>
                 SELECT
               </option>
-              {rigMoveWaterDrop && rigMoveWaterDrop?.map((rigMW: any, index: number) => (
-                <option key={index} value={rigMW}>{rigMW?.toUpperCase()}</option>
-              ))}
+              {rigMoveWaterDrop &&
+                rigMoveWaterDrop?.map((rigMW: any, index: number) => (
+                  <option key={index} value={rigMW}>
+                    {rigMW?.toUpperCase()}
+                  </option>
+                ))}
             </select>
           </div>
 
@@ -948,9 +971,12 @@ const PreSeaTrainigDetails = ({
               <option value="" disabled selected>
                 SELECT
               </option>
-              {tradingAreaDrop && tradingAreaDrop?.map((tArea: any, index: number) => (
-                <option key={index} value={tArea}>{tArea?.toUpperCase()}</option>
-              ))}
+              {tradingAreaDrop &&
+                tradingAreaDrop?.map((tArea: any, index: number) => (
+                  <option key={index} value={tArea}>
+                    {tArea?.toUpperCase()}
+                  </option>
+                ))}
             </select>
           </div>
 
@@ -970,11 +996,14 @@ const PreSeaTrainigDetails = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-              SELECT 
+                SELECT
               </option>
-              {winchDiveDrop && winchDiveDrop?.map((dive: any, index: number) => (
-                <option key={index} value={dive}>{dive?.toUpperCase()}</option>
-              ))}
+              {winchDiveDrop &&
+                winchDiveDrop?.map((dive: any, index: number) => (
+                  <option key={index} value={dive}>
+                    {dive?.toUpperCase()}
+                  </option>
+                ))}
             </select>
           </div>
         </div>

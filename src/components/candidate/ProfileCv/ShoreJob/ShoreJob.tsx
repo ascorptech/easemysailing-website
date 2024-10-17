@@ -1,5 +1,8 @@
 "use client";
-import { AddShoreJobData, GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import {
+  AddShoreJobData,
+  GetDropdownDetails,
+} from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Select from "react-select";
@@ -16,8 +19,8 @@ type Props = {
   shorJobComplete: ShorJobComplete;
   setShorJobComplete: React.Dispatch<React.SetStateAction<ShorJobComplete>>;
   userDetail: any;
-  criminal:any;
-  shorJobDetail:any;
+  criminal: any;
+  shorJobDetail: any;
 };
 
 const ShorJob = ({
@@ -25,13 +28,12 @@ const ShorJob = ({
   setShorJobComplete,
   userDetail,
   criminal,
-  shorJobDetail
+  shorJobDetail,
 }: Props) => {
   const [areYouIntrested, setAreYouIntrested] = useState("");
   const [multipleSelection, setMultipleSelection] = useState<any>([]); // Updated to handle react-select's option type
   const [disabled, setDisabled] = useState(true);
   const [color, setColor] = useState("");
-
 
   // Adding 10 options for the multi-select dropdown
   const [jobDrop, setJobDrop] = useState<any>([
@@ -48,12 +50,13 @@ const ShorJob = ({
   ]);
 
   useEffect(() => {
-
     GetDropdownDetails("shorejobinterest", (res: any) => {
       // console.log('County',res?.data)
-      
-      
-      let tempArray = res?.data?.values.map((element: any) => ({ label: element?.toUpperCase(), value: element }));
+
+      let tempArray = res?.data?.values.map((element: any) => ({
+        label: element?.toUpperCase(),
+        value: element,
+      }));
       setJobDrop(tempArray);
     });
   }, []);
@@ -62,17 +65,17 @@ const ShorJob = ({
     e.preventDefault();
     if (!criminal) {
       toast.error("Please accept the declaration");
-      return; 
+      return;
     } else {
-      let data ={
-        "id": userDetail?.userId,
-        "interested": areYouIntrested=='Yes'?true:false,
-        "color": color,
-        "completed": percentage?.toString(),
-        "jobOption": multipleSelection
-      }
-      AddShoreJobData(data,(result:any)=>{
-        if (result?.status == 200|| result?.status==201) {
+      let data = {
+        id: userDetail?.userId,
+        interested: areYouIntrested == "Yes" ? true : false,
+        color: color,
+        completed: percentage?.toString(),
+        jobOption: multipleSelection,
+      };
+      AddShoreJobData(data, (result: any) => {
+        if (result?.status == 200 || result?.status == 201) {
           toast.success("Shore Job submited successfully");
           setTimeout(() => {
             window.location.reload();
@@ -80,10 +83,9 @@ const ShorJob = ({
         } else {
           toast.error("Shore Job not submited ");
         }
-      })
+      });
     }
   };
-  
 
   const totalFields = 1;
   const filledFields = [areYouIntrested].filter(Boolean).length;
@@ -154,10 +156,10 @@ const ShorJob = ({
           </div>
 
           {areYouIntrested === "Yes" && (
-            <div >
+            <div>
               <label className="text-[14px] leading-[19.07px]  text-[#333333]">
-              Interest Options
-            </label>
+                Interest Options
+              </label>
               <Select
                 isMulti
                 options={jobDrop}

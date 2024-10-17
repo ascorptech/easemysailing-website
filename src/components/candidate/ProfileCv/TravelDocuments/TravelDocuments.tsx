@@ -16,7 +16,7 @@ type TravelDocumentsVisaForms = {
   visaNumber: string;
   issueDateVisa: string;
   expryDateVisa: string;
-  selectedFileVisa: File | null;
+  selectedFileVisa: any | null;
 };
 
 type TravelDocumentsComplete = {
@@ -115,7 +115,8 @@ const TravelDocuments = ({
     issuingAuthority,
   ].filter(Boolean).length;
 
-  const percentage:any = totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
+  const percentage: any =
+    totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
 
   useEffect(() => {
     console.log("user", userDetail);
@@ -147,15 +148,14 @@ const TravelDocuments = ({
     const file = event.target.files?.[0];
     if (file) {
       const reader = new FileReader();
-        
-      reader.onloadend = function() {
-          const imageBinary:any = reader.result; 
-          const byteArray = imageBinary.split(',')[1]; 
-          setSelectedFile(byteArray);
+
+      reader.onloadend = function () {
+        const imageBinary: any = reader.result;
+        const byteArray = imageBinary.split(",")[1];
+        setSelectedFile(byteArray);
       };
-      
+
       reader.readAsDataURL(file);
-     
     }
   };
 
@@ -175,7 +175,6 @@ const TravelDocuments = ({
   };
 
   const handleFileChangeVisa = (index: number, event: any) => {
-    
     const file = event.target.files?.[0];
 
     const reader = new FileReader();
@@ -222,15 +221,14 @@ const TravelDocuments = ({
     const file = event.target.files?.[0];
     if (file) {
       const reader = new FileReader();
-        
-      reader.onloadend = function() {
-          const imageBinary:any = reader.result; 
-          const byteArray = imageBinary.split(',')[1]; 
-          setSelectedFileResidence(byteArray);
+
+      reader.onloadend = function () {
+        const imageBinary: any = reader.result;
+        const byteArray = imageBinary.split(",")[1];
+        setSelectedFileResidence(byteArray);
       };
-      
+
       reader.readAsDataURL(file);
-     
     }
   };
 
@@ -239,45 +237,71 @@ const TravelDocuments = ({
     if (travelDocumentsDetails) {
       setIssuingAuthority(travelDocumentsDetails?.passportIssuingCountry);
       setNumber(travelDocumentsDetails?.passportNumber);
-      setIssueDate(moment(travelDocumentsDetails?.passportIssueDate).format('YYYY-MM-DD'));
-      setExDate(moment(travelDocumentsDetails?.passportExpiryDate).format('YYYY-MM-DD'));
-      setBiometric(travelDocumentsDetails?.passportBiometric=='true'?'Yes':'No');
-      setSelectedFile(travelDocumentsDetails?.passportDocumentUrl)
+      setIssueDate(
+        moment(travelDocumentsDetails?.passportIssueDate).format("YYYY-MM-DD")
+      );
+      setExDate(
+        moment(travelDocumentsDetails?.passportExpiryDate).format("YYYY-MM-DD")
+      );
+      setBiometric(
+        travelDocumentsDetails?.passportBiometric == "true" ? "Yes" : "No"
+      );
+      setSelectedFile(travelDocumentsDetails?.passportDocumentUrl);
 
-
-
-
-      
-      setIssuingCountry(travelDocumentsDetails?.residencePermitIssuingCountry);
-
-      setIssueDate2(travelDocumentsDetails?.residencePermitIssueDate);
-
-      setExpDate2(travelDocumentsDetails?.passportIssueDate);
-
-
-      setSelectedFiles(travelDocumentsDetails?.passportIssueDate);
-      setSelectedFileResidence(travelDocumentsDetails?.passportIssueDate);
-
+      setFlagState(travelDocumentsDetails?.seamansBookIssuingCountry);
       setTrainingCenter(travelDocumentsDetails?.seamansBookNumber);
-      setIssueDate1(moment(travelDocumentsDetails?.seamansBookIssueDate).format('YYYY-MM-DD'));
-      setExDate1(moment(travelDocumentsDetails?.seamansBookExpiryDate).format('YYYY-MM-DD'));
-      setPermitNumber(travelDocumentsDetails?.passportIssueDate);
-      
-      
-      
+      setIssueDate1(
+        moment(travelDocumentsDetails?.seamansBookIssueDate).format(
+          "YYYY-MM-DD"
+        )
+      );
+      setExDate1(
+        moment(travelDocumentsDetails?.seamansBookExpiryDate).format(
+          "YYYY-MM-DD"
+        )
+      );
+      setSelectedFiles(travelDocumentsDetails?.seamansBookDocumentUrl);
+
+      let combineTravel = travelDocumentsDetails?.visaDetails.map(
+        (travel: any) => ({
+          visaNumber: travel?.visaNumber,
+          issueAuthority: travel?.visaIssuingCountry,
+          issueDateVisa: moment(travel?.visaIssueDate).format("YYYY-MM-DD"),
+          expryDateVisa: moment(travel?.visaExpiryDate).format("YYYY-MM-DD"),
+          selectedFileVisa: travel?.visaDocumentUrl,
+        })
+      );
+      setVisaForms(combineTravel);
+
+      setIssuingCountry(travelDocumentsDetails?.residencePermitIssuingCountry);
+      setPermitNumber(travelDocumentsDetails?.residencePermitNumber);
+
+      setIssueDate2(
+        moment(travelDocumentsDetails?.residencePermitIssueDate).format(
+          "YYYY-MM-DD"
+        )
+      );
+
+      setExpDate2(
+        moment(travelDocumentsDetails?.residencePermitExpiryDate).format(
+          "YYYY-MM-DD"
+        )
+      );
+
+      setSelectedFileResidence(
+        travelDocumentsDetails?.residencePermitDocumentUrl
+      );
+
       setIndNumber(travelDocumentsDetails?.passportIssueDate);
     }
   }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
-    // try {
     e.preventDefault();
     if (!criminal) {
       toast.error("Please accept the declaration");
       return;
     } else {
-      
-
       let data: any = {
         id: userDetail?.userId,
 
@@ -296,10 +320,10 @@ const TravelDocuments = ({
         residencePermitExpiryDate: expDate2,
         passportDocumentUrl: selectedFile,
         seamansBookDocumentUrl: selectedFiles,
-        passportBiometric:biometric=='Yes'?true:false,
+        passportBiometric: biometric == "Yes" ? true : false,
         residencePermitDocumentUrl: selectedFileResidence,
-        color:color,
-        completed:percentage
+        color: color,
+        completed: percentage,
       };
       const visaArray: any = [];
       visaForms.forEach((element: any) => {
@@ -307,7 +331,7 @@ const TravelDocuments = ({
           visaNumber: element?.visaNumber,
           visaIssueDate: element?.issueDateVisa,
           visaExpiryDate: element?.expryDateVisa,
-          visaDocument: element?.selectedFileVisa,
+          visaDocumentUrl: element?.selectedFileVisa,
           visaIssuingCountry: element?.issueAuthority,
         });
       });
@@ -609,7 +633,6 @@ const TravelDocuments = ({
                 checked={checkBox}
                 onChange={() => setCheckBox(!checkBox)}
                 disabled={disabled}
-               
               />
               <label
                 className="text-[14px] leading-[19.07px] text-[#333333]"

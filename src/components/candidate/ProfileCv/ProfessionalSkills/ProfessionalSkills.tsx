@@ -6,6 +6,7 @@ import {
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import moment from "moment";
 
 type ProfessionalComplete = {
   percentage: number;
@@ -79,7 +80,7 @@ const ProfessionalSkills = ({
 
   useEffect(() => {
     GetDropdownDetails("AdditionalTrainingsCertificates", (res: any) => {
-      console.log('res',res?.data)
+      console.log("res", res?.data);
       setProfessionalTstDrop(res?.data?.values);
     });
     GetDropdownDetails("ProfessionalKnowledgeTest", (res: any) => {
@@ -157,7 +158,8 @@ const ProfessionalSkills = ({
     inspection,
   ].filter(Boolean).length;
 
-  const percentage:any = totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
+  const percentage: any =
+    totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
   // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
   // let color;
   useEffect(() => {
@@ -205,6 +207,45 @@ const ProfessionalSkills = ({
     // }
   };
 
+  useEffect(() => {
+    if (professionalSkills) {
+      setSkill(professionalSkills?.computerSkill);
+      setLevel1(professionalSkills.computerSkillLevel);
+
+      setBulkCargo(professionalSkills?.bulkCargo);
+
+      setTankerCargo(professionalSkills?.tankerCargo);
+
+      setGeneralCargo(professionalSkills?.generalCargo);
+
+      setWoodProducts(professionalSkills?.woodProducts);
+
+      setStowage(professionalSkills?.stowageLashingExperience);
+
+      setTypeProfessional(professionalSkills?.cargoGearType);
+      setMaker(professionalSkills?.cargoGearMaker);
+      setSWL(professionalSkills?.cargoGearSWL);
+      setSkillmetal(professionalSkills?.metalWorkingSkill);
+      setLevelMetal(professionalSkills?.metalWorkingSkillLevel);
+      setTypeTank(professionalSkills?.tankCoatingType);
+      setRegionalAgreement(professionalSkills?.portStateRegionalAgreement);
+      setPort(professionalSkills?.portStatePort);
+
+      setCAvailable(professionalSkills?.metalWorkingCertificateAvailable?'Yes':'No');
+      setClassApproved(professionalSkills?.metalWorkingClassApproved?'Yes':'No');
+      // setTypeProfessional(professionalSkills?.nativeLanguage);
+
+      setDate(moment(professionalSkills?.portStateDate).format("YYYY-MM-DD"));
+      setDescription(professionalSkills?.portStateFindings);
+      setInspection(professionalSkills?.vettingInspectionBy);
+      setPort1(professionalSkills?.vettingPort);
+      setVDate(moment(professionalSkills?.vettingDate).format("YYYY-MM-DD"));
+      setDescription1(professionalSkills?.vettingFindings);
+
+      setTradingArea(professionalSkills?.tradingArea);
+      setSelectedFile(professionalSkills?.metalWorkingDocumentUrl);
+    }
+  }, []);
   const handleSubmit = (e: React.FormEvent) => {
     // try {
     e.preventDefault();
@@ -237,35 +278,39 @@ const ProfessionalSkills = ({
       formData.append("vettingFindings", description1);
       formData.append("tradingArea", tradingArea);
       formData.append("metalWorkingDocumentUrl", selectedFile);
-    // formData.append('document', selectedFile);
-    formData.append("computerSkill", skill);
-    formData.append("computerSkillLevel", level1);
-    formData.append("bulkCargo", bulkCargo);
-    formData.append("tankerCargo", tankerCargo);
-    formData.append("generalCargo", generalCargo);
-    formData.append("woodProducts", woodProducts);
-    formData.append("stowageLashingExperience", stowage);
-    formData.append("cargoGearType", typeProfessional);
-    formData.append("cargoGearMaker", maker);
-    formData.append("cargoGearSWL", sWL);
-    formData.append("metalWorkingSkill", skillmetal);
-    formData.append("metalWorkingSkillLevel", levelMetal);
-    formData.append("tankCoatingType", typeTank);
-    formData.append("portStateRegionalAgreement", regionalAgreement);
-    formData.append("portStatePort", port);
-    formData.append("portStateDate", date);
-    formData.append("portStateFindings", description);
-    formData.append("vettingInspectionBy", inspection);
-    formData.append("vettingPort", port1);
-    formData.append("vettingDate", vdate);
-    formData.append("vettingFindings", description1);
-    formData.append("tradingArea", tradingArea);
-    formData.append('metalWorkingDocumentUrl',selectedFile);
-    formData.append('color',color);
-    formData.append('completed',percentage)
-  AddProfessionalSkillData(userDetail?.userId,cAvailable, classApproved,formData, AddProfessionalSkillDataCB)
-  
-
+      // formData.append('document', selectedFile);
+      // formData.append("computerSkill", skill);
+      // formData.append("computerSkillLevel", level1);
+      // formData.append("bulkCargo", bulkCargo);
+      // formData.append("tankerCargo", tankerCargo);
+      // formData.append("generalCargo", generalCargo);
+      // formData.append("woodProducts", woodProducts);
+      // formData.append("stowageLashingExperience", stowage);
+      // formData.append("cargoGearType", typeProfessional);
+      // formData.append("cargoGearMaker", maker);
+      // formData.append("cargoGearSWL", sWL);
+      // formData.append("metalWorkingSkill", skillmetal);
+      // formData.append("metalWorkingSkillLevel", levelMetal);
+      // formData.append("tankCoatingType", typeTank);
+      // formData.append("portStateRegionalAgreement", regionalAgreement);
+      // formData.append("portStatePort", port);
+      // formData.append("portStateDate", date);
+      // formData.append("portStateFindings", description);
+      // formData.append("vettingInspectionBy", inspection);
+      // formData.append("vettingPort", port1);
+      // formData.append("vettingDate", vdate);
+      // formData.append("vettingFindings", description1);
+      // formData.append("tradingArea", tradingArea);
+      // formData.append('metalWorkingDocumentUrl',selectedFile);
+      formData.append("color", color);
+      formData.append("completed", percentage);
+      AddProfessionalSkillData(
+        userDetail?.userId,
+        cAvailable=='Yes'?true:false,
+        classApproved=='Yes'?true:false,
+        formData,
+        AddProfessionalSkillDataCB
+      );
     }
   };
 
@@ -605,28 +650,37 @@ const ProfessionalSkills = ({
             <label className="text-[14px] leading-[19.07px]  text-[#333333] ">
               Certificate Available
             </label>
-            <input
-              type="text"
+            <select
               value={cAvailable}
               onChange={(e) => setCAvailable(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              placeholder="Yes/No"
+              // placeholder="Yes/No"
               disabled={disabled}
-            />
+            >
+              <option value="" disabled selected>
+                Select
+              </option>
+              <option value="yes">Yes</option>
+              <option value="No">No</option>
+            </select>
           </div>
 
           <div className="   ">
             <label className="text-[14px] leading-[19.07px]  text-[#333333] ">
               Class Approved
             </label>
-            <input
-              type="text"
+            <select
               value={classApproved}
               onChange={(e) => setClassApproved(e.target.value)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-              placeholder="Yes/No"
               disabled={disabled}
-            />
+            >
+              <option value="" disabled selected>
+                Select
+              </option>
+              <option value="yes">Yes</option>
+              <option value="No">No</option>
+            </select>
           </div>
 
           <div className="grid col-span-2">

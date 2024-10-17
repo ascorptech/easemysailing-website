@@ -9,7 +9,7 @@ import { MdOutlineLock } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa";
 
 import { FaPhone } from "react-icons/fa";
-
+import { countryCodeDrop } from "@/constants/constants";
 import { useEffect, useState } from "react";
 import LoginImg from "../image/LoginImg";
 import LoginHeader from "@/app/Shared/LoginHeader/LoginHeader";
@@ -70,15 +70,15 @@ const SignUp  = ({ route }: Props) => {
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [isValidPhone, setIsValidPhone] = useState(true); 
   const [countryCode, setCountryCode] = useState("+91"); // Default country code
-  const [countryCodeDrop, setCountryCodeDrop] = useState([]); // Default country code
+  // const [countryCodeDrop, setCountryCodeDrop] = useState([]);
   const [passwordError, setPasswordError] = useState("");
 
-  useEffect(() => {
-    GetDropdownDetails('countryCode', (res: any) => {
-      // console.log('County',res?.data)
-      setCountryCodeDrop(res?.data?.values)
-    })
-  }, [])
+  // useEffect(() => {
+  //   GetDropdownDetails('countryCode', (res: any) => {
+  //     // console.log('County',res?.data)
+  //     setCountryCodeDrop(res?.data?.values)
+  //   })
+  // }, [])
 
 
 
@@ -347,11 +347,16 @@ const handlePhoneChange = (value: string, country: any) => {
                 </label>
                 <div className="relative flex items-center pl-8 ">
                 <div className="flex w-full">
-                <select value={countryCode} className="border lg:h-10 rounded-lg w-[20%] py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm" onChange={(e:any)=>setCountryCode(e.target.value)}>
+                {/* <select value={countryCode} className="border lg:h-10 rounded-lg w-[20%] py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm" onChange={(e:any)=>setCountryCode(e.target.value)}>
                  {countryCodeDrop && countryCodeDrop?.map((code: any, index: number) => (
                     <option key={index} value={code}>{code?.toUpperCase()}</option>
                   ))}
-                </select>
+                </select> */}
+                <select value={countryCode} className="border bg-white lg:h-10 rounded-lg w-[40%] sm:w-[20%] xl:w-[25%] py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm" onChange={(e: any) => setCountryCode(e.target.value)}>
+                    {countryCodeDrop && countryCodeDrop?.map((code: any, index: number) => (
+                      <option key={index} value={code?.phoneCode}>{code?.flag + ' ' + code?.phoneCode?.toUpperCase()}</option>
+                    ))}
+                  </select>
                 <input
                   id="phone"
                   type="number"

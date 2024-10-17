@@ -127,9 +127,9 @@ const MedicalCertificates = ({
     });
   }, []);
 
-  const totalFields = 26 + otherVaccinationForms.length * 4;
+  const totalFields = 26 + otherVaccinationForms?.length * 4;
   const filledFields = [
-    ...otherVaccinationForms.flatMap((field) => [
+    ...otherVaccinationForms?.flatMap((field) => [
       field.medicalType1,
       field.selectedFilesOthers,
       field.vaccination1,
@@ -220,12 +220,7 @@ const MedicalCertificates = ({
     reader.readAsDataURL(file);
   };
 
-  // const handleFileChangesOthers = (event: any) => {
-  //   const file = event.target.files?.[0];
-  //   if (file) {
-  //     setSelectedFilesOthers(file);
-  //   }
-  // };
+ 
 
   const handleFileChangesOthers = (index: number, event: any) => {
     const file = event.target.files?.[0];
@@ -240,9 +235,7 @@ const MedicalCertificates = ({
       setOtherVaccinationForms(updatedForms);
     };
     reader.readAsDataURL(file);
-    // const updatedForms = [...otherVaccinationForms];
-    // updatedForms[index].selectedFilesOthers = event.target.files?.[0] || null;
-    // setOtherVaccinationForms(updatedForms);
+   
   };
 
   const handleFormChangeOthers = (
@@ -319,7 +312,7 @@ const MedicalCertificates = ({
         moment(medicalDetail.covidVaccineDate2).format("YYYY-MM-DD")
       );
 
-      let combineLng = medicalDetail?.otherVaccinations.map((medical: any) => ({
+      let combineLng =medicalDetail?.otherVaccinations?.length?medicalDetail?.otherVaccinations?.map((medical: any) => ({
         medicalType1: medical?.otherVaccinationType,
         vaccination1: moment(medical?.otherVaccinationDate).format(
           "YYYY-MM-DD"
@@ -328,10 +321,17 @@ const MedicalCertificates = ({
           "YYYY-MM-DD"
         ),
         selectedFilesOthers: medical?.otherVaccinationDocumentUrl,
-      }));
+      })):[
+        {
+          medicalType1: "",
+          vaccination1: "",
+          vaccinationexp: "",
+          veccinationCheck: "",
+          selectedFilesOthers: null,
+        },
+      ] ;
       setOtherVaccinationForms(combineLng);
-      // setExpires1(medicalDetail.nativeLanguage);
-      // setExpires2(medicalDetail.nativeLanguage);
+      
 
       setTypeOptions(medicalDetail.drugTestType);
       setIssuingCountryOpt(medicalDetail.drugTestIssuingCountry);
@@ -340,7 +340,7 @@ const MedicalCertificates = ({
         moment(medicalDetail.covidVaccineDate1).format("YYYY-MM-DD")
       );
       setCovidOptions(medicalDetail.covidVaccineCountry);
-      // setVeccinationCheckFlag(medicalDetail.covidVaccineCountry);
+     
       setMedicalTypeFlag(medicalDetail.flagMedicalType);
       setVaccinationFlag(
         moment(medicalDetail.flagMedicalVaccinationDate).format("YYYY-MM-DD")
@@ -370,7 +370,7 @@ const MedicalCertificates = ({
         fitnessMedicalCenter: fMedicalcenter,
         fitnessIssueDate: issuedate,
         fitnessExpiryDate: exdate,
-        // formData.append("fitnessNeverExpires", expires1);
+        
         fitnessDocumentUrl: selectedFile,
 
         drugTestType: typeOptions,
@@ -380,30 +380,23 @@ const MedicalCertificates = ({
         drugTestCenter: testCenter,
         drugTestIssueDate: issuedate1,
         drugTestExpiryDate: exdate1,
-        // formData.append("drugTestNeverExpires", expires2);
+       
         drugTestDocumentUrl: selectedFiles,
 
         covidVaccineType: medicalType,
         covidVaccineCountry: covidOptions,
         covidVaccineMedicalCenter: medicalPhysician,
         covidVaccineDate1: vaccinationIssue,
-        // formData.append("covidVaccineExpiryDate1", vaccinationExpiry);
-        // missing covid19 expiry data
-        // formData.append("covidVaccineNeverExpires1", expiresMedical);
+        
         covidVaccineDocumentUrl1: selectedFilesCovid,
 
         covidVaccineDate2: issuedateCovid,
-        // formData.append("covidVaccineExpiryDate2", exdateCovid);
-        // formData.append("covidVaccineNeverExpires2", expires2);
-
-        // formData.append("covidVaccineDocument2", "");
-
-        // formData.append("otherVaccinationNeverExpires", veccinationCheck);
+        
 
         flagMedicalType: medicalTypeFlag,
         flagMedicalVaccinationDate: vaccinationFlag,
         flagMedicalExpiryDate: vaccinationexpFlag,
-        // formData.append("flagMedicalNeverExpires", veccinationCheckFlag);
+     
         flagMedicalDocumentUrl: selectedFilesFlag,
         color: color,
         completed: percentage,

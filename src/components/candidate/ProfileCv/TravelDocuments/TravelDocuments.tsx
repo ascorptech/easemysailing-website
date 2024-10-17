@@ -89,7 +89,7 @@ const TravelDocuments = ({
 
   const totalFields = 17 + visaForms.length * 5;
   const filledFields = [
-    ...visaForms.flatMap((field) => [
+    ...visaForms?.flatMap((field) => [
       field.issueAuthority,
       field.expryDateVisa,
       field.visaNumber,
@@ -262,15 +262,23 @@ const TravelDocuments = ({
       );
       setSelectedFiles(travelDocumentsDetails?.seamansBookDocumentUrl);
 
-      let combineTravel = travelDocumentsDetails?.visaDetails.map(
-        (travel: any) => ({
-          visaNumber: travel?.visaNumber,
-          issueAuthority: travel?.visaIssuingCountry,
-          issueDateVisa: moment(travel?.visaIssueDate).format("YYYY-MM-DD"),
-          expryDateVisa: moment(travel?.visaExpiryDate).format("YYYY-MM-DD"),
-          selectedFileVisa: travel?.visaDocumentUrl,
-        })
-      );
+      let combineTravel = travelDocumentsDetails?.visaDetails?.length
+        ? travelDocumentsDetails?.visaDetails?.map((travel: any) => ({
+            visaNumber: travel?.visaNumber,
+            issueAuthority: travel?.visaIssuingCountry,
+            issueDateVisa: moment(travel?.visaIssueDate).format("YYYY-MM-DD"),
+            expryDateVisa: moment(travel?.visaExpiryDate).format("YYYY-MM-DD"),
+            selectedFileVisa: travel?.visaDocumentUrl,
+          }))
+        : [
+            {
+              issueAuthority: "",
+              visaNumber: "",
+              issueDateVisa: "",
+              expryDateVisa: "",
+              selectedFileVisa: null,
+            },
+          ];
       setVisaForms(combineTravel);
 
       setIssuingCountry(travelDocumentsDetails?.residencePermitIssuingCountry);
@@ -342,18 +350,6 @@ const TravelDocuments = ({
       AddTravelDocumentData(data, AddTravelDocumentDataCB);
     }
   };
-
-  //  formData.visaData =visaArray;
-
-  // AddTravelDocumentData(
-  //   userDetail?.userId,
-  //   biometric,
-  //   checkBox,
-  //   formData,
-  //   AddTravelDocumentDataCB
-  //   );
-  // }
-  // };
 
   const AddTravelDocumentDataCB = (result: any) => {
     if (result?.status == 200 || result?.status == 201) {

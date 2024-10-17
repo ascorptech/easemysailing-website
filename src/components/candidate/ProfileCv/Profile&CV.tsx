@@ -60,7 +60,7 @@ const ProfileCV = () => {
         setProfileDetail(res?.data);
         setRank(rnk)
         setAboutMe(abtMe)
-        setProfileImage(`data:image/png;image/jpg;image/jpeg;base64,${res?.data?.imageUrl}`)
+        setProfileImage(res?.data?.imageUrl?`data:image/png;image/jpg;image/jpeg;base64,${res?.data?.imageUrl}`:"/images/avatar-place.jpg")
       } else {
         toast.error("No data found");
       }

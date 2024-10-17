@@ -72,9 +72,9 @@ const Languages = ({
     });
   }, []);
 
-  const totalFields = 9 + additionalLanguageForms.length * 2;
+  const totalFields = 9 + additionalLanguageForms?.length * 2;
   const filledFields = [
-    ...additionalLanguageForms.flatMap((field) => [
+    ...additionalLanguageForms?.flatMap((field) => [
       field.addiLanguage,
       field.languageLavel,
     ]),
@@ -132,14 +132,15 @@ const Languages = ({
       setTestCenter(languageDetail?.testCenter);
       setIssuingCountry(languageDetail?.issuingCountry);
       setDateofTest(moment(languageDetail?.dateOfTest).format("YYYY-MM-DD"));
-      setSelectedFile(languageDetail?.documentUrl);
-      let combineLng = languageDetail?.additionalLanguages.map((lang: any) => ({
+      setSelectedFile(languageDetail?.documentUrl)
+      let combineLng = languageDetail?.additionalLanguages?.length? languageDetail?.additionalLanguages?.map((lang: any) => ({
         addiLanguage: lang?.additionalLanguage,
-        languageLavel: lang?.additionalLanguageLevel,
-      }));
-      setAdditionalLanguageForms(combineLng);
-    }
-  }, [languageDetail]);
+        languageLavel: lang?.additionalLanguageLevel
+      })):[{ addiLanguage: "", languageLavel: "" }];
+      setAdditionalLanguageForms(combineLng)
+
+  }
+}, [languageDetail]);
 
   const handleSubmit = (e: React.FormEvent) => {
     // try {
@@ -163,7 +164,7 @@ const Languages = ({
         completed: percentage,
       };
       const addiArray: any = [];
-      additionalLanguageForms.forEach((element: any) => {
+      additionalLanguageForms?.forEach((element: any) => {
         addiArray.push({
           additionalLanguage: element?.addiLanguage,
           additionalLanguageLevel: element?.languageLavel,
@@ -171,7 +172,8 @@ const Languages = ({
       });
       data.additionalLanguages = addiArray;
 
-      console.log("data", data);
+      // let finArry: any = [];
+      // finArry.push(data);
       AddLanguageData(data, AddLanguagedataDB);
     }
   };

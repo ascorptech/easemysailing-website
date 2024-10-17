@@ -62,7 +62,7 @@ const StcwTraining = ({
 
   useEffect(() => {
     if (sTCWDetail) {
-      let combineLng = sTCWDetail?.stcwTrainingDetails.length?sTCWDetail?.stcwTrainingDetails.map((lang: any) => ({
+      let combineLng = sTCWDetail?.stcwTrainingDetails?.length?sTCWDetail?.stcwTrainingDetails?.map((lang: any) => ({
         training: lang?.trainingName,
         number: lang?.certificateNumber,
         issuingCountry:lang?.issuingCountry,
@@ -287,7 +287,7 @@ const StcwTraining = ({
             )}
           </div>
 
-          {stcwTraining.map((field, index) => (
+          {stcwTraining?.map((field, index) => (
             <div key={index} className="">
               <div className="grid grid-cols-2 gap-4">
                 <div className="">

@@ -259,7 +259,7 @@ const Licenses = ({
       // setLicensesForms.forEach((element:any) =>{
       //   element.licensesDetail?.cocIssuingAuthority
       //  })
-      let combineLng = licensesDetail?.cocs.map((li: any) => ({
+      let combineLng = licensesDetail?.cocs?.length?licensesDetail?.cocs?.map((li: any) => ({
         areaLimitation: li?.cocAreaLimitation,
         certificateNo: li?.cocCertificateNumber,
         certificateType: li?.cocCertificateType,
@@ -268,18 +268,40 @@ const Licenses = ({
         otherLimitation: li?.cocOtherLimitation,
         issueDate: moment(li?.cocIssueDate).format('YYYY-MM-DD'),
         expiryDate: moment(li?.cocExpiryDate).format('YYYY-MM-DD'),
-      }));
+      })):[
+        {
+          issueAuthority: "",
+          certificateNo: "",
+          certificateType: "",
+          sTCWRegulation: "",
+          areaLimitation: "",
+          otherLimitation: "",
+          issueDate: "",
+          expiryDate: "",
+          selectedFile: null,
+        },
+      ];
       setLicensesForms(combineLng)
-      let combineLng1 = licensesDetail?.gmdss.map((li: any) => ({
+      let combineLng1 = licensesDetail?.gmdss?.length?licensesDetail?.gmdss?.map((li: any) => ({
         capacity: li?.gmdssCapacity,
         number: li?.gmdssNumber,
         wRegulation: li?.gmdssStcwRegulation,
         issuingCountry: li?.gmdssIssuingCountry,
         gMissueDate: moment(li?.gmdssIssueDate).format('YYYY-MM-DD'),
         gMexpiryDate: moment(li?.gmdssExpiryDate).format('YYYY-MM-DD'),
-      }));
+      })):[
+        {
+          issuingCountry: "",
+          number: "",
+          capacity: "",
+          wRegulation: "",
+          gMissueDate: "",
+          gMexpiryDate: "",
+          selectedFile1: null,
+        },
+      ];
       setGlobalMaritimeForms(combineLng1)
-      let combineLng2 = licensesDetail?.endorsements.map((li: any) => ({
+      let combineLng2 = licensesDetail?.endorsements?.length?licensesDetail?.endorsements?.map((li: any) => ({
         typeOption: li?.endorsementType,
         number1: li?.endorsementNumber,
         sTCWRegulationOption: li?.endorsementStcwRegulation,
@@ -287,7 +309,18 @@ const Licenses = ({
         issuingOption: li?.endorsementIssuingCountry,
         issueDateOption: moment(li?.endorsementIssueDate).format('YYYY-MM-DD'),
         expiryDateOption: moment(li?.endorsementExpiryDate).format('YYYY-MM-DD'),
-      }));
+      })):[
+        {
+          typeOption: "",
+          issuingOption: "",
+          number1: "",
+          capacityOption: "",
+          sTCWRegulationOption: "",
+          issueDateOption: "",
+          expiryDateOption: "",
+          selectedFile2: null,
+        },
+      ];
       setEndorsementsForms(combineLng2)
     }
   }, []);

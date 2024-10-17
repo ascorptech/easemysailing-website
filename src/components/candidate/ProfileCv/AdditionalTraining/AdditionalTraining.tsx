@@ -44,7 +44,7 @@ type Props = {
   additionalComplete: AdditionalComplete;
   setAdditionalComplete: React.Dispatch<
     React.SetStateAction<AdditionalComplete>
-  >; // setMjrComplete is a function to update mjrComplete
+  >;
   userDetail: any;
   criminal: any;
   additionalDetail: any;
@@ -86,28 +86,6 @@ const AdditionalTraining = ({
     },
   ]);
 
-  const [number, setNumber] = useState("");
-  const [issuedate, setIssueDate] = useState("");
-  const [exdate, setExDate] = useState("");
-
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [selectedFiles, setSelectedFiles] = useState<File | null>(null);
-
-  const [trainingCenter, setTrainingCenter] = useState("");
-  const [trainingCenter1, setTrainingCenter1] = useState("");
-  const [result, setResult] = useState("");
-
-  const [eCDISNumber, setECDISNumber] = useState("");
-  const [issuedate1, setIssueDate1] = useState("");
-  const [exdate1, setExDate1] = useState("");
-  const [countryCertifi, setCountryCertifi] = useState("");
-  const [countryIC, setCountryIC] = useState("");
-  const [neverExpCheck, setNeverExpCheck] = useState(false);
-  const [capacity, setCapacity] = useState("");
-  const [level, setLevel] = useState("");
-  const [typeOfTest, setTypeOfTest] = useState("");
-  const [issuingCountry, setIssuingCountry] = useState("");
-  const [neverChecked1, setNeverChecked1] = useState(false);
   const [additionalTraDrop, setAdditionalTraDrop] = useState([]);
   const [countryDrop, setCountryDrop] = useState<any>([]);
   const [capacityDrop, setCapacityDrop] = useState<any>([]);
@@ -117,7 +95,6 @@ const AdditionalTraining = ({
 
   const [disabled, setDisabled] = useState(true);
 
-  // const [showFields, setShowFields] = useState(true);
   const [isHideShow, setIsHideShow] = useState(false);
 
   useEffect(() => {
@@ -134,7 +111,6 @@ const AdditionalTraining = ({
       setAdditionalTraDrop(res?.data?.values);
     });
     GetDropdownDetails("country", (res: any) => {
-      // console.log('County',res?.data)
       setCountryDrop(res?.data?.values);
     });
   }, []);
@@ -167,74 +143,95 @@ const AdditionalTraining = ({
 
   useEffect(() => {
     if (additionalDetail) {
-      let combineLng = additionalDetail?.addiTrainings.map((lang: any) => ({
-        countryCertifi: lang?.certificate,
-        number: lang?.certificateNumber,
-        issuedate: moment(lang?.issueDate).format("YYYY-MM-DD"),
-        trainingCenter: lang?.additionalLanguageLevel,
-        countryIC: lang?.issuingCountry,
-        exdate: moment(lang?.expiryDate).format("YYYY-MM-DD"),
-        neverExpCheck: lang?.neverExpires,
-        selectedFile: lang?.documentUrl,
-      }));
-      setAdditionalForms(combineLng)
-      let combineLng1 = additionalDetail?.professionalKnowledgeTests.map((lang: any) => ({
-        capacity:lang?.capacity,
-      level:lang?.level,
-      trainingCenter1:lang?.trainingCenter,
-      typeOfTest:lang?.testType,
-      result:lang?.result,
-      issuingCountry:lang?.issuingCountry,
-      eCDISNumber:lang?.certificateNumber,
-      issuedate1:moment(lang?.issueDate).format("YYYY-MM-DD"),
-      exdate1:moment(lang?.expiryDate).format("YYYY-MM-DD"),
-      neverChecked1:lang?.neverExpires,
-      selectedFiles:lang?.documentUrl,
-      }));
-      setProfessionalForms(combineLng1)
+      let combineLng = additionalDetail?.addiTrainings?.length
+        ? additionalDetail?.addiTrainings?.map((lang: any) => ({
+            countryCertifi: lang?.certificate,
+            number: lang?.certificateNumber,
+            issuedate: moment(lang?.issueDate).format("YYYY-MM-DD"),
+            trainingCenter: lang?.additionalLanguageLevel,
+            countryIC: lang?.issuingCountry,
+            exdate: moment(lang?.expiryDate).format("YYYY-MM-DD"),
+            neverExpCheck: lang?.neverExpires,
+            selectedFile: lang?.documentUrl,
+          }))
+        : [
+            {
+              capacity: "",
+              level: "",
+              trainingCenter1: "",
+              typeOfTest: "",
+              result: "",
+              issuingCountry: "",
+              eCDISNumber: "",
+              issuedate1: "",
+              exdate1: "",
+              neverChecked1: "",
+              selectedFiles: null,
+            },
+          ];
+      setAdditionalForms(combineLng);
+      let combineLng1 = additionalDetail?.professionalKnowledgeTests?.length
+        ? additionalDetail?.professionalKnowledgeTests?.map((lang: any) => ({
+            capacity: lang?.capacity,
+            level: lang?.level,
+            trainingCenter1: lang?.trainingCenter,
+            typeOfTest: lang?.testType,
+            result: lang?.result,
+            issuingCountry: lang?.issuingCountry,
+            eCDISNumber: lang?.certificateNumber,
+            issuedate1: moment(lang?.issueDate).format("YYYY-MM-DD"),
+            exdate1: moment(lang?.expiryDate).format("YYYY-MM-DD"),
+            neverChecked1: lang?.neverExpires,
+            selectedFiles: lang?.documentUrl,
+          }))
+        : [
+            {
+              capacity: "",
+              level: "",
+              trainingCenter1: "",
+              typeOfTest: "",
+              result: "",
+              issuingCountry: "",
+              eCDISNumber: "",
+              issuedate1: "",
+              exdate1: "",
+              neverChecked1: "",
+              selectedFiles: null,
+            },
+          ];
+      setProfessionalForms(combineLng1);
+    }
+  }, [additionalDetail]);
 
-  }
-}, [additionalDetail]);
+  const percentage: any =
+    totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
 
-  const percentage:any = totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
-  // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
-  // let color;
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
       setAdditionalComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#FF0000", // Update the color field
+        ...prevState,
+        percentage: percentage,
+        color: "#FF0000",
       }));
       setColor("#FF0000");
     } else if (percentage <= 70) {
       setAdditionalComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#FF9900", // Update the color field
+        ...prevState,
+        percentage: percentage,
+        color: "#FF9900",
       }));
       setColor("#FF9900");
     } else {
       setAdditionalComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#00A264", // Update the color field
+        ...prevState,
+        percentage: percentage,
+        color: "#00A264",
       }));
       setColor("#00A264");
     }
   }, [percentage, color]);
 
-  //   const handleFileChange = (event: any) => {
-  //     setSelectedFile(event.target.files[0]);
-  //   };
-
-  // const handleFileChange = (event: any) => {
-  //   const file = event.target.files?.[0];
-  //   if (file) {
-  //     setSelectedFile(file);
-  //   }
-  // };
   const handleFileChange = (index: number, event: any) => {
     const file = event.target.files?.[0];
 
@@ -248,18 +245,7 @@ const AdditionalTraining = ({
       setAdditionalForms(updatedForms);
     };
     reader.readAsDataURL(file);
-
-    // const updatedForms = [...additionalForms];
-    // updatedForms[index].selectedFile = event.target.files?.[0] || null;
-    // setAdditionalForms(updatedForms);
   };
-
-  // const handleFileChanges = (event: any) => {
-  //   const file = event.target.files?.[0];
-  //   if (file) {
-  //     setSelectedFiles(file);
-  //   }
-  // };
 
   const handleFormChangeAdd = (
     index: number,

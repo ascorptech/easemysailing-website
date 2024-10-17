@@ -165,7 +165,7 @@ const Refrences = ({
       setLastName(refrencesDetail?.referenceLastName);
       setPhoneNumber(refrencesDetail?.referencePhoneNumber);
       setEmail(refrencesDetail?.referenceEmail);
-      setConsentGiven(refrencesDetail?.consentGiven);
+      setConsentGiven(refrencesDetail?.consentGiven?'Yes':'No');
       setCountryCode1(refrencesDetail?.referenceCountryCode);
       // setSelectedFile(refrencesDetail?.)
       // setSelectedFile1(refrencesDetail?.)
@@ -208,7 +208,7 @@ const Refrences = ({
 
       AddReferencesData(
         userDetail?.userId,
-        consentGiven,
+        consentGiven=='Yes'?true:false,
         formData,
         AddReferencesDataCB
       );
@@ -561,15 +561,23 @@ const Refrences = ({
                   ConsentGiven
                 </label>
                 <div className="relative flex items-center  ">
-                  <input
-                    id="inumber"
-                    type="text"
-                    value={consentGiven}
-                    onChange={(e) => setConsentGiven(e.target.value)}
-                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    placeholder="yes/No"
-                    disabled={disabled}
-                  />
+                <select
+                  id="inumber"
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                  value={consentGiven}
+                  onChange={(e) => setConsentGiven(e.target.value)}
+                  disabled={disabled}
+                >
+                  <option value="" disabled>
+                    SELECT
+                  </option>
+                  <option value="Yes" disabled>
+                    YES
+                  </option>
+                  <option value="No" disabled>
+                    NO
+                  </option>
+                </select>
                 </div>
               </div>
             </div>

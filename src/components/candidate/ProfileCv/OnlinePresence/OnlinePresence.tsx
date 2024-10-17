@@ -206,9 +206,9 @@ const OnlinePresence = ({
     if (result?.status == 200 || result?.status == 201) {
       console.log(result);
       toast.success("Online Presence submited successfully");
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
+      // setTimeout(() => {
+      //   window.location.reload();
+      // }, 1000);
     } else {
       console.log(result);
       toast.error("Online Presence not submited ");

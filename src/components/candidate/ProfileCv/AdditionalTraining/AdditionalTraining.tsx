@@ -3,6 +3,7 @@ import {
   AddAdditionalData,
   GetDropdownDetails,
 } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import moment from "moment";
 
 import Link from "next/link";
 import React from "react";
@@ -163,6 +164,37 @@ const AdditionalTraining = ({
       fields.selectedFiles,
     ]),
   ].filter(Boolean).length;
+
+  useEffect(() => {
+    if (additionalDetail) {
+      let combineLng = additionalDetail?.addiTrainings.map((lang: any) => ({
+        countryCertifi: lang?.certificate,
+        number: lang?.certificateNumber,
+        issuedate: moment(lang?.issueDate).format("YYYY-MM-DD"),
+        trainingCenter: lang?.additionalLanguageLevel,
+        countryIC: lang?.issuingCountry,
+        exdate: moment(lang?.expiryDate).format("YYYY-MM-DD"),
+        neverExpCheck: lang?.neverExpires,
+        selectedFile: lang?.documentUrl,
+      }));
+      setAdditionalForms(combineLng)
+      let combineLng1 = additionalDetail?.professionalKnowledgeTests.map((lang: any) => ({
+        capacity:lang?.capacity,
+      level:lang?.level,
+      trainingCenter1:lang?.trainingCenter,
+      typeOfTest:lang?.testType,
+      result:lang?.result,
+      issuingCountry:lang?.issuingCountry,
+      eCDISNumber:lang?.certificateNumber,
+      issuedate1:moment(lang?.issueDate).format("YYYY-MM-DD"),
+      exdate1:moment(lang?.expiryDate).format("YYYY-MM-DD"),
+      neverChecked1:lang?.neverExpires,
+      selectedFiles:lang?.documentUrl,
+      }));
+      setProfessionalForms(combineLng1)
+
+  }
+}, [additionalDetail]);
 
   const percentage:any = totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
   // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;

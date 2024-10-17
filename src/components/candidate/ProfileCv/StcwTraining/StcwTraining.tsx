@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import React from "react";
+import moment from "moment";
 
 type StcwTrainingForm = {
   number: any;
@@ -58,6 +59,32 @@ const StcwTraining = ({
 
   const [sTCHTrainOption, setSTCHTrainOption] = useState<any>("");
   const [countryDrop, setCountryDrop] = useState<any>([]);
+
+  useEffect(() => {
+    if (sTCWDetail) {
+      let combineLng = sTCWDetail?.stcwTrainingDetails.length?sTCWDetail?.stcwTrainingDetails.map((lang: any) => ({
+        training: lang?.trainingName,
+        number: lang?.certificateNumber,
+        issuingCountry:lang?.issuingCountry,
+        issuedate: moment(lang?.issueDate).format("YYYY-MM-DD"),
+        exdate: moment(lang?.expiryDate).format("YYYY-MM-DD"),
+        neverExpires: lang?.neverExpires,
+        selectedFile: lang?.documentUrl,
+      })):[
+        {
+          number: "",
+          issuedate: "",
+          exdate: "",
+          issuingCountry: "",
+          training: "",
+          neverExpires: "",
+          selectedFile: null,
+        },
+      ];
+      setStcwTraining(combineLng)
+
+  }
+}, [sTCWDetail]);
 
   useEffect(() => {
     GetDropdownDetails("STCHTraining", (res: any) => {
@@ -166,7 +193,7 @@ const StcwTraining = ({
         stcwArray.push({
           documentUrl: element?.selectedFile,
           trainingName: element?.training,
-          issuingCountry: element?.trainingCountry,
+          issuingCountry: element?.issuingCountry,
           certificateNumber: element?.number,
           issueDate: element?.issuedate,
           expiryDate: element?.exdate,
@@ -281,7 +308,7 @@ const StcwTraining = ({
                     disabled={disabled}
                   >
                     <option value="" disabled selected>
-                      Select
+                      SELECT
                     </option>
                     {sTCHTrainOption &&
                       sTCHTrainOption?.map((stch: any, index: number) => (
@@ -309,7 +336,7 @@ const StcwTraining = ({
                     disabled={disabled}
                   >
                     <option value="" disabled selected>
-                      Select
+                      SELECT
                     </option>
                     {countryDrop &&
                       countryDrop?.map((country: any, index: number) => (

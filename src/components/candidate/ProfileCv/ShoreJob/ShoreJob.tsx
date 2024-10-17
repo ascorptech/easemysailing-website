@@ -58,6 +58,13 @@ const ShorJob = ({
     });
   }, []);
 
+  useEffect(() => {
+    if (shorJobDetail) {
+      setAreYouIntrested(shorJobDetail?.interested?'Yes':'No')
+      setMultipleSelection(shorJobDetail?.jobOption)
+  }
+}, [shorJobDetail]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!criminal) {

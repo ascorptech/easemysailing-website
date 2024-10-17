@@ -131,6 +131,9 @@ const ContactDetails = ({
 
   const handlesubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!validateInputs()) {
+      return;
+    }
     if (!criminal) {
       toast.error("Please accept the declaration");
       return;
@@ -171,6 +174,59 @@ const ContactDetails = ({
   };
   const handleEdit = () => {
     setDisabled(!disabled);
+  };
+
+
+  const validateInputs = () => {
+    let formIsValid = true;
+    let newErrors = {
+      email: "",
+      phoneNumber: "",
+      phoneNumber1: "",
+    };
+   
+
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!email.trim()) {
+      newErrors.email = "Email is required";
+      formIsValid = false;
+    } else if (!emailRegex.test(email)) {
+      newErrors.email = "Invalid email format";
+      formIsValid = false;
+    }
+    if (!phoneNumber.trim()) {
+      newErrors.phoneNumber = "Phone number is required";
+      formIsValid = false;
+    } else if (/^\d{13}$/.test(phoneNumber)) {
+      console.log('phone', phoneNumber.length)
+      newErrors.phoneNumber = "Phone number must be 10 digits";
+      formIsValid = false;
+    } else if (phoneNumber.length < 7) {
+      newErrors.phoneNumber = "Phone number must be minimum 7 digits";
+      formIsValid = false;
+    }
+    if (!phoneNumber1.trim()) {
+      newErrors.phoneNumber1 = "Phone number is required";
+      formIsValid = false;
+    } else if (/^\d{13}$/.test(phoneNumber1)) {
+      console.log('phone', phoneNumber1.length)
+      newErrors.phoneNumber = "Phone number must be 10 digits";
+      formIsValid = false;
+    } else if (phoneNumber1.length < 7) {
+      newErrors.phoneNumber1 = "Phone number must be minimum 7 digits";
+      formIsValid = false;
+    }
+
+    // if (!textarea.trim()) {
+    //   newErrors.message = "Message is required";
+    //   formIsValid = false;
+    // } else if (textarea.length < 10) { // Adjust the minimum length as needed
+    //   newErrors.message = "Message must be at least 10 characters long.";
+    //   formIsValid = false;
+    // }
+
+    // setErrors(newErrors);
+    return formIsValid;
   };
 
   return (
@@ -409,10 +465,23 @@ const ContactDetails = ({
                     id="number"
                     type="text"
                     value={phoneNumber}
+                    // onChange={(e) => {
+                    //   const value = e.target.value.replace(/[^0-9]/g, "");
+                    //   if (value.length <= 10) {
+                    //     setPhoneNumber(value);
+                    //   }
+                    // }}
+                    maxLength={12} // Maximum 12 digits
                     onChange={(e) => {
-                      const value = e.target.value.replace(/[^0-9]/g, "");
-                      if (value.length <= 10) {
-                        setPhoneNumber(value);
+                      // Allow only numeric input
+                      const value = e.target.value;
+                      if (/^\d*$/.test(value)) { // Regex to allow only digits
+                        setPhoneNumber(value.trimStart());
+                      }
+                    }}
+                    onBlur={(e) => {
+                      if (e.target.value.length < 7) {
+                        toast.error("Phone number must be at least 7 digits long");
                       }
                     }}
                     className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
@@ -461,10 +530,23 @@ const ContactDetails = ({
                     id="phonenumber2"
                     type="text"
                     value={phoneNumber1}
+                    // onChange={(e) => {
+                    //   const value = e.target.value.replace(/[^0-9]/g, "");
+                    //   if (value.length <= 10) {
+                    //     setPhoneNumber1(value);
+                    //   }
+                    // }}
+                    maxLength={12} // Maximum 12 digits
                     onChange={(e) => {
-                      const value = e.target.value.replace(/[^0-9]/g, "");
-                      if (value.length <= 10) {
-                        setPhoneNumber1(value);
+                      // Allow only numeric input
+                      const value = e.target.value;
+                      if (/^\d*$/.test(value)) { // Regex to allow only digits
+                        setPhoneNumber1(value.trimStart());
+                      }
+                    }}
+                    onBlur={(e) => {
+                      if (e.target.value.length < 7) {
+                        toast.error("Phone number must be at least 7 digits long");
                       }
                     }}
                     className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
@@ -489,12 +571,22 @@ const ContactDetails = ({
                     id="emails"
                     type="email"
                     value={email}
+                    // onChange={(e) => {
+                    //   const value = e.target.value.replace(
+                    //     /[^a-zA-Z0-9@_.]/g,
+                    //     ""
+                    //   );
+                    //   setEmail(value);
+                    // }}
                     onChange={(e) => {
-                      const value = e.target.value.replace(
-                        /[^a-zA-Z0-9@_.]/g,
-                        ""
-                      );
-                      setEmail(value);
+                      let value = e.target.value.replace(/\s+/g, ''); // Removes all spaces
+                      setEmail(value?.trim());
+                    }}
+                    onBlur={(e) => {
+                      // Basic email validation
+                      if (!e.target.validity.valid) {
+                        toast.error("Please enter a valid email address.");
+                      }
                     }}
                     className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter Email Address"

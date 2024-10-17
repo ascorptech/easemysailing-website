@@ -15,12 +15,10 @@ import { countryCodeDrop } from "@/constants/constants";
 import { AddContactData, verifyRecaptchaData } from "@/app/(web)/contact-us/Services/contactService";
 
 const Contact = () => {
-  const recaptchaRef = useRef<any>();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [countryCode, setCountryCode] = useState("+91"); // Default country code
-  // const [countryCodeDrop, setCountryCodeDrop] = useState([]); // Default country code
   const [textarea, setTextArea] = useState("");
   const [errors, setErrors] = useState({
     name: "",
@@ -132,48 +130,6 @@ const Contact = () => {
     return formIsValid;
   };
 
-  async function handleCaptchaSubmission(token: string | null) {
-    try {
-      if (token) {
-        // let url = new URL('https://www.google.com/recaptcha/api/siteverify')
-        // let secretKey = '6LfoUVsqAAAAAFySg2_u2dY3FJ_gTVom4nO2zVWd';
-        // const verificationUrl = `https://www.google.com/recaptcha/api/siteverify`;
-
-        // const response = await fetch(verificationUrl, {
-        //   method: 'POST',
-        //   mode:'same-origin',
-        //   headers: {
-        //     'Content-Type': 'application/x-www-form-urlencoded'
-        //   },
-        //   body: new URLSearchParams({
-        //     secret: secretKey,
-        //     response: token
-        //   })
-        // });
-        // const captchaData = await response?.json()
-        // console.log(captchaData, 'captchaData')
-        // if (captchaData?.status == 200) {
-        //   console.log('captcha passed')
-        //   setIsVerified(true);
-        // }
-        let data = {}
-        verifyRecaptchaData(token, data, (res: any) => {
-          console.log('res', res)
-        })
-      }
-    } catch (e) {
-      setIsVerified(false);
-    }
-  }
-
-  const handleChange = (token: string | null) => {
-    handleCaptchaSubmission(token);
-  };
-
-  function handleExpired() {
-    setIsVerified(false);
-  }
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // const token = await recaptchaRef.current.executeAsync();
@@ -181,26 +137,34 @@ const Contact = () => {
     if (!validateInputs()) {
       return;
     } else {
-      if (userInput === captcha) {
-        // toast.success('Success Captcha');
-        let data = {
-          name: name,
-          email: email,
-          mobileNumber: `${countryCode} ${phone}`,
-          message: textarea,
-        };
+      if (userInput == '') {
+        toast.error('Captcha is required');
+      } else {
+        if (userInput === captcha) {
+          // toast.success('Success Captcha');
+          let data = {
+            name: name,
+            email: email,
+            mobileNumber: `${countryCode} ${phone}`,
+            message: textarea,
+          };
 
-        AddContactData(data, AddContactDataCB);
-    } else {
-        toast.error('Incorrect Captcha');
-        const canvas:any = canvasRef.current;
-        const ctx = canvas.getContext('2d');
-        initializeCaptcha(ctx);
-    }
-       
-
+          AddContactData(data, AddContactDataCB);
+        } else {
+          toast.error('Incorrect Captcha');
+          const canvas: any = canvasRef.current;
+          const ctx = canvas.getContext('2d');
+          initializeCaptcha(ctx);
+        }
+      }
     }
   };
+
+  const resetCaptcha = ()=>{
+    const canvas: any = canvasRef.current;
+          const ctx = canvas.getContext('2d');
+          initializeCaptcha(ctx);
+  }
 
   const AddContactDataCB = (res: any) => {
     toast.success("Thank you for contacting us");
@@ -214,7 +178,7 @@ const Contact = () => {
       phone: "",
       message: "",
     });
-    const canvas:any = canvasRef.current;
+    const canvas: any = canvasRef.current;
     const ctx = canvas.getContext('2d');
     initializeCaptcha(ctx);
   };
@@ -404,7 +368,7 @@ const Contact = () => {
               )}
             </div>
 
-            <div className="mb-[7px] flex">
+            <div className="mb-[7px] flex justify-center items-center">
               <div className="flex w-[65%]">
                 <input
                   id="Captcha"
@@ -438,9 +402,9 @@ const Contact = () => {
 
                   </canvas>
                 </div>
-                {/* <span className="text-white p-2 bg-green-600 text-2xl font-extrabold rounded-md">
+                <span className="text-white p-2 bg-green-600 text-2xl font-extrabold rounded-md cursor-pointer" onClick={resetCaptcha}>
                   <TfiReload />
-                </span> */}
+                </span>
               </div>
             </div>
 

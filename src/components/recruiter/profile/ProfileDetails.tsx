@@ -37,7 +37,7 @@ const ProfileDetails = () => {
     setShowPopup(false); 
     setFilePreview(null); 
     setFileName(""); 
-    setProgress(0); 
+    setProgress(0);
   };
 
   const openEditImagePopup = () => {
@@ -45,8 +45,8 @@ const ProfileDetails = () => {
   };
 
   const closeEditImagePopup = () => {
-    setShowEditImagePopup(false); 
-    setFilePreview(null); 
+    setShowEditImagePopup(false);
+    setFilePreview(null);
     setFileName(""); 
     setProgress(0); 
   };
@@ -92,17 +92,14 @@ const ProfileDetails = () => {
 
   const handleSubmitImageChange = () => {
     if (progress === 100 && filePreview) {
-     
       setProfileImage(filePreview);
 
-      
       closeEditImagePopup();
     }
   };
 
   const handleSubmit = () => {
     if (progress === 100 && fileName) {
-     
       console.log("File submitted:", fileName);
 
       alert(`File "${fileName}" successfully uploaded.`);
@@ -140,7 +137,7 @@ const ProfileDetails = () => {
       </div>
 
       {/* Dropdown */}
-      <div className="flex flex-col ml-10 relative">
+      <div className="flex flex-col ml-10 w-[35rem] gap-y-3 relative">
         <div className="flex">
           <div className="mt-[2px]">
             <Image
@@ -235,7 +232,7 @@ const ProfileDetails = () => {
         </div>
       </div>
       {/* Upload Company Advertisement Button */}
-      <div className="relative  right-0 ml-[32rem] p-2 mt-16 rounded-lg bg-[#00A264]">
+      <div className="relative  right-0 ml-[5rem] p-2 mt-16 rounded-lg bg-[#00A264]">
         <button
           className="text-white flex items-center font-semibold"
           onClick={openPopup} 

@@ -231,7 +231,7 @@ export default function EmsMatch() {
       </div>
 
       {/* three box */}
-      <div className="flex justify-between items-center mt-12">
+      <div className="flex justify-between gap-x-14 items-center mt-12">
         <div className="w-[25rem] border-2 shadow-2xl rounded-bl-[33px] rounded-tr-[33px] flex">
           <div>
             <Image

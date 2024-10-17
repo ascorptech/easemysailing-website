@@ -210,7 +210,7 @@ export default function MonthlyTable() {
     >
       {" "}
       {/* Prevents scrollbar on the main screen */}
-      <div className="overflow-x-auto mt-10">
+      <div className="overflow-x-auto mt-5">
         <div className="max-h-[451px] overflow-y-auto">
           {" "}
           {/* Scrollable table */}

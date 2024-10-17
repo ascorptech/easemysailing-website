@@ -207,7 +207,7 @@ export default function TalentPage() {
       </div>
 
       {/* three box */}
-      <div className="flex justify-between items-center mt-8 mx-8">
+      <div className="flex justify-between gap-x-14 items-center mt-8 mx-8">
         <div className="w-[25rem] h-[120px] bg-[#D1EFE4] border-2 shadow-md rounded-bl-[33px] rounded-tr-[33px] flex">
           <div className="mt-4 ml-5">
             <Image
@@ -220,7 +220,7 @@ export default function TalentPage() {
             />
           </div>
           <div className="flex flex-col justify-center items-center">
-            <h2 className="px-10 w-[18rem] py-2  font-semibold">
+            <h2 className="px-5 w-[15rem] py-2  font-semibold">
               One Click Recruitment{" "}
             </h2>
             <Link

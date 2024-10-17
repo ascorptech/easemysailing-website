@@ -74,9 +74,9 @@ const Languages = ({
     });
   }, []);
 
-  const totalFields = 9 + additionalLanguageForms.length * 2;
+  const totalFields = 9 + additionalLanguageForms?.length * 2;
   const filledFields = [
-    ...additionalLanguageForms.flatMap((field) => [
+    ...additionalLanguageForms?.flatMap((field) => [
       field.addiLanguage,
       field.languageLavel,
     ]),
@@ -135,10 +135,10 @@ const Languages = ({
       setIssuingCountry(languageDetail?.issuingCountry);
       setDateofTest(moment(languageDetail?.dateOfTest).format("YYYY-MM-DD"));
       setSelectedFile(languageDetail?.documentUrl)
-      let combineLng = languageDetail?.additionalLanguages.map((lang: any) => ({
+      let combineLng = languageDetail?.additionalLanguages?.length? languageDetail?.additionalLanguages?.map((lang: any) => ({
         addiLanguage: lang?.additionalLanguage,
         languageLavel: lang?.additionalLanguageLevel
-      }));
+      })):[{ addiLanguage: "", languageLavel: "" }];
       setAdditionalLanguageForms(combineLng)
 
   }
@@ -166,7 +166,7 @@ const Languages = ({
         completed: percentage,
       };
       const addiArray: any = [];
-      additionalLanguageForms.forEach((element: any) => {
+      additionalLanguageForms?.forEach((element: any) => {
         addiArray.push({
           additionalLanguage: element?.addiLanguage,
           additionalLanguageLevel: element?.languageLavel,
@@ -176,7 +176,6 @@ const Languages = ({
 
       // let finArry: any = [];
       // finArry.push(data);
-      console.log('data',data)
       AddLanguageData(data, AddLanguagedataDB);
 
       // {

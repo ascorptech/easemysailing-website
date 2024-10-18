@@ -294,10 +294,12 @@ const AcademicDetails = ({
     setIsHideShow(!isHideShow);
   };
 
-  const handleValidationChange = (valid: any) => (e: any) => {
+  const handleValidationChange = (setValue: any) => (e: any) => {
     const value = e.target.value;
     const alphabeticValue = value.replace(/[^A-Za-z\s]/g, "");
-    valid(alphabeticValue);
+    const capitalizedValue =
+      alphabeticValue.charAt(0).toUpperCase() + alphabeticValue.slice(1);
+    setValue(capitalizedValue);
   };
 
   const handlePhoneNumberChange = (setter: any) => (e: any) => {
@@ -347,8 +349,15 @@ const AcademicDetails = ({
                 type="text"
                 value={field.degree}
                 onChange={(e) => {
-                  const value = e.target.value.replace(/[^a-zA-Z\s]/g, ""); 
-                  handleFormChange(index, "degree", value);
+                  const alphabeticValue = e.target.value.replace(
+                    /[^A-Za-z\s]/g,
+                    ""
+                  );
+                  const capitalizedValue =
+                    alphabeticValue.charAt(0).toUpperCase() +
+                    alphabeticValue.slice(1);
+
+                  handleFormChange(index, "degree", capitalizedValue);
                 }}
                 // onChange={(e) =>
                 //   handleFormChange(index, "degree", e.target.value)
@@ -370,13 +379,12 @@ const AcademicDetails = ({
                 type="text"
                 value={field.percentage}
                 onChange={(e) => {
-                  const value: any = e.target.value.replace(/[^0-9.]/g, "");
-
+                  let value: any = e.target.value.replace(/[^0-9.]/g, "");
+                  if (parseFloat(value) > 100) {
+                    value = "100"; // Set the value to 100 if the user enters more than 100
+                  }
                   handleFormChange(index, "percentage", value);
                 }}
-                // onChange={(e) =>
-                //   handleFormChange(index, "percentage", e.target.value)
-                // }
                 className="border rounded-md w-full h-9 px-2 text-[14px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Percentage"
                 disabled={disabled}
@@ -473,8 +481,14 @@ const AcademicDetails = ({
                 type="text"
                 value={fields.university}
                 onChange={(e) => {
-                  const value = e.target.value.replace(/[^a-zA-Z\s]/g, "");
-                  handleFormChangeEdu(index, "university", value);
+                  const alphabeticValue = e.target.value.replace(
+                    /[^A-Za-z\s]/g,
+                    ""
+                  );
+                  const capitalizedValue =
+                    alphabeticValue.charAt(0).toUpperCase() +
+                    alphabeticValue.slice(1);
+                  handleFormChangeEdu(index, "university", capitalizedValue);
                 }}
                 className="border rounded-md w-full h-9 px-2 text-[14px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Your University"
@@ -490,8 +504,14 @@ const AcademicDetails = ({
                 type="text"
                 value={fields.subject}
                 onChange={(e) => {
-                  const value = e.target.value.replace(/[^a-zA-Z\s]/g, "");
-                  handleFormChangeEdu(index, "subject", value);
+                  const alphabeticValue = e.target.value.replace(
+                    /[^A-Za-z\s]/g,
+                    ""
+                  );
+                  const capitalizedValue =
+                    alphabeticValue.charAt(0).toUpperCase() +
+                    alphabeticValue.slice(1);
+                  handleFormChangeEdu(index, "subject", capitalizedValue);
                 }}
                 className="border rounded-md w-full h-9 px-2 text-[14px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Your Subject"
@@ -507,8 +527,14 @@ const AcademicDetails = ({
                 type="text"
                 value={fields.city}
                 onChange={(e) => {
-                  const value = e.target.value.replace(/[^a-zA-Z\s]/g, "");
-                  handleFormChangeEdu(index, "city",value);
+                  const alphabeticValue = e.target.value.replace(
+                    /[^A-Za-z\s]/g,
+                    ""
+                  );
+                  const capitalizedValue =
+                    alphabeticValue.charAt(0).toUpperCase() +
+                    alphabeticValue.slice(1);
+                  handleFormChangeEdu(index, "city", capitalizedValue);
                 }}
                 className="border rounded-md w-full h-9 px-2 text-[14px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Your City"
@@ -537,7 +563,6 @@ const AcademicDetails = ({
                     {country?.toUpperCase()}
                   </option>
                 ))}
-                <option value="f">hell </option>
               </select>
             </div>
           </div>

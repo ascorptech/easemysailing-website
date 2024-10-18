@@ -574,6 +574,14 @@ const Licenses = ({
     // toast.info("You are now in edit mode. Make your changes.");
   };
 
+  const handleValidationChange = (setValue: any) => (e: any) => {
+    const value = e.target.value;
+    const alphabeticValue = value.replace(/[^A-Za-z\s]/g, ""); 
+    const capitalizedValue =
+      alphabeticValue.charAt(0).toUpperCase() + alphabeticValue.slice(1); 
+    setValue(capitalizedValue);
+  };
+
   return (
     <div className="container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
@@ -662,9 +670,9 @@ const Licenses = ({
                       id={`Certificate_${index}`}
                       type="text"
                       value={field.certificateNo}
-                      onChange={(e) =>
-                        handleFormChange(index, "certificateNo", e.target.value)
-                      }
+                      onChange={(e) =>{const value = e.target.value.replace(/[^a-zA-Z0-9. ]/g, "");
+                        handleFormChange(index, "certificateNo", value)
+                      }}
                       className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                       placeholder="Enter Certificate Number"
                       disabled={disabled}
@@ -747,13 +755,13 @@ const Licenses = ({
                       id={`Limitation_${index}`}
                       type="text"
                       value={field.areaLimitation}
-                      onChange={(e) =>
+                      onChange={(e) =>{const value = e.target.value.replace(/[^a-zA-Z0-9. ]/g, "");
                         handleFormChange(
                           index,
                           "areaLimitation",
-                          e.target.value
+                          value
                         )
-                      }
+                      }}
                       className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                       placeholder="Enter Area Limitation"
                       disabled={disabled}
@@ -772,13 +780,13 @@ const Licenses = ({
                       id={`OtherLimitation_${index}`}
                       type="text"
                       value={field.otherLimitation}
-                      onChange={(e) =>
+                      onChange={(e) =>{const value = e.target.value.replace(/[^a-zA-Z0-9. ]/g, "");
                         handleFormChange(
                           index,
                           "otherLimitation",
-                          e.target.value
+                          value
                         )
-                      }
+                          }}
                       className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                       placeholder="Enter Other Limitation"
                       disabled={disabled}
@@ -803,6 +811,7 @@ const Licenses = ({
                       }
                       placeholder="Enter Issue Date"
                       disabled={disabled}
+                      max={new Date().toISOString().split("T")[0]}
                     />
                   </div>
                   <div>
@@ -974,9 +983,9 @@ const Licenses = ({
                   id={`cNumber_${index}`}
                   type="text"
                   value={field1.number}
-                  onChange={(e) =>
-                    handleFormChangeGlobal(index, "number", e.target.value)
-                  }
+                  onChange={(e) =>{const value = e.target.value.replace(/[^a-zA-Z0-9. ]/g, "");
+                    handleFormChangeGlobal(index, "number", value)
+                    }}
                   className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder="Enter Certificate Number"
                   disabled={disabled}
@@ -1043,7 +1052,8 @@ const Licenses = ({
                     handleFormChangeGlobal(index, "gMissueDate", e.target.value)
                   }
                   disabled={disabled}
-                  placeholder="Enter Issue Date"
+                  max={new Date().toISOString().split("T")[0]}
+
                 />
               </div>
               <div>
@@ -1062,7 +1072,7 @@ const Licenses = ({
                     )
                   }
                   disabled={disabled}
-                  placeholder="Enter Expiry Date"
+                  
                 />
               </div>
             </div>
@@ -1290,7 +1300,8 @@ const Licenses = ({
                             e.target.value
                           )
                         }
-                        placeholder="Enter Issue Date"
+                        max={new Date().toISOString().split("T")[0]}
+
                         disabled={disabled}
                       />
                     </div>

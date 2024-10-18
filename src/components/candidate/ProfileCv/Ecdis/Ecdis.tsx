@@ -318,7 +318,7 @@ const Ecdis = ({
                 value={issuedate1}
                 onChange={(e) => setIssueDate1(e.target.value)}
                 disabled={disabled}
-                placeholder="Enter Issue Date"
+                max={new Date().toISOString().split("T")[0]}
               />
             </div>
 

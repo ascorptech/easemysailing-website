@@ -186,9 +186,10 @@ const PersonalDetails = ({
   const handleValidationChange = (setValue: any) => (e: any) => {
     const value = e.target.value;
     const alphabeticValue = value.replace(/[^A-Za-z\s]/g, ""); 
-    const capitalizedValue =
-      alphabeticValue.charAt(0).toUpperCase() + alphabeticValue.slice(1); 
-    setValue(capitalizedValue);
+    // const capitalizedValue =
+    //   alphabeticValue.charAt(0).toUpperCase() + alphabeticValue.slice(1); 
+    const upperCaseValue = alphabeticValue.toUpperCase(); 
+    setValue(upperCaseValue);
   };
 
   return (
@@ -279,7 +280,7 @@ const PersonalDetails = ({
                 onChange={handleValidationChange(setFirstName)} // Controlled input with alphabet and space validation
                 className="border rounded-md w-full h-9 px-2 text-[14px] leading-[19.07px] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter First Name"
-                disabled={disabled}
+                disabled
               />
             </div>
 
@@ -317,7 +318,7 @@ const PersonalDetails = ({
                 onChange={handleValidationChange(setLastName)} // Controlled input with alphabet and space validation
                 className="border rounded-md w-full h-9 px-2 text-[14px] leading-[19.07px] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Last Name"
-                disabled={disabled}
+                disabled
               />
             </div>
 

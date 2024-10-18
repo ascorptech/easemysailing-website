@@ -297,7 +297,7 @@ const Refrences = ({
                   type="text"
                   value={companyName}
                   onChange={(e) => {
-                    const value = e.target.value.replace(/[^a-zA-Z ]/g, "");
+                    const value = e.target.value.replace(/[^a-zA-Z ]/g, "").toUpperCase();
                     setCompanyName(value);
                   }}
                   className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
@@ -438,7 +438,7 @@ const Refrences = ({
                   type="text"
                   value={firstName}
                   onChange={(e) => {
-                    const value = e.target.value.replace(/[^a-zA-Z ]/g, "");
+                    const value = e.target.value.replace(/[^a-zA-Z ]/g, "").toUpperCase();
                     setFirstName(value);
                   }}
                   className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
@@ -460,7 +460,7 @@ const Refrences = ({
                   type="text"
                   value={lastName}
                   onChange={(e) => {
-                    const value = e.target.value.replace(/[^a-zA-Z ]/g, "");
+                    const value = e.target.value.replace(/[^a-zA-Z ]/g, "").toUpperCase();
                     setLastName(value);
                   }}
                   className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
@@ -480,7 +480,7 @@ const Refrences = ({
                   type="text"
                   value={companyName1}
                   onChange={(e) => {
-                    const value = e.target.value.replace(/[^a-zA-Z ]/g, "");
+                    const value = e.target.value.replace(/[^a-zA-Z ]/g, "").toUpperCase();
                     setCompanyName1(value);
                   }}
                   className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
@@ -530,10 +530,17 @@ const Refrences = ({
                     id="number"
                     type="text"
                     value={phoneNumber}
+                    maxLength={14} // Maximum 12 digits
                     onChange={(e) => {
-                      const value = e.target.value.replace(/[^0-9]/g, "");
-                      if (value.length <= 10) {
-                        setPhoneNumber(value);
+                      // Allow only numeric input
+                      const value = e.target.value;
+                      if (/^\d*$/.test(value)) { // Regex to allow only digits
+                        setPhoneNumber(value.trimStart());
+                      }
+                    }}
+                    onBlur={(e) => {
+                      if (e.target.value.length < 7) {
+                        toast.error("Phone number must be at least 7 digits long");
                       }
                     }}
                     className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
@@ -556,8 +563,16 @@ const Refrences = ({
                   type="email"
                   value={email}
                   onChange={(e) => {
-                    const value = e.target.value.replace(/[^a-z@0-9. ]/g, "");
-                    setEmail(value);
+                    let value = e.target.value.replace(/\s+/g, ''); // Removes all spaces
+                    // Allow only alphanumeric characters, ".", "@", and "-"
+                    value = value.replace(/[^a-zA-Z0-9@.-]/g, ''); 
+                    setEmail(value?.trim());
+                  }}
+                  onBlur={(e) => {
+                    // Basic email validation
+                    if (!e.target.validity.valid) {
+                      toast.error("Please enter a valid email address.");
+                    }
                   }}
                   className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder="Enter Email"

@@ -39,6 +39,7 @@ const Languages = ({
 
   const [language1, setLanguage1] = useState("");
 
+
   const [englishLavel, setEnglishLavel] = useState("");
   const [languageTests, setLanguageTests] = useState("");
   const [languageLevelDrop, setLanguageLevelDrop] = useState<any>([]);
@@ -241,10 +242,6 @@ const Languages = ({
     // const capitalizedValue =
     // alphabeticValue.charAt(0).toUpperCase() + alphabeticValue.slice(1);
     setValue(alphabeticValue);
-    // const alphabeticValue = value.replace(/[^A-Za-z\s]/g, "");
-    // const capitalizedValue =
-    //   alphabeticValue.charAt(0).toUpperCase() + alphabeticValue.slice(1);
-    // setValue(capitalizedValue);
   };
   return (
     <div className="container border-2 shadow-lg p-3  mt-[14px] mb-8 ">

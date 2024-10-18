@@ -370,6 +370,8 @@ const StcwTraining = ({
                       handleFormChange(index, "issuedate", e.target.value)
                     }
                     disabled={disabled}
+                    max={new Date().toISOString().split("T")[0]}
+
                   />
                 </div>
 
@@ -389,6 +391,8 @@ const StcwTraining = ({
                       onChange={(e) =>
                         handleFormChange(index, "exdate", e.target.value)
                       }
+                      min={new Date().toISOString().split("T")[0]}
+
                       disabled={disabled}
                     />
                   </div>

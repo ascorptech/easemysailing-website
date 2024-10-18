@@ -543,7 +543,9 @@ const AdditionalTraining = ({
                   handleFormChangeAdd(index, "issuedate", e.target.value)
                 }
                 disabled={disabled}
-                placeholder="Enter  Issue Date"
+                placeholder="Enter Issue Date"
+                max={new Date().toISOString().split("T")[0]}
+
               />
             </div>
             {/* </div> */}
@@ -566,6 +568,8 @@ const AdditionalTraining = ({
                     handleFormChangeAdd(index, "exdate", e.target.value)
                   }
                   disabled={disabled}
+                  min={new Date().toISOString().split("T")[0]}
+
                   placeholder="Enter Expiry Date"
                 />
               </div>
@@ -857,6 +861,8 @@ const AdditionalTraining = ({
                 }
                 disabled={disabled}
                 placeholder="Enter  Issue Date"
+                max={new Date().toISOString().split("T")[0]}
+
               />
             </div>
 
@@ -878,7 +884,9 @@ const AdditionalTraining = ({
                     handleFormChangePro(index, "exdate1", e.target.value)
                   }
                   disabled={disabled}
-                  placeholder="Enter  Expiry Date"
+                  min={new Date().toISOString().split("T")[0]}
+
+                 
                 />
               </div>
             )}

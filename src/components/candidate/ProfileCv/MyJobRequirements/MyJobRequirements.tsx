@@ -18,12 +18,11 @@ type MjrComplete = {
 //   criminal:any;
 // }
 type Props = {
-  mjrComplete: MjrComplete; 
-  setMjrComplete: React.Dispatch<React.SetStateAction<MjrComplete>>; 
+  mjrComplete: MjrComplete;
+  setMjrComplete: React.Dispatch<React.SetStateAction<MjrComplete>>;
   userDetail: any;
-  jobDetail:any;
-  criminal:any; 
-
+  jobDetail: any;
+  criminal: any;
 };
 
 const MyJobRequirements = ({
@@ -31,9 +30,9 @@ const MyJobRequirements = ({
   setMjrComplete,
   userDetail,
   jobDetail,
-  criminal
-  // mjrDelcearation,
-}: Props) => {
+  criminal,
+}: // mjrDelcearation,
+Props) => {
   const [rankDrop, setRankDrop] = useState<any>([]);
   const [shipTypeDrop, setShipTypeDrop] = useState<any>([]);
   const [availabilityDate, setAvailabilityDate] = useState("");
@@ -48,10 +47,8 @@ const MyJobRequirements = ({
   const [contractDuration, setContractDuration] = useState("");
 
   const [disabled, setDisabled] = useState(true);
-  const [color,setColor]=useState('')
+  const [color, setColor] = useState("");
   // const [criminal, setCriminal] = useState<any>("");
-
-
 
   useEffect(() => {
     if (jobDetail) {
@@ -60,10 +57,12 @@ const MyJobRequirements = ({
       setAlternatePosition(jobDetail?.alternatePosition);
       setPreferredVesselType(jobDetail?.preferredVesselType);
       setAlternateVesselType(jobDetail?.alternateVesselType);
-      setAvailabilityDate(moment(jobDetail?.availabilityDate).format('YYYY-MM-DD'));
+      setAvailabilityDate(
+        moment(jobDetail?.availabilityDate).format("YYYY-MM-DD")
+      );
       setAvailable(!jobDetail?.notAvailable ? "No" : "Yes");
-      setSalaryField(jobDetail.expectedSalary)
-      setContractDuration(jobDetail.contractDuration)
+      setSalaryField(jobDetail.expectedSalary);
+      setContractDuration(jobDetail.contractDuration);
     }
   }, []);
 
@@ -78,22 +77,23 @@ const MyJobRequirements = ({
     contractDuration,
   ].filter(Boolean).length;
 
-  const percentage:any = totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
+  const percentage: any =
+    totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
   // setMjrComplete({...mjrComplete,percentage:percentage})
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
       setMjrComplete((prevState) => ({
-        ...prevState, 
-        percentage: percentage, 
-        color: "#FF0000", 
+        ...prevState,
+        percentage: percentage,
+        color: "#FF0000",
       }));
       setColor("#FF0000");
     } else if (percentage <= 70) {
       setMjrComplete((prevState) => ({
-        ...prevState, 
+        ...prevState,
         percentage: percentage,
-        color: "#FF9900", 
+        color: "#FF9900",
       }));
       setColor("#FF9900");
     } else {
@@ -119,43 +119,41 @@ const MyJobRequirements = ({
     e.preventDefault();
     if (!criminal) {
       toast.error("Please accept the declaration");
-      return; 
-    } else {
-   
-
-    if (
-      !currentPosition ||
-      !alternatePosition ||
-      !preferredVesselType ||
-      !alternateVesselType ||
-      !available||
-      !salaryField||
-      !contractDuration
-    ) {
-      toast.error("Please fill in all required fields.");
       return;
-    }
+    } else {
+      if (
+        !currentPosition ||
+        !alternatePosition ||
+        !preferredVesselType ||
+        !alternateVesselType ||
+        !available ||
+        !salaryField ||
+        !contractDuration
+      ) {
+        toast.error("Please fill in all required fields.");
+        return;
+      }
 
-    let data: any = {
-      id: userDetail?.userId,
-      currentPosition: currentPosition,
-      alternatePosition: alternatePosition,
-      primaryRankChoice:primaryRank,
-      preferredVesselType: preferredVesselType,
-      alternateVesselType: alternateVesselType,
-      notAvailable: available == "yes" ? "true" : "false",
-      color: color,
-      completed: percentage,
-      expectedSalary:salaryField,
-      contractDuration:contractDuration
-    };
-    if (availabilityDate) {
-      data.availabilityDate = availabilityDate ? availabilityDate : "";
-    }
+      let data: any = {
+        id: userDetail?.userId,
+        currentPosition: currentPosition,
+        alternatePosition: alternatePosition,
+        primaryRankChoice: primaryRank,
+        preferredVesselType: preferredVesselType,
+        alternateVesselType: alternateVesselType,
+        notAvailable: available == "yes" ? "true" : "false",
+        color: color,
+        completed: percentage,
+        expectedSalary: salaryField,
+        contractDuration: contractDuration,
+      };
+      if (availabilityDate) {
+        data.availabilityDate = availabilityDate ? availabilityDate : "";
+      }
 
-    AddMyJobData(data, AddmyJobdataDB);
+      AddMyJobData(data, AddmyJobdataDB);
+    }
   };
-}
 
   const AddmyJobdataDB = (result: any) => {
     console.log(result);
@@ -194,7 +192,7 @@ const MyJobRequirements = ({
               value={currentPosition}
               onChange={(e) => {
                 setCurrentPosition(e.target.value);
-                setPrimaryRank(e.target.value)
+                setPrimaryRank(e.target.value);
               }}
               disabled={disabled}
               required
@@ -238,30 +236,27 @@ const MyJobRequirements = ({
             </div>
           )} */}
 
-
-            <div>
-              <label className="text-[14px] leading-[19.07px]  text-[#333333]">
+          <div>
+            <label className="text-[14px] leading-[19.07px]  text-[#333333]">
               Primary Rank Choice
-              </label>
-              <select
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                value={primaryRank}
-                onChange={(e) => setPrimaryRank(e.target.value)}
-                disabled={disabled}
-              >
-                <option value="" disabled>
-                  Select
-                </option>
-                {rankDrop &&
-                  rankDrop?.map((rank: any, index: number) => (
-                    <option key={index} value={rank}>
-                      {rank?.toUpperCase()}
-                    </option>
-                  ))}
-               
-              </select>
-            </div>
-       
+            </label>
+            <select
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              value={primaryRank}
+              onChange={(e) => setPrimaryRank(e.target.value)}
+              disabled={disabled}
+            >
+              <option value="" disabled>
+                Select
+              </option>
+              {rankDrop &&
+                rankDrop?.map((rank: any, index: number) => (
+                  <option key={index} value={rank}>
+                    {rank?.toUpperCase()}
+                  </option>
+                ))}
+            </select>
+          </div>
 
           <div>
             <label className="text-[14px] leading-[19.07px]  text-[#333333]">
@@ -377,11 +372,10 @@ const MyJobRequirements = ({
               value={availabilityDate}
               onChange={(e) => setAvailabilityDate(e.target.value)}
               disabled={disabled}
-              min={new Date().toISOString().split("T")[0]} 
+              min={new Date().toISOString().split("T")[0]}
               required
             />
           </div>
-         
 
           <div>
             <label
@@ -406,19 +400,23 @@ const MyJobRequirements = ({
             </select> */}
             <input
               id="salaryField"
-              type="number"
+              type="text"
               value={salaryField}
               onChange={(e) => {
-                if (e.target.value.length <= 6) {
-                  setSalaryField(e.target.value);
-                }
-                  else{
-                    toast.error("Salary can not be more than 6 digits");
+                const inputValue = e.target.value;
+                if (!isNaN(Number(inputValue)) && Number(inputValue) >= 0) {
+                  if (/^\d*$/.test(inputValue)) {
+                    if (inputValue.length <= 6) {
+                      setSalaryField(inputValue);
+                    } else {
+                      toast.error("Salary cannot be more than 6 digits");
+                    }
+                  } else {
+                    toast.error("Please enter a valid positive number");
                   }
-                
+                }
               }}
               onBlur={(e) => {
-                // Validation for min length
                 if (e.target.value.length > 6) {
                   toast.error("Salary can not be more than 6 digits");
                 }

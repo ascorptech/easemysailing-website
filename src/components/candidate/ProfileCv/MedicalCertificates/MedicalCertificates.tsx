@@ -433,16 +433,19 @@ const MedicalCertificates = ({
     // toast.info("You are now in edit mode. Make your changes.");
   };
 
-  const handleValidationChange = (valid: any) => (e: any) => {
+
+  const handleValidationChange = (setValue: any) => (e: any) => {
     const value = e.target.value;
-    const alphabeticValue = value.replace(/[^A-Za-z\s]/g, "");
-    valid(alphabeticValue);
+    const alphabeticValue = value.replace(/[^A-Za-z\s]/g, ""); 
+    const capitalizedValue =
+      alphabeticValue.charAt(0).toUpperCase() + alphabeticValue.slice(1); 
+    setValue(capitalizedValue);
   };
 
   const handlePhoneNumberChange = (setter: any) => (e: any) => {
     let value = e.target.value;
 
-    value = value.replace(/[^0-9]/g, "");
+    value = value.replace(/[^a-zA-Z0-9 ]/g, "");
     setter(value);
 
     // if (value.length <= 10) {
@@ -566,7 +569,7 @@ const MedicalCertificates = ({
             />
           </div>
 
-          {/* </div> */}
+         
           <div className="">
             <label
               className="text-[14px] leading-[19.07px]  text-[#333333]"
@@ -581,8 +584,8 @@ const MedicalCertificates = ({
               value={issuedate}
               onChange={(e) => setIssueDate(e.target.value)}
               disabled={disabled}
-              placeholder="Enter Issue Date"
-            />
+              max={new Date().toISOString().split("T")[0]}
+              />
           </div>
           {/* </div> */}
 
@@ -783,8 +786,8 @@ const MedicalCertificates = ({
               value={issuedate1}
               onChange={(e) => setIssueDate1(e.target.value)}
               disabled={disabled}
-              placeholder="Enter  Issue Date"
-            />
+              max={new Date().toISOString().split("T")[0]}
+              />
           </div>
 
           {!expires2 && (
@@ -947,8 +950,8 @@ const MedicalCertificates = ({
               value={vaccinationIssue}
               onChange={(e) => setVaccinationIssue(e.target.value)}
               disabled={disabled}
-              placeholder="Enter Vaccination Date First"
-            />
+              max={new Date().toISOString().split("T")[0]}
+              />
           </div>
 
           {/* <div className="">
@@ -982,8 +985,8 @@ const MedicalCertificates = ({
               value={issuedateCovid}
               onChange={(e) => setIssueDateCovid(e.target.value)}
               disabled={disabled}
-              placeholder="Enter Vaccination Date Second"
-            />
+              max={new Date().toISOString().split("T")[0]}
+              />
           </div>
 
           {/* {!expiresMedical && (
@@ -1125,8 +1128,8 @@ const MedicalCertificates = ({
                   handleFormChangeOthers(index, "vaccination1", e.target.value)
                 }
                 disabled={disabled}
-                placeholder="Enter  Vaccination Date"
-              />
+                max={new Date().toISOString().split("T")[0]}
+                />
             </div>
 
             {!field.veccinationCheck && (
@@ -1389,8 +1392,8 @@ const MedicalCertificates = ({
               value={vaccinationFlag}
               onChange={(e) => setVaccinationFlag(e.target.value)}
               disabled={disabled}
-              placeholder="Enter Vaccination Date"
-            />
+              max={new Date().toISOString().split("T")[0]}
+              />
           </div>
 
           {!veccinationCheckFlag && (

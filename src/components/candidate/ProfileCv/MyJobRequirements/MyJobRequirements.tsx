@@ -10,7 +10,6 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Select from "react-select";
 
-
 type MjrComplete = {
   percentage: number;
   color: string;
@@ -116,14 +115,12 @@ Props) => {
       setRankDrop(res?.data?.values);
     });
     GetDropdownDetails("shipType", (res: any) => {
-
-      
       setShipTypeDrop(res?.data?.values);
       let tempArray = res?.data?.values.map((element: any) => ({
         label: element?.toUpperCase(),
         value: element,
       }));
-      setShipTypeDrop1(tempArray)
+      setShipTypeDrop1(tempArray);
     });
   }, []);
 
@@ -173,9 +170,9 @@ Props) => {
       console.log(result);
       toast.success("Job requirements submited successfully");
       setDisabled(!disabled);
-    setIsEditing((prev) => !prev);
+      setIsEditing((prev) => !prev);
       setDisabled(!disabled);
-    setIsEditing((prev) => !prev);
+      setIsEditing((prev) => !prev);
     } else {
       console.log(result);
       toast.error("Job requirements not submited ");
@@ -379,22 +376,23 @@ Props) => {
           </div> */}
 
           <div>
-          <label
+            <label
               className="text-[14px] leading-[19.07px]  text-[#333333]"
               htmlFor="alternateVesselType"
             >
               Alternate Vessel Type
             </label>
-              <Select
-                id="alternateVesselType"
-                isMulti
-                options={alternate}
-                value={alternateVesselType}
-                 onChange={handleMultiSelectChange}
-                isDisabled={disabled}
-                closeMenuOnSelect={false}
-              />
-            </div>
+            <Select
+              id="alternateVesselType"
+              isMulti
+              options={shipTypeDrop1}
+              value={alternateVesselType}
+              onChange={handleMultiSelectChange}
+              isDisabled={disabled}
+              closeMenuOnSelect={false}
+              placeholder="SELECT"
+            />
+          </div>
 
           {/* <div>
             <label className="text-[14px] leading-[19.07px]  text-[#333333]">
@@ -439,27 +437,14 @@ Props) => {
             />
           </div>
 
-          <div>
+          {/* <div>
             <label
               className="text-[14px] leading-[19.07px]  text-[#333333]"
               htmlFor="salaryField"
             >
               Expected Salary (in USD/Month)
             </label>
-            {/* <select
-              id="salaryField"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              value={salaryField}
-              onChange={(e) => setSalaryField(e.target.value)}
-              required
-              disabled={disabled}
-            >
-              <option value="" disabled>
-                USD
-              </option>
-              <option value="Yes">Yes</option>
-              <option value="No">No</option>
-            </select> */}
+           
             <input
               id="salaryField"
               type="text"
@@ -468,6 +453,7 @@ Props) => {
                 const inputValue = e.target.value.replace(/[^0-9 ]/g, "");
                 if (!isNaN(Number(inputValue)) && Number(inputValue) >= 0) {
                   if (/^\d*$/.test(inputValue)) {
+
                     if (inputValue.length <= 6) {
                       setSalaryField(inputValue);
                     } else {
@@ -484,6 +470,44 @@ Props) => {
                 }
               }}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+              placeholder="Enter Expected Salary"
+              disabled={disabled}
+              required
+            />
+          </div> */}
+          <div>
+            <label
+              className="text-[14px] leading-[19.07px] text-[#333333]"
+              htmlFor="salaryField"
+            >
+              Expected Salary (in USD/Month)
+            </label>
+
+            <input
+              id="salaryField"
+              type="text"
+              value={salaryField}
+              onChange={(e) => {
+                const inputValue = e.target.value.replace(/[^0-9]/g, "");
+
+                if (
+                  inputValue === "" ||
+                  (!/^0\d+$/.test(inputValue) && inputValue.length <= 6)
+                ) {
+                  setSalaryField(inputValue);
+                } else if (inputValue.length < 2) {
+                  toast.error("Salary cannot be less than 2 digits");
+                }
+                else if (inputValue.length > 6) {
+                  toast.error("Salary cannot be more than 6 digits");
+                }
+              }}
+              onBlur={(e) => {
+                if (e.target.value.length > 6) {
+                  toast.error("Salary cannot be more than 6 digits");
+                }
+              }}
+              className="border rounded-md w-full h-9 px-2 text-[14px] leading-[19.07px] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder="Enter Expected Salary"
               disabled={disabled}
               required

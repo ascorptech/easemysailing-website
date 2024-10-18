@@ -483,7 +483,7 @@ const MyJob = () => {
                     percentage={Math.round(
                       mjrComplete?.percentage
                         ? mjrComplete?.percentage
-                        : Number(myJobDetail?.completed)
+                        : myJobDetail?.completed?Number(myJobDetail?.completed):0
                     )}
                     color={
                       myJobDetail.color ? myJobDetail.color : mjrComplete.color
@@ -549,7 +549,7 @@ const MyJob = () => {
                     percentage={
                       Math.round(personalComplete?.percentage)
                         ? Math.round(personalComplete?.percentage)
-                        : Number(profileDetail?.completed)
+                        : profileDetail?.completed?Number(profileDetail?.completed):0
                     }
                     color={
                       profileDetail.color
@@ -620,7 +620,7 @@ const MyJob = () => {
                     percentage={Math.round(
                       languageComplete?.percentage
                         ? languageComplete?.percentage
-                        : Number(languageDetail?.completed)
+                        : languageDetail?.completed?Number(languageDetail?.completed):0
                     )}
                     color={
                       languageDetail.color
@@ -692,7 +692,7 @@ const MyJob = () => {
                     percentage={Math.round(
                       onlinePresenceComplete?.percentage
                         ? onlinePresenceComplete?.percentage
-                        : Number(onlinePresenseDetail?.completed)
+                        :onlinePresenseDetail?.completed? Number(onlinePresenseDetail?.completed):0
                     )}
                     color={
                       onlinePresenseDetail.color
@@ -764,7 +764,7 @@ const MyJob = () => {
                     percentage={Math.round(
                       licensesComplete?.percentage
                         ? licensesComplete?.percentage
-                        : Number(licencesDetail?.completed)
+                        : licencesDetail?.completed?Number(licencesDetail?.completed):0
                     )}
                     color={
                       licencesDetail.color
@@ -832,7 +832,7 @@ const MyJob = () => {
                     percentage={Math.round(
                       eCDISComplete?.percentage
                         ? eCDISComplete?.percentage
-                        : Number(ecdisDetail?.completed)
+                        : ecdisDetail?.completed?Number(ecdisDetail?.completed):0
                     )}
                     color={
                       ecdisDetail.color
@@ -899,7 +899,7 @@ const MyJob = () => {
                     percentage={
                       Math.round(medicalComplete?.percentage)
                         ? Math.round(medicalComplete?.percentage)
-                        : Number(medicalDetail?.completed)
+                        : medicalDetail?.completed?Number(medicalDetail?.completed):0
                     }
                     color={
                       medicalDetail.color
@@ -969,7 +969,7 @@ const MyJob = () => {
                     percentage={
                       Math.round(academicComplete?.percentage)
                         ? Math.round(academicComplete?.percentage)
-                        : Number(academicDetails?.completed)
+                        :academicDetails?.completed?Number(academicDetails?.completed):0
                     }
                     color={
                       academicDetails.color
@@ -1037,7 +1037,7 @@ const MyJob = () => {
                     percentage={Math.round(
                       seaGoingServiceComplete?.percentage
                         ? seaGoingServiceComplete?.percentage
-                        : Number(seaGoingServiceDetail?.completed)
+                        : seaGoingServiceDetail?.completed?Number(seaGoingServiceDetail?.completed):0
                     )}
                     color={
                       seaGoingServiceDetail.color
@@ -1107,7 +1107,7 @@ const MyJob = () => {
                     percentage={
                       Math.round(preSeaTrainigComplete?.percentage)
                         ? Math.round(preSeaTrainigComplete?.percentage)
-                        : Number(offShoreDetail?.completed)
+                        : offShoreDetail?.completed?Number(offShoreDetail?.completed):0
                     }
                     color={
                       offShoreDetail.color
@@ -1185,7 +1185,7 @@ const MyJob = () => {
                   percentage={Math.round(
                     aboutMeComplete?.percentage
                       ? aboutMeComplete?.percentage
-                      : Number(aboutMeDetail?.completed)
+                      : aboutMeDetail?.completed?Number(aboutMeDetail?.completed):0
                   )}
                   color={
                     aboutMeDetail.color
@@ -1257,7 +1257,7 @@ const MyJob = () => {
                   percentage={Math.round(
                     contactComplete?.percentage
                       ? contactComplete?.percentage
-                      : Number(contactDetail?.completed)
+                      : contactDetail?.completed?Number(contactDetail?.completed):0
                   )}
                   color={
                     contactDetail.color
@@ -1335,7 +1335,7 @@ const MyJob = () => {
                   percentage={Math.round(
                     nextOfComplete?.percentage
                       ? nextOfComplete?.percentage
-                      : Number(nextOfKinDetail?.completed)
+                      : nextOfKinDetail?.completed?Number(nextOfKinDetail?.completed):0
                   )}
                   color={
                     nextOfKinDetail?.color
@@ -1406,7 +1406,7 @@ const MyJob = () => {
                   percentage={Math.round(
                     travelComplete?.percentage
                       ? travelComplete?.percentage
-                      : Number(travelDocumentsDetail?.completed)
+                      : travelDocumentsDetail?.completed?Number(travelDocumentsDetail?.completed):0
                   )}
                   color={
                     travelDocumentsDetail.color
@@ -1473,7 +1473,7 @@ const MyJob = () => {
                   percentage={Math.round(
                     sTCWComplete?.percentage
                       ? sTCWComplete?.percentage
-                      : Number(sTCWDetail?.completed)
+                      : sTCWDetail?.completed?Number(sTCWDetail?.completed):0
                   )}
                   color={
                     sTCWDetail.color ? sTCWDetail.color : sTCWComplete.color
@@ -1541,7 +1541,7 @@ const MyJob = () => {
                   percentage={Math.round(
                     additionalComplete?.percentage
                       ? additionalComplete?.percentage
-                      : Number(additionalDetail?.completed)
+                      : additionalDetail?.completed?Number(additionalDetail?.completed):0
                   )}
                   color={
                     additionalDetail.color
@@ -1653,7 +1653,7 @@ const MyJob = () => {
                   percentage={Math.round(
                     professionalComplete?.percentage
                       ? professionalComplete?.percentage
-                      : Number(professionalDetail?.completed)
+                      : professionalDetail?.completed?Number(professionalDetail?.completed):0
                   )}
                   color={
                     professionalDetail.color
@@ -1723,7 +1723,7 @@ const MyJob = () => {
                   percentage={Math.round(
                     refrencesComplete?.percentage
                       ? refrencesComplete?.percentage
-                      : Number(refrencesDetail?.completed)
+                      : refrencesDetail?.completed?Number(refrencesDetail?.completed):0
                   )}
                   color={
                     refrencesDetail.color
@@ -1792,7 +1792,7 @@ const MyJob = () => {
                     percentage={
                       Math.round(shorJobComplete?.percentage)
                         ? Math.round(shorJobComplete?.percentage)
-                        : Number(shoreJobDetail?.completed)
+                        : shoreJobDetail?.completed?Number(shoreJobDetail?.completed):0
                     }
                     color={
                       shoreJobDetail.color
@@ -1814,9 +1814,9 @@ const MyJob = () => {
 
             <div
               className={`flex justify-between items-center rounded-md  bg-[#D6EEEE] p-2 border-r-8 border-[${
-                professionalDetail.color
-                  ? professionalDetail.color
-                  : professionalComplete.color
+                verificationDetail.color
+                  ? verificationDetail.color
+                  : vettingServicesComplete.color
               }] mt-3`}
             >
               <h2 className="">Verification Status</h2>
@@ -1858,7 +1858,7 @@ const MyJob = () => {
                   percentage={Math.round(
                     vettingServicesComplete?.percentage
                       ? vettingServicesComplete?.percentage
-                      : Number(verificationDetail?.completed)
+                      : verificationDetail?.completed?Number(verificationDetail?.completed):0
                   )}
                   color={
                     verificationDetail.color

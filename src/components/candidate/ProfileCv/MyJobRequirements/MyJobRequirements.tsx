@@ -51,7 +51,6 @@ Props) => {
   const [isEditing, setIsEditing] = useState(false);
   const [disabled, setDisabled] = useState(true);
   const [color, setColor] = useState("");
-  const [multipleSelection, setMultipleSelection] = useState<any>([]);
   // const [criminal, setCriminal] = useState<any>("");
 
   useEffect(() => {
@@ -182,19 +181,6 @@ Props) => {
     setIsEditing((prev) => !prev);
     // toast.info("You are now in edit mode. Make your changes.");
   };
-
-  // useEffect(() => {
-  //   GetDropdownDetails("shorejobinterest", (res: any) => {
-  //     // console.log('County',res?.data)
-
-  //     let tempArray = res?.data?.values.map((element: any) => ({
-  //       label: element?.toUpperCase(),
-  //       value: element,
-  //     }));
-  //     setAlternate(tempArray);
-  //   });
-  // }, []);
-
 
   const handleMultiSelectChange = (selectedOptions: any) => {
     if (selectedOptions.length <= 4) {

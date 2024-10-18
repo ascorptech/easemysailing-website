@@ -7,6 +7,7 @@ import { RiExchangeDollarLine } from "react-icons/ri";
 import { MdNotificationAdd } from "react-icons/md";
 import { IoCart } from "react-icons/io5";
 import { useEffect, useState } from "react";
+import { GetProfileDetail } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 
 interface HeaderProps {
   sidebarToggle: boolean;
@@ -16,14 +17,23 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ sidebarToggle, setSidebarToggle }) => {
   
   const [name, setName] = useState<any>();
+  const [profileDetail, setProfileDetail] = useState<any>();
+  const [profileImage, setProfileImage] = useState(
+    "/images/avatar-place.jpg"
+  );
   useEffect(() => {
-    fetchName()
+    fetchDetails()
   }, [])
 
-  const fetchName = async()=>{
-    let compl = await localStorage.getItem('firstName') + ' ' + await localStorage.getItem('lastName')
-    setName(compl)
-  }
+
+  const fetchDetails = async () => {
+    let id = await localStorage.getItem("id");
+    
+    GetProfileDetail(id, (res: any) => {
+        setProfileDetail(res?.data);
+        setProfileImage(res?.data?.imageUrl?`data:image/png;image/jpg;image/jpeg;base64,${res?.data?.imageUrl}`:"/images/avatar-place.jpg")
+    });
+  };
   
   return (
     <div className="bg-[#EBEBEB] flex items-center justify-between sticky top-0 -z-30 ">
@@ -91,13 +101,13 @@ const Header: React.FC<HeaderProps> = ({ sidebarToggle, setSidebarToggle }) => {
         </ul>
         <div className="ml-[5px] mr-11 cursor-pointer flex flex-row items-center justify-center">
           <Image
-            src="/images/avatar.png"
+            src={profileImage}
             alt="image not found"
             width={5000}
             height={5000}
             className="w-9 h-9 rounded-full border-2 border-green-600"
           ></Image>
-          <p className="ml-1 font-semibold">{name}</p>
+          <p className="ml-1 font-semibold">{profileDetail?.firstName +' '+profileDetail?.lastName}</p>
         </div>
       </div>
     </div>

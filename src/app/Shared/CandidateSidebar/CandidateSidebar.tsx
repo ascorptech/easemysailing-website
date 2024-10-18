@@ -180,10 +180,10 @@ const Sidebar: React.FC<sidebarProps> = ({ sidebarToggle }) => {
       </ul>
       {/* Logout Modal */}
       {showLogoutModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-[#000000CC] bg-opacity-70 z-[99999]">
+        <div className="fixed inset-0 flex items-center justify-center bg-[#000000CC] bg-opacity-70 z-50">
           <div className="bg-white py-4 h-[330px] rounded shadow-lg  w-80 flex flex-col items-center justify-center relative">
             <div
-              className="absolute w-4 h-4 top-1 right-1 cursor-pointer z-[10001]"
+              className="absolute w-4 h-4 top-1 right-1 cursor-pointer z-50"
               onClick={handleCloseModal}
             >
               <Image

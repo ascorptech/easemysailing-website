@@ -36,6 +36,8 @@ const ProfileCV = () => {
   const [color, setColor] = useState("");
   const [rank,setRank] = useState("")
   const [aboutMe,setAboutMe] = useState("")
+  const limit = 50;
+  const [showAboutMe, setShowAboutMe] = useState(false);
 
 
   useEffect(() => {
@@ -213,7 +215,7 @@ const ProfileCV = () => {
               <p className="font-semibold text-[15px] leading-[21px]">
                 About :
                 <span className="font-normal ml-1 text-[15px] leading-[21px]">
-                  {aboutMe}
+                  {aboutMe?.slice(0, limit)} <Link href={'#'} className="text-[#00A264]" onClick={()=>setShowAboutMe(!showAboutMe)}>{showAboutMe?'Read Less':'Read More'}</Link>
                 </span>
               </p>
             </div>
@@ -542,6 +544,28 @@ const ProfileCV = () => {
             >
               Save
             </button>
+          </div>
+        </div>
+      )}
+
+{showAboutMe && (
+        <div className="fixed inset-0 flex items-center justify-center bg-[#000000CC] bg-opacity-70 z-50">
+          <div className="bg-white py-4 h-[330px] rounded shadow-lg  w-[520px] flex flex-col items-center justify-center relative">
+            <div
+              className="absolute w-4 h-4 top-1 right-1 cursor-pointer z-50"
+              onClick={()=>setShowAboutMe(false)}
+            >
+              <Image
+                priority
+                src="/images/candidate/profileCv/closeIcons.png"
+                alt=""
+                width={500}
+                height={500}
+                className="w-full h-full object-contain"
+              />
+            </div>
+
+            <p className="text-black px-2">{aboutMe}</p>
           </div>
         </div>
       )}

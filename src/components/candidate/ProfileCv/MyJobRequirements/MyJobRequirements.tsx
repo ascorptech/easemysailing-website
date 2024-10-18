@@ -171,8 +171,6 @@ Props) => {
       toast.success("Job requirements submited successfully");
       setDisabled(!disabled);
       setIsEditing((prev) => !prev);
-      setDisabled(!disabled);
-      setIsEditing((prev) => !prev);
     } else {
       console.log(result);
       toast.error("Job requirements not submited ");
@@ -497,8 +495,7 @@ Props) => {
                   setSalaryField(inputValue);
                 } else if (inputValue.length < 2) {
                   toast.error("Salary cannot be less than 2 digits");
-                }
-                else if (inputValue.length > 6) {
+                } else if (inputValue.length > 6) {
                   toast.error("Salary cannot be more than 6 digits");
                 }
               }}

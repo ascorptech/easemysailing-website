@@ -185,9 +185,8 @@ const Ecdis = ({
     console.log(result);
     if (result?.status == 200) {
       toast.success("ECDIS submited successfully");
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
+      setDisabled(!disabled);
+    setIsEditing((prev) => !prev);
     } else {
       toast.error("ECDIS  detail not submited ");
     }

@@ -279,9 +279,8 @@ const PreSeaTrainigDetails = ({
     console.log(result);
     if (result?.status == 200 || result?.status == 201) {
       toast.success("Off Shore detail submited successfully");
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
+      setDisabled(!disabled);
+      setIsEditing((prev) => !prev);
     } else {
       toast.error("Off Shore detail not submited ");
     }

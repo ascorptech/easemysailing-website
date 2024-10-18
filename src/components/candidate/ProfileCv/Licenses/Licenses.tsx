@@ -363,9 +363,8 @@ const Licenses = ({
     console.log(result);
     if (result?.status == 200 || result?.status == 201) {
       toast.success("Licenses submited successfully");
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
+      setDisabled(!disabled);
+    setIsEditing((prev) => !prev);
     } else {
       toast.error("Licenses detail not submited ");
     }

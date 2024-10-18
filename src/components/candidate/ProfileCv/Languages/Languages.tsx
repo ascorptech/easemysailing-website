@@ -181,9 +181,8 @@ const Languages = ({
     console.log(result);
     if (result?.status == 200) {
       toast.success("Language detail submited successfully");
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
+      setDisabled(!disabled);
+      setIsEditing((prev) => !prev);
     } else {
       toast.error("Language detail not submited ");
     }

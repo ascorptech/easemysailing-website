@@ -67,13 +67,11 @@ const TravelDocuments = ({
   const [trainingCenter, setTrainingCenter] = useState("");
   const [issuedate1, setIssueDate1] = useState("");
   const [exdate1, setExDate1] = useState("");
-  // const [visaNumber, setVisaNumber] = useState("");
   const [permitNumber, setPermitNumber] = useState("");
   const [issuingAuthority, setIssuingAuthority] = useState("");
   const [biometric, setBiometric] = useState("");
   const [flagState, setFlagState] = useState("");
-  // const [issueDateVisa, setIssueDateVisa] = useState("");
-  // const [expryDateVisa, setExpryDateVisa] = useState("");
+
   const [countryDrop, setCountryDrop] = useState<any>([]);
   const [indNumber, setIndNumber] = useState("");
   const [disabled, setDisabled] = useState(true);
@@ -345,9 +343,7 @@ const TravelDocuments = ({
         });
       });
       data.visaDetails = visaArray;
-      // let finArry: any = [];
-      // finArry.push(data);
-      // console.log("fin", finArry);
+    
       AddTravelDocumentData(data, AddTravelDocumentDataCB);
     }
   };
@@ -355,9 +351,8 @@ const TravelDocuments = ({
   const AddTravelDocumentDataCB = (result: any) => {
     if (result?.status == 200 || result?.status == 201) {
       toast.success("Travel document submited successfully");
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
+      setDisabled(!disabled);
+      setIsEditing((prev) => !prev);
     } else {
       toast.error("Travel document not submited ");
     }
@@ -416,7 +411,9 @@ const TravelDocuments = ({
               type="text"
               value={number}
               onChange={(e) => {
-                const value = e.target.value.replace(/[^a-zA-Z0-9 ]/g, "").toUpperCase();
+                const value = e.target.value
+                  .replace(/[^a-zA-Z0-9 ]/g, "")
+                  .toUpperCase();
                 setNumber(value);
               }}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
@@ -425,7 +422,6 @@ const TravelDocuments = ({
               required
             />
           </div>
-
 
           {/* </div> */}
           <div className="">
@@ -445,7 +441,6 @@ const TravelDocuments = ({
               max={new Date().toISOString().split("T")[0]}
             />
           </div>
-         
 
           <div className="">
             <label
@@ -462,7 +457,7 @@ const TravelDocuments = ({
               onChange={(e) => setExDate(e.target.value)}
               disabled={disabled}
               min={new Date().toISOString().split("T")[0]}
-              />
+            />
           </div>
           <div className="grid col-span-2 ">
             <label
@@ -481,7 +476,7 @@ const TravelDocuments = ({
               required
             >
               <option value="" disabled selected>
-              SELECT
+                SELECT
               </option>
               {/* {countryDrop && countryDrop?.map((country: any, index: number) => (
                 <option key={index} value={country}>{country?.toUpperCase()}</option>
@@ -571,7 +566,11 @@ const TravelDocuments = ({
               type="text"
               value={trainingCenter}
               onChange={(e) => {
-                const value = e.target.value.replace(/[^a-zA-Z0-9 ]/g, "").toUpperCase(); setTrainingCenter(e.target.value)}}
+                const value = e.target.value
+                  .replace(/[^a-zA-Z0-9 ]/g, "")
+                  .toUpperCase();
+                setTrainingCenter(e.target.value);
+              }}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder="Enter  Seaman Book No."
               disabled={disabled}
@@ -710,7 +709,7 @@ const TravelDocuments = ({
                 disabled={disabled}
               >
                 <option value="" disabled selected>
-                SELECT
+                  SELECT
                 </option>
                 {countryDrop &&
                   countryDrop?.map((country: any, index: number) => (
@@ -731,9 +730,11 @@ const TravelDocuments = ({
                 id={`visanumber01_${index}`}
                 type="text"
                 value={field.visaNumber}
-                onChange={(e) =>{
-                  const value = e.target.value.replace(/[^a-zA-Z0-9 ]/g, "").toUpperCase();
-                  handleFormChangeVisa(index, "visaNumber", value)
+                onChange={(e) => {
+                  const value = e.target.value
+                    .replace(/[^a-zA-Z0-9 ]/g, "")
+                    .toUpperCase();
+                  handleFormChangeVisa(index, "visaNumber", value);
                 }}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Visa Number"
@@ -759,7 +760,7 @@ const TravelDocuments = ({
                 }
                 disabled={disabled}
                 max={new Date().toISOString().split("T")[0]}
-                />
+              />
             </div>
 
             <div className="">
@@ -841,7 +842,7 @@ const TravelDocuments = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-              SELECT
+                SELECT
               </option>
               {countryDrop &&
                 countryDrop?.map((country: any, index: number) => (
@@ -862,8 +863,12 @@ const TravelDocuments = ({
               id="seamanPermit"
               type="text"
               value={permitNumber}
-              onChange={(e) =>{
-                const value = e.target.value.replace(/[^a-zA-Z0-9 ]/g, "").toUpperCase(); setPermitNumber(value)}}
+              onChange={(e) => {
+                const value = e.target.value
+                  .replace(/[^a-zA-Z0-9 ]/g, "")
+                  .toUpperCase();
+                setPermitNumber(value);
+              }}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder="Enter Number"
               disabled={disabled}
@@ -904,7 +909,7 @@ const TravelDocuments = ({
               onChange={(e) => setExpDate2(e.target.value)}
               disabled={disabled}
               min={new Date().toISOString().split("T")[0]}
-              />
+            />
           </div>
           {/* </div> */}
 
@@ -953,8 +958,12 @@ const TravelDocuments = ({
                 id="inumber"
                 type="text"
                 value={indNumber}
-                onChange={(e) =>{
-                  const value = e.target.value.replace(/[^a-zA-Z0-9 ]/g, "").toUpperCase(); setIndNumber(value)}}
+                onChange={(e) => {
+                  const value = e.target.value
+                    .replace(/[^a-zA-Z0-9 ]/g, "")
+                    .toUpperCase();
+                  setIndNumber(value);
+                }}
                 className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter INDoS Number"
                 disabled={disabled}
@@ -978,7 +987,7 @@ const TravelDocuments = ({
             onClick={handleEdit}
             className={`border p-2 rounded-lg px-8 ${
               isEditing
-                ? "border-red-500 text-red-500" 
+                ? "border-red-500 text-red-500"
                 : "border-[#00A264] text-[#00A264]"
             }`}
           >

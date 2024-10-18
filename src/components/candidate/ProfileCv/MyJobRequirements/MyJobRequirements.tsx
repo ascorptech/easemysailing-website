@@ -37,6 +37,8 @@ const MyJobRequirements = ({
 Props) => {
   const [rankDrop, setRankDrop] = useState<any>([]);
   const [shipTypeDrop, setShipTypeDrop] = useState<any>([]);
+  const [shipTypeDrop1, setShipTypeDrop1] = useState<any>([]);
+
   const [availabilityDate, setAvailabilityDate] = useState("");
   const [primaryRank, setPrimaryRank] = useState("");
 
@@ -114,8 +116,14 @@ Props) => {
       setRankDrop(res?.data?.values);
     });
     GetDropdownDetails("shipType", (res: any) => {
+
       
       setShipTypeDrop(res?.data?.values);
+      let tempArray = res?.data?.values.map((element: any) => ({
+        label: element?.toUpperCase(),
+        value: element,
+      }));
+      setShipTypeDrop1(tempArray)
     });
   }, []);
 
@@ -164,9 +172,8 @@ Props) => {
     if (result?.status == 200) {
       console.log(result);
       toast.success("Job requirements submited successfully");
-      // setTimeout(() => {
-      //   window.location.reload();
-      // }, 1000);
+      setDisabled(!disabled);
+    setIsEditing((prev) => !prev);
       setDisabled(!disabled);
     setIsEditing((prev) => !prev);
     } else {

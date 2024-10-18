@@ -52,8 +52,6 @@ const ShorJob = ({
 
   useEffect(() => {
     GetDropdownDetails("shorejobinterest", (res: any) => {
-      // console.log('County',res?.data)
-
       let tempArray = res?.data?.values.map((element: any) => ({
         label: element?.toUpperCase(),
         value: element,
@@ -85,9 +83,8 @@ const ShorJob = ({
       AddShoreJobData(data, (result: any) => {
         if (result?.status == 200 || result?.status == 201) {
           toast.success("Shore Job submited successfully");
-          setTimeout(() => {
-            window.location.reload();
-          }, 1000);
+          setDisabled(!disabled);
+          setIsEditing((prev) => !prev);
         } else {
           toast.error("Shore Job not submited ");
         }
@@ -97,8 +94,8 @@ const ShorJob = ({
 
   const totalFields = 1;
   const filledFields = [areYouIntrested].filter(Boolean).length;
-  const percentage = (filledFields / totalFields) * 100;
-  // let color = "";
+  const percentage: any =
+  totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;  // let color = "";
 
   useEffect(() => {
     if (percentage <= 30) {
@@ -193,7 +190,7 @@ const ShorJob = ({
             onClick={handleEdit}
             className={`border p-2 rounded-lg px-8 ${
               isEditing
-                ? "border-red-500 text-red-500" 
+                ? "border-red-500 text-red-500"
                 : "border-[#00A264] text-[#00A264]"
             }`}
           >

@@ -49,7 +49,9 @@ const NextOfKinDetails = ({
 
   // const percentage = (filledFields / totalFields) * 100;
 
-  const percentage:any = totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
+  // const percentage:any = totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
+  const percentage: any =
+  totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
   // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
   // let color;
   useEffect(() => {
@@ -123,9 +125,8 @@ const NextOfKinDetails = ({
     if (result?.status == 200 || result?.status == 201) {
       console.log(result)
       toast.success("Next Of Kin Details submited successfully");
-      setTimeout(() => {
-        window.location.reload()
-      }, 1000);
+      setDisabled(!disabled);
+      setIsEditing((prev) => !prev);
     } else {
       console.log(result)
       toast.error("Next Of Kin Details not submited ");

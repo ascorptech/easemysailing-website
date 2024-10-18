@@ -282,9 +282,8 @@ const AcademicDetails = ({
     if (result?.status == 200 || result?.status == 201) {
       console.log(result);
       toast.success("Academic Details submited successfully");
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
+      setDisabled(!disabled);
+      setIsEditing((prev) => !prev);
     } else {
       toast.error("Next Of Kin Details not submited ");
     }

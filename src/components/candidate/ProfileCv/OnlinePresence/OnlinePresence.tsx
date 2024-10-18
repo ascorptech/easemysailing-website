@@ -209,9 +209,8 @@ const OnlinePresence = ({
     if (result?.status == 200 || result?.status == 201) {
       console.log(result);
       toast.success("Online Presence submited successfully");
-      // setTimeout(() => {
-      //   window.location.reload();
-      // }, 1000);
+      setDisabled(!disabled);
+    setIsEditing((prev) => !prev);
     } else {
       console.log(result);
       toast.error("Online Presence not submited ");
@@ -225,15 +224,7 @@ const OnlinePresence = ({
     // toast.info("You are now in edit mode. Make your changes.");
   };
 
-  const handlePhoneNumberChange = (setter: any) => (e: any) => {
-    let value = e.target.value;
-    // Remove any non-numeric characters
-    value = value.replace(/[^0-9]/g, "");
-    // Limit to 10 digits
-    if (value.length <= 10) {
-      setter(value);
-    }
-  };
+
 
   const validateInputs = () => {
     let formIsValid = true;

@@ -215,9 +215,8 @@ const Refrences = ({
   const AddReferencesDataCB = (result: any) => {
     if (result?.status == 200 || result?.status == 201) {
       toast.success("Refrences submited successfully");
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
+      setDisabled(!disabled);
+    setIsEditing((prev) => !prev);
     } else {
       toast.error("Refrences  not submited ");
     }

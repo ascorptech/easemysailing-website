@@ -155,24 +155,13 @@ const PersonalDetails = ({
     console.log(result);
     if (result?.status == 200) {
       toast.success("Personal detail submited successfully");
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
+      setDisabled(!disabled);
+    setIsEditing((prev) => !prev);
     } else {
       toast.error("Personal detail not submited ");
     }
   };
 
-  const handleImageChange = (e: any) => {
-    if (e.target.files && e.target.files.length > 0) {
-      const imageUrl = URL.createObjectURL(e.target.files[0]);
-      setImage(e.target.files[0]);
-      setSelectedImage(imageUrl);
-    }
-  };
-  const removeSelectedImage = () => {
-    setSelectedImage(null); // Remove the selected image
-  };
 
   const handleEdit = () => {
     setDisabled(!disabled);

@@ -4,7 +4,7 @@ import { useState } from "react";
 import CircularProgress from "../CircularProgress";
 import { AddAboutMeData } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import { toast } from "react-toastify";
-import { Link } from "lucide-react";
+import Link from "next/link";
 
 type AboutMeComplete = {
   percentage: number;
@@ -35,7 +35,6 @@ const AboutMe = ({
   const [disabled, setDisabled] = useState(true);
   const [color, setColor] = useState("");
   const [isEditing, setIsEditing] = useState(false);
-
 
   const totalFields = 4;
   const filledFields = [personality, additional, myFuture, criminal].filter(
@@ -109,7 +108,7 @@ const AboutMe = ({
       console.log(result);
       toast.success("About me submited successfully");
       setDisabled(!disabled);
-    setIsEditing((prev) => !prev);
+      setIsEditing((prev) => !prev);
     } else {
       console.log(result);
       toast.error("About me not submited ");
@@ -268,8 +267,8 @@ const AboutMe = ({
           >
             Save
           </button>
-          <button
-            
+          <Link
+            href={"#"}
             onClick={handleEdit}
             className={`border p-2 rounded-lg px-8 ${
               isEditing
@@ -278,7 +277,7 @@ const AboutMe = ({
             }`}
           >
             {isEditing ? "Cancel" : "Edit"} {/* Conditional rendering */}
-          </button>
+          </Link>
         </div>
       </form>
     </div>

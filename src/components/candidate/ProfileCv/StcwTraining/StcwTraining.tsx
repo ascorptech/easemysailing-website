@@ -63,29 +63,30 @@ const StcwTraining = ({
 
   useEffect(() => {
     if (sTCWDetail) {
-      let combineLng = sTCWDetail?.stcwTrainingDetails?.length?sTCWDetail?.stcwTrainingDetails?.map((lang: any) => ({
-        training: lang?.trainingName,
-        number: lang?.certificateNumber,
-        issuingCountry:lang?.issuingCountry,
-        issuedate: moment(lang?.issueDate).format("YYYY-MM-DD"),
-        exdate: moment(lang?.expiryDate).format("YYYY-MM-DD"),
-        neverExpires: lang?.neverExpires,
-        selectedFile: lang?.documentUrl,
-      })):[
-        {
-          number: "",
-          issuedate: "",
-          exdate: "",
-          issuingCountry: "",
-          training: "",
-          neverExpires: "",
-          selectedFile: null,
-        },
-      ];
-      setStcwTraining(combineLng)
-
-  }
-}, [sTCWDetail]);
+      let combineLng = sTCWDetail?.stcwTrainingDetails?.length
+        ? sTCWDetail?.stcwTrainingDetails?.map((lang: any) => ({
+            training: lang?.trainingName,
+            number: lang?.certificateNumber,
+            issuingCountry: lang?.issuingCountry,
+            issuedate: moment(lang?.issueDate).format("YYYY-MM-DD"),
+            exdate: moment(lang?.expiryDate).format("YYYY-MM-DD"),
+            neverExpires: lang?.neverExpires,
+            selectedFile: lang?.documentUrl,
+          }))
+        : [
+            {
+              number: "",
+              issuedate: "",
+              exdate: "",
+              issuingCountry: "",
+              training: "",
+              neverExpires: "",
+              selectedFile: null,
+            },
+          ];
+      setStcwTraining(combineLng);
+    }
+  }, [sTCWDetail]);
 
   useEffect(() => {
     GetDropdownDetails("STCHTraining", (res: any) => {
@@ -112,8 +113,8 @@ const StcwTraining = ({
     0
   );
 
-  const percentage = (filledFields / (totalFields * stcwTraining.length)) * 100;
-  // let color = "";
+  const percentage: any =
+  totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
 
   // const totalFields = available === "Yes" ? 6 : 5;
 
@@ -124,29 +125,27 @@ const StcwTraining = ({
     console.log("user", userDetail);
     if (percentage <= 30) {
       setSTCWComplete((prevState) => ({
-        ...prevState, 
-        percentage: percentage, 
-        color: "#FF0000", 
+        ...prevState,
+        percentage: percentage,
+        color: "#FF0000",
       }));
       setColor("#FF0000");
     } else if (percentage <= 70) {
       setSTCWComplete((prevState) => ({
-        ...prevState, 
+        ...prevState,
         percentage: percentage,
-        color: "#FF9900", 
+        color: "#FF9900",
       }));
       setColor("#FF9900");
     } else {
       setSTCWComplete((prevState) => ({
-        ...prevState, 
-        percentage: percentage, 
-        color: "#00A264", 
+        ...prevState,
+        percentage: percentage,
+        color: "#00A264",
       }));
       setColor("#00A264");
     }
   }, [percentage, color]);
-
-  
 
   const handleAddForm = () => {
     setStcwTraining([
@@ -176,8 +175,6 @@ const StcwTraining = ({
       toast.error("Please accept the declaration");
       return;
     } else {
-     
-
       let data: any = {
         id: userDetail?.userId,
         color: color,
@@ -197,8 +194,6 @@ const StcwTraining = ({
       });
       data.stcwTrainingDetails = stcwArray;
 
-      
-
       AddStcwData(data, AddStcwDataCB);
     }
   };
@@ -206,9 +201,8 @@ const StcwTraining = ({
   const AddStcwDataCB = (result: any) => {
     if (result?.status == 200 || result?.status == 201) {
       toast.success("STCW Training submited successfully");
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
+      setDisabled(!disabled);
+      setIsEditing((prev) => !prev);
     } else {
       toast.error("STCW Training not submited ");
     }
@@ -229,7 +223,6 @@ const StcwTraining = ({
       setStcwTraining(updatedForms);
     };
     reader.readAsDataURL(file);
-    
   };
 
   const handleFormChange = (
@@ -241,8 +234,6 @@ const StcwTraining = ({
     updatedForms[index][field] = value;
     setStcwTraining(updatedForms);
   };
-
- 
 
   const handleEdit = () => {
     setDisabled(!disabled);
@@ -344,10 +335,12 @@ const StcwTraining = ({
                     id={`number12_${index}`}
                     type="text"
                     value={field.number}
-                    onChange={(e) =>{
-                      const value = e.target.value.replace(/[^a-zA-Z0-9. ]/g, "").toUpperCase();
-                      handleFormChange(index, "number", value)}
-                    }
+                    onChange={(e) => {
+                      const value = e.target.value
+                        .replace(/[^a-zA-Z0-9. ]/g, "")
+                        .toUpperCase();
+                      handleFormChange(index, "number", value);
+                    }}
                     className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
                     placeholder="Enter Certificate Number"
                     disabled={disabled}
@@ -371,7 +364,6 @@ const StcwTraining = ({
                     }
                     disabled={disabled}
                     max={new Date().toISOString().split("T")[0]}
-
                   />
                 </div>
 
@@ -392,7 +384,6 @@ const StcwTraining = ({
                         handleFormChange(index, "exdate", e.target.value)
                       }
                       min={new Date().toISOString().split("T")[0]}
-
                       disabled={disabled}
                     />
                   </div>
@@ -461,16 +452,16 @@ const StcwTraining = ({
               Save
             </button>
             <Link
-            href={"#"}
-            onClick={handleEdit}
-            className={`border p-2 rounded-lg px-8 ${
-              isEditing
-                ? "border-red-500 text-red-500" 
-                : "border-[#00A264] text-[#00A264]"
-            }`}
-          >
-            {isEditing ? "Cancel" : "Edit"} {/* Conditional rendering */}
-          </Link>
+              href={"#"}
+              onClick={handleEdit}
+              className={`border p-2 rounded-lg px-8 ${
+                isEditing
+                  ? "border-red-500 text-red-500"
+                  : "border-[#00A264] text-[#00A264]"
+              }`}
+            >
+              {isEditing ? "Cancel" : "Edit"} {/* Conditional rendering */}
+            </Link>
           </div>
         </div>
       </form>

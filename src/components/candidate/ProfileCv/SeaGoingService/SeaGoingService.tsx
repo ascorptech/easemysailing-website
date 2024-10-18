@@ -167,9 +167,8 @@ const SeaGoingService = ({
     if (result?.status == 200 || result?.status == 201) {
       console.log(result);
       toast.success("Sea Going Detaila submited successfully");
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
+      setDisabled(!disabled);
+    setIsEditing((prev) => !prev);
     } else {
       console.log(result);
       toast.error("Sea Going Detaila  not submited");

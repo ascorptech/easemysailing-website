@@ -441,8 +441,7 @@ const TravelDocuments = ({
               value={issuedate}
               onChange={(e) => setIssueDate(e.target.value)}
               disabled={disabled}
-              required
-              placeholder="Enter Issue Date"
+              max={new Date().toISOString().split("T")[0]}
             />
           </div>
           {/* </div> */}
@@ -463,9 +462,8 @@ const TravelDocuments = ({
               value={exdate}
               onChange={(e) => setExDate(e.target.value)}
               disabled={disabled}
-              required
-              placeholder="Enter Expiry Date"
-            />
+              min={new Date().toISOString().split("T")[0]}
+              />
           </div>
           <div className="grid col-span-2 ">
             <label
@@ -597,8 +595,7 @@ const TravelDocuments = ({
               value={issuedate1}
               onChange={(e) => setIssueDate1(e.target.value)}
               disabled={disabled}
-              required
-              placeholder="Enter Issue Date"
+              max={new Date().toISOString().split("T")[0]}
             />
           </div>
 
@@ -618,8 +615,7 @@ const TravelDocuments = ({
                 value={exdate1}
                 onChange={(e) => setExDate1(e.target.value)}
                 disabled={disabled}
-                required
-                placeholder="Enter Expiry Date"
+                min={new Date().toISOString().split("T")[0]}
               />
             </div>
           )}
@@ -764,8 +760,8 @@ const TravelDocuments = ({
                   handleFormChangeVisa(index, "issueDateVisa", e.target.value)
                 }
                 disabled={disabled}
-                placeholder="Enter  Issue Date"
-              />
+                max={new Date().toISOString().split("T")[0]}
+                />
             </div>
 
             <div className="">
@@ -785,7 +781,7 @@ const TravelDocuments = ({
                   handleFormChangeVisa(index, "expryDateVisa", e.target.value)
                 }
                 disabled={disabled}
-                placeholder="Enter  Expiry Date"
+                min={new Date().toISOString().split("T")[0]}
               />
             </div>
 
@@ -890,7 +886,7 @@ const TravelDocuments = ({
               value={issueDate2}
               onChange={(e) => setIssueDate2(e.target.value)}
               disabled={disabled}
-              placeholder="Enter Issue Date"
+              max={new Date().toISOString().split("T")[0]}
             />
           </div>
 
@@ -909,8 +905,8 @@ const TravelDocuments = ({
               value={expDate2}
               onChange={(e) => setExpDate2(e.target.value)}
               disabled={disabled}
-              placeholder="Enter Expiry Date"
-            />
+              min={new Date().toISOString().split("T")[0]}
+              />
           </div>
           {/* </div> */}
 

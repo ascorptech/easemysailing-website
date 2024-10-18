@@ -164,7 +164,7 @@ const MedicalCertificates = ({
   ].filter(Boolean).length;
 
   const percentage: any =
-  totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
+    totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
@@ -217,8 +217,6 @@ const MedicalCertificates = ({
     reader.readAsDataURL(file);
   };
 
- 
-
   const handleFileChangesOthers = (index: number, event: any) => {
     const file = event.target.files?.[0];
 
@@ -232,7 +230,6 @@ const MedicalCertificates = ({
       setOtherVaccinationForms(updatedForms);
     };
     reader.readAsDataURL(file);
-   
   };
 
   const handleFormChangeOthers = (
@@ -309,26 +306,27 @@ const MedicalCertificates = ({
         moment(medicalDetail.covidVaccineDate2).format("YYYY-MM-DD")
       );
 
-      let combineLng =medicalDetail?.otherVaccinations?.length?medicalDetail?.otherVaccinations?.map((medical: any) => ({
-        medicalType1: medical?.otherVaccinationType,
-        vaccination1: moment(medical?.otherVaccinationDate).format(
-          "YYYY-MM-DD"
-        ),
-        vaccinationexp: moment(medical?.otherVaccinationExpiryDate).format(
-          "YYYY-MM-DD"
-        ),
-        selectedFilesOthers: medical?.otherVaccinationDocumentUrl,
-      })):[
-        {
-          medicalType1: "",
-          vaccination1: "",
-          vaccinationexp: "",
-          veccinationCheck: "",
-          selectedFilesOthers: null,
-        },
-      ] ;
+      let combineLng = medicalDetail?.otherVaccinations?.length
+        ? medicalDetail?.otherVaccinations?.map((medical: any) => ({
+            medicalType1: medical?.otherVaccinationType,
+            vaccination1: moment(medical?.otherVaccinationDate).format(
+              "YYYY-MM-DD"
+            ),
+            vaccinationexp: moment(medical?.otherVaccinationExpiryDate).format(
+              "YYYY-MM-DD"
+            ),
+            selectedFilesOthers: medical?.otherVaccinationDocumentUrl,
+          }))
+        : [
+            {
+              medicalType1: "",
+              vaccination1: "",
+              vaccinationexp: "",
+              veccinationCheck: "",
+              selectedFilesOthers: null,
+            },
+          ];
       setOtherVaccinationForms(combineLng);
-      
 
       setTypeOptions(medicalDetail.drugTestType);
       setIssuingCountryOpt(medicalDetail.drugTestIssuingCountry);
@@ -337,7 +335,7 @@ const MedicalCertificates = ({
         moment(medicalDetail.covidVaccineDate1).format("YYYY-MM-DD")
       );
       setCovidOptions(medicalDetail.covidVaccineCountry);
-     
+
       setMedicalTypeFlag(medicalDetail.flagMedicalType);
       setVaccinationFlag(
         moment(medicalDetail.flagMedicalVaccinationDate).format("YYYY-MM-DD")
@@ -367,7 +365,7 @@ const MedicalCertificates = ({
         fitnessMedicalCenter: fMedicalcenter,
         fitnessIssueDate: issuedate,
         fitnessExpiryDate: exdate,
-        
+
         fitnessDocumentUrl: selectedFile,
 
         drugTestType: typeOptions,
@@ -377,23 +375,22 @@ const MedicalCertificates = ({
         drugTestCenter: testCenter,
         drugTestIssueDate: issuedate1,
         drugTestExpiryDate: exdate1,
-       
+
         drugTestDocumentUrl: selectedFiles,
 
         covidVaccineType: medicalType,
         covidVaccineCountry: covidOptions,
         covidVaccineMedicalCenter: medicalPhysician,
         covidVaccineDate1: vaccinationIssue,
-        
+
         covidVaccineDocumentUrl1: selectedFilesCovid,
 
         covidVaccineDate2: issuedateCovid,
-        
 
         flagMedicalType: medicalTypeFlag,
         flagMedicalVaccinationDate: vaccinationFlag,
         flagMedicalExpiryDate: vaccinationexpFlag,
-     
+
         flagMedicalDocumentUrl: selectedFilesFlag,
         color: color,
         completed: percentage,
@@ -433,19 +430,17 @@ const MedicalCertificates = ({
     // toast.info("You are now in edit mode. Make your changes.");
   };
 
-
   const handleValidationChange = (setValue: any) => (e: any) => {
     const value = e.target.value;
-    const alphabeticValue = value.replace(/[^A-Za-z\s]/g, ""); 
-    const capitalizedValue =
-      alphabeticValue.charAt(0).toUpperCase() + alphabeticValue.slice(1); 
-    setValue(capitalizedValue);
+    const alphabeticValue = value.replace(/[^A-Za-z\s]/g, "").toUpperCase();
+
+    setValue(alphabeticValue);
   };
 
   const handlePhoneNumberChange = (setter: any) => (e: any) => {
     let value = e.target.value;
 
-    value = value.replace(/[^a-zA-Z0-9 ]/g, "");
+    value = value.replace(/[^a-zA-Z0-9 ]/g, "").toUpperCase();
     setter(value);
 
     // if (value.length <= 10) {
@@ -569,7 +564,6 @@ const MedicalCertificates = ({
             />
           </div>
 
-         
           <div className="">
             <label
               className="text-[14px] leading-[19.07px]  text-[#333333]"
@@ -585,7 +579,7 @@ const MedicalCertificates = ({
               onChange={(e) => setIssueDate(e.target.value)}
               disabled={disabled}
               max={new Date().toISOString().split("T")[0]}
-              />
+            />
           </div>
           {/* </div> */}
 
@@ -605,7 +599,8 @@ const MedicalCertificates = ({
                 value={exdate}
                 onChange={(e) => setExDate(e.target.value)}
                 disabled={disabled}
-                placeholder="Enter Expiry Date"
+                min={new Date().toISOString().split("T")[0]}
+
               />
             </div>
           )}
@@ -787,7 +782,7 @@ const MedicalCertificates = ({
               onChange={(e) => setIssueDate1(e.target.value)}
               disabled={disabled}
               max={new Date().toISOString().split("T")[0]}
-              />
+            />
           </div>
 
           {!expires2 && (
@@ -806,8 +801,8 @@ const MedicalCertificates = ({
                 value={exdate1}
                 onChange={(e) => setExDate1(e.target.value)}
                 disabled={disabled}
-                placeholder="Enter Expiry Date"
-              />
+                min={new Date().toISOString().split("T")[0]}
+                />
             </div>
           )}
           <div className=" flex items-center  gap-2 mt-5">
@@ -951,7 +946,7 @@ const MedicalCertificates = ({
               onChange={(e) => setVaccinationIssue(e.target.value)}
               disabled={disabled}
               max={new Date().toISOString().split("T")[0]}
-              />
+            />
           </div>
 
           {/* <div className="">
@@ -986,7 +981,7 @@ const MedicalCertificates = ({
               onChange={(e) => setIssueDateCovid(e.target.value)}
               disabled={disabled}
               max={new Date().toISOString().split("T")[0]}
-              />
+            />
           </div>
 
           {/* {!expiresMedical && (
@@ -1129,7 +1124,7 @@ const MedicalCertificates = ({
                 }
                 disabled={disabled}
                 max={new Date().toISOString().split("T")[0]}
-                />
+              />
             </div>
 
             {!field.veccinationCheck && (
@@ -1154,8 +1149,8 @@ const MedicalCertificates = ({
                     )
                   }
                   disabled={disabled}
-                  placeholder="Enter Expiry Date"
-                />
+                  min={new Date().toISOString().split("T")[0]}
+                  />
               </div>
             )}
             <div className=" flex items-center  gap-2 mt-5">
@@ -1393,7 +1388,7 @@ const MedicalCertificates = ({
               onChange={(e) => setVaccinationFlag(e.target.value)}
               disabled={disabled}
               max={new Date().toISOString().split("T")[0]}
-              />
+            />
           </div>
 
           {!veccinationCheckFlag && (
@@ -1412,8 +1407,8 @@ const MedicalCertificates = ({
                 value={vaccinationexpFlag}
                 onChange={(e) => setVaccinationexpFlag(e.target.value)}
                 disabled={disabled}
-                placeholder="Enter Expiry Date"
-              />
+                min={new Date().toISOString().split("T")[0]}
+                />
             </div>
           )}
           <div className=" flex items-center  gap-2 mt-5">

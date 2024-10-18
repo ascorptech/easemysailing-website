@@ -741,7 +741,7 @@ const PreSeaTrainigDetails = ({
             <input
               type="text"
               value={technicalManager}
-              onChange={(e) =>{const value = e.target.value.replace(/[^a-zA-Z ]/g, ""); setTechnicalManager(value)}}
+              onChange={(e) =>{const value = e.target.value.replace(/[^a-zA-Z ]/g, "").toUpperCase(); setTechnicalManager(value)}}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder="Enter Technical Manager"
               disabled={disabled}
@@ -754,7 +754,7 @@ const PreSeaTrainigDetails = ({
             <input
               type="text"
               value={operator}
-              onChange={(e) => {const value = e.target.value.replace(/[^a-zA-Z ]/g, "");setOperator(value)}}
+              onChange={(e) => {const value = e.target.value.replace(/[^a-zA-Z ]/g, "").toUpperCase();setOperator(value)}}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder="Enter Operator"
               disabled={disabled}
@@ -771,7 +771,7 @@ const PreSeaTrainigDetails = ({
             <input
               type="text"
               value={vesselType}
-              onChange={(e) =>{const value = e.target.value.replace(/[^a-zA-Z ]/g, ""); setVesselType(value)}}
+              onChange={(e) =>{const value = e.target.value.replace(/[^a-zA-Z ]/g, "").toUpperCase(); setVesselType(value)}}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder="Enter Company Vessel Type"
               disabled={disabled}
@@ -785,7 +785,7 @@ const PreSeaTrainigDetails = ({
             <input
               type="text"
               value={commercialSpecification}
-              onChange={(e) => {const value = e.target.value.replace(/[^a-zA-Z ]/g, "");setCommercialSpecification(value)}}
+              onChange={(e) => {const value = e.target.value.replace(/[^a-zA-Z ]/g, "").toUpperCase();setCommercialSpecification(value)}}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder="Enter Commercial Specification"
               disabled={disabled}
@@ -799,7 +799,7 @@ const PreSeaTrainigDetails = ({
             <input
               type="text"
               value={designSpecification}
-              onChange={(e) =>{const value = e.target.value.replace(/[^a-zA-Z ]/g, ""); setDesignSpecification(value)}}
+              onChange={(e) =>{const value = e.target.value.replace(/[^a-zA-Z ]/g, "").toUpperCase(); setDesignSpecification(value)}}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder="Enter Design Specification"
               disabled={disabled}
@@ -816,7 +816,7 @@ const PreSeaTrainigDetails = ({
               <input
                 type="text"
                 value={dPHours}
-                onChange={(e) => {const value = e.target.value.replace(/[^a-zA-Z0-9. ]/g, "");setDPHours(value)}}
+                onChange={(e) => {const value = e.target.value.replace(/[^0-9 ]/g, "");setDPHours(value)}}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
                 placeholder="Enter  DP hours"
                 disabled={disabled}

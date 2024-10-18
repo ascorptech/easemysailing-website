@@ -184,7 +184,7 @@ const SeaGoingService = ({
 
   const handleValidationChange = (valid: any) => (e: any) => {
     const value = e.target.value;
-    const alphabeticValue = value.replace(/[^A-Za-z\s]/g, "");
+    const alphabeticValue = value.replace(/[^A-Za-z\s]/g, "").toUpperCase();
     valid(alphabeticValue);
   };
 
@@ -228,7 +228,7 @@ const SeaGoingService = ({
               id="imo"
               type="text"
               value={imo}
-              onChange={(e) => setImo(e.target.value)}
+              onChange={(e) =>{ const value = e.target.value.replace(/[^0-9]/g, '');setImo(value)}}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder="Enter IMO"
               disabled={disabled}

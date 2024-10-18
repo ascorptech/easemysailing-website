@@ -294,24 +294,24 @@ const AcademicDetails = ({
     setIsHideShow(!isHideShow);
   };
 
-  const handleValidationChange = (setValue: any) => (e: any) => {
-    const value = e.target.value;
-    const alphabeticValue = value.replace(/[^A-Za-z\s]/g, "");
-    const capitalizedValue =
-      alphabeticValue.charAt(0).toUpperCase() + alphabeticValue.slice(1);
-    setValue(capitalizedValue);
-  };
+  // const handleValidationChange = (setValue: any) => (e: any) => {
+  //   const value = e.target.value;
+  //   const alphabeticValue = value.replace(/[^A-Za-z\s]/g, "");
+  //   const capitalizedValue =
+  //     alphabeticValue.charAt(0).toUpperCase() + alphabeticValue.slice(1);
+  //   setValue(capitalizedValue);
+  // };
 
-  const handlePhoneNumberChange = (setter: any) => (e: any) => {
-    let value = e.target.value;
+  // const handlePhoneNumberChange = (setter: any) => (e: any) => {
+  //   let value = e.target.value;
 
-    value = value.replace(/[^0-9]/g, "");
-    // setter(value);
+  //   value = value.replace(/[^0-9]/g, "");
+  //   // setter(value);
 
-    if (value.length <= 2) {
-      setter(value);
-    }
-  };
+  //   if (value.length <= 2) {
+  //     setter(value);
+  //   }
+  // };
 
   return (
     <div className="container border-2 shadow-lg p-3 mt-[14px] mb-8">
@@ -352,12 +352,9 @@ const AcademicDetails = ({
                   const alphabeticValue = e.target.value.replace(
                     /[^A-Za-z\s]/g,
                     ""
-                  );
-                  const capitalizedValue =
-                    alphabeticValue.charAt(0).toUpperCase() +
-                    alphabeticValue.slice(1);
-
-                  handleFormChange(index, "degree", capitalizedValue);
+                  ).toUpperCase();
+                 
+                  handleFormChange(index, "degree", alphabeticValue);
                 }}
                 // onChange={(e) =>
                 //   handleFormChange(index, "degree", e.target.value)
@@ -401,6 +398,8 @@ const AcademicDetails = ({
                 }
                 className="border rounded-md w-full h-9 px-2 text-[14px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 disabled={disabled}
+                // max={new Date().toISOString().split("T")[0]}
+                max={new Date(new Date().setDate(new Date().getDate() - 1)).toISOString().split("T")[0]}
               />
             </div>
             <div>
@@ -413,7 +412,7 @@ const AcademicDetails = ({
                 }
                 className="border rounded-md w-full h-9 px-2 text-[14px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 disabled={disabled}
-              />
+                max={new Date(new Date().setDate(new Date().getDate() - 1)).toISOString().split("T")[0]}/>
             </div>
 
             <div className="grid col-span-2 gap-4 ">
@@ -484,11 +483,9 @@ const AcademicDetails = ({
                   const alphabeticValue = e.target.value.replace(
                     /[^A-Za-z\s]/g,
                     ""
-                  );
-                  const capitalizedValue =
-                    alphabeticValue.charAt(0).toUpperCase() +
-                    alphabeticValue.slice(1);
-                  handleFormChangeEdu(index, "university", capitalizedValue);
+                  ).toUpperCase();
+                  
+                  handleFormChangeEdu(index, "university", alphabeticValue);
                 }}
                 className="border rounded-md w-full h-9 px-2 text-[14px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Your University"
@@ -507,11 +504,9 @@ const AcademicDetails = ({
                   const alphabeticValue = e.target.value.replace(
                     /[^A-Za-z\s]/g,
                     ""
-                  );
-                  const capitalizedValue =
-                    alphabeticValue.charAt(0).toUpperCase() +
-                    alphabeticValue.slice(1);
-                  handleFormChangeEdu(index, "subject", capitalizedValue);
+                  ).toUpperCase();
+                  
+                  handleFormChangeEdu(index, "subject", alphabeticValue);
                 }}
                 className="border rounded-md w-full h-9 px-2 text-[14px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Your Subject"
@@ -530,11 +525,9 @@ const AcademicDetails = ({
                   const alphabeticValue = e.target.value.replace(
                     /[^A-Za-z\s]/g,
                     ""
-                  );
-                  const capitalizedValue =
-                    alphabeticValue.charAt(0).toUpperCase() +
-                    alphabeticValue.slice(1);
-                  handleFormChangeEdu(index, "city", capitalizedValue);
+                  ).toUpperCase();
+                  
+                  handleFormChangeEdu(index, "city", alphabeticValue);
                 }}
                 className="border rounded-md w-full h-9 px-2 text-[14px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Your City"

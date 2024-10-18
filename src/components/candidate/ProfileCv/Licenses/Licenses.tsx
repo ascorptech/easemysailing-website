@@ -577,9 +577,10 @@ const Licenses = ({
   const handleValidationChange = (setValue: any) => (e: any) => {
     const value = e.target.value;
     const alphabeticValue = value.replace(/[^A-Za-z\s]/g, ""); 
-    const capitalizedValue =
-      alphabeticValue.charAt(0).toUpperCase() + alphabeticValue.slice(1); 
-    setValue(capitalizedValue);
+    // const capitalizedValue =
+    //   alphabeticValue.charAt(0).toUpperCase() + alphabeticValue.slice(1); 
+    const upperCaseValue = alphabeticValue.toUpperCase(); 
+    setValue(upperCaseValue);
   };
 
   return (
@@ -670,7 +671,7 @@ const Licenses = ({
                       id={`Certificate_${index}`}
                       type="text"
                       value={field.certificateNo}
-                      onChange={(e) =>{const value = e.target.value.replace(/[^a-zA-Z0-9. ]/g, "");
+                      onChange={(e) =>{const value = e.target.value.replace(/[^a-zA-Z0-9. ]/g, "").toUpperCase();
                         handleFormChange(index, "certificateNo", value)
                       }}
                       className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
@@ -755,7 +756,7 @@ const Licenses = ({
                       id={`Limitation_${index}`}
                       type="text"
                       value={field.areaLimitation}
-                      onChange={(e) =>{const value = e.target.value.replace(/[^a-zA-Z0-9. ]/g, "");
+                      onChange={(e) =>{const value = e.target.value.replace(/[^a-zA-Z0-9. ]/g, "").toUpperCase();
                         handleFormChange(
                           index,
                           "areaLimitation",
@@ -780,7 +781,7 @@ const Licenses = ({
                       id={`OtherLimitation_${index}`}
                       type="text"
                       value={field.otherLimitation}
-                      onChange={(e) =>{const value = e.target.value.replace(/[^a-zA-Z0-9. ]/g, "");
+                      onChange={(e) =>{const value = e.target.value.replace(/[^a-zA-Z0-9. ]/g, "").toUpperCase();
                         handleFormChange(
                           index,
                           "otherLimitation",
@@ -809,7 +810,7 @@ const Licenses = ({
                       onChange={(e) =>
                         handleFormChange(index, "issueDate", e.target.value)
                       }
-                      placeholder="Enter Issue Date"
+                      // placeholder="Enter Issue Date"
                       disabled={disabled}
                       max={new Date().toISOString().split("T")[0]}
                     />
@@ -830,7 +831,7 @@ const Licenses = ({
                         handleFormChange(index, "expiryDate", e.target.value)
                       }
                       disabled={disabled}
-                      placeholder="Enter Expiry Date"
+                      min={new Date().toISOString().split("T")[0]}
                     />
                   </div>
                   {/* {extraFields.map((field, index) => (
@@ -983,7 +984,7 @@ const Licenses = ({
                   id={`cNumber_${index}`}
                   type="text"
                   value={field1.number}
-                  onChange={(e) =>{const value = e.target.value.replace(/[^a-zA-Z0-9. ]/g, "");
+                  onChange={(e) =>{const value = e.target.value.replace(/[^a-zA-Z0-9. ]/g, "").toUpperCase();
                     handleFormChangeGlobal(index, "number", value)
                     }}
                   className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
@@ -1072,6 +1073,8 @@ const Licenses = ({
                     )
                   }
                   disabled={disabled}
+                  min={new Date().toISOString().split("T")[0]}
+
                   
                 />
               </div>
@@ -1218,13 +1221,13 @@ const Licenses = ({
                       <input
                         type="text"
                         value={field.number1}
-                        onChange={(e) =>
+                        onChange={(e) =>{const value = e.target.value.replace(/[^a-zA-Z0-9.]/g, "").toUpperCase();
                           handleFormChangeEndors(
                             index,
                             "number1",
-                            e.target.value
+                            value
                           )
-                        }
+                        }}
                         className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                         placeholder="Enter Certificate Number"
                         disabled={disabled}
@@ -1320,8 +1323,9 @@ const Licenses = ({
                             e.target.value
                           )
                         }
-                        placeholder="Enter Expiry Date"
                         disabled={disabled}
+                        min={new Date().toISOString().split("T")[0]}
+
                       />
                     </div>
                   </div>

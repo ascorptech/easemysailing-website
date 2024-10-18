@@ -54,8 +54,7 @@ const KycDetails = ({
   const [certi2015, setCerti2015] = useState<any>("");
   const [certi2018, setCerti2018] = useState<any>("");
   const [selectedFile, setSelectedFile] = useState<any>(null);
-  const [selectedFile1, setSelectedFile1] = useState<any>(null);
-  const [selectedFile2, setSelectedFile2] = useState<any>(null);
+  
   //   const [selectedFileany, setSelectedany] = useState<any>(null);
 
   const [sTCHTrainOption, setSTCHTrainOption] = useState<any>("");
@@ -135,35 +134,6 @@ const KycDetails = ({
     }
   };
 
-  const handleFileChange2 = (event: any) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-
-      reader.onloadend = function () {
-        const imageBinary: any = reader.result;
-        const byteArray = imageBinary.split(",")[1];
-        setSelectedFile1(byteArray);
-      };
-
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const handleFileChange3 = (event: any) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-
-      reader.onloadend = function () {
-        const imageBinary: any = reader.result;
-        const byteArray = imageBinary.split(",")[1];
-        setSelectedFile2(byteArray);
-      };
-
-      reader.readAsDataURL(file);
-    }
-  };
 
   const handleAddForm = () => {
     setKycDetails([
@@ -217,12 +187,12 @@ const KycDetails = ({
 
   const AddStcwDataCB = (result: any) => {
     if (result?.status == 200 || result?.status == 201) {
-      toast.success("KycDetailsations submited successfully");
+      toast.success("Kyc Detail submited successfully");
       setTimeout(() => {
         window.location.reload();
       }, 1000);
     } else {
-      toast.error("KycDetailsations not submited ");
+      toast.error("Kyc Detail not submited ");
     }
   };
 
@@ -241,9 +211,7 @@ const KycDetails = ({
       setKycDetails(updatedForms);
     };
     reader.readAsDataURL(file);
-    // const updatedForms = [...KycDetails];
-    // updatedForms[index].selectedFile = event.target.files?.[0] || null;
-    // setKycDetails(updatedForms);
+
   };
 
   const handleFormChange = (

@@ -430,7 +430,7 @@ const CompanyParticular = ({
                   className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
                   htmlFor="number"
                 >
-                  Enter Street Number
+                  Street Number
                 </label>
                 <div className="relative flex items-center  ">
                   <input

@@ -12,6 +12,7 @@ import React from "react";
 
 type AccredForm = {
   anyother: any;
+  anyname: any;
   selectedFileany: any | null;
 };
 
@@ -38,6 +39,7 @@ const Accred = ({
   const [Accred, setAccred] = useState<AccredForm[]>([
     {
       anyother: "",
+      anyname: "",
       selectedFileany: null,
     },
   ]);
@@ -47,48 +49,33 @@ const Accred = ({
   const [color, setColor] = useState("");
   const [rplacement, setRplacement] = useState<any>("");
   const [rpName, setRpname] = useState("");
-  const [anyName, setAnyname] = useState("");
 
   const [certi2015, setCerti2015] = useState<any>("");
   const [certi2018, setCerti2018] = useState<any>("");
   const [selectedFile, setSelectedFile] = useState<any>(null);
   const [selectedFile1, setSelectedFile1] = useState<any>(null);
   const [selectedFile2, setSelectedFile2] = useState<any>(null);
-  //   const [selectedFileany, setSelectedany] = useState<any>(null);
 
-  const [sTCHTrainOption, setSTCHTrainOption] = useState<any>("");
-  //   const [countryDrop, setCountryDrop] = useState<any>([]);
-
-  useEffect(() => {
-    GetDropdownDetails("STCHTraining", (res: any) => {
-      setSTCHTrainOption(res?.data?.values);
-    });
-    GetDropdownDetails("country", (res: any) => {
-      // console.log('County',res?.data)
-      //   setCountryDrop(res?.data?.values);
-    });
-  }, []);
-
-  const totalFields = 6;
+  const totalFields = 7 + Accred.length * 3;
 
   // Collect filled fields into an array
   const filledFields = [
-    ...Accred.map((field) => [field.anyother, field.selectedFileany]).flat(),
+    ...Accred?.flatMap((field) => [
+      field.anyother,
+      field.selectedFileany,
+      field.anyname,
+    ]),
     rplacement,
     certi2015,
     certi2018,
     rpName,
-    anyName,
+    selectedFile,
+    selectedFile1,
+    selectedFile2,
   ].filter(Boolean).length; // Count only filled (truthy) fields
+  const percentage: any =
+    totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
 
-  const percentage = (filledFields / (totalFields * Accred.length)) * 100;
-  // let color = "";
-
-  // const totalFields = available === "Yes" ? 6 : 5;
-
-  // const percentage = (filledFields / totalFields) * 100;
-  // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
-  // let color;
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
@@ -164,6 +151,7 @@ const Accred = ({
     setAccred([
       ...Accred,
       {
+        anyname: "",
         anyother: "",
         selectedFileany: null,
       },
@@ -236,9 +224,7 @@ const Accred = ({
       setAccred(updatedForms);
     };
     reader.readAsDataURL(file);
-    // const updatedForms = [...Accred];
-    // updatedForms[index].selectedFile = event.target.files?.[0] || null;
-    // setAccred(updatedForms);
+   
   };
 
   const handleFormChange = (
@@ -251,15 +237,7 @@ const Accred = ({
     setAccred(updatedForms);
   };
 
-  // const handleExtraFieldChange = (
-  //   index: number,
-  //   value: string,
-  //   field: "field1" | "field2"
-  // ) => {
-  //   const updatedFields = [...extraFields];
-  //   updatedFields[index][field] = value;
-  //   setExtraFields(updatedFields);
-  // };
+
 
   const handleEdit = () => {
     setDisabled(!disabled);
@@ -271,7 +249,6 @@ const Accred = ({
       <form onSubmit={handleSubmit}>
         <div className=" flex flex-col">
           <div className="flex justify-between items-center ">
-            {/* <h1 className="text-left font-bold">STCW Training</h1> */}
           </div>
 
           <div className="">
@@ -286,6 +263,7 @@ const Accred = ({
                   value={rplacement}
                   onChange={(e) => setRplacement(e.target.value)}
                   disabled={disabled}
+                  required
                 >
                   <option value="" disabled>
                     Select
@@ -329,6 +307,7 @@ const Accred = ({
                         className="hidden"
                         onChange={handleFileChange1}
                         disabled={disabled}
+                        required
                       />
                       <div>
                         {selectedFile ? (
@@ -359,6 +338,7 @@ const Accred = ({
                   value={certi2015}
                   onChange={(e) => setCerti2015(e.target.value)}
                   disabled={disabled}
+                  required
                 >
                   <option value="" disabled>
                     Select
@@ -383,6 +363,7 @@ const Accred = ({
                         className="hidden"
                         onChange={handleFileChange2}
                         disabled={disabled}
+                        required
                       />
                     </div>
                     {/* Show selected file name or "No File Selected" */}
@@ -410,6 +391,7 @@ const Accred = ({
                   value={certi2018}
                   onChange={(e) => setCerti2018(e.target.value)}
                   disabled={disabled}
+                  required
                 >
                   <option value="" disabled>
                     Select
@@ -434,6 +416,7 @@ const Accred = ({
                         className="hidden"
                         onChange={handleFileChange3}
                         disabled={disabled}
+                        required
                       />
                     </div>
                     {/* Show selected file name or "No File Selected" */}
@@ -502,8 +485,14 @@ const Accred = ({
                             <input
                               id="trainingC"
                               type="text"
-                              value={anyName}
-                              onChange={(e) => setAnyname(e.target.value)}
+                              value={field.anyname}
+                              onChange={(e) =>
+                                handleFormChange(
+                                  index,
+                                  "anyname",
+                                  e.target.value
+                                )
+                              }
                               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
                               placeholder="Issuing Authority"
                               disabled={disabled}
@@ -515,7 +504,7 @@ const Accred = ({
                               htmlFor={`file-uploadany${index}`}
                               className="cursor-pointer  bg-[#00A264] text-[14px] leading-[19.07px]   text-white px-4 py-2 rounded-md  hover:bg-[#04714e] focus:outline-none focus:ring-2 "
                             >
-                              Attachment 
+                              Attachment
                             </label>
                             <input
                               id={`file-uploadany${index}`}
@@ -523,6 +512,7 @@ const Accred = ({
                               className="hidden"
                               onChange={(e) => handleFileChange(index, e)}
                               disabled={disabled}
+                              required
                             />
                             <div>
                               {field.selectedFileany ? (

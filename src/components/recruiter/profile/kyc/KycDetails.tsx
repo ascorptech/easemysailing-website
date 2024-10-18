@@ -11,7 +11,9 @@ import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import React from "react";
 
 type KycDetailsForm = {
-  anyother: any;
+  pancard: any;
+  uid: any;
+  question: any;
   selectedFileany: any | null;
 };
 
@@ -39,7 +41,9 @@ const KycDetails = ({
 }: Props) => {
   const [KycDetails, setKycDetails] = useState<KycDetailsForm[]>([
     {
-      anyother: "",
+      pancard: "",
+      question: "",
+      uid: "",
       selectedFileany: null,
     },
   ]);
@@ -47,52 +51,24 @@ const KycDetails = ({
   const [disabled, setDisabled] = useState(true);
   const [isHideShow, setIsHideShow] = useState(false);
   const [color, setColor] = useState("");
-  const [rplacement, setRplacement] = useState<any>("");
-  const [rpName, setRpname] = useState("");
-  const [anyName, setAnyname] = useState("");
-
-  const [certi2015, setCerti2015] = useState<any>("");
-  const [certi2018, setCerti2018] = useState<any>("");
   const [selectedFile, setSelectedFile] = useState<any>(null);
-  
-  //   const [selectedFileany, setSelectedany] = useState<any>(null);
 
-  const [sTCHTrainOption, setSTCHTrainOption] = useState<any>("");
-  //   const [countryDrop, setCountryDrop] = useState<any>([]);
-
-  useEffect(() => {
-    GetDropdownDetails("STCHTraining", (res: any) => {
-      setSTCHTrainOption(res?.data?.values);
-    });
-    GetDropdownDetails("country", (res: any) => {
-      // console.log('County',res?.data)
-      //   setCountryDrop(res?.data?.values);
-    });
-  }, []);
-
-  const totalFields = 6;
+  const totalFields = 1 + KycDetails.length * 4;
 
   // Collect filled fields into an array
   const filledFields = [
-    ...KycDetails.map((field) => [
-      field.anyother,
+    ...KycDetails.flatMap((field) => [
+      field.pancard,
+      field.uid,
       field.selectedFileany,
+      field.question,
     ]).flat(),
-    rplacement,
-    certi2015,
-    certi2018,
-    rpName,
-    anyName,
+    selectedFile,
   ].filter(Boolean).length; // Count only filled (truthy) fields
 
-  const percentage = (filledFields / (totalFields * KycDetails.length)) * 100;
-  // let color = "";
+  const percentage: any =
+    totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
 
-  // const totalFields = available === "Yes" ? 6 : 5;
-
-  // const percentage = (filledFields / totalFields) * 100;
-  // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
-  // let color;
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
@@ -134,12 +110,13 @@ const KycDetails = ({
     }
   };
 
-
   const handleAddForm = () => {
     setKycDetails([
       ...KycDetails,
       {
-        anyother: "",
+        pancard: "",
+        question: "",
+        uid: "",
         selectedFileany: null,
       },
     ]);
@@ -211,7 +188,6 @@ const KycDetails = ({
       setKycDetails(updatedForms);
     };
     reader.readAsDataURL(file);
-
   };
 
   const handleFormChange = (
@@ -224,15 +200,7 @@ const KycDetails = ({
     setKycDetails(updatedForms);
   };
 
-  // const handleExtraFieldChange = (
-  //   index: number,
-  //   value: string,
-  //   field: "field1" | "field2"
-  // ) => {
-  //   const updatedFields = [...extraFields];
-  //   updatedFields[index][field] = value;
-  //   setExtraFields(updatedFields);
-  // };
+  
 
   const handleEdit = () => {
     setDisabled(!disabled);
@@ -261,13 +229,13 @@ const KycDetails = ({
                   <div className="grid grid-cols-1 gap-4">
                     <div className="flex gap-6 items-center">
                       <label
-                        htmlFor={`file-upload_`}
+                        htmlFor={`file-uploadL`}
                         className="cursor-pointer bg-[#00A264] text-white px-4 py-2 rounded-md hover:bg-[#04714e] focus:outline-none focus:ring-2 text-[14px] leading-[19.07px]"
                       >
                         Attachment
                       </label>
                       <input
-                        id={`file-upload_`}
+                        id={`file-uploadL`}
                         type="file"
                         className="hidden"
                         onChange={handleFileChange1}
@@ -285,7 +253,6 @@ const KycDetails = ({
                         )}
                       </div>
                     </div>
-                    {/* Show selected file name or "No File Selected" */}
                   </div>
                 )}
               </div>
@@ -322,9 +289,9 @@ const KycDetails = ({
                       type="text"
                       id="pancard"
                       className="border rounded-md w-full h-9 px-2 text-[14px] leading-[19.07px] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                      value={field.anyother}
+                      value={field.pancard}
                       onChange={(e) =>
-                        handleFormChange(index, "anyother", e.target.value)
+                        handleFormChange(index, "pancard", e.target.value)
                       }
                       placeholder="Enter Pan Card Number"
                       disabled={disabled}
@@ -374,9 +341,9 @@ const KycDetails = ({
                       type="text"
                       id="pancard"
                       className="border rounded-md w-full h-9 px-2 text-[14px] leading-[19.07px] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                      value={field.anyother}
+                      value={field.uid}
                       onChange={(e) =>
-                        handleFormChange(index, "anyother", e.target.value)
+                        handleFormChange(index, "uid", e.target.value)
                       }
                       placeholder="Enter Unique Identification Number"
                       disabled={disabled}
@@ -392,8 +359,10 @@ const KycDetails = ({
 
                   <select
                     className="border rounded-md w-full h-9 px-2 text-[14px] leading-[19.07px] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    value={certi2015}
-                    onChange={(e) => setCerti2015(e.target.value)}
+                    value={field.question}
+                    onChange={(e) =>
+                      handleFormChange(index, "question", e.target.value)
+                    }
                     disabled={disabled}
                   >
                     <option value="" disabled>

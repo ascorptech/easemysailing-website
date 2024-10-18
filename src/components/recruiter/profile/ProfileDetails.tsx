@@ -111,7 +111,8 @@ const ProfileDetails = () => {
   };
 
   return (
-    <div className="w-[96%] justify-start items-center flex ml-7 my-5 border-2 shadow-lg rounded-lg">
+    <div className="w-full sticky bg-white top-0 z-50 pt-4 ">
+    <div className="w-[96.5%]  justify-start items-center flex ml-6 bg-white  border-2 shadow-lg rounded-lg">
       <div className=" h-28 w-36 border-2 items-center flex justify-center shadow-sm rounded-lg my-5 ml-6 p-1">
         <div className="relative h-24 w-32">
           <Image
@@ -235,9 +236,9 @@ const ProfileDetails = () => {
         </div>
       </div>
       {/* Upload Company Advertisement Button */}
-      <div className="relative  right-0 ml-[5rem] p-2 mt-16 rounded-lg bg-[#00A264]">
+      <div className="relative z-50 right-0 ml-[5rem] p-2 mt-16 rounded-lg bg-[#00A264]">
         <button
-          className="text-white flex items-center font-semibold"
+          className="text-white z-50 flex items-center font-semibold"
           onClick={openPopup} 
         >
           <PiUploadSimpleBold className="mx-1" />
@@ -411,6 +412,7 @@ const ProfileDetails = () => {
           </div>
         </div>
       )}
+    </div>
     </div>
   );
 };

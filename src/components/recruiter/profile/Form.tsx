@@ -404,7 +404,7 @@ const Form = () => {
 
               <div className="flex items-center justify-center gap-1">
                 <span className="ml-2 cursor-pointer" onClick={handlekyc}>
-                  {kycDetailsOpen ? (
+                {kycDetailsOpen ? (
                     <svg
                       className="w-6 h-6 transform rotate-180 transition-transform"
                       fill="none"

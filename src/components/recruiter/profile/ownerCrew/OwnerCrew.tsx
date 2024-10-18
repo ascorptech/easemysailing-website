@@ -62,17 +62,6 @@ const OwnerCrew = ({
     // { label: "Option 9", value: "9" },
     // { label: "Option 10", value: "10" },
   ]);
-  //   useEffect(() => {
-  //     GetDropdownDetails("shorejobinterest", (res: any) => {
-  //       // console.log('County',res?.data)
-
-  //       let tempArray = res?.data?.values.map((element: any) => ({
-  //         label: element?.toUpperCase(),
-  //         value: element,
-  //       }));
-  //     //   setCrewDrop(tempArray);
-  //     });
-  //   }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -100,8 +89,10 @@ const OwnerCrew = ({
     }
   };
 
-  const totalFields = 1;
-  const filledFields = [multipleSelection].filter(Boolean).length;
+  const totalFields = 2;
+  const filledFields = [multipleSelection, multipleCrewSelection].filter(
+    Boolean
+  ).length;
   const percentage = (filledFields / totalFields) * 100;
   // let color = "";
 
@@ -171,23 +162,23 @@ const OwnerCrew = ({
           </div>
 
           <div className=" ">
-                <label
-                  className="text-[14px] leading-[19.07px]  text-[#333333] "
-                  htmlFor="trainingcou"
-                >
-                 Trainings
-                </label>
-                <div>
-                  <Select
-                    isMulti
-                    options={creWelfare}
-                    value={multipleCrewSelection}
-                    onChange={handleMultiCrewChange}
-                    isDisabled={disabled}
-                    closeMenuOnSelect={false}
-                  />
-                </div>
-              </div>
+            <label
+              className="text-[14px] leading-[19.07px]  text-[#333333] "
+              htmlFor="trainingcou"
+            >
+              Trainings
+            </label>
+            <div>
+              <Select
+                isMulti
+                options={creWelfare}
+                value={multipleCrewSelection}
+                onChange={handleMultiCrewChange}
+                isDisabled={disabled}
+                closeMenuOnSelect={false}
+              />
+            </div>
+          </div>
         </div>
 
         <div className="flex gap-2 mb-4 mt-4">

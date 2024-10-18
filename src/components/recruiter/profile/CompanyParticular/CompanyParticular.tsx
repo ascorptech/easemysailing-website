@@ -29,9 +29,7 @@ const CompanyParticular = ({
   const [personPhone, setPersonPhone] = useState("");
   const [cmpSite, setCmpSite] = useState("");
   const [cmpTel, setCmpTel] = useState("");
-  const [nearestAirport, setNearestAirport] = useState("");
   const [gstNum, setGstNum] = useState("");
-
   const [rCountrycode, setRCountrycode] = useState("+91");
   const [mCountrycode, setMCountrycode] = useState("+91");
   const [postalCode, setPostalCode] = useState("");
@@ -80,7 +78,7 @@ const CompanyParticular = ({
   //     setSelectedFile(event.target.files[0]);
   //   };
 
-  const totalFields = 16;
+  const totalFields = 17;
   const filledFields = [
     cmpName,
     cmpType,
@@ -88,9 +86,10 @@ const CompanyParticular = ({
     contactPersonEmail,
     personPhone,
     cmpSite,
+    rCountrycode,
+    mCountrycode,
     cmpTel,
     gstNum,
-    nearestAirport,
     address,
     number,
     addInfo,
@@ -131,26 +130,7 @@ const CompanyParticular = ({
     }
   }, [percentage, color]);
 
-  // const handleFileChange = (event: any) => {
-  //   const file = event.target.files?.[0];
-  //   if (file) {
-  //     setCpmAdd(file);
-  //   }
-  // };
 
-  // const handleFileChanges = (event: any) => {
-  //   const file = event.target.files?.[0];
-  //   if (file) {
-  //     setCpmLogo(file);
-  //   }
-  // };
-
-  // const handleIsoChanges = (event: any) => {
-  //   const file = event.target.files?.[0];
-  //   if (file) {
-  //     setIsoCerti(file);
-  //   }
-  // };
 
   const handleEdit = () => {
     setDisabled(!disabled);
@@ -159,6 +139,9 @@ const CompanyParticular = ({
   const handleSubmit = (e: React.FormEvent) => {
     // try {
     e.preventDefault();
+    if (!validateInputs()) {
+      return;
+    }
     // let formData = new FormData();
     // formData.append("trainingName", trainings);
     // formData.append("trainingCenter", trainingCenter);
@@ -173,18 +156,43 @@ const CompanyParticular = ({
     // AddEcdisData(userDetail?.userId, formData, AddEcdisdataDB);
   };
 
-  // const AddEcdisdataDB = (result: any) => {
-  //   console.log(result);
-  //   if (result?.status == 200) {
-  //     toast.success("ECDIS submited successfully");
-  //     setTimeout(() => {
-  //       window.location.reload();
-  //     }, 1000);
-  //   } else {
-  //     toast.error("ECDIS  detail not submited ");
-  //   }
-  // };
+ 
 
+  const validateInputs = () => {
+    let formIsValid = true;
+    let newErrors = {
+      personPhone: "",
+      cmpTel: "",
+     
+    };
+
+    if (!personPhone?.trim()) {
+      newErrors.personPhone = "Phone number is required";
+      formIsValid = false;
+    } else if (/^\d{13}$/.test(personPhone)) {
+      console.log("phone", personPhone.length);
+      newErrors.personPhone = "Phone number must be 10 digits";
+      formIsValid = false;
+    } else if (personPhone.length < 7) {
+      newErrors.personPhone = "Phone number must be minimum 7 digits";
+      formIsValid = false;
+    }
+
+
+    if (!cmpTel?.trim()) {
+      newErrors.cmpTel = "Phone number is required";
+      formIsValid = false;
+    } else if (/^\d{13}$/.test(cmpTel)) {
+      console.log("phone", cmpTel.length);
+      newErrors.cmpTel = "Phone number must be 10 digits";
+      formIsValid = false;
+    } else if (cmpTel.length < 7) {
+      newErrors.cmpTel = "Phone number must be minimum 7 digits";
+      formIsValid = false;
+    }
+
+    return formIsValid;
+  };
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
@@ -304,9 +312,24 @@ const CompanyParticular = ({
                 </label>
                 <input
                   id="contactNo"
-                  type="number"
+                  type="text"
                   value={personPhone}
-                  onChange={(e) => setPersonPhone(e.target.value)}
+                  maxLength={14} // Maximum 12 digits
+                  onChange={(e) => {
+                    // Allow only numeric input
+                    const value = e.target.value;
+                    if (/^\d*$/.test(value)) {
+                      // Regex to allow only digits
+                      setPersonPhone(value.trimStart());
+                    }
+                  }}
+                  onBlur={(e) => {
+                    if (e.target.value.length < 7) {
+                      toast.error(
+                        "Phone number must be at least 7 digits long"
+                      );
+                    }
+                  }}
                   className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
                   placeholder="Enter Phone Number"
                   disabled={disabled}
@@ -387,10 +410,24 @@ const CompanyParticular = ({
                 </label>
                 <input
                   id="telNo"
-                  type="number"
+                  type="text"
                   value={cmpTel}
-                  onChange={(e) => setCmpTel(e.target.value)}
-                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+                  maxLength={14} // Maximum 12 digits
+                  onChange={(e) => {
+                    // Allow only numeric input
+                    const value = e.target.value;
+                    if (/^\d*$/.test(value)) {
+                      // Regex to allow only digits
+                      setCmpTel(value.trimStart());
+                    }
+                  }}
+                  onBlur={(e) => {
+                    if (e.target.value.length < 7) {
+                      toast.error(
+                        "Phone number must be at least 7 digits long"
+                      );
+                    }
+                  }}                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
                   placeholder="Enter Telephone Number"
                   disabled={disabled}
                   required
@@ -475,6 +512,7 @@ const CompanyParticular = ({
                     value={country1}
                     onChange={(e) => setCountry1(e.target.value)}
                     disabled={disabled}
+                    required
                   >
                     <option value="" disabled>
                       Select
@@ -504,6 +542,7 @@ const CompanyParticular = ({
                     className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter  State/Province"
                     disabled={disabled}
+                    required
                   />
                 </div>
               </div>
@@ -525,6 +564,7 @@ const CompanyParticular = ({
                       className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                       placeholder="Enter  City"
                       disabled={disabled}
+                      required
                     />
                   </div>
                 </div>
@@ -542,25 +582,26 @@ const CompanyParticular = ({
                     className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter Postal Code/ZIP Code"
                     disabled={disabled}
+                    required
                   />
                 </div>
               </div>
-            
-            <div className="flex gap-2 mb-4 mt-5">
-              <button
-                type="submit"
-                className="border border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
-              >
-                Save
-              </button>
-              <Link
-                href="#"
-                onClick={handleEdit}
-                className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
-              >
-                Edit
-              </Link>
-            </div>
+
+              <div className="flex gap-2 mb-4 mt-5">
+                <button
+                  type="submit"
+                  className="border border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"
+                >
+                  Save
+                </button>
+                <Link
+                  href="#"
+                  onClick={handleEdit}
+                  className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
+                >
+                  Edit
+                </Link>
+              </div>
             </div>
           </div>
         </div>

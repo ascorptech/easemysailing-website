@@ -10,15 +10,7 @@ import { toast } from "react-toastify";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import React from "react";
 
-type FleetDetails = {
-  number: any;
-  issuedate: string;
-  exdate: string;
-  issuingCountry: string;
-  training: string;
-  neverExpires: any;
-  selectedFile: any | null;
-};
+
 
 type FleetComplete = {
   percentage: number;
@@ -40,26 +32,10 @@ const FleetForm = ({
   criminal,
   sTCWDetail,
 }: Props) => {
-  const [extraFields, setExtraFields] = useState<
-    { field1: string; field2: string }[]
-  >([]);
-
-  const [FleetForm, setFleetForm] = useState<FleetDetails[]>([
-    {
-      number: "",
-      issuedate: "",
-      exdate: "",
-      issuingCountry: "",
-      training: "",
-      neverExpires: "",
-      selectedFile: null,
-    },
-  ]);
-
   const [disabled, setDisabled] = useState(true);
   const [isHideShow, setIsHideShow] = useState(false);
   const [color, setColor] = useState("");
-  const [multipleSelection, setMultipleSelection] = useState<any>([]); 
+  const [multipleSelection, setMultipleSelection] = useState<any>([]);
   const [multipleCrewSelection, setMultipleCrewSelection] = useState<any>([]); // Updated to handle react-select's option type
   const [multipleNcrewSelection, setMultipleNcrewSelection] = useState<any>([]); // Updated to handle react-select's option type
 
@@ -79,20 +55,14 @@ const FleetForm = ({
     });
   }, []);
 
-  const totalFields = 3;
-  const filledFields = FleetForm.reduce(
-    (acc, form) =>
-      acc +
-      [
-        // form.number,
-        // form.issuedate,
-        // form.exdate || form.neverExpires,
-        // form.issuingCountry,
-        // form.training,
-        // form.selectedFile,
-      ].filter(Boolean).length,
-    0
-  );
+  const totalFields = 5;
+  const filledFields = [
+    shipNumber,
+    crewMatrix,
+    multipleCrewSelection,
+    multipleNcrewSelection,
+    multipleNcrewSelection,
+  ].filter(Boolean).length;
 
   // Adding 10 options for the multi-select dropdown
   const [shipType, setShipType] = useState<any>([
@@ -108,81 +78,48 @@ const FleetForm = ({
     { label: "Option 10", value: "10" },
   ]);
 
-
   const [creWelfare, setCreWelfare] = useState<any>([
     { label: "Internet", value: "1" },
     { label: "Insurance", value: "2" },
     { label: " Rejoining Bonus", value: "3" },
     { label: "Seniority Allowance", value: "4" },
-    // { label: "Option 5", value: "5" },
-    // { label: "Option 6", value: "6" },
-    // { label: "Option 7", value: "7" },
-    // { label: "Option 8", value: "8" },
-    // { label: "Option 9", value: "9" },
-    // { label: "Option 10", value: "10" },
-  ]);  
+    
+  ]);
   const percentage = (filledFields / (totalFields * FleetForm.length)) * 100;
-  // let color = "";
-
-  // const totalFields = available === "Yes" ? 6 : 5;
-
-  // const percentage = (filledFields / totalFields) * 100;
-  // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
-  // let color;
+  
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
       setFleetComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#FF0000", // Update the color field
+        ...prevState, 
+        percentage: percentage, 
+        color: "#FF0000", 
       }));
       setColor("#FF0000");
     } else if (percentage <= 70) {
       setFleetComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#FF9900", // Update the color field
+        ...prevState, 
+        percentage: percentage,
+        color: "#FF9900",
       }));
       setColor("#FF9900");
     } else {
       setFleetComplete((prevState) => ({
-        ...prevState, // Spread the previous state to keep any other properties
-        percentage: percentage, // Update the percentage field
-        color: "#00A264", // Update the color field
+        ...prevState,
+        percentage: percentage, 
+        color: "#00A264", 
       }));
       setColor("#00A264");
     }
   }, [percentage, color]);
 
-  // const handleFileChange = (event: any) => {
-  //   const file = event.target.files?.[0];
-  //   if (file) {
-  //     setSelectedFile(file);
-  //   }
-  // };
-
-  const handleAddForm = () => {
-    setFleetForm([
-      ...FleetForm,
-      {
-        number: "",
-        exdate: "",
-        issuedate: "",
-        issuingCountry: "",
-        neverExpires: "",
-        training: "",
-        selectedFile: null,
-      },
-    ]);
-  };
+ 
 
   const handleMultiSelectChange = (selectedOptions: any) => {
     if (selectedOptions.length <= 4) {
       setMultipleSelection(selectedOptions);
     }
   };
-
 
   const handleMultiNcrewChange = (selectedOptions: any) => {
     if (selectedOptions.length <= 4) {
@@ -194,11 +131,6 @@ const FleetForm = ({
     if (selectedOptions.length <= 4) {
       setMultipleCrewSelection(selectedOptions);
     }
-  };
-
-  const handleRemoveForm = (index: number) => {
-    const updatedForms = FleetForm.filter((_, i) => i !== index);
-    setFleetForm(updatedForms);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -228,23 +160,23 @@ const FleetForm = ({
       };
       const stcwArray: any = [];
 
-      FleetForm.forEach((element: any) => {
-        stcwArray.push({
-          // document: element?.selectedFile,
-          // trainingName: element?.training,
-          // issuingCountry: element?.trainingCountry,
-          // certificateNumber: element?.number,
-          // issueDate: element?.issuedate,
-          // expiryDate: element?.exdate,
-        });
-      });
-      data.stcwData = stcwArray;
+      // FleetForm.forEach((element: any) => {
+      //   stcwArray.push({
+      // document: element?.selectedFile,
+      // trainingName: element?.training,
+      // issuingCountry: element?.trainingCountry,
+      // certificateNumber: element?.number,
+      // issueDate: element?.issuedate,
+      // expiryDate: element?.exdate,
+      //   });
+      // });
+      // data.stcwData = stcwArray;
 
-      let finArry: any = [];
-      finArry.push(data);
-      console.log("fin", finArry);
+      // let finArry: any = [];
+      // finArry.push(data);
+      // console.log("fin", finArry);
 
-      AddStcwData(finArry, AddStcwDataCB);
+      // AddStcwData(finArry, AddStcwDataCB);
     }
   };
 
@@ -258,46 +190,6 @@ const FleetForm = ({
       toast.error("Fleet Details not submited ");
     }
   };
-
-  // add plus and minus symbole
-
-  const handleFileChange = (index: number, event: any) => {
-    const file = event.target.files?.[0];
-
-    const reader = new FileReader();
-    reader.onloadend = function () {
-      const imageBinary: any = reader.result;
-      const byteArray = imageBinary.split(",")[1];
-
-      const updatedForms: any = [...FleetForm];
-      updatedForms[index].selectedFile = byteArray;
-      setFleetForm(updatedForms);
-    };
-    reader.readAsDataURL(file);
-    // const updatedForms = [...FleetForm];
-    // updatedForms[index].selectedFile = event.target.files?.[0] || null;
-    // setFleetForm(updatedForms);
-  };
-
-  const handleFormChange = (
-    index: number,
-    field: keyof FleetDetails,
-    value: any
-  ) => {
-    const updatedForms = [...FleetForm];
-    updatedForms[index][field] = value;
-    setFleetForm(updatedForms);
-  };
-
-  // const handleExtraFieldChange = (
-  //   index: number,
-  //   value: string,
-  //   field: "field1" | "field2"
-  // ) => {
-  //   const updatedFields = [...extraFields];
-  //   updatedFields[index][field] = value;
-  //   setExtraFields(updatedFields);
-  // };
 
   const handleEdit = () => {
     setDisabled(!disabled);

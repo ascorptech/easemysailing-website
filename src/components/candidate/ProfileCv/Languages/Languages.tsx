@@ -53,6 +53,8 @@ const Languages = ({
   const [disabled, setDisabled] = useState(true);
 
   const [selectedFile, setSelectedFile] = useState<any>(null);
+  const [selectedFileView, setSelectedFileView] = useState<any>(null);
+
   const [color, setColor] = useState("");
   const [isHideShow, setIsHideShow] = useState(false);
 
@@ -223,6 +225,8 @@ const Languages = ({
       };
 
       reader.readAsDataURL(file);
+      setSelectedFileView(file)
+
     }
   };
 
@@ -526,6 +530,8 @@ const Languages = ({
                 value={dateofTest}
                 onChange={(e) => setDateofTest(e.target.value)}
                 disabled={disabled}
+                max={new Date().toISOString().split("T")[0]}
+
               />
             </div>
 
@@ -552,9 +558,9 @@ const Languages = ({
               />
             </div>{" "}
             <div>
-              {selectedFile ? (
+              {selectedFileView ? (
                 <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                  File Selected: {selectedFile.name}
+                  File Selected: {selectedFileView.name}
                 </p>
               ) : (
                 <p className="text-[14px] leading-[19.07px]  text-[#333333]">

@@ -195,18 +195,7 @@ Props) => {
   //   });
   // }, []);
 
-  const [alternate, setAlternate] = useState<any>([
-    { label: "Option 1", value: "1" },
-    { label: "Option 2", value: "2" },
-    { label: "Option 3", value: "3" },
-    { label: "Option 4", value: "4" },
-    { label: "Option 5", value: "5" },
-    { label: "Option 6", value: "6" },
-    { label: "Option 7", value: "7" },
-    { label: "Option 8", value: "8" },
-    { label: "Option 9", value: "9" },
-    { label: "Option 10", value: "10" },
-  ]);
+
   const handleMultiSelectChange = (selectedOptions: any) => {
     if (selectedOptions.length <= 4) {
       setAlternateVesselType(selectedOptions);
@@ -378,7 +367,7 @@ Props) => {
               className="text-[14px] leading-[19.07px]  text-[#333333]"
               htmlFor="alternateVesselType"
             >
-              Alternate Vessel Type
+              Alternate Vessel Type*
             </label>
             <Select
               id="alternateVesselType"
@@ -389,6 +378,7 @@ Props) => {
               isDisabled={disabled}
               closeMenuOnSelect={false}
               placeholder="SELECT"
+              required
             />
           </div>
 
@@ -500,6 +490,9 @@ Props) => {
                 }
               }}
               onBlur={(e) => {
+                if (e.target.value.length < 2) {
+                  toast.error("Salary cannot be less than 2 digits");
+                }
                 if (e.target.value.length > 6) {
                   toast.error("Salary cannot be more than 6 digits");
                 }

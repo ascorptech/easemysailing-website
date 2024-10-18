@@ -345,7 +345,7 @@ const PersonalDetails = ({
                 className="text-[14px] leading-[19.07px]  text-[#333333] mb-2 "
                 htmlFor="DateofBirth"
               >
-                *Date of Birth
+                Date of Birth*
               </label>
               <input
                 id="DateofBirth"

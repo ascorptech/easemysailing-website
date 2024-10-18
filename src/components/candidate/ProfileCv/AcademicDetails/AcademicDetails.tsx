@@ -281,11 +281,11 @@ const AcademicDetails = ({
     console.log(result);
     if (result?.status == 200 || result?.status == 201) {
       console.log(result);
-      toast.success("Academic Details submited successfully");
+      toast.success("Academic details submited successfully");
       setDisabled(!disabled);
       setIsEditing((prev) => !prev);
     } else {
-      toast.error("Next Of Kin Details not submited ");
+      toast.error("Academic details not submited ");
     }
   };
 
@@ -469,8 +469,8 @@ const AcademicDetails = ({
         </div>
 
         {educationForms.map((fields, index) => (
-          <div key={index} className="grid grid-cols-2 gap-4">
-            <div className="">
+          <div key={index} className="grid grid-cols-2 gap-4 my-2">
+            <div className=" ">
               <label
                 className="text-[14px] leading-[19.07px]  text-[#333333]"
                 htmlFor="university"
@@ -563,7 +563,7 @@ const AcademicDetails = ({
           </div>
         ))}
 
-        <div className="flex gap-2 mb-4 mt-4">
+        <div className="flex gap-2 mb-4 mt-2">
           <button
             type="submit"
             className="border border-[#00A264] bg-[#00A264] p-2 px-8 rounded-lg text-white"

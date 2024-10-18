@@ -54,6 +54,8 @@ const MedicalCertificates = ({
   const [exdate, setExDate] = useState("");
 
   const [selectedFile, setSelectedFile] = useState<any>(null);
+  const [selectedFileView, setSelectedFileView] = useState<any>(null);
+
   const [selectedFiles, setSelectedFiles] = useState<any>(null);
   const [selectedFilesCovid, setSelectedFilesCovid] = useState<any>(null);
   const [medicalPhysician, setMedicalPhysician] = useState("");
@@ -67,6 +69,8 @@ const MedicalCertificates = ({
   const [issuedate1, setIssueDate1] = useState("");
   const [exdate1, setExDate1] = useState("");
   const [issuedateCovid, setIssueDateCovid] = useState("");
+  const [issuedateCovidB, setIssueDateCovidB] = useState("");
+
   // const [exdateCovid, setExDateCovid] = useState("");
 
   const [issuingCity, setIssuingCity] = useState("");
@@ -203,6 +207,7 @@ const MedicalCertificates = ({
         setSelectedFile(byteArray);
       };
       reader.readAsDataURL(file);
+      setSelectedFileView(file)
     }
   };
 
@@ -643,9 +648,9 @@ const MedicalCertificates = ({
                   />
                 </div>
                 <div>
-                  {selectedFile ? (
+                  {selectedFileView ? (
                     <p className="text-[14px] leading-[19.07px]  text-[#333333]">
-                      File Selected: {selectedFile.name}
+                      File Selected: {selectedFileView.name}
                     </p>
                   ) : (
                     <p className="text-[14px] leading-[19.07px]  text-[#333333]">
@@ -981,6 +986,23 @@ const MedicalCertificates = ({
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={issuedateCovid}
               onChange={(e) => setIssueDateCovid(e.target.value)}
+              disabled={disabled}
+              max={new Date().toISOString().split("T")[0]}
+            />
+          </div>
+          <div className="">
+            <label
+              className="text-[14px] leading-[19.07px]  text-[#333333]"
+              htmlFor="issuedatemCovid"
+            >
+              Vaccination Booster
+            </label>
+            <input
+              id="issuedatemCovid"
+              type="date"
+              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+              value={issuedateCovidB}
+              onChange={(e) => setIssueDateCovidB(e.target.value)}
               disabled={disabled}
               max={new Date().toISOString().split("T")[0]}
             />

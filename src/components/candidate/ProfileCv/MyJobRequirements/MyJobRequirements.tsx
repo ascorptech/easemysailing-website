@@ -377,10 +377,11 @@ const MyJobRequirements = ({
               value={availabilityDate}
               onChange={(e) => setAvailabilityDate(e.target.value)}
               disabled={disabled}
+              min={new Date().toISOString().split("T")[0]} 
               required
             />
           </div>
-          {/* )} */}
+         
 
           <div>
             <label

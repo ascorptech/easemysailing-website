@@ -198,10 +198,12 @@ const Ecdis = ({
     // toast.info("You are now in edit mode. Make your changes.");
   };
 
-  const handleValidationChange = (valid: any) => (e: any) => {
+  const handleValidationChange = (setValue: any) => (e: any) => {
     const value = e.target.value;
     const alphabeticValue = value.replace(/[^A-Za-z\s]/g, ""); 
-    valid(alphabeticValue);
+    const capitalizedValue =
+      alphabeticValue.charAt(0).toUpperCase() + alphabeticValue.slice(1); 
+    setValue(capitalizedValue);
   };
 
   return (
@@ -292,9 +294,9 @@ const Ecdis = ({
               </label>
               <input
                 id="eCDISNumber"
-                type="number"
+                type="text"
                 value={eCDISNumber}
-                onChange={(e) => setECDISNumber(e.target.value)}
+                onChange={(e) =>{const value = e.target.value.replace(/[^a-zA-Z0-9. ]/g, "");  setECDISNumber(value)}}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Certificate Number"
                 disabled={disabled}

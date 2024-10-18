@@ -327,9 +327,9 @@ const OnlinePresence = ({
 
               {whatsApp && (
                 <div className="mt-4 flex gap-2 ">
-                  <div className="w-[40%] ">
+                  <div className="w-[50%] ">
                     <select
-                      className="border rounded-md w-full   h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                      className="border rounded-md w-full   h-9  pl-1  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                       value={mCountrycode}
                       onChange={(e) => setMCountrycode(e.target.value)}
                       disabled={disabled}
@@ -342,15 +342,16 @@ const OnlinePresence = ({
                         ))}
                     </select>
                   </div>
+                  {/* <div className="w-[80%]"> */}
 
                   <input
                     id="whatsAppId"
                     type="text"
-                    className="border rounded-md  h-9 px-2 w-[90%] text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    className="border rounded-md  h-9 px-2 w-full text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter WhatsApp Number"
                     value={whatsAppId}
                     // onChange={handlePhoneNumberChange(setWhatsAppId)}
-                    maxLength={12} // Maximum 12 digits
+                    maxLength={14} // Maximum 12 digits
                     onChange={(e) => {
                       // Allow only numeric input
                       const value = e.target.value;
@@ -366,6 +367,7 @@ const OnlinePresence = ({
                     }}
                     disabled={disabled}
                   />
+                  {/* </div> */}
                 </div>
               )}
             </div>
@@ -385,9 +387,9 @@ const OnlinePresence = ({
               </div>
               {weChat && (
                 <div className="mt-4 flex  gap-2">
-                  <div className="w-[40%] ">
+                  <div className="w-[50%] ">
                     <select
-                      className="border rounded-md w-full   h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                      className="border rounded-md w-full   h-9  pl-1   text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                       value={wCountrycode}
                       onChange={(e) => setWCountrycode(e.target.value)}
                       disabled={disabled}
@@ -402,11 +404,11 @@ const OnlinePresence = ({
                   </div>
                   <input
                     type="text"
-                    className="border rounded-md  h-9 px-2 w-[90%] text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    className="border rounded-md  h-9 px-2 w-full text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter WeChat Number"
                     value={weChatId}
                     // onChange={handlePhoneNumberChange(setWeChatId)}
-                    maxLength={12} // Maximum 12 digits
+                    maxLength={14} // Maximum 12 digits
                     onChange={(e) => {
                       const value = e.target.value;
                       if (/^\d*$/.test(value)) {
@@ -470,9 +472,9 @@ const OnlinePresence = ({
 
               {telegram && (
                 <div className="mt-4 flex gap-2 ">
-                  <div className="w-[35%] ">
+                  <div className="w-[50%] ">
                     <select
-                      className="border rounded-md w-full   h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                      className="border rounded-md w-full   h-9  pl-1   text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                       value={tCountrycode}
                       onChange={(e) => setTCountrycode(e.target.value)}
                       disabled={disabled}
@@ -487,11 +489,11 @@ const OnlinePresence = ({
                   </div>
                   <input
                     type="text"
-                    className="border rounded-md  h-9 px-2 w-[80%] text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    className="border rounded-md  h-9 px-2 w-full text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter Telegram Number"
                     value={telegramId}
                     // onChange={handlePhoneNumberChange(setTelegramId)}
-                    maxLength={12} // Maximum 12 digits
+                    maxLength={14} // Maximum 12 digits
                     onChange={(e) => {
                       const value = e.target.value;
                       if (/^\d*$/.test(value)) {
@@ -525,9 +527,9 @@ const OnlinePresence = ({
 
               {viber && (
                 <div className="mt-4 flex gap-2 ">
-                  <div className="w-[40%] ">
+                  <div className="w-[50%] ">
                     <select
-                      className="border rounded-md w-full   h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                      className="border rounded-md w-full   h-9  pl-1   text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                       value={vCountrycode}
                       onChange={(e) => setVCountrycode(e.target.value)}
                       disabled={disabled}
@@ -543,11 +545,11 @@ const OnlinePresence = ({
                   <input
                     id="viberId"
                     type="text"
-                    className="border rounded-md  h-9 px-2 w-[90%] text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    className="border rounded-md  h-9 px-2 w-full text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter viber Number"
                     value={viberId}
                     // onChange={handlePhoneNumberChange(setViberId)}
-                    maxLength={12} // Maximum 12 digits
+                    maxLength={14} // Maximum 12 digits
                     onChange={(e) => {
                       const value = e.target.value;
                       if (/^\d*$/.test(value)) {

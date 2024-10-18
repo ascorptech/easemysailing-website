@@ -233,10 +233,12 @@ const Languages = ({
     // toast.info("You are now in edit mode. Make your changes.");
   };
 
-  const handleValidationChange = (valid: any) => (e: any) => {
+  const handleValidationChange = (setValue: any) => (e: any) => {
     const value = e.target.value;
-    const alphabeticValue = value.replace(/[^A-Za-z\s]/g, "");
-    valid(alphabeticValue);
+    const alphabeticValue = value.replace(/[^A-Za-z\s]/g, ""); 
+    const capitalizedValue =
+      alphabeticValue.charAt(0).toUpperCase() + alphabeticValue.slice(1); 
+    setValue(capitalizedValue);
   };
   return (
     <div className="container border-2 shadow-lg p-3  mt-[14px] mb-8 ">

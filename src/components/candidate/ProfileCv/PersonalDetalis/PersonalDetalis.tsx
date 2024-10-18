@@ -178,15 +178,21 @@ const PersonalDetails = ({
     // toast.info("You are now in edit mode. Make your changes.");
   };
 
-  const handleValidationChange = (valid: any) => (e: any) => {
+  // const handleValidationChange = (valid: any) => (e: any) => {
+  //   const value = e.target.value;
+  //   const alphabeticValue = value.replace(/[^A-Za-z\s]/g, ""); 
+  //   valid(alphabeticValue);
+  // };
+  const handleValidationChange = (setValue: any) => (e: any) => {
     const value = e.target.value;
     const alphabeticValue = value.replace(/[^A-Za-z\s]/g, ""); 
-    valid(alphabeticValue);
+    const capitalizedValue =
+      alphabeticValue.charAt(0).toUpperCase() + alphabeticValue.slice(1); 
+    setValue(capitalizedValue);
   };
 
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8  ">
-      {/* <CircularProgress percentage={Math.round(percentage)} color={per} /> */}
       <h2 className="font-bold">Personal Details (As Per Passport)</h2>
 
       <form onSubmit={handleSubmit}>
@@ -330,7 +336,7 @@ const PersonalDetails = ({
                 onChange={(e) => setGender(e.target.value)}
                 disabled={disabled}
               >
-                <option value="">Select</option>
+                <option value="" disabled selected>Select</option>
                 {genderDrop &&
                   genderDrop?.map((gen: any, index: number) => (
                     <option key={index} value={gen}>
@@ -353,6 +359,13 @@ const PersonalDetails = ({
                 value={date}
                 onChange={(e) =>setDate(e.target.value)}
                 disabled={disabled}
+                max={new Date(
+                  new Date().setFullYear(new Date().getFullYear() - 18)
+                )
+                  .toISOString()
+                  .split("T")[0]} // Restrict to at least 18 years old
+            
+                
               />
             </div>
             {/* </div> */}
@@ -374,7 +387,7 @@ const PersonalDetails = ({
                 onChange={(e) => setCountryOfBirth(e.target.value)}
                 disabled={disabled}
               >
-                <option value="">Select</option>
+                <option value="" disabled selected>Select</option>
                 {countryDrop &&
                   countryDrop?.map((country: any, index: number) => (
                     <option key={index} value={country}>
@@ -420,7 +433,7 @@ const PersonalDetails = ({
                 onChange={(e) => setNationality(e.target.value)}
                 disabled={disabled}
               >
-                <option value="">Select</option>
+                <option value="" disabled selected>Select</option>
                 {countryDrop &&
                   countryDrop?.map((country: any, index: number) => (
                     <option key={index} value={country}>

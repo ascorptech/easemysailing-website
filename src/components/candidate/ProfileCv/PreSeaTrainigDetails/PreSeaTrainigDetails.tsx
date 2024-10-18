@@ -589,7 +589,7 @@ const PreSeaTrainigDetails = ({
               id="number01"
               type="text"
               value={number}
-              onChange={(e) =>{const value = e.target.value.replace(/[^0-9 ]/g, "");setNumber(value)}} 
+              onChange={(e) =>{const value = e.target.value.replace(/[^a-zA-Z0-9. ]/g, "");setNumber(value)}} 
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder="Enter Certificate Number"
               disabled={disabled}

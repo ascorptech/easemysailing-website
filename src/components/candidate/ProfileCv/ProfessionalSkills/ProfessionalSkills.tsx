@@ -77,6 +77,7 @@ const ProfessionalSkills = ({
   const [countryDrop, setCountryDrop] = useState<any>([]);
   const [isHideShow, setIsHideShow] = useState(false);
   const [color, setColor] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     GetDropdownDetails("AdditionalTrainingsCertificates", (res: any) => {
@@ -301,6 +302,8 @@ const ProfessionalSkills = ({
   const handleEdit = () => {
     setDisabled(!disabled);
     setIsHideShow(!isHideShow);
+    setIsEditing((prev) => !prev);
+
   };
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
@@ -323,7 +326,7 @@ const ProfessionalSkills = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Select
+              SELECT
               </option>
               {professionalTstDrop &&
                 professionalTstDrop?.map((tst: any, index: number) => (
@@ -349,7 +352,7 @@ const ProfessionalSkills = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Select
+              SELECT
               </option>
               {professionalLvlDrop &&
                 professionalLvlDrop?.map((lvl: any, index: number) => (
@@ -379,7 +382,7 @@ const ProfessionalSkills = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Select
+              SELECT
               </option>
               {cargoBulkDrop &&
                 cargoBulkDrop?.map((tst: any, index: number) => (
@@ -405,7 +408,7 @@ const ProfessionalSkills = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Select
+              SELECT
               </option>
               {cargoTankerDrop &&
                 cargoTankerDrop?.map((tst: any, index: number) => (
@@ -432,7 +435,7 @@ const ProfessionalSkills = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Select
+              SELECT
               </option>
               {cargoGeneralDrop &&
                 cargoGeneralDrop?.map((tst: any, index: number) => (
@@ -458,7 +461,7 @@ const ProfessionalSkills = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Select
+              SELECT
               </option>
               {woodProDrop &&
                 woodProDrop?.map((tst: any, index: number) => (
@@ -485,7 +488,7 @@ const ProfessionalSkills = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Select
+              SELECT
               </option>
               {stowageDrop &&
                 stowageDrop?.map((tst: any, index: number) => (
@@ -515,7 +518,7 @@ const ProfessionalSkills = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Select
+              SELECT
               </option>
               {cargoGearDrop &&
                 cargoGearDrop?.map((tst: any, index: number) => (
@@ -582,7 +585,7 @@ const ProfessionalSkills = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Select
+              SELECT
               </option>
               {metalWDrop &&
                 metalWDrop?.map((tst: any, index: number) => (
@@ -608,7 +611,7 @@ const ProfessionalSkills = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Select
+              SELECT
               </option>
               {metalLvlDrop &&
                 metalLvlDrop?.map((tst: any, index: number) => (
@@ -630,7 +633,7 @@ const ProfessionalSkills = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Select
+              SELECT
               </option>
               <option value="yes">Yes</option>
               <option value="No">No</option>
@@ -648,7 +651,7 @@ const ProfessionalSkills = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Select
+              SELECT
               </option>
               <option value="yes">Yes</option>
               <option value="No">No</option>
@@ -706,7 +709,7 @@ const ProfessionalSkills = ({
                 disabled={disabled}
               >
                 <option value="" disabled selected>
-                  Select
+                SELECT
                 </option>
                 {tankTypeDrop &&
                   tankTypeDrop?.map((tst: any, index: number) => (
@@ -737,7 +740,7 @@ const ProfessionalSkills = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Select
+              SELECT
               </option>
               {regionalAgDrop &&
                 regionalAgDrop?.map((tst: any, index: number) => (
@@ -927,11 +930,15 @@ const ProfessionalSkills = ({
             Save
           </button>
           <Link
-            href="#"
+            href={"#"}
             onClick={handleEdit}
-            className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
+            className={`border p-2 rounded-lg px-8 ${
+              isEditing
+                ? "border-red-500 text-red-500" 
+                : "border-[#00A264] text-[#00A264]"
+            }`}
           >
-            Edit
+            {isEditing ? "Cancel" : "Edit"} {/* Conditional rendering */}
           </Link>
         </div>
       </form>

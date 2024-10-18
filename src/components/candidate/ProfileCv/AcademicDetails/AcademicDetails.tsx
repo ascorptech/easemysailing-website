@@ -71,6 +71,7 @@ const AcademicDetails = ({
   const [disabled, setDisabled] = useState(true);
   const [isHideShow, setIsHideShow] = useState(false);
   const [color, setColor] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
 
   const totalFields = educationForms.length * 4 + academicForms.length * 5;
   const filledFields = [
@@ -292,6 +293,8 @@ const AcademicDetails = ({
   const handleEdit = () => {
     setDisabled(!disabled);
     setIsHideShow(!isHideShow);
+    setIsEditing((prev) => !prev);
+
   };
 
   const handleValidationChange = (setValue: any) => (e: any) => {
@@ -557,7 +560,7 @@ const AcademicDetails = ({
                 className="border rounded-md w-full h-9 px-2 text-[14px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 disabled={disabled}
               >
-                <option value="">Select</option>
+                <option value="">SELECT</option>
                 {countryDrop?.map((country: any, index: number) => (
                   <option key={index} value={country}>
                     {country?.toUpperCase()}
@@ -576,11 +579,15 @@ const AcademicDetails = ({
             Save
           </button>
           <Link
-            href="#"
+            href={"#"}
             onClick={handleEdit}
-            className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
+            className={`border p-2 rounded-lg px-8 ${
+              isEditing
+                ? "border-red-500 text-red-500" 
+                : "border-[#00A264] text-[#00A264]"
+            }`}
           >
-            Edit
+            {isEditing ? "Cancel" : "Edit"} {/* Conditional rendering */}
           </Link>
         </div>
       </form>

@@ -39,6 +39,7 @@ const CompanyParticular = ({
   const [number, setNumber] = useState("");
   const [address, setAddress] = useState("");
   const [state, setState] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
 
   // const [countryCodeDrop, setCountryCodeDrop] = useState<any>([]);
 
@@ -130,10 +131,9 @@ const CompanyParticular = ({
     }
   }, [percentage, color]);
 
-
-
   const handleEdit = () => {
     setDisabled(!disabled);
+    setIsEditing((prev) => !prev);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -156,14 +156,11 @@ const CompanyParticular = ({
     // AddEcdisData(userDetail?.userId, formData, AddEcdisdataDB);
   };
 
- 
-
   const validateInputs = () => {
     let formIsValid = true;
     let newErrors = {
       personPhone: "",
       cmpTel: "",
-     
     };
 
     if (!personPhone?.trim()) {
@@ -177,7 +174,6 @@ const CompanyParticular = ({
       newErrors.personPhone = "Phone number must be minimum 7 digits";
       formIsValid = false;
     }
-
 
     if (!cmpTel?.trim()) {
       newErrors.cmpTel = "Phone number is required";
@@ -427,7 +423,8 @@ const CompanyParticular = ({
                         "Phone number must be at least 7 digits long"
                       );
                     }
-                  }}                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
+                  }}
+                  className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
                   placeholder="Enter Telephone Number"
                   disabled={disabled}
                   required
@@ -595,11 +592,15 @@ const CompanyParticular = ({
                   Save
                 </button>
                 <Link
-                  href="#"
+                  href={"#"}
                   onClick={handleEdit}
-                  className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
+                  className={`border p-2 rounded-lg px-8 ${
+                    isEditing
+                      ? "border-red-500 text-red-500"
+                      : "border-[#00A264] text-[#00A264]"
+                  }`}
                 >
-                  Edit
+                  {isEditing ? "Cancel" : "Edit"} {/* Conditional rendering */}
                 </Link>
               </div>
             </div>

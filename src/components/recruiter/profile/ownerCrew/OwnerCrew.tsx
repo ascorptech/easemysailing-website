@@ -35,6 +35,7 @@ const OwnerCrew = ({
   const [multipleSelection, setMultipleSelection] = useState<any>([]); // Updated to handle react-select's option type
   const [disabled, setDisabled] = useState(true);
   const [color, setColor] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
 
   // Adding 10 options for the multi-select dropdown
   const [shipType, setShipType] = useState<any>([
@@ -123,6 +124,8 @@ const OwnerCrew = ({
 
   const handleEdit = () => {
     setDisabled(!disabled);
+    setIsEditing((prev) => !prev);
+
   };
 
   const handleMultiSelectChange = (selectedOptions: any) => {
@@ -191,9 +194,13 @@ const OwnerCrew = ({
           <Link
             href={"#"}
             onClick={handleEdit}
-            className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
+            className={`border p-2 rounded-lg px-8 ${
+              isEditing
+                ? "border-red-500 text-red-500" 
+                : "border-[#00A264] text-[#00A264]"
+            }`}
           >
-            Edit
+            {isEditing ? "Cancel" : "Edit"} {/* Conditional rendering */}
           </Link>
         </div>
       </form>

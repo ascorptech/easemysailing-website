@@ -104,6 +104,7 @@ const MedicalCertificates = ({
   const [vaccineTypeDrop, setVaccineTypeDrop] = useState<any>([]);
   const [otherVaccineTypeDrop, setOtherVaccineTypeDrop] = useState<any>([]);
   const [countryDrop, setCountryDrop] = useState<any>([]);
+  const [isEditing, setIsEditing] = useState(false);
 
   const [disabled, setDisabled] = useState(true);
   const [isHideShow, setIsHideShow] = useState(false);
@@ -430,6 +431,8 @@ const MedicalCertificates = ({
   const handleEdit = () => {
     setDisabled(!disabled);
     setIsHideShow(!isHideShow);
+    setIsEditing((prev) => !prev);
+
     // toast.info("You are now in edit mode. Make your changes.");
   };
 
@@ -475,7 +478,7 @@ const MedicalCertificates = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Select
+              SELECT
               </option>
               {typeDrop &&
                 drugDrop?.map((type: any, index: number) => (
@@ -520,7 +523,7 @@ const MedicalCertificates = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Select
+              SELECT
               </option>
               {countryDrop &&
                 countryDrop?.map((country: any, index: number) => (
@@ -679,7 +682,7 @@ const MedicalCertificates = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Select
+              SELECT
               </option>
               {drugDrop &&
                 drugDrop?.map((drug: any, index: number) => (
@@ -724,7 +727,7 @@ const MedicalCertificates = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Select
+              SELECT
               </option>
               {countryDrop &&
                 countryDrop?.map((country: any, index: number) => (
@@ -880,7 +883,7 @@ const MedicalCertificates = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Select
+              SELECT
               </option>
               {vaccineTypeDrop &&
                 vaccineTypeDrop?.map((typ: any, index: number) => (
@@ -907,7 +910,7 @@ const MedicalCertificates = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Select
+              SELECT
               </option>
               {countryDrop &&
                 countryDrop?.map((country: any, index: number) => (
@@ -1101,7 +1104,7 @@ const MedicalCertificates = ({
                 disabled={disabled}
               >
                 <option value="" disabled selected>
-                  Select
+                SELECT
                 </option>
                 {otherVaccineTypeDrop &&
                   otherVaccineTypeDrop?.map((vac: any, index: number) => (
@@ -1362,7 +1365,7 @@ const MedicalCertificates = ({
               disabled={disabled}
             >
               <option value="" disabled selected>
-                Select
+              SELECT
               </option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -1477,11 +1480,15 @@ const MedicalCertificates = ({
             Save
           </button>
           <Link
-            href="#"
+            href={"#"}
             onClick={handleEdit}
-            className="border text-[14px] leading-[19.07px]  text-[#333333] border-[#00A264]  p-2 rounded-lg px-8"
+            className={`border p-2 rounded-lg px-8 ${
+              isEditing
+                ? "border-red-500 text-red-500" 
+                : "border-[#00A264] text-[#00A264]"
+            }`}
           >
-            Edit
+            {isEditing ? "Cancel" : "Edit"} {/* Conditional rendering */}
           </Link>
         </div>
       </form>

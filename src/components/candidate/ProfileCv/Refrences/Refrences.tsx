@@ -60,6 +60,7 @@ const Refrences = ({
   // const [countryCodeDrop, setCountryCodeDrop] = useState<any>([]);
   const [isHideShow, setIsHideShow] = useState(false);
   const [color, setColor] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     GetDropdownDetails("country", (res: any) => {
@@ -225,6 +226,8 @@ const Refrences = ({
   const handleEdit = () => {
     setDisabled(!disabled);
     setIsHideShow(!isHideShow);
+    setIsEditing((prev) => !prev);
+
   };
 
   return (
@@ -253,7 +256,7 @@ const Refrences = ({
                   disabled={disabled}
                 >
                   <option value="" disabled>
-                    Select
+                  SELECT
                   </option>
                   <option value="maile1">2</option>
                   <option value="maile2">5</option>
@@ -355,7 +358,7 @@ const Refrences = ({
                   disabled={disabled}
                 >
                   <option value="" disabled>
-                    Select
+                   SELECT
                   </option>
                   {countryDrop &&
                     countryDrop?.map((country: any, index: number) => (
@@ -603,12 +606,16 @@ const Refrences = ({
               Save
             </button>
             <Link
-              href={"#"}
-              onClick={handleEdit}
-              className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
-            >
-              Edit
-            </Link>
+            href={"#"}
+            onClick={handleEdit}
+            className={`border p-2 rounded-lg px-8 ${
+              isEditing
+                ? "border-red-500 text-red-500" 
+                : "border-[#00A264] text-[#00A264]"
+            }`}
+          >
+            {isEditing ? "Cancel" : "Edit"} {/* Conditional rendering */}
+          </Link>
           </div>
         </div>
       </form>

@@ -45,6 +45,7 @@ const UserDetails = ({
   const [remUser, setRemUser] = useState("");
   const [mLevel, setmLevel] = useState("");
   const [slevel, setSlevel] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     GetDropdownDetails("STCHTraining", (res: any) => {
@@ -158,6 +159,8 @@ const UserDetails = ({
   const handleEdit = () => {
     setDisabled(!disabled);
     setIsHideShow(!isHideShow);
+    setIsEditing((prev) => !prev);
+
     // toast.info("You are now in edit mode. Make your changes.");
   };
   const validateInputs = () => {
@@ -481,12 +484,16 @@ const UserDetails = ({
               Save
             </button>
             <Link
-              href={"#"}
-              className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
-              onClick={handleEdit}
-            >
-              Edit
-            </Link>
+            href={"#"}
+            onClick={handleEdit}
+            className={`border p-2 rounded-lg px-8 ${
+              isEditing
+                ? "border-red-500 text-red-500" 
+                : "border-[#00A264] text-[#00A264]"
+            }`}
+          >
+            {isEditing ? "Cancel" : "Edit"} {/* Conditional rendering */}
+          </Link>
           </div>
         </div>
       </form>

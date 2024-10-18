@@ -45,7 +45,7 @@ Props) => {
   const [available, setAvailable] = useState("");
   const [salaryField, setSalaryField] = useState("");
   const [contractDuration, setContractDuration] = useState("");
-
+  const [isEditing, setIsEditing] = useState(false);
   const [disabled, setDisabled] = useState(true);
   const [color, setColor] = useState("");
   // const [criminal, setCriminal] = useState<any>("");
@@ -171,6 +171,7 @@ Props) => {
 
   const handleEdit = () => {
     setDisabled(!disabled);
+    setIsEditing((prev) => !prev);
     // toast.info("You are now in edit mode. Make your changes.");
   };
 
@@ -490,9 +491,13 @@ Props) => {
           <Link
             href={"#"}
             onClick={handleEdit}
-            className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
+            className={`border p-2 rounded-lg px-8 ${
+              isEditing
+                ? "border-red-500 text-red-500" 
+                : "border-[#00A264] text-[#00A264]"
+            }`}
           >
-            Edit
+            {isEditing ? "Cancel" : "Edit"} {/* Conditional rendering */}
           </Link>
         </div>
       </form>

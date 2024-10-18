@@ -33,13 +33,12 @@ const Languages = ({
   languageDetail,
   criminal,
 }: Props) => {
- 
   const [additionalLanguageForms, setAdditionalLanguageForms] = useState<
     AdditionalLanguage[]
   >([{ addiLanguage: "", languageLavel: "" }]);
 
   const [language1, setLanguage1] = useState("");
- 
+
   const [englishLavel, setEnglishLavel] = useState("");
   const [languageTests, setLanguageTests] = useState("");
   const [languageLevelDrop, setLanguageLevelDrop] = useState<any>([]);
@@ -48,7 +47,7 @@ const Languages = ({
   const [testCenter, setTestCenter] = useState("");
   const [typeofTest, setTypeofTest] = useState("");
   const [result, setResult] = useState("");
-
+  const [isEditing, setIsEditing] = useState(false);
   const [issuingCountry, setIssuingCountry] = useState("");
   const [dateofTest, setDateofTest] = useState("");
   const [disabled, setDisabled] = useState(true);
@@ -131,15 +130,16 @@ const Languages = ({
       setTestCenter(languageDetail?.testCenter);
       setIssuingCountry(languageDetail?.issuingCountry);
       setDateofTest(moment(languageDetail?.dateOfTest).format("YYYY-MM-DD"));
-      setSelectedFile(languageDetail?.documentUrl)
-      let combineLng = languageDetail?.additionalLanguages?.length? languageDetail?.additionalLanguages?.map((lang: any) => ({
-        addiLanguage: lang?.additionalLanguage,
-        languageLavel: lang?.additionalLanguageLevel
-      })):[{ addiLanguage: "", languageLavel: "" }];
-      setAdditionalLanguageForms(combineLng)
-
-  }
-}, [languageDetail]);
+      setSelectedFile(languageDetail?.documentUrl);
+      let combineLng = languageDetail?.additionalLanguages?.length
+        ? languageDetail?.additionalLanguages?.map((lang: any) => ({
+            addiLanguage: lang?.additionalLanguage,
+            languageLavel: lang?.additionalLanguageLevel,
+          }))
+        : [{ addiLanguage: "", languageLavel: "" }];
+      setAdditionalLanguageForms(combineLng);
+    }
+  }, [languageDetail]);
 
   const handleSubmit = (e: React.FormEvent) => {
     // try {
@@ -230,14 +230,16 @@ const Languages = ({
   const handleEdit = () => {
     setDisabled(!disabled);
     setIsHideShow(!isHideShow);
+    setIsEditing((prev) => !prev);
+
     // toast.info("You are now in edit mode. Make your changes.");
   };
 
   const handleValidationChange = (setValue: any) => (e: any) => {
     const value = e.target.value;
-    const alphabeticValue = value.replace(/[^A-Za-z\s]/g, ""); 
+    const alphabeticValue = value.replace(/[^A-Za-z\s]/g, "");
     const capitalizedValue =
-      alphabeticValue.charAt(0).toUpperCase() + alphabeticValue.slice(1); 
+      alphabeticValue.charAt(0).toUpperCase() + alphabeticValue.slice(1);
     setValue(capitalizedValue);
   };
   return (
@@ -258,7 +260,7 @@ const Languages = ({
               required
             >
               <option value="" disabled>
-                Select
+                SELECT
               </option>
               {languageDrop &&
                 languageDrop?.map((lang: any, index: number) => (
@@ -314,7 +316,7 @@ const Languages = ({
                   required
                 >
                   <option value="" disabled>
-                    Select
+                    SELECT
                   </option>
                   {languageDrop &&
                     languageDrop?.map((lang: any, index: number) => (
@@ -348,7 +350,7 @@ const Languages = ({
                   required
                 >
                   <option value="" disabled>
-                    Select
+                    SELECT
                   </option>
                   {languageLevelDrop &&
                     languageLevelDrop?.map((lang: any, index: number) => (
@@ -376,7 +378,7 @@ const Languages = ({
               required
             >
               <option value="" disabled>
-                Select
+                SELECT
               </option>
               {languageLevelDrop &&
                 languageLevelDrop?.map((lang: any, index: number) => (
@@ -408,7 +410,7 @@ const Languages = ({
                 disabled={disabled}
               >
                 <option value="" disabled>
-                  Select
+                  SELECT
                 </option>
                 {languageDrop &&
                   languageDrop?.map((lang: any, index: number) => (
@@ -464,15 +466,25 @@ const Languages = ({
               >
                 Result
               </label>
-              <input
+              <select
                 id="result1"
-                type="text"
                 value={result}
-                onChange={handleValidationChange(setResult)}
+                // onChange={handleValidationChange(setResult)}
+                onChange={(e) => setResult(e.target.value)}
+
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                placeholder="Enter Result"
                 disabled={disabled}
-              />
+              >
+                <option value="" disabled selected>
+                  SELECT
+                </option>
+                <option value="Yes" >
+                  YES
+                </option>
+                <option value="No" >
+                  NO
+                </option>
+              </select>
             </div>
 
             <div>
@@ -490,7 +502,7 @@ const Languages = ({
                 disabled={disabled}
               >
                 <option value="" disabled>
-                  Select
+                  SELECT
                 </option>
                 {countryDrop &&
                   countryDrop?.map((country: any, index: number) => (
@@ -564,9 +576,13 @@ const Languages = ({
           <Link
             href={"#"}
             onClick={handleEdit}
-            className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
+            className={`border p-2 rounded-lg px-8 ${
+              isEditing
+                ? "border-red-500 text-red-500" 
+                : "border-[#00A264] text-[#00A264]"
+            }`}
           >
-            Edit
+            {isEditing ? "Cancel" : "Edit"} {/* Conditional rendering */}
           </Link>
         </div>
       </form>

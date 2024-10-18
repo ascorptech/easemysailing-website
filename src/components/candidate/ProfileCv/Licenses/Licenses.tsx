@@ -110,43 +110,10 @@ const Licenses = ({
     },
   ]);
 
-  // const [number, setNumber] = useState("");
 
-  // const [idoNotACoC, setIdoNotACoC] = useState<any>(false);
-  // const [areaLimitation, setAreaLimitation] = useState("");
-  // const [capacity, setCapacity] = useState("");
-
-  // const [issuingOption, setIssuingOption] = useState("");
-  // const [typeOption, setTypeOption] = useState("");
-  // const [number1, setNumber1] = useState("");
-
-  // const [wRegulation, setWRegulation] = useState("");
-
-  // const [otherLimitation, setOtherLimitation] = useState("");
-  // const [issueDate, setIssueDate] = useState("");
-  // const [expiryDate, setExpiryDate] = useState("");
-
-  // const [gMexpiryDate, setGMExpiryDate] = useState("");
-
-  // const [gMissueDate, setGMIssueDate] = useState("");
-
-  // const [issuingCountry, setIssuingCountry] = useState("");
-
-  // const [certificateNo, setCertificateNo] = useState("");
-  // const [issueAuthority, setIssueAuthority] = useState("");
-  // const [sTCWRegulation, setSTCWRegulation] = useState("");
-  // const [certificateType, setCertificateType] = useState("");
   const [separatelyCheckBox, setSeparatelyCheckBox] = useState<any>(false);
 
-  // const [sTCWRegulationOption, setSTCWRegulationOption] = useState("");
-  // const [capacityOption, setCapacityOption] = useState("");
-  // const [issueDateOption, setIssueDateOption] = useState("");
-  // const [expiryDateOption, setExpiryDateOption] = useState("");
 
-  // // const [selectedFile, setSelectedFile] = useState<any>(null);
-  // const [selectedFile1, setSelectedFile1] = useState<any>(null);
-
-  // const [selectedFile2, setSelectedFile2] = useState<any>(null);
   const [countryDrop, setCountryDrop] = useState<any>([]);
   const [capacityDrop, setCapacityDrop] = useState<any>([]);
   const [competencyDrop, setCompetencyDrop] = useState<any>([]);
@@ -155,6 +122,7 @@ const Licenses = ({
 
   const [showFields, setShowFields] = useState<any>(false);
   const [color, setColor] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
 
   // const [showFieldsens, setShowFieldsens] = useState(false);
 
@@ -571,6 +539,8 @@ const Licenses = ({
   const handleEdit = () => {
     setDisabled(!disabled);
     setIsHideShow(!isHideShow);
+    setIsEditing((prev) => !prev);
+
     // toast.info("You are now in edit mode. Make your changes.");
   };
 
@@ -647,7 +617,7 @@ const Licenses = ({
                       disabled={disabled}
                     >
                       <option value="" disabled>
-                        Select
+                      SELECT
                       </option>
                       {countryDrop &&
                         countryDrop?.map((country: any, index: number) => (
@@ -702,7 +672,7 @@ const Licenses = ({
                       disabled={disabled}
                     >
                       <option value="" disabled>
-                        Select
+                        SELECT
                       </option>
                       {competencyDrop &&
                         competencyDrop?.map((cap: any, index: number) => (
@@ -733,7 +703,7 @@ const Licenses = ({
                       disabled={disabled}
                     >
                       <option value="" disabled>
-                        Select
+                        SELECT
                       </option>
                       {stcwRegDrop &&
                         stcwRegDrop?.map((stc: any, index: number) => (
@@ -960,7 +930,7 @@ const Licenses = ({
                   disabled={disabled}
                 >
                   <option value="" disabled>
-                    Select
+                    SELECT
                   </option>
                   {countryDrop &&
                     countryDrop?.map((country: any, index: number) => (
@@ -1005,7 +975,7 @@ const Licenses = ({
                   disabled={disabled}
                 >
                   <option value="" disabled>
-                    Select
+                    SELECT
                   </option>
                   {capacityDrop &&
                     capacityDrop?.map((cap: any, index: number) => (
@@ -1029,7 +999,7 @@ const Licenses = ({
                   disabled={disabled}
                 >
                   <option value="" disabled>
-                    Select
+                    SELECT
                   </option>
                   {stcwRegDrop &&
                     stcwRegDrop?.map((stc: any, index: number) => (
@@ -1170,7 +1140,7 @@ const Licenses = ({
                         disabled={disabled}
                       >
                         <option value="" disabled>
-                          Select
+                          SELECT
                         </option>
                         {edorTyDrop &&
                           edorTyDrop?.map((endor: any, index: number) => (
@@ -1197,7 +1167,7 @@ const Licenses = ({
                         disabled={disabled}
                       >
                         <option value="" disabled>
-                          Select
+                          SELECT
                         </option>
                         {countryDrop &&
                           countryDrop?.map((country: any, index: number) => (
@@ -1248,7 +1218,7 @@ const Licenses = ({
                         disabled={disabled}
                       >
                         <option value="" disabled>
-                          Select
+                          SELECT
                         </option>
                         {capacityDrop &&
                           capacityDrop?.map((cap: any, index: number) => (
@@ -1275,7 +1245,7 @@ const Licenses = ({
                         disabled={disabled}
                       >
                         <option value="" disabled>
-                          Select
+                          SELECT
                         </option>
                         {stcwRegDrop &&
                           stcwRegDrop?.map((stcw: any, index: number) => (
@@ -1370,9 +1340,13 @@ const Licenses = ({
           <Link
             href={"#"}
             onClick={handleEdit}
-            className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
+            className={`border p-2 rounded-lg px-8 ${
+              isEditing
+                ? "border-red-500 text-red-500" 
+                : "border-[#00A264] text-[#00A264]"
+            }`}
           >
-            Edit
+            {isEditing ? "Cancel" : "Edit"} {/* Conditional rendering */}
           </Link>
         </div>
       </form>

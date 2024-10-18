@@ -203,10 +203,8 @@ const Ecdis = ({
 
   const handleValidationChange = (setValue: any) => (e: any) => {
     const value = e.target.value;
-    const alphabeticValue = value.replace(/[^A-Za-z\s]/g, ""); 
-    const capitalizedValue =
-      alphabeticValue.charAt(0).toUpperCase() + alphabeticValue.slice(1); 
-    setValue(capitalizedValue);
+    const alphabeticValue = value.replace(/[^A-Za-z\s]/g, "").toUpperCase(); 
+    setValue(alphabeticValue);
   };
 
   return (
@@ -299,7 +297,7 @@ const Ecdis = ({
                 id="eCDISNumber"
                 type="text"
                 value={eCDISNumber}
-                onChange={(e) =>{const value = e.target.value.replace(/[^a-zA-Z0-9. ]/g, "");  setECDISNumber(value)}}
+                onChange={(e) =>{const value = e.target.value.replace(/[^a-zA-Z0-9. ]/g, "").toUpperCase();  setECDISNumber(value)}}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Certificate Number"
                 disabled={disabled}
@@ -341,8 +339,8 @@ const Ecdis = ({
                   value={exdate1}
                   onChange={(e) => setExDate1(e.target.value)}
                   disabled={disabled}
-                  placeholder="Enter Expiry Date"
-                />
+                  min={new Date().toISOString().split("T")[0]}
+                  />
               </div>
             )}
             {/* <div className="flex  ">

@@ -39,6 +39,7 @@ const Languages = ({
 
   const [language1, setLanguage1] = useState("");
 
+
   const [englishLavel, setEnglishLavel] = useState("");
   const [languageTests, setLanguageTests] = useState("");
   const [languageLevelDrop, setLanguageLevelDrop] = useState<any>([]);
@@ -130,6 +131,16 @@ const Languages = ({
       setTestCenter(languageDetail?.testCenter);
       setIssuingCountry(languageDetail?.issuingCountry);
       setDateofTest(moment(languageDetail?.dateOfTest).format("YYYY-MM-DD"));
+      setSelectedFile(languageDetail?.documentUrl);
+      let combineLng = languageDetail?.additionalLanguages?.length
+        ? languageDetail?.additionalLanguages?.map((lang: any) => ({
+            addiLanguage: lang?.additionalLanguage,
+            languageLavel: lang?.additionalLanguageLevel,
+          }))
+        : [{ addiLanguage: "", languageLavel: "" }];
+      setAdditionalLanguageForms(combineLng);
+    }
+  }, [languageDetail]);
       setSelectedFile(languageDetail?.documentUrl);
       let combineLng = languageDetail?.additionalLanguages?.length
         ? languageDetail?.additionalLanguages?.map((lang: any) => ({
@@ -237,6 +248,10 @@ const Languages = ({
 
   const handleValidationChange = (setValue: any) => (e: any) => {
     const value = e.target.value;
+    const alphabeticValue = value.replace(/[^A-Za-z\s]/g, "").toUpperCase();
+    // const capitalizedValue =
+    // alphabeticValue.charAt(0).toUpperCase() + alphabeticValue.slice(1);
+    setValue(alphabeticValue);
     const alphabeticValue = value.replace(/[^A-Za-z\s]/g, "");
     const capitalizedValue =
       alphabeticValue.charAt(0).toUpperCase() + alphabeticValue.slice(1);
@@ -452,7 +467,12 @@ const Languages = ({
                 id="cityName"
                 type="text"
                 value={typeofTest}
-                onChange={handleValidationChange(setTypeofTest)}
+                onChange={(e) => {
+                  const value = e.target.value
+                    .replace(/[^A-Za-z0-9.-\\\s]/g, "")
+                    .toUpperCase();
+                  setTypeofTest(value);
+                }}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Type of Test"
                 disabled={disabled}

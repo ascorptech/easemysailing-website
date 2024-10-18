@@ -364,7 +364,7 @@ const PersonalDetails = ({
                 onChange={(e) =>setDate(e.target.value)}
                 disabled={disabled}
                 max={new Date(
-                  new Date().setFullYear(new Date().getFullYear() - 18)
+                  new Date().setFullYear(new Date().getFullYear() - 16)
                 )
                   .toISOString()
                   .split("T")[0]} // Restrict to at least 18 years old

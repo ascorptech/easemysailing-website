@@ -3,9 +3,14 @@ import Link from "next/link";
 import { MdOutlineEmail } from "react-icons/md";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+// import { GoEye, GoEyeSlash } from 'react-icons/go';
+// import { MdOutlineLock } from 'react-icons/md';
+import { GoEye } from 'react-icons/go';  // For "eye" (show password)
+import { FaEyeSlash } from 'react-icons/fa';  // For "eye with slash" (hide password)
+import { MdOutlineLock } from 'react-icons/md';  // For lock icon
 
-import { GoEye } from "react-icons/go";
-import { MdOutlineLock } from "react-icons/md";
+// import { GoEye,GoEyeSlash } from "react-icons/go";
+// import { MdOutlineLock } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa";
 
 import { FaPhone } from "react-icons/fa";
@@ -140,15 +145,25 @@ const SignUp = ({ route }: Props) => {
         return;
       }
       e.preventDefault();
+
+
       const passwordValidationError = validatePassword(password);
 
-      if (passwordValidationError) {
-        toast.error("Password must contain at A,a,1,@ character");
+      if (password.length < 8) {
+        toast.error("Password must be at least 8 characters long.");
+        setPasswordError("Password must be at least 8 characters long.");
+        return;
+      }
 
+      if (passwordValidationError) {
+        toast.error("Password must contain A, a, 1, @ ");
+
+        
         setPasswordError(passwordValidationError);
 
         return;
       }
+     
       if (password !== cPassword) {
         // if(!validatePasswords){
         toast.error("Passwords do not match");
@@ -517,69 +532,134 @@ const SignUp = ({ route }: Props) => {
                 {/* {!isValidPhone && <span className="text-red-500 text-sm mt-1">Invalid phone number for the selected country.</span>} */}
               </div>
 
-              <div className="mb-1">
-                <label
-                  className="block mb-1 text-[16px] leading-[24px] font-[500] text-[#333333]"
-                  htmlFor="password"
-                >
-                  Password
-                </label>
-                <div className="relative pl-8">
-                  <input
-                    id="password"
-                    type={showPassword ? "text" : "password"}
-                    value={password}
-                    // onChange={(e) => setPassword(e.target.value.trim())}
-                    onChange={(e) => {
-                      setPassword(e.target.value);
-                      setPasswordError("");
-                    }}
-                    className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline"
-                    placeholder="Password"
-                    required
-                  />
-
-                  <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-[#00A264] text-white rounded-l-md">
-                    <MdOutlineLock />
-                  </span>
-                  <span
-                    className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
-                    onClick={() => setShowPassword(!showPassword)}
+                {/* <div className="mb-1">
+                  <label
+                    className="block mb-1 text-[16px] leading-[24px] font-[500] text-[#333333]"
+                    htmlFor="password"
                   >
-                    <GoEye />
-                  </span>
+                    Password
+                  </label>
+                  <div className="relative pl-8">
+                    <input
+                      id="password"
+                      type={showPassword ? "text" : "password"}
+                      value={password}
+                      // onChange={(e) => setPassword(e.target.value.trim())}
+                      onChange={(e) => {
+                        setPassword(e.target.value);
+                        setPasswordError("");
+                      }}
+                      className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline"
+                      placeholder="Password"
+                      required
+                    />
+
+                    <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-[#00A264] text-white rounded-l-md">
+                      <MdOutlineLock />
+                    </span>
+                    <span
+                      className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      <GoEye />
+                    </span>
+                  </div>
                 </div>
-              </div>
 
-              <div className="mb-2">
-                <label
-                  className="block mb-1 text-[16px] leading-[24px] font-[500] text-[#333333]"
-                  htmlFor="Password"
-                >
-                  Confirm Password
-                </label>
-                <div className="relative pl-8">
-                  <input
-                    id="Password"
-                    type={showCpassword ? "text" : "password"}
-                    value={cPassword}
-                    onChange={(e) => setCpassword(e.target.value.trim())}
-                    className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline"
-                    placeholder="Confirm Password"
-                    required
-                  />
-
-                  <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-[#00A264] text-white rounded-l-md">
-                    <MdOutlineLock />
-                  </span>
-                  <span
-                    className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
-                    onClick={() => setShowCpassword(!showCpassword)}
+                <div className="mb-2">
+                  <label
+                    className="block mb-1 text-[16px] leading-[24px] font-[500] text-[#333333]"
+                    htmlFor="Password"
                   >
-                    <GoEye />
-                  </span>
-                </div>
-              </div>
+                    Confirm Password
+                  </label>
+                  <div className="relative pl-8">
+                    <input
+                      id="Password"
+                      type={showCpassword ? "text" : "password"}
+                      value={cPassword}
+                      onChange={(e) => setCpassword(e.target.value.trim())}
+                      className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline"
+                      placeholder="Confirm Password"
+                      required
+                    />
+
+                    <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-[#00A264] text-white rounded-l-md">
+                      <MdOutlineLock />
+                    </span>
+                    <span
+                      className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
+                      onClick={() => setShowCpassword(!showCpassword)}
+                    >
+                      <GoEye />
+                    </span>
+                  </div>
+                </div> */}
+
+<div className="mb-1">
+  <label
+    className="block mb-1 text-[16px] leading-[24px] font-[500] text-[#333333]"
+    htmlFor="password"
+  >
+    Password
+  </label>
+  <div className="relative pl-8">
+    <input
+      id="password"
+      type={showPassword ? "text" : "password"}
+      value={password}
+      onChange={(e) => {
+        setPassword(e.target.value);
+        setPasswordError(""); // Clear error when typing
+      }}
+      className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline"
+      placeholder="Password"
+      required
+    />
+
+    <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-[#00A264] text-white rounded-l-md">
+      <MdOutlineLock />
+    </span>
+    <span
+      className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
+      onClick={() => setShowPassword(!showPassword)}
+    >
+      {showPassword ? <FaEyeSlash /> : <GoEye />}
+    </span>
+  </div>
+</div>
+
+<div className="mb-2">
+  <label
+    className="block mb-1 text-[16px] leading-[24px] font-[500] text-[#333333]"
+    htmlFor="Password"
+  >
+    Confirm Password
+  </label>
+  <div className="relative pl-8">
+    <input
+      id="Password"
+      type={showCpassword ? "text" : "password"}
+      value={cPassword}
+      onChange={(e) => setCpassword(e.target.value.trim())}
+      className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline"
+      placeholder="Confirm Password"
+      required
+    />
+
+    <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-[#00A264] text-white rounded-l-md">
+      <MdOutlineLock />
+    </span>
+    <span
+      className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
+      onClick={() => setShowCpassword(!showCpassword)}
+    >
+      {showCpassword ? <FaEyeSlash /> : <GoEye />}
+    </span>
+  </div>
+</div>
+
+
               <div className="flex  items-center lg:justify-start gap-2 mt-2 ">
                 <div>
                   <input

@@ -90,7 +90,7 @@ const OwnerCrew = ({
     }
   };
 
-  const totalFields = 2;
+  const totalFields = 2 ;
   const filledFields = [multipleSelection, multipleCrewSelection].filter(
     Boolean
   ).length;

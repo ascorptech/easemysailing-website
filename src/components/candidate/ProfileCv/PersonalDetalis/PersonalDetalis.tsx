@@ -274,7 +274,7 @@ const PersonalDetails = ({
                 className="block text-[14px] leading-[19.07px] text-[#333333] mb-1"
                 htmlFor="firstName"
               >
-                First Name
+                First Name*
               </label>
               <input
                 id="firstName"
@@ -284,6 +284,7 @@ const PersonalDetails = ({
                 className="border rounded-md w-full h-9 px-2 text-[14px] leading-[19.07px] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter First Name"
                 disabled
+                
               />
             </div>
 
@@ -312,7 +313,7 @@ const PersonalDetails = ({
                 className="block text-[14px] leading-[19.07px] text-[#333333] mb-1"
                 htmlFor="lastName"
               >
-                Last Name
+                Last Name*
               </label>
               <input
                 id="lastName"
@@ -331,7 +332,7 @@ const PersonalDetails = ({
                 className="text-[14px] leading-[19.07px]  text-[#333333] mb-2"
                 htmlFor="Gender1"
               >
-                Gender
+                Gender*
               </label>
               <select
                 id="Gender1"
@@ -339,6 +340,7 @@ const PersonalDetails = ({
                 value={gender}
                 onChange={(e) => setGender(e.target.value)}
                 disabled={disabled}
+                required
               >
                 <option value="" disabled selected> SELECT</option>
                 {genderDrop &&
@@ -354,7 +356,7 @@ const PersonalDetails = ({
                 className="text-[14px] leading-[19.07px]  text-[#333333] mb-2 "
                 htmlFor="DateofBirth"
               >
-                Date of Birth
+                *Date of Birth
               </label>
               <input
                 id="DateofBirth"
@@ -363,6 +365,7 @@ const PersonalDetails = ({
                 value={date}
                 onChange={(e) =>setDate(e.target.value)}
                 disabled={disabled}
+                required
                 max={new Date(
                   new Date().setFullYear(new Date().getFullYear() - 16)
                 )
@@ -382,7 +385,7 @@ const PersonalDetails = ({
                 className="text-[14px] leading-[19.07px]  text-[#333333] mb-2"
                 htmlFor="CountryofBirth"
               >
-                Country of Birth
+                Country of Birth*
               </label>
               <select
                 id="CountryofBirth"
@@ -390,6 +393,7 @@ const PersonalDetails = ({
                 value={countryOfBirth}
                 onChange={(e) => setCountryOfBirth(e.target.value)}
                 disabled={disabled}
+                required
               >
                 <option value="" disabled selected> SELECT</option>
                 {countryDrop &&
@@ -406,7 +410,7 @@ const PersonalDetails = ({
                 className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
                 htmlFor="cityBirth"
               >
-                City of Birth
+                City of Birth*
               </label>
               {/* <div className=" flex items-center  "> */}
               <input
@@ -417,6 +421,7 @@ const PersonalDetails = ({
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Your City"
                 disabled={disabled}
+                required
               />
             </div>
 
@@ -428,7 +433,7 @@ const PersonalDetails = ({
                 className="text-[14px] leading-[19.07px]  text-[#333333] mb-2"
                 htmlFor="nationality"
               >
-                Nationality
+                Nationality*
               </label>
               <select
                 id="nationality"
@@ -436,6 +441,7 @@ const PersonalDetails = ({
                 value={nationality}
                 onChange={(e) => setNationality(e.target.value)}
                 disabled={disabled}
+                required
               >
                 <option value="" disabled selected>SELECT</option>
                 {countryDrop &&
@@ -471,7 +477,7 @@ const PersonalDetails = ({
                 className="text-[14px] leading-[19.07px]  text-[#333333] mb-2"
                 htmlFor="meritalstatus"
               >
-                Marital Status
+                Marital Status*
               </label>
               <select
                 id="meritalstatus"
@@ -479,8 +485,9 @@ const PersonalDetails = ({
                 value={marital}
                 onChange={(e) => setMarital(e.target.value)}
                 disabled={disabled}
+                required
               >
-                <option value="">SELECT</option>
+                <option value="" disabled selected>SELECT</option>
                 {martialStatusDrop &&
                   martialStatusDrop?.map((status: any, index: number) => (
                     <option key={index} value={status}>

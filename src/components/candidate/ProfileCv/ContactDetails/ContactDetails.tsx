@@ -474,7 +474,7 @@ const ContactDetails = ({
                     //     setPhoneNumber(value);
                     //   }
                     // }}
-                    maxLength={14} // Maximum 12 digits
+                    maxLength={12} // Maximum 12 digits
                     onChange={(e) => {
                       // Allow only numeric input
                       const value = e.target.value;
@@ -539,7 +539,7 @@ const ContactDetails = ({
                     //     setPhoneNumber1(value);
                     //   }
                     // }}
-                    maxLength={14} // Maximum 12 digits
+                    maxLength={12} // Maximum 12 digits
                     onChange={(e) => {
                       // Allow only numeric input
                       const value = e.target.value;
@@ -574,11 +574,15 @@ const ContactDetails = ({
                     id="emails"
                     type="email"
                     value={email}
-                   
+                    // onChange={(e) => {
+                    //   const value = e.target.value.replace(
+                    //     /[^a-zA-Z0-9@_.]/g,
+                    //     ""
+                    //   );
+                    //   setEmail(value);
+                    // }}
                     onChange={(e) => {
                       let value = e.target.value.replace(/\s+/g, ''); // Removes all spaces
-                      // Allow only alphanumeric characters, ".", "@", and "-"
-                      value = value.replace(/[^a-zA-Z0-9@.-]/g, ''); 
                       setEmail(value?.trim());
                     }}
                     onBlur={(e) => {
@@ -589,12 +593,31 @@ const ContactDetails = ({
                     }}
                     className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     placeholder="Enter Email Address"
-                    readOnly
+                    disabled={disabled}
                     required
                   />
                 </div>
               </div>
 
+              {/* <div className="w-[50%] ">
+                <label
+                  className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
+                  htmlFor="inumber"
+                >
+                  INDoS Number
+                </label>
+                <div className="relative flex items-center  ">
+                  <input
+                    id="inumber"
+                    type="text"
+                    value={indNumber}
+                    onChange={(e) => setIndNumber(e.target.value)}
+                    className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                    placeholder=""
+                    required
+                  />
+                </div>
+              </div> */}
             </div>
           </div>
 

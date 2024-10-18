@@ -39,7 +39,6 @@ const Languages = ({
 
   const [language1, setLanguage1] = useState("");
 
-
   const [englishLavel, setEnglishLavel] = useState("");
   const [languageTests, setLanguageTests] = useState("");
   const [languageLevelDrop, setLanguageLevelDrop] = useState<any>([]);
@@ -455,7 +454,7 @@ const Languages = ({
                 value={typeofTest}
                 onChange={(e) => {
                   const value = e.target.value
-                    .replace(/[^A-Za-z0-9.-\\\s]/g, "")
+                    .replace(/[^A-Za-z0-9./-\s]/g, "")
                     .toUpperCase();
                   setTypeofTest(value);
                 }}
@@ -477,19 +476,14 @@ const Languages = ({
                 value={result}
                 // onChange={handleValidationChange(setResult)}
                 onChange={(e) => setResult(e.target.value)}
-
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 disabled={disabled}
               >
                 <option value="" disabled selected>
                   SELECT
                 </option>
-                <option value="Yes" >
-                  YES
-                </option>
-                <option value="No" >
-                  NO
-                </option>
+                <option value="PASS">PASS</option>
+                <option value="FAIL">FAIL</option>
               </select>
             </div>
 
@@ -584,7 +578,7 @@ const Languages = ({
             onClick={handleEdit}
             className={`border p-2 rounded-lg px-8 ${
               isEditing
-                ? "border-red-500 text-red-500" 
+                ? "border-red-500 text-red-500"
                 : "border-[#00A264] text-[#00A264]"
             }`}
           >

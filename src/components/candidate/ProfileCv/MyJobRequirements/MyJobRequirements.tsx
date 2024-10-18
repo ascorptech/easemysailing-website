@@ -8,6 +8,8 @@ import moment from "moment";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import Select from "react-select";
+
 
 type MjrComplete = {
   percentage: number;
@@ -48,6 +50,7 @@ Props) => {
   const [isEditing, setIsEditing] = useState(false);
   const [disabled, setDisabled] = useState(true);
   const [color, setColor] = useState("");
+  const [multipleSelection, setMultipleSelection] = useState<any>([]);
   // const [criminal, setCriminal] = useState<any>("");
 
   useEffect(() => {
@@ -111,6 +114,7 @@ Props) => {
       setRankDrop(res?.data?.values);
     });
     GetDropdownDetails("shipType", (res: any) => {
+      
       setShipTypeDrop(res?.data?.values);
     });
   }, []);
@@ -173,6 +177,36 @@ Props) => {
     setDisabled(!disabled);
     setIsEditing((prev) => !prev);
     // toast.info("You are now in edit mode. Make your changes.");
+  };
+
+  // useEffect(() => {
+  //   GetDropdownDetails("shorejobinterest", (res: any) => {
+  //     // console.log('County',res?.data)
+
+  //     let tempArray = res?.data?.values.map((element: any) => ({
+  //       label: element?.toUpperCase(),
+  //       value: element,
+  //     }));
+  //     setAlternate(tempArray);
+  //   });
+  // }, []);
+
+  const [alternate, setAlternate] = useState<any>([
+    { label: "Option 1", value: "1" },
+    { label: "Option 2", value: "2" },
+    { label: "Option 3", value: "3" },
+    { label: "Option 4", value: "4" },
+    { label: "Option 5", value: "5" },
+    { label: "Option 6", value: "6" },
+    { label: "Option 7", value: "7" },
+    { label: "Option 8", value: "8" },
+    { label: "Option 9", value: "9" },
+    { label: "Option 10", value: "10" },
+  ]);
+  const handleMultiSelectChange = (selectedOptions: any) => {
+    if (selectedOptions.length <= 4) {
+      setAlternateVesselType(selectedOptions);
+    }
   };
 
   return (
@@ -248,7 +282,7 @@ Props) => {
               disabled={disabled}
             >
               <option value="" disabled>
-              SELECT
+                SELECT
               </option>
               {rankDrop &&
                 rankDrop?.map((rank: any, index: number) => (
@@ -271,7 +305,7 @@ Props) => {
               required
             >
               <option value="" disabled>
-              SELECT
+                SELECT
               </option>
               {rankDrop &&
                 rankDrop?.map((rank: any, index: number) => (
@@ -298,7 +332,7 @@ Props) => {
               required
             >
               <option value="" disabled>
-              SELECT
+                SELECT
               </option>
               {shipTypeDrop &&
                 shipTypeDrop?.map((ship: any, index: number) => (
@@ -309,7 +343,7 @@ Props) => {
             </select>
           </div>
 
-          <div>
+          {/* <div>
             <label
               className="text-[14px] leading-[19.07px]  text-[#333333]"
               htmlFor="alternateVesselType"
@@ -324,7 +358,7 @@ Props) => {
               disabled={disabled}
             >
               <option value="" disabled>
-              SELECT
+                SELECT
               </option>
               {shipTypeDrop &&
                 shipTypeDrop?.map((ship: any, index: number) => (
@@ -333,7 +367,25 @@ Props) => {
                   </option>
                 ))}
             </select>
-          </div>
+          </div> */}
+
+          <div>
+          <label
+              className="text-[14px] leading-[19.07px]  text-[#333333]"
+              htmlFor="alternateVesselType"
+            >
+              Alternate Vessel Type
+            </label>
+              <Select
+                id="alternateVesselType"
+                isMulti
+                options={alternate}
+                value={alternateVesselType}
+                 onChange={handleMultiSelectChange}
+                isDisabled={disabled}
+                closeMenuOnSelect={false}
+              />
+            </div>
 
           {/* <div>
             <label className="text-[14px] leading-[19.07px]  text-[#333333]">
@@ -404,7 +456,7 @@ Props) => {
               type="text"
               value={salaryField}
               onChange={(e) => {
-                const inputValue = e.target.value;
+                const inputValue = e.target.value.replace(/[^0-9 ]/g, "");
                 if (!isNaN(Number(inputValue)) && Number(inputValue) >= 0) {
                   if (/^\d*$/.test(inputValue)) {
                     if (inputValue.length <= 6) {
@@ -463,7 +515,7 @@ Props) => {
               disabled={disabled}
             >
               <option value="" disabled selected>
-              SELECT
+                SELECT
               </option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -493,7 +545,7 @@ Props) => {
             onClick={handleEdit}
             className={`border p-2 rounded-lg px-8 ${
               isEditing
-                ? "border-red-500 text-red-500" 
+                ? "border-red-500 text-red-500"
                 : "border-[#00A264] text-[#00A264]"
             }`}
           >

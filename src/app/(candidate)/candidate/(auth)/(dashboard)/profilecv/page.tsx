@@ -12,7 +12,7 @@ const page = ({ sidebarToggle }:any) => {
         sidebarToggle ? "  ml-64 " : ""
       }  flex flex-col scrollbar-hide overflow-x-auto overflow-y-scroll`}
     >
-      <div className="fixed z-30 w-[82%] lg:w-[78%] xl:w-[82%] ">
+      <div className="fixed z-50 bg-white w-[82%] lg:w-[78%] xl:w-[82%] ">
       <ProfileCV/>
       </div>
       <div className="mt-40 ">

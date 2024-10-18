@@ -9,13 +9,14 @@ import {
 } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import { toast } from "react-toastify";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import moment from "moment";
 
 type TravelDocumentsVisaForms = {
   issueAuthority: string;
   visaNumber: string;
   issueDateVisa: string;
   expryDateVisa: string;
-  selectedFileVisa: File | null;
+  selectedFileVisa: any | null;
 };
 
 type TravelDocumentsComplete = {
@@ -88,7 +89,7 @@ const TravelDocuments = ({
 
   const totalFields = 17 + visaForms.length * 5;
   const filledFields = [
-    ...visaForms.flatMap((field) => [
+    ...visaForms?.flatMap((field) => [
       field.issueAuthority,
       field.expryDateVisa,
       field.visaNumber,
@@ -114,7 +115,8 @@ const TravelDocuments = ({
     issuingAuthority,
   ].filter(Boolean).length;
 
-  const percentage:any = totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
+  const percentage: any =
+    totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
 
   useEffect(() => {
     console.log("user", userDetail);
@@ -146,15 +148,14 @@ const TravelDocuments = ({
     const file = event.target.files?.[0];
     if (file) {
       const reader = new FileReader();
-        
-      reader.onloadend = function() {
-          const imageBinary:any = reader.result; 
-          const byteArray = imageBinary.split(',')[1]; 
-          setSelectedFile(byteArray);
+
+      reader.onloadend = function () {
+        const imageBinary: any = reader.result;
+        const byteArray = imageBinary.split(",")[1];
+        setSelectedFile(byteArray);
       };
-      
+
       reader.readAsDataURL(file);
-     
     }
   };
 
@@ -174,7 +175,6 @@ const TravelDocuments = ({
   };
 
   const handleFileChangeVisa = (index: number, event: any) => {
-    
     const file = event.target.files?.[0];
 
     const reader = new FileReader();
@@ -221,56 +221,95 @@ const TravelDocuments = ({
     const file = event.target.files?.[0];
     if (file) {
       const reader = new FileReader();
-        
-      reader.onloadend = function() {
-          const imageBinary:any = reader.result; 
-          const byteArray = imageBinary.split(',')[1]; 
-          setSelectedFileResidence(byteArray);
+
+      reader.onloadend = function () {
+        const imageBinary: any = reader.result;
+        const byteArray = imageBinary.split(",")[1];
+        setSelectedFileResidence(byteArray);
       };
-      
+
       reader.readAsDataURL(file);
-     
     }
   };
 
   useEffect(() => {
     console.log("travelDoc", travelDocumentsDetails);
     if (travelDocumentsDetails) {
+      setIssuingAuthority(travelDocumentsDetails?.passportIssuingCountry);
       setNumber(travelDocumentsDetails?.passportNumber);
-      setIssueDate(travelDocumentsDetails?.passportIssueDate);
-      setExDate(travelDocumentsDetails?.passportExpiryDate);
+      setIssueDate(
+        moment(travelDocumentsDetails?.passportIssueDate).format("YYYY-MM-DD")
+      );
+      setExDate(
+        moment(travelDocumentsDetails?.passportExpiryDate).format("YYYY-MM-DD")
+      );
+      setBiometric(
+        travelDocumentsDetails?.passportBiometric == "true" ? "Yes" : "No"
+      );
+      setSelectedFile(travelDocumentsDetails?.passportDocumentUrl);
+
+      setFlagState(travelDocumentsDetails?.seamansBookIssuingCountry);
+      setTrainingCenter(travelDocumentsDetails?.seamansBookNumber);
+      setIssueDate1(
+        moment(travelDocumentsDetails?.seamansBookIssueDate).format(
+          "YYYY-MM-DD"
+        )
+      );
+      setExDate1(
+        moment(travelDocumentsDetails?.seamansBookExpiryDate).format(
+          "YYYY-MM-DD"
+        )
+      );
+      setSelectedFiles(travelDocumentsDetails?.seamansBookDocumentUrl);
+
+      let combineTravel = travelDocumentsDetails?.visaDetails?.length
+        ? travelDocumentsDetails?.visaDetails?.map((travel: any) => ({
+            visaNumber: travel?.visaNumber,
+            issueAuthority: travel?.visaIssuingCountry,
+            issueDateVisa: moment(travel?.visaIssueDate).format("YYYY-MM-DD"),
+            expryDateVisa: moment(travel?.visaExpiryDate).format("YYYY-MM-DD"),
+            selectedFileVisa: travel?.visaDocumentUrl,
+          }))
+        : [
+            {
+              issueAuthority: "",
+              visaNumber: "",
+              issueDateVisa: "",
+              expryDateVisa: "",
+              selectedFileVisa: null,
+            },
+          ];
+      setVisaForms(combineTravel);
 
       setIssuingCountry(travelDocumentsDetails?.residencePermitIssuingCountry);
+      setPermitNumber(travelDocumentsDetails?.residencePermitNumber);
 
-      setIssueDate2(travelDocumentsDetails?.residencePermitIssueDate);
+      setIssueDate2(
+        moment(travelDocumentsDetails?.residencePermitIssueDate).format(
+          "YYYY-MM-DD"
+        )
+      );
 
-      setExpDate2(travelDocumentsDetails?.passportIssueDate);
+      setExpDate2(
+        moment(travelDocumentsDetails?.residencePermitExpiryDate).format(
+          "YYYY-MM-DD"
+        )
+      );
 
-      setSelectedFile(travelDocumentsDetails?.passportIssueDate);
+      setSelectedFileResidence(
+        travelDocumentsDetails?.residencePermitDocumentUrl
+      );
 
-      setSelectedFiles(travelDocumentsDetails?.passportIssueDate);
-      setSelectedFileResidence(travelDocumentsDetails?.passportIssueDate);
-
-      setTrainingCenter(travelDocumentsDetails?.passportIssueDate);
-      setIssueDate1(travelDocumentsDetails?.passportIssueDate);
-      setExDate1(travelDocumentsDetails?.passportIssueDate);
-      setPermitNumber(travelDocumentsDetails?.passportIssueDate);
-      setIssuingAuthority(travelDocumentsDetails?.passportIssueDate);
-      setBiometric(travelDocumentsDetails?.passportIssueDate);
-      setFlagState(travelDocumentsDetails?.passportIssueDate);
       setIndNumber(travelDocumentsDetails?.passportIssueDate);
     }
   }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
-    // try {
     e.preventDefault();
     if (!criminal) {
       toast.error("Please accept the declaration");
       return;
     } else {
-      
-
       let data: any = {
         id: userDetail?.userId,
 
@@ -289,10 +328,10 @@ const TravelDocuments = ({
         residencePermitExpiryDate: expDate2,
         passportDocumentUrl: selectedFile,
         seamansBookDocumentUrl: selectedFiles,
-
+        passportBiometric: biometric == "Yes" ? true : false,
         residencePermitDocumentUrl: selectedFileResidence,
-        color:color,
-        completed:percentage
+        color: color,
+        completed: percentage,
       };
       const visaArray: any = [];
       visaForms.forEach((element: any) => {
@@ -300,7 +339,7 @@ const TravelDocuments = ({
           visaNumber: element?.visaNumber,
           visaIssueDate: element?.issueDateVisa,
           visaExpiryDate: element?.expryDateVisa,
-          visaDocument: element?.selectedFileVisa,
+          visaDocumentUrl: element?.selectedFileVisa,
           visaIssuingCountry: element?.issueAuthority,
         });
       });
@@ -311,18 +350,6 @@ const TravelDocuments = ({
       AddTravelDocumentData(data, AddTravelDocumentDataCB);
     }
   };
-
-  //  formData.visaData =visaArray;
-
-  // AddTravelDocumentData(
-  //   userDetail?.userId,
-  //   biometric,
-  //   checkBox,
-  //   formData,
-  //   AddTravelDocumentDataCB
-  //   );
-  // }
-  // };
 
   const AddTravelDocumentDataCB = (result: any) => {
     if (result?.status == 200 || result?.status == 201) {
@@ -364,7 +391,7 @@ const TravelDocuments = ({
               required
             >
               <option value="" disabled selected>
-                Select
+                SELECT
               </option>
               {countryDrop &&
                 countryDrop?.map((country: any, index: number) => (
@@ -384,9 +411,12 @@ const TravelDocuments = ({
             </label>
             <input
               id="passportnumber"
-              type="number"
+              type="text"
               value={number}
-              onChange={(e) => setNumber(e.target.value)}
+              onChange={(e) => {
+                const value = e.target.value.replace(/[^0-9. ]/g, "");
+                setNumber(value);
+              }}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder="Enter  Passport Number"
               disabled={disabled}
@@ -522,7 +552,7 @@ const TravelDocuments = ({
               required
             >
               <option value="" disabled selected>
-                Select
+                SELECT
               </option>
               {countryDrop &&
                 countryDrop?.map((country: any, index: number) => (
@@ -543,7 +573,8 @@ const TravelDocuments = ({
               id="seamanbook"
               type="text"
               value={trainingCenter}
-              onChange={(e) => setTrainingCenter(e.target.value)}
+              onChange={(e) => {
+                const value = e.target.value.replace(/[^0-9. ]/g, ""); setTrainingCenter(e.target.value)}}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder="Enter  Seaman Book No."
               disabled={disabled}
@@ -602,7 +633,6 @@ const TravelDocuments = ({
                 checked={checkBox}
                 onChange={() => setCheckBox(!checkBox)}
                 disabled={disabled}
-               
               />
               <label
                 className="text-[14px] leading-[19.07px] text-[#333333]"
@@ -648,7 +678,6 @@ const TravelDocuments = ({
           </div>
         </div>
 
-        {/* <div className=" grid col-span-2  my-2"> */}
         <div className="flex items-center justify-between">
           <h1 className="font-bold ">VISA</h1>
           {isHideShow && (
@@ -708,9 +737,10 @@ const TravelDocuments = ({
                 id={`visanumber01_${index}`}
                 type="text"
                 value={field.visaNumber}
-                onChange={(e) =>
-                  handleFormChangeVisa(index, "visaNumber", e.target.value)
-                }
+                onChange={(e) =>{
+                  const value = e.target.value.replace(/[^0-9. ]/g, "");
+                  handleFormChangeVisa(index, "visaNumber", value)
+                }}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Visa Number"
                 disabled={disabled}
@@ -838,7 +868,8 @@ const TravelDocuments = ({
               id="seamanPermit"
               type="text"
               value={permitNumber}
-              onChange={(e) => setPermitNumber(e.target.value)}
+              onChange={(e) =>{
+                const value = e.target.value.replace(/[^0-9 ]/g, ""); setPermitNumber(value)}}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder="Enter Number"
               disabled={disabled}
@@ -928,7 +959,8 @@ const TravelDocuments = ({
                 id="inumber"
                 type="text"
                 value={indNumber}
-                onChange={(e) => setIndNumber(e.target.value)}
+                onChange={(e) =>{
+                  const value = e.target.value.replace(/[^0-9 ]/g, ""); setIndNumber(value)}}
                 className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter INDoS Number"
                 disabled={disabled}

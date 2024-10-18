@@ -1,5 +1,8 @@
 "use client";
-import { AddProfileData, GetDropdownDetails } from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
+import {
+  AddProfileData,
+  GetDropdownDetails,
+} from "@/app/(candidate)/candidate/(auth)/(dashboard)/profilecv/Services/profileService";
 import Link from "next/link";
 import React, { useEffect } from "react";
 import { useState } from "react";
@@ -12,16 +15,21 @@ type PersonalComplete = {
   percentage: number;
   color: string;
 };
-type Props={
-  personalComplete: PersonalComplete; 
+type Props = {
+  personalComplete: PersonalComplete;
   setPersonalComplete: React.Dispatch<React.SetStateAction<PersonalComplete>>;
-  userDetail:any;
-  criminal:any;
-}
+  userDetail: any;
+  criminal: any;
+};
 
-const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail, criminal}:Props) => {
+const PersonalDetails = ({
+  personalComplete,
+  setPersonalComplete,
+  userDetail,
+  criminal,
+}: Props) => {
   const [firstName, setFirstName] = useState("");
-  const [middleName, setmidddleName] = useState("");
+  const [middleName, setMiddleName] = useState("");
   const [lastName, setLastName] = useState("");
   const [date, setDate] = useState("");
   const [cityBirth, setCityName] = useState("");
@@ -29,23 +37,23 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail, crimi
   const [countryOfBirth, setCountryOfBirth] = useState("");
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [image, setImage] = useState<any>(null);
-  const [genderDrop,setGenderDrop] = useState<any>([])
-  const [martialStatusDrop,setMartialStatusDrop] = useState<any>([])
-  const [disabled,setDisabled] = useState(true)
+  const [genderDrop, setGenderDrop] = useState<any>([]);
+  const [martialStatusDrop, setMartialStatusDrop] = useState<any>([]);
+  const [disabled, setDisabled] = useState(true);
   const [countryDrop, setCountryDrop] = useState<any>([]);
   const [gender, setGender] = useState("");
 
   const [marital, setMarital] = useState("");
 
   const [nationality, setNationality] = useState("");
-  const [color,setColor]=useState('')
+  const [color, setColor] = useState("");
 
   useEffect(() => {
-    GetDropdownDetails('country', (res: any) => {
+    GetDropdownDetails("country", (res: any) => {
       // console.log('County',res?.data)
-      setCountryDrop(res?.data?.values)
-    })
-  }, [])
+      setCountryDrop(res?.data?.values);
+    });
+  }, []);
 
   const totalFields = 10;
   const filledFields = [
@@ -59,7 +67,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail, crimi
     gender,
     marital,
     nationality,
-    religionName
+    religionName,
   ].filter(Boolean).length;
 
   // const totalFields = available === "Yes" ? 6 : 5;
@@ -67,7 +75,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail, crimi
   useEffect(() => {
     if (userDetail) {
       setFirstName(userDetail.firstName);
-      setmidddleName(userDetail.middleName);
+      setMiddleName(userDetail.middleName);
       setLastName(userDetail.lastName);
       setDate(userDetail.dateOfBirth);
       setCityName(userDetail.cityOfBirth);
@@ -77,20 +85,20 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail, crimi
       setGender(userDetail.gender);
       setMarital(userDetail.maritalStatus);
       setNationality(userDetail.nationality);
-      }
-  }, [])
+    }
+  }, []);
 
   useEffect(() => {
-    GetDropdownDetails('gender',(res:any)=>{
-      setGenderDrop(res?.data?.values)
-    })
-    GetDropdownDetails('martialStatus',(res:any)=>{
-      setMartialStatusDrop(res?.data?.values)
-    })
-  }, [])
-  
+    GetDropdownDetails("gender", (res: any) => {
+      setGenderDrop(res?.data?.values);
+    });
+    GetDropdownDetails("martialStatus", (res: any) => {
+      setMartialStatusDrop(res?.data?.values);
+    });
+  }, []);
 
-  const percentage:any = totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
+  const percentage: any =
+    totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
   // const percentage = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
   useEffect(() => {
     console.log("user", userDetail);
@@ -120,35 +128,34 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail, crimi
 
   const handleSubmit = async (e: React.FormEvent) => {
     // try {
-    e.preventDefault(); 
+    e.preventDefault();
     if (!criminal) {
       toast.error("Please accept the declaration");
-      return; 
+      return;
     } else {
-
-    let formData = new FormData();
-    // formData.append('userId',userDetail?.userId);
-    formData.append('firstName',firstName);
-    formData.append('middleName',middleName);
-    formData.append('lastName',lastName);
-    formData.append('dateOfBirth',date);
-    formData.append('cityOfBirth',cityBirth);
-    formData.append('religion',religionName);
-    formData.append('countryOfBirth',countryOfBirth);
-    formData.append('gender',gender);
-    formData.append('maritalStatus',marital);
-    formData.append('nationality',nationality);
-    formData.append('color',color);
-    formData.append('completed',percentage);
-    AddProfileData(userDetail?.userId,formData, AddaddressdataDB);
+      let formData = new FormData();
+      // formData.append('userId',userDetail?.userId);
+      formData.append("firstName", firstName);
+      formData.append("middleName", middleName);
+      formData.append("lastName", lastName);
+      formData.append("dateOfBirth", date);
+      formData.append("cityOfBirth", cityBirth);
+      formData.append("religion", religionName);
+      formData.append("countryOfBirth", countryOfBirth);
+      formData.append("gender", gender);
+      formData.append("maritalStatus", marital);
+      formData.append("nationality", nationality);
+      formData.append("color", color);
+      formData.append("completed", percentage);
+      AddProfileData(userDetail?.userId, formData, AddaddressdataDB);
+    }
   };
-}
   const AddaddressdataDB = (result: any) => {
     console.log(result);
     if (result?.status == 200) {
       toast.success("Personal detail submited successfully");
       setTimeout(() => {
-        window.location.reload()
+        window.location.reload();
       }, 1000);
     } else {
       toast.error("Personal detail not submited ");
@@ -167,13 +174,25 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail, crimi
   };
 
   const handleEdit = () => {
-    setDisabled(!disabled)
+    setDisabled(!disabled);
     // toast.info("You are now in edit mode. Make your changes.");
+  };
+
+  // const handleValidationChange = (valid: any) => (e: any) => {
+  //   const value = e.target.value;
+  //   const alphabeticValue = value.replace(/[^A-Za-z\s]/g, ""); 
+  //   valid(alphabeticValue);
+  // };
+  const handleValidationChange = (setValue: any) => (e: any) => {
+    const value = e.target.value;
+    const alphabeticValue = value.replace(/[^A-Za-z\s]/g, ""); 
+    const capitalizedValue =
+      alphabeticValue.charAt(0).toUpperCase() + alphabeticValue.slice(1); 
+    setValue(capitalizedValue);
   };
 
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8  ">
-      {/* <CircularProgress percentage={Math.round(percentage)} color={per} /> */}
       <h2 className="font-bold">Personal Details (As Per Passport)</h2>
 
       <form onSubmit={handleSubmit}>
@@ -246,94 +265,107 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail, crimi
           </div> */}
 
           <div className="grid grid-cols-2 gap-4    ">
-            <div className="w-full ">
+            <div className="w-full">
               <label
-                className="blocktext-[14px] leading-[19.07px]  text-[#333333] mb-1"
+                className="block text-[14px] leading-[19.07px] text-[#333333] mb-1"
                 htmlFor="firstName"
               >
                 First Name
               </label>
-              {/* <div className="relative flex items-center  "> */}
               <input
                 id="firstName"
                 type="text"
                 value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                onChange={handleValidationChange(setFirstName)} // Controlled input with alphabet and space validation
+                className="border rounded-md w-full h-9 px-2 text-[14px] leading-[19.07px] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter First Name"
                 disabled={disabled}
               />
-              {/* </div> */}
             </div>
-            <div className="w-full ">
+
+            {/* Middle Name */}
+            <div className="w-full">
               <label
-                className="block  text-[14px] leading-[19.07px]  text-[#333333]  mb-1"
-                htmlFor="userName"
+                className="block text-[14px] leading-[19.07px] text-[#333333] mb-1"
+                htmlFor="middleName"
               >
                 Middle Name
               </label>
-              {/* <div className=" flex items-center  "> */}
               <input
-                id="userName"
+                id="middleName"
                 type="text"
                 value={middleName}
-                onChange={(e) => setmidddleName(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                onChange={handleValidationChange(setMiddleName)}
+                className="border rounded-md w-full h-9 px-2 text-[14px] leading-[19.07px] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Middle Name"
                 disabled={disabled}
               />
-              {/* </div> */}
             </div>
 
-            <div className="w-full ">
+            {/* Last Name */}
+            <div className="w-full">
               <label
-                className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
+                className="block text-[14px] leading-[19.07px] text-[#333333] mb-1"
                 htmlFor="lastName"
               >
                 Last Name
               </label>
-              {/* <div className="relative flex items-center  "> */}
               <input
                 id="lastName"
                 type="text"
                 value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-                className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
+                onChange={handleValidationChange(setLastName)} // Controlled input with alphabet and space validation
+                className="border rounded-md w-full h-9 px-2 text-[14px] leading-[19.07px] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Last Name"
                 disabled={disabled}
               />
-              {/* </div> */}
             </div>
 
             {/* <div className="flex items-center justify-between gap-4  "> */}
             <div className=" w-full">
-              <label className="text-[14px] leading-[19.07px]  text-[#333333] mb-2" htmlFor="Gender1">
+              <label
+                className="text-[14px] leading-[19.07px]  text-[#333333] mb-2"
+                htmlFor="Gender1"
+              >
                 Gender
               </label>
               <select
-              id="Gender1"
+                id="Gender1"
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={gender}
                 onChange={(e) => setGender(e.target.value)}
                 disabled={disabled}
               >
-                <option value="">Select</option>
-                {genderDrop&& genderDrop?.map((gen:any,index:number)=>(
-                <option key={index} value={gen}>{gen.toUpperCase()}</option>
-              ))}
+                <option value="" disabled selected>Select</option>
+                {genderDrop &&
+                  genderDrop?.map((gen: any, index: number) => (
+                    <option key={index} value={gen}>
+                      {gen.toUpperCase()}
+                    </option>
+                  ))}
               </select>
             </div>
             <div className=" w-full">
-              <label className="text-[14px] leading-[19.07px]  text-[#333333] mb-2 " htmlFor="DateofBirth">
+              <label
+                className="text-[14px] leading-[19.07px]  text-[#333333] mb-2 "
+                htmlFor="DateofBirth"
+              >
                 Date of Birth
               </label>
               <input
-              id="DateofBirth"
+                id="DateofBirth"
                 type="date"
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={date}
-                onChange={(e) => setDate(e.target.value)}
+                onChange={(e) =>setDate(e.target.value)}
                 disabled={disabled}
+                max={new Date(
+                  new Date().setFullYear(new Date().getFullYear() - 18)
+                )
+                  .toISOString()
+                  .split("T")[0]} // Restrict to at least 18 years old
+            
+                
               />
             </div>
             {/* </div> */}
@@ -342,19 +374,25 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail, crimi
 
             {/* <div className="flex items-center justify-between gap-4  "> */}
             <div className="w-full">
-              <label className="text-[14px] leading-[19.07px]  text-[#333333] mb-2" htmlFor="CountryofBirth">
+              <label
+                className="text-[14px] leading-[19.07px]  text-[#333333] mb-2"
+                htmlFor="CountryofBirth"
+              >
                 Country of Birth
               </label>
               <select
-              id="CountryofBirth"
+                id="CountryofBirth"
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={countryOfBirth}
                 onChange={(e) => setCountryOfBirth(e.target.value)}
                 disabled={disabled}
               >
-                <option value="">Select</option>
-                {countryDrop && countryDrop?.map((country: any, index: number) => (
-                    <option key={index} value={country}>{country?.toUpperCase()}</option>
+                <option value="" disabled selected>Select</option>
+                {countryDrop &&
+                  countryDrop?.map((country: any, index: number) => (
+                    <option key={index} value={country}>
+                      {country?.toUpperCase()}
+                    </option>
                   ))}
               </select>
             </div>
@@ -362,7 +400,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail, crimi
             <div className="w-full ">
               <label
                 className="block text-[14px] leading-[19.07px]  text-[#333333] mb-1"
-                htmlFor="cityBirth" 
+                htmlFor="cityBirth"
               >
                 City of Birth
               </label>
@@ -371,32 +409,36 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail, crimi
                 id="cityBirth"
                 type="text"
                 value={cityBirth}
-                onChange={(e) => setCityName(e.target.value)}
+                onChange={handleValidationChange(setCityName)}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Your City"
                 disabled={disabled}
               />
-             
             </div>
-           
 
             {/* counstry and city section end*/}
 
             {/* <div className="flex items-center justify-between gap-4  "> */}
             <div className=" w-full">
-              <label className="text-[14px] leading-[19.07px]  text-[#333333] mb-2" htmlFor="nationality">
+              <label
+                className="text-[14px] leading-[19.07px]  text-[#333333] mb-2"
+                htmlFor="nationality"
+              >
                 Nationality
               </label>
               <select
-              id="nationality"
+                id="nationality"
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={nationality}
                 onChange={(e) => setNationality(e.target.value)}
                 disabled={disabled}
               >
-                <option value="">Select</option>
-                {countryDrop && countryDrop?.map((country: any, index: number) => (
-                    <option key={index} value={country}>{country?.toUpperCase()}</option>
+                <option value="" disabled selected>Select</option>
+                {countryDrop &&
+                  countryDrop?.map((country: any, index: number) => (
+                    <option key={index} value={country}>
+                      {country?.toUpperCase()}
+                    </option>
                   ))}
               </select>
             </div>
@@ -413,7 +455,7 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail, crimi
                 id="relision"
                 type="text"
                 value={religionName}
-                onChange={(e) => setReligionName(e.target.value)}
+                onChange={handleValidationChange(setReligionName)}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Religion Name"
                 disabled={disabled}
@@ -421,20 +463,26 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail, crimi
               {/* </div> */}
             </div>
             <div className=" w-full">
-              <label className="text-[14px] leading-[19.07px]  text-[#333333] mb-2" htmlFor="meritalstatus">
+              <label
+                className="text-[14px] leading-[19.07px]  text-[#333333] mb-2"
+                htmlFor="meritalstatus"
+              >
                 Marital Status
               </label>
               <select
-              id="meritalstatus"
+                id="meritalstatus"
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 value={marital}
                 onChange={(e) => setMarital(e.target.value)}
                 disabled={disabled}
               >
                 <option value="">Select</option>
-                {martialStatusDrop&& martialStatusDrop?.map((status:any,index:number)=>(
-                <option key={index} value={status}>{status.toUpperCase()}</option>
-              ))}
+                {martialStatusDrop &&
+                  martialStatusDrop?.map((status: any, index: number) => (
+                    <option key={index} value={status}>
+                      {status.toUpperCase()}
+                    </option>
+                  ))}
                 {/* <option value="male">Male</option>
                 <option value="female">Female</option>
                 <option value="other">Other</option> */}
@@ -450,12 +498,12 @@ const PersonalDetails = ({personalComplete,setPersonalComplete,userDetail, crimi
               Save
             </button>
             <Link
-          href={'#'}
-            onClick={handleEdit}
-            className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
-          >
-            Edit
-          </Link>
+              href={"#"}
+              onClick={handleEdit}
+              className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
+            >
+              Edit
+            </Link>
           </div>
         </div>
       </form>

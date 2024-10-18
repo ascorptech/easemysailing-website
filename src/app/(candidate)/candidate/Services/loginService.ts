@@ -1,7 +1,7 @@
 import { postReq } from "@/RootServices";
 import apiEndPoints from "./apiEndPoints";
 
-const {LOGIN} = apiEndPoints
+const {LOGIN,FORGOTPASSWORD} = apiEndPoints
 
 export const LoginData = async(data:any)=>{
     try {
@@ -9,5 +9,14 @@ export const LoginData = async(data:any)=>{
     } catch (error:any) {
         console.log('err',error)
         return error?.response
+    }
+}
+export const forgetPassData = async(data:any,cb:any)=>{
+    try {
+        const result = await postReq(FORGOTPASSWORD,data)
+        return cb(result)
+    } catch (error:any) {
+        console.log('err',error)
+        return cb(error?.response)
     }
 }

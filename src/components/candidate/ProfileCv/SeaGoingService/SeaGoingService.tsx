@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
+import moment from "moment";
 
 type SeaGoingServiceComplete = {
   percentage: number;
@@ -117,9 +118,9 @@ const SeaGoingService = ({
   useEffect(() => {
     console.log("seaGoing", seaGoingServiceDetail);
     if (seaGoingServiceDetail) {
-      setDisembarkationDate(seaGoingServiceDetail?.disembarkationDate);
+      setDisembarkationDate(moment(seaGoingServiceDetail?.disembarkationDate).format('YYYY-MM-DD'));
       setECDIS(seaGoingServiceDetail?.ecdis);
-      setEmbarkationDate(seaGoingServiceDetail?.embarkationDate);
+      setEmbarkationDate(moment(seaGoingServiceDetail?.embarkationDate).format('YYYY-MM-DD'));
       setEnginemake(seaGoingServiceDetail?.engineMake);
       setGearless(seaGoingServiceDetail?.gearless);
       setImo(seaGoingServiceDetail?.imoNumber);
@@ -129,7 +130,7 @@ const SeaGoingService = ({
       setTonnage(seaGoingServiceDetail?.tonnage);
       setVercelName(seaGoingServiceDetail?.vesselName);
     }
-  },[]);
+  },[seaGoingServiceDetail]);
 
   const handleSubmit = (e: React.FormEvent) => {
     // try {
@@ -174,28 +175,27 @@ const SeaGoingService = ({
     }
   };
 
-  // const handleFieldChange = (index: number, name: string, value: string) => {
-  //   const updatedFields = fields.map((field, i) =>
-  //     i === index ? { ...field, [name]: value } : field
-  //   );
-  //   setFields(updatedFields);
-  // };
-
-  // const addField = () => {
-  //   setFields([...fields, { imo: "", VersalName: "" ,rank:"", tonnage:"" }]);
-  // };
-
-  // const removeField = () => {
-  //   if (fields.length > 1) {
-  //     setFields(fields.slice(0, -1));
-  //   }
-  // };
+ 
 
   const handleEdit = () => {
     setDisabled(!disabled);
     // toast.info("You are now in edit mode. Make your changes.");
   };
 
+  const handleValidationChange = (valid: any) => (e: any) => {
+    const value = e.target.value;
+    const alphabeticValue = value.replace(/[^A-Za-z\s]/g, "");
+    valid(alphabeticValue);
+  };
+
+  const handlePhoneNumberChange = (setter:any) => (e:any) => {
+    let value = e.target.value;
+    value = value.replace(/[^0-9]/g, '');
+  setter(value)
+    // if (value.length <= 10) {
+    //   setter(value);
+    // }
+  };
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
@@ -263,7 +263,7 @@ const SeaGoingService = ({
               id="vesselname"
               type="text"
               value={vercelName}
-              onChange={(e) => setVercelName(e.target.value)}
+              onChange={handleValidationChange(setVercelName)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder="Enter  Vessel Name"
               disabled={disabled}
@@ -308,7 +308,7 @@ const SeaGoingService = ({
               id="tonnage"
               type="text"
               value={tonnage}
-              onChange={(e) => setTonnage(e.target.value)}
+              onChange={handleValidationChange(setTonnage)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder="Enter  Tonnage"
               disabled={disabled}
@@ -335,32 +335,13 @@ const SeaGoingService = ({
               type="text"
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               value={enginemake}
-              onChange={(e) => setEnginemake(e.target.value)}
+              onChange={handleValidationChange(setEnginemake)}
               disabled={disabled}
               placeholder="Enter Engine Make"
             />
-            {/* <select
-              id="enginemake"
-              className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-              name="options"
-              value={enginemake}
-              onChange={(e) => setEnginemake(e.target.value)}
-            >
-              <option value="" disabled selected>
-                Select
-              </option>
-              {engineDrop &&
-                engineDrop?.map((eng: any, index: number) => (
-                  <option key={index} value={eng}>
-                    {eng?.toUpperCase()}
-                  </option>
-                ))}
-            </select> */}
+            
           </div>
 
-          {/* <div className=""> */}
-
-          {/* </div> */}
           <div className="">
             <label
               className="text-[14px] leading-[19.07px]  text-[#333333]"
@@ -378,9 +359,7 @@ const SeaGoingService = ({
               placeholder="Enter  Embarkation Date"
             />
           </div>
-          {/* </div> */}
-
-          {/* <div className="grid "> */}
+         
 
           <div className="">
             <label
@@ -456,7 +435,7 @@ const SeaGoingService = ({
               id="Gearless"
               type="text"
               value={gearless}
-              onChange={(e) => setGearless(e.target.value)}
+              onChange={handleValidationChange(setGearless)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder="Enter Gearless"
               disabled={disabled}
@@ -482,7 +461,7 @@ const SeaGoingService = ({
           </div>
         </div>
 
-        {/* fifth section */}
+     
 
         <div className="flex gap-2 mb-4 mt-4">
           <button

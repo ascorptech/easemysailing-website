@@ -123,15 +123,14 @@ const Refrences = ({
     const file = event.target.files?.[0];
     if (file) {
       const reader = new FileReader();
-        
-    reader.onloadend = function() {
-        const imageBinary:any = reader.result; 
-        const byteArray = imageBinary.split(',')[1]; 
+
+      reader.onloadend = function () {
+        const imageBinary: any = reader.result;
+        const byteArray = imageBinary.split(",")[1];
         setSelectedFile(byteArray);
-    };
-    
-    reader.readAsDataURL(file);
-      
+      };
+
+      reader.readAsDataURL(file);
     }
     // const file = event.target.files?.[0];
     // if (file) {
@@ -143,17 +142,15 @@ const Refrences = ({
     const file = event.target.files?.[0];
     if (file) {
       const reader = new FileReader();
-        
-    reader.onloadend = function() {
-        const imageBinary:any = reader.result; 
-        const byteArray = imageBinary.split(',')[1]; 
+
+      reader.onloadend = function () {
+        const imageBinary: any = reader.result;
+        const byteArray = imageBinary.split(",")[1];
         setSelectedFile1(byteArray);
-    };
-    
-    reader.readAsDataURL(file);
-      
+      };
+
+      reader.readAsDataURL(file);
     }
-   
   };
 
   useEffect(() => {
@@ -165,7 +162,7 @@ const Refrences = ({
       setLastName(refrencesDetail?.referenceLastName);
       setPhoneNumber(refrencesDetail?.referencePhoneNumber);
       setEmail(refrencesDetail?.referenceEmail);
-      setConsentGiven(refrencesDetail?.consentGiven);
+      setConsentGiven(refrencesDetail?.consentGiven ? "Yes" : "No");
       setCountryCode1(refrencesDetail?.referenceCountryCode);
       // setSelectedFile(refrencesDetail?.)
       // setSelectedFile1(refrencesDetail?.)
@@ -205,10 +202,9 @@ const Refrences = ({
       formData.append("color", color);
       formData.append("completed", percentage);
 
-
       AddReferencesData(
         userDetail?.userId,
-        consentGiven,
+        consentGiven == "Yes" ? true : false,
         formData,
         AddReferencesDataCB
       );
@@ -297,12 +293,14 @@ const Refrences = ({
                   id="vessel"
                   type="text"
                   value={companyName}
-                  onChange={(e) => setCompanyName(e.target.value)}
+                  onChange={(e) => {
+                    const value = e.target.value.replace(/[^a-zA-Z ]/g, "");
+                    setCompanyName(value);
+                  }}
                   className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder="Enter Vessel/Company Name"
                   disabled={disabled}
                 />
-                {/* </div> */}
               </div>
 
               <div className="grid col-span-3">
@@ -432,12 +430,14 @@ const Refrences = ({
                 >
                   First Name
                 </label>
-                {/* <div className="relative flex items-center  "> */}
                 <input
                   id="firstName"
                   type="text"
                   value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
+                  onChange={(e) => {
+                    const value = e.target.value.replace(/[^a-zA-Z ]/g, "");
+                    setFirstName(value);
+                  }}
                   className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder="Enter First Name"
                   disabled={disabled}
@@ -456,12 +456,14 @@ const Refrences = ({
                   id="lastName"
                   type="text"
                   value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
+                  onChange={(e) => {
+                    const value = e.target.value.replace(/[^a-zA-Z ]/g, "");
+                    setLastName(value);
+                  }}
                   className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder="Enter  Last Name"
                   disabled={disabled}
                 />
-                {/* </div> */}
               </div>
               <div className="">
                 <label
@@ -470,12 +472,14 @@ const Refrences = ({
                 >
                   Company
                 </label>
-                {/* <div className="relative flex items-center  "> */}
                 <input
                   id="street1"
                   type="text"
                   value={companyName1}
-                  onChange={(e) => setCompanyName1(e.target.value)}
+                  onChange={(e) => {
+                    const value = e.target.value.replace(/[^a-zA-Z ]/g, "");
+                    setCompanyName1(value);
+                  }}
                   className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder="Enter  Company"
                   disabled={disabled}
@@ -505,7 +509,7 @@ const Refrences = ({
                   {countryCodeDrop &&
                     countryCodeDrop?.map((code: any, index: number) => (
                       <option key={index} value={code?.phoneCode}>
-                        {code?.flag +''+ code?.phoneCode}
+                        {code?.flag + "" + code?.phoneCode}
                       </option>
                     ))}
                 </select>
@@ -523,9 +527,14 @@ const Refrences = ({
                     id="number"
                     type="text"
                     value={phoneNumber}
-                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    onChange={(e) => {
+                      const value = e.target.value.replace(/[^0-9]/g, "");
+                      if (value.length <= 10) {
+                        setPhoneNumber(value);
+                      }
+                    }}
                     className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    placeholder="Enter  Phone Number"
+                    placeholder="Enter Phone Number"
                     disabled={disabled}
                   />
                 </div>
@@ -543,7 +552,10 @@ const Refrences = ({
                   id="email"
                   type="email"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => {
+                    const value = e.target.value.replace(/[^a-z@0-9. ]/g, "");
+                    setEmail(value);
+                  }}
                   className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                   placeholder="Enter Email"
                   disabled={disabled}
@@ -561,15 +573,23 @@ const Refrences = ({
                   ConsentGiven
                 </label>
                 <div className="relative flex items-center  ">
-                  <input
+                  <select
                     id="inumber"
-                    type="text"
+                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                     value={consentGiven}
                     onChange={(e) => setConsentGiven(e.target.value)}
-                    className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
-                    placeholder="yes/No"
                     disabled={disabled}
-                  />
+                  >
+                    <option value="" disabled>
+                      SELECT
+                    </option>
+                    <option value="Yes" disabled>
+                      YES
+                    </option>
+                    <option value="No" disabled>
+                      NO
+                    </option>
+                  </select>
                 </div>
               </div>
             </div>

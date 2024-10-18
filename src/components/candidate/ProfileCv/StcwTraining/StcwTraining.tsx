@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import React from "react";
+import moment from "moment";
 
 type StcwTrainingForm = {
   number: any;
@@ -58,6 +59,32 @@ const StcwTraining = ({
 
   const [sTCHTrainOption, setSTCHTrainOption] = useState<any>("");
   const [countryDrop, setCountryDrop] = useState<any>([]);
+
+  useEffect(() => {
+    if (sTCWDetail) {
+      let combineLng = sTCWDetail?.stcwTrainingDetails?.length?sTCWDetail?.stcwTrainingDetails?.map((lang: any) => ({
+        training: lang?.trainingName,
+        number: lang?.certificateNumber,
+        issuingCountry:lang?.issuingCountry,
+        issuedate: moment(lang?.issueDate).format("YYYY-MM-DD"),
+        exdate: moment(lang?.expiryDate).format("YYYY-MM-DD"),
+        neverExpires: lang?.neverExpires,
+        selectedFile: lang?.documentUrl,
+      })):[
+        {
+          number: "",
+          issuedate: "",
+          exdate: "",
+          issuingCountry: "",
+          training: "",
+          neverExpires: "",
+          selectedFile: null,
+        },
+      ];
+      setStcwTraining(combineLng)
+
+  }
+}, [sTCWDetail]);
 
   useEffect(() => {
     GetDropdownDetails("STCHTraining", (res: any) => {
@@ -118,12 +145,7 @@ const StcwTraining = ({
     }
   }, [percentage, color]);
 
-  // const handleFileChange = (event: any) => {
-  //   const file = event.target.files?.[0];
-  //   if (file) {
-  //     setSelectedFile(file);
-  //   }
-  // };
+  
 
   const handleAddForm = () => {
     setStcwTraining([
@@ -166,7 +188,7 @@ const StcwTraining = ({
         stcwArray.push({
           documentUrl: element?.selectedFile,
           trainingName: element?.training,
-          issuingCountry: element?.trainingCountry,
+          issuingCountry: element?.issuingCountry,
           certificateNumber: element?.number,
           issueDate: element?.issuedate,
           expiryDate: element?.exdate,
@@ -174,9 +196,7 @@ const StcwTraining = ({
       });
       data.stcwTrainingDetails = stcwArray;
 
-      // let finArry: any = [];
-      // finArry.push(data);
-      // console.log("fin", finArry);
+      
 
       AddStcwData(data, AddStcwDataCB);
     }
@@ -208,9 +228,7 @@ const StcwTraining = ({
       setStcwTraining(updatedForms);
     };
     reader.readAsDataURL(file);
-    // const updatedForms = [...stcwTraining];
-    // updatedForms[index].selectedFile = event.target.files?.[0] || null;
-    // setStcwTraining(updatedForms);
+    
   };
 
   const handleFormChange = (
@@ -223,15 +241,7 @@ const StcwTraining = ({
     setStcwTraining(updatedForms);
   };
 
-  // const handleExtraFieldChange = (
-  //   index: number,
-  //   value: string,
-  //   field: "field1" | "field2"
-  // ) => {
-  //   const updatedFields = [...extraFields];
-  //   updatedFields[index][field] = value;
-  //   setExtraFields(updatedFields);
-  // };
+ 
 
   const handleEdit = () => {
     setDisabled(!disabled);
@@ -260,7 +270,7 @@ const StcwTraining = ({
             )}
           </div>
 
-          {stcwTraining.map((field, index) => (
+          {stcwTraining?.map((field, index) => (
             <div key={index} className="">
               <div className="grid grid-cols-2 gap-4">
                 <div className="">
@@ -281,7 +291,7 @@ const StcwTraining = ({
                     disabled={disabled}
                   >
                     <option value="" disabled selected>
-                      Select
+                      SELECT
                     </option>
                     {sTCHTrainOption &&
                       sTCHTrainOption?.map((stch: any, index: number) => (
@@ -309,7 +319,7 @@ const StcwTraining = ({
                     disabled={disabled}
                   >
                     <option value="" disabled selected>
-                      Select
+                      SELECT
                     </option>
                     {countryDrop &&
                       countryDrop?.map((country: any, index: number) => (
@@ -331,8 +341,9 @@ const StcwTraining = ({
                     id={`number12_${index}`}
                     type="text"
                     value={field.number}
-                    onChange={(e) =>
-                      handleFormChange(index, "number", e.target.value)
+                    onChange={(e) =>{
+                      const value = e.target.value.replace(/[^0-9. ]/g, "");
+                      handleFormChange(index, "number", value)}
                     }
                     className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
                     placeholder="Enter Certificate Number"

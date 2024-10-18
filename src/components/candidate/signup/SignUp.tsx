@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { MdOutlineEmail } from "react-icons/md";
-import PhoneInput from "react-phone-input-2"; 
+import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
 import { GoEye } from "react-icons/go";
@@ -52,7 +52,7 @@ const passwordRules: PasswordRules = {
 type Props = {
   route: string;
 };
-const SignUp  = ({ route }: Props) => {
+const SignUp = ({ route }: Props) => {
   const router = useRouter();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -68,7 +68,7 @@ const SignUp  = ({ route }: Props) => {
 
   // const [error, setError] = useState("");
   const [termsAccepted, setTermsAccepted] = useState(false);
-  const [isValidPhone, setIsValidPhone] = useState(true); 
+  const [isValidPhone, setIsValidPhone] = useState(true);
   const [countryCode, setCountryCode] = useState("+91"); // Default country code
   // const [countryCodeDrop, setCountryCodeDrop] = useState([]);
   const [passwordError, setPasswordError] = useState("");
@@ -82,25 +82,25 @@ const SignUp  = ({ route }: Props) => {
 
 
 
-    // Password Validation
-    const validatePassword = (password: string): string | undefined => {
-      if (password.length < passwordRules.length.min) {
-        return "Password must be at least 8 characters long.";
-      }
-      if (!passwordRules.lowercase.test(password)) {
-        return "Password must contain at least one lowercase letter.";
-      }
-      if (!passwordRules.uppercase.test(password)) {
-        return "Password must contain at least one uppercase letter.";
-      }
-      if (!passwordRules.digit.test(password)) {
-        return "Password must contain at least one digit.";
-      }
-      if (!passwordRules.special.test(password)) {
-        return "Password must contain at least one special character.";
-      }
-      return undefined;
-    };
+  // Password Validation
+  const validatePassword = (password: string): string | undefined => {
+    if (password.length < passwordRules.length.min) {
+      return "Password must be at least 8 characters long.";
+    }
+    if (!passwordRules.lowercase.test(password)) {
+      return "Password must contain at least one lowercase letter.";
+    }
+    if (!passwordRules.uppercase.test(password)) {
+      return "Password must contain at least one uppercase letter.";
+    }
+    if (!passwordRules.digit.test(password)) {
+      return "Password must contain at least one digit.";
+    }
+    if (!passwordRules.special.test(password)) {
+      return "Password must contain at least one special character.";
+    }
+    return undefined;
+  };
 
   // const validatePasswords = () => {
   //   if (password !== cPassword) {
@@ -115,36 +115,36 @@ const SignUp  = ({ route }: Props) => {
   // };
 
 
- const validatePhoneLength = (phone: string, countryCode: any) => {
-  const normalizedCountryCode = countryCode.toLowerCase();
+  const validatePhoneLength = (phone: string, countryCode: any) => {
+    const normalizedCountryCode = countryCode.toLowerCase();
 
 
-  const rule = phoneLengthRules[countryCode];
+    const rule = phoneLengthRules[countryCode];
 
 
-  if (!rule) return true; 
-  const phoneWithoutCountryCode = phone.replace(`+${countryCode}`, "");
+    if (!rule) return true;
+    const phoneWithoutCountryCode = phone.replace(`+${countryCode}`, "");
 
 
-  return (
-    phoneWithoutCountryCode.length >= rule.min &&
-    phoneWithoutCountryCode.length <= rule.max
-  );
-};
+    return (
+      phoneWithoutCountryCode.length >= rule.min &&
+      phoneWithoutCountryCode.length <= rule.max
+    );
+  };
 
-const handlePhoneChange = (value: string, country: any) => {
-  setPhone(value);
-  setCountryCode(country.countryCode); 
-  
-  const isValid = validatePhoneLength(value, country.countryCode);
-  setIsValidPhone(isValid); 
-};
+  const handlePhoneChange = (value: string, country: any) => {
+    setPhone(value);
+    setCountryCode(country.countryCode);
 
-  const handleSubmit = async(e: React.FormEvent) => {
+    const isValid = validatePhoneLength(value, country.countryCode);
+    setIsValidPhone(isValid);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     try {
       e.preventDefault();
       const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
-  
+
       // Email validation check
       if (!emailPattern.test(email)) {
         toast.error("Please enter a valid email address.");
@@ -156,56 +156,54 @@ const handlePhoneChange = (value: string, country: any) => {
         return;
       }
 
+      // Validate password
+      const passwordValidationError = validatePassword(password);
 
-  if (!termsAccepted) {
-      toast.error("You must accept the terms and conditions");
-      return;
-    }
+      if (passwordValidationError) {
+        toast.error('Password must contain at A,a,1,@ character')
 
-          // Validate password
-          const passwordValidationError = validatePassword(password);
-          
-          if (passwordValidationError) {
-            toast.error('Password must contain at A,a,1,@ character')
+        setPasswordError(passwordValidationError);
 
-            setPasswordError(passwordValidationError);
-           
-            return;
-          }
-    
-    if (password !== cPassword) {
-    // if(!validatePasswords){
-      toast.error("Passwords do not match");
-    }else{
-      let data = {
-        firstName: firstName,
-        lastName: lastName,
-        email:email,
-        phoneNumber:phone,
-        password:password,
-        role:route=='candidate'?'CANDIDATE':'RECRUITER'
+        return;
       }
+      if (password !== cPassword) {
+        // if(!validatePasswords){
+        toast.error("Passwords do not match");
+      }
+       if (!termsAccepted) {
+        toast.error("You must accept the terms and conditions");
+        return;
+      }
+       else {
+        let data = {
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          phoneNumber: phone,
+          password: password,
+          role: route == 'candidate' ? 'CANDIDATE' : 'RECRUITER'
+        }
         const response = await SignupData(data);
-        console.log('res',response)
-        if (response?.status==200) {
+        console.log('res', response)
+        if (response?.status == 200) {
           toast.success('Register successfully')
-          if (route=='candidate') {
+          if (route == 'candidate') {
             router.push("/candidate");
-          }else{
+          } else {
             router.push("/recruiter");
           }
-          
-        }else{
+
+        } else {
           toast.error('Register failed')
         }
-    }
-    
+      }
+
     } catch (error) {
       console.log("err", error);
       toast.error("Registration failed. Please try again.");
 
     }
-    
+
   };
 
   return (
@@ -218,7 +216,7 @@ const handlePhoneChange = (value: string, country: any) => {
           {/* Sign-Up Form Section */}
           <div className="w-full flex flex-col items-center justify-center md:w-1/2  bg-[#EAEAEA]   ">
             <h2 className="mt-4 mb-2 text-[30.52px] leading-[45.79px] font-semibold text-center ">
-              Sign In as {route=='candidate'?'Candidate':'Recruiter'}
+              Sign In as {route == 'candidate' ? 'Candidate' : 'Recruiter'}
             </h2>
             <p className="text-center text-[18px] leading-[27px] text-[#333333] w-[70%]">
               Enter your credential to access your account.
@@ -229,7 +227,7 @@ const handlePhoneChange = (value: string, country: any) => {
             >
               <div className="mb-1 mt-2 flex flex-wrap w-full lg:flex-nowrap lg:space-x-2">
                 <div className="w-full lg:w-[50%] mb-2">
-          
+
                   <label
                     className="block mb-1 text-[16px] leading-[24px] font-[500] text-[#333333]"
                     htmlFor="userName"
@@ -317,9 +315,9 @@ const handlePhoneChange = (value: string, country: any) => {
                     type="email"
                     value={email}
                     // onChange={(e) => setEmail(e.target.value.trim())}
-                     onChange={(e) => {
+                    onChange={(e) => {
                       let value = e.target.value.replace(/\s+/g, ''); // Removes all spaces
-                      setEmail(value?.trim());
+                      setEmail(value.toLowerCase()?.trim());
                     }}
                     onBlur={(e) => {
                       // Basic email validation
@@ -327,7 +325,7 @@ const handlePhoneChange = (value: string, country: any) => {
                         toast.error("Please enter a valid email address.");
                       }
                     }}
-                      // pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                    // pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                     className="w-full px-3 h-[42px] leading-[21.79px] text-[16px] text-[#333333] border rounded-lg focus:outline-none focus:shadow-outline"
                     placeholder="Email"
                     required
@@ -346,40 +344,40 @@ const handlePhoneChange = (value: string, country: any) => {
                   Phone
                 </label>
                 <div className="relative flex items-center pl-8 ">
-                <div className="flex w-full">
-                {/* <select value={countryCode} className="border lg:h-10 rounded-lg w-[20%] py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm" onChange={(e:any)=>setCountryCode(e.target.value)}>
+                  <div className="flex w-full">
+                    {/* <select value={countryCode} className="border lg:h-10 rounded-lg w-[20%] py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm" onChange={(e:any)=>setCountryCode(e.target.value)}>
                  {countryCodeDrop && countryCodeDrop?.map((code: any, index: number) => (
                     <option key={index} value={code}>{code?.toUpperCase()}</option>
                   ))}
                 </select> */}
-                <select value={countryCode} className="border bg-white lg:h-10 rounded-lg w-[40%] sm:w-[20%] xl:w-[25%] py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm" onChange={(e: any) => setCountryCode(e.target.value)}>
-                    {countryCodeDrop && countryCodeDrop?.map((code: any, index: number) => (
-                      <option key={index} value={code?.phoneCode}>{code?.flag + ' ' + code?.phoneCode?.toUpperCase()}</option>
-                    ))}
-                  </select>
-                <input
-                  id="phone"
-                  type="number"
-                  value={phone}
-                  maxLength={10}
-                  onChange={(e) => {
-                    // Allow only numeric input
-                    const value = e.target.value;
-                    if (/^\d*$/.test(value)) { // Regex to allow only digits
-                      setPhone(value.trimStart());
-                    }
-                  }}
-                  onBlur={(e) => {
-                    if (e.target.value.length < 7) {
-                      toast.error("Phone number must be at least 7 digits long");
-                    }
-                  }}
-                  className="border lg:h-10 rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
-                  placeholder="Phone Number"
-                  required
-                />
-                </div>
-                 
+                    <select value={countryCode} className="border bg-white lg:h-10 rounded-lg w-[40%] sm:w-[20%] xl:w-[25%] py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm" onChange={(e: any) => setCountryCode(e.target.value)}>
+                      {countryCodeDrop && countryCodeDrop?.map((code: any, index: number) => (
+                        <option key={index} value={code?.phoneCode}>{code?.flag + ' ' + code?.phoneCode?.toUpperCase()}</option>
+                      ))}
+                    </select>
+                    <input
+                      id="phone"
+                      type="number"
+                      value={phone}
+                      maxLength={10}
+                      onChange={(e) => {
+                        // Allow only numeric input
+                        const value = e.target.value;
+                        if (/^\d*$/.test(value)) { // Regex to allow only digits
+                          setPhone(value.trimStart());
+                        }
+                      }}
+                      onBlur={(e) => {
+                        if (e.target.value.length < 7) {
+                          toast.error("Phone number must be at least 7 digits long");
+                        }
+                      }}
+                      className="border lg:h-10 rounded-lg w-full py-[7px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm"
+                      placeholder="Phone Number"
+                      required
+                    />
+                  </div>
+
                   <span className="absolute inset-y-0 left-0 flex items-center p-3 bg-[#00A264] text-white mr-2 rounded-l-md ">
                     <FaPhone />
                   </span>
@@ -463,8 +461,8 @@ const handlePhoneChange = (value: string, country: any) => {
                 </button>
 
                 <div className="flex  items-center lg:justify-start gap-2 mt-2 ">
-                  
-                    <div>
+
+                  <div>
                     <input
                       id="termsAccepted"
                       type="checkbox"
@@ -472,8 +470,8 @@ const handlePhoneChange = (value: string, country: any) => {
                       checked={termsAccepted}
                       onChange={() => setTermsAccepted(!termsAccepted)}
                     />
-                    </div>
-                    <div>
+                  </div>
+                  <div>
                     <label
                       htmlFor="termsAccepted"
                       className="block text-sm text-left  text-[16px] leading-[24px] text-[#333333]  "
@@ -495,9 +493,9 @@ const handlePhoneChange = (value: string, country: any) => {
 
             <p className="text-center font-semibold mb-6 mt-2 text-[16px] leading-[24px] text-[#333333]">
               Already have on account?
-              {route=='candidate'?<Link href="/candidate" className="text-[#00A264] font-[500] hover:underline ml-1">
+              {route == 'candidate' ? <Link href="/candidate" className="text-[#00A264] font-[500] hover:underline ml-1">
                 Sign In as Candidate
-              </Link>:<Link href="/recruiter" className="text-[#00A264] font-[500] hover:underline ml-1">
+              </Link> : <Link href="/recruiter" className="text-[#00A264] font-[500] hover:underline ml-1">
                 Sign In as Recruiter
               </Link>}
             </p>

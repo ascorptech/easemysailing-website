@@ -13,7 +13,7 @@ import VerificationCode from "../ChangePassword/VerificationCode";
 import Congratulations from "../ChangePassword/Congratulations";
 import ResetPassword from "../ChangePassword/ResetPassword";
 import PasswordChange from "../ChangePassword/PasswordChange";
-import { LoginData } from "@/app/(candidate)/candidate/Services/loginService";
+import { forgetPassData, LoginData } from "@/app/(candidate)/candidate/Services/loginService";
 import { useRouter } from "next/navigation";
 import ClipLoader from "react-spinners/ClipLoader";
 import { toast } from "react-toastify";
@@ -44,9 +44,17 @@ const SignIn = ({ route }: Props) => {
     setIsForgotPasswordOpen(false);
   };
 
-  const openVerificationOpt = () => {
-    setIsVerificationOptOpen(true);
-    closeForgotPassword(); // Close the Forgot Password modal when opening Verification Options
+  const openVerificationOpt = (email:any) => {
+    console.log('data',email)
+    let data = {
+      "notificationMethod": "EMAIL",
+      "username": email
+    }
+    forgetPassData(data,(result:any)=>{
+      console.log('result',result)
+    })
+    // setIsVerificationOptOpen(true);
+    // closeForgotPassword(); // Close the Forgot Password modal when opening Verification Options
   };
 
   const closeVerificationOpt = () => {

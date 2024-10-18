@@ -67,6 +67,7 @@ const UserDetails = ({
   const [disabled, setDisabled] = useState(true);
   const [isHideShow, setIsHideShow] = useState(false);
   const [color, setColor] = useState("");
+  const [whatsAppId, setWhatsAppId] = useState("");
 
 
   useEffect(() => {
@@ -388,12 +389,11 @@ const UserDetails = ({
                         type="text"
                         value={field.cNumber}
                         onChange={(e) => {
-                          const value = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
-                          if (value.length >= 7 && value.length <= 14) {
-                            handleFormChange(index, "cNumber", value); // Set value only if it's between 7 and 14 digits
-                          }
-                        }}
-                        
+                            const value = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
+                            if (value.length <= 10) {
+                                handleFormChange(index,"cNumber", e.target.value); // Set value only if it's 10 digits or less
+                            }
+                          }}
                         // onChange={(e) => setPhoneNumber1(e.target.value)}
                         className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                         placeholder="Enter Contact Number"

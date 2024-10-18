@@ -138,7 +138,7 @@ const NumberContent = () => {
             Know about Global Impact and Influence
           </p>
           <Link
-            href="/contact"
+            href="/contact-us"
             className=" lg:mt-5 mt-2 text-center bg-[#00A264] w-36 text-white sm:ml-0 py-2 px-2 md:px-1  rounded-3xl  text-[16px]"
           >
             Contact Us

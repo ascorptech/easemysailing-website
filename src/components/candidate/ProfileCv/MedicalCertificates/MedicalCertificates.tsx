@@ -7,6 +7,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
+import moment from "moment";
 
 type OtherVaccination = {
   medicalType1: any;
@@ -115,11 +116,9 @@ const MedicalCertificates = ({
       setDrugDrop(res?.data?.values);
     });
     GetDropdownDetails("COVID-19VACCINETYPE", (res: any) => {
-      console.log("vac", res?.data);
       setVaccineTypeDrop(res?.data?.values);
     });
     GetDropdownDetails("OTHERVACCINATIONTYPE", (res: any) => {
-      console.log("vac", res?.data);
       setOtherVaccineTypeDrop(res?.data?.values);
     });
     GetDropdownDetails("country", (res: any) => {
@@ -128,9 +127,9 @@ const MedicalCertificates = ({
     });
   }, []);
 
-  const totalFields = 26 + otherVaccinationForms.length *4 ;
+  const totalFields = 26 + otherVaccinationForms?.length * 4;
   const filledFields = [
-    ...otherVaccinationForms.flatMap((field) => [
+    ...otherVaccinationForms?.flatMap((field) => [
       field.medicalType1,
       field.selectedFilesOthers,
       field.vaccination1,
@@ -157,18 +156,15 @@ const MedicalCertificates = ({
     medicalType,
     vaccinationIssue,
     covidOptions,
-    // vaccinationExpiry,
     medicalTypeFlag,
     vaccinationFlag,
     vaccinationexpFlag || veccinationCheckFlag,
     selectedFilesFlag,
-    // exdateCovid || expiresMedical,
     issuedateCovid,
   ].filter(Boolean).length;
 
-  const percentage = (filledFields / totalFields) * 100;
-
-  // let color;
+  const percentage: any =
+  totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
   useEffect(() => {
     console.log("user", userDetail);
     if (percentage <= 30) {
@@ -197,21 +193,21 @@ const MedicalCertificates = ({
 
   const handleFileChange = (event: any) => {
     const file = event.target.files?.[0];
-    if(file){
+    if (file) {
       // setSelectedFile (file)
-    const reader = new FileReader();
-    reader.onloadend = function () {
-      const imageBinary: any = reader.result;
-      const byteArray = imageBinary.split(",")[1];
-      setSelectedFile(byteArray);
-    };
-    reader.readAsDataURL(file);
-  }
+      const reader = new FileReader();
+      reader.onloadend = function () {
+        const imageBinary: any = reader.result;
+        const byteArray = imageBinary.split(",")[1];
+        setSelectedFile(byteArray);
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   const handleFileChanges = (event: any) => {
     const file = event.target.files?.[0];
-  
+
     const reader = new FileReader();
     reader.onloadend = function () {
       const imageBinary: any = reader.result;
@@ -219,15 +215,9 @@ const MedicalCertificates = ({
       setSelectedFiles(byteArray);
     };
     reader.readAsDataURL(file);
-   
   };
 
-  // const handleFileChangesOthers = (event: any) => {
-  //   const file = event.target.files?.[0];
-  //   if (file) {
-  //     setSelectedFilesOthers(file);
-  //   }
-  // };
+ 
 
   const handleFileChangesOthers = (index: number, event: any) => {
     const file = event.target.files?.[0];
@@ -242,9 +232,7 @@ const MedicalCertificates = ({
       setOtherVaccinationForms(updatedForms);
     };
     reader.readAsDataURL(file);
-    // const updatedForms = [...otherVaccinationForms];
-    // updatedForms[index].selectedFilesOthers = event.target.files?.[0] || null;
-    // setOtherVaccinationForms(updatedForms);
+   
   };
 
   const handleFormChangeOthers = (
@@ -277,17 +265,14 @@ const MedicalCertificates = ({
 
   const handleFileChangesCovid = (event: any) => {
     const file = event.target.files?.[0];
-  
-      const reader = new FileReader();
-      reader.onloadend = function () {
-        const imageBinary: any = reader.result;
-        const byteArray = imageBinary.split(",")[1];
-        setSelectedFilesCovid(byteArray);
-      };
-      reader.readAsDataURL(file);
 
-     
-   
+    const reader = new FileReader();
+    reader.onloadend = function () {
+      const imageBinary: any = reader.result;
+      const byteArray = imageBinary.split(",")[1];
+      setSelectedFilesCovid(byteArray);
+    };
+    reader.readAsDataURL(file);
   };
   const handleFileChangesFlag = (event: any) => {
     const file = event.target.files?.[0];
@@ -302,42 +287,70 @@ const MedicalCertificates = ({
       reader.readAsDataURL(file);
     }
   };
-  
-  useEffect (() => {
-    if(medicalDetail) {
+
+  useEffect(() => {
+    if (medicalDetail) {
       setTypes2Options(medicalDetail.fitnessType);
       setNumber(medicalDetail.fitnessNumber);
       setIssuingOptions(medicalDetail.fitnessIssuingCountry);
       setIssuingCity(medicalDetail.fitnessIssuingCity);
-      setIssueDate(medicalDetail.fitnessIssueDate);
-      setExDate(medicalDetail.fitnessExpiryDate);
+      setIssueDate(moment(medicalDetail.fitnessIssueDate).format("YYYY-MM-DD"));
+      setExDate(moment(medicalDetail.fitnessExpiryDate).format("YYYY-MM-DD"));
       setMedicalPhysician(medicalDetail.covidVaccineMedicalCenter);
       setFMedicalcenter(medicalDetail.fitnessMedicalCenter);
       setMedicalNumber(medicalDetail.drugTestNumber);
       setMedicalCenter(medicalDetail.drugTestIssuingCity);
       setTestCenter(medicalDetail.drugTestCenter);
-      setIssueDate1(medicalDetail.drugTestIssueDate);
-      setExDate1(medicalDetail.drugTestExpiryDate);
-      setIssueDateCovid(medicalDetail.covidVaccineDate2);
+      setIssueDate1(
+        moment(medicalDetail.drugTestIssueDate).format("YYYY-MM-DD")
+      );
+      setExDate1(moment(medicalDetail.drugTestExpiryDate).format("YYYY-MM-DD"));
+      setIssueDateCovid(
+        moment(medicalDetail.covidVaccineDate2).format("YYYY-MM-DD")
+      );
+
+      let combineLng =medicalDetail?.otherVaccinations?.length?medicalDetail?.otherVaccinations?.map((medical: any) => ({
+        medicalType1: medical?.otherVaccinationType,
+        vaccination1: moment(medical?.otherVaccinationDate).format(
+          "YYYY-MM-DD"
+        ),
+        vaccinationexp: moment(medical?.otherVaccinationExpiryDate).format(
+          "YYYY-MM-DD"
+        ),
+        selectedFilesOthers: medical?.otherVaccinationDocumentUrl,
+      })):[
+        {
+          medicalType1: "",
+          vaccination1: "",
+          vaccinationexp: "",
+          veccinationCheck: "",
+          selectedFilesOthers: null,
+        },
+      ] ;
+      setOtherVaccinationForms(combineLng);
       
-      // setExpires1(medicalDetail.nativeLanguage);
-      // setExpires2(medicalDetail.nativeLanguage);
-      
+
       setTypeOptions(medicalDetail.drugTestType);
       setIssuingCountryOpt(medicalDetail.drugTestIssuingCountry);
       setMedicalType(medicalDetail.covidVaccineType);
-      setVaccinationIssue(medicalDetail.covidVaccineDate1);
+      setVaccinationIssue(
+        moment(medicalDetail.covidVaccineDate1).format("YYYY-MM-DD")
+      );
       setCovidOptions(medicalDetail.covidVaccineCountry);
-      // setVeccinationCheckFlag(medicalDetail.covidVaccineCountry);
+     
       setMedicalTypeFlag(medicalDetail.flagMedicalType);
-      setVaccinationFlag(medicalDetail.flagMedicalVaccinationDate);
-      setVaccinationexpFlag(medicalDetail.flagMedicalExpiryDate);
+      setVaccinationFlag(
+        moment(medicalDetail.flagMedicalVaccinationDate).format("YYYY-MM-DD")
+      );
+      setVaccinationexpFlag(
+        moment(medicalDetail.flagMedicalExpiryDate).format("YYYY-MM-DD")
+      );
       setSelectedFilesFlag(medicalDetail.flagMedicalDocumentUrl);
       setSelectedFile(medicalDetail.fitnessDocumentUrl);
       setSelectedFiles(medicalDetail.drugTestDocumentUrl);
       setSelectedFilesCovid(medicalDetail.covidVaccineDocumentUrl1);
     }
-  },[])
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -345,59 +358,6 @@ const MedicalCertificates = ({
       toast.error("Please accept the declaration");
       return;
     } else {
-      // let formData = new FormData();
-      // otherVaccinationForms.forEach((element: any) => {
-      //   formData.append("otherVaccinationType", element?.medicalType1);
-      //   formData.append("otherVaccinationDate", element?.vaccination1);
-      //   formData.append("otherVaccinationExpiryDate", element?.vaccinationexp);
-      //   formData.append("otherVaccinationDocument", element.selectedFilesOthers);
-      // });
-
-      // formData.append("fitnessType", types2Options);
-      // formData.append("fitnessNumber", number);
-      // formData.append("fitnessIssuingCountry", issuingOptions);
-      // formData.append("fitnessIssuingCity", issuingCity);
-      // formData.append("fitnessMedicalCenter", fMedicalcenter);
-      // formData.append("fitnessIssueDate", issuedate);
-      // formData.append("fitnessExpiryDate", exdate);
-      // // formData.append("fitnessNeverExpires", expires1);
-      // formData.append("fitnessDocument", selectedFile);
-
-      // formData.append("drugTestType", typeOptions);
-      // formData.append("drugTestNumber", medicalNumber);
-      // formData.append("drugTestIssuingCountry", issuingCountryOpt);
-      // formData.append("drugTestIssuingCity", medicalCenter);
-      // formData.append("drugTestCenter", testCenter);
-      // formData.append("drugTestIssueDate", issuedate1);
-      // formData.append("drugTestExpiryDate", exdate1);
-      // // formData.append("drugTestNeverExpires", expires2);
-      // formData.append("drugTestDocument", selectedFiles);
-
-      // formData.append("covidVaccineType", medicalType);
-      // formData.append("covidVaccineCountry", covidOptions);
-      // formData.append("covidVaccineMedicalCenter", medicalPhysician);
-      // formData.append("covidVaccineDate1", vaccinationIssue);
-      // // formData.append("covidVaccineExpiryDate1", vaccinationExpiry);
-      // // missing covid19 expiry data
-      // // formData.append("covidVaccineNeverExpires1", expiresMedical);
-      // formData.append("covidVaccineDocument1", selectedFilesCovid);
-
-      // formData.append("covidVaccineDate2", issuedateCovid);
-      // // formData.append("covidVaccineExpiryDate2", exdateCovid);
-      // // formData.append("covidVaccineNeverExpires2", expires2);
-
-      // formData.append("covidVaccineDocument2", "");
-
-      // // formData.append("otherVaccinationNeverExpires", veccinationCheck);
-
-      // formData.append("flagMedicalType", medicalTypeFlag);
-      // formData.append("flagMedicalVaccinationDate", vaccinationFlag);
-      // formData.append("flagMedicalExpiryDate", vaccinationexpFlag);
-      // // formData.append("flagMedicalNeverExpires", veccinationCheckFlag);
-      // formData.append("flagMedicalDocument", selectedFilesFlag);
-
-      // AddMedicalData(userDetail?.userId, formData, AddmedicalDataDB);
-
       let data: any = {
         id: userDetail?.userId,
         fitnessType: types2Options,
@@ -407,7 +367,7 @@ const MedicalCertificates = ({
         fitnessMedicalCenter: fMedicalcenter,
         fitnessIssueDate: issuedate,
         fitnessExpiryDate: exdate,
-        // formData.append("fitnessNeverExpires", expires1);
+        
         fitnessDocumentUrl: selectedFile,
 
         drugTestType: typeOptions,
@@ -417,30 +377,23 @@ const MedicalCertificates = ({
         drugTestCenter: testCenter,
         drugTestIssueDate: issuedate1,
         drugTestExpiryDate: exdate1,
-        // formData.append("drugTestNeverExpires", expires2);
+       
         drugTestDocumentUrl: selectedFiles,
 
         covidVaccineType: medicalType,
         covidVaccineCountry: covidOptions,
         covidVaccineMedicalCenter: medicalPhysician,
         covidVaccineDate1: vaccinationIssue,
-        // formData.append("covidVaccineExpiryDate1", vaccinationExpiry);
-        // missing covid19 expiry data
-        // formData.append("covidVaccineNeverExpires1", expiresMedical);
+        
         covidVaccineDocumentUrl1: selectedFilesCovid,
 
         covidVaccineDate2: issuedateCovid,
-        // formData.append("covidVaccineExpiryDate2", exdateCovid);
-        // formData.append("covidVaccineNeverExpires2", expires2);
-
-        // formData.append("covidVaccineDocument2", "");
-
-        // formData.append("otherVaccinationNeverExpires", veccinationCheck);
+        
 
         flagMedicalType: medicalTypeFlag,
         flagMedicalVaccinationDate: vaccinationFlag,
         flagMedicalExpiryDate: vaccinationexpFlag,
-        // formData.append("flagMedicalNeverExpires", veccinationCheckFlag);
+     
         flagMedicalDocumentUrl: selectedFilesFlag,
         color: color,
         completed: percentage,
@@ -456,15 +409,13 @@ const MedicalCertificates = ({
       });
       data.otherVaccinations = otherArray;
 
-      // let finArry: any = [];
-      // finArry.push(data);
       AddMedicalData(data, AddmedicalDataDB);
     }
   };
 
   const AddmedicalDataDB = (result: any) => {
     console.log(result);
-    if (result?.status == 200||result?.status == 201) {
+    if (result?.status == 200 || result?.status == 201) {
       toast.success("medical  submited successfully");
       setTimeout(() => {
         window.location.reload();
@@ -482,6 +433,22 @@ const MedicalCertificates = ({
     // toast.info("You are now in edit mode. Make your changes.");
   };
 
+  const handleValidationChange = (valid: any) => (e: any) => {
+    const value = e.target.value;
+    const alphabeticValue = value.replace(/[^A-Za-z\s]/g, "");
+    valid(alphabeticValue);
+  };
+
+  const handlePhoneNumberChange = (setter: any) => (e: any) => {
+    let value = e.target.value;
+
+    value = value.replace(/[^0-9]/g, "");
+    setter(value);
+
+    // if (value.length <= 10) {
+    //   setter(value);
+    // }
+  };
   return (
     <div className=" container border-2 shadow-lg p-3  mt-[14px] mb-8 ">
       <form onSubmit={handleSubmit}>
@@ -527,7 +494,7 @@ const MedicalCertificates = ({
               id="medicalnumber"
               type="text"
               value={number}
-              onChange={(e) => setNumber(e.target.value)}
+              onChange={handlePhoneNumberChange(setNumber)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder=" Enter Certificate Number"
               disabled={disabled}
@@ -574,7 +541,7 @@ const MedicalCertificates = ({
               id="issuringCity"
               type="text"
               value={issuingCity}
-              onChange={(e) => setIssuingCity(e.target.value)}
+              onChange={handleValidationChange(setIssuingCity)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder="Enter Issuring City"
               disabled={disabled}
@@ -592,7 +559,7 @@ const MedicalCertificates = ({
               id="medicalcenter"
               type="text"
               value={fMedicalcenter}
-              onChange={(e) => setFMedicalcenter(e.target.value)}
+              onChange={handleValidationChange(setFMedicalcenter)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder="Enter Medical Center"
               disabled={disabled}
@@ -731,7 +698,7 @@ const MedicalCertificates = ({
               id="medicalNumber1"
               type="text"
               value={medicalNumber}
-              onChange={(e) => setMedicalNumber(e.target.value)}
+              onChange={handlePhoneNumberChange(setMedicalNumber)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder="Enter Certificate Number"
               disabled={disabled}
@@ -777,7 +744,7 @@ const MedicalCertificates = ({
               id="issuringCitymedical"
               type="text"
               value={medicalCenter}
-              onChange={(e) => setMedicalCenter(e.target.value)}
+              onChange={handleValidationChange(setMedicalCenter)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder="Enter Issuring City"
               disabled={disabled}
@@ -795,7 +762,7 @@ const MedicalCertificates = ({
               id="medicaltestcenter"
               type="text"
               value={testCenter}
-              onChange={(e) => setTestCenter(e.target.value)}
+              onChange={handleValidationChange(setTestCenter)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder="Enter  Test Center"
               disabled={disabled}
@@ -959,7 +926,7 @@ const MedicalCertificates = ({
               id="medicalcenter"
               type="text"
               value={medicalPhysician}
-              onChange={(e) => setMedicalPhysician(e.target.value)}
+              onChange={handleValidationChange(setMedicalPhysician)}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder="Enter Medical Center/Physician"
               disabled={disabled}

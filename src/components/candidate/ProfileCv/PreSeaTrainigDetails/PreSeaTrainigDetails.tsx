@@ -278,12 +278,12 @@ const PreSeaTrainigDetails = ({
   const AddSeaDetailsDataDB = (result: any) => {
     console.log(result);
     if (result?.status == 200 || result?.status == 201) {
-      toast.success("Sea detail submited successfully");
+      toast.success("Off Shore detail submited successfully");
       setTimeout(() => {
         window.location.reload();
       }, 1000);
     } else {
-      toast.error("Sea detail not submited ");
+      toast.error("Off Shore detail not submited ");
     }
   };
 
@@ -312,7 +312,7 @@ const PreSeaTrainigDetails = ({
               type="text"
               value={permanect}
               onChange={(e) => {
-                const value = e.target.value.replace(/[^a-zA-Z0-9 ]/g, "");
+                const value = e.target.value.replace(/[^a-zA-Z0-9 ]/g, "").toUpperCase();
                 setPermanect(value);
               }}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
@@ -546,7 +546,7 @@ const PreSeaTrainigDetails = ({
               type="text"
               value={trainingCenter}
               onChange={(e) => {
-                const value = e.target.value.replace(/[^a-zA-Z ]/g, "");
+                const value = e.target.value.replace(/[^a-zA-Z ]/g, "").toUpperCase();
                 setTrainingCenter(value);
               }}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
@@ -592,7 +592,7 @@ const PreSeaTrainigDetails = ({
               id="number01"
               type="text"
               value={number}
-              onChange={(e) =>{const value = e.target.value.replace(/[^a-zA-Z0-9. ]/g, "");setNumber(value)}} 
+              onChange={(e) =>{const value = e.target.value.replace(/[^a-zA-Z0-9 ]/g, "").toUpperCase();setNumber(value)}} 
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder="Enter Certificate Number"
               disabled={disabled}
@@ -614,7 +614,7 @@ const PreSeaTrainigDetails = ({
               value={issuedate}
               onChange={(e) => setIssueDate(e.target.value)}
               disabled={disabled}
-              placeholder="Enter Issue Date"
+              max={new Date().toISOString().split("T")[0]}
             />
           </div>
           {!neverExpires && (
@@ -633,7 +633,7 @@ const PreSeaTrainigDetails = ({
                 value={exdate}
                 onChange={(e) => setExDate(e.target.value)}
                 disabled={disabled}
-                placeholder="Enter  Expiry Date"
+                min={new Date().toISOString().split("T")[0]}
               />
               {/* </div> */}
             </div>
@@ -731,7 +731,7 @@ const PreSeaTrainigDetails = ({
             <input
               type="text"
               value={crewManager}
-              onChange={(e) => {const value = e.target.value.replace(/[^a-zA-Z ]/g, "");setCrewManager(value)}}
+              onChange={(e) => {const value = e.target.value.replace(/[^a-zA-Z ]/g, "").toUpperCase();setCrewManager(value)}}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder="Enter  Company Crew Manager"
               disabled={disabled}

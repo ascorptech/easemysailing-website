@@ -345,7 +345,7 @@ const StcwTraining = ({
                     type="text"
                     value={field.number}
                     onChange={(e) =>{
-                      const value = e.target.value.replace(/[^0-9. ]/g, "");
+                      const value = e.target.value.replace(/[^a-zA-Z0-9. ]/g, "").toUpperCase();
                       handleFormChange(index, "number", value)}
                     }
                     className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "

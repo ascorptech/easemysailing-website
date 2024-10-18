@@ -416,17 +416,16 @@ const TravelDocuments = ({
               type="text"
               value={number}
               onChange={(e) => {
-                const value = e.target.value.replace(/[^0-9. ]/g, "");
+                const value = e.target.value.replace(/[^a-zA-Z0-9 ]/g, "").toUpperCase();
                 setNumber(value);
               }}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
-              placeholder="Enter  Passport Number"
+              placeholder="Enter Passport Number"
               disabled={disabled}
               required
             />
           </div>
 
-          {/* <div className=""> */}
 
           {/* </div> */}
           <div className="">
@@ -446,9 +445,7 @@ const TravelDocuments = ({
               max={new Date().toISOString().split("T")[0]}
             />
           </div>
-          {/* </div> */}
-
-          {/* <div className="mt-2"> */}
+         
 
           <div className="">
             <label
@@ -574,7 +571,7 @@ const TravelDocuments = ({
               type="text"
               value={trainingCenter}
               onChange={(e) => {
-                const value = e.target.value.replace(/[^0-9. ]/g, ""); setTrainingCenter(e.target.value)}}
+                const value = e.target.value.replace(/[^a-zA-Z0-9 ]/g, "").toUpperCase(); setTrainingCenter(e.target.value)}}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px] text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder="Enter  Seaman Book No."
               disabled={disabled}
@@ -582,7 +579,6 @@ const TravelDocuments = ({
             />
           </div>
 
-          {/* </div> */}
           <div className="">
             <label
               className="text-[14px] leading-[19.07px]  text-[#333333]"
@@ -736,7 +732,7 @@ const TravelDocuments = ({
                 type="text"
                 value={field.visaNumber}
                 onChange={(e) =>{
-                  const value = e.target.value.replace(/[^0-9. ]/g, "");
+                  const value = e.target.value.replace(/[^a-zA-Z0-9 ]/g, "").toUpperCase();
                   handleFormChangeVisa(index, "visaNumber", value)
                 }}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
@@ -867,7 +863,7 @@ const TravelDocuments = ({
               type="text"
               value={permitNumber}
               onChange={(e) =>{
-                const value = e.target.value.replace(/[^0-9 ]/g, ""); setPermitNumber(value)}}
+                const value = e.target.value.replace(/[^a-zA-Z0-9 ]/g, "").toUpperCase(); setPermitNumber(value)}}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder="Enter Number"
               disabled={disabled}
@@ -958,7 +954,7 @@ const TravelDocuments = ({
                 type="text"
                 value={indNumber}
                 onChange={(e) =>{
-                  const value = e.target.value.replace(/[^0-9 ]/g, ""); setIndNumber(value)}}
+                  const value = e.target.value.replace(/[^a-zA-Z0-9 ]/g, "").toUpperCase(); setIndNumber(value)}}
                 className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter INDoS Number"
                 disabled={disabled}

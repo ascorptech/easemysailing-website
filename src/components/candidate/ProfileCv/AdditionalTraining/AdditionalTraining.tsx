@@ -460,9 +460,11 @@ const AdditionalTraining = ({
                 id={`trainingC1_${index}`}
                 type="text"
                 value={field.trainingCenter}
-                onChange={(e) =>{
-                  const value = e.target.value.replace(/[^a-zA-Z ]/g, "");
-                  handleFormChangeAdd(index, "trainingCenter", value)
+                onChange={(e) => {
+                  const value = e.target.value
+                    .replace(/[^a-zA-Z ]/g, "")
+                    .toUpperCase();
+                  handleFormChangeAdd(index, "trainingCenter", value);
                 }}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
                 placeholder="Enter Training Center"
@@ -488,7 +490,7 @@ const AdditionalTraining = ({
                 disabled={disabled}
               >
                 <option value="" disabled selected>
-                SELECT
+                  SELECT
                 </option>
                 {countryDrop &&
                   countryDrop?.map((country: any, index: number) => (
@@ -512,9 +514,11 @@ const AdditionalTraining = ({
                 id={`numberA_${index}`}
                 type="text"
                 value={field.number}
-                onChange={(e) =>{
-                  const value = e.target.value.replace(/[^0-9 ]/g, "");
-                  handleFormChangeAdd(index, "number", value)
+                onChange={(e) => {
+                  const value = e.target.value
+                    .replace(/[^a-zA-Z0-9 ]/g, "")
+                    .toUpperCase();
+                  handleFormChangeAdd(index, "number", value);
                 }}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder=" Enter Certificate Number"
@@ -671,7 +675,7 @@ const AdditionalTraining = ({
                 disabled={disabled}
               >
                 <option value="" disabled selected>
-                SELECT
+                  SELECT
                 </option>
                 {capacityDrop &&
                   capacityDrop?.map((cap: any, index: number) => (
@@ -700,7 +704,7 @@ const AdditionalTraining = ({
                 disabled={disabled}
               >
                 <option value="" disabled selected>
-                SELECT
+                  SELECT
                 </option>
                 {levelDrop &&
                   levelDrop?.map((lev: any, index: number) => (
@@ -722,10 +726,10 @@ const AdditionalTraining = ({
                 id={`trainingCe_${index}`}
                 type="text"
                 value={fields.trainingCenter1}
-                onChange={(e) =>{
+                onChange={(e) => {
                   const value = e.target.value.replace(/[^a-zA-z ]/g, "");
-                  handleFormChangePro(index, "trainingCenter1", value)}
-                }
+                  handleFormChangePro(index, "trainingCenter1", value);
+                }}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Training Center"
                 disabled={disabled}
@@ -750,7 +754,7 @@ const AdditionalTraining = ({
                 disabled={disabled}
               >
                 <option value="" disabled selected>
-                SELECT
+                  SELECT
                 </option>
                 {levelTestDrop &&
                   levelTestDrop?.map((levTest: any, index: number) => (
@@ -772,10 +776,10 @@ const AdditionalTraining = ({
                 id={`result_${index}`}
                 type="text"
                 value={fields.result}
-                onChange={(e) =>{
+                onChange={(e) => {
                   const value = e.target.value.replace(/[^a-zA-Z ]/g, "");
-                  handleFormChangePro(index, "result", value)}
-                }
+                  handleFormChangePro(index, "result", value);
+                }}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Result"
                 disabled={disabled}
@@ -800,7 +804,7 @@ const AdditionalTraining = ({
                 disabled={disabled}
               >
                 <option value="" disabled selected>
-                SELECT
+                  SELECT
                 </option>
                 {countryDrop &&
                   countryDrop?.map((country: any, index: number) => (
@@ -823,10 +827,12 @@ const AdditionalTraining = ({
                 id={`proNumber1_${index}`}
                 type="text"
                 value={fields.eCDISNumber}
-                onChange={(e) =>{
-                  const value = e.target.value.replace(/[^0-9 ]/g, "");
-                  handleFormChangePro(index, "eCDISNumber", value)}
-                }
+                onChange={(e) => {
+                  const value = e.target.value
+                    .replace(/[^a-zA-Z0-9 ]/g, "")
+                    .toUpperCase();
+                  handleFormChangePro(index, "eCDISNumber", value);
+                }}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Certificate Number"
                 disabled={disabled}
@@ -945,7 +951,7 @@ const AdditionalTraining = ({
             onClick={handleEdit}
             className={`border p-2 rounded-lg px-8 ${
               isEditing
-                ? "border-red-500 text-red-500" 
+                ? "border-red-500 text-red-500"
                 : "border-[#00A264] text-[#00A264]"
             }`}
           >

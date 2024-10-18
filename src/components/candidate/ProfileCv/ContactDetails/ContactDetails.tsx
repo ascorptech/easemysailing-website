@@ -253,7 +253,7 @@ const ContactDetails = ({
                   type="text"
                   value={address}
                   onChange={(e) => {
-                    const value = e.target.value.replace(/[^a-zA-Z ]/g, "");
+                    const value = e.target.value.replace(/[^a-zA-Z ]/g, "").toUpperCase();
                     setAddress(value);
                   }}
                   className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
@@ -299,7 +299,7 @@ const ContactDetails = ({
                   type="text"
                   value={addInfo}
                   onChange={(e) => {
-                    const value = e.target.value.replace(/[^a-zA-Z ]/g, "");
+                    const value = e.target.value.replace(/[^a-zA-Z ]/g, "").toUpperCase;
                     setAddInfo(value);
                   }}
                   className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
@@ -345,7 +345,7 @@ const ContactDetails = ({
                     type="text"
                     value={state}
                     onChange={(e) => {
-                      const value = e.target.value.replace(/[^a-zA-Z ]/g, "");
+                      const value = e.target.value.replace(/[^a-zA-Z ]/g, "").toUpperCase();
                       setState(value);
                     }}
                     className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
@@ -372,7 +372,7 @@ const ContactDetails = ({
                     type="text"
                     value={cityName}
                     onChange={(e) => {
-                      const value = e.target.value.replace(/[^a-zA-Z ]/g, "");
+                      const value = e.target.value.replace(/[^a-zA-Z ]/g, "").toUpperCase();
                       setCityName(value);
                     }}
                     className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
@@ -419,7 +419,7 @@ const ContactDetails = ({
                   type="text"
                   value={nearestAirport}
                   onChange={(e) => {
-                    const value = e.target.value.replace(/[^a-zA-Z ]/g, "");
+                    const value = e.target.value.replace(/[^a-zA-Z ]/g, "").toUpperCase();
                     setNearestAirport(value);
                   }}
                   className=" border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"

@@ -203,7 +203,7 @@ const NextOfKinDetails = ({
                 type="text"
                 value={nextKinName}
                 onChange={(e) => {
-                  const value = e.target.value.replace(/[^a-zA-Z ]/g, "");setNextKinName(value)}}
+                  const value = e.target.value.replace(/[^a-zA-Z0-9 ]/g, "").toUpperCase();setNextKinName(value)}}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"                disabled={disabled}
                 placeholder="Enter Next of Kin Name"
                
@@ -223,7 +223,7 @@ const NextOfKinDetails = ({
                 type="text"
                 value={nextKinShip}
                 onChange={(e) =>{
-                  const value = e.target.value.replace(/[^a-zA-Z ]/g, ""); setNextKinShip(value)}}
+                  const value = e.target.value.replace(/[^a-zA-Z ]/g, "").toUpperCase(); setNextKinShip(value)}}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Next of Kin Relation Ship"
                 disabled={disabled}
@@ -243,7 +243,7 @@ const NextOfKinDetails = ({
                 type="text"
                 value={nextKinAddre}
                 onChange={(e) => {
-                  const value = e.target.value.replace(/[^a-zA-Z ]/g, "");setNextKinAddre(value)}}
+                  const value = e.target.value.replace(/[^a-zA-Z ]/g, "").toUpperCase();setNextKinAddre(value)}}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Next of Kin Address"
                 disabled={disabled}
@@ -264,7 +264,7 @@ const NextOfKinDetails = ({
                 type="text"
                 value={nextKinChildren}
                 onChange={(e) =>{
-                  const value = e.target.value.replace(/[^0-9. ]/g, ""); setNextKinChildren(value)}}
+                  const value = e.target.value.replace(/[^a-zA-Z ]/g, "").toUpperCase(); setNextKinChildren(value)}}
                 className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
                 placeholder="Enter Number of Children"
                 disabled={disabled}

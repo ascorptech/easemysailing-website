@@ -39,6 +39,7 @@ const Ecdis = ({
 
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [selectedFiles, setSelectedFiles] = useState<any>(null);
+  const [isEditing, setIsEditing] = useState(false);
 
   const [trainingCenter, setTrainingCenter] = useState("");
   const [trainings, setTrainings] = useState("");
@@ -195,6 +196,8 @@ const Ecdis = ({
   const handleEdit = () => {
     setDisabled(!disabled);
     setIsHideShow(!isHideShow);
+    setIsEditing((prev) => !prev);
+
     // toast.info("You are now in edit mode. Make your changes.");
   };
 
@@ -227,7 +230,7 @@ const Ecdis = ({
                 disabled={disabled}
               >
                 <option value="" disabled selected>
-                  Select
+                  SELECT
                 </option>
                 {trainDrop &&
                   trainDrop?.map((train: any, index: number) => (
@@ -271,7 +274,7 @@ const Ecdis = ({
                 disabled={disabled}
               >
                 <option value="" disabled selected>
-                  Select
+                SELECT
                 </option>
                 {countryDrop &&
                   countryDrop?.map((country: any, index: number) => (
@@ -412,11 +415,15 @@ const Ecdis = ({
             Save
           </button>
           <Link
-            href="#"
+            href={"#"}
             onClick={handleEdit}
-            className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
+            className={`border p-2 rounded-lg px-8 ${
+              isEditing
+                ? "border-red-500 text-red-500" 
+                : "border-[#00A264] text-[#00A264]"
+            }`}
           >
-            Edit
+            {isEditing ? "Cancel" : "Edit"} {/* Conditional rendering */}
           </Link>
         </div>
       </form>

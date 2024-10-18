@@ -47,6 +47,7 @@ const PersonalDetails = ({
 
   const [nationality, setNationality] = useState("");
   const [color, setColor] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     GetDropdownDetails("country", (res: any) => {
@@ -175,6 +176,8 @@ const PersonalDetails = ({
 
   const handleEdit = () => {
     setDisabled(!disabled);
+    setIsEditing((prev) => !prev);
+
     // toast.info("You are now in edit mode. Make your changes.");
   };
 
@@ -337,7 +340,7 @@ const PersonalDetails = ({
                 onChange={(e) => setGender(e.target.value)}
                 disabled={disabled}
               >
-                <option value="" disabled selected>Select</option>
+                <option value="" disabled selected> SELECT</option>
                 {genderDrop &&
                   genderDrop?.map((gen: any, index: number) => (
                     <option key={index} value={gen}>
@@ -388,7 +391,7 @@ const PersonalDetails = ({
                 onChange={(e) => setCountryOfBirth(e.target.value)}
                 disabled={disabled}
               >
-                <option value="" disabled selected>Select</option>
+                <option value="" disabled selected> SELECT</option>
                 {countryDrop &&
                   countryDrop?.map((country: any, index: number) => (
                     <option key={index} value={country}>
@@ -434,7 +437,7 @@ const PersonalDetails = ({
                 onChange={(e) => setNationality(e.target.value)}
                 disabled={disabled}
               >
-                <option value="" disabled selected>Select</option>
+                <option value="" disabled selected>SELECT</option>
                 {countryDrop &&
                   countryDrop?.map((country: any, index: number) => (
                     <option key={index} value={country}>
@@ -477,7 +480,7 @@ const PersonalDetails = ({
                 onChange={(e) => setMarital(e.target.value)}
                 disabled={disabled}
               >
-                <option value="">Select</option>
+                <option value="">SELECT</option>
                 {martialStatusDrop &&
                   martialStatusDrop?.map((status: any, index: number) => (
                     <option key={index} value={status}>
@@ -499,12 +502,16 @@ const PersonalDetails = ({
               Save
             </button>
             <Link
-              href={"#"}
-              onClick={handleEdit}
-              className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
-            >
-              Edit
-            </Link>
+            href={"#"}
+            onClick={handleEdit}
+            className={`border p-2 rounded-lg px-8 ${
+              isEditing
+                ? "border-red-500 text-red-500" 
+                : "border-[#00A264] text-[#00A264]"
+            }`}
+          >
+            {isEditing ? "Cancel" : "Edit"} {/* Conditional rendering */}
+          </Link>
           </div>
         </div>
       </form>

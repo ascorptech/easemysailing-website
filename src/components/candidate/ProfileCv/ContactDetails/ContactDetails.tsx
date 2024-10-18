@@ -49,6 +49,7 @@ const ContactDetails = ({
 
   const [disabled, setDisabled] = useState(true);
   const [color, setColor] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     console.log("userDetail", userDetail);
@@ -174,6 +175,8 @@ const ContactDetails = ({
   };
   const handleEdit = () => {
     setDisabled(!disabled);
+    setIsEditing((prev) => !prev);
+
   };
 
 
@@ -318,7 +321,7 @@ const ContactDetails = ({
                   disabled={disabled}
                 >
                   <option value="" disabled>
-                    Select
+                  SELECT
                   </option>
                   {countryDrop &&
                     countryDrop?.map((country: any, index: number) => (
@@ -626,12 +629,16 @@ const ContactDetails = ({
               Save
             </button>
             <Link
-              href={"#"}
-              onClick={handleEdit}
-              className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
-            >
-              Edit
-            </Link>
+            href={"#"}
+            onClick={handleEdit}
+            className={`border p-2 rounded-lg px-8 ${
+              isEditing
+                ? "border-red-500 text-red-500" 
+                : "border-[#00A264] text-[#00A264]"
+            }`}
+          >
+            {isEditing ? "Cancel" : "Edit"} {/* Conditional rendering */}
+          </Link>
           </div>
         </div>
       </form>

@@ -34,6 +34,7 @@ const NextOfKinDetails = ({
   const [sameAsAddress, setSameAsAddress] = useState<any>(false);
   const [disabled,setDisabled] = useState(true)
   const [color,setColor]=useState('')
+  const [isEditing, setIsEditing] = useState(false);
 
   const totalFields = 5;
   const filledFields = [
@@ -174,6 +175,8 @@ const NextOfKinDetails = ({
 
   const handleEdit = () => {
     setDisabled(!disabled)
+    setIsEditing((prev) => !prev);
+
     // toast.info("You are now in edit mode. Make your changes.");
   };
   return (
@@ -298,11 +301,15 @@ const NextOfKinDetails = ({
             Save
           </button>
           <Link
-            href={'#'}
+            href={"#"}
             onClick={handleEdit}
-            className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
+            className={`border p-2 rounded-lg px-8 ${
+              isEditing
+                ? "border-red-500 text-red-500" 
+                : "border-[#00A264] text-[#00A264]"
+            }`}
           >
-            Edit
+            {isEditing ? "Cancel" : "Edit"} {/* Conditional rendering */}
           </Link>
         </div>
       </form>

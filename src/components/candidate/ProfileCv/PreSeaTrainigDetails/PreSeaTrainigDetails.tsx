@@ -73,6 +73,7 @@ const PreSeaTrainigDetails = ({
   const [disabled, setDisabled] = useState(true);
   const [isHideShow, setIsHideShow] = useState(false);
   const [color, setColor] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     GetDropdownDetails("countryCurrencyCode", (res: any) => {
@@ -289,6 +290,8 @@ const PreSeaTrainigDetails = ({
   const handleEdit = () => {
     setDisabled(!disabled);
     setIsHideShow(!isHideShow);
+    setIsEditing((prev) => !prev);
+
     // toast.info("You are now in edit mode. Make your changes.");
   };
 
@@ -1018,11 +1021,15 @@ const PreSeaTrainigDetails = ({
             Save
           </button>
           <Link
-            href="#"
+            href={"#"}
             onClick={handleEdit}
-            className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
+            className={`border p-2 rounded-lg px-8 ${
+              isEditing
+                ? "border-red-500 text-red-500" 
+                : "border-[#00A264] text-[#00A264]"
+            }`}
           >
-            Edit
+            {isEditing ? "Cancel" : "Edit"} {/* Conditional rendering */}
           </Link>
         </div>
       </form>

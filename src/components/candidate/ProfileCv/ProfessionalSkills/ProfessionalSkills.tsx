@@ -540,7 +540,7 @@ const ProfessionalSkills = ({
               type="text"
               value={maker}
               onChange={(e) =>{
-                const value = e.target.value.replace(/[^a-zA-Z ]/g, ""); setMaker(value)}}
+                const value = e.target.value.replace(/[^a-zA-Z ]/g, "").toUpperCase(); setMaker(value)}}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder="Enter Maker"
               disabled={disabled}
@@ -558,7 +558,7 @@ const ProfessionalSkills = ({
               type="text"
               value={sWL}
               onChange={(e) =>{
-                const value = e.target.value.replace(/[^a-zA-Z ]/g, ""); setSWL(value)}}
+                const value = e.target.value.replace(/[^a-zA-Z ]/g, "").toUpperCase(); setSWL(value)}}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder="Enter SWL"
               disabled={disabled}
@@ -804,7 +804,7 @@ const ProfessionalSkills = ({
               type="text"
               value={description}
               onChange={(e) =>{
-                const value = e.target.value.replace(/[^a-zA-Z0-9 ]/g, ""); setDescription(value)}}
+                const value = e.target.value.replace(/[^a-zA-Z0-9 ]/g, "").toUpperCase(); setDescription(value)}}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264]"
               placeholder="Yes/No"
               disabled={disabled}
@@ -822,7 +822,7 @@ const ProfessionalSkills = ({
               type="text"
               value={inspection}
               onChange={(e) =>{
-                const value = e.target.value.replace(/[^a-zA-Z ]/g, ""); setInspection(value)}}
+                const value = e.target.value.replace(/[^a-zA-Z ]/g, "").toUpperCase(); setInspection(value)}}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder="Enter  Inspection By"
               disabled={disabled}
@@ -882,7 +882,7 @@ const ProfessionalSkills = ({
               type="text"
               value={description1}
               onChange={(e) => {
-                const value = e.target.value.replace(/[^a-zA-Z ]/g, "");setDescription1(value)}}
+                const value = e.target.value.replace(/[^a-zA-Z ]/g, "").toUpperCase();setDescription1(value)}}
               className="border rounded-md w-full h-9  px-2  text-[14px] leading-[19.07px]  text-[#333333] focus:outline-[#00A264] focus:shadow-outline border-[#00A264] "
               placeholder="Yes/No"
               disabled={disabled}

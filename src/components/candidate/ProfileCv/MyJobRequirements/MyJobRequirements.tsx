@@ -164,9 +164,11 @@ Props) => {
     if (result?.status == 200) {
       console.log(result);
       toast.success("Job requirements submited successfully");
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
+      // setTimeout(() => {
+      //   window.location.reload();
+      // }, 1000);
+      setDisabled(!disabled);
+    setIsEditing((prev) => !prev);
     } else {
       console.log(result);
       toast.error("Job requirements not submited ");

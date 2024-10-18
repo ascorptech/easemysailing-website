@@ -34,6 +34,8 @@ const AboutMe = ({
   // const [criminal, setCriminal] = useState<any>("");
   const [disabled, setDisabled] = useState(true);
   const [color, setColor] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
+
 
   const totalFields = 4;
   const filledFields = [personality, additional, myFuture, criminal].filter(
@@ -106,17 +108,18 @@ const AboutMe = ({
     if (result?.status == 200 || result?.status == 201) {
       console.log(result);
       toast.success("About me submited successfully");
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
+      setDisabled(!disabled);
+    setIsEditing((prev) => !prev);
     } else {
       console.log(result);
       toast.error("About me not submited ");
     }
   };
 
-  const handleEdits = () => {
+  const handleEdit = () => {
     setDisabled(!disabled);
+    setIsEditing((prev) => !prev);
+
     // toast.info("You are now in edit mode. Make your changes.");
   };
 
@@ -266,11 +269,15 @@ const AboutMe = ({
             Save
           </button>
           <button
-            type="button"
-            onClick={handleEdits}
-            className="border border-[#00A264] text-[#00A264] p-2 rounded-lg px-8"
+            
+            onClick={handleEdit}
+            className={`border p-2 rounded-lg px-8 ${
+              isEditing
+                ? "border-red-500 text-red-500"
+                : "border-[#00A264] text-[#00A264]"
+            }`}
           >
-            Edit
+            {isEditing ? "Cancel" : "Edit"} {/* Conditional rendering */}
           </button>
         </div>
       </form>
